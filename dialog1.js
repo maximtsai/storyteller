@@ -213,6 +213,7 @@ let dialogList1 = {
             {speaker: 'Ethan', face: 'ethan_dark_scared.png', text: "Hey, who turned out the lights man?"},
             {speaker: 'Maggie', face: 'maggie_dark_scared.png', text: "No need to go screechin' like chickens ladies."},
             {speaker: 'Maggie', face: 'maggie_dark_scared.png', text: "Lightnin' must have hit the powerlines."},
+            {speaker: 'Maggie', face: 'maggie_dark_scared.png', text: "I'll get the keys for the backup generator.", publish: 'maggieCoffeeEnd'},
         ]
     }
 };

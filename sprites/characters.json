@@ -4,30 +4,51 @@
 			"image": "sprites/characters-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 471,
-				"h": 417
+				"w": 1004,
+				"h": 1023
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "maggie_coffee.png",
+					"filename": "juan_dark.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 240,
-						"h": 435
+						"w": 250,
+						"h": 400
 					},
 					"spriteSourceSize": {
-						"x": 38,
-						"y": 19,
-						"w": 164,
-						"h": 404
+						"x": 6,
+						"y": 10,
+						"w": 238,
+						"h": 387
 					},
 					"frame": {
 						"x": 2,
 						"y": 2,
-						"w": 164,
-						"h": 404
+						"w": 238,
+						"h": 387
+					}
+				},
+				{
+					"filename": "juan1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 250,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 11,
+						"w": 238,
+						"h": 386
+					},
+					"frame": {
+						"x": 2,
+						"y": 392,
+						"w": 238,
+						"h": 386
 					}
 				},
 				{
@@ -45,31 +66,283 @@
 						"h": 240
 					},
 					"frame": {
-						"x": 169,
-						"y": 2,
+						"x": 2,
+						"y": 781,
 						"w": 300,
 						"h": 240
 					}
 				},
 				{
-					"filename": "shadow1.png",
+					"filename": "maggie_coffee.png",
 					"rotated": false,
 					"trimmed": true,
+					"sourceSize": {
+						"w": 240,
+						"h": 435
+					},
+					"spriteSourceSize": {
+						"x": 38,
+						"y": 19,
+						"w": 164,
+						"h": 404
+					},
+					"frame": {
+						"x": 243,
+						"y": 2,
+						"w": 164,
+						"h": 404
+					}
+				},
+				{
+					"filename": "bruna1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 197,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 192,
+						"h": 277
+					},
+					"frame": {
+						"x": 243,
+						"y": 409,
+						"w": 192,
+						"h": 277
+					}
+				},
+				{
+					"filename": "maggie_coffee_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 240,
+						"h": 435
+					},
+					"spriteSourceSize": {
+						"x": 38,
+						"y": 19,
+						"w": 164,
+						"h": 404
+					},
+					"frame": {
+						"x": 410,
+						"y": 2,
+						"w": 164,
+						"h": 404
+					}
+				},
+				{
+					"filename": "bruna_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 197,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 192,
+						"h": 277
+					},
+					"frame": {
+						"x": 305,
+						"y": 689,
+						"w": 192,
+						"h": 277
+					}
+				},
+				{
+					"filename": "shadow1.png",
+					"rotated": false,
+					"trimmed": false,
 					"sourceSize": {
 						"w": 280,
 						"h": 170
 					},
 					"spriteSourceSize": {
-						"x": 6,
+						"x": 0,
 						"y": 0,
-						"w": 260,
+						"w": 280,
 						"h": 170
 					},
 					"frame": {
-						"x": 169,
-						"y": 245,
-						"w": 260,
+						"x": 438,
+						"y": 409,
+						"w": 280,
 						"h": 170
+					}
+				},
+				{
+					"filename": "ethan_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 355
+					},
+					"spriteSourceSize": {
+						"x": 49,
+						"y": 0,
+						"w": 149,
+						"h": 355
+					},
+					"frame": {
+						"x": 577,
+						"y": 2,
+						"w": 149,
+						"h": 355
+					}
+				},
+				{
+					"filename": "ethan1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 355
+					},
+					"spriteSourceSize": {
+						"x": 50,
+						"y": 0,
+						"w": 147,
+						"h": 355
+					},
+					"frame": {
+						"x": 721,
+						"y": 360,
+						"w": 147,
+						"h": 355
+					}
+				},
+				{
+					"filename": "edith_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 340
+					},
+					"spriteSourceSize": {
+						"x": 56,
+						"y": 11,
+						"w": 143,
+						"h": 327
+					},
+					"frame": {
+						"x": 500,
+						"y": 582,
+						"w": 143,
+						"h": 327
+					}
+				},
+				{
+					"filename": "edith1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 340
+					},
+					"spriteSourceSize": {
+						"x": 57,
+						"y": 12,
+						"w": 142,
+						"h": 326
+					},
+					"frame": {
+						"x": 729,
+						"y": 2,
+						"w": 142,
+						"h": 326
+					}
+				},
+				{
+					"filename": "caspar_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 132,
+						"h": 324
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 131,
+						"h": 324
+					},
+					"frame": {
+						"x": 871,
+						"y": 331,
+						"w": 131,
+						"h": 324
+					}
+				},
+				{
+					"filename": "caspar1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 132,
+						"h": 324
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 130,
+						"h": 323
+					},
+					"frame": {
+						"x": 871,
+						"y": 658,
+						"w": 130,
+						"h": 323
+					}
+				},
+				{
+					"filename": "maggie_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 130,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 1,
+						"w": 114,
+						"h": 199
+					},
+					"frame": {
+						"x": 874,
+						"y": 2,
+						"w": 114,
+						"h": 199
+					}
+				},
+				{
+					"filename": "maggie1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 130,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 4,
+						"w": 112,
+						"h": 196
+					},
+					"frame": {
+						"x": 646,
+						"y": 718,
+						"w": 112,
+						"h": 196
 					}
 				}
 			]
@@ -78,6 +351,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:d6849d9e7067ba204667aff6a1aa2c78:8dcae8446fc19672fb8e93155cc95057:ef0e6785621c5d4f63bf8d3dcacb6bd5$"
+		"smartupdate": "$TexturePacker:SmartUpdate:ae5622a1ec14ea83c8aafaa0ee63a03e:d3806c51b53c34a636906fe153503f19:ef0e6785621c5d4f63bf8d3dcacb6bd5$"
 	}
 }

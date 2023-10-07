@@ -173,7 +173,104 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">characters/bruna1.png</key>
+            <key type="filename">characters/bruna_dark.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>49,70,99,140</rect>
+                <key>scale9Paddings</key>
+                <rect>49,70,99,140</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">characters/caspar1.png</key>
+            <key type="filename">characters/caspar_dark.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>33,81,66,162</rect>
+                <key>scale9Paddings</key>
+                <rect>33,81,66,162</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">characters/edith1.png</key>
+            <key type="filename">characters/edith_dark.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,85,100,170</rect>
+                <key>scale9Paddings</key>
+                <rect>50,85,100,170</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">characters/ethan1.png</key>
+            <key type="filename">characters/ethan_dark.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,89,100,177</rect>
+                <key>scale9Paddings</key>
+                <rect>50,89,100,177</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">characters/juan1.png</key>
+            <key type="filename">characters/juan_dark.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>63,100,125,200</rect>
+                <key>scale9Paddings</key>
+                <rect>63,100,125,200</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">characters/maggie1.png</key>
+            <key type="filename">characters/maggie_dark.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>33,50,65,100</rect>
+                <key>scale9Paddings</key>
+                <rect>33,50,65,100</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">characters/maggie_coffee.png</key>
+            <key type="filename">characters/maggie_coffee_dark.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

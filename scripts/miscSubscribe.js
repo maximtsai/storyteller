@@ -3,6 +3,8 @@ class MiscSubscribe {
         this.scene = scene || PhaserScene;
 
         messageBus.subscribe("MaggieCoffee", this.maggieCoffee.bind(this));
+        messageBus.subscribe("maggieCoffeeEnd", this.maggieCoffeeEnd.bind(this));
+
         messageBus.subscribe("ActOneEnd", this.actOneEnd.bind(this));
         messageBus.subscribe("playSound", this.playSound.bind(this));
         messageBus.subscribe("tvemergency", this.tvemergency.bind(this));
@@ -24,24 +26,41 @@ class MiscSubscribe {
     }
 
     maggieCoffee() {
-        let maggieCoffee = this.scene.add.image(-580, gameConsts.halfHeight + 105, 'characters', 'maggie_coffee.png');
-        maggieCoffee.alpha = 0.25;
-        maggieCoffee.setDepth(1);
+        gameCharacters.maggieCoffee = this.scene.add.image(-580, gameConsts.halfHeight + 105, 'characters', 'maggie_coffee.png');
+        gameCharacters.maggieCoffee.alpha = 0.25;
+        gameCharacters.maggieCoffee.setDepth(11);
         this.scene.tweens.add({
-            targets: maggieCoffee,
+            targets: gameCharacters.maggieCoffee,
             alpha: 1,
             duration: 1000,
         });
         this.scene.tweens.add({
-            targets: maggieCoffee,
+            targets: gameCharacters.maggieCoffee,
             duration: 1200,
             x: -810,
             ease: 'Cubic.easeOut'
         });
     }
 
+    maggieCoffeeEnd() {
+        this.scene.tweens.add({
+            targets: gameCharacters.maggieCoffee,
+            alpha: 0,
+            duration: 1200,
+        });
+        this.scene.tweens.add({
+            targets: gameCharacters.maggieCoffee,
+            duration: 1200,
+            x: -580,
+            ease: 'Cubic.easeIn'
+        });
+    }
+
     actOneEnd() {
         globalObjsTemp.gloom = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(5000, 999);
+        globalObjsTemp.black = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(5000, 999);
+        globalObjsTemp.black.setAlpha(0).setDepth(8);
+        globalObjsTemp.gloom.setBlendMode(Phaser.BlendModes.DARKEN);
         globalObjsTemp.gloom.setAlpha(0.2).setDepth(8);
 
         setTimeout(() => {
@@ -53,7 +72,11 @@ class MiscSubscribe {
                     globalObjsTemp.gloom.setAlpha(0.2);
                     setTimeout(() => {
                         globalObjsTemp.gloom.setAlpha(1);
+                        globalObjsTemp.black.setAlpha(1);
+                        setCharactersDark();
+                        gameCharacters.maggieCoffee.setFrame('maggie_coffee_dark.png');
                         setTimeout(() => {
+                            globalObjsTemp.black.setAlpha(0);
                             this.showWindowShadow1();
                         }, 70);
                     }, 600);
@@ -63,7 +86,11 @@ class MiscSubscribe {
     }
 
     showWindowShadow1() {
-        globalObjsTemp.gloom.setAlpha(0.8);
+        this.scene.tweens.add({
+            targets: globalObjsTemp.gloom,
+            duration: 1000,
+            alpha: 0.8,
+        });
         dialogManager.showDialogNode('Yelling');
         let shadow = this.scene.add.image(-900, gameConsts.halfHeight, 'characters', 'shadow1.png').setScale(4,3).setDepth(-1);
         let eye = this.scene.add.image(-800, gameConsts.halfHeight - 110, 'characters', 'shadowEye.png').setDepth(-1);
@@ -105,9 +132,10 @@ class MiscSubscribe {
                                         scaleY: 0,
                                         ease: 'Cubic.easeIn',
                                         onComplete: () => {
+                                            globalObjsTemp.black.setAlpha(1);
                                             globalObjsTemp.gloom.setAlpha(1);
                                             setTimeout(() => {
-                                                globalObjsTemp.gloom.setAlpha(0.8);
+                                                globalObjsTemp.black.setAlpha(0);
                                                 shadow.destroy();
                                                 eye.destroy();
                                             }, 100);

@@ -115,7 +115,7 @@ function setupMoveButtons() {
             "ref": "move_btn_disable.png"
         }
     });
-    globalObjects.moveLeftBtn.setDepth(9);
+    globalObjects.moveLeftBtn.setDepth(20);
     globalObjects.moveLeftBtn.setState(DISABLE);
 
     globalObjects.moveRightBtn = new Button({
@@ -139,7 +139,7 @@ function setupMoveButtons() {
             "ref": "move_btn_disable.png"
         }
     });
-    globalObjects.moveRightBtn.setDepth(9);
+    globalObjects.moveRightBtn.setDepth(20);
     globalObjects.moveRightBtn.setState(DISABLE);
 }
 
@@ -282,6 +282,7 @@ function realGameStart() {
                         darkGloom.destroy();
                         fakeBaseOverlay.destroy();
                         fakeBase.destroy();
+                        setupCharacters();
                         setRadioMusic('guitarboogieshuffle', 0.75);
                         enableDinerButtons();
                         dialogManager.showDialogNode('intro');
@@ -290,6 +291,25 @@ function realGameStart() {
             }, 20);
         }, 200);
     }, 1100);
+}
+
+
+function setupCharacters() {
+    gameCharacters.caspar = PhaserScene.add.image(-1132, gameConsts.halfHeight + 120, 'characters', 'caspar1.png').setDepth(11);
+    gameCharacters.bruna = PhaserScene.add.image(-614, gameConsts.halfHeight + 134, 'characters', 'bruna1.png').setDepth(11);
+    gameCharacters.maggie = PhaserScene.add.image(370, gameConsts.halfHeight - 25, 'characters', 'maggie1.png').setDepth(11);
+    gameCharacters.edith = PhaserScene.add.image(1085, gameConsts.halfHeight + 117, 'characters', 'edith1.png').setDepth(11);
+    gameCharacters.ethan = PhaserScene.add.image(1310, gameConsts.halfHeight + 103, 'characters', 'ethan1.png').setDepth(11);
+    gameCharacters.juan = PhaserScene.add.image(1870, gameConsts.halfHeight + 107, 'characters', 'juan1.png').setDepth(11);
+}
+
+function setCharactersDark() {
+    gameCharacters.caspar.setFrame('caspar_dark.png');
+    gameCharacters.bruna.setFrame('bruna_dark.png');
+    gameCharacters.maggie.setFrame('maggie_dark.png');
+    gameCharacters.edith.setFrame('edith_dark.png');
+    gameCharacters.ethan.setFrame('ethan_dark.png');
+    gameCharacters.juan.setFrame('juan_dark.png');
 }
 
 function runIntroSequence() {

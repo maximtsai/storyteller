@@ -1,5 +1,5 @@
 let config = {
-    type: Phaser.AUTO,
+    type: Phaser.CANVAS,
     scale: {
         parent: 'phaser-app',
         width: 720,
@@ -61,6 +61,7 @@ let gameState = {
     EdithIntroduced: false
 
 }
+let gameCharacters = {};
 
 // gameState.brunaIntroduced && gameState.butchIntroduced && gameState.EthanIntroduced && gameState.EdithIntroduced
 
