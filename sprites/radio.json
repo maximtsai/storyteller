@@ -1,0 +1,104 @@
+{
+	"textures": [
+		{
+			"image": "sprites/radio-0.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 904,
+				"h": 1082
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "bar.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 11,
+						"h": 85
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 10,
+						"h": 85
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 10,
+						"h": 85
+					}
+				},
+				{
+					"filename": "cover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 479,
+						"h": 93
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 479,
+						"h": 93
+					},
+					"frame": {
+						"x": 15,
+						"y": 2,
+						"w": 479,
+						"h": 93
+					}
+				},
+				{
+					"filename": "knob.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 275,
+						"h": 275
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 275,
+						"h": 275
+					},
+					"frame": {
+						"x": 497,
+						"y": 2,
+						"w": 275,
+						"h": 275
+					}
+				},
+				{
+					"filename": "backing.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 900,
+						"h": 800
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 900,
+						"h": 800
+					},
+					"frame": {
+						"x": 2,
+						"y": 280,
+						"w": 900,
+						"h": 800
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:204cac49cc31040e2c9db94dca51b692:c0d4ca5fd0749783c5605d6f75461e20:709fb0364b8ed387af3d44e6d1e6f860$"
+	}
+}

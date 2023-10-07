@@ -1,0 +1,241 @@
+{
+	"textures": [
+		{
+			"image": "sprites/intro-0.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1444,
+				"h": 1926
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "diner1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 720,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 720,
+						"h": 640
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 720,
+						"h": 640
+					}
+				},
+				{
+					"filename": "diner2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 720,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 720,
+						"h": 640
+					},
+					"frame": {
+						"x": 723,
+						"y": 1,
+						"w": 720,
+						"h": 640
+					}
+				},
+				{
+					"filename": "offtruck.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 720,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 720,
+						"h": 640
+					},
+					"frame": {
+						"x": 1,
+						"y": 643,
+						"w": 720,
+						"h": 640
+					}
+				},
+				{
+					"filename": "offtruck2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 720,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 720,
+						"h": 640
+					},
+					"frame": {
+						"x": 1,
+						"y": 1285,
+						"w": 720,
+						"h": 640
+					}
+				},
+				{
+					"filename": "offtruck3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 720,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 720,
+						"h": 640
+					},
+					"frame": {
+						"x": 723,
+						"y": 643,
+						"w": 720,
+						"h": 640
+					}
+				},
+				{
+					"filename": "start.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 720,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 720,
+						"h": 640
+					},
+					"frame": {
+						"x": 723,
+						"y": 1285,
+						"w": 720,
+						"h": 640
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/intro-1.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 894,
+				"h": 813
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "startrain.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 720,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 0,
+						"w": 690,
+						"h": 640
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 690,
+						"h": 640
+					}
+				},
+				{
+					"filename": "greycover.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 80,
+						"w": 200,
+						"h": 320
+					},
+					"frame": {
+						"x": 693,
+						"y": 1,
+						"w": 200,
+						"h": 320
+					}
+				},
+				{
+					"filename": "dinersign.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 181,
+						"h": 237
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 1,
+						"w": 168,
+						"h": 235
+					},
+					"frame": {
+						"x": 693,
+						"y": 323,
+						"w": 168,
+						"h": 235
+					}
+				},
+				{
+					"filename": "dinerlighting.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 720,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 70,
+						"y": 84,
+						"w": 650,
+						"h": 169
+					},
+					"frame": {
+						"x": 1,
+						"y": 643,
+						"w": 650,
+						"h": 169
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:19724868a391e21c7152343e758e3e65:7632be5eceb1d6f79f517c77889016e3:53747adcc0c5e04ed783201651b4c023$"
+	}
+}

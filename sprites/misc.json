@@ -1,0 +1,83 @@
+{
+	"textures": [
+		{
+			"image": "sprites/misc.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 202,
+				"h": 227
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "indicator.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 200,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 200,
+						"h": 200
+					},
+					"frame": {
+						"x": 1,
+						"y": 1,
+						"w": 200,
+						"h": 200
+					}
+				},
+				{
+					"filename": "guide_arrow.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 23
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 23
+					},
+					"frame": {
+						"x": 1,
+						"y": 203,
+						"w": 100,
+						"h": 23
+					}
+				},
+				{
+					"filename": "small.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 100,
+						"h": 23
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 100,
+						"h": 23
+					},
+					"frame": {
+						"x": 1,
+						"y": 203,
+						"w": 100,
+						"h": 23
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:cf084059557cfa2a64994da5a7b13a39:94114c1ac716711afb74e5843beff675:612dcbdb08476a0aba06aeca925f16b2$"
+	}
+}

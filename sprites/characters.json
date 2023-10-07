@@ -1,0 +1,83 @@
+{
+	"textures": [
+		{
+			"image": "sprites/characters-0.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 471,
+				"h": 417
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "maggie_coffee.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 240,
+						"h": 435
+					},
+					"spriteSourceSize": {
+						"x": 38,
+						"y": 19,
+						"w": 164,
+						"h": 404
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 164,
+						"h": 404
+					}
+				},
+				{
+					"filename": "shadowEye.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 300,
+						"h": 240
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 300,
+						"h": 240
+					},
+					"frame": {
+						"x": 169,
+						"y": 2,
+						"w": 300,
+						"h": 240
+					}
+				},
+				{
+					"filename": "shadow1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 280,
+						"h": 170
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 0,
+						"w": 260,
+						"h": 170
+					},
+					"frame": {
+						"x": 169,
+						"y": 245,
+						"w": 260,
+						"h": 170
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:d6849d9e7067ba204667aff6a1aa2c78:8dcae8446fc19672fb8e93155cc95057:ef0e6785621c5d4f63bf8d3dcacb6bd5$"
+	}
+}
