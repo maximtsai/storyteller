@@ -51,9 +51,7 @@ let gameVars = {
     moveSine: 0
 };
 let gameState = {
-    isSceneOne: true,
-    isSceneTwo: false,
-    isSceneThree: false,
+    currentScene: 1,
 
     brunaIntroduced: false,
     juanIntroduced: false,

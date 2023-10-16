@@ -32,7 +32,7 @@ class DialogBranchButton {
         });
         this.dialogButton.setDepth(1000);
         this.dialogButton.setState(DISABLE);
-        this.dialogButton.setScale(180, 28);
+        this.dialogButton.setScale(200, 29);
 
         this.text = this.scene.add.bitmapText(x, y, 'normal', '...', 20);
         this.text.visible = false;

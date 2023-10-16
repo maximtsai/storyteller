@@ -266,19 +266,28 @@ function realGameStart() {
     let fakeBase = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'startFakeBase.png');
     let darkGloom = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(999, 999);
     let fakeBaseOverlay = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'startFakeBaseOverlay.png');
+    let time = Date.now();
+    console.log("Time log start");
+    console.log(Date.now() - time);
 
     setTimeout(() => {
+        console.log(Date.now() - time);
+
         darkGloom.setAlpha(0.9);
         setTimeout(() => {
             darkGloom.setAlpha(1);
         }, 20);
         setTimeout(() => {
+            console.log(Date.now() - time);
             darkGloom.setAlpha(0.85);
             setTimeout(() => {
+                console.log(Date.now() - time);
                 darkGloom.setAlpha(1);
                 setTimeout(() => {
+                    console.log(Date.now() - time);
                     darkGloom.setAlpha(0.8);
                     setTimeout(() => {
+                        console.log(Date.now() - time);
                         darkGloom.destroy();
                         fakeBaseOverlay.destroy();
                         fakeBase.destroy();
@@ -311,6 +320,16 @@ function setCharactersDark() {
     gameCharacters.ethan.setFrame('ethan_dark.png');
     gameCharacters.juan.setFrame('juan_dark.png');
 }
+
+function setCharactersNormal() {
+    gameCharacters.caspar.setFrame('caspar1.png');
+    gameCharacters.bruna.setFrame('bruna1.png');
+    gameCharacters.maggie.setFrame('maggie1.png');
+    gameCharacters.edith.setFrame('edith1.png');
+    gameCharacters.ethan.setFrame('ethan1.png');
+    gameCharacters.juan.setFrame('juan1.png');
+}
+
 
 function runIntroSequence() {
     globalObjects.optionsButton.destroy();

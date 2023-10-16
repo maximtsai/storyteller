@@ -193,10 +193,13 @@
             <key type="filename">faces/juan_happy.png</key>
             <key type="filename">faces/juan_normal.png</key>
             <key type="filename">faces/juan_sad.png</key>
+            <key type="filename">faces/maggie_angry.png</key>
             <key type="filename">faces/maggie_dark_scared.png</key>
             <key type="filename">faces/maggie_happy.png</key>
             <key type="filename">faces/maggie_normal.png</key>
+            <key type="filename">faces/maggie_reminisce.png</key>
             <key type="filename">faces/maggie_sad.png</key>
+            <key type="filename">faces/maggie_yell.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

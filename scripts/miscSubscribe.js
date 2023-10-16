@@ -9,6 +9,17 @@ class MiscSubscribe {
         messageBus.subscribe("playSound", this.playSound.bind(this));
         messageBus.subscribe("tvemergency", this.tvemergency.bind(this));
         messageBus.subscribe("tvemergencyEnd", this.tvemergencyEnd.bind(this));
+        messageBus.subscribe("tvJumpscare", this.tvJumpscare.bind(this));
+
+        messageBus.subscribe("exitEarlySceneTwo", this.exitEarlySceneTwo.bind(this));
+        messageBus.subscribe("generatorFixed", this.generatorFixed.bind(this));
+
+
+
+    }
+
+    exitEarlySceneTwo() {
+        console.log("Exit early scene two, TODO");
     }
 
     tvemergency() {
@@ -19,6 +30,12 @@ class MiscSubscribe {
     tvemergencyEnd() {
         setRadioVolume(0.75);
         gameVars.emergencyBroadcasted = true;
+    }
+
+    tvJumpscare() {
+        // TODO Replace
+        playSound('emergency');
+        gameState.tvScreaming = true;
     }
 
     playSound(sound) {
@@ -57,6 +74,8 @@ class MiscSubscribe {
     }
 
     actOneEnd() {
+        gameState.powerOff = true;
+        gameState.currentScene = 2;
         globalObjsTemp.gloom = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(5000, 999);
         globalObjsTemp.black = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(5000, 999);
         globalObjsTemp.black.setAlpha(0).setDepth(8);
@@ -86,6 +105,7 @@ class MiscSubscribe {
     }
 
     showWindowShadow1() {
+        // Now using scene two logic
         this.scene.tweens.add({
             targets: globalObjsTemp.gloom,
             duration: 1000,
@@ -149,5 +169,11 @@ class MiscSubscribe {
             });
         }, 1000);
 
+    }
+
+    generatorFixed(fixAmt = 1) {
+        gameState.fixGenerator = fixAmt;
+        globalObjsTemp.gloom.setAlpha(0);
+        setCharactersNormal();
     }
 }

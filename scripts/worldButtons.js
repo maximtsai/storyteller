@@ -288,15 +288,30 @@ function enableDinerButtons() {
 
 
 function clickMaggie() {
-    if (gameState.isSceneOne) {
+    if (gameState.currentScene == 1) {
         if (!gameState.askedSeat) {
             dialogManager.showDialogNode('findSeat');
         } else {
             dialogManager.showDialogNode('findSeatEnd');
         }
-    } else if (gameState.isSceneTwo) {
+    } else if (gameState.currentScene == 2) {
 
-    } else if (gameState.isSceneThree) {
+        if (gameState.powerOff && false) {
+
+        }  else if (gameState.MaggieAct2FinishedGood) {
+            dialogManager.showDialogNode('MaggieAct2FinishedGood');
+
+        } else if (gameState.MaggieAct2FinishedMeh) {
+            dialogManager.showDialogNode('MaggieAct2FinishedMeh');
+        } else if (gameState.MaggieAct2Chat) {
+            dialogManager.showDialogNode('MaggieAct2Chat');
+        } else if (!gameState.alreadyThanked) {
+            dialogManager.showDialogNode('MaggieAct2ThankYou');
+        } else {
+            dialogManager.showDialogNode('MaggieAct2FinishedMeh');
+        }
+
+    } else if (gameState.currentScene == 3) {
 
     }
 
@@ -304,18 +319,20 @@ function clickMaggie() {
 }
 
 function clickEdith() {
-    if (gameState.isSceneOne) {
+    if (gameState.currentScene == 1) {
         gameState.EdithIntroduced = true;
         dialogManager.showDialogNode('introEdith');
-    } else if (gameState.isSceneTwo) {
-
-    } else if (gameState.isSceneThree) {
-
+    } else if (gameState.currentScene == 2) {
+        if (gameState.powerOff) {
+            if (gameState.askedEdithDark) {
+                dialogManager.showDialogNode('Edith2DarkFin');
+            }
+        }
     }
 }
 
 function clickEthan() {
-    if (gameState.isSceneOne) {
+    if (gameState.currentScene == 1) {
         if (gameState.EthanAct1Fin) {
             dialogManager.showDialogNode('EthanActOneEnd');
         } else if (gameState.EthanIntroduced) {
@@ -323,15 +340,23 @@ function clickEthan() {
         } else {
             dialogManager.showDialogNode('introEthan');
         }
-    } else if (gameState.isSceneTwo) {
+    } else if (gameState.currentScene == 2) {
+        if (gameState.powerOff) {
+            if (gameState.askedEthanDark) {
+                dialogManager.showDialogNode('Ethan2DarkFin');
+            } else {
+                dialogManager.showDialogNode('Ethan2Dark');
+            }
+        } else {
 
-    } else if (gameState.isSceneThree) {
+        }
+    } else if (gameState.currentScene == 3) {
 
     }
 }
 
 function clickJuan() {
-    if (gameState.isSceneOne) {
+    if (gameState.currentScene == 1) {
         if (!gameState.juanIntroduced) {
             dialogManager.showDialogNode('JuanIntro');
         } else if (gameState.juanAskedSeat) {
@@ -339,15 +364,17 @@ function clickJuan() {
         } else {
             dialogManager.showDialogNode('Juan1Enda');
         }
-    } else if (gameState.isSceneTwo) {
-
-    } else if (gameState.isSceneThree) {
+    } else if (gameState.currentScene == 2) {
+        if (gameState.powerOff) {
+            dialogManager.showDialogNode('Juan2Dark');
+        }
+    } else if (gameState.currentScene == 3) {
 
     }
 }
 
 function clickBruna() {
-    if (gameState.isSceneOne) {
+    if (gameState.currentScene == 1) {
         if (gameState.CasparActOneFin) {
             // do nothing
         }else if (!gameState.brunaIntroduced) {
@@ -356,15 +383,27 @@ function clickBruna() {
             dialogManager.showDialogNode('BrunaActOneEnd');
 
         }
-    } else if (gameState.isSceneTwo) {
-
-    } else if (gameState.isSceneThree) {
-
+    } else if (gameState.currentScene == 2) {
+        if (gameState.powerOff) {
+            if (gameState.askedBrunaDark) {
+                dialogManager.showDialogNode('Bruna2DarkFin');
+            } else {
+                dialogManager.showDialogNode('Bruna2Dark');
+            }
+        } else {
+            if (!gameState.brunaChatted2) {
+                dialogManager.showDialogNode('Bruna2Chat');
+            } else if (gameState.bruna2ChattedAngry) {
+                dialogManager.showDialogNode('Bruna2ChatAngry');
+            } else {
+                dialogManager.showDialogNode('Bruna2ChatFin');
+            }
+        }
     }
 }
 
 function clickCaspar() {
-    if (gameState.isSceneOne) {
+    if (gameState.currentScene == 1) {
         if (gameState.CasparActOneFin) {
             // do nothing.
         } else if (!gameState.casparIntroduced) {
@@ -375,25 +414,28 @@ function clickCaspar() {
         } else {
             dialogManager.showDialogNode('CasparTalkOthersNotDone');
         }
-    } else if (gameState.isSceneTwo) {
+    } else if (gameState.currentScene == 2) {
 
-    } else if (gameState.isSceneThree) {
+    } else if (gameState.currentScene == 3) {
 
     }
 }
 
 function clickExit() {
-    if (gameState.isSceneOne) {
+    if (gameState.currentScene == 1) {
         dialogManager.showDialogNode('ExitNoReason');
-
-    } else if (gameState.isSceneTwo) {
-
-    } else if (gameState.isSceneThree) {
+    } else if (gameState.currentScene == 2) {
+        dialogManager.showDialogNode('ExitSceneTwo');
+    } else if (gameState.currentScene == 3) {
 
     }
 }
 
 function clickRadio() {
+    if (gameState.powerOff) {
+        dialogManager.showDialogNode('radioPowerless');
+        return;
+    }
     if (!globalObjsTemp.radio) {
         PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.height - 180, 'blackPixel');
         updateManager.addFunction(updateRadio);
@@ -660,7 +702,7 @@ function adjustRadioUpdate(barPos) {
 }
 
 function clickTV() {
-    if (gameState.isSceneOne) {
+    if (gameState.currentScene == 1) {
         if (gameState.tvended) {
             dialogManager.showDialogNode('tv4');
         } else {
@@ -668,19 +710,36 @@ function clickTV() {
             dialogManager.showDialogNode('tv' + tvNum);
             gameState.tvNum = tvNum + 1;
         }
-    } else if (gameState.isSceneTwo) {
-
-    } else if (gameState.isSceneThree) {
+    } else if (gameState.currentScene == 2) {
+        if (gameState.powerOff) {
+            dialogManager.showDialogNode('tvPowerless');
+        } else {
+            dialogManager.showDialogNode('tvOff');
+        }
+    } else if (gameState.currentScene == 3) {
+        if (gameState.tvSceneThreeEnded) {
+            dialogManager.showDialogNode('tvCrackEnd');
+        } else if (gameState.tvScreaming) {
+            // stop tv screaming
+            gameState.tvSceneThreeEnded = true;
+        } else {
+            let tvThreeNum = gameState.tvThreeNum || 1;
+            dialogManager.showDialogNode('tvCrack' + tvThreeNum);
+            gameState.tvThreeNum = tvThreeNum + 1;
+        }
 
     }
 }
 
 function clickBackdoor() {
-    if (gameState.isSceneOne) {
+    if (gameState.currentScene == 1) {
         dialogManager.showDialogNode('BackdoorActOne');
-    } else if (gameState.isSceneTwo) {
+    } else if (gameState.currentScene == 2) {
+        dialogManager.showDialogNode('BackdoorActTemporary');
 
-    } else if (gameState.isSceneThree) {
+
+
+    } else if (gameState.currentScene == 3) {
 
     }
 }

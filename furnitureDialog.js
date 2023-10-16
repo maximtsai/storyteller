@@ -76,16 +76,76 @@ let furnitureDialog = {
             {speaker: ' ', text: "   (The TV continues showing its warnings)", data: {property: "tvended", value: "true"}},
         ]
     },
+    tvPowerless: {
+        speech: [
+            {speaker: ' ', text: "   The power is off. The TV is also off."},
+        ]
+    },
+    tvOff: {
+        speech: [
+            {speaker: ' ', text: "   Got to save energy••.•••••••••••\n   not like the news was good anyway."},
+        ]
+    },
+    tvCrack1: {
+        speech: [
+            {speaker: ' ', text: "   Got to save energy••••••••••••.•••••••••••.••••••••••\n   Wait was that crack always there?"},
+        ]
+    },
+    tvCrack2: {
+        speech: [
+            {speaker: ' ', text: "   The TV is probably broken."},
+        ]
+    },
+    tvCrack3: {
+        speech: [
+            {speaker: ' ', text: "   I could try turning it on anyways\n   to see what would happen."},
+        ]
+    },
+    tvCrack4: {
+        speech: [
+            {speaker: ' ', forceProgress: true, text: "   The TV is most definitely••••••••••••• absolutely••••••••••••• brok•••••••••••••••••••••••••••••••••••••••••••", data: {property: "tvSceneThreeEnded", value: "true"}},
+            {speaker: ' ', instant: true, text: "   The TV is most definitely absolutel̶y̷ ̶b̸r̴o̵k̶", publish: "tvJumpscare"},
+        ]
+    },
+    tvCrackEnd: {
+        speech: [
+            {speaker: ' ', text: "   I'm not touching that TV again."},
+        ]
+    },
+
+    radioPowerless: {
+        speech: [
+            {speaker: ' ', text: "   Radio can't play music without power."},
+        ]
+    },
 
     BackdoorActOne: {
         speech: [
             {speaker: '', text: "No reason to go there right now."},
         ]
     },
+    BackdoorActTemporary: {
+        speech: [
+            {speaker: '', text: "TODO: Implement gameplay for fixing generator.\nFix generator for now?"},
+        ],
+        branches: [
+            {text: 'Yes', publish: "generatorFixed", param: 99},
+            {text: "Not yet"},
+        ]
+    },
 
     ExitNoReason: {
         speech: [
             {speaker: '', text: "No reason to go back to my rig right now."},
+        ]
+    },
+    ExitSceneTwo: {
+        speech: [
+            {speaker: '', text: "Do I really want to exit now?"},
+        ],
+        branches: [
+            {text: 'Yes', publish: "exitEarlySceneTwo"},
+            {text: "Not yet"},
         ]
     }
 };
