@@ -54,7 +54,7 @@ function setupLoadingBar(scene) {
 
 function setupGame() {
     // PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'background');
-
+    createAnimations(PhaserScene)
     globalObjects.optionsButton = new Button({
         normal: {
             "ref": "buttonStart",
@@ -228,10 +228,10 @@ function tickKeyPresses(deltaScale) {
         } else {
             let panAmt = 0;
             if (distToRadio > 0) {
-                panAmt = Math.min(0.45, (distToRadio - 220) / 1100);
+                panAmt = Math.min(0.38, (distToRadio - 220) / 1100);
                 setRadioPan(panAmt);
             } else {
-                panAmt = Math.max(-0.45, (distToRadio + 220) / 1100);
+                panAmt = Math.max(-0.38, (distToRadio + 220) / 1100);
                 setRadioPan(panAmt);
             }
         }
@@ -249,6 +249,7 @@ function manualSkipIntro() {
     globalObjsTemp.skipText.destroy();
     if (globalObjsTemp.rainForeground) globalObjsTemp.rainForeground.destroy();
     if (globalObjsTemp.outdoorsrain) globalObjsTemp.outdoorsrain.stop();
+    globalObjects.indoorRain = playSound('brownnoise', 1, true);
     enterShop();
 }
 
@@ -259,10 +260,10 @@ function realGameStart() {
     bgRain.setScale(2, 2);
     bgRain.depth = -2;
     bgRain.scrollFactorX = 0.5;
-    let bg1 = PhaserScene.add.image(-988, gameConsts.halfHeight, 'backgrounds', 'bg1.png');
+    let bg1 = PhaserScene.add.image(-987.5, gameConsts.halfHeight, 'backgrounds', 'bg1.png');
     let bg2 = PhaserScene.add.image(12, gameConsts.halfHeight, 'backgrounds', 'bg2.png');
-    let bg3 = PhaserScene.add.image(1012, gameConsts.halfHeight, 'backgrounds', 'bg3.png');
-    let bg4 = PhaserScene.add.image(2012, gameConsts.halfHeight, 'backgrounds', 'bg4.png');
+    let bg3 = PhaserScene.add.image(1011.05, gameConsts.halfHeight, 'backgrounds', 'bg3.png');
+    let bg4 = PhaserScene.add.image(2011, gameConsts.halfHeight, 'backgrounds', 'bg4.png');
     let fakeBase = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'startFakeBase.png');
     let darkGloom = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(999, 999);
     let fakeBaseOverlay = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'startFakeBaseOverlay.png');
@@ -292,6 +293,7 @@ function realGameStart() {
                         fakeBaseOverlay.destroy();
                         fakeBase.destroy();
                         setupCharacters();
+                        globalObjects.indoorRain.setVolume(0.4);
                         setRadioMusic('guitarboogieshuffle', 0.75);
                         enableDinerButtons();
                         dialogManager.showDialogNode('intro');
@@ -310,22 +312,74 @@ function setupCharacters() {
     gameCharacters.edith = PhaserScene.add.image(1085, gameConsts.halfHeight + 117, 'characters', 'edith1.png').setDepth(11);
     gameCharacters.ethan = PhaserScene.add.image(1310, gameConsts.halfHeight + 103, 'characters', 'ethan1.png').setDepth(11);
     gameCharacters.juan = PhaserScene.add.image(1870, gameConsts.halfHeight + 107, 'characters', 'juan1.png').setDepth(11);
+    gameCharacters.tv = PhaserScene.add.sprite(1319, gameConsts.halfHeight - 257, 'characters').play('tv');
+}
+
+function showExclamation() {
+    let charactersToShowExclaim = [
+        gameCharacters.bruna,
+        gameCharacters.maggie,
+        gameCharacters.edith,
+        gameCharacters.ethan,
+        gameCharacters.juan,
+    ];
+    for (let i in charactersToShowExclaim) {
+        let char = charactersToShowExclaim[i];
+        let randDelay = Math.floor(Math.random() * 150);
+        setTimeout(() => {
+            let exclam = PhaserScene.add.image(char.x, char.y - 220, 'misc', 'exclamation.png').setDepth(12).setScale(0.25, 0.25);
+            PhaserScene.tweens.add({
+                targets: exclam,
+                scaleX: 0.65,
+                scaleY: 0.65,
+                y: "-=20",
+                ease: 'Cubic.easeOut',
+                duration: 150,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: exclam,
+                        scaleX: 0,
+                        scaleY: 0,
+                        y: "-=50",
+                        ease: 'Cubic.easeIn',
+                        duration: 300 + Math.floor(Math.random() * 150),
+                        onComplete: () => {
+                            exclam.destroy();
+                        }
+                    });
+                }
+            });
+        }, randDelay);
+
+
+    }
+
+    if (gameState.currentScene == 1) {
+        gameCharacters.tv.stop();
+        gameCharacters.tv.setFrame('tv_red.png');
+    }
 }
 
 function setCharactersDark() {
-    gameCharacters.caspar.setFrame('caspar_dark.png');
+    gameCharacters.caspar.setFrame('caspar_dark_calm.png');
     gameCharacters.bruna.setFrame('bruna_dark.png');
     gameCharacters.maggie.setFrame('maggie_dark.png');
     gameCharacters.edith.setFrame('edith_dark.png');
     gameCharacters.ethan.setFrame('ethan_dark.png');
     gameCharacters.juan.setFrame('juan_dark.png');
+    gameCharacters.tv.stop();
+    gameCharacters.tv.setFrame('tv_off.png');
 }
 
 function setCharactersNormal() {
     gameCharacters.caspar.setFrame('caspar1.png');
     gameCharacters.bruna.setFrame('bruna1.png');
     gameCharacters.maggie.setFrame('maggie1.png');
-    gameCharacters.edith.setFrame('edith1.png');
+    if (gameState.EthanEdithSeparated) {
+        gameCharacters.edith.setFrame('edith2.png');
+    } else {
+        gameCharacters.edith.setFrame('edith1.png');
+    }
     gameCharacters.ethan.setFrame('ethan1.png');
     gameCharacters.juan.setFrame('juan1.png');
 }
@@ -436,10 +490,11 @@ function cleanupIntro() {
     if (globalObjsTemp.outdoorsrain) {
         globalObjsTemp.outdoorsrain.stop();
     }
-    playSound('brownnoise');
+    globalObjects.indoorRain = playSound('brownnoise', 1, true);
 }
 
 function enterShop() {
+
     globalObjsTemp.skipButton.destroy();
     playSound('entershop');
     setBackground('intro', 'diner2.png');
@@ -493,6 +548,11 @@ function setRadioMusic(music, volume = 0.1) {
 function setRadioVolume(vol = 1) {
     gameVars.radioVolume = vol;
     globalObjsTemp.radioMusic.volume = vol;
+
+    if (globalObjsTemp.radioStatic1 && globalObjsTemp.radioStatic1.trueVolume !== undefined) {
+        globalObjsTemp.radioStatic1.volume = globalObjsTemp.radioStatic1.trueVolume * vol;
+        globalObjsTemp.radioStatic2.volume = globalObjsTemp.radioStatic2.trueVolume * vol;
+    }
 }
 
 function setRadioPan(pan) {

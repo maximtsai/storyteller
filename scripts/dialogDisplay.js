@@ -23,6 +23,9 @@ class DialogBranchButton {
             },
             onMouseUp: () => {
                 messageBus.publish("clearBranchOptions");
+                if (this.publishMessage) {
+                    messageBus.publish(this.publishMessage, this.publishParam);
+                }
                 if (this.destNode) {
                     messageBus.publish('gotoDialogNode', this.destNode);
                 } else {
@@ -32,12 +35,13 @@ class DialogBranchButton {
         });
         this.dialogButton.setDepth(1000);
         this.dialogButton.setState(DISABLE);
-        this.dialogButton.setScale(200, 29);
+        this.dialogButton.setScale(204, 29.5);
 
-        this.text = this.scene.add.bitmapText(x, y, 'normal', '...', 20);
+        this.text = this.scene.add.bitmapText(x, y, 'dialog', '...', 26);
+        this.text.align = 1;
         this.text.visible = false;
         this.text.setDepth(1000);
-        this.text.setOrigin(0.5, 0.5);
+        this.text.setOrigin(0.5, 0.48);
     }
 
     setPosition(x, y) {
@@ -47,6 +51,14 @@ class DialogBranchButton {
 
     setText(text) {
         this.text.setText(text);
+        if (this.text.text.length > 40) {
+            this.text.setFontSize(18);
+        }
+        if (this.text.text.length > 22) {
+            this.text.setFontSize(23);
+        } else {
+            this.text.setFontSize(26);
+        }
     }
 
     setActive() {
@@ -56,6 +68,11 @@ class DialogBranchButton {
 
     setDestNode(nodeName) {
         this.destNode = nodeName
+    }
+
+    setPublishData(message, param) {
+        this.publishMessage = message;
+        this.publishParam = param;
     }
 
     setInactive() {
@@ -68,22 +85,28 @@ class DialogDisplay {
     constructor(scene) {
         this.scene = scene || PhaserScene;
 
-        this.dialogBox = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.height - 180, 'blackPixel');
-        this.dialogBox.setScale(gameConsts.width * 0.5 - 20, 80);
+        this.dialogBox = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.height - 183, 'blackPixel');
+        this.dialogBox.setScale(gameConsts.width * 0.5 - 20, 84);
         this.dialogBox.visible = false;
         this.dialogBox.setDepth(999);
         this.dialogBox.setOrigin(0.5, 0);
         this.dialogBox.alpha = 0.65;
         this.dialogBox.scrollFactorX = 0;
 
-        this.dialogText = this.scene.add.bitmapText(50, gameConsts.height - 135, 'normal', '...', 22);
+        this.dialogText = this.scene.add.bitmapText(50, gameConsts.height - 138, 'dialog', '...', 26);
         this.dialogText.startX = this.dialogText.x;
         this.dialogText.visible = false;
         this.dialogText.setDepth(999);
         this.dialogText.setOrigin(0, 0);
         this.dialogText.scrollFactorX = 0;
 
-        this.dialogSpeaker = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.height - 170, 'normal', 'INSERT NAME', 24);
+        this.dialogPrompt = this.scene.add.sprite(gameConsts.width - 30, gameConsts.height - 25, 'buttons', 'continue_prompt.png');
+        this.dialogPrompt.visible = false;
+        this.dialogPrompt.setDepth(999);
+        this.dialogPrompt.setOrigin(1, 1);
+        this.dialogPrompt.scrollFactorX = 0;
+
+        this.dialogSpeaker = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.height - 174, 'dialog', 'INSERT NAME', 30);
         this.dialogSpeaker.visible = false;
         this.dialogSpeaker.setDepth(999);
         this.dialogSpeaker.setOrigin(0.5, 0);
@@ -95,12 +118,6 @@ class DialogDisplay {
         this.dialogFace.visible = false;
         this.dialogFace.setScale(0.7);
         this.dialogFace.scrollFactorX = 0;
-
-        this.dialogPrompt = this.scene.add.sprite(gameConsts.width - 30, gameConsts.height - 30, 'buttons', 'continue_prompt.png');
-        this.dialogPrompt.visible = false;
-        this.dialogPrompt.setDepth(999);
-        this.dialogPrompt.setOrigin(1, 1);
-        this.dialogPrompt.scrollFactorX = 0;
 
         scene.tweens.add({
             targets: this.dialogPrompt,
@@ -155,7 +172,7 @@ class DialogDisplay {
             },
             cursorInteractive: true
         });
-        this.dialogButton.setDepth(999);
+        this.dialogButton.setDepth(998);
         this.dialogButton.setState(DISABLE);
 
         messageBus.subscribe("hideAllDialog", this.hideAll.bind(this));
@@ -184,6 +201,11 @@ class DialogDisplay {
 
     }
 
+    disableClickNext() {
+        console.log("Disable click next")
+        this.dialogButton.setState(DISABLE);
+    }
+
     hideAll() {
         globalObjects.moveRightBtn.setState(NORMAL);
         globalObjects.moveLeftBtn.setState(NORMAL);
@@ -191,10 +213,12 @@ class DialogDisplay {
 
         this.dialogSpeaker.visible = false;
         this.dialogBox.visible = false;
-        this.dialogText.visible = false;
         this.dialogFace.visible = false;
         this.dialogPrompt.visible = false;
         this.dialogButton.setState(DISABLE);
+
+        this.hideTalkText();
+
     }
     showDialogSpeaker(name) {
         this.dialogSpeaker.setText(name);
@@ -206,11 +230,11 @@ class DialogDisplay {
 
     updateTextSize(size = 'normal') {
         if (size == 'small') {
-            this.dialogText.setFontSize(18);
-        } else if (size == 'large') {
-            this.dialogText.setFontSize(26);
-        } else {
             this.dialogText.setFontSize(22);
+        } else if (size == 'large') {
+            this.dialogText.setFontSize(30);
+        } else {
+            this.dialogText.setFontSize(26);
         }
     }
 
@@ -224,12 +248,12 @@ class DialogDisplay {
         globalObjects.moveLeftBtn.setState(DISABLE);
         this.dialogPrompt.visible = false;
         this.currentlyTypedText = '';
-        this.finalText = text;
+        this.finalText = text + "•••••••";
         this.typingText = true;
         this.dialogText.setText(this.currentlyTypedText);
         this.dialogText.x = this.dialogText.startX;
         this.dialogText.visible = true;
-        this.dialogText.setFontSize(22);
+        this.dialogText.setFontSize(26);
         this.dialogFace.visible = false;
 
         this.dialogBox.visible = true;
@@ -241,6 +265,7 @@ class DialogDisplay {
         let numCharRevealed = Math.max(1, Math.floor(gameVars.averageDeltaScale * 1.2));
         this.currentTypewriterEvent = this.scene.time.addEvent({
             callback: () => {
+                console.log("update");
                 if (this.typingText) {
                     for (let j = 0; j < numCharRevealed; j++) {
                         this.currentlyTypedText += this.finalText[i];
@@ -292,6 +317,10 @@ class DialogDisplay {
 
     hideTalkText() {
         this.dialogText.visible = false;
+        this.typingText = false;
+        if (this.currentTypewriterEvent) {
+            this.currentTypewriterEvent.remove();
+        }
     }
 
     showNextButton(onButtonClick) {
@@ -312,9 +341,18 @@ class DialogDisplay {
             currButton.setPosition(gameConsts.halfWidth + gameVars.cameraPosX, yPos);
             currButton.setText(branchData.text);
             currButton.setDestNode(branchData.targetNode);
+            if (branchData.publish) {
+                currButton.setPublishData(branchData.publish, branchData.param);
+
+            }
+
             currButton.setActive();
         }
         this.branchesToSet = null;
+        if (branches.length > 0) {
+            this.disableClickNext();
+
+        }
     }
 
     clearBranchOptions() {

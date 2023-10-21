@@ -4,7 +4,7 @@
 			"image": "sprites/misc.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 202,
+				"w": 241,
 				"h": 227
 			},
 			"scale": 1,
@@ -28,6 +28,27 @@
 						"y": 1,
 						"w": 200,
 						"h": 200
+					}
+				},
+				{
+					"filename": "exclamation.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 41,
+						"h": 105
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 37,
+						"h": 104
+					},
+					"frame": {
+						"x": 203,
+						"y": 1,
+						"w": 37,
+						"h": 104
 					}
 				},
 				{
@@ -78,6 +99,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:cf084059557cfa2a64994da5a7b13a39:94114c1ac716711afb74e5843beff675:612dcbdb08476a0aba06aeca925f16b2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:2dabfd9ceba3b97a180fd40e5392689e:84609dd3288995cbf20e4dc7e2010c8d:612dcbdb08476a0aba06aeca925f16b2$"
 	}
 }

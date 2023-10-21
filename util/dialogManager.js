@@ -20,6 +20,7 @@ class DialogManager {
     }
 
     hideDialogNode() {
+        console.log("hide dialog")
         if (this.currNode !== null) {
             this.dialogNodes[this.currNode].hide();
             this.currNode = null;
@@ -68,6 +69,7 @@ class DialogNode {
     }
 
     showNext() {
+        let resetCurrentTextIdx = false;
         this.currTextIdx++
         let nextDialogSpeech = this.speech[this.currTextIdx];
         if (nextDialogSpeech) {
@@ -95,19 +97,31 @@ class DialogNode {
                 }
             }
             if (!this.speech[this.currTextIdx + 1]) {
-                this.setupBranches();
+                if (this.hasBranches()) {
+                    resetCurrentTextIdx = true;
+                    this.setupBranches();
+                }
             }
         } else if (!this.hasBranches()) {
             messageBus.publish("hideAllDialog");
+        } else {
+            resetCurrentTextIdx = true;
         }
         if (this.speech[this.currTextIdx - 1] && this.speech[this.currTextIdx - 1].onFinish) {
             this.speech[this.currTextIdx - 1].onFinish();
+        }
+        if (resetCurrentTextIdx) {
+            this.currTextIdx = 0;
         }
     }
 
     hide() {
         messageBus.publish("clearBranchOptions");
         messageBus.publish("hideAllDialog");
+    }
+
+    setTargetNode(targetNode) {
+        this.targetNode = targetNode;
     }
 
     hasBranches() {

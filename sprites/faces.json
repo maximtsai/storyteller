@@ -4,7 +4,7 @@
 			"image": "sprites/faces.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1378,
+				"w": 1990,
 				"h": 460
 			},
 			"scale": 1,
@@ -94,7 +94,7 @@
 					}
 				},
 				{
-					"filename": "caspar_dark_scared.png",
+					"filename": "caspar_dark_calm.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -115,7 +115,7 @@
 					}
 				},
 				{
-					"filename": "caspar_normal.png",
+					"filename": "caspar_dark_scared.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -131,6 +131,27 @@
 					"frame": {
 						"x": 155,
 						"y": 308,
+						"w": 150,
+						"h": 150
+					}
+				},
+				{
+					"filename": "caspar_normal.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 308,
+						"y": 2,
 						"w": 150,
 						"h": 150
 					}
@@ -151,7 +172,7 @@
 					},
 					"frame": {
 						"x": 308,
-						"y": 2,
+						"y": 155,
 						"w": 150,
 						"h": 150
 					}
@@ -172,7 +193,7 @@
 					},
 					"frame": {
 						"x": 308,
-						"y": 155,
+						"y": 308,
 						"w": 150,
 						"h": 150
 					}
@@ -192,8 +213,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 308,
-						"y": 308,
+						"x": 461,
+						"y": 2,
 						"w": 150,
 						"h": 150
 					}
@@ -214,7 +235,7 @@
 					},
 					"frame": {
 						"x": 461,
-						"y": 2,
+						"y": 155,
 						"w": 150,
 						"h": 150
 					}
@@ -235,7 +256,7 @@
 					},
 					"frame": {
 						"x": 461,
-						"y": 155,
+						"y": 308,
 						"w": 150,
 						"h": 150
 					}
@@ -255,7 +276,175 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 461,
+						"x": 614,
+						"y": 2,
+						"w": 150,
+						"h": 150
+					}
+				},
+				{
+					"filename": "ethan_dark_eye.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 614,
+						"y": 155,
+						"w": 150,
+						"h": 150
+					}
+				},
+				{
+					"filename": "ethan_dark_eye_2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 614,
+						"y": 308,
+						"w": 150,
+						"h": 150
+					}
+				},
+				{
+					"filename": "ethan_dark_eye_2x.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 767,
+						"y": 2,
+						"w": 150,
+						"h": 150
+					}
+				},
+				{
+					"filename": "ethan_dark_eye_3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 767,
+						"y": 155,
+						"w": 150,
+						"h": 150
+					}
+				},
+				{
+					"filename": "ethan_dark_eye_3x.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 767,
+						"y": 308,
+						"w": 150,
+						"h": 150
+					}
+				},
+				{
+					"filename": "ethan_dark_eye_4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 920,
+						"y": 2,
+						"w": 150,
+						"h": 150
+					}
+				},
+				{
+					"filename": "ethan_dark_eye_5.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 920,
+						"y": 155,
+						"w": 150,
+						"h": 150
+					}
+				},
+				{
+					"filename": "ethan_dark_eye_6.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 920,
 						"y": 308,
 						"w": 150,
 						"h": 150
@@ -276,7 +465,7 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 614,
+						"x": 1073,
 						"y": 2,
 						"w": 150,
 						"h": 150
@@ -297,7 +486,7 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 614,
+						"x": 1073,
 						"y": 155,
 						"w": 150,
 						"h": 150
@@ -318,7 +507,7 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 614,
+						"x": 1073,
 						"y": 308,
 						"w": 150,
 						"h": 150
@@ -339,8 +528,29 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 767,
+						"x": 1226,
 						"y": 2,
+						"w": 150,
+						"h": 150
+					}
+				},
+				{
+					"filename": "girls_scared.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 1226,
+						"y": 155,
 						"w": 150,
 						"h": 150
 					}
@@ -360,8 +570,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 767,
-						"y": 155,
+						"x": 1226,
+						"y": 308,
 						"w": 150,
 						"h": 150
 					}
@@ -381,8 +591,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 767,
-						"y": 308,
+						"x": 1379,
+						"y": 2,
 						"w": 150,
 						"h": 150
 					}
@@ -402,8 +612,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 920,
-						"y": 2,
+						"x": 1379,
+						"y": 155,
 						"w": 150,
 						"h": 150
 					}
@@ -423,8 +633,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 920,
-						"y": 155,
+						"x": 1379,
+						"y": 308,
 						"w": 150,
 						"h": 150
 					}
@@ -444,8 +654,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 920,
-						"y": 308,
+						"x": 1532,
+						"y": 2,
 						"w": 150,
 						"h": 150
 					}
@@ -465,8 +675,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 1073,
-						"y": 2,
+						"x": 1532,
+						"y": 155,
 						"w": 150,
 						"h": 150
 					}
@@ -486,8 +696,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 1073,
-						"y": 155,
+						"x": 1532,
+						"y": 308,
 						"w": 150,
 						"h": 150
 					}
@@ -507,8 +717,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 1073,
-						"y": 308,
+						"x": 1685,
+						"y": 2,
 						"w": 150,
 						"h": 150
 					}
@@ -528,7 +738,7 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 1226,
+						"x": 1838,
 						"y": 2,
 						"w": 150,
 						"h": 150
@@ -549,7 +759,7 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 1226,
+						"x": 1685,
 						"y": 155,
 						"w": 150,
 						"h": 150
@@ -570,7 +780,7 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 1226,
+						"x": 1685,
 						"y": 308,
 						"w": 150,
 						"h": 150
@@ -582,6 +792,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:5c50ab07889a86f0a32ec2a0e37cfb31:97a5a52da97105fe2c7950e71e0189c6:ff3379666a0c4d2f326be6bf33a7f089$"
+		"smartupdate": "$TexturePacker:SmartUpdate:f1df1d1564f5849bd854de3d5b384fbf:c17ce45a3ab17fc9df7db417223b9044:ff3379666a0c4d2f326be6bf33a7f089$"
 	}
 }

@@ -177,6 +177,7 @@
             <key type="filename">faces/bruna_happy.png</key>
             <key type="filename">faces/bruna_normal.png</key>
             <key type="filename">faces/bruna_sad.png</key>
+            <key type="filename">faces/caspar_dark_calm.png</key>
             <key type="filename">faces/caspar_dark_scared.png</key>
             <key type="filename">faces/caspar_normal.png</key>
             <key type="filename">faces/caspar_sad.png</key>
@@ -185,10 +186,19 @@
             <key type="filename">faces/edith_normal.png</key>
             <key type="filename">faces/edith_sad.png</key>
             <key type="filename">faces/ethan_and_edith.png</key>
+            <key type="filename">faces/ethan_dark_eye.png</key>
+            <key type="filename">faces/ethan_dark_eye_2.png</key>
+            <key type="filename">faces/ethan_dark_eye_2x.png</key>
+            <key type="filename">faces/ethan_dark_eye_3.png</key>
+            <key type="filename">faces/ethan_dark_eye_3x.png</key>
+            <key type="filename">faces/ethan_dark_eye_4.png</key>
+            <key type="filename">faces/ethan_dark_eye_5.png</key>
+            <key type="filename">faces/ethan_dark_eye_6.png</key>
             <key type="filename">faces/ethan_dark_scared.png</key>
             <key type="filename">faces/ethan_happy.png</key>
             <key type="filename">faces/ethan_normal.png</key>
             <key type="filename">faces/ethan_sad.png</key>
+            <key type="filename">faces/girls_scared.png</key>
             <key type="filename">faces/juan_dark_scared.png</key>
             <key type="filename">faces/juan_happy.png</key>
             <key type="filename">faces/juan_normal.png</key>

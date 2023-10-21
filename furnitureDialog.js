@@ -17,11 +17,6 @@ let furnitureDialog = {
                     "passes. You take care Beatrice.\""},
         ]
     },
-    radio2: {
-        speech: [
-            {speaker: ' ', text: "  (Catchy rock music is playing)"},
-        ]
-    },
     radioActTwo1: {
         speech: [
             {speaker: 'Radio', size: 'small', text: "\"That was 'Bread and Circuses' by the Lady Girls. We have\n" +
@@ -38,36 +33,39 @@ let furnitureDialog = {
 
     tv1: {
         speech: [
-            {speaker: 'TV', size: 'small', text: "\"In our next story, Lisa is a 13 year old entrepreneur making five\n" +
-                    "figures a month!\" \"...Hang on Marge, we need to jump over to\n" +
-                    "weather for an update on the storms passing through. Homer?\""},
-            {speaker: 'TV', size: 'small', text: "\"Thanks Bart. The rain is really coming down, however the\n" +
-                    "local authorities have not declared a flooding emergency. They\n" +
-                    "are encouraging everyone to stay put until the storm passes.\""},
+            {speaker: 'TV', size: 'small', text: "\"In our next story, Lisa is a 13 year old entrepreneur\n" +
+                    "making five figures a month!\" \"...Hang on Marge, we\n" +
+                    "need to jump over to weather for an update on the storms\n" +
+                    "passing through. Homer?\""},
+            {speaker: 'TV', size: 'small', text: "\"Thanks Bart. The rain is really coming down, however\n" +
+                    "the local authorities have not declared a flooding\n" +
+                    "emergency. They are encouraging everyone to stay put\n" +
+                    "until the storm passes.\""},
             {speaker: 'TV', size: 'small', text: "\"Thanks Homer. So Lisa decided one day...\""},
         ]
     },
     tv2: {
         speech: [
             {speaker: 'TV', size: 'small', text: "\"Hahaha! What a cute dog trick, no wonder it went viral.\"\n" +
-                    "That's right Marge, so cute. In other news we've been hearing\n" +
-                    "reports that one of the live feeds of a local Peregrine Falcon\n" +
-                    "nest on Heaven Towers cut out."},
+                    "That's right Marge, so cute. In other news we've been\n" +
+                    "hearing reports that one of the live feeds of a local\n" +
+                    "Peregrine Falcon nest on Heaven Towers cut out."},
             {speaker: 'TV', size: 'small', text: "Rest assured, the beloved birds are fine and the feed will\n" +
-                    "be restored shortly. The images of a humanoid figure in the\n" +
-                    "live feed are just an internet hoax."},
+                    "be restored shortly. The images of a humanoid figure in\n" +
+                    "the live feed are just an internet hoax."},
             {speaker: 'TV', size: 'small', text: "\"That nest is thirty stories in the air Homer. Who'd believe\n" +
-                    "someone walking up to the nest?\" \"Who indeed. Next up we'll\n" +
-                    "have some updates on the storm after this commercial break."},
+                    "someone walking up to the nest?\"\n" +
+                    "\"Who indeed. Next up we'll have some updates on the\n" +
+                    "storm after this commercial break.\""},
         ]
     },
     tv3: {
         speech: [
             {speaker: 'TV', size: 'small', forceProgress: true, text: "\"A•a•a•a••n••d•••••• we're ••back ••to ••our ••favorite-••••••••\"\n"},
-            {speaker: 'TV', size: 'large', instant: true, text: "           THIS IS AN EXTREME WEATHER\n                    EMERGENCY ALERT.", publish: "tvemergency"},
-            {speaker: 'TV', size: 'large', instant: true, text: "           THIS IS AN EXTREME WEATHER\n                    EMERGENCY ALERT.\n                                   ..."},
-            {speaker: 'TV', text: "ALL RESIDENTS ARE ADVISED TO SEEK\nSHELTER IN PLACE."},
-            {speaker: 'TV', text: "THE FOLLOWING COUNTIES ARE UNDER\nAN EMERGENCY ALERT:  •••••••••••••••. •••••••••••••••. •••••••••••••••.\n•••••••••••••••.••••••••••••••••.\n••••••••••••••••••••••.••••••••••••••••••••••.••••••••••••••••••••", publish: "playSound", param: 'emergency2'},
+            {speaker: 'TV', size: 'large', instant: true, text: "        THIS IS AN EXTREME WEATHER\n                 EMERGENCY ALERT.", publish: "tvemergency"},
+            {speaker: 'TV', size: 'large', instant: true, text: "        THIS IS AN EXTREME WEATHER\n                 EMERGENCY ALERT.\n                                ..."},
+            {speaker: 'TV', text: "  ALL RESIDENTS ARE ADVISED TO SEEK\n  SHELTER IN PLACE."},
+            {speaker: 'TV', text: "  THE FOLLOWING COUNTIES ARE UNDER\n  AN EMERGENCY ALERT:  •••••••••••••••. •••••••••••••••. •••••••••••••••.\n  •••••••••••••••.••••••••••••••••.\n  ••••••••••••••••••••••.••••••••••••••••••••••.••••••••••••••••••••", publish: "playSound", param: 'emergency2'},
             {speaker: ' ', text: "(They might as well announce it state by state\nat this point)", publish: "tvemergencyEnd"},
         ]
     },
@@ -81,9 +79,14 @@ let furnitureDialog = {
             {speaker: ' ', text: "   The power is off. The TV is also off."},
         ]
     },
+    tvPowerlessEthanEdith: {
+        speech: [
+            {speaker: ' ', text: "  The power is off. The TV is also off,••••••••••••••••••••••• right?"},
+        ]
+    },
     tvOff: {
         speech: [
-            {speaker: ' ', text: "   Got to save energy••.•••••••••••\n   not like the news was good anyway."},
+            {speaker: ' ', text: "   The TV is off to save energy••.•••••••••••\n   Not like the news was good anyway."},
         ]
     },
     tvCrack1: {
@@ -115,7 +118,7 @@ let furnitureDialog = {
 
     radioPowerless: {
         speech: [
-            {speaker: ' ', text: "   Radio can't play music without power."},
+            {speaker: ' ', text: "   Radio can't play without power."},
         ]
     },
 
@@ -124,13 +127,29 @@ let furnitureDialog = {
             {speaker: '', text: "No reason to go there right now."},
         ]
     },
+    BackdoorLocked: {
+        speech: [
+            {speaker: '', text: "I should talk to Maggie first before going out back."},
+        ]
+    },
+
     BackdoorActTemporary: {
         speech: [
             {speaker: '', text: "TODO: Implement gameplay for fixing generator.\nFix generator for now?"},
         ],
         branches: [
-            {text: 'Yes', publish: "generatorFixed", param: 99},
+            {text: 'Yes', targetNode: "BackdoorActTemporaryFixed"},
             {text: "Not yet"},
+        ]
+    },
+    BackdoorActTemporaryFixed: {
+        speech: [
+            {speaker: '', text: " (generator magically fixed)", publish: "generatorFixed", param: 99},
+        ]
+    },
+    Backdoor2NoReasonToGo: {
+        speech: [
+            {speaker: "",  text: "The generator's fixed. No need to go back out again."},
         ]
     },
 

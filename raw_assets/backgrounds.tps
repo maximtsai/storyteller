@@ -50,7 +50,7 @@
         <key>dxtCompressionMode</key>
         <enum type="SettingsBase::DxtCompressionMode">DXT_PERCEPTUAL</enum>
         <key>ditherType</key>
-        <enum type="SettingsBase::DitherType">NearestNeighbour</enum>
+        <enum type="SettingsBase::DitherType">Linear</enum>
         <key>backgroundColor</key>
         <uint>0</uint>
         <key>libGdx</key>
@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>101</uint>
+        <uint>84</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -177,6 +177,11 @@
             <key type="filename">backgrounds/bg2.png</key>
             <key type="filename">backgrounds/bg3.png</key>
             <key type="filename">backgrounds/bg4.png</key>
+            <key type="filename">backgrounds/bgout1.png</key>
+            <key type="filename">backgrounds/bgout2.png</key>
+            <key type="filename">backgrounds/bgout2x.png</key>
+            <key type="filename">backgrounds/bgout3.png</key>
+            <key type="filename">backgrounds/bgshed.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

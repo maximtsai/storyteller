@@ -16,3 +16,40 @@ helperFunction.runFunctionOverIntervals = function runFunctionOverIntervals(func
         }, delayAmt);
     }
 }
+
+helperFunction.screenShake = function screenshake() {
+    PhaserScene.tweens.add({
+        targets: [PhaserScene.cameras.main],
+        scrollX: "+=5",
+        ease: 'Cubic.easeOut',
+        duration: 40,
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                targets: [PhaserScene.cameras.main],
+                scrollX: "-=8",
+                scrollY: "-=1",
+                ease: 'Cubic.easeInOut',
+                duration: 70,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: [PhaserScene.cameras.main],
+                        scrollX: "+=4",
+                        scrollY: "+=2",
+                        ease: 'Cubic.easeInOut',
+                        duration: 100,
+                        onComplete: () => {
+                            PhaserScene.tweens.add({
+                                targets: [PhaserScene.cameras.main],
+                                scrollX: "-=1",
+                                scrollY: "-=1",
+                                ease: 'Cubic.easeInOut',
+                                duration: 120
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    });
+
+}

@@ -18,4 +18,5 @@ const audioFiles = [
     {name: 'foolrushin_ok', src: 'audio/foolrushin_ok.mp3'},
     {name: 'emergency', src: 'audio/emergency.mp3'},
     {name: 'emergency2', src: 'audio/emergency2.mp3'},
+    {name: 'stormfull', src: 'audio/stormfull.mp3'},
 ]
