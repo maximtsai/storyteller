@@ -30,7 +30,9 @@ let gameConsts = {
     halfWidth: config.scale.width * 0.5,
     height: config.scale.height,
     halfHeight: config.scale.height * 0.5,
-    SDK: null
+    SDK: null,
+    outdoorStartY: 2000,
+    shedStartY: 2000
 };
 let gameVars = {
     averageDeltaScale: 1,

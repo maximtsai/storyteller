@@ -807,12 +807,13 @@ function clickTV() {
 
 function clickBackdoor() {
     if (gameState.currentScene == 1) {
-        dialogManager.showDialogNode('BackdoorActOne');
+        exitBackdoor();
+        // dialogManager.showDialogNode('BackdoorActOne');
     } else if (gameState.currentScene == 2) {
         if (gameState.powerOff) {
             if (gameState.hasBackdoorKey) {
-                globalObjects.indoorRain.setVolume(0.4);
-                dialogManager.showDialogNode('BackdoorActTemporary');
+                //globalObjects.indoorRain.setVolume(0.4);
+                exitBackdoor();
             } else {
                 dialogManager.showDialogNode('BackdoorLocked');
             }
@@ -836,3 +837,19 @@ function shiftOver(x) {
 
 }
 
+function exitBackdoor() {
+    gameState.isOutdoors = true;
+    // gameState.isInShed = false;
+    gameVars.cameraPosY = 2000;
+    PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
+    gameVars.cameraPosX = -480;
+    PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+
+    globalObjsTemp.outdoorBackgrounds = {
+        bg0: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'whitePixel').setScale(9999,500),
+        bg1: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout1.png'),
+        bg2: PhaserScene.add.image(999.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout2.png'),
+        bg3: PhaserScene.add.image(999.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout2x.png'),
+        bg4: PhaserScene.add.image(1999, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout3.png')
+    }
+}

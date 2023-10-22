@@ -265,7 +265,6 @@ class DialogDisplay {
         let numCharRevealed = Math.max(1, Math.floor(gameVars.averageDeltaScale * 1.2));
         this.currentTypewriterEvent = this.scene.time.addEvent({
             callback: () => {
-                console.log("update");
                 if (this.typingText) {
                     for (let j = 0; j < numCharRevealed; j++) {
                         this.currentlyTypedText += this.finalText[i];

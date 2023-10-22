@@ -192,8 +192,9 @@ function tickKeyPresses(deltaScale) {
 
     if (gameVars.cameraMoveVel != 0) {
         let sineMoveMult = Math.min(1, 1 + 0.2 * Math.sin(gameVars.moveSine));
-        gameVars.moveSine += deltaScale * 0.165;
-        gameVars.cameraPosX += gameVars.cameraMoveVel * sineMoveMult * deltaScale * deltaDecay;
+        let outdoorsMoveMult = gameState.isOutdoors ? 0.6 : 1;
+        gameVars.moveSine += deltaScale * 0.165 * outdoorsMoveMult;
+        gameVars.cameraPosX += gameVars.cameraMoveVel * sineMoveMult * deltaScale * deltaDecay * (outdoorsMoveMult * 0.8 + 0.2);
         if(gameVars.cameraPosX > gameVars.cameraPosMaxX) {
             gameVars.cameraPosX = gameVars.cameraPosMaxX;
             gameVars.cameraMoveVel = 0;
@@ -215,7 +216,17 @@ function tickKeyPresses(deltaScale) {
             dampenedSine = 0.5 + 0.5 * dampenedSine;
         }
         gameVars.cameraPosY += dampenedSine * 0.6;
-        gameVars.cameraPosY *= 0.8;
+
+        let startY = 0;
+        if (gameState.isInShed) {
+            startY = gameConsts.shedStartY;
+        }
+        if (gameState.isOutdoors) {
+            startY = gameConsts.outdoorStartY;
+        }
+
+        let distToStartY = startY - gameVars.cameraPosY;
+        gameVars.cameraPosY = startY - distToStartY * 0.8;
         PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
         PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
         globalObjects.moveLeftBtn.setPos(15 + gameVars.cameraPosX, gameConsts.halfHeight);
@@ -238,8 +249,16 @@ function tickKeyPresses(deltaScale) {
 
     } else {
         gameVars.moveSine = 0;
-        PhaserScene.cameras.main.scrollY *= 0.95;
-        gameVars.cameraPosY *= 0.95;
+        let startY = 0;
+        if (gameState.isInShed) {
+            startY = gameConsts.shedStartY;
+        }
+        if (gameState.isOutdoors) {
+            startY = gameConsts.outdoorStartY;
+        }
+        let distToStartY = startY - gameVars.cameraPosY;
+        gameVars.cameraPosY = startY - distToStartY * 0.95;
+        PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
     }
 }
 
