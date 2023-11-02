@@ -52,7 +52,7 @@ function mouseToHand(x, y) {
 
 function setupMouseInteraction(scene) {
     let baseTouchLayer = scene.make.image({
-        x: 0, y: 0, key: 'whitePixel', add: true, scale: {x: gameConsts.width * 10, y: gameConsts.height}, alpha: 0.001});
+        x: 0, y: 0, key: 'whitePixel', add: true, scale: {x: gameConsts.width * 20, y: gameConsts.height * 10}, alpha: 0.001});
     baseTouchLayer.setInteractive();
     baseTouchLayer.on('pointerdown', mouseManager.onPointerDown, scene);
     baseTouchLayer.on('pointermove', mouseManager.onPointerMove, scene);

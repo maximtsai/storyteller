@@ -198,6 +198,7 @@
             <key type="filename">faces/ethan_happy.png</key>
             <key type="filename">faces/ethan_normal.png</key>
             <key type="filename">faces/ethan_sad.png</key>
+            <key type="filename">faces/ethan_yell.png</key>
             <key type="filename">faces/girls_scared.png</key>
             <key type="filename">faces/juan_dark_scared.png</key>
             <key type="filename">faces/juan_happy.png</key>
@@ -210,6 +211,7 @@
             <key type="filename">faces/maggie_reminisce.png</key>
             <key type="filename">faces/maggie_sad.png</key>
             <key type="filename">faces/maggie_yell.png</key>
+            <key type="filename">faces/staticframe.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

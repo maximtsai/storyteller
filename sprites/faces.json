@@ -535,7 +535,7 @@
 					}
 				},
 				{
-					"filename": "girls_scared.png",
+					"filename": "ethan_yell.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -556,7 +556,7 @@
 					}
 				},
 				{
-					"filename": "juan_dark_scared.png",
+					"filename": "girls_scared.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -572,6 +572,27 @@
 					"frame": {
 						"x": 1226,
 						"y": 308,
+						"w": 150,
+						"h": 150
+					}
+				},
+				{
+					"filename": "juan_dark_scared.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 1379,
+						"y": 2,
 						"w": 150,
 						"h": 150
 					}
@@ -592,7 +613,7 @@
 					},
 					"frame": {
 						"x": 1379,
-						"y": 2,
+						"y": 155,
 						"w": 150,
 						"h": 150
 					}
@@ -613,7 +634,7 @@
 					},
 					"frame": {
 						"x": 1379,
-						"y": 155,
+						"y": 308,
 						"w": 150,
 						"h": 150
 					}
@@ -633,8 +654,8 @@
 						"h": 150
 					},
 					"frame": {
-						"x": 1379,
-						"y": 308,
+						"x": 1532,
+						"y": 2,
 						"w": 150,
 						"h": 150
 					}
@@ -655,7 +676,7 @@
 					},
 					"frame": {
 						"x": 1532,
-						"y": 2,
+						"y": 155,
 						"w": 150,
 						"h": 150
 					}
@@ -676,34 +697,13 @@
 					},
 					"frame": {
 						"x": 1532,
-						"y": 155,
-						"w": 150,
-						"h": 150
-					}
-				},
-				{
-					"filename": "maggie_happy.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 150,
-						"h": 150
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 150,
-						"h": 150
-					},
-					"frame": {
-						"x": 1532,
 						"y": 308,
 						"w": 150,
 						"h": 150
 					}
 				},
 				{
-					"filename": "maggie_normal.png",
+					"filename": "maggie_happy.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -724,7 +724,7 @@
 					}
 				},
 				{
-					"filename": "maggie_reminisce.png",
+					"filename": "maggie_normal.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -745,7 +745,7 @@
 					}
 				},
 				{
-					"filename": "maggie_sad.png",
+					"filename": "maggie_reminisce.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -766,7 +766,7 @@
 					}
 				},
 				{
-					"filename": "maggie_yell.png",
+					"filename": "maggie_sad.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -785,6 +785,48 @@
 						"w": 150,
 						"h": 150
 					}
+				},
+				{
+					"filename": "maggie_yell.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 1838,
+						"y": 155,
+						"w": 150,
+						"h": 150
+					}
+				},
+				{
+					"filename": "staticframe.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 150,
+						"h": 150
+					},
+					"frame": {
+						"x": 1838,
+						"y": 308,
+						"w": 150,
+						"h": 150
+					}
 				}
 			]
 		}
@@ -792,6 +834,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:f1df1d1564f5849bd854de3d5b384fbf:c17ce45a3ab17fc9df7db417223b9044:ff3379666a0c4d2f326be6bf33a7f089$"
+		"smartupdate": "$TexturePacker:SmartUpdate:52c9a929c3690ed56e0fbd7907da84bb:f84c1d1f3a51f45c8949c4d58b998db0:ff3379666a0c4d2f326be6bf33a7f089$"
 	}
 }

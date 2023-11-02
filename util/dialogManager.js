@@ -51,6 +51,9 @@ class DialogNode {
         if (this.speech[0].forceProgress) {
             messageBus.publish("forceTextProgress");
         }
+        if (this.speech[0].unclickable) {
+            messageBus.publish("unclickable");
+        }
         if (this.speech[0].data) {
             gameState[this.speech[0].data.property] = this.speech[0].data.value;
         }
@@ -80,6 +83,9 @@ class DialogNode {
             }
             if (nextDialogSpeech.forceProgress) {
                 messageBus.publish("forceTextProgress");
+            }
+            if (nextDialogSpeech.unclickable) {
+                messageBus.publish("unclickable");
             }
             if (nextDialogSpeech.face) {
                 messageBus.publish("showTalkFace", nextDialogSpeech.face);

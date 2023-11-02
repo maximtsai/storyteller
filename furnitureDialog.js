@@ -10,11 +10,16 @@ let furnitureDialog = {
                     "what's your take on the storm?\"\n"},
             {speaker: 'Radio', size: 'small', text: "\"Sonny, I've lived in this town for seven decades.\n" +
                     "I have never seen a storm like this. There's something\n" +
-                    "not right in those clouds. You youngsters need to be careful!\""},
+                    "not right in those clouds. You youngsters need to be\ncareful!\""},
             {speaker: 'Radio', size: 'small', text: "\"I've got to agree, this storm sure is something.\n" +
                     "While it's been years since I've been a 'youngster' I'll\n" +
                     "be sure to stay in the studio until the worst of this\n" +
-                    "passes. You take care Beatrice.\""},
+                    "passes. You take care Beatrice.\"", data: {property: "radio1Done", value: "true"}},
+        ]
+    },
+    radio1Done: {
+        speech: [
+            {speaker: ' ', text: "*Various weather-related news plays*"}
         ]
     },
     radioActTwo1: {
@@ -34,13 +39,13 @@ let furnitureDialog = {
     tv1: {
         speech: [
             {speaker: 'TV', size: 'small', text: "\"In our next story, Lisa is a 13 year old entrepreneur\n" +
-                    "making five figures a month!\" \"...Hang on Marge, we\n" +
-                    "need to jump over to weather for an update on the storms\n" +
-                    "passing through. Homer?\""},
+                    "making five figures a month!\"\n" +
+                    "\"...Hang on Marge, we need to jump over to weather\n" +
+                    "for an update on the storms passing through. Homer?\""},
             {speaker: 'TV', size: 'small', text: "\"Thanks Bart. The rain is really coming down, however\n" +
                     "the local authorities have not declared a flooding\n" +
-                    "emergency. They are encouraging everyone to stay put\n" +
-                    "until the storm passes.\""},
+                    "emergency. They are encouraging everyone to stay\n" +
+                    "put until the storm passes.\""},
             {speaker: 'TV', size: 'small', text: "\"Thanks Homer. So Lisa decided one day...\""},
         ]
     },
@@ -52,7 +57,7 @@ let furnitureDialog = {
                     "Peregrine Falcon nest on Heaven Towers cut out."},
             {speaker: 'TV', size: 'small', text: "Rest assured, the beloved birds are fine and the feed will\n" +
                     "be restored shortly. The images of a humanoid figure in\n" +
-                    "the live feed are just an internet hoax."},
+                    "the live feed are just an internet hoax.\""},
             {speaker: 'TV', size: 'small', text: "\"That nest is thirty stories in the air Homer. Who'd believe\n" +
                     "someone walking up to the nest?\"\n" +
                     "\"Who indeed. Next up we'll have some updates on the\n" +
@@ -152,6 +157,11 @@ let furnitureDialog = {
             {speaker: "",  text: "The generator's fixed. No need to go back out again."},
         ]
     },
+    GeneratorAlreadyFixed: {
+        speech: [
+            {speaker: "",  text: "The generator's fixed. No need to enter the shed again."},
+        ]
+    },
 
     ExitNoReason: {
         speech: [
@@ -166,5 +176,7 @@ let furnitureDialog = {
             {text: 'Yes', publish: "exitEarlySceneTwo"},
             {text: "Not yet"},
         ]
-    }
+    },
+
+
 };

@@ -32,9 +32,10 @@ let gameConsts = {
     halfHeight: config.scale.height * 0.5,
     SDK: null,
     outdoorStartY: 2000,
-    shedStartY: 2000
+    shedStartY: 4000
 };
 let gameVars = {
+    typeWriterOverflow: 0,
     averageDeltaScale: 1,
     gameConstructed: false,
     mousedown: false,
@@ -48,18 +49,20 @@ let gameVars = {
     cameraPosY: 0,
     cameraPosMaxX: 1750,
     cameraPosMinX: -1400,
+    cameraPosMaxXInside: 1750,
+    cameraPosMinXInside: -1400,
+    cameraPosMaxXOutside: 1580,
+    cameraPosMinXOutside: -500,
     cameraMoveVel: 0,
     cameraMoveAcc: 0,
     moveSine: 0
 };
 let gameState = {
     currentScene: 1,
-
     brunaIntroduced: false,
     juanIntroduced: false,
     EthanIntroduced: false,
     EdithIntroduced: false
-
 }
 let gameCharacters = {};
 

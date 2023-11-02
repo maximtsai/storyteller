@@ -20,6 +20,7 @@ class Button {
         this.disable = data.disable || data.normal;
         this.onMouseDownFunc = data.onMouseDown;
         this.onMouseUpFunc = data.onMouseUp;
+        this.onDragFunc = data.onDrag;
         this.onHoverFunc = data.onHover || null;
         this.onHoverOutFunc = data.onHoverOut || null;
         this.onDropFunc = data.onDrop || null;
@@ -117,6 +118,10 @@ class Button {
         } else {
             this.imageRefs[stateData.ref].scaleY = stateData.scaleY;
         }
+        if (stateData.origin !== undefined) {
+            this.setOrigin(origin.x, origin.y);
+        }
+
         if (stateData.tint === undefined) {
             this.imageRefs[stateData.ref].setTint(oldImage.tint) || 0xFFFFFF;
         } else {
@@ -129,9 +134,9 @@ class Button {
             return false;
         }
         let scrollFactorX = this.normal.scrollFactorX !== undefined ? this.normal.scrollFactorX : 1;
-        let scrollFactorY = this.normal.scrollFactorY !== undefined ? this.normal.scrollFactorY : 1;
+        //let scrollFactorY = this.normal.scrollFactorY !== undefined ? this.normal.scrollFactorY : 1;
         let x = valX + PhaserScene.cameras.main.scrollX * scrollFactorX;
-        let y = valY + PhaserScene.cameras.main.scrollY * scrollFactorY; //  + PhaserScene.cameras.main.scrollY
+        let y = valY + PhaserScene.cameras.main.scrollY * 1; //  + PhaserScene.cameras.main.scrollY
         let currImage = this.imageRefs[this.currImageRef];
         let width = currImage.width * Math.abs(currImage.scaleX);
         let height = currImage.height * Math.abs(currImage.scaleY);
@@ -173,7 +178,7 @@ class Button {
             if (this.isDraggable) {
                 // Add to update
                 if (!this.isDragged) {
-                    this.setPos(gameVars.mouseposx, gameVars.mouseposy);
+                    this.setPos(gameVars.mouseposx + PhaserScene.cameras.main.scrollX, gameVars.mouseposy + PhaserScene.cameras.main.scrollY);
                     this.isDragged = true;
                     let oldDraggedObj = buttonManager.getDraggedObj();
                     if (oldDraggedObj) {
@@ -182,6 +187,12 @@ class Button {
                     buttonManager.setDraggedObj(this);
                 }
             }
+        }
+    }
+
+    onDrag() {
+        if (this.onDragFunc) {
+            this.onDragFunc();
         }
     }
 

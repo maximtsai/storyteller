@@ -173,7 +173,23 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">radio/back.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,18,45,36</rect>
+                <key>scale9Paddings</key>
+                <rect>23,18,45,36</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">radio/backing.png</key>
+            <key type="filename">radio/generator.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -203,6 +219,44 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">radio/blue_plug.png</key>
+            <key type="filename">radio/green_plug.png</key>
+            <key type="filename">radio/purple_plug.png</key>
+            <key type="filename">radio/red_plug.png</key>
+            <key type="filename">radio/yellow_plug.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,17,45,33</rect>
+                <key>scale9Paddings</key>
+                <rect>23,17,45,33</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">radio/blue_plug_hover.png</key>
+            <key type="filename">radio/green_plug_hover.png</key>
+            <key type="filename">radio/purple_plug_hover.png</key>
+            <key type="filename">radio/red_plug_hover.png</key>
+            <key type="filename">radio/yellow_plug_hover.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>9,17,17,33</rect>
+                <key>scale9Paddings</key>
+                <rect>9,17,17,33</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">radio/cover.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -218,6 +272,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">radio/hover_btn.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>17,17,34,34</rect>
+                <key>scale9Paddings</key>
+                <rect>17,17,34,34</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">radio/knob.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -230,6 +299,23 @@
                 <rect>69,69,137,137</rect>
                 <key>scale9Paddings</key>
                 <rect>69,69,137,137</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">radio/power_btn.png</key>
+            <key type="filename">radio/power_btn_hover.png</key>
+            <key type="filename">radio/power_btn_press.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>21,21,42,42</rect>
+                <key>scale9Paddings</key>
+                <rect>21,21,42,42</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

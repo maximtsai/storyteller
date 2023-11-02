@@ -220,8 +220,7 @@ function tickKeyPresses(deltaScale) {
         let startY = 0;
         if (gameState.isInShed) {
             startY = gameConsts.shedStartY;
-        }
-        if (gameState.isOutdoors) {
+        } else if (gameState.isOutdoors) {
             startY = gameConsts.outdoorStartY;
         }
 
@@ -229,8 +228,14 @@ function tickKeyPresses(deltaScale) {
         gameVars.cameraPosY = startY - distToStartY * 0.8;
         PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
         PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
-        globalObjects.moveLeftBtn.setPos(15 + gameVars.cameraPosX, gameConsts.halfHeight);
-        globalObjects.moveRightBtn.setPos(gameConsts.width - 15 + gameVars.cameraPosX, gameConsts.halfHeight);
+        let offsetY = 0
+        if (gameState.isInShed) {
+            offsetY = gameConsts.shedStartY;
+        } else if (gameState.isOutdoors) {
+            offsetY = gameConsts.outdoorStartY;
+        }
+        globalObjects.moveLeftBtn.setPos(15 + gameVars.cameraPosX, gameConsts.halfHeight + offsetY);
+        globalObjects.moveRightBtn.setPos(gameConsts.width - 15 + gameVars.cameraPosX, gameConsts.halfHeight + offsetY);
 
         let radioCenter = 450;
         let distToRadio = radioCenter - gameVars.cameraPosX;
@@ -252,8 +257,7 @@ function tickKeyPresses(deltaScale) {
         let startY = 0;
         if (gameState.isInShed) {
             startY = gameConsts.shedStartY;
-        }
-        if (gameState.isOutdoors) {
+        } else if (gameState.isOutdoors) {
             startY = gameConsts.outdoorStartY;
         }
         let distToStartY = startY - gameVars.cameraPosY;
@@ -306,13 +310,17 @@ function realGameStart() {
                 setTimeout(() => {
                     console.log(Date.now() - time);
                     darkGloom.setAlpha(0.8);
+                    PhaserScene.tweens.add({
+                        targets: globalObjects.indoorRain,
+                        volume: 0.35,
+                        duration: 1000
+                    });
                     setTimeout(() => {
                         console.log(Date.now() - time);
                         darkGloom.destroy();
                         fakeBaseOverlay.destroy();
                         fakeBase.destroy();
                         setupCharacters();
-                        globalObjects.indoorRain.setVolume(0.4);
                         setRadioMusic('guitarboogieshuffle', 0.75);
                         enableDinerButtons();
                         dialogManager.showDialogNode('intro');
@@ -321,6 +329,9 @@ function realGameStart() {
             }, 20);
         }, 200);
     }, 1100);
+
+    globalObjsTemp.gloom = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(5000, 999).setDepth(8).setAlpha(0);
+    globalObjsTemp.gloom.setBlendMode(Phaser.BlendModes.DARKEN);
 }
 
 

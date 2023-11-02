@@ -58,7 +58,8 @@ class InternalButtonManager {
 
     onPointerMove(mouseX, mouseY) {
         if (this.draggedObj) {
-            this.draggedObj.setPos(mouseX, mouseY);
+            this.draggedObj.setPos(mouseX + PhaserScene.cameras.main.scrollX, mouseY + PhaserScene.cameras.main.scrollY);
+            this.draggedObj.onDrag();
         }
     }
 

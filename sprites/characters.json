@@ -4,30 +4,30 @@
 			"image": "sprites/characters-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 998,
-				"h": 1023
+				"w": 993,
+				"h": 1020
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "shadowEye.png",
+					"filename": "blackEye.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
-						"w": 640,
-						"h": 640
+						"w": 900,
+						"h": 900
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 640,
-						"h": 640
+						"x": 43,
+						"y": 111,
+						"w": 814,
+						"h": 779
 					},
 					"frame": {
 						"x": 2,
 						"y": 2,
-						"w": 640,
-						"h": 640
+						"w": 814,
+						"h": 779
 					}
 				},
 				{
@@ -45,115 +45,31 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 645,
+						"x": 819,
 						"y": 2,
 						"w": 164,
 						"h": 404
 					}
 				},
 				{
-					"filename": "ethan_dark_void.png",
+					"filename": "maggie_coffee_dark.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 200,
-						"h": 355
+						"w": 240,
+						"h": 435
 					},
 					"spriteSourceSize": {
-						"x": 46,
-						"y": 0,
-						"w": 154,
-						"h": 355
+						"x": 38,
+						"y": 19,
+						"w": 164,
+						"h": 404
 					},
 					"frame": {
-						"x": 2,
-						"y": 645,
-						"w": 154,
-						"h": 355
-					}
-				},
-				{
-					"filename": "ethan_dark.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 355
-					},
-					"spriteSourceSize": {
-						"x": 46,
-						"y": 0,
-						"w": 149,
-						"h": 355
-					},
-					"frame": {
-						"x": 812,
-						"y": 2,
-						"w": 149,
-						"h": 355
-					}
-				},
-				{
-					"filename": "ethan1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 355
-					},
-					"spriteSourceSize": {
-						"x": 47,
-						"y": 0,
-						"w": 147,
-						"h": 355
-					},
-					"frame": {
-						"x": 159,
-						"y": 645,
-						"w": 147,
-						"h": 355
-					}
-				},
-				{
-					"filename": "edith_dark.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 340
-					},
-					"spriteSourceSize": {
-						"x": 56,
-						"y": 11,
-						"w": 143,
-						"h": 327
-					},
-					"frame": {
-						"x": 309,
-						"y": 645,
-						"w": 143,
-						"h": 327
-					}
-				},
-				{
-					"filename": "edith1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 340
-					},
-					"spriteSourceSize": {
-						"x": 57,
-						"y": 12,
-						"w": 142,
-						"h": 326
-					},
-					"frame": {
-						"x": 455,
-						"y": 645,
-						"w": 142,
-						"h": 326
+						"x": 819,
+						"y": 409,
+						"w": 164,
+						"h": 404
 					}
 				},
 				{
@@ -171,8 +87,8 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 645,
-						"y": 409,
+						"x": 2,
+						"y": 784,
 						"w": 245,
 						"h": 202
 					}
@@ -192,31 +108,10 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 645,
-						"y": 614,
+						"x": 250,
+						"y": 784,
 						"w": 245,
 						"h": 202
-					}
-				},
-				{
-					"filename": "edith2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 140,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 27,
-						"y": 10,
-						"w": 103,
-						"h": 382
-					},
-					"frame": {
-						"x": 893,
-						"y": 360,
-						"w": 103,
-						"h": 382
 					}
 				},
 				{
@@ -234,8 +129,8 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 600,
-						"y": 819,
+						"x": 498,
+						"y": 784,
 						"w": 245,
 						"h": 202
 					}
@@ -255,8 +150,29 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 600,
-						"y": 819,
+						"x": 498,
+						"y": 784,
+						"w": 245,
+						"h": 202
+					}
+				},
+				{
+					"filename": "tv_red.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 245,
+						"h": 205
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 245,
+						"h": 202
+					},
+					"frame": {
+						"x": 746,
+						"y": 816,
 						"w": 245,
 						"h": 202
 					}
@@ -267,11 +183,32 @@
 			"image": "sprites/characters-1.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 986,
-				"h": 1010
+				"w": 1024,
+				"h": 1024
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "shadowEye.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 620,
+						"h": 620
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 620,
+						"h": 620
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 620,
+						"h": 620
+					}
+				},
 				{
 					"filename": "blackCircle.png",
 					"rotated": false,
@@ -288,93 +225,9 @@
 					},
 					"frame": {
 						"x": 2,
-						"y": 2,
+						"y": 625,
 						"w": 397,
 						"h": 397
-					}
-				},
-				{
-					"filename": "blackCircleSpikes1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 400,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 1,
-						"w": 397,
-						"h": 397
-					},
-					"frame": {
-						"x": 2,
-						"y": 2,
-						"w": 397,
-						"h": 397
-					}
-				},
-				{
-					"filename": "maggie_coffee_dark.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 240,
-						"h": 435
-					},
-					"spriteSourceSize": {
-						"x": 38,
-						"y": 19,
-						"w": 164,
-						"h": 404
-					},
-					"frame": {
-						"x": 2,
-						"y": 402,
-						"w": 164,
-						"h": 404
-					}
-				},
-				{
-					"filename": "maggie_dark.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 130,
-						"h": 200
-					},
-					"spriteSourceSize": {
-						"x": 14,
-						"y": 1,
-						"w": 114,
-						"h": 199
-					},
-					"frame": {
-						"x": 2,
-						"y": 809,
-						"w": 114,
-						"h": 199
-					}
-				},
-				{
-					"filename": "maggie1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 130,
-						"h": 200
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 4,
-						"w": 112,
-						"h": 196
-					},
-					"frame": {
-						"x": 119,
-						"y": 809,
-						"w": 112,
-						"h": 196
 					}
 				},
 				{
@@ -392,8 +245,8 @@
 						"h": 387
 					},
 					"frame": {
-						"x": 169,
-						"y": 402,
+						"x": 402,
+						"y": 625,
 						"w": 238,
 						"h": 387
 					}
@@ -413,115 +266,10 @@
 						"h": 386
 					},
 					"frame": {
-						"x": 402,
+						"x": 625,
 						"y": 2,
 						"w": 238,
 						"h": 386
-					}
-				},
-				{
-					"filename": "tv_red.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 245,
-						"h": 205
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 245,
-						"h": 202
-					},
-					"frame": {
-						"x": 234,
-						"y": 792,
-						"w": 245,
-						"h": 202
-					}
-				},
-				{
-					"filename": "shadow1.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 280,
-						"h": 170
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 280,
-						"h": 170
-					},
-					"frame": {
-						"x": 643,
-						"y": 2,
-						"w": 280,
-						"h": 170
-					}
-				},
-				{
-					"filename": "caspar_dark.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 132,
-						"h": 324
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 131,
-						"h": 324
-					},
-					"frame": {
-						"x": 410,
-						"y": 391,
-						"w": 131,
-						"h": 324
-					}
-				},
-				{
-					"filename": "bruna1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 197,
-						"h": 280
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 192,
-						"h": 277
-					},
-					"frame": {
-						"x": 482,
-						"y": 718,
-						"w": 192,
-						"h": 277
-					}
-				},
-				{
-					"filename": "bruna_dark.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 197,
-						"h": 280
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 192,
-						"h": 277
-					},
-					"frame": {
-						"x": 544,
-						"y": 391,
-						"w": 192,
-						"h": 277
 					}
 				},
 				{
@@ -539,10 +287,168 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 739,
-						"y": 175,
+						"x": 625,
+						"y": 391,
 						"w": 245,
 						"h": 202
+					}
+				},
+				{
+					"filename": "ethan_dark_void.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 355
+					},
+					"spriteSourceSize": {
+						"x": 46,
+						"y": 0,
+						"w": 154,
+						"h": 355
+					},
+					"frame": {
+						"x": 866,
+						"y": 2,
+						"w": 154,
+						"h": 355
+					}
+				},
+				{
+					"filename": "ethan_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 355
+					},
+					"spriteSourceSize": {
+						"x": 46,
+						"y": 0,
+						"w": 149,
+						"h": 355
+					},
+					"frame": {
+						"x": 873,
+						"y": 360,
+						"w": 149,
+						"h": 355
+					}
+				},
+				{
+					"filename": "bruna1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 197,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 192,
+						"h": 277
+					},
+					"frame": {
+						"x": 643,
+						"y": 596,
+						"w": 192,
+						"h": 277
+					}
+				},
+				{
+					"filename": "eyeCorner.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 550,
+						"h": 274
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 158,
+						"h": 270
+					},
+					"frame": {
+						"x": 838,
+						"y": 718,
+						"w": 158,
+						"h": 270
+					}
+				},
+				{
+					"filename": "shadow1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 50,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 50,
+						"h": 50
+					},
+					"frame": {
+						"x": 643,
+						"y": 876,
+						"w": 50,
+						"h": 50
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/characters-2.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 729,
+				"h": 891
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "maggie1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 130,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 4,
+						"w": 112,
+						"h": 196
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 112,
+						"h": 196
+					}
+				},
+				{
+					"filename": "maggie_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 130,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 14,
+						"y": 1,
+						"w": 114,
+						"h": 199
+					},
+					"frame": {
+						"x": 117,
+						"y": 2,
+						"w": 114,
+						"h": 199
 					}
 				},
 				{
@@ -560,8 +466,8 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 739,
-						"y": 380,
+						"x": 234,
+						"y": 2,
 						"w": 245,
 						"h": 202
 					}
@@ -581,8 +487,8 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 739,
-						"y": 585,
+						"x": 482,
+						"y": 2,
 						"w": 245,
 						"h": 202
 					}
@@ -602,42 +508,31 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 677,
-						"y": 790,
+						"x": 2,
+						"y": 207,
 						"w": 245,
 						"h": 202
 					}
-				}
-			]
-		},
-		{
-			"image": "sprites/characters-2.webp",
-			"format": "RGBA5555",
-			"size": {
-				"w": 268,
-				"h": 328
-			},
-			"scale": 1,
-			"frames": [
+				},
 				{
-					"filename": "caspar_dark_calm.png",
+					"filename": "bruna_dark.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 132,
-						"h": 324
+						"w": 197,
+						"h": 280
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 0,
-						"w": 131,
-						"h": 324
+						"y": 2,
+						"w": 192,
+						"h": 277
 					},
 					"frame": {
-						"x": 2,
-						"y": 2,
-						"w": 131,
-						"h": 324
+						"x": 250,
+						"y": 207,
+						"w": 192,
+						"h": 277
 					}
 				},
 				{
@@ -655,10 +550,136 @@
 						"h": 323
 					},
 					"frame": {
-						"x": 136,
-						"y": 2,
+						"x": 445,
+						"y": 207,
 						"w": 130,
 						"h": 323
+					}
+				},
+				{
+					"filename": "caspar_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 132,
+						"h": 324
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 131,
+						"h": 324
+					},
+					"frame": {
+						"x": 578,
+						"y": 207,
+						"w": 131,
+						"h": 324
+					}
+				},
+				{
+					"filename": "caspar_dark_calm.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 132,
+						"h": 324
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 131,
+						"h": 324
+					},
+					"frame": {
+						"x": 2,
+						"y": 412,
+						"w": 131,
+						"h": 324
+					}
+				},
+				{
+					"filename": "edith2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 140,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 27,
+						"y": 10,
+						"w": 103,
+						"h": 382
+					},
+					"frame": {
+						"x": 136,
+						"y": 412,
+						"w": 103,
+						"h": 382
+					}
+				},
+				{
+					"filename": "edith1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 340
+					},
+					"spriteSourceSize": {
+						"x": 57,
+						"y": 12,
+						"w": 142,
+						"h": 326
+					},
+					"frame": {
+						"x": 242,
+						"y": 487,
+						"w": 142,
+						"h": 326
+					}
+				},
+				{
+					"filename": "edith_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 340
+					},
+					"spriteSourceSize": {
+						"x": 56,
+						"y": 11,
+						"w": 143,
+						"h": 327
+					},
+					"frame": {
+						"x": 387,
+						"y": 533,
+						"w": 143,
+						"h": 327
+					}
+				},
+				{
+					"filename": "ethan1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 355
+					},
+					"spriteSourceSize": {
+						"x": 47,
+						"y": 0,
+						"w": 147,
+						"h": 355
+					},
+					"frame": {
+						"x": 533,
+						"y": 534,
+						"w": 147,
+						"h": 355
 					}
 				}
 			]
@@ -667,6 +688,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:b13fb186013247107f7c42f9a4391cce:2204b24d417aea2e1a096e0087a5ab31:57e38e489d68dbbb423a706bb98023c8$"
+		"smartupdate": "$TexturePacker:SmartUpdate:fe3d0b180ec6272bc8b6f60c205eeb63:554261c673391a8c49df3e29c15848e9:57e38e489d68dbbb423a706bb98023c8$"
 	}
 }

@@ -224,6 +224,106 @@ function createWorldButtons() {
     globalObjects.diner.BackdoorButton.setDepth(1);
     globalObjects.diner.BackdoorButton.setState(DISABLE);
 
+    globalObjects.diner.IndoorButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: -278,
+            y: 2410,
+            scaleX: 110,
+            scaleY: 215,
+            alpha: 0.1
+        },
+        hover: {
+            alpha: 0.05
+        },
+        press: {
+            alpha: 0.12
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp() {
+            clickIndoor();
+        }
+    });
+    globalObjects.diner.IndoorButton.setDepth(1);
+
+    globalObjects.diner.ShedButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 1820,
+            y: 2400,
+            scaleX: 105,
+            scaleY: 200,
+            alpha: 0.1
+        },
+        hover: {
+            alpha: 0.05
+        },
+        press: {
+            alpha: 0.12
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp() {
+            enterShed();
+        }
+    });
+    globalObjects.diner.ShedButton.setDepth(1);
+
+    globalObjects.diner.ExitShedButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 325,
+            y: 4355,
+            scaleX: 110,
+            scaleY: 205,
+            alpha: 0.1
+        },
+        hover: {
+            alpha: 0.05
+        },
+        press: {
+            alpha: 0.12
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp() {
+            exitShed();
+        }
+    });
+    globalObjects.diner.ExitShedButton.setDepth(1);
+
+    globalObjects.diner.GeneratorButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 540,
+            y: 4510,
+            scaleX: 75,
+            scaleY: 70,
+            alpha: 0.1
+        },
+        hover: {
+            alpha: 0.05
+        },
+        press: {
+            alpha: 0.12
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp() {
+            clickGenerator();
+        }
+    });
+    globalObjects.diner.GeneratorButton.setDepth(1);
+
     globalObjects.diner.TVButton = new Button({
         normal: {
             atlas: "pixels",
@@ -364,6 +464,9 @@ function clickEdith() {
 }
 
 function clickEthan() {
+    // TODO remove
+    dialogManager.showDialogNode('Ethan2Eldritch');
+    return;
     if (gameState.currentScene == 1) {
         if (gameState.EthanAct1Fin) {
             dialogManager.showDialogNode('EthanActOneEnd');
@@ -530,8 +633,8 @@ function clickRadio() {
             294.25: 'dabbda',
             356: 'foolrushin_poor',
             386.25: 'guitarboogieshuffle',
-            446.75: 'gibberish',
-            506: 'weatherblur'
+            446.75: 'weatherblur',
+            506: 'news1'
         };
         globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0, true);
         globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0, true);
@@ -757,6 +860,21 @@ function adjustRadioUpdate(barPos) {
             if (globalObjsTemp.radioMusic.key != closestObj) {
                 globalObjsTemp.radioMusic.stop();
                 globalObjsTemp.radioMusic = playSound(closestObj, 1, true);
+                if (!gameState.movedDialogClickBlockerTop) {
+                    gameState.movedDialogClickBlockerTop = true;
+                    messageBus.publish('setDialogBtnToTop');
+                }
+                if (closestObj == 'news1') {
+                    if (gameState.radio1Done) {
+                        dialogManager.showDialogNode('radio1Done');
+                    } else {
+                        dialogManager.showDialogNode('radio1');
+                    }
+                } else if (closestObj == 'news2') {
+                    dialogManager.showDialogNode('radioActTwo1');
+                } else if (closestObj == 'news3') {
+
+                }
             }
             if (!globalObjsTemp.radioMusic.isPlaying) {
                 globalObjsTemp.radioMusic.play();
@@ -805,6 +923,32 @@ function clickTV() {
     }
 }
 
+function clickIndoor() {
+    globalObjects.diner.IndoorButton.setState(DISABLE);
+
+    globalObjects.outdoorRain.stop();
+    if (!gameState.powerOff) {
+        //globalObjects.indoorRain.setVolume(1);
+        setRadioVolume(0.75);
+    } else {
+        //globalObjects.indoorRain.setVolume(0.35);
+    }
+    gameVars.cameraMoveAcc = 0;
+    gameVars.cameraMoveVel = 0.01;
+    gameState.isOutdoors = false;
+    // gameState.isInShed = false;
+    gameVars.cameraPosY = 0;
+    PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
+    gameVars.cameraPosX = -510;
+    PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+
+    // gameVars.cameraPosMaxX = gameVars.cameraPosMaxXOutside;
+    // gameVars.cameraPosMinX = gameVars.cameraPosMinXOutside;
+    gameVars.cameraPosMaxX = gameVars.cameraPosMaxXInside;
+    gameVars.cameraPosMinX = gameVars.cameraPosMinXInside;
+
+}
+
 function clickBackdoor() {
     if (gameState.currentScene == 1) {
         exitBackdoor();
@@ -838,18 +982,258 @@ function shiftOver(x) {
 }
 
 function exitBackdoor() {
+    globalObjects.diner.IndoorButton.setState(NORMAL);
+    // globalObjects.indoorRain.setVolume(0.01);
+
+    if (!globalObjects.outdoorRain) {
+        globalObjects.outdoorRain = playSound('stormfull', 1, true);
+    } else {
+        globalObjects.outdoorRain.play();
+    }
+    setRadioVolume(0);
+    gameVars.cameraMoveAcc = 0;
+    gameVars.cameraMoveVel = 0.01;
     gameState.isOutdoors = true;
     // gameState.isInShed = false;
-    gameVars.cameraPosY = 2000;
+    gameVars.cameraPosY = gameConsts.outdoorStartY;
     PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
     gameVars.cameraPosX = -480;
     PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
 
-    globalObjsTemp.outdoorBackgrounds = {
-        bg0: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'whitePixel').setScale(9999,500),
-        bg1: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout1.png'),
-        bg2: PhaserScene.add.image(999.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout2.png'),
-        bg3: PhaserScene.add.image(999.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout2x.png'),
-        bg4: PhaserScene.add.image(1999, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout3.png')
+    gameVars.cameraPosMaxX = gameVars.cameraPosMaxXOutside;
+    gameVars.cameraPosMinX = gameVars.cameraPosMinXOutside;
+    // gameVars.cameraPosMaxX = gameVars.cameraPosMaxXInside;
+    // gameVars.cameraPosMinX = gameVars.cameraPosMinXInside;
+
+    if (!globalObjsTemp.outdoorBackgrounds) {
+        globalObjsTemp.outdoorBackgrounds = {
+            bg0: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'whitePixel').setScale(9999,500),
+            bg1: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout1.png'),
+            bg2: PhaserScene.add.image(999.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout2.png'),
+            bg3: PhaserScene.add.image(999.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout2x.png').setVisible(false),
+            bg4: PhaserScene.add.image(1999, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout3.png'),
+        }
     }
+}
+
+function enterShed() {
+    gameState.isInShed = true;
+    globalObjects.outdoorRain.setVolume(0.25);
+    gameVars.cameraMoveAcc = 0;
+    gameVars.cameraMoveVel = 0;
+
+    gameVars.cameraPosY = gameConsts.shedStartY;
+    PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
+    gameVars.cameraPosX = 0;
+    PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+
+    if (!globalObjsTemp.shedBackgrounds) {
+        globalObjsTemp.shedBackgrounds = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + gameConsts.shedStartY, 'backgrounds', 'bgshed.png');
+    }
+}
+
+function exitShed() {
+    gameState.isInShed = false;
+    globalObjects.outdoorRain.setVolume(1);
+    gameVars.cameraMoveAcc = 0;
+    gameVars.cameraMoveVel = -0.01;
+
+    gameVars.cameraPosY = gameConsts.outdoorStartY; PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
+    gameVars.cameraPosX = 1440; PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+}
+
+function clickGenerator() {
+    if (!globalObjsTemp.generator) {
+        let startYPos = gameConsts.halfHeight + gameConsts.shedStartY;
+        updateManager.addFunction(updateGenerator);
+        globalObjsTemp.generator = {
+            generatorClickBlocker: {},
+            backing: PhaserScene.add.sprite(gameConsts.halfWidth, startYPos, 'radio', 'generator.png'),
+            exit: {},
+            power: {},
+            base: {},
+            red: {},
+            blue: {},
+            green: {},
+            yellow: {},
+            purple: {},
+        };
+        globalObjsTemp.generator.generatorClickBlocker = new Button({
+            normal: {
+                ref: "blackPixel",
+                x: gameConsts.halfWidth,
+                y: startYPos,
+                alpha: 0.01,
+                scaleX: 5000,
+                scaleY: 1000
+            }
+        });
+        globalObjsTemp.generator.exit = new Button({
+            normal: {
+                "atlas": "radio",
+                "ref": "back.png",
+                "x": gameConsts.halfWidth - 310,
+                "y": startYPos + 280,
+                alpha: 0.75,
+            },
+            hover: {
+                alpha: 1
+            },
+            press: {
+                alpha: 0.65
+            },
+            disable: {
+                alpha: 0.001
+            },
+            onMouseUp() {
+                closeGenerator();
+            }
+        });
+        globalObjsTemp.generator.power = new Button({
+            normal: {
+                "atlas": "radio",
+                "ref": "power_btn.png",
+                "x": gameConsts.halfWidth - 15,
+                "y": startYPos + 240,
+            },
+            hover: {
+                "atlas": "radio",
+                "ref": "power_btn_hover.png",
+            },
+            press: {
+                "atlas": "radio",
+                "ref": "power_btn_press.png",
+            },
+            disable: {
+                alpha: 0.001
+            },
+            onMouseUp() {
+                startGenerator();
+            }
+        });
+        globalObjsTemp.generator.base = new Button({
+            normal: {
+                ref: "blackPixel",
+                x: gameConsts.halfWidth - 255,
+                y: startYPos - 50,
+                scaleX: 36,
+                scaleY: 190,
+                alpha: 0.01
+            },
+            hover: {
+                alpha: 0.1
+            },
+            onMouseUp() {
+                clickBaseGenerator();
+            }
+        });
+
+        globalObjsTemp.generator.red = new Button({
+            normal: {
+                atlas: "radio",
+                ref: "red_plug.png",
+                x: gameConsts.halfWidth - 211,
+                y: startYPos - 208,
+                alpha: 0.8,
+                scaleX: 1,
+                scaleY: 1,
+            },
+            hover: {
+                atlas: "radio",
+                ref: "red_plug.png",
+                scaleX: 1,
+                scaleY: 1.03,
+                alpha: 1
+            },
+            press: {
+                atlas: "radio",
+                ref: "red_plug.png",
+                scaleX: 1.08,
+                scaleY: 1.08,
+                alpha: 1
+            },
+            isDraggable: true,
+            onMouseDown: () => {
+                playSound('crackle1');
+            },
+            onDrag: () => {
+                let wireXPos = globalObjsTemp.generator.red.getXPos();
+                let wireYPos = globalObjsTemp.generator.red.getYPos();
+                attachWire(wireXPos, wireYPos, globalObjsTemp.generator.red);
+            },
+            onDrop: () => {
+                console.log(globalObjsTemp.generator.red.getXPos(), globalObjsTemp.generator.red.getYPos());
+                let wireXPos = globalObjsTemp.generator.red.getXPos();
+                let wireYPos = globalObjsTemp.generator.red.getYPos();
+                let attachSuccess = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.red);
+                if (attachSuccess) {
+                    playSound('stopscreech');
+                } else {
+                    globalObjsTemp.generator.red.setPos(gameConsts.halfWidth - 211, startYPos - 208);
+                }
+            }
+        });
+        globalObjsTemp.generator.red.setOrigin(0.8, 0.5);
+
+        for (let i in globalObjsTemp.generator) {
+            globalObjsTemp.generator[i].scrollFactorX = 0;
+            if (globalObjsTemp.generator[i].setDepth) {
+                globalObjsTemp.generator[i].setScrollFactor(0, 1);
+                globalObjsTemp.generator[i].setDepth(100);
+            }
+        }
+    }
+    openGenerator();
+}
+
+function attachWire(wireXPos, wireYPos, wire) {
+    if (wireXPos > 275 && wireXPos < 330) {
+        if (wireYPos > 4090 && wireYPos < 4165) {
+            wire.setPos(300, 4090 + 36);
+            return true;
+        } else if (wireYPos > 4165 && wireYPos < 4245) {
+            wire.setPos(300, 4165 + 36);
+            return true;
+        } else if (wireYPos > 4245 && wireYPos < 4325) {
+            wire.setPos(300, 4245 + 36);
+            return true;
+        } else if (wireYPos > 4325 && wireYPos < 4405) {
+            wire.setPos(300, 4325 + 36);
+            return true;
+        } else if (wireYPos > 4405 && wireYPos < 4480) {
+            wire.setPos(300, 4405 + 36);
+            return true;
+        }
+    }
+    return false;
+}
+
+function startGenerator() {
+
+}
+
+function clickBaseGenerator() {
+
+}
+
+function openGenerator() {
+    for (let i in globalObjsTemp.generator) {
+        globalObjsTemp.generator[i].visible = true;
+        if (globalObjsTemp.generator[i].setState) {
+            globalObjsTemp.generator[i].setState(NORMAL);
+        }
+    }
+}
+
+function closeGenerator() {
+    for (let i in globalObjsTemp.generator) {
+        globalObjsTemp.generator[i].visible = false;
+        if (globalObjsTemp.generator[i].setState) {
+            globalObjsTemp.generator[i].setState(DISABLE);
+        }
+    }
+}
+
+function updateGenerator() {
+
 }

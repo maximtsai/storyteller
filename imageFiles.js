@@ -15,6 +15,7 @@ const imageAtlases = [
     {name: 'characters', src: 'sprites/characters.json'},
     {name: 'buttons', src: 'sprites/buttons.json'},
     {name: 'faces', src: 'sprites/faces.json'},
+    {name: 'lowq', src: 'sprites/lowq.json'},
     {name: 'radio', src: 'sprites/radio.json'},
     {name: 'misc', src: 'sprites/misc.json'},
 ];

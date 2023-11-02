@@ -56,13 +56,209 @@ class MiscSubscribe {
     }
 
     startEldritchEthan() {
+        setRadioVolume(0);
         globalObjsTemp.gloom.setAlpha(1);
+        playSound('crackle1', 1);
         setCharactersDark();
+        globalObjects.indoorRain.setVolume(0);
+        let blackBg = this.scene.add.image(1000, gameConsts.halfHeight, 'blackPixel').setDepth(-1).setScale(5000, 1000);
+
+        let spikesEldritch = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'lowq', 'spikes.png').setDepth(10000);
+        spikesEldritch.scrollFactorX = 0;
+        spikesEldritch.setScale(1.5);
+        globalObjsTemp.eldritchBlack = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(10000).setScale(5000, 1000).setAlpha(0.1);
+        globalObjsTemp.eldritchBlack.visible = false;
+
+        globalObjsTemp.eyeShakeAmt = 1;
+        globalObjsTemp.eyeEldritch = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'characters', 'blackCircle.png').setDepth(10000).setScale(0.36);
+        globalObjsTemp.eyeEldritch.startX = globalObjsTemp.eyeEldritch.x; globalObjsTemp.eyeEldritch.startY = globalObjsTemp.eyeEldritch.y;
+        globalObjsTemp.eyeEldritch.velX = 0; globalObjsTemp.eyeEldritch.velY = 0;
+        globalObjsTemp.eyeEldritch.scrollFactorX = 0;
+        globalObjsTemp.eyeEldritchCorner1 = PhaserScene.add.image(globalObjsTemp.eyeEldritch.x, globalObjsTemp.eyeEldritch.y, 'characters', 'eyeCorner.png').setDepth(10000).setScale(0.355);
+        globalObjsTemp.eyeEldritchCorner1.scrollFactorX = 0;
+        globalObjsTemp.eyeEldritchCorner2 = PhaserScene.add.image(globalObjsTemp.eyeEldritch.x, globalObjsTemp.eyeEldritch.y, 'characters', 'eyeCorner.png').setDepth(10000).setScale(-0.355, 0.355);
+        globalObjsTemp.eyeEldritchCorner2.scrollFactorX = 0;
+        globalObjsTemp.eyeEldritchCorner3 = PhaserScene.add.image(globalObjsTemp.eyeEldritch.x, globalObjsTemp.eyeEldritch.y - 40, 'characters', 'eyeCorner.png').setDepth(10000).setScale(0.33).setRotation(-1.57);
+        globalObjsTemp.eyeEldritchCorner3.scrollFactorX = 0;
+        globalObjsTemp.eyeEldritchCorner3.visible = false;
+
+        let funcToAdd = updateManager.addFunction(this.shakeEldritchEye);
+        playSound('sizzle', 1);
+        setTimeout(() => {
+            globalObjsTemp.eyeEldritchCorner3.visible = true;
+            globalObjsTemp.eldritchBlack.visible = true;
+            setTimeout(() => {
+                globalObjsTemp.eldritchBlack.visible = false;
+            }, 30);
+            this.scene.tweens.add({
+                targets: globalObjsTemp.eyeEldritchCorner3,
+                delay: 500,
+                scaleX: 0.355,
+                scaleY: 0.355,
+                y: globalObjsTemp.eyeEldritch.y,
+                ease: 'Quart.easeOut',
+                duration: 650,
+                onComplete: () => {
+                    globalObjsTemp.eldritchBlack.visible = true;
+                    globalObjsTemp.eldritchBlack.alpha = 0.2;
+                    setTimeout(() => {
+                        globalObjsTemp.eldritchBlack.visible = false;
+                    }, 20);
+                    this.scene.tweens.add({
+                        targets: [globalObjsTemp.eyeEldritchCorner1, globalObjsTemp.eyeEldritchCorner2, globalObjsTemp.eyeEldritchCorner3],
+                        scaleX: 0.2,
+                        scaleY: 0.2,
+                        ease: 'Quad.easeOut',
+                        duration: 60,
+                        onComplete: () => {
+                            playSound('meatclick', 0.75);
+                            globalObjsTemp.eldritchBlack.visible = true;
+                            setTimeout(() => {
+                                globalObjsTemp.eldritchBlack.visible = false;
+                            }, 30);
+                            globalObjsTemp.eyeEldritchCorner1.destroy();
+                            globalObjsTemp.eyeEldritchCorner2.destroy();
+                            globalObjsTemp.eyeEldritchCorner3.destroy();
+                            globalObjsTemp.eyeEldritchCorner1 = null;
+                        }
+                    });
+                    globalObjsTemp.blackEye = PhaserScene.add.image(globalObjsTemp.eyeEldritch.x, globalObjsTemp.eyeEldritch.y, 'characters', 'blackEye.png').setDepth(10000).setScale(0.37);
+                    globalObjsTemp.blackEye.scrollFactorX = 0;
+                    this.scene.tweens.add({
+                        targets: globalObjsTemp.blackEye,
+                        scaleX: 0.44,
+                        scaleY: 0.44,
+                        ease: 'Quad.easeOut',
+                        duration: 700,
+                        onComplete: () => {
+                            // Zoom in starts
+                            let eyeZoominSound = playSound('zoomin', 1);
+                            globalObjsTemp.eldritchBlack.alpha = 0;
+                            globalObjsTemp.eldritchBlack.visible = true;
+                            this.scene.tweens.add({
+                                targets: globalObjsTemp.eldritchBlack,
+                                alpha: 0.25,
+                                ease: 'Cubic.easeIn',
+                                duration: 6000,
+                            });
+                            this.scene.tweens.add({
+                                targets: globalObjsTemp,
+                                eyeShakeAmt: 20,
+                                ease: 'Cubic.easeIn',
+                                duration: 6000,
+                            });
+                            this.scene.tweens.add({
+                                targets: [globalObjsTemp.blackEye],
+                                scaleX: 2.4,
+                                scaleY: 2.4,
+                                ease: 'Cubic.easeIn',
+                                duration: 6000,
+                            });
+                            this.scene.tweens.add({
+                                targets: [globalObjsTemp.eyeEldritch],
+                                scaleX: 1.25,
+                                scaleY: 1.25,
+                                ease: 'Cubic.easeIn',
+                                duration: 5950,
+                                onComplete: () => {
+                                    setTimeout(() => {
+                                        eyeZoominSound.destroy();
+                                    }, 25);
+                                    globalObjsTemp.eyeEldritch.destroy();
+                                    globalObjsTemp.blackEye.destroy();
+                                    globalObjsTemp.eldritchBlack.destroy();
+                                    updateManager.removeFunction(funcToAdd);
+                                    spikesEldritch.destroy();
+                                    globalObjects.indoorRain.setVolume(0.8);
+                                    setTimeout(() => {
+                                        globalObjsTemp.gloom.setAlpha(0.8);
+                                        setTimeout(() => {
+                                            globalObjsTemp.gloom.setAlpha(1);
+                                            setTimeout(() => {
+                                                globalObjsTemp.gloom.setAlpha(0.8);
+                                                setTimeout(() => {
+                                                    blackBg.setDepth(99);
+                                                    setTimeout(() => {
+                                                        blackBg.destroy();
+                                                    }, 50);
+                                                    globalObjsTemp.gloom.setAlpha(1);
+                                                    setTimeout(() => {
+                                                        this.endEldritchEthan();
+                                                    }, 1750);
+                                                }, 50);
+                                            }, 175);
+                                        }, 50);
+                                    }, 1500);
+                                }
+                            });
+                            this.scene.tweens.add({
+                                targets: spikesEldritch,
+                                scaleX: 0.85,
+                                scaleY: 0.85,
+                                ease: 'Quint.easeIn',
+                                duration: 6000,
+                            });
+                        }
+                    });
+                }
+            });
+            this.scene.tweens.add({
+                targets: [globalObjsTemp.eyeEldritchCorner1],
+                rotation: 0.524,
+                ease: 'Quart.easeInOut',
+                duration: 1250
+            });
+            this.scene.tweens.add({
+                targets: [globalObjsTemp.eyeEldritchCorner2],
+                rotation: -0.524,
+                ease: 'Quart.easeInOut',
+                duration: 1250
+            });
+        }, 2250);
+
+        //             updateManager.removeFunction(funcToAdd);
+        /*
+
+        this.scene.tweens.add({
+            targets: eyeEldritch,
+            scaleX: 1.28,
+            scaleY: 1.28,
+            ease: 'Quad.easeIn',
+            duration: 5750,
+            onComplete: () => {
+
+            }
+        });
+
+         */
+    }
+
+    shakeEldritchEye() {
+        globalObjsTemp.eyeEldritch.velX += (Math.random() - 0.5) * globalObjsTemp.eyeShakeAmt * 0.5 + (globalObjsTemp.eyeEldritch.startX - globalObjsTemp.eyeEldritch.x) * 0.5;
+        globalObjsTemp.eyeEldritch.x += globalObjsTemp.eyeEldritch.velX + (globalObjsTemp.eyeEldritch.startX - globalObjsTemp.eyeEldritch.x) * 0.4;
+
+        globalObjsTemp.eyeEldritch.velY += (Math.random() - 0.5) * globalObjsTemp.eyeShakeAmt * 0.5 + (globalObjsTemp.eyeEldritch.startY - globalObjsTemp.eyeEldritch.y) * 0.5;
+        globalObjsTemp.eyeEldritch.y += globalObjsTemp.eyeEldritch.velY + (globalObjsTemp.eyeEldritch.startY - globalObjsTemp.eyeEldritch.y) * 0.4;
+
+        if (globalObjsTemp.eyeEldritchCorner1) {
+            globalObjsTemp.eyeEldritchCorner1.x = globalObjsTemp.eyeEldritch.x + (Math.random() - 0.5) * 1.5;
+            globalObjsTemp.eyeEldritchCorner1.y = globalObjsTemp.eyeEldritch.y + (Math.random() - 0.5);
+            globalObjsTemp.eyeEldritchCorner2.x = globalObjsTemp.eyeEldritch.x + (Math.random() - 0.5) * 1.5;
+            globalObjsTemp.eyeEldritchCorner2.y = globalObjsTemp.eyeEldritch.y + (Math.random() - 0.5);
+            globalObjsTemp.eyeEldritchCorner3.x = globalObjsTemp.eyeEldritch.x + (Math.random() - 0.5) * 1.5;
+        }
     }
 
     endEldritchEthan() {
+        this.scene.tweens.add({
+            targets: globalObjects.indoorRain,
+            duration: 400,
+            volume: 0.4,
+        });
+        setRadioVolume(0.7);
         globalObjsTemp.gloom.setAlpha(0);
         setCharactersNormal();
+        dialogManager.showDialogNode('Ethan2EldritchFin');
     }
 
     edithInfluenceEthanDecline() {
@@ -99,22 +295,20 @@ class MiscSubscribe {
         globalObjsTemp.black = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(5000, 999);
         globalObjsTemp.black.setAlpha(0).setDepth(8);
         setTimeout(() => {
-            globalObjsTemp.black.setAlpha(0.15);
+            globalObjsTemp.black.setAlpha(0.12);
             setTimeout(() => {
                 globalObjsTemp.black.setAlpha(0);
                 setTimeout(() => {
                     globalObjsTemp.black.setAlpha(0.1);
                     setTimeout(() => {
                         globalObjsTemp.black.setAlpha(0);
-                    }, 40);
-                }, 350);
-            }, 60);
+                    }, 50);
+                }, 550);
+            }, 20);
         }, 250);
     }
 
     maggieCoffee() {
-
-
         gameCharacters.maggieCoffee = this.scene.add.image(-580, gameConsts.halfHeight + 105, 'characters', 'maggie_coffee.png');
         gameCharacters.maggieCoffee.alpha = 0.25;
         gameCharacters.maggieCoffee.setDepth(11);
@@ -129,10 +323,11 @@ class MiscSubscribe {
             x: -810,
             ease: 'Cubic.easeOut',
             onComplete: () => {
+                playSound('crackle1', 1);
                 globalObjsTemp.black.setAlpha(0.2);
                 setTimeout(() => {
                     globalObjsTemp.black.setAlpha(0);
-                }, 100);
+                }, 60);
             }
         });
     }
@@ -163,12 +358,13 @@ class MiscSubscribe {
                 scaleX: 1,
                 scaleY: 1,
                 alpha: 0.7,
+                ease: 'Quad.easeOut',
                 onComplete: () => {
                     this.scene.tweens.add({
                         targets: eye,
                         duration: 350,
-                        scaleX: 0.96,
-                        scaleY: 0.96,
+                        scaleX: 0.95,
+                        scaleY: 0.95,
                         alpha: 1,
                         ease: 'Quart.easeIn',
                         completeDelay: 100,
@@ -185,9 +381,18 @@ class MiscSubscribe {
                                 duration: 700,
                                 x: "+=2",
                                 y: "-=2",
-                                scaleX: 1.04,
-                                scaleY: 1.04,
+                                scaleX: 1.03,
+                                scaleY: 1.03,
                                 ease: 'Cubic.easeOut',
+                                onComplete: () => {
+                                    this.scene.tweens.add({
+                                        targets: eye,
+                                        duration: 300,
+                                        scaleX: 1.015,
+                                        scaleY: 1.015,
+                                        ease: 'Back.easeOut',
+                                    });
+                                }
                             });
                             this.scene.tweens.add({
                                 targets: eye,
@@ -199,8 +404,8 @@ class MiscSubscribe {
                                     this.scene.tweens.add({
                                         targets: eye,
                                         duration: 400,
-                                        scaleX: 1.01,
-                                        scaleY: 1.01,
+                                        scaleX: 1,
+                                        scaleY: 1,
                                         ease: 'Back.easeOut',
                                     });
                                     this.scene.tweens.add({
@@ -211,15 +416,24 @@ class MiscSubscribe {
                                         completeDelay: 250,
                                         onComplete: () => {
                                             dialogManager.hideDialogNode();
+                                            dialogManager.showDialogNode('Interrupt');
+                                            let eyelid1 = this.scene.add.image(-850, gameConsts.halfHeight - 260, 'characters', 'blackCircle.png').setDepth(-1).setScale(6).setOrigin(0.5, 0.99);
+                                            let eyelid2 = this.scene.add.image(-850 + 173, gameConsts.halfHeight - 75 + 100, 'characters', 'blackCircle.png').setDepth(-1).setScale(6).setOrigin(0.5, 0.99).setRotation(2.09);
+                                            let eyelid3 = this.scene.add.image(-850 - 173, gameConsts.halfHeight - 75 + 100, 'characters', 'blackCircle.png').setDepth(-1).setScale(6).setOrigin(0.5, 0.99).setRotation(4.19);
+                                            playSound('eyeclose');
                                             this.scene.tweens.add({
-                                                targets: eye,
-                                                duration: 200,
-                                                scaleX: 0.75,
-                                                scaleY: 0.25,
-                                                ease: 'Cubic.easeIn',
+                                                targets: [eyelid1, eyelid2, eyelid3],
+                                                duration: 275,
+                                                scaleX: 5,
+                                                scaleY: 5,
+                                                x: -850,
+                                                y: gameConsts.halfHeight - 65,
+                                                ease: 'Quad.easeIn',
                                                 onComplete: () => {
+                                                    eyelid1.destroy();
+                                                    eyelid2.destroy();
+                                                    eyelid3.destroy();
                                                     gameCharacters.caspar.setFrame('caspar_dark.png');
-                                                    dialogManager.showDialogNode('Interrupt');
                                                     globalObjsTemp.black.alpha = 0.35;
                                                     this.scene.tweens.add({
                                                         targets: [shadow, globalObjsTemp.black],
@@ -230,7 +444,16 @@ class MiscSubscribe {
                                                             shadow.destroy();
                                                         }
                                                     });
-                                                    eye.destroy();
+                                                    eye.visible = false;
+                                                    setTimeout(() => {
+                                                        eye.setScale(0.95);
+                                                        eye.visible = true;
+                                                        eye.alpha = 0.25;
+                                                        playSound('click', 0.8);
+                                                        setTimeout(() => {
+                                                            eye.destroy();
+                                                        }, 25);
+                                                    }, 4750);
                                                 }
                                             });
                                         }
@@ -247,18 +470,18 @@ class MiscSubscribe {
     actOneEnd() {
         gameState.powerOff = true;
         gameState.currentScene = 2;
-        globalObjsTemp.gloom = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(5000, 999);
+        this.updateRadioChannels();
         if (!globalObjsTemp.black) {
             globalObjsTemp.black = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(5000, 999);
             globalObjsTemp.black.setAlpha(0).setDepth(8);
         }
-        globalObjsTemp.gloom.setBlendMode(Phaser.BlendModes.DARKEN);
-        globalObjsTemp.gloom.setAlpha(0.2).setDepth(8);
+        globalObjsTemp.gloom.setAlpha(0.3).setDepth(8);
+        playSound('crackle1', 1);
 
         setTimeout(() => {
             globalObjsTemp.gloom.setAlpha(0);
             setTimeout(() => {
-                globalObjsTemp.gloom.setAlpha(0.4);
+                globalObjsTemp.gloom.setAlpha(0.45);
                 this.scene.tweens.add({
                     targets: globalObjects.indoorRain,
                     duration: 3000,
@@ -266,23 +489,39 @@ class MiscSubscribe {
                 });
                 setRadioVolume(0);
                 setTimeout(() => {
-                    globalObjsTemp.gloom.setAlpha(0.35);
+                    playSound('sizzle', 1);
+                    globalObjsTemp.gloom.setAlpha(0.65);
                     setTimeout(() => {
-                        globalObjsTemp.gloom.setAlpha(1);
-                        globalObjsTemp.black.setAlpha(1);
-                        setCharactersDark();
-                        gameCharacters.maggieCoffee.setFrame('maggie_coffee_dark.png');
+                        globalObjsTemp.gloom.setAlpha(0.35);
                         setTimeout(() => {
-                            globalObjsTemp.black.setAlpha(0);
-                            this.showWindowShadow1();
+                            globalObjsTemp.gloom.setAlpha(0.65);
                             setTimeout(() => {
-                                globalObjsTemp.gloom.setAlpha(0.9);
+                                playSound('crackle1', 1);
+                                globalObjsTemp.gloom.setAlpha(0.35);
                                 setTimeout(() => {
-                                    globalObjsTemp.gloom.setAlpha(1);
-                                }, 70);
-                            }, 2000);
-                        }, 80);
-                    }, 1600);
+                                    globalObjsTemp.gloom.setAlpha(0.65);
+                                    setTimeout(() => {
+                                        playSound('stopscreech', 1);
+
+                                        globalObjsTemp.gloom.setAlpha(1);
+                                        globalObjsTemp.black.setAlpha(1);
+                                        setCharactersDark();
+                                        gameCharacters.maggieCoffee.setFrame('maggie_coffee_dark.png');
+                                        setTimeout(() => {
+                                            globalObjsTemp.black.setAlpha(0);
+                                            this.showWindowShadow1();
+                                            setTimeout(() => {
+                                                globalObjsTemp.gloom.setAlpha(0.9);
+                                                setTimeout(() => {
+                                                    globalObjsTemp.gloom.setAlpha(1);
+                                                }, 70);
+                                            }, 2000);
+                                        }, 80);
+                                    }, 700);
+                                }, 50);
+                            }, 300);
+                        }, 50);
+                    }, 500);
                 }, 70);
             }, 700);
         }, 70);
@@ -339,5 +578,32 @@ class MiscSubscribe {
                 gameCharacters.edith.x = EdithFinalPos;
             }
         });
+    }
+
+    updateRadioChannels() {
+        if (gameState.currentScene == 2) {
+            globalObjsTemp.songs = {
+                235.75: 'lofi',
+                294.25: 'news2',
+                356: 'foolrushin_poor',
+                386.25: 'guitarboogieshufflebad',
+                446.75: 'weatherblur',
+            };
+        } else if (false) {
+            // Final music find
+            globalObjsTemp.songs = {
+                235.75: 'lofi',
+                294.25: 'dabbda',
+                356: 'foolrushin_ok',
+                506: 'news3'
+            };
+        } if (gameState.currentScene == 3) {
+            globalObjsTemp.songs = {
+                235.75: 'lofi',
+                294.25: 'dabbda',
+                356: 'foolrushin_poor',
+                386.25: 'news3',
+            };
+        }
     }
 }

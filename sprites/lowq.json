@@ -1,0 +1,41 @@
+{
+	"textures": [
+		{
+			"image": "sprites/lowq-0.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 1028,
+				"h": 1044
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "spikes.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 1024,
+						"h": 1040
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 1024,
+						"h": 1040
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 1024,
+						"h": 1040
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:a33517b626b4394464681643a3111910:cc6541cc07972d8bbc1d092e447ccbcf:0644d9afadc5ec39d626109554d3f3bc$"
+	}
+}

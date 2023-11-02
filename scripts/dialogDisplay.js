@@ -33,7 +33,7 @@ class DialogBranchButton {
                 }
             }
         });
-        this.dialogButton.setDepth(1000);
+        this.dialogButton.setDepth(998);
         this.dialogButton.setState(DISABLE);
         this.dialogButton.setScale(204, 29.5);
 
@@ -54,7 +54,7 @@ class DialogBranchButton {
         if (this.text.text.length > 40) {
             this.text.setFontSize(18);
         }
-        if (this.text.text.length > 22) {
+        if (this.text.text.length > 24) {
             this.text.setFontSize(23);
         } else {
             this.text.setFontSize(26);
@@ -141,7 +141,7 @@ class DialogDisplay {
                 console.log('block')
             }
         });
-        this.dialogClickBlocker.setDepth(99);
+        this.dialogClickBlocker.setDepth(9998);
         this.dialogClickBlocker.setState(DISABLE);
 
         this.dialogButton = new Button({
@@ -190,7 +190,9 @@ class DialogDisplay {
         messageBus.subscribe("clickNextDialog", this.clickNextDialog.bind(this));
         messageBus.subscribe("delayUpdateClickLocation", this.delayUpdateClickLocation.bind(this));
         messageBus.subscribe("forceTextProgress", this.setForceTextProgress.bind(this));
+        messageBus.subscribe("unclickable", this.setUnclickable.bind(this));
 
+        messageBus.subscribe("setDialogBtnToTop", this.setDialogBtnToTop.bind(this));
 
 
         this.buttons = [];
@@ -248,7 +250,12 @@ class DialogDisplay {
         globalObjects.moveLeftBtn.setState(DISABLE);
         this.dialogPrompt.visible = false;
         this.currentlyTypedText = '';
-        this.finalText = text + "•••••••";
+
+        this.finalText = text;
+        if (this.finalText.length > 1) {
+            this.finalText += "•••••••";
+        }
+
         this.typingText = true;
         this.dialogText.setText(this.currentlyTypedText);
         this.dialogText.x = this.dialogText.startX;
@@ -262,16 +269,32 @@ class DialogDisplay {
         this.dialogButton.setPos(gameConsts.halfWidth + gameVars.cameraPosX, gameConsts.height- 85);
 
         let i = 0;
-        let numCharRevealed = Math.max(1, Math.floor(gameVars.averageDeltaScale * 1.2));
+
+        // let numCharRevealed = 1 + gameVars.typeWriterOverflow; Math.max(1, Math.floor(gameVars.averageDeltaScale * 1.2));
         this.currentTypewriterEvent = this.scene.time.addEvent({
             callback: () => {
                 if (this.typingText) {
+                    let numCharRevealed = 1;
+                    let timeDiff = Date.now() - gameVars.typeWriterOverflow;
+                    let intervals = Math.floor(timeDiff / 10);
+                    if (gameVars.typeWriterOverflow != 0) {
+                        numCharRevealed = intervals;
+                    }
+                    if (numCharRevealed >= 1) {
+                        gameVars.typeWriterOverflow += intervals * 10;
+                    }
                     for (let j = 0; j < numCharRevealed; j++) {
-                        this.currentlyTypedText += this.finalText[i];
-                        this.dialogText.setText(this.currentlyTypedText);
-                        if (i == this.finalText.length - 1) {
+                        let nextCharacter = this.finalText[i];
+                        this.currentlyTypedText += nextCharacter;
+                        if (nextCharacter == "•") {
+                            gameVars.typeWriterOverflow += 20;
+                        }
+                        if (this.currentlyTypedText.length == this.finalText.length) {
+                            this.dialogText.setText(this.currentlyTypedText);
                             this.finishTypingText();
                             break;
+                        } else if (j == numCharRevealed - 1) {
+                            this.dialogText.setText(this.currentlyTypedText);
                         }
                         i++;
                     }
@@ -279,8 +302,8 @@ class DialogDisplay {
                     this.currentTypewriterEvent.remove();
                 }
             },
-            repeat: this.finalText.length - 1,
-            delay: 15
+            repeat: this.finalText.length * 10,
+            delay: 10
         });
         if (instant) {
             this.finishTypingText();
@@ -295,6 +318,7 @@ class DialogDisplay {
     }
 
     finishTypingText() {
+        gameVars.typeWriterOverflow = 0;
         this.typingText = false;
         if (this.currentTypewriterEvent) {
             this.currentTypewriterEvent.remove();
@@ -350,7 +374,6 @@ class DialogDisplay {
         this.branchesToSet = null;
         if (branches.length > 0) {
             this.disableClickNext();
-
         }
     }
 
@@ -385,5 +408,14 @@ class DialogDisplay {
 
     setForceTextProgress() {
         this.forceTextProgress = true
+    }
+
+    setUnclickable() {
+        this.disableClickNext();
+    }
+
+    setDialogBtnToTop() {
+        buttonManager.removeButton(this.dialogButton);
+        buttonManager.addToButtonList(this.dialogButton);
     }
 }
