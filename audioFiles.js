@@ -28,5 +28,7 @@ const audioFiles = [
     {name: 'crackle1', src: 'audio/crackle1.mp3'},
     {name: 'meatclick', src: 'audio/meatclick.mp3'},
     {name: 'eyeclose', src: 'audio/eyeclose.mp3'},
+    {name: 'generator', src: 'audio/generator.mp3'},
+    {name: 'generatorFail', src: 'audio/generatorFail.mp3'},
 
 ]

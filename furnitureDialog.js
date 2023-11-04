@@ -86,12 +86,12 @@ let furnitureDialog = {
     },
     tvPowerlessEthanEdith: {
         speech: [
-            {speaker: ' ', text: "  The power is off. The TV is also off,••••••••••••••••••••••• right?"},
+            {speaker: ' ', text: "  The power is off. The TV is also off,•••••••••••••••• right?"},
         ]
     },
     tvOff: {
         speech: [
-            {speaker: ' ', text: "   The TV is off to save energy••.•••••••••••\n   Not like the news was good anyway."},
+            {speaker: ' ', text: "   The TV is off to save energy••.•••••••\n   Not like the news was good anyway."},
         ]
     },
     tvCrack1: {
@@ -129,7 +129,7 @@ let furnitureDialog = {
 
     BackdoorActOne: {
         speech: [
-            {speaker: '', text: "No reason to go there right now."},
+            {speaker: '', text: "No reason to go out there right now."},
         ]
     },
     BackdoorLocked: {
@@ -159,9 +159,31 @@ let furnitureDialog = {
     },
     GeneratorAlreadyFixed: {
         speech: [
-            {speaker: "",  text: "The generator's fixed. No need to enter the shed again."},
+            {speaker: "",  text: "   The generator is running."},
         ]
     },
+    GeneratorTurnedOn: {
+        speech: [
+            {speaker: "",  text: "   The generator hums to life."},
+        ]
+    },
+    GeneratorWiredWrong: {
+        speech: [
+            {speaker: "",  text: "   These wires are clearly set up incorrectly."},
+        ]
+    },
+    GravestoneClicked: {
+        speech: [
+            {speaker: "",  text: "   \"Beloved husband and father-\n   (The name is too worn out to read)"},
+        ]
+    },
+    DinerCheer: {
+        speech: [
+            {speaker: "",  text: "(A cheer arises when you return to the diner.)"},
+            {speaker: "Maggie", face: "maggie_happy.png", text: "Thank you honey. I'll go turn off some of\nthe kitchen equipment to save power.\nYou have a seat and I'll be right with you."},
+        ]
+    },
+
 
     ExitNoReason: {
         speech: [

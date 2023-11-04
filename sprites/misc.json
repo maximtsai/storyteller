@@ -52,6 +52,27 @@
 					}
 				},
 				{
+					"filename": "invalid.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 20,
+						"h": 20
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 20,
+						"h": 20
+					},
+					"frame": {
+						"x": 203,
+						"y": 107,
+						"w": 20,
+						"h": 20
+					}
+				},
+				{
 					"filename": "guide_arrow.png",
 					"rotated": false,
 					"trimmed": false,
@@ -99,6 +120,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:2dabfd9ceba3b97a180fd40e5392689e:84609dd3288995cbf20e4dc7e2010c8d:612dcbdb08476a0aba06aeca925f16b2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:b01b2e9cf237e00729966ad22edb4a69:ae60e1e80c7f13f86e5e231b6c587fd6:612dcbdb08476a0aba06aeca925f16b2$"
 	}
 }

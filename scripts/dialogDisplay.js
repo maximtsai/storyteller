@@ -92,6 +92,7 @@ class DialogDisplay {
         this.dialogBox.setOrigin(0.5, 0);
         this.dialogBox.alpha = 0.65;
         this.dialogBox.scrollFactorX = 0;
+        this.dialogBox.scrollFactorY = 0;
 
         this.dialogText = this.scene.add.bitmapText(50, gameConsts.height - 138, 'dialog', '...', 26);
         this.dialogText.startX = this.dialogText.x;
@@ -99,18 +100,21 @@ class DialogDisplay {
         this.dialogText.setDepth(999);
         this.dialogText.setOrigin(0, 0);
         this.dialogText.scrollFactorX = 0;
+        this.dialogText.scrollFactorY = 0;
 
         this.dialogPrompt = this.scene.add.sprite(gameConsts.width - 30, gameConsts.height - 25, 'buttons', 'continue_prompt.png');
         this.dialogPrompt.visible = false;
         this.dialogPrompt.setDepth(999);
         this.dialogPrompt.setOrigin(1, 1);
         this.dialogPrompt.scrollFactorX = 0;
+        this.dialogPrompt.scrollFactorY = 0;
 
         this.dialogSpeaker = this.scene.add.bitmapText(gameConsts.halfWidth, gameConsts.height - 174, 'dialog', 'INSERT NAME', 30);
         this.dialogSpeaker.visible = false;
         this.dialogSpeaker.setDepth(999);
         this.dialogSpeaker.setOrigin(0.5, 0);
         this.dialogSpeaker.scrollFactorX = 0;
+        this.dialogSpeaker.scrollFactorY = 0;
 
         this.dialogFace = this.scene.add.sprite(85, gameConsts.height - 95, 'faces', 'ethan_normal.png');
         this.dialogFace.startX = this.dialogFace.x;
@@ -118,6 +122,7 @@ class DialogDisplay {
         this.dialogFace.visible = false;
         this.dialogFace.setScale(0.7);
         this.dialogFace.scrollFactorX = 0;
+        this.dialogFace.scrollFactorY = 0;
 
         scene.tweens.add({
             targets: this.dialogPrompt,
@@ -134,8 +139,8 @@ class DialogDisplay {
                 x: gameConsts.halfWidth,
                 y: gameConsts.halfHeight,
                 alpha: 0.001,
-                scaleX: 5000,
-                scaleY: 1000
+                scaleX: 10000,
+                scaleY: 10000
             },
             onMouseUp: () => {
                 console.log('block')
@@ -266,7 +271,7 @@ class DialogDisplay {
         this.dialogBox.visible = true;
         this.dialogBox.x = gameConsts.halfWidth;
         this.dialogButton.setState(NORMAL);
-        this.dialogButton.setPos(gameConsts.halfWidth + gameVars.cameraPosX, gameConsts.height- 85);
+        this.dialogButton.setPos(gameConsts.halfWidth + gameVars.cameraPosX, gameConsts.height- 85 + gameVars.cameraPosY);
 
         let i = 0;
 

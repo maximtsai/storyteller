@@ -257,6 +257,25 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">radio/blue_wire.png</key>
+            <key type="filename">radio/green_wire.png</key>
+            <key type="filename">radio/purple_wire.png</key>
+            <key type="filename">radio/red_wire.png</key>
+            <key type="filename">radio/yellow_wire.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>25,2,50,3</rect>
+                <key>scale9Paddings</key>
+                <rect>25,2,50,3</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">radio/cover.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -316,6 +335,22 @@
                 <rect>21,21,42,42</rect>
                 <key>scale9Paddings</key>
                 <rect>21,21,42,42</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">radio/status_light_off.png</key>
+            <key type="filename">radio/status_light_on.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>5,5,10,10</rect>
+                <key>scale9Paddings</key>
+                <rect>5,5,10,10</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -274,6 +274,31 @@ function createWorldButtons() {
     });
     globalObjects.diner.ShedButton.setDepth(1);
 
+    globalObjects.diner.graveButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 2125,
+            y: 2540,
+            scaleX: 60,
+            scaleY: 75,
+            alpha: 0.1
+        },
+        hover: {
+            alpha: 0.05
+        },
+        press: {
+            alpha: 0.12
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onMouseUp() {
+            clickGravestone();
+        }
+    });
+    globalObjects.diner.graveButton.setDepth(1);
+
     globalObjects.diner.ExitShedButton = new Button({
         normal: {
             atlas: "pixels",
@@ -464,9 +489,6 @@ function clickEdith() {
 }
 
 function clickEthan() {
-    // TODO remove
-    dialogManager.showDialogNode('Ethan2Eldritch');
-    return;
     if (gameState.currentScene == 1) {
         if (gameState.EthanAct1Fin) {
             dialogManager.showDialogNode('EthanActOneEnd');
@@ -531,6 +553,14 @@ function clickJuan() {
                 gameState.juanDarkTalked = true;
                 dialogManager.showDialogNode('Juan2Dark');
             }
+        } else {
+            if (gameState.juan2Chatted) {
+                dialogManager.showDialogNode('Juan2ChatFin');
+            } else {
+                gameState.juan2Chatted = true;
+                dialogManager.showDialogNode('Juan2Chat');
+
+            }
         }
     } else if (gameState.currentScene == 3) {
 
@@ -585,7 +615,19 @@ function clickCaspar() {
             return;
         }
         if (gameState.powerOff) {
-            dialogManager.showDialogNode('CasparAct2DarkBranches');
+            if (gameState.viewedGenerator) {
+                dialogManager.showDialogNode('CasparAct2DarkGenerator');
+            } else {
+                dialogManager.showDialogNode('CasparAct2DarkBranches');
+            }
+        } else {
+            if (gameState.caspar2Welcomed) {
+                dialogManager.showDialogNode('CasparAct2WelcomeDone');
+            } else {
+                gameState.caspar2Welcomed = true;
+                dialogManager.showDialogNode('CasparAct2Welcome');
+            }
+
         }
     } else if (gameState.currentScene == 3) {
 
@@ -927,11 +969,11 @@ function clickIndoor() {
     globalObjects.diner.IndoorButton.setState(DISABLE);
 
     globalObjects.outdoorRain.stop();
-    if (!gameState.powerOff) {
-        //globalObjects.indoorRain.setVolume(1);
-        setRadioVolume(0.75);
+    if (gameState.powerOff) {
+        globalObjects.indoorRain.setVolume(1);
+        // setRadioVolume(0.75);
     } else {
-        //globalObjects.indoorRain.setVolume(0.35);
+        globalObjects.indoorRain.setVolume(0.35);
     }
     gameVars.cameraMoveAcc = 0;
     gameVars.cameraMoveVel = 0.01;
@@ -947,23 +989,28 @@ function clickIndoor() {
     gameVars.cameraPosMaxX = gameVars.cameraPosMaxXInside;
     gameVars.cameraPosMinX = gameVars.cameraPosMinXInside;
 
+    if (globalObjsTemp.generatorSound) {
+        globalObjsTemp.generatorSound.stop();
+    }
+    if (gameState.powerOff === false && !gameState.powerOnWelcomed) {
+        gameState.powerOnWelcomed = true;
+        dialogManager.showDialogNode('DinerCheer');
+    }
+
 }
 
 function clickBackdoor() {
     if (gameState.currentScene == 1) {
-        exitBackdoor();
-        // dialogManager.showDialogNode('BackdoorActOne');
+        // exitBackdoor();
+        dialogManager.showDialogNode('BackdoorActOne');
     } else if (gameState.currentScene == 2) {
-        if (gameState.powerOff) {
-            if (gameState.hasBackdoorKey) {
-                //globalObjects.indoorRain.setVolume(0.4);
-                exitBackdoor();
-            } else {
-                dialogManager.showDialogNode('BackdoorLocked');
-            }
+        if (gameState.hasBackdoorKey) {
+            //globalObjects.indoorRain.setVolume(0.4);
+            exitBackdoor();
         } else {
-            dialogManager.showDialogNode('Backdoor2NoReasonToGo');
+            dialogManager.showDialogNode('BackdoorLocked');
         }
+        // dialogManager.showDialogNode('Backdoor2NoReasonToGo');
     } else if (gameState.currentScene == 3) {
 
     }
@@ -1021,6 +1068,9 @@ function enterShed() {
     globalObjects.outdoorRain.setVolume(0.25);
     gameVars.cameraMoveAcc = 0;
     gameVars.cameraMoveVel = 0;
+    if (globalObjsTemp.generatorSound) {
+        globalObjsTemp.generatorSound.setVolume(0.25);
+    }
 
     gameVars.cameraPosY = gameConsts.shedStartY;
     PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
@@ -1032,11 +1082,20 @@ function enterShed() {
     }
 }
 
+function clickGravestone() {
+    gameState.gravestoneClicked = true;
+    dialogManager.showDialogNode('GravestoneClicked');
+
+}
+
 function exitShed() {
     gameState.isInShed = false;
     globalObjects.outdoorRain.setVolume(1);
     gameVars.cameraMoveAcc = 0;
     gameVars.cameraMoveVel = -0.01;
+    if (globalObjsTemp.generatorSound) {
+        globalObjsTemp.generatorSound.setVolume(0);
+    }
 
     gameVars.cameraPosY = gameConsts.outdoorStartY; PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
     gameVars.cameraPosX = 1440; PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
@@ -1044,6 +1103,7 @@ function exitShed() {
 
 function clickGenerator() {
     if (!globalObjsTemp.generator) {
+        gameState.viewedGenerator = true;
         let startYPos = gameConsts.halfHeight + gameConsts.shedStartY;
         updateManager.addFunction(updateGenerator);
         globalObjsTemp.generator = {
@@ -1051,12 +1111,20 @@ function clickGenerator() {
             backing: PhaserScene.add.sprite(gameConsts.halfWidth, startYPos, 'radio', 'generator.png'),
             exit: {},
             power: {},
-            base: {},
             red: {},
             blue: {},
             green: {},
             yellow: {},
             purple: {},
+            indicator: PhaserScene.add.sprite(gameConsts.halfWidth - 64, startYPos + 209, 'radio', 'status_light_off.png').setAlpha(0.9),
+            invalid: PhaserScene.add.sprite(-999, -999, 'misc', 'invalid.png').setAlpha(0),
+        };
+        globalObjsTemp.generatorWires = {
+            red: PhaserScene.add.sprite(gameConsts.halfWidth - 221, startYPos - 208, 'radio', 'red_wire.png').setOrigin(0, 0.5).setScale(0.01, 1),
+            blue: PhaserScene.add.sprite(gameConsts.halfWidth - 221, startYPos - 128, 'radio', 'blue_wire.png').setOrigin(0, 0.5).setScale(0.01, 1),
+            green: PhaserScene.add.sprite(gameConsts.halfWidth - 221, startYPos - 48, 'radio', 'green_wire.png').setOrigin(0, 0.5).setScale(0.01, 1),
+            yellow: PhaserScene.add.sprite(gameConsts.halfWidth - 221, startYPos + 32, 'radio', 'yellow_wire.png').setOrigin(0, 0.5).setScale(0.01, 1),
+            purple: PhaserScene.add.sprite(gameConsts.halfWidth - 221, startYPos + 112, 'radio', 'purple_wire.png').setOrigin(0, 0.5).setScale(0.01, 1),
         };
         globalObjsTemp.generator.generatorClickBlocker = new Button({
             normal: {
@@ -1095,14 +1163,17 @@ function clickGenerator() {
                 "ref": "power_btn.png",
                 "x": gameConsts.halfWidth - 15,
                 "y": startYPos + 240,
+                alpha: 1
             },
             hover: {
                 "atlas": "radio",
                 "ref": "power_btn_hover.png",
+                alpha: 1
             },
             press: {
                 "atlas": "radio",
                 "ref": "power_btn_press.png",
+                alpha: 1
             },
             disable: {
                 alpha: 0.001
@@ -1111,30 +1182,14 @@ function clickGenerator() {
                 startGenerator();
             }
         });
-        globalObjsTemp.generator.base = new Button({
-            normal: {
-                ref: "blackPixel",
-                x: gameConsts.halfWidth - 255,
-                y: startYPos - 50,
-                scaleX: 36,
-                scaleY: 190,
-                alpha: 0.01
-            },
-            hover: {
-                alpha: 0.1
-            },
-            onMouseUp() {
-                clickBaseGenerator();
-            }
-        });
 
         globalObjsTemp.generator.red = new Button({
             normal: {
                 atlas: "radio",
                 ref: "red_plug.png",
-                x: gameConsts.halfWidth - 211,
-                y: startYPos - 208,
-                alpha: 0.8,
+                x: 300,
+                y: 4126,
+                alpha: 1,
                 scaleX: 1,
                 scaleY: 1,
             },
@@ -1150,7 +1205,12 @@ function clickGenerator() {
                 ref: "red_plug.png",
                 scaleX: 1.08,
                 scaleY: 1.08,
-                alpha: 1
+                alpha: 0.8
+            },
+            disable: {
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 1,
             },
             isDraggable: true,
             onMouseDown: () => {
@@ -1160,20 +1220,270 @@ function clickGenerator() {
                 let wireXPos = globalObjsTemp.generator.red.getXPos();
                 let wireYPos = globalObjsTemp.generator.red.getYPos();
                 attachWire(wireXPos, wireYPos, globalObjsTemp.generator.red);
+                updateWireVisual(globalObjsTemp.generator.red, globalObjsTemp.generatorWires.red);
             },
             onDrop: () => {
-                console.log(globalObjsTemp.generator.red.getXPos(), globalObjsTemp.generator.red.getYPos());
                 let wireXPos = globalObjsTemp.generator.red.getXPos();
                 let wireYPos = globalObjsTemp.generator.red.getYPos();
-                let attachSuccess = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.red);
-                if (attachSuccess) {
-                    playSound('stopscreech');
+                let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.red);
+                if (attachedSpot) {
+                    setWireAttach(globalObjsTemp.generator.red, attachedSpot)
+                    updateWireVisual(globalObjsTemp.generator.red, globalObjsTemp.generatorWires.red);
+                    playSound('crackle1');
                 } else {
-                    globalObjsTemp.generator.red.setPos(gameConsts.halfWidth - 211, startYPos - 208);
+                    detatchWire(globalObjsTemp.generator.red);
+                    globalObjsTemp.generator.red.tweenToPos(gameConsts.halfWidth - 211, startYPos - 208, 200, 'Quad.easeIn');
+                    retractWireVisual(globalObjsTemp.generator.red, globalObjsTemp.generatorWires.red)
                 }
             }
         });
+        globalObjsTemp.generator.red = globalObjsTemp.generator.red;
         globalObjsTemp.generator.red.setOrigin(0.8, 0.5);
+
+        // blue button
+        globalObjsTemp.generator.blue = new Button({
+            normal: {
+                atlas: "radio",
+                ref: "blue_plug.png",
+                x: 300,
+                y: 4205,
+                alpha: 1,
+                scaleX: 1,
+                scaleY: 1,
+            },
+            hover: {
+                atlas: "radio",
+                ref: "blue_plug.png",
+                scaleX: 1,
+                scaleY: 1.03,
+                alpha: 1
+            },
+            press: {
+                atlas: "radio",
+                ref: "blue_plug.png",
+                scaleX: 1.08,
+                scaleY: 1.08,
+                alpha: 0.8
+            },
+            disable: {
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 1,
+            },
+            isDraggable: true,
+            onMouseDown: () => {
+                playSound('crackle1');
+            },
+            onDrag: () => {
+                let wireXPos = globalObjsTemp.generator.blue.getXPos();
+                let wireYPos = globalObjsTemp.generator.blue.getYPos();
+                attachWire(wireXPos, wireYPos, globalObjsTemp.generator.blue);
+                updateWireVisual(globalObjsTemp.generator.blue, globalObjsTemp.generatorWires.blue);
+            },
+            onDrop: () => {
+                let wireXPos = globalObjsTemp.generator.blue.getXPos();
+                let wireYPos = globalObjsTemp.generator.blue.getYPos();
+                let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.blue);
+                if (attachedSpot) {
+                    setWireAttach(globalObjsTemp.generator.blue, attachedSpot)
+                    updateWireVisual(globalObjsTemp.generator.blue, globalObjsTemp.generatorWires.blue);
+                    playSound('crackle1');
+                } else {
+                    detatchWire(globalObjsTemp.generator.blue);
+                    globalObjsTemp.generator.blue.tweenToPos(gameConsts.halfWidth - 211, startYPos - 128.5, 200, 'Quad.easeIn');
+                    retractWireVisual(globalObjsTemp.generator.blue, globalObjsTemp.generatorWires.blue)
+                }
+            }
+        });
+        globalObjsTemp.generator.blue.setOrigin(0.8, 0.5);
+
+        // green button
+        globalObjsTemp.generator.green = new Button({
+            normal: {
+                atlas: "radio",
+                ref: "green_plug.png",
+                x: gameConsts.halfWidth - 211,
+                y: startYPos - 49,
+                alpha: 1,
+                scaleX: 1,
+                scaleY: 1,
+            },
+            hover: {
+                atlas: "radio",
+                ref: "green_plug.png",
+                scaleX: 1,
+                scaleY: 1.03,
+                alpha: 1
+            },
+            press: {
+                atlas: "radio",
+                ref: "green_plug.png",
+                scaleX: 1.08,
+                scaleY: 1.08,
+                alpha: 0.8
+            },
+            disable: {
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 1,
+            },
+            isDraggable: true,
+            onMouseDown: () => {
+                playSound('crackle1');
+            },
+            onDrag: () => {
+                let wireXPos = globalObjsTemp.generator.green.getXPos();
+                let wireYPos = globalObjsTemp.generator.green.getYPos();
+                attachWire(wireXPos, wireYPos, globalObjsTemp.generator.green);
+                updateWireVisual(globalObjsTemp.generator.green, globalObjsTemp.generatorWires.green);
+            },
+            onDrop: () => {
+                let wireXPos = globalObjsTemp.generator.green.getXPos();
+                let wireYPos = globalObjsTemp.generator.green.getYPos();
+                let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.green);
+                if (attachedSpot) {
+                    setWireAttach(globalObjsTemp.generator.green, attachedSpot)
+                    updateWireVisual(globalObjsTemp.generator.green, globalObjsTemp.generatorWires.green);
+                    playSound('crackle1');
+                } else {
+                    detatchWire(globalObjsTemp.generator.green);
+                    globalObjsTemp.generator.green.tweenToPos(gameConsts.halfWidth - 211, startYPos - 49, 200, 'Quad.easeIn');
+                    retractWireVisual(globalObjsTemp.generator.green, globalObjsTemp.generatorWires.green)
+                }
+            }
+        });
+        globalObjsTemp.generator.green.setOrigin(0.8, 0.5);
+
+        // yellow button
+        globalObjsTemp.generator.yellow = new Button({
+            normal: {
+                atlas: "radio",
+                ref: "yellow_plug.png",
+                x: 300,
+                y: 4284,
+                alpha: 1,
+                scaleX: 1,
+                scaleY: 1,
+            },
+            hover: {
+                atlas: "radio",
+                ref: "yellow_plug.png",
+                scaleX: 1,
+                scaleY: 1.03,
+                alpha: 1
+            },
+            press: {
+                atlas: "radio",
+                ref: "yellow_plug.png",
+                scaleX: 1.08,
+                scaleY: 1.08,
+                alpha: 0.8
+            },
+            disable: {
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 1,
+            },
+            isDraggable: true,
+            onMouseDown: () => {
+                playSound('crackle1');
+            },
+            onDrag: () => {
+                let wireXPos = globalObjsTemp.generator.yellow.getXPos();
+                let wireYPos = globalObjsTemp.generator.yellow.getYPos();
+                attachWire(wireXPos, wireYPos, globalObjsTemp.generator.yellow);
+                updateWireVisual(globalObjsTemp.generator.yellow, globalObjsTemp.generatorWires.yellow);
+            },
+            onDrop: () => {
+                let wireXPos = globalObjsTemp.generator.yellow.getXPos();
+                let wireYPos = globalObjsTemp.generator.yellow.getYPos();
+                let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.yellow);
+                if (attachedSpot) {
+                    setWireAttach(globalObjsTemp.generator.yellow, attachedSpot)
+                    updateWireVisual(globalObjsTemp.generator.yellow, globalObjsTemp.generatorWires.yellow);
+                    playSound('crackle1');
+                } else {
+                    detatchWire(globalObjsTemp.generator.yellow);
+                    globalObjsTemp.generator.yellow.tweenToPos(gameConsts.halfWidth - 211, startYPos + 30.5, 200, 'Quad.easeIn');
+                    retractWireVisual(globalObjsTemp.generator.yellow, globalObjsTemp.generatorWires.yellow)
+                }
+            }
+        });
+        globalObjsTemp.generator.yellow.setOrigin(0.8, 0.5);
+
+        // green button
+        globalObjsTemp.generator.purple = new Button({
+            normal: {
+                atlas: "radio",
+                ref: "purple_plug.png",
+                x: gameConsts.halfWidth - 211,
+                y: startYPos + 110,
+                alpha: 1,
+                scaleX: 1,
+                scaleY: 1,
+            },
+            hover: {
+                atlas: "radio",
+                ref: "purple_plug.png",
+                scaleX: 1,
+                scaleY: 1.03,
+                alpha: 1
+            },
+            press: {
+                atlas: "radio",
+                ref: "purple_plug.png",
+                scaleX: 1.08,
+                scaleY: 1.08,
+                alpha: 0.8
+            },
+            disable: {
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 1,
+            },
+            isDraggable: true,
+            onMouseDown: () => {
+                playSound('crackle1');
+            },
+            onDrag: () => {
+                let wireXPos = globalObjsTemp.generator.purple.getXPos();
+                let wireYPos = globalObjsTemp.generator.purple.getYPos();
+                attachWire(wireXPos, wireYPos, globalObjsTemp.generator.purple);
+                updateWireVisual(globalObjsTemp.generator.purple, globalObjsTemp.generatorWires.purple);
+            },
+            onDrop: () => {
+                let wireXPos = globalObjsTemp.generator.purple.getXPos();
+                let wireYPos = globalObjsTemp.generator.purple.getYPos();
+                let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.purple);
+                if (attachedSpot) {
+                    setWireAttach(globalObjsTemp.generator.purple, attachedSpot)
+                    updateWireVisual(globalObjsTemp.generator.purple, globalObjsTemp.generatorWires.purple);
+                    playSound('crackle1');
+                } else {
+                    detatchWire(globalObjsTemp.generator.purple);
+                    globalObjsTemp.generator.purple.tweenToPos(gameConsts.halfWidth - 211, startYPos + 110, 200, 'Quad.easeIn');
+                    retractWireVisual(globalObjsTemp.generator.purple, globalObjsTemp.generatorWires.purple)
+                }
+            }
+        });
+        globalObjsTemp.generator.purple.setOrigin(0.8, 0.5);
+
+        globalObjsTemp.generatorConnections = {
+            1: false,
+            2: false,
+            3: globalObjsTemp.generator.yellow,
+            4: globalObjsTemp.generator.blue,
+            5: globalObjsTemp.generator.red,
+        };
+
+        globalObjsTemp.generator.yellow.socket = 3;
+        globalObjsTemp.generator.blue.socket = 4;
+        globalObjsTemp.generator.red.socket = 5;
+
+        updateWireVisual(globalObjsTemp.generator.red, globalObjsTemp.generatorWires.red);
+        updateWireVisual(globalObjsTemp.generator.blue, globalObjsTemp.generatorWires.blue);
+        updateWireVisual(globalObjsTemp.generator.yellow, globalObjsTemp.generatorWires.yellow);
+
 
         for (let i in globalObjsTemp.generator) {
             globalObjsTemp.generator[i].scrollFactorX = 0;
@@ -1182,55 +1492,288 @@ function clickGenerator() {
                 globalObjsTemp.generator[i].setDepth(100);
             }
         }
+        for (let i in globalObjsTemp.generatorWires) {
+            globalObjsTemp.generatorWires[i].scrollFactorX = 0;
+            globalObjsTemp.generatorWires[i].depth = 100;
+        }
+
+        setTimeout(() => {
+            messageBus.publish('setDialogBtnToTop');
+            dialogManager.showDialogNode('GeneratorWiredWrong');
+        }, 250);
     }
     openGenerator();
 }
 
+function updateWireVisual(wire,visual) {
+    let wireXPos = wire.getXPos() - 7;
+    let wireYPos = wire.getYPos();
+    let wireLengthX = wireXPos - visual.x;
+    let wireLengthY = wireYPos - visual.y;
+    let wireLength = Math.sqrt(wireLengthX*wireLengthX + wireLengthY*wireLengthY);
+    visual.rotation = Math.atan2(wireLengthY, wireLengthX);
+    visual.setScale(0.01 * wireLength, 1);
+}
+
+function retractWireVisual(wire, visual) {
+    updateWireVisual(wire,visual);
+    PhaserScene.tweens.add({
+        targets: visual,
+        ease: 'Quad.easeIn',
+        scaleX: 0.01,
+        duration: 200,
+    });
+}
+
 function attachWire(wireXPos, wireYPos, wire) {
-    if (wireXPos > 275 && wireXPos < 330) {
-        if (wireYPos > 4090 && wireYPos < 4165) {
-            wire.setPos(300, 4090 + 36);
-            return true;
-        } else if (wireYPos > 4165 && wireYPos < 4245) {
-            wire.setPos(300, 4165 + 36);
-            return true;
-        } else if (wireYPos > 4245 && wireYPos < 4325) {
-            wire.setPos(300, 4245 + 36);
-            return true;
-        } else if (wireYPos > 4325 && wireYPos < 4405) {
-            wire.setPos(300, 4325 + 36);
-            return true;
-        } else if (wireYPos > 4405 && wireYPos < 4480) {
-            wire.setPos(300, 4405 + 36);
-            return true;
+    if (wireXPos > 286 && wireXPos < 330) {
+        let spacingY = 10;
+        if (wireYPos > (4090 + spacingY) && wireYPos < (4165 - spacingY) && wireCanAttach(wire, 5)) {
+            setWireAttach(wire, 5);
+            return 5;
+        } else if (wireYPos > (4165 + spacingY) && wireYPos < (4245 - spacingY) && wireCanAttach(wire, 4)) {
+            setWireAttach(wire, 4);
+            return 4;
+        } else if (wireYPos > (4245 + spacingY) && wireYPos < (4325 - spacingY) && wireCanAttach(wire, 3)) {
+            setWireAttach(wire, 3);
+            return 3;
+        } else if (wireYPos > (4325 + spacingY) && wireYPos < (4405 - spacingY) && wireCanAttach(wire, 2)) {
+            setWireAttach(wire, 2);
+            return 2;
+        } else if (wireYPos > (4405 + spacingY) && wireYPos < (4480 - spacingY) && wireCanAttach(wire, 1)) {
+            setWireAttach(wire, 1);
+            return 1;
         }
     }
     return false;
 }
-
-function startGenerator() {
-
+function setWireAttach(wire, number) {
+    if (wireCanAttach(wire, number)) {
+        detatchWire(wire);
+        globalObjsTemp.generatorConnections[number] = wire;
+        switch(number) {
+            case 5:
+                wire.socket = 5;
+                wire.setPos(300, 4090 + 36);
+                break;
+            case 4:
+                wire.socket = 4;
+                wire.setPos(300, 4169 + 36);
+                break;
+            case 3:
+                wire.socket = 3;
+                wire.setPos(300, 4248 + 36);
+                break;
+            case 2:
+                wire.socket = 2;
+                wire.setPos(300, 4327 + 36);
+                break;
+            case 1:
+                wire.socket = 1;
+                wire.setPos(300, 4405 + 36);
+                break;
+        }
+        return true;
+    }
+    return false;
 }
 
-function clickBaseGenerator() {
+// function detatchSocket(number) {
+//     if (globalObjsTemp.generatorConnections[number]) {
+//         globalObjsTemp.generatorConnections[number].setPos(269, 4441)
+//         globalObjsTemp.generatorConnections[number].onDrop();
+//         globalObjsTemp.generatorConnections[number] = false;
+//     }
+// }
 
+function detatchWire(wire) {
+    for (let idx in globalObjsTemp.generatorConnections) {
+        if (globalObjsTemp.generatorConnections[idx] == wire) {
+            globalObjsTemp.generatorConnections[idx] = false;
+        }
+    }
+    wire.socket = undefined;
+}
+
+function wireCanAttach(wire, number) {
+    let retVal = !globalObjsTemp.generatorConnections[number] || globalObjsTemp.generatorConnections[number] === wire;
+    return retVal;
+}
+
+function startGenerator() {
+    if (gameState.powerOff === false) {
+        dialogManager.showDialogNode('GeneratorAlreadyFixed');
+        return;
+    }
+    if (!globalObjsTemp.generatorConnections[1]
+        || !globalObjsTemp.generatorConnections[2]
+        || !globalObjsTemp.generatorConnections[3]
+        || !globalObjsTemp.generatorConnections[4]
+        || !globalObjsTemp.generatorConnections[5]) {
+        showGeneratorInvalid(4117);
+        playSound('stopscreech', 1);
+        return false;
+    }
+    if (globalObjsTemp.generator.red.socket % 2 == 0) {
+        // must be odd, is invalid
+        showGeneratorInvalid(4193);
+        playSound('generatorFail', 1);
+        return false;
+    }
+    if (globalObjsTemp.generator.blue.socket <= globalObjsTemp.generator.red.socket) {
+        // must be odd, is invalid
+        showGeneratorInvalid(4247);
+        playSound('generatorFail', 1);
+        return false;
+    }
+    let greenSocket = globalObjsTemp.generator.green.socket;
+    let greenCrosses = 0;
+    if (globalObjsTemp.generator.red.socket < greenSocket) {
+        greenCrosses++
+    }
+    if (globalObjsTemp.generator.blue.socket < greenSocket) {
+        greenCrosses++
+    }
+    if (globalObjsTemp.generator.yellow.socket > greenSocket) {
+        greenCrosses++
+    }
+    if (globalObjsTemp.generator.purple.socket > greenSocket) {
+        greenCrosses++
+    }
+    if (greenCrosses != 1) {
+        showGeneratorInvalid(4301);
+        playSound('generatorFail', 1);
+        return false;
+    }
+    if (globalObjsTemp.generator.yellow.socket >= globalObjsTemp.generator.green.socket) {
+        // must be odd, is invalid
+        showGeneratorInvalid(4356);
+        playSound('generatorFail', 1);
+        return false;
+    }
+    if (globalObjsTemp.generator.purple.socket == 1 || globalObjsTemp.generator.purple.socket == 2) {
+        showGeneratorInvalid(4413);
+        playSound('generatorFail', 1);
+        return false;
+    }
+    let numWiresUpward = 0;
+    if (globalObjsTemp.generator.blue.socket == 5) {
+        numWiresUpward++;
+    }
+    if (globalObjsTemp.generator.green.socket >= 4) {
+        numWiresUpward++;
+    }
+    if (globalObjsTemp.generator.yellow.socket >= 3) {
+        numWiresUpward++;
+    }
+    if (globalObjsTemp.generator.purple.socket >= 2) {
+        numWiresUpward++;
+    }
+    if (numWiresUpward < 3) {
+        showGeneratorInvalid(4460);
+        playSound('generatorFail', 1);
+        return;
+    }
+    turnOnPower();
+    return true;
+}
+
+function turnOnPower() {
+    globalObjsTemp.generator.indicator.setFrame('status_light_on.png');
+    setTimeout(() => {
+        globalObjsTemp.generator.indicator.setFrame('status_light_off.png');
+        setTimeout(() => {
+            globalObjsTemp.generator.indicator.setFrame('status_light_on.png');
+        }, 750);
+    }, 75);
+    playSound('crackle1', 2);
+    globalObjsTemp.generatorSound = playSound('generator', 0.1, true);
+    PhaserScene.tweens.add({
+        targets: globalObjsTemp.generatorSound,
+        volume: 1,
+        ease: 'Quad.easeOut',
+        duration: 600
+    });
+    gameState.powerOff = false;
+    dialogManager.showDialogNode('GeneratorTurnedOn');
+    setCharactersNormal();
+    globalObjsTemp.gloom.setAlpha(0);
+
+    globalObjsTemp.generator.red.setState(DISABLE);
+    globalObjsTemp.generator.blue.setState(DISABLE);
+    globalObjsTemp.generator.green.setState(DISABLE);
+    globalObjsTemp.generator.yellow.setState(DISABLE);
+    globalObjsTemp.generator.purple.setState(DISABLE);
+}
+
+function showGeneratorInvalid(yPos) {
+    globalObjsTemp.generator.indicator.setFrame('status_light_on.png');
+    setTimeout(() => {
+        globalObjsTemp.generator.indicator.setFrame('status_light_off.png');
+        setTimeout(() => {
+            globalObjsTemp.generator.indicator.setFrame('status_light_on.png');
+            setTimeout(() => {
+                globalObjsTemp.generator.indicator.setFrame('status_light_off.png');
+            }, 30);
+        }, Math.floor(350 + Math.random * 200));
+    }, 50);
+    globalObjsTemp.generator.invalid.x = 429;
+    globalObjsTemp.generator.invalid.y = yPos;
+    globalObjsTemp.generator.invalid.setAlpha(0.75);
+    globalObjsTemp.generator.invalid.visible = true;
+    PhaserScene.tweens.add({
+        targets: globalObjsTemp.generator.invalid,
+        scaleX: 1.65,
+        scaleY: 1.65,
+        alpha: 1,
+        ease: 'Bounce.easeOut',
+        duration: 250,
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                delay: 300,
+                targets: globalObjsTemp.generator.invalid,
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 0,
+                ease: 'Cubic.easeIn',
+                duration: 600,
+                onComplete: () => {
+                    globalObjsTemp.generator.invalid.y = 9999;
+                }
+            });
+        }
+    });
 }
 
 function openGenerator() {
+    if (globalObjsTemp.generatorSound) {
+        globalObjsTemp.generatorSound.setVolume(1);
+    }
     for (let i in globalObjsTemp.generator) {
         globalObjsTemp.generator[i].visible = true;
         if (globalObjsTemp.generator[i].setState) {
             globalObjsTemp.generator[i].setState(NORMAL);
+            globalObjsTemp.generator[i].setAlpha(1);
         }
+    }
+    for (let j in globalObjsTemp.generatorWires) {
+        globalObjsTemp.generatorWires[j].visible = true;
     }
 }
 
 function closeGenerator() {
+    if (globalObjsTemp.generatorSound) {
+        globalObjsTemp.generatorSound.setVolume(0.25);
+    }
     for (let i in globalObjsTemp.generator) {
         globalObjsTemp.generator[i].visible = false;
         if (globalObjsTemp.generator[i].setState) {
             globalObjsTemp.generator[i].setState(DISABLE);
+            globalObjsTemp.generator[i].setAlpha(0.001);
         }
+    }
+    for (let j in globalObjsTemp.generatorWires) {
+        globalObjsTemp.generatorWires[j].visible = false;
     }
 }
 

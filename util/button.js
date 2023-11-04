@@ -395,11 +395,12 @@ class Button {
         }
     }
 
-    tweenToPos(x, y, duration, ease) {
+    tweenToPos(x, y, duration, ease, onUpdate) {
         let tweenObj = {
             targets: this.imageRefs[this.currImageRef],
             ease: ease,
             duration: duration,
+            onUpdate: onUpdate,
             onComplete: () => {
                 this.setPos(x, y);
             }

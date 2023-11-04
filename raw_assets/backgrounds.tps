@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>84</uint>
+        <uint>85</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>

@@ -282,7 +282,6 @@ class MiscSubscribe {
     }
 
     tvJumpscare() {
-        // TODO Replace
         playSound('emergency');
         gameState.tvScreaming = true;
     }
@@ -488,6 +487,7 @@ class MiscSubscribe {
                     volume: 1,
                 });
                 setRadioVolume(0);
+                globalObjsTemp.radioMusic.stop();
                 setTimeout(() => {
                     playSound('sizzle', 1);
                     globalObjsTemp.gloom.setAlpha(0.65);
