@@ -26,8 +26,260 @@ class MiscSubscribe {
 
         messageBus.subscribe("ethanEldritch1", this.ethanEldritch1.bind(this));
         messageBus.subscribe("ethanEldritch2", this.ethanEldritch2.bind(this));
+        messageBus.subscribe("EthanRefreshed", this.ethanRefreshed.bind(this));
+        messageBus.subscribe("ethanAsleep", this.ethanAsleep.bind(this));
 
+        messageBus.subscribe("startPhaseThree", this.startPhaseThree.bind(this));
 
+        messageBus.subscribe("radioTempQuiet", this.radioTempQuiet.bind(this));
+        messageBus.subscribe("radioTempQuietResume", this.radioTempQuietResume.bind(this));
+
+        messageBus.subscribe("JuanScratchDoorInterrupt", this.juanScratchDoorInterrupt.bind(this));
+
+        messageBus.subscribe("lockScratchDoor", this.lockScratchDoor.bind(this));
+        messageBus.subscribe("openScratchDoor", this.openScratchDoor.bind(this));
+
+        messageBus.subscribe("windowBreak", this.windowBreak.bind(this));
+        messageBus.subscribe("doggoJump", this.doggoJump.bind(this));
+        messageBus.subscribe("doggoAngry", this.doggoAngry.bind(this));
+
+    }
+
+    doggoAngry() {
+        this.scene.tweens.add({
+            targets: [gameCharacters.dog],
+            x: "-=60",
+            ease: 'Cubic.easeOut',
+            duration: 300,
+            yoyo: true,
+        });
+        playSound('bark');
+    }
+
+    doggoJump() {
+        this.scene.tweens.add({
+            delay: 400,
+            targets: [gameCharacters.dog],
+            y: "-=60",
+            ease: 'Cubic.easeOut',
+            duration: 220,
+            yoyo: true,
+        });
+        playSound('barksmall');
+    }
+
+    windowBreak() {
+        gameState.currentScene = 3;
+        playSound('glassbreak');
+        gameState.windowBroken = true;
+        setTimeout(() => {
+            PhaserScene.tweens.add({
+                targets: globalObjects.indoorRain,
+                volume: 0.85,
+                duration: 1000
+            });
+        }, 300);
+        // Dog run off
+        this.scene.tweens.add({
+            delay: 400,
+            targets: [gameCharacters.dog],
+            y: "-=60",
+            ease: 'Cubic.easeOut',
+            duration: 220,
+            yoyo: true,
+            onComplete: () => {
+                gameCharacters.dog.scaleX = 1;
+                this.scene.tweens.add({
+                    targets: [gameCharacters.dog],
+                    x: -980,
+                    y: "+=35",
+                    ease: 'Quad.easeIn',
+                    duration: 1000,
+                    onComplete: () => {// Create click
+                        gameCharacters.dog.scaleX = -1;
+                        globalObjects.diner.DogButton = new Button({
+                            normal: {
+                                atlas: "pixels",
+                                ref: "blue_pixel.png",
+                                x: gameCharacters.dog.x,
+                                y: gameCharacters.dog.y,
+                                scaleX: 100,
+                                scaleY: 100,
+                                alpha: 0.1
+                            },
+                            hover: {
+                                alpha: 0.05
+                            },
+                            press: {
+                                alpha: 0.12
+                            },
+                            disable: {
+                                alpha: 0.001
+                            },
+                            onMouseUp() {
+                                shiftOver(globalObjects.diner.DogButton.getXPos());
+                                clickDog();
+                            }
+                        });
+                        globalObjects.diner.DogButton.setDepth(1);
+                    }
+                });
+            }
+        });
+    }
+
+    lockScratchDoor() {
+        this.stopAnimDoor();
+    }
+
+    openScratchDoor() {
+        this.stopAnimDoor();
+        messageBus.publish("radioTempQuiet");
+        playSound('dooropen2');
+        this.scene.tweens.add({
+            targets: [gameCharacters.backdoor],
+            scaleX: 0.95,
+            ease: 'Cubic.easeOut',
+            duration: 50,
+            onComplete: () => {
+                this.scene.tweens.add({
+                    delay: 100,
+                    targets: [gameCharacters.backdoor],
+                    scaleX: 0.25,
+                    ease: 'Cubic.easeIn',
+                    duration: 5000,
+                    onComplete: () => {
+                        setTimeout(() => {
+                            playSound('barksmall');
+                        }, 450);
+                        this.scene.tweens.add({
+                            delay: 400,
+                            targets: [gameCharacters.dog],
+                            y: "-=60",
+                            ease: 'Cubic.easeOut',
+                            duration: 220,
+                            onComplete: () => {
+                                this.scene.tweens.add({
+                                    targets: [gameCharacters.dog],
+                                    y: "+=60",
+                                    ease: 'Cubic.easeIn',
+                                    duration: 250,
+                                    onComplete: () => {
+                                        gameCharacters.dog.setDepth(3);
+                                        this.scene.tweens.add({
+                                            targets: [gameCharacters.dog],
+                                            rotation: -0.1,
+                                            ease: 'Cubic.easeOut',
+                                            duration: 200,
+                                            onComplete: () => {
+                                                this.scene.tweens.add({
+                                                    targets: [gameCharacters.dog],
+                                                    rotation: 0.1,
+                                                    ease: 'Cubic.easeInOut',
+                                                    duration: 500,
+                                                    yoyo: true,
+                                                    repeat: 1,
+                                                    onComplete: () => {
+                                                        this.scene.tweens.add({
+                                                            targets: [gameCharacters.dog],
+                                                            rotation: 0,
+                                                            ease: 'Cubic.easeInOut',
+                                                            duration: 300,
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });
+                                        this.scene.tweens.add({
+                                            delay: 100,
+                                            targets: [gameCharacters.dog],
+                                            y: "+=25",
+                                            x: "-=130",
+                                            ease: 'Quad.easeInOut',
+                                            duration: 1400,
+                                            onComplete: () => {
+                                                gameCharacters.dog.scaleX = -1;
+                                                playSound('bark');
+                                                this.scene.tweens.add({
+                                                    delay: 250,
+                                                    targets: [gameCharacters.dog],
+                                                    y: "-=60",
+                                                    ease: 'Cubic.easeOut',
+                                                    duration: 220,
+                                                    onComplete: () => {
+                                                        this.scene.tweens.add({
+                                                            delay: 250,
+                                                            targets: [gameCharacters.dog],
+                                                            y: "+=60",
+                                                            ease: 'Cubic.easeIn',
+                                                            duration: 280,
+                                                            onComplete: () => {
+                                                                this.scene.tweens.add({
+                                                                    targets: [gameCharacters.backdoor],
+                                                                    scaleX: 1,
+                                                                    ease: 'Quad.easeIn',
+                                                                    duration: 500
+                                                                });
+                                                                messageBus.publish("radioTempQuietResume");
+                                                                dialogManager.showDialogNode('OpenScratchDoorFinish');
+                                                            }
+                                                        });
+                                                    }
+                                                });
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
+
+    stopAnimDoor() {
+        gameCharacters.backdoor.stop();
+        gameCharacters.backdoor.setFrame('backdoor1.png');
+        if (globalObjects.scratchSound) {
+            globalObjects.scratchSound.stop();
+        }
+    }
+
+    juanScratchDoorInterrupt() {
+        setTimeout(() => {
+            globalObjsTemp.black.setAlpha(0.2);
+            setTimeout(() => {
+                globalObjsTemp.black.setAlpha(0);
+            },60);
+        },200);
+        setTimeout(() => {
+            if (!gameState.scratchDoorInterrupt) {
+                gameState.scratchDoorInterrupt = true;
+                dialogManager.showDialogNode('ScratchDoorInterrupt');
+            }
+        }, 750);
+
+    }
+
+    radioTempQuiet() {
+        if (gameVars.radioVolume > 0.05) {
+            globalObjsTemp.tempRadioVolume = gameVars.radioVolume;
+            setRadioVolume(0.01);
+        }
+    }
+
+    radioTempQuietResume() {
+        setTimeout(() => {
+            setRadioVolume(globalObjsTemp.tempRadioVolume);
+        }, 150);
+    }
+
+    startPhaseThree() {
+        if (gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
+            gameState.scratchingDoor = true;
+            dialogManager.showDialogNode('DoorScratchStart');
+        }
     }
 
     ethanEldritch1() {
@@ -53,6 +305,15 @@ class MiscSubscribe {
                 },1500);
             },40);
         },500);
+    }
+
+    ethanRefreshed() {
+        gameCharacters.ethan.setFrame('ethan1.png');
+    }
+
+    ethanAsleep() {
+        gameCharacters.ethan.setFrame('ethan_sleep.png');
+
     }
 
     startEldritchEthan() {
@@ -419,7 +680,9 @@ class MiscSubscribe {
                                             let eyelid1 = this.scene.add.image(-850, gameConsts.halfHeight - 260, 'characters', 'blackCircle.png').setDepth(-1).setScale(6).setOrigin(0.5, 0.99);
                                             let eyelid2 = this.scene.add.image(-850 + 173, gameConsts.halfHeight - 75 + 100, 'characters', 'blackCircle.png').setDepth(-1).setScale(6).setOrigin(0.5, 0.99).setRotation(2.09);
                                             let eyelid3 = this.scene.add.image(-850 - 173, gameConsts.halfHeight - 75 + 100, 'characters', 'blackCircle.png').setDepth(-1).setScale(6).setOrigin(0.5, 0.99).setRotation(4.19);
-                                            playSound('eyeclose');
+                                            setTimeout(() => {
+                                                playSound('eyeclose');
+                                            }, 100);
                                             this.scene.tweens.add({
                                                 targets: [eyelid1, eyelid2, eyelid3],
                                                 duration: 275,
@@ -427,7 +690,7 @@ class MiscSubscribe {
                                                 scaleY: 5,
                                                 x: -850,
                                                 y: gameConsts.halfHeight - 65,
-                                                ease: 'Quad.easeIn',
+                                                ease: 'Cubic.easeIn',
                                                 onComplete: () => {
                                                     eyelid1.destroy();
                                                     eyelid2.destroy();
@@ -469,6 +732,7 @@ class MiscSubscribe {
     actOneEnd() {
         gameState.powerOff = true;
         gameState.currentScene = 2;
+        resetRadioPosition();
         this.updateRadioChannels();
         if (!globalObjsTemp.black) {
             globalObjsTemp.black = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(5000, 999);
@@ -527,6 +791,11 @@ class MiscSubscribe {
         }, 70);
     }
 
+    actTwoEnd() {
+        gameState.currentScene = 3;
+        this.updateRadioChannels();
+    }
+
     showWindowShadow1() {
         // Now using scene two logic
         this.scene.tweens.add({
@@ -542,6 +811,7 @@ class MiscSubscribe {
             ease: 'Quad.easeOut',
         });
         helperFunction.screenShake();
+
         setTimeout(() => {
             dialogManager.hideDialogNode();
             setTimeout(() => {
@@ -562,7 +832,7 @@ class MiscSubscribe {
     edithStandCorner() {
         gameCharacters.edith.setFrame('edith2.png');
         gameCharacters.edith.scaleX = -1;
-        const EdithFinalPos = -100;
+        const EdithFinalPos = 50;
         globalObjects.diner.EdithButton.setPos(EdithFinalPos, globalObjects.diner.EdithButton.getPosY());
         // gameCharacters.edith
         this.scene.tweens.add({
@@ -581,7 +851,17 @@ class MiscSubscribe {
     }
 
     updateRadioChannels() {
-        if (gameState.currentScene == 2) {
+        console.log("updating radio channels ", gameState.currentScene)
+        if (gameState.currentScene == 1) {
+            globalObjsTemp.songs = {
+                235.75: 'slowwalk',
+                294.25: 'dabbda',
+                356: 'foolrushin_poor',
+                386.25: 'guitarboogieshuffle',
+                446.75: 'weatherblur',
+                506: 'news1'
+            };
+        } else if (gameState.currentScene == 2) {
             globalObjsTemp.songs = {
                 235.75: 'lofi',
                 294.25: 'news2',
@@ -591,6 +871,9 @@ class MiscSubscribe {
             };
         } else if (false) {
             // Final music find
+            globalObjsTemp.radioStatic1.stop();
+            globalObjsTemp.radioStatic1 = playSound('sellafieldalarm', 0, true);
+            globalObjsTemp.radioStatic2.stop();
             globalObjsTemp.songs = {
                 235.75: 'lofi',
                 294.25: 'dabbda',
@@ -605,5 +888,6 @@ class MiscSubscribe {
                 386.25: 'news3',
             };
         }
+        console.log(globalObjsTemp.songs);
     }
 }

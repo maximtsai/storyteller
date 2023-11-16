@@ -20,30 +20,31 @@ helperFunction.runFunctionOverIntervals = function runFunctionOverIntervals(func
 helperFunction.screenShake = function screenshake() {
     PhaserScene.tweens.add({
         targets: [PhaserScene.cameras.main],
-        scrollX: "+=5",
+        scrollX: "+=6",
+        scrollX: "+=1",
         ease: 'Cubic.easeOut',
         duration: 40,
         onComplete: () => {
             PhaserScene.tweens.add({
                 targets: [PhaserScene.cameras.main],
-                scrollX: "-=8",
-                scrollY: "-=1",
+                scrollX: "-=9",
+                scrollY: "-=3",
                 ease: 'Cubic.easeInOut',
-                duration: 70,
+                duration: 75,
                 onComplete: () => {
                     PhaserScene.tweens.add({
                         targets: [PhaserScene.cameras.main],
-                        scrollX: "+=4",
+                        scrollX: "+=5",
                         scrollY: "+=2",
                         ease: 'Cubic.easeInOut',
-                        duration: 100,
+                        duration: 110,
                         onComplete: () => {
                             PhaserScene.tweens.add({
                                 targets: [PhaserScene.cameras.main],
-                                scrollX: "-=1",
+                                scrollX: "-=2",
                                 scrollY: "-=1",
                                 ease: 'Cubic.easeInOut',
-                                duration: 120
+                                duration: 130
                             });
                         }
                     });

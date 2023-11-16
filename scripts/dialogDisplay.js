@@ -7,15 +7,15 @@ class DialogBranchButton {
                 "ref": "blackPixel",
                 x: x,
                 y: y,
-                alpha: 0.5
+                alpha: 0.65
             },
             hover: {
                 "ref": "blackPixel",
-                alpha: 0.4
+                alpha: 0.75
             },
             press: {
                 "ref": "blackPixel",
-                alpha: 0.6
+                alpha: 0.45
             },
             disable: {
                 "ref": "blackPixel",
@@ -90,7 +90,7 @@ class DialogDisplay {
         this.dialogBox.visible = false;
         this.dialogBox.setDepth(999);
         this.dialogBox.setOrigin(0.5, 0);
-        this.dialogBox.alpha = 0.65;
+        this.dialogBox.alpha = 0.7;
         this.dialogBox.scrollFactorX = 0;
         this.dialogBox.scrollFactorY = 0;
 

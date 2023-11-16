@@ -3,17 +3,28 @@ let config = {
     scale: {
         parent: 'phaser-app',
         width: 720,
-        height: 640
+        height: 640,
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
+        autoRound: true,
     },
-    antialias: true,
+    render: {
+        // Leave on to prevent pixelated graphics
+        antialias: true,
+        roundPixels: true,
+    },
     transparent: true,
-    roundPixels: false,
-    parent: 'phaser-example',
+    parent: 'phaser-app',
+    expandParent: true,
+    clearBeforeRender: false,
     scene: {
         preload: preload,
         create: create,
         update: update
-    }
+    },
+    dom: {
+        createContainer: true,
+    },
 };
 
 function isSafariIOS() {
@@ -24,7 +35,14 @@ function isSafariIOS() {
     return iOSSafari;
 }
 
-let game = new Phaser.Game(config); // var canvas = game.canvas;
+let game;
+let canvas;
+setTimeout(() => {
+    game = new Phaser.Game(config); // var canvas = game.canvas;
+    canvas = game.canvas;
+}, 10);
+
+// console.log(game.canvas);
 let gameConsts = {
     width: config.scale.width,
     halfWidth: config.scale.width * 0.5,
@@ -82,6 +100,8 @@ let timeUpdateCounterMax = 5;
 
 function preload ()
 {
+    let gameDiv = document.getElementById('preload-notice');
+    gameDiv.innerHTML = "";
     loadFileList(this, imageFilesPreload, 'image');
 }
 

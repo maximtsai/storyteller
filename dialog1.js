@@ -7,7 +7,7 @@ let dialogList1 = {
     },
     findSeat: {
         speech: [
-            {speaker: "Maggie", face: "maggie_normal.png", text: "Honey, just grab a seat.\nI\'ll be right with you.", data: {property: "askedSeat", value: "true"}},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "Honey, just grab a seat.\nI\'ll be right with you.", data: {property: "askedSeat", value: true}},
             {speaker: "You", text: "Where\'s the rest of your staff?"},
             {speaker: "Maggie", face: "maggie_sad.png", text: "My line cook had to call out and my...\nwell it\'s just me tonight."},
         ],
@@ -37,7 +37,7 @@ let dialogList1 = {
             {speaker: "Maggie", face: "maggie_dark_scared.png", text: "Out back, but its wires are all tangled\nup. I've been meaning to fix it, but it was\nalways my late husband who was good\nat these things."},
             {speaker: "You", text: "I'm pretty handy with machines.\nLet me take a crack at it."},
             {speaker: "Maggie", face: "maggie_dark_scared.png", text: "Thank you honey.\nYou'll need these keys to the shed."},
-            {speaker: "", text: "  (Maggie hands you an old key)"},
+            {speaker: "", text: "  (You can now exit the backdoor)"},
         ]
     },
     MaggieAct2PowerOffFin: {
@@ -48,24 +48,24 @@ let dialogList1 = {
 
     MaggieAct2ThankYou: {
         speech: [
-            {speaker: "Maggie", face: "maggie_happy.png", text: "Honey, thank you for helping with the\ngenerator. Dinner's on the house.", data: {property: "alreadyThanked", value: "true"}},
+            {speaker: "Maggie", face: "maggie_happy.png", text: "Honey, thank you for helping with the\ngenerator. Dinner's on the house.", data: {property: "alreadyThanked", value: true}},
             {speaker: " ", text: "   (Maggie serves you a delicious meal of waffles,\n   meatloaf, hashbrowns and a large milkshake)"},
         ],
         branches: [
-            {text: "There were a lot of tools in the\nshed, does your staff normally\nhelp with that sort of thing?", targetNode: "MaggieAct2Sad"},
+            {text: "Does your staff normally help\nwith fixing things?", targetNode: "MaggieAct2Sad"},
             {text: "Free dinner from a pretty lady\ncount me in!", targetNode: "MaggieAct2Happy"},
         ]
     },
     MaggieAct2Sad: {
         speech: [
-            {speaker: "Maggie", face: "maggie_sad.png", text: "Not so much anymore.", data: {property: "MaggieAct2FinishedMeh", value: "true"}},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "Not so much anymore.", data: {property: "MaggieAct2Chat", value: true}},
         ]
     },
 
     MaggieAct2Happy: {
         speech: [
             {speaker: "Maggie", face: "maggie_happy.png", text: "Ha-ha, darling, you're about thirty years\ntoo young for me."},
-            {speaker: "Maggie", face: "maggie_normal.png", text: "But I know men of all ages enjoy a good\nhearty meal!", publish: "MaggieInfluence", data: {property: "MaggieAct2Chat", value: "true"}},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "But I know men of all ages enjoy a good\nhearty meal!", publish: "MaggieInfluence", data: {property: "MaggieAct2Chat", value: true}},
         ]
     },
 
@@ -100,12 +100,12 @@ let dialogList1 = {
     },
     MaggieDishes: {
         speech: [
-            {speaker: "Maggie", face: "maggie_normal.png", text: "You finish up and just leave the dishes,•••••••\nI'll take care of them.", data: {property: "MaggieAct2FinishedMeh", value: "true"}},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "You finish up and just leave the dishes,•••••••\nI'll take care of them.", data: {property: "MaggieAct2FinishedMeh", value: true}},
         ],
     },
     MaggieDishesTwo: {
         speech: [
-            {speaker: "Maggie", face: "maggie_normal.png", text: "No, you just keep walking' bout keeping\nmy customers calm. I'll take care of them.", data: {property: "MaggieAct2FinishedMeh", value: "true"}},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "No, you just keep walking' bout keeping\nmy customers calm. I'll take care of them.", data: {property: "MaggieAct2FinishedMeh", value: true}},
         ],
     },
     MaggieHusbandContinue: {
@@ -122,7 +122,7 @@ let dialogList1 = {
             {speaker: "Maggie", face: "maggie_sad.png", text: "Some people had trouble with two people\nthat different being in love."},
             {speaker: "Maggie", face: "maggie_happy.png", text: "My sweet man didn't care. We left that\ncity and bought this truck stop and turned\nit into one of the finest establishments\nin the west."},
             {speaker: "Maggie", face: "maggie_reminisce.png", text: "I got to cook whatever I wanted, and he\nrepaired trucks as they passed through."},
-            {text: "                  (Maggie sighs heavily)", publish: "MaggieInfluence", data: {property: "MaggieAct2FinishedGood", value: "true"}},
+            {text: "                  (Maggie sighs heavily)", publish: "MaggieInfluence", data: {property: "MaggieAct2FinishedGood", value: true}},
         ],
         branches: [
             {text: "Sounds like you really loved him.", targetNode: "MaggieLove"},
@@ -172,9 +172,21 @@ let dialogList1 = {
             {speaker: "Edith", face: "edith_normal.png", text: "Sorry, this booth\'s taken."},
         ]
     },
+    introEdith2: {
+        speech: [
+            {speaker: "Edith", face: "edith_normal.png", text: "Sorry, Ethan can be a bit... well very\nscatterbrained at times."},
+            {speaker: "Edith", face: "edith_normal.png", text: "He planned this road trip for the two of\nus to make up for... well things."},
+            {speaker: "Edith", face: "edith_sad.png", text: "And now we're stuck here."},
+        ]
+    },
+    introEdith3: {
+        speech: [
+            {speaker: " ", text: "  (Edith doesn't feel like talking)"},
+        ]
+    },
     Edith2Dark: {
         speech: [
-            {speaker: "Edith", face: "edith_dark_scared.png", text: "Ethan, Ethan!\nAre you alright?", data: {property: "askedEdithDark", value: "true"}},
+            {speaker: "Edith", face: "edith_dark_scared.png", text: "Ethan, Ethan!\nAre you alright?", data: {property: "askedEdithDark", value: true}},
             {speaker: "Ethan", face: "ethan_dark_scared.png", text: "(insert text about being high and\nmuttering nonsense)"},
             {speaker: "Edith", face: "edith_dark_scared.png", text: "*sigh*, coming here was a mistake."},
         ]
@@ -218,12 +230,17 @@ let dialogList1 = {
     },
     Edith2SeeInHim: {
         speech: [
-            {speaker: "Edith", face: "edith_normal.png", text: ".•••••••••••.•••••••••••.•••••••••••\nGood question.", data: {property: "edithThinking", value: "true"}},
+            {speaker: "Edith", face: "edith_normal.png", text: "What did I see in him.•••••••.••••••••.••••••••\nGood question.", data: {property: "edithThinking", value: true}},
         ],
     },
     Edith2ChatFinThought: {
         speech: [
             {speaker: "", text: "   (Edith is deep in thought)"},
+        ],
+    },
+    Edith2ChatFinScratch: {
+        speech: [
+            {speaker: "", text: "(Edith is keeping her distance from the back door)"},
         ],
     },
     Edith2ChatFin: {
@@ -237,7 +254,7 @@ let dialogList1 = {
             {speaker: "Ethan", face: "ethan_normal.png", text: "Hey man, you got a light?"},
             {speaker: "You", text: "No, I don\'t smoke."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Do you shoot instead?",
-                data: {property: "EthanIntroduced", value: "true"}},
+                data: {property: "EthanIntroduced", value: true}},
         ],
         branches: [
             {text: "Shoot... hoops?", targetNode: "EthanEdithLaugh"},
@@ -266,7 +283,7 @@ let dialogList1 = {
         speech: [
             {speaker: "Ethan", face: "ethan_normal.png",
                 text: "I think there was a free seat.•••••••••••.•••••••••••.•••••••••••\nsomewhere over there?\n(Ethan gestures everywhere lazily)",
-                data: {property: "EthanAct1Fin", value: "true"}},
+                data: {property: "EthanAct1Fin", value: true}},
         ]
     },
     EthanActOneEnd: {
@@ -322,7 +339,7 @@ let dialogList1 = {
     EdithEthan2Showing: {
         speech: [
             {speaker: "Edith", face: "edith_sad.png", text: "NOTHING! He's just on a bad trip!\n" +
-                    "He just needs to calm down and ride it out"},
+                    "He just needs to calm down and ride it out."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "It's big, and curious, and-"},
             {speaker: "Edith", face: "edith_sad.png", text: "NO! It's nothing!"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "I can hear something from your\nbelly too."},
@@ -367,9 +384,15 @@ let dialogList1 = {
             {text: "What's it showing now?", targetNode: "Ethan2TVShowing", publish: "EthanInfluence"},
         ]
     },
+    Ethan2ChatFin: {
+        speech: [
+            {speaker: "",  text: "   (Ethan looks more alert than usual)"},
+        ]
+    },
     Ethan2Water: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Thanks. Edith is really mad at me isn't\nshe?"},
+            {speaker: "Ethan", face: "ethan_normal.png", forceProgress: true, unclickable: true, text: "•.••••••.••••••.••••••••••"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Thanks. Edith is really mad at me isn't\nshe?", publish: "EthanRefreshed"},
             {speaker: "You", text: "Yeah."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Girls get moody when pregnant right?"},
         ],
@@ -381,39 +404,38 @@ let dialogList1 = {
     Ethan2Mood: {
         speech: [
             {speaker: "Ethan", face: "ethan_sad.png", text: "Man, you're not my dad!"},
-            {speaker: "You", text: "No, I'm not. But you're not being\nmuch of a dad either."},
+            {speaker: "You", text: "No, I'm not. But you're not being much of a\ndad either."},
         ]
     },
     Ethan2LetHerBe: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Yeah. I think I just need to\nsober up."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Yeah. I think I just need to sober up."},
         ]
     },
     Ethan2TVShowing: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "An eye. Big, cold, and with too many\ncorners..."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "An eye. Big, cold, and with too many\ncorners...", publish: "EthanRefreshed"},
             {speaker: "You", text: "An eye? That's weird."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "It's talking too.", publish: "ethanEldritch2"},
             {speaker: "You", text: "What's it telling us?"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "It's not."},
             {speaker: "You", text: "It's not talking?"},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "No. It's not talking to us.\nYou wouldn't talk to an ant after all.", data: {property: "canAskEthanEldritch", value: "true"}},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "No. It's not talking to us.\nYou wouldn't talk to an ant after all.", data: {property: "canAskEthanEldritch", value: true}},
         ]
     },
     Ethan2Eldritch: {
         speech: [
-            {speaker: "You", text: "Can you at least make sense of what\nyou're hearing?", data: {property: "ethanEldritchAsked", value: "true"}},
+            {speaker: "You", text: "Can you at least make sense of what\nyou're hearing?", data: {property: "ethanEldritchAsked", value: true}},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Sorta. But I don't think it likes it\nwhen I listen too closely.", publish: "ethanEldritch2"},
         ],
         branches: [
             {text: "Listen to it anyways. You might\npick up something interesting.", targetNode: "Ethan2EldritchCont"},
             {text: "Probably better that you don't listen\ntoo closely to strange sounds."},
-            {text: "Nevermind."},
         ]
     },
     Ethan2EldritchCont: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Aight man, uh••.••.••.••••• very roughly,•• I think it's\ntrying to say..••", data: {property: "canAskEthanEldritch", value: "false"}},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Aight man, uh••.••.••.••••• very roughly,•• I think it's\ntrying to say..••", data: {property: "canAskEthanEldritch", value: false}},
             {speaker: "Ethan", face: "ethan_sad.png", text: "It's•••.•••.•••.•••••••••••••\ntrying to say••••.••••.•••••••••.•••••"},
             {speaker: "Ethan", face: "ethan_sad.png", unclickable: true, forceProgress: true, text: "Y'know I think it's better if I just sho"},
             {speaker: "Ethan", face: "ethan_dark_scared.png", forceProgress: true, text: "•...", publish: "startEldritchEthan"},
@@ -424,11 +446,6 @@ let dialogList1 = {
         speech: [
             {speaker: "Ethan", face: "ethan_normal.png", text: "•Y'know,••••••••• something like that."},
         ],
-    },
-    Ethan2ChatFin: {
-        speech: [
-            {speaker: "",  text: "   (Ethan looks more sober than usual)"},
-        ]
     },
     Ethan2ChatFinEldritch: {
         speech: [
@@ -445,7 +462,7 @@ let dialogList1 = {
 
     JuanIntro: {
         speech: [
-            {speaker: "Juan", face: "juan_normal.png", text: "What are you looking at?", data: {property: "juanIntroduced", value: "true"}},
+            {speaker: "Juan", face: "juan_normal.png", text: "What are you looking at?", data: {property: "juanIntroduced", value: true}},
             {speaker: "You", text: "Just looking for a seat."},
             {speaker: "Juan", face: "juan_normal.png", text: "This booth's taken."},
             {speaker: "You", text: ".••••.•••••••••••Not very friendly are you."},
@@ -454,12 +471,12 @@ let dialogList1 = {
     },
     Juan1Enda: {
         speech: [
-            {speaker: "Juan", face: "juan_normal.png", text: "Try the booth at the end.", data: {property: "juanAskedSeat", value: "true"}},
+            {speaker: "Juan", face: "juan_normal.png", text: "Try the booth at the end.", data: {property: "juanAskedSeat", value: true}},
         ]
     },
     Juan1Endb: {
         speech: [
-            {speaker: "Juan", face: "juan_normal.png", text: "The *other* end not this one."},
+            {speaker: "Juan", face: "juan_normal.png", text: "The booth at the *other* end, not this one."},
         ]
     },
 
@@ -477,7 +494,7 @@ let dialogList1 = {
         speech: [
             {speaker: "Juan", face: "juan_normal.png", text: "Hey Trucker."},
             {speaker: "You", text: "Name's Noah."},
-            {speaker: "Juan", face: "juan_normal.png", text: "Mine's Juan.\nWere you the one who got the\ngenerator going again?"},
+            {speaker: "Juan", face: "juan_normal.png", text: "Mine's Juan.\nWere you the one who got the generator\ngoing again?"},
             {speaker: "You", text: "Yeah."},
             {speaker: "Juan", face: "juan_happy.png", text: "Pretty handy. What else can you work on?", publish: "JuanInfluence"},
         ],
@@ -508,6 +525,11 @@ let dialogList1 = {
             {speaker: "Juan", face: "juan_normal.png", text: "It's not smart to lay all your cards\non the table from the word go."},
         ]
     },
+    Juan2ChatFinScratch: {
+        speech: [
+            {speaker: "Juan", face: "juan_normal.png", text: "You can never be too careful in these\ntimes."},
+        ]
+    },
     Juan2ChatFin: {
         speech: [
             {speaker: "Juan", face: "juan_normal.png", text: "I've seen you talking with the others.\nKeep a sharp eye out for who's useful."},
@@ -516,7 +538,7 @@ let dialogList1 = {
 
     BrunaIntro: {
         speech: [
-            {speaker: "???", face: "bruna_normal.png", text: "I'm not doing autographs or photos\nright now.", data: {property: "brunaIntroduced", value: "true"}},
+            {speaker: "???", face: "bruna_normal.png", text: "I'm not doing autographs or photos\nright now.", data: {property: "brunaIntroduced", value: true}},
             {speaker: "You", text: "Excuse me but who are you?"},
             {speaker: "Bruna", face: "bruna_normal.png", text: "Don't you know me? I'm Bruna Starr.\nI have three million followers on I-posty."},
             {speaker: "You", text: "Sorry, I'm not on that app."},
@@ -578,7 +600,7 @@ let dialogList1 = {
     },
     Bruna2Dark: {
         speech: [
-            {speaker: "You", text: "Did you see anything out the window?", data: {property: "askedBrunaDark", value: "true"}},
+            {speaker: "You", text: "Did you see anything out the window?", data: {property: "askedBrunaDark", value: true}},
             {speaker: "Bruna", face: "bruna_dark_scared.png", text: "No my screen blinded me when the lights\nwent off. Did you get a picture?"},
             {speaker: "You", text: "I'm not carrying a phone or camera with me."},
             {speaker: "Bruna", face: "bruna_dark_scared.png", text: "What an odd way to live."},
@@ -591,7 +613,8 @@ let dialogList1 = {
     },
     Bruna2Chat: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: "Do you think there will be enough power\nto charge my phone?", data: {property: "brunaChatted2", value: "true"}},
+            {speaker: "Bruna", face: "bruna_happy.png", text: "Thank you for fixing the power!", data: {property: "brunaChatted2", value: true}},
+            {speaker: "Bruna", face: "bruna_normal.png", text: "Do you think there will be enough power\nto charge my phone?"},
             {speaker: "You", text: "Hard to say, Bruna. What's so important\non your phone anyway?"},
             {speaker: "Bruna", face: "bruna_normal.png", text: "My friends are posting updates."},
         ],
@@ -602,7 +625,7 @@ let dialogList1 = {
     },
     Bruna2Unplug: {
         speech: [
-            {speaker: "Bruna", face: "bruna_sad.png", text: "You may like to live with stuffing in\nyour ears and blinders on your eyes\nyou Dösbaddel! I do not!", data: {property: "bruna2ChattedAngry", value: "true"}},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "You may like to live with stuffing in\nyour ears and blinders on your eyes\nyou Dosbaddel! I do not!", data: {property: "bruna2ChattedAngry", value: true}},
         ],
     },
 
@@ -618,12 +641,36 @@ let dialogList1 = {
     Bruna2ChatApology: {
         speech: [
             {speaker: "You", text: "To apologize. I got no room to judge where\npeople turn for comfort.\nSo, sorry.", publish: "BrunaInfluence"},
-            {speaker: "Bruna", face: "bruna_normal.png", text: ".••••••••••••••.••••••••••••••.Thank you.\nI should not have called you a\nDösbaddel either."},
+            {speaker: "Bruna", face: "bruna_normal.png", text: ".••••••.•••••••.•••••Thank you.\nI should not have called you a\nDosbaddel either."},
             {speaker: "You", text: "Fresh start?"},
             {speaker: "Bruna", face: "bruna_normal.png", text: "Ja, fresh start.\nOh! My friend in Cairo is calling!"},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "She claims the Nile is flowing the wrong way."},
-            {speaker: "You", text: "Huh, I'l leave you to it.", data: {property: "bruna2ChattedAngry", value: "false"}},
+            {speaker: "Bruna", face: "bruna_normal.png", text: "She claims the Nile is flowing the\nwrong way."},
+            {speaker: "You", text: "Huh, I'l leave you to it.", data: {property: "bruna2ChattedAngry", value: false}},
         ],
+    },
+    Bruna2ChatHopeSprings: {
+        speech: [
+            {speaker: "You", text: "Hey Bruna, do you know of a place called\n\"Hope Springs\"?"},
+            {speaker: "Bruna", face: "bruna_normal.png", text: "Let me check, H••-O••-P••-E•••• S••-P••-R••-I••-N••-G••-S•.•.•.••••••• \nIt is not too far from here, but it is\nnear the top of a mountain."},
+            {speaker: "Bruna", face: "bruna_normal.png", text: "The road is very tricky in that direction.\nWhy do you want to go there?"},
+        ],
+        branches: [
+            {text: "I think it would be safer there\nwith everything that's going on.", targetNode: "Bruna2Safer"},
+            {text: "The old man behind you told\nme to look for somewhere safer.", targetNode: "Bruna2OldMan"},
+        ]
+    },
+    Bruna2Safer: {
+        speech: [
+            {speaker: "Bruna", face: "bruna_happy.png", text: "Now that you say it, all my friends\nliving in high elevation areas seem to\nbe doing ok!", publish: "BrunaInfluence"},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "But I don't know if it is a good idea\nto drive there in this heavy rain."},
+        ]
+    },
+    Bruna2OldMan: {
+        speech: [
+            {speaker: "Bruna", face: "bruna_normal.png", text: "Old man behind me..."},
+            {speaker: "Bruna", face: "bruna_behind.png", text: "._.", publish: "radioTempQuiet"},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "This is no time for joking.", publish: "radioTempQuietResume"},
+        ]
     },
     Bruna2Updates: {
         speech: [
@@ -632,15 +679,15 @@ let dialogList1 = {
             {speaker: "Bruna", face: "bruna_normal.png", text: "It is! Everyone's posting about it.\nI have friends on five continents\nand they all confirmed it!"},
         ],
         branches: [
-            {text: "Maybe it was a solar flare?.", targetNode: "Bruna2Solar"},
+            {text: "Maybe it was a solar flare?", targetNode: "Bruna2Solar"},
             {text: "This isn't some big prank?", targetNode: "Bruna2Prank"},
         ]
     },
     Bruna2Solar: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: "Maybe. But that's not all.\nMy buddy in Buenos Aires says there's\nlava down town."},
+            {speaker: "Bruna", face: "bruna_normal.png", text: "Maybe, but my satellite wifi still works.\n•••••Oh, my buddy in Buenos Aires says\nthere's lava erupting down town."},
             {speaker: "You", text: "Is that one of them island nations?"},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "No. There's no history of volcanos anywhere\nnear there. And yet, he just sent a video\nof it."},
+            {speaker: "Bruna", face: "bruna_normal.png", text: "No. There's no history of volcanos\nanywhere near there. And yet, he just\nsent a video of it."},
             {speaker: "You", text: "Video? How close was he?"},
             {speaker: "Bruna", face: "bruna_sad.png", text: "Close. The lava was moving funny and he\nwanted to show it. But I can't get ahold\nof him now."},
             {speaker: "You", text: "Keep at it. I'm sure he's just distracted."},
@@ -650,14 +697,19 @@ let dialogList1 = {
         speech: [
             {speaker: "Bruna", face: "bruna_normal.png", text: "No. And that's not all. Tokyo went dark\nthirty minutes ago. My friend does\nVR work there."},
             {speaker: "Bruna", face: "bruna_normal.png", text: "She says there's something outside her\nwindow looking in."},
-            {speaker: "You", text: "I'm sure it's just a critter. They still\nhave owls in Japan, right?"},
+            {speaker: "You", text: "I'm sure it's just a critter. They still have owls\nin Japan, right?"},
             {speaker: "Bruna", face: "bruna_normal.png", text: "She's on the 48th floor."},
-            {speaker: "Bruna", face: "bruna_sad.png", text: "And she's not answering my calls anymore."},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "And she's not answering my calls\nanymore."},
         ],
     },
     Bruna2ChatFin: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: " (Bruna is busy checking news of disasters\npopping up around the world)"},
+            {speaker: "Bruna", face: "bruna_normal.png", text: " (Bruna is busy with her phone. You notice\npicture after picture of disasters)"},
+        ],
+    },
+    Bruna2ChatFinScratch: {
+        speech: [
+            {speaker: "Bruna", face: "bruna_normal.png", text: "(Bruna is squeezing herself into the seat)"},
         ],
     },
 
@@ -687,12 +739,6 @@ let dialogList1 = {
                     "important I must tell you."}
         ]
     },
-    CasparTalkOthersNotDone: {
-        speech: [
-            {speaker: "Caspar", face: "caspar_normal.png", text: "Come back once you're done talking to\n" +
-                    "the others."},
-        ]
-    },
     CasparTalkOthersDone: {
         speech: [
             {speaker: "Caspar", face: "caspar_normal.png", text: "Did you get a chance to meet\neveryone else?"},
@@ -702,14 +748,32 @@ let dialogList1 = {
             {text: "Not yet", targetNode: "CasparActOneWait"},
         ]
     },
+    CasparTalkOthersNotDone: {
+        speech: [
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Did you get a chance to meet\neveryone else?"},
+        ],
+        branches: [
+            {text: "Yeah", targetNode: "CasparActOneContinueDoubt"},
+            {text: "Not yet", targetNode: "CasparActOneWait"},
+        ]
+    },
     CasparActOneWait: {
         speech: [
             {speaker: "Caspar", face: "caspar_normal.png", text: "Take your time. Storm's not going away\nany time soon."},
         ],
     },
+    CasparActOneContinueDoubt: {
+        speech: [
+            {speaker: "Caspar", face: "caspar_doubt.png", text: "Is that really so?"},
+        ],
+        branches: [
+            {text: "Of course!", targetNode: "CasparActOneContinue"},
+            {text: "Maybe I missed someone", targetNode: "CasparActOneWait"},
+        ]
+    },
     CasparActOneContinue: {
         speech: [
-            {speaker: "You", text: "Yeah, odd crowd that's drifted in for sure.", data: {property: "CasparActOneFin", value: "true"}, publish: "startDark"},
+            {speaker: "You", text: "Yeah, odd crowd that's drifted in for sure.", data: {property: "CasparActOneFin", value: true}, publish: "startDark"},
             {speaker: "Caspar", face: "caspar_normal.png", text: "No odder than you or me, friend."},
             {speaker: "Maggie", face: "maggie_normal.png", text: "Here Honey, one hot coffee.", publish: "MaggieCoffee"},
             {speaker: "Maggie", face: "maggie_normal.png", forceProgress: true, text: "Sorry about the wait. What can I get\nstarted for...••••••••••", publish: "ActOneEnd"},
@@ -798,13 +862,165 @@ let dialogList1 = {
         speech: [
             {speaker: "Caspar", face: "caspar_normal.png", text: "Everyone seems a bit rattled after\nthe lights went out on us."},
             {speaker: "Caspar", face: "caspar_normal.png", text: "Why don't you go check on them?"},
-            {speaker: "You", text: "You can talk with them as well\nas I can"},
+            {speaker: "You", text: "You can talk with them as well as I can."},
             {speaker: "Caspar", face: "caspar_normal.png", text: "But I'm not the hero who got the\nlights back on, son."},
         ],
     },
+    CasparAct2WelcomeRadio: {
+        speech: [
+            {speaker: "Caspar", face: "caspar_normal.png", text: "It's nice that you're making rounds\nwith the customers here."},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Looks like a few of em still have\nsomething on their minds."},
+            {speaker: "You", text: "You can talk with them as well as I can."},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "But I'm not the hero who got the\nlights back on, son."},
+        ],
+    },
+
     CasparAct2WelcomeDone: {
         speech: [
             {speaker: "Caspar", face: "caspar_normal.png", text: "Go on now, I'm sure the others will calm\ndown some once you've had a chat with\nthem."},
+        ],
+    },
+    CasparAct2DoorScratch: {
+        speech: [
+            {speaker: "You", text: "Hey Caspar, any idea what's behind the back door?"},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Who knows?\nBut remember that you'll be responsible for any\naction you decide to take with it."},
+        ]
+    },
+    CasparAct2Ask: {
+        speech: [
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Yes son?"},
+        ],
+        branches: [
+            {text: "What was I supposed to do again?", targetNode: "CasparAct2What"},
+            {text: "Where can I find somewhere safe?", targetNode: "CasparAct2Where"},
+            {text: "If it's not safe here, why\nhaven't you left yourself?", targetNode: "CasparAct2Why"},
+            {text: "Nevermind."},
+        ]
+    },
+    CasparAct2What: {
+        speech: [
+            {speaker: "Caspar", face: "caspar_normal.png", text: "I'd recommend checking up on everyone.\nI'm sure they've got some thoughts on\ntheir minds."},
+        ],
+        branches: [
+            {text: "Where can I find somewhere safe?", targetNode: "CasparAct2Where"},
+            {text: "If it's not safe here, why\nhaven't you left yourself?", targetNode: "CasparAct2Why"},
+            {text: "Got it."},
+        ]
+    },
+    CasparAct2Where: {
+        speech: [
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Now that the radio's workin', I'd suggest\ngoing through the channels."},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Might be somethin' useful in one of em."},
+        ],
+        branches: [
+            {text: "What was I supposed to do again?", targetNode: "CasparAct2What"},
+            {text: "If it's not safe here, why\nhaven't you left yourself?", targetNode: "CasparAct2Why"},
+            {text: "Got it."},
+        ]
+    },
+    CasparAct2Why: {
+        speech: [
+            {speaker: "Caspar", face: "caspar_normal.png", text: "When you've settled in one place as\nlong as I have, it slowly becomes a part\nof you."},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Ain't a thing you can do to get me to\nleave at this point."},
+            {speaker: "Caspar", face: "caspar_sad.png", text: "But I suppose Maggie will feel much the\nsame way. This may be a big ask, but I\nhope you can get her to safety."},
+        ],
+        branches: [
+            {text: "What was I supposed to do again?", targetNode: "CasparAct2What"},
+            {text: "Where can I find somewhere safe?", targetNode: "CasparAct2Where"},
+            {text: "Got it."},
+        ]
+    },
+
+    DogNotTrust: {
+        speech: [
+            {speaker: "Doggo", face: "doggo_angry.png", text: "Grrr..."},
+        ],
+        branches: [
+            {text: "Pet the dog", targetNode: "DogNotTrustPet"},
+            {text: "Offer some food", targetNode: "DogNotTrustFood"},
+            {text: "Ignore"},
+        ]
+    },
+
+    DogNotTrustPet: {
+        speech: [
+            {speaker: " ", text: "You try and pet the dog. She backs away from you."},
+        ],
+        branches: [
+            {text: "Pet the dog again", targetNode: "DogNotTrustPet2"},
+            {text: "Offer some food", targetNode: "DogNotTrustFood"},
+            {text: "Ignore"},
+        ]
+    },
+
+    DogNotTrustPet2: {
+        speech: [
+            {speaker: "Doggo", face: "doggo_angry.png", text: "ARF!!", publish: "doggoJump"},
+            {speaker: " ", text: "   The dog does not trust you."},
+        ]
+    },
+
+    DogNotTrustFood: {
+        speech: [
+            {speaker: " ", text: "You place some of your leftovers in front of the dog.\nShe wolfs it down hungrily.", data: {property: "dogTrust", value: 1}},
+        ]
+    },
+
+    DogOkayTrust: {
+        speech: [
+            {speaker: "Doggo", face: "doggo_normal.png", text: "..."},
+        ],
+        branches: [
+            {text: "Pet the dog", targetNode: "DogOkayTrustPet"},
+            {text: "Offer some food", targetNode: "DogOkayTrustFood"},
+            {text: "Ignore"},
+        ]
+    },
+
+    DogOkayTrustFood: {
+        speech: [
+            {speaker: " ", text: "   She's already been fed."},
+        ],
+        branches: [
+            {text: "Pet the dog", targetNode: "DogOkayTrustPet"},
+            {text: "Ignore"},
+        ]
+    },
+
+    DogOkayTrustPet: {
+        speech: [
+            {speaker: " ", text: "   You pet the dog. ", data: {property: "dogTrust", value: 2}},
+            {speaker: "Doggo", face: "doggo_happy.png", text: "   Arf!", publish: "doggoJump"},
+            {speaker: " ", text: "   She seems to like it."},
+        ]
+    },
+
+    DogFullTrust: {
+        speech: [
+            {speaker: "Doggo", face: "doggo_happy.png", text: "Arf!"},
+        ],
+        branches: [
+            {text: "Pet the dog", targetNode: "DogFullTrustPet"},
+            {text: "Bring the dog with you\nwhen you leave.", targetNode: "DogFullTrustBring"},
+            {text: "Ignore"},
+        ]
+    },
+
+    DogFullTrustSaved: {
+        speech: [
+            {speaker: " ", text: "You pet the dog. She is happy to see you!\nShe will come with you once you leave."},
+        ]
+    },
+
+    DogOkayTrustPet: {
+        speech: [
+            {speaker: "Doggo", face: "doggo_happy.png", text: "   Arf!", publish: "doggoJump"},
+        ]
+    },
+
+    DogFullTrustBring: {
+        speech: [
+            {speaker: " ",  text: "You will now bring the dog with you once\nyou leave. She looks at you expectantly.", data: {property: "dogSaved", value: true}},
         ],
     },
 
@@ -824,7 +1040,7 @@ let dialogList1 = {
     Interrupt: {
         speech: [
             {speaker: " ", face: "staticframe.png", forceProgress: true, text: "."},
-            {speaker: " ", face: "ethan_dark_eye_4.png", forceProgress: true, text: ".", data: {property: "darknessCanChat", value: "true"}},
+            {speaker: " ", face: "ethan_dark_eye_4.png", forceProgress: true, text: ".", data: {property: "darknessCanChat", value: true}},
             {speaker: " ", face: "ethan_dark_eye_5.png", forceProgress: true, text: "."},
             {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: "."},
             {speaker: " ", face: "staticframe.png", forceProgress: true, text: ".••••••••••••••••••••••••••••••••••"},
@@ -838,9 +1054,9 @@ let dialogList1 = {
     },
     InterruptChoiceOne: {
         speech: [
-            {speaker: "Caspar", face: "caspar_dark_scared.png", text: "There's not as much time left as I'd like."},
+            {speaker: "Caspar", face: "caspar_dark_scared.png", text: "There ain't as much time left as I'd like."},
             {speaker: "Caspar", face: "caspar_dark_scared.png", text: "I'll get to the point. This place isn't safe.\n" +
-                    "It ain't no ordinary storm out there."},
+                    "It's no ordinary storm out there."},
             {speaker: "Caspar", face: "caspar_dark_scared.png", text: "And these thin walls won't protect from\nanything more than rain and wind."},
             {speaker: "Caspar", face: "caspar_dark_scared.png", text: "You might try to find somewhere safer.\nAll the better if you bring some of the\nothers along with you."},
         ]
@@ -855,14 +1071,5 @@ let dialogList1 = {
             {speaker: "Caspar", face: "caspar_dark_scared.png", text: "You might try to find somewhere safer.\nAll the better if you bring some of the\nothers along with you."},
         ]
     },
-    ActThreeStart: {
-        speech: [
-            {speaker: "Ethan", face: "ethan_yell.png", forceProgress: true, text: "-•••••••••••••••••••••••-"},
-            {speaker: "Ethan", face: "ethan_yell.png", text: "It's coming! Hide!!!"},
-            {speaker: "Juan", face: "juan_normal.png", unclickable: true, forceProgress: true, text: "What's coming?•••••••••• I don't see any••-••••••••"},
-            {speaker: " ", size: 'large', instant: true, text: "            *CRASH*", publish: "branchCrash"},
-            {speaker: " ", size: 'large', instant: true, text: "            *CRASH*\n(The window near Juan and Ethan shatters)"},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "Oh no! Was anyone hurt?"},
-        ]
-    }
+
 };

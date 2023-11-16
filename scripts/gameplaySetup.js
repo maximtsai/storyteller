@@ -79,6 +79,19 @@ function setupGame() {
     let dialogDisplay = new DialogDisplay(PhaserScene);
     let miscSubscribe = new MiscSubscribe(PhaserScene);
     setupKeyPresses(PhaserScene);
+
+    initializeMisc();
+}
+
+function initializeMisc() {
+    globalObjsTemp.songs = {
+        235.75: 'slowwalk',
+        294.25: 'dabbda',
+        356: 'foolrushin_poor',
+        386.25: 'guitarboogieshuffle',
+        446.75: 'weatherblur',
+        506: 'news1'
+    };
 }
 
 function setupKeyPresses(scene) {
@@ -117,6 +130,16 @@ function setupMoveButtons() {
     });
     globalObjects.moveLeftBtn.setDepth(20);
     globalObjects.moveLeftBtn.setState(DISABLE);
+    globalObjects.moveLeftBtn.setOnMouseUpFunc(() => {
+        if (gameState.currentScene == 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
+            gameState.scratchingDoor = true;
+            gameCharacters.backdoor.play('backdoor_shake');
+
+            dialogManager.showDialogNode('DoorScratchStart');
+            girlsMoveAwayFromDoor();
+        }
+    })
+
 
     globalObjects.moveRightBtn = new Button({
         normal: {
@@ -141,6 +164,15 @@ function setupMoveButtons() {
     });
     globalObjects.moveRightBtn.setDepth(20);
     globalObjects.moveRightBtn.setState(DISABLE);
+    globalObjects.moveRightBtn.setOnMouseUpFunc(() => {
+        if (gameState.currentScene == 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
+            gameState.scratchingDoor = true;
+            gameCharacters.backdoor.play('backdoor_shake');
+
+            dialogManager.showDialogNode('DoorScratchStart');
+            girlsMoveAwayFromDoor();
+        }
+    })
 }
 
 function tickKeyPresses(deltaScale) {
@@ -343,6 +375,8 @@ function setupCharacters() {
     gameCharacters.ethan = PhaserScene.add.image(1310, gameConsts.halfHeight + 103, 'characters', 'ethan1.png').setDepth(11);
     gameCharacters.juan = PhaserScene.add.image(1870, gameConsts.halfHeight + 107, 'characters', 'juan1.png').setDepth(11);
     gameCharacters.tv = PhaserScene.add.sprite(1319, gameConsts.halfHeight - 257, 'characters').play('tv');
+    gameCharacters.dog = PhaserScene.add.sprite(-189, gameConsts.halfHeight + 188, 'characters', 'dog.png').setDepth(1);
+    gameCharacters.backdoor = PhaserScene.add.sprite(-48, gameConsts.halfHeight + 39, 'characters', 'backdoor1.png').setDepth(1).setOrigin(1, 0.5);
 }
 
 function showExclamation() {
@@ -564,6 +598,7 @@ function setupDialogManager() {
         dialogManager.addDialogNode(nodeName, dialogNode);
     }
 
+
     for (let nodeName in furnitureDialog) {
         let dialogNode = new DialogNode(furnitureDialog[nodeName]);
         dialogManager.addDialogNode(nodeName, dialogNode);
@@ -590,6 +625,61 @@ function setRadioPan(pan) {
     if (globalObjsTemp.radioStatic1) {
         globalObjsTemp.radioStatic1.setPan(pan);
         globalObjsTemp.radioStatic1.setPan(pan);
+    }
+}
+
+function girlsMoveAwayFromDoor() {
+    let charactersToShowExclaim = [
+        gameCharacters.bruna,
+        gameCharacters.maggie,
+        gameCharacters.edith,
+    ];
+    for (let i in charactersToShowExclaim) {
+        let char = charactersToShowExclaim[i];
+        let randDelay = 400;
+        setTimeout(() => {
+            let exclam = PhaserScene.add.image(char.x, char.y - 220, 'misc', 'exclamation.png').setDepth(12).setScale(0.25, 0.25);
+            PhaserScene.tweens.add({
+                targets: exclam,
+                scaleX: 0.65,
+                scaleY: 0.65,
+                y: "-=20",
+                ease: 'Cubic.easeOut',
+                duration: 150,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: exclam,
+                        scaleX: 0,
+                        scaleY: 0,
+                        y: "-=50",
+                        ease: 'Cubic.easeIn',
+                        duration: 300 + Math.floor(Math.random() * 150),
+                        onComplete: () => {
+                            exclam.destroy();
+                        }
+                    });
+                }
+            });
+        }, randDelay);
+    }
+    if (gameState.EthanEdithSeparated) {
+        gameCharacters.edith.scaleX = -1;
+        const EdithFinalPos = 625;
+        let edithOrigButtonPosY = globalObjects.diner.EdithButton.getPosY();
+        globalObjects.diner.EdithButton.setPos(EdithFinalPos, globalObjects.diner.EdithButton.getPosY() - 9999);
+        // gameCharacters.edith
+        globalObjects.scratchSound = playSound('scratchsound', 1, true);
+
+        PhaserScene.tweens.add({
+            targets: gameCharacters.edith,
+            duration: 2000,
+            x: EdithFinalPos,
+            delay: 1000,
+            ease: 'Quad.easeInOut',
+            onComplete: () => {
+                globalObjects.diner.EdithButton.setPos(EdithFinalPos, edithOrigButtonPosY);
+            }
+        });
     }
 
 }

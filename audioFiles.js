@@ -23,6 +23,7 @@ const audioFiles = [
     {name: 'emergency2', src: 'audio/emergency2.mp3'},
     {name: 'stormfull', src: 'audio/stormfull.mp3'},
     {name: 'news1', src: 'audio/news1.mp3'},
+    {name: 'news2', src: 'audio/news2.mp3'},
     {name: 'sizzle', src: 'audio/sizzle.mp3'},
     {name: 'stopscreech', src: 'audio/stopscreech.mp3'},
     {name: 'crackle1', src: 'audio/crackle1.mp3'},
@@ -30,5 +31,13 @@ const audioFiles = [
     {name: 'eyeclose', src: 'audio/eyeclose.mp3'},
     {name: 'generator', src: 'audio/generator.mp3'},
     {name: 'generatorFail', src: 'audio/generatorFail.mp3'},
+    {name: 'alert', src: 'audio/alert.mp3'},
+    {name: 'sellafieldalarm', src: 'audio/sellafieldalarm.mp3'},
+    {name: 'dooropen', src: 'audio/dooropen.mp3'},
+    {name: 'dooropen2', src: 'audio/dooropen2.mp3'},
+    {name: 'scratchsound', src: 'audio/scratchsound.mp3'},
+    {name: 'bark', src: 'audio/bark.mp3'},
+    {name: 'barksmall', src: 'audio/barksmall.mp3'},
+    {name: 'glassbreak', src: 'audio/glassbreak.mp3'},
 
 ]

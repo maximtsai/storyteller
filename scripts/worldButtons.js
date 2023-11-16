@@ -217,7 +217,11 @@ function createWorldButtons() {
             alpha: 0.001
         },
         onMouseUp() {
-            shiftOver(globalObjects.diner.BackdoorButton.getXPos());
+            if (gameState.scratchingDoor || true) {
+                shiftOver(globalObjects.diner.BackdoorButton.getXPos(), true);
+            } else {
+                shiftOver(globalObjects.diner.BackdoorButton.getXPos());
+            }
             clickBackdoor();
         }
     });
@@ -450,13 +454,30 @@ function clickMaggie() {
 function clickEdith() {
     if (gameState.currentScene == 1) {
         gameState.EdithIntroduced = true;
-        dialogManager.showDialogNode('introEdith');
+        if (gameState.EthanAct1Fin) {
+            if (gameState.EdithAct1Fin) {
+                dialogManager.showDialogNode('introEdith3');
+            } else {
+                gameState.EdithAct1Fin = true;
+                dialogManager.showDialogNode('introEdith2');
+            }
+        } else {
+            dialogManager.showDialogNode('introEdith');
+        }
     } else if (gameState.currentScene == 2) {
         if (gameState.EthanEdithSeparated) {
             if (gameState.edithThinking) {
-                dialogManager.showDialogNode('Edith2ChatFinThought');
+                if (gameState.scratchingDoor) {
+                    dialogManager.showDialogNode('Edith2ChatFinScratch');
+                } else {
+                    dialogManager.showDialogNode('Edith2ChatFinThought');
+                }
             } else if (gameState.chatted2Edith) {
-                dialogManager.showDialogNode('Edith2ChatFin');
+                if (gameState.scratchingDoor) {
+                    dialogManager.showDialogNode('Edith2ChatFinScratch');
+                } else {
+                    dialogManager.showDialogNode('Edith2ChatFin');
+                }
             } else {
                 gameState.chatted2Edith = true;
                 dialogManager.showDialogNode('Edith2Chat');
@@ -508,9 +529,9 @@ function clickEthan() {
             } else if (gameState.ethan2Chatted) {
                 dialogManager.showDialogNode('Ethan2ChatFin');
             } else {
+                gameState.ethan2Chatted = true;
                 dialogManager.showDialogNode('Ethan2Chat');
             }
-
         } else if (!gameState.askedEthanEdithTV) {
             gameState.askedEthanEdithTV = true;
             shiftOver(globalObjects.diner.EthanButton.getXPos());
@@ -555,7 +576,11 @@ function clickJuan() {
             }
         } else {
             if (gameState.juan2Chatted) {
-                dialogManager.showDialogNode('Juan2ChatFin');
+                if (gameState.scratchingDoor) {
+                    dialogManager.showDialogNode('Juan2ChatFinScratch');
+                } else {
+                    dialogManager.showDialogNode('Juan2ChatFin');
+                }
             } else {
                 gameState.juan2Chatted = true;
                 dialogManager.showDialogNode('Juan2Chat');
@@ -591,8 +616,15 @@ function clickBruna() {
                 dialogManager.showDialogNode('Bruna2Chat');
             } else if (gameState.bruna2ChattedAngry) {
                 dialogManager.showDialogNode('Bruna2ChatAngry');
+            } else if (gameState.radio2Done && !gameState.bruna2HopeSpringsChatted) {
+                gameState.bruna2HopeSpringsChatted = true;
+                dialogManager.showDialogNode('Bruna2ChatHopeSprings');
             } else {
-                dialogManager.showDialogNode('Bruna2ChatFin');
+                if (gameState.scratchingDoor) {
+                    dialogManager.showDialogNode('Bruna2ChatFinScratch');
+                } else {
+                    dialogManager.showDialogNode('Bruna2ChatFin');
+                }
             }
         }
     }
@@ -605,10 +637,12 @@ function clickCaspar() {
         } else if (!gameState.casparIntroduced) {
             gameState.casparIntroduced = true;
             dialogManager.showDialogNode('CasparIntro');
-        } else if (true || (gameState.brunaIntroduced && gameState.juanIntroduced && gameState.EthanIntroduced && gameState.EdithIntroduced)) {
-            dialogManager.showDialogNode('CasparTalkOthersDone');
         } else {
-            dialogManager.showDialogNode('CasparTalkOthersNotDone');
+            if (gameState.brunaIntroduced && gameState.juanIntroduced && gameState.EthanIntroduced && gameState.EdithIntroduced) {
+                dialogManager.showDialogNode('CasparTalkOthersDone');
+            } else {
+                dialogManager.showDialogNode('CasparTalkOthersNotDone');
+            }
         }
     } else if (gameState.currentScene == 2) {
         if (!gameState.darknessCanChat) {
@@ -621,16 +655,71 @@ function clickCaspar() {
                 dialogManager.showDialogNode('CasparAct2DarkBranches');
             }
         } else {
-            if (gameState.caspar2Welcomed) {
-                dialogManager.showDialogNode('CasparAct2WelcomeDone');
+            if (gameState.scratchingDoor) {
+                dialogManager.showDialogNode('CasparAct2DoorScratch');
+            } else if (gameState.caspar2Welcomed) {
+                dialogManager.showDialogNode('CasparAct2Ask');
             } else {
                 gameState.caspar2Welcomed = true;
-                dialogManager.showDialogNode('CasparAct2Welcome');
+                let numChatCount = 0;
+                if (gameState.EthanEdithSeparated) {
+                    numChatCount++;
+                }
+                if (gameState.chatted2Edith) {
+                    numChatCount++;
+                }
+                if (gameState.juan2Chatted) {
+                    numChatCount++;
+                }
+                if (gameState.brunaChatted2) {
+                    numChatCount++;
+                }
+                if (numChatCount >= 2) {
+                    dialogManager.showDialogNode('CasparAct2WelcomeRadio');
+                } else {
+                    dialogManager.showDialogNode('CasparAct2Welcome');
+                }
             }
 
         }
     } else if (gameState.currentScene == 3) {
 
+    }
+}
+
+function clickDog() {
+    if (!gameState.dogTrust) {
+        dialogManager.showDialogNode('DogNotTrust');
+        PhaserScene.tweens.add({
+            targets: [gameCharacters.dog],
+            x: "-=30",
+            ease: 'Quad.easeOut',
+            duration: 400,
+            onComplete: () => {
+                PhaserScene.tweens.add({
+                    delay: 300,
+                    targets: [gameCharacters.dog],
+                    x: "+=30",
+                    ease: 'Quad.easeInOut',
+                    duration: 750,
+                });
+            }
+        });
+    } else if (gameState.dogTrust == 2) {
+        if (gameState.dogSaved) {
+            dialogManager.showDialogNode('DogFullTrustSaved');
+        } else {
+            dialogManager.showDialogNode('DogFullTrust');
+        }
+        PhaserScene.tweens.add({
+            targets: [gameCharacters.dog],
+            y: "-=50",
+            ease: 'Cubic.easeOut',
+            duration: 220,
+            yoyo: true
+        });
+    } else {
+        dialogManager.showDialogNode('DogOkayTrust');
     }
 }
 
@@ -663,6 +752,9 @@ function clickRadio() {
             cover: PhaserScene.add.sprite(gameConsts.halfWidth + 7, gameConsts.halfHeight - 150, 'radio', 'cover.png'),
             arrow: PhaserScene.add.sprite(gameConsts.halfWidth + 7, gameConsts.halfHeight - 150, 'misc', 'guide_arrow.png'),
         };
+        if (globalObjsTemp.radioStartX) {
+            globalObjsTemp.radio.bar.x = globalObjsTemp.radioStartX;
+        }
         // 206 leftmost = 88,
         // 235.75 = 90 slowwalk, 266.5,
         // 294.25 = 94 dabbda,
@@ -670,14 +762,6 @@ function clickRadio() {
         // 356 = 98 secret
         // 386.25 = 100,
         // 446.75 = 104, 506 = 108
-        globalObjsTemp.songs = {
-            235.75: 'slowwalk',
-            294.25: 'dabbda',
-            356: 'foolrushin_poor',
-            386.25: 'guitarboogieshuffle',
-            446.75: 'weatherblur',
-            506: 'news1'
-        };
         globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0, true);
         globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0, true);
         globalObjsTemp.radio.radioClickBlocker = new Button({
@@ -842,6 +926,15 @@ function updateRadio(deltaTime) {
     }
 }
 
+function resetRadioPosition() {
+    if (globalObjsTemp.radio) {
+        globalObjsTemp.radio.bar.x = 418;
+        adjustRadioUpdate(globalObjsTemp.radio.bar.x);
+    } else {
+        globalObjsTemp.radioStartX = 418;
+    }
+}
+
 function leaveRadio() {
     globalObjects.moveRightBtn.setState(NORMAL);
     globalObjects.moveLeftBtn.setState(NORMAL);
@@ -888,6 +981,9 @@ function adjustRadioUpdate(barPos) {
         // globalObjsTemp.radioStatic1
         let staticSoundMult = 1 - Math.min(0.99, (10 - distToClosestObj) / 5);
         let panMult = (barPos - 206) / 300
+        if (gameState.currentScene == 3) {
+            panMult = 0.5;
+        }
         globalObjsTemp.radioMusic.volume = 1 - staticSoundMult;
         let sqrtSoundMult = Math.sqrt(staticSoundMult);
         globalObjsTemp.radioStatic1.volume = sqrtSoundMult * (1 - panMult) * 0.5;
@@ -913,7 +1009,15 @@ function adjustRadioUpdate(barPos) {
                         dialogManager.showDialogNode('radio1');
                     }
                 } else if (closestObj == 'news2') {
-                    dialogManager.showDialogNode('radioActTwo1');
+                    if (gameState.radio2Done) {
+                        dialogManager.showDialogNode('radio2Done');
+                    } else {
+                        if (gameState.brunaIntroduced || gameState.brunaChatted2) {
+                            dialogManager.showDialogNode('radioActTwo2');
+                        } else {
+                            dialogManager.showDialogNode('radioActTwo1');
+                        }
+                    }
                 } else if (closestObj == 'news3') {
 
                 }
@@ -974,7 +1078,10 @@ function clickIndoor() {
         // setRadioVolume(0.75);
     } else {
         globalObjects.indoorRain.setVolume(0.35);
+        setRadioMusic('radiostatic2', 0.4);
     }
+    playSound('dooropen', 0.8);
+
     gameVars.cameraMoveAcc = 0;
     gameVars.cameraMoveVel = 0.01;
     gameState.isOutdoors = false;
@@ -1004,7 +1111,14 @@ function clickBackdoor() {
         // exitBackdoor();
         dialogManager.showDialogNode('BackdoorActOne');
     } else if (gameState.currentScene == 2) {
-        if (gameState.hasBackdoorKey) {
+        if (gameState.scratchingDoor) {
+            if (gameState.startedBackdoorDebate) {
+                dialogManager.showDialogNode('ScratchDoorReturn');
+            } else {
+                gameState.startedBackdoorDebate = true;
+                dialogManager.showDialogNode('BackdoorScratcing1');
+            }
+        } else if (gameState.hasBackdoorKey) {
             //globalObjects.indoorRain.setVolume(0.4);
             exitBackdoor();
         } else {
@@ -1017,18 +1131,22 @@ function clickBackdoor() {
 }
 
 
-function shiftOver(x) {
+function shiftOver(x, strong) {
     let distDiff = x - (gameVars.cameraPosX + gameConsts.halfWidth);
-    if (distDiff < -175) {
-        gameVars.cameraMoveAcc = (distDiff / 300) - 0.25;
-    } else if (distDiff > 175) {
-        gameVars.cameraMoveAcc = (distDiff / 300) + 0.25;
+    let shiftThreshold = strong ? 40 : 175;
+    let shiftBaseline = strong ? 0.35 : 0.25;
+    let shiftRatio = strong ? 220 : 300;
+    if (distDiff < -shiftThreshold) {
+        gameVars.cameraMoveAcc = (distDiff / shiftRatio) - shiftBaseline;
+    } else if (distDiff > shiftThreshold) {
+        gameVars.cameraMoveAcc = (distDiff / shiftRatio) + shiftBaseline;
     }
     messageBus.publish("delayUpdateClickLocation");
 
 }
 
 function exitBackdoor() {
+    playSound('dooropen', 0.4);
     globalObjects.diner.IndoorButton.setState(NORMAL);
     // globalObjects.indoorRain.setVolume(0.01);
 
@@ -1526,7 +1644,7 @@ function retractWireVisual(wire, visual) {
 }
 
 function attachWire(wireXPos, wireYPos, wire) {
-    if (wireXPos > 286 && wireXPos < 330) {
+    if (wireXPos > 286 && wireXPos < 345) {
         let spacingY = 10;
         if (wireYPos > (4090 + spacingY) && wireYPos < (4165 - spacingY) && wireCanAttach(wire, 5)) {
             setWireAttach(wire, 5);
@@ -1626,6 +1744,7 @@ function startGenerator() {
         playSound('generatorFail', 1);
         return false;
     }
+
     let greenSocket = globalObjsTemp.generator.green.socket;
     let greenCrosses = 0;
     if (globalObjsTemp.generator.red.socket < greenSocket) {
@@ -1645,8 +1764,8 @@ function startGenerator() {
         playSound('generatorFail', 1);
         return false;
     }
+
     if (globalObjsTemp.generator.yellow.socket >= globalObjsTemp.generator.green.socket) {
-        // must be odd, is invalid
         showGeneratorInvalid(4356);
         playSound('generatorFail', 1);
         return false;
@@ -1697,6 +1816,8 @@ function turnOnPower() {
     gameState.powerOff = false;
     dialogManager.showDialogNode('GeneratorTurnedOn');
     setCharactersNormal();
+    gameCharacters.ethan.setFrame('ethan_tired.png');
+
     globalObjsTemp.gloom.setAlpha(0);
 
     globalObjsTemp.generator.red.setState(DISABLE);

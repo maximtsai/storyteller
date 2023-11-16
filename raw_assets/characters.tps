@@ -173,6 +173,28 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">characters/backdoor1.png</key>
+            <key type="filename">characters/backdoor2.png</key>
+            <key type="filename">characters/backdoor3.png</key>
+            <key type="filename">characters/backdoor4.png</key>
+            <key type="filename">characters/backdoor5.png</key>
+            <key type="filename">characters/backdoor6.png</key>
+            <key type="filename">characters/backdoor7.png</key>
+            <key type="filename">characters/backdoor8.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>70,102,141,205</rect>
+                <key>scale9Paddings</key>
+                <rect>70,102,141,205</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">characters/blackCircle.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -236,6 +258,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">characters/dog.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>28,35,55,70</rect>
+                <key>scale9Paddings</key>
+                <rect>28,35,55,70</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">characters/edith1.png</key>
             <key type="filename">characters/edith_dark.png</key>
             <struct type="IndividualSpriteSettings">
@@ -270,6 +307,7 @@
             <key type="filename">characters/ethan1.png</key>
             <key type="filename">characters/ethan_dark.png</key>
             <key type="filename">characters/ethan_dark_void.png</key>
+            <key type="filename">characters/ethan_tired.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -281,6 +319,21 @@
                 <rect>50,89,100,177</rect>
                 <key>scale9Paddings</key>
                 <rect>50,89,100,177</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">characters/ethan_sleep.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>53,66,105,132</rect>
+                <key>scale9Paddings</key>
+                <rect>53,66,105,132</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

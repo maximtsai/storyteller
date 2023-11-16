@@ -23,4 +23,16 @@ function createAnimations(scene) {
         frameRate: 15,
         repeat: 0
     });
+    scene.anims.create({
+        key: 'backdoor_shake',
+        frames: scene.anims.generateFrameNames('characters', {
+            prefix: 'backdoor',
+            suffix: '.png',
+            start: 1,
+            end: 8,
+            zeroPad: 1,
+        }),
+        frameRate: 4,
+        repeat: -1
+    });
 }

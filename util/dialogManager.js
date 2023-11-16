@@ -20,7 +20,6 @@ class DialogManager {
     }
 
     hideDialogNode() {
-        console.log("hide dialog")
         if (this.currNode !== null) {
             this.dialogNodes[this.currNode].hide();
             this.currNode = null;
@@ -94,7 +93,7 @@ class DialogNode {
                 messageBus.publish(nextDialogSpeech.publish, nextDialogSpeech.param);
             }
             if (nextDialogSpeech.data) {
-                if (nextDialogSpeech.data.value) {
+                if (nextDialogSpeech.data.value !== undefined) {
                     gameState[nextDialogSpeech.data.property] = nextDialogSpeech.data.value;
                 } else if (gameState[nextDialogSpeech.data.property] > 0) {
                     gameState[nextDialogSpeech.data.property] += 1;
@@ -135,7 +134,6 @@ class DialogNode {
     }
 
     setupBranches() {
-        console.log("setup branches")
         messageBus.publish("setBranches", this.branches);
     }
 }

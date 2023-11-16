@@ -173,14 +173,19 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">faces/bruna_behind.png</key>
             <key type="filename">faces/bruna_dark_scared.png</key>
             <key type="filename">faces/bruna_happy.png</key>
             <key type="filename">faces/bruna_normal.png</key>
             <key type="filename">faces/bruna_sad.png</key>
             <key type="filename">faces/caspar_dark_calm.png</key>
             <key type="filename">faces/caspar_dark_scared.png</key>
+            <key type="filename">faces/caspar_doubt.png</key>
             <key type="filename">faces/caspar_normal.png</key>
             <key type="filename">faces/caspar_sad.png</key>
+            <key type="filename">faces/doggo_angry.png</key>
+            <key type="filename">faces/doggo_happy.png</key>
+            <key type="filename">faces/doggo_normal.png</key>
             <key type="filename">faces/edith_dark_scared.png</key>
             <key type="filename">faces/edith_happy.png</key>
             <key type="filename">faces/edith_normal.png</key>
