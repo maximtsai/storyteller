@@ -11,6 +11,7 @@ const audioFiles = [
     {name: 'dabbda', src: 'audio/dabbda.mp3'},
     {name: 'thunder', src: 'audio/thunder.mp3'},
     {name: 'truckdoor', src: 'audio/truckdoor.mp3'},
+    {name: 'trustgain', src: 'audio/trustgain.mp3'},
     {name: 'radiostatic1', src: 'audio/radiostatic1.mp3'},
     {name: 'radiostatic2', src: 'audio/radiostatic2.mp3'},
     {name: 'lofi', src: 'audio/lofi.mp3'},

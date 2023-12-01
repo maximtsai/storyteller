@@ -128,6 +128,7 @@ class DialogDisplay {
         this.speakerStars = [];
         for (let i = 0; i < 7; i++) {
             this.speakerStars[i] = this.scene.add.sprite(40 + i * 18.5, gameConsts.height - 30, 'misc', 'star.png');
+            this.speakerStars[i].startY = this.speakerStars[i].y;
             this.speakerStars[i].setDepth(999);
             this.speakerStars[i].setScale(0.4);
             this.speakerStars[i].scrollFactorX = 0;
@@ -215,6 +216,7 @@ class DialogDisplay {
 
 
         messageBus.subscribe("pointerMove", this.checkCornerHover.bind(this));
+        messageBus.subscribe("pointerUp", this.checkCornerHover.bind(this));
 
 
         this.buttons = [];
@@ -501,71 +503,94 @@ class DialogDisplay {
         return 0;
     }
 
-    updateInfluenceAnimation() {
+    updateInfluenceAnimation(change) {
         let numStars = this.getNumStars();
+        let oldNumStars = numStars - change;
+        let gainedStar = false;
         this.canHideStars = false;
+        console.log("updating influence animation", numStars)
         for (let i = 0; i < this.speakerStars.length; i++) {
             if (i < numStars) {
                 this.speakerStars[i].visible = true;
                 if (this.speakerStars[i].alpha === 0) {
-                    // animate to visible
-                    this.speakerStars[i].animating = true;
-                    this.speakerStars[i].setScale(0.9);
-                    this.speakerStars[i].setAlpha(0.01);
-                    this.speakerStars[i].rotation = -0.05;
-                    this.scene.tweens.add({
-                        targets: this.speakerStars[i],
-                        alpha: 1,
-                        scaleX: 0.3,
-                        scaleY: 0.3,
-                        rotation: 0,
-                        duration: 350,
-                        ease: 'Quad.easeIn',
-                        onComplete: () => {
-                            this.scene.tweens.add({
-                                targets: this.speakerStars[i],
-                                alpha: 1,
-                                scaleX: 0.65,
-                                scaleY: 0.65,
-                                rotation: 0.12,
-                                duration: 300,
-                                ease: 'Cubic.easeOut',
-                                onComplete: () => {
-                                    this.scene.tweens.add({
-                                        targets: this.speakerStars[i],
-                                        alpha: 0.5,
-                                        scaleX: 0.4,
-                                        scaleY: 0.4,
-                                        rotation: 0,
-                                        duration: 300,
-                                        ease: 'Cubic.easeIn',
-                                        onComplete: () => {
-                                            this.speakerStars[i].animating = false;
-                                        }
-                                    });
-                                }
-                            });
-                        }
-                    });
+                    if (i < oldNumStars) {
+                        this.speakerStars[i].setAlpha(0.5);
+                    } else {
+                        gainedStar = true;
+                        // animate to visible
+                        this.speakerStars[i].animating = true;
+                        this.speakerStars[i].setScale(0.9);
+                        this.speakerStars[i].setAlpha(0.01);
+                        this.speakerStars[i].rotation = -0.05;
+                        this.scene.tweens.add({
+                            targets: this.speakerStars[i],
+                            alpha: 1,
+                            scaleX: 0.3,
+                            scaleY: 0.3,
+                            rotation: 0,
+                            duration: 350,
+                            ease: 'Quad.easeIn',
+                            onComplete: () => {
+                                this.scene.tweens.add({
+                                    targets: this.speakerStars[i],
+                                    alpha: 1,
+                                    scaleX: 0.65,
+                                    scaleY: 0.65,
+                                    rotation: 0.12,
+                                    duration: 300,
+                                    ease: 'Cubic.easeOut',
+                                    onComplete: () => {
+                                        this.scene.tweens.add({
+                                            targets: this.speakerStars[i],
+                                            alpha: 0.5,
+                                            scaleX: 0.4,
+                                            scaleY: 0.4,
+                                            rotation: 0,
+                                            duration: 300,
+                                            ease: 'Cubic.easeIn',
+                                            onComplete: () => {
+                                                this.speakerStars[i].animating = false;
+                                            }
+                                        });
+                                    }
+                                });
+                            }
+                        });
+                    }
                 }
             } else {
+                if (i < oldNumStars) {
+                    this.speakerStars[i].visible = true;
+                    this.speakerStars[i].alpha = 0.5;
+                }
                 if (this.speakerStars[i].alpha > 0) {
+                    console.log("Animate to hidden");
                     // animate to hidden when it isn't
                     this.speakerStars[i].animating = true;
+                    this.speakerStars[i].alpha = 0.8;
+                    this.speakerStars[i].setScale(0.6);
                     this.scene.tweens.add({
                         targets: this.speakerStars[i],
                         alpha: 0,
-                        scaleX: 1,
-                        scaleY: 1,
-                        duration: 200,
-                        ease: 'Cubic.easeOut',
+                        y: this.speakerStars[i].startY + 35,
+                        scaleX: 0.2,
+                        scaleY: 0.2,
+                        rotation: 2.5,
+                        duration: 800,
+                        ease: 'Cubic.easeIn',
                         onComplete: () => {
                             this.speakerStars[i].setScale(0.4);
+                            this.speakerStars[i].y = this.speakerStars[i].startY;
+                            this.speakerStars[i].rotation = 0;
                             this.speakerStars[i].animating = false;
                         }
                     });
                 }
             }
+        }
+
+        if (gainedStar) {
+            playSound('trustgain');
         }
     }
 

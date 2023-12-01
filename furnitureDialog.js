@@ -11,10 +11,10 @@ let furnitureDialog = {
             {speaker: 'Radio', size: 'small', text: "\"Sonny, I've lived in this town for seven decades.\n" +
                     "I have never seen a storm like this. There's something\n" +
                     "not right in those clouds. You youngsters need to be\ncareful!\""},
-            {speaker: 'Radio', size: 'small', text: "\"I've got to agree, this storm sure is something.\n" +
+            {speaker: 'Radio', size: 'small', text: "\"I've got to agree Beatrice, this storm sure is something.\n" +
                     "While it's been years since I've been a 'youngster' I'll\n" +
                     "be sure to stay in the studio until the worst of this\n" +
-                    "passes. You take care Beatrice.\"", data: {property: "radio1Done", value: "true"}},
+                    "passes. You take care of yourself.\"", data: {property: "radio1Done", value: "true"}},
         ]
     },
     radio1Done: {

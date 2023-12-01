@@ -694,8 +694,24 @@ function clickEthan() {
         if (gameState.windowFixed) {
             if (gameState.ethanBlocked) {
                 dialogManager.showDialogNode('Ethan3Blocked');
-            } else {
+            } else if (!gameState.ethan3Chatted) {
+                gameState.ethan3Chatted = true;
                 dialogManager.showDialogNode('Ethan3Chat');
+            } else {
+                switch(gameState.ethanState) {
+                    case 'ethanDrugHaze':
+                        dialogManager.showDialogNode('Ethan3DrugHaze');
+                        break;
+                    case 'ethanWaitForever':
+                        dialogManager.showDialogNode('Ethan3MustApologize');
+                        break;
+                    case 'ethanNotTalk':
+                        dialogManager.showDialogNode('Ethan3NotTalk');
+                        break;
+                    default:
+                        dialogManager.showDialogNode('EthanDefault');
+                        break;
+                }
             }
         } else if (gameState.windowBroken) {
             if (gameState.ethanSleeping) {
@@ -757,7 +773,6 @@ function clickJuan() {
                     case "accept":
                         dialogManager.showDialogNode('JuanAct3Leave3AcceptFin');
                         break;
-
                     default:
                 }
             } else if (gameState.youHelpedWindowFix) {
@@ -902,7 +917,6 @@ function clickCaspar() {
                     dialogManager.showDialogNode('CasparAct2Welcome');
                 }
             }
-
         }
     } else if (gameState.currentScene == 3) {
         let knowsFinalDest = gameState.radio2Done || gameState.radio3Done || gameState.askedCasparRadio;

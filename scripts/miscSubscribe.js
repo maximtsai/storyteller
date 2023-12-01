@@ -18,7 +18,6 @@ class MiscSubscribe {
 
         messageBus.subscribe("edithStandCorner", this.edithStandCorner.bind(this));
 
-        messageBus.subscribe("EdithInfluenceEthanDecline", this.edithInfluenceEthanDecline.bind(this));
         messageBus.subscribe("startEldritchEthan", this.startEldritchEthan.bind(this));
         messageBus.subscribe("endEldritchEthan", this.endEldritchEthan.bind(this));
 
@@ -58,15 +57,12 @@ class MiscSubscribe {
     }
 
     updateInfluence(character = "MaggieInfluence", amt = 1) {
-        console.log("Updating char influence ", character, " by ", amt);
-        console.log(gameState[character]);
         if (!gameState[character]) {
             gameState[character] = amt;
         } else {
             gameState[character] += amt;
         }
-        console.log(gameState[character]);
-        messageBus.publish('updateInfluenceAnimation');
+        messageBus.publish('updateInfluenceAnimation', amt);
     }
 
 
@@ -773,11 +769,6 @@ class MiscSubscribe {
         globalObjsTemp.gloom.setAlpha(0);
         setCharactersNormal();
         dialogManager.showDialogNode('Ethan2EldritchFin');
-    }
-
-    edithInfluenceEthanDecline() {
-        messageBus.publish("EdithInfluence");
-        messageBus.publish("EthanInfluenceDecline");
     }
 
     exitEarlySceneTwo() {

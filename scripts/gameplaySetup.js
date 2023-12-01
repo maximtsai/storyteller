@@ -619,7 +619,9 @@ function setRadioVolume(vol = 1) {
 
     if (globalObjsTemp.radioStatic1 && globalObjsTemp.radioStatic1.trueVolume !== undefined) {
         globalObjsTemp.radioStatic1.volume = globalObjsTemp.radioStatic1.trueVolume * vol;
-        globalObjsTemp.radioStatic2.volume = globalObjsTemp.radioStatic2.trueVolume * vol;
+        if (globalObjsTemp.radioStatic2) {
+            globalObjsTemp.radioStatic2.volume = globalObjsTemp.radioStatic2.trueVolume * vol;
+        }
     }
 }
 
