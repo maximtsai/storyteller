@@ -4,6 +4,7 @@ class InternalButtonManager {
         this.lastHovered = null;
         this.lastClickedButton = null;
         this.draggedObj = null;
+        this.active = true;
 
         this.updateInterval = 25;
         this.updateCounter = 0;
@@ -14,6 +15,9 @@ class InternalButtonManager {
     }
 
     update(delta) {
+        if (!this.active) {
+            return;
+        }
         // this.updateCounter += delta;
         // if (this.updateCounter < this.updateInterval) {
         //     return;
@@ -44,6 +48,9 @@ class InternalButtonManager {
     }
 
     onPointerUp(mouseX, mouseY) {
+        if (!this.active) {
+            return;
+        }
         let buttonObj = this.getLastClickedButton();
         if (buttonObj && buttonObj.checkCoordOver(mouseX, mouseY)) {
             buttonObj.onMouseUp();
@@ -57,6 +64,9 @@ class InternalButtonManager {
     }
 
     onPointerMove(mouseX, mouseY) {
+        if (!this.active) {
+            return;
+        }
         if (this.draggedObj) {
             this.draggedObj.setPos(mouseX + PhaserScene.cameras.main.scrollX, mouseY + PhaserScene.cameras.main.scrollY);
             this.draggedObj.onDrag();
@@ -64,6 +74,9 @@ class InternalButtonManager {
     }
 
     onPointerDown(mouseX, mouseY) {
+        if (!this.active) {
+            return;
+        }
         for (let i = this.buttonList.length - 1; i >= 0; i--) {
             let buttonObj = this.buttonList[i];
             if (buttonObj.checkCoordOver(mouseX, mouseY)) {
@@ -72,6 +85,14 @@ class InternalButtonManager {
                 break;
             }
         }
+    }
+
+    disableAllInput() {
+        this.active = false;
+    }
+
+    enableAllInput() {
+        this.active = true;
     }
 
     addToButtonList(button) {

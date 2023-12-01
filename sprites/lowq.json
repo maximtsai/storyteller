@@ -4,8 +4,8 @@
 			"image": "sprites/lowq-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1028,
-				"h": 1044
+				"w": 1607,
+				"h": 1559
 			},
 			"scale": 1,
 			"frames": [
@@ -29,6 +29,90 @@
 						"w": 1024,
 						"h": 1040
 					}
+				},
+				{
+					"filename": "spook0.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 576,
+						"h": 512
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 576,
+						"h": 512
+					},
+					"frame": {
+						"x": 1029,
+						"y": 2,
+						"w": 576,
+						"h": 512
+					}
+				},
+				{
+					"filename": "spook1.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 576,
+						"h": 512
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 576,
+						"h": 512
+					},
+					"frame": {
+						"x": 1029,
+						"y": 517,
+						"w": 576,
+						"h": 512
+					}
+				},
+				{
+					"filename": "spook2.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 576,
+						"h": 512
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 576,
+						"h": 512
+					},
+					"frame": {
+						"x": 1029,
+						"y": 1032,
+						"w": 576,
+						"h": 512
+					}
+				},
+				{
+					"filename": "spook3.jpg",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 576,
+						"h": 512
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 576,
+						"h": 512
+					},
+					"frame": {
+						"x": 2,
+						"y": 1045,
+						"w": 576,
+						"h": 512
+					}
 				}
 			]
 		}
@@ -36,6 +120,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:a33517b626b4394464681643a3111910:cc6541cc07972d8bbc1d092e447ccbcf:0644d9afadc5ec39d626109554d3f3bc$"
+		"smartupdate": "$TexturePacker:SmartUpdate:b738db683a536cdfbc40fdb112064538:35ee44ed30cb9c9b41272e5b66d9e462:0644d9afadc5ec39d626109554d3f3bc$"
 	}
 }

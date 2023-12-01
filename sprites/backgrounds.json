@@ -141,7 +141,7 @@
 			"image": "sprites/backgrounds-1.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1907,
+				"w": 2007,
 				"h": 1934
 			},
 			"scale": 1,
@@ -189,7 +189,7 @@
 					}
 				},
 				{
-					"filename": "bgout2.png",
+					"filename": "bgout1Light.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -231,24 +231,24 @@
 					}
 				},
 				{
-					"filename": "startFakeBaseOverlay.png",
+					"filename": "bgout2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 825,
-						"h": 750
+						"w": 1000,
+						"h": 700
 					},
 					"spriteSourceSize": {
-						"x": 44,
-						"y": 41,
-						"w": 781,
-						"h": 622
+						"x": 0,
+						"y": 97,
+						"w": 1000,
+						"h": 603
 					},
 					"frame": {
 						"x": 1005,
 						"y": 1286,
-						"w": 781,
-						"h": 622
+						"w": 1000,
+						"h": 603
 					}
 				},
 				{
@@ -273,11 +273,43 @@
 					}
 				}
 			]
+		},
+		{
+			"image": "sprites/backgrounds-2.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 785,
+				"h": 626
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "startFakeBaseOverlay.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 825,
+						"h": 750
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 41,
+						"w": 781,
+						"h": 622
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 781,
+						"h": 622
+					}
+				}
+			]
 		}
 	],
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:ad7191a02ecb9fc990d2dfe894193db3:3c70ab563124c45a98cebbc7b8ff00c0:fdb8b4b70ff82569ea2cd8b4c4ba67a8$"
+		"smartupdate": "$TexturePacker:SmartUpdate:26276a560fcaa4a869ac8f35d97d3e85:8acfc52479cf13af927ca7b2f8f3cc04:8733dbb53606bf76dda81645ffc6dc8b$"
 	}
 }

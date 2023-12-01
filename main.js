@@ -4,8 +4,7 @@ let config = {
         parent: 'phaser-app',
         width: 720,
         height: 640,
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
+
         autoRound: true,
     },
     render: {
@@ -26,6 +25,9 @@ let config = {
         createContainer: true,
     },
 };
+
+// mode: Phaser.Scale.FIT,
+//     autoCenter: Phaser.Scale.CENTER_BOTH,
 
 function isSafariIOS() {
     var ua = window.navigator.userAgent;

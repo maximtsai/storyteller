@@ -4,8 +4,8 @@
 			"image": "sprites/misc.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 241,
-				"h": 227
+				"w": 242,
+				"h": 257
 			},
 			"scale": 1,
 			"frames": [
@@ -31,6 +31,48 @@
 					}
 				},
 				{
+					"filename": "star.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 53,
+						"h": 53
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 53,
+						"h": 53
+					},
+					"frame": {
+						"x": 1,
+						"y": 203,
+						"w": 53,
+						"h": 53
+					}
+				},
+				{
+					"filename": "hand_icon.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 38,
+						"h": 50
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 38,
+						"h": 50
+					},
+					"frame": {
+						"x": 203,
+						"y": 1,
+						"w": 38,
+						"h": 50
+					}
+				},
+				{
 					"filename": "exclamation.png",
 					"rotated": false,
 					"trimmed": true,
@@ -46,9 +88,30 @@
 					},
 					"frame": {
 						"x": 203,
-						"y": 1,
+						"y": 53,
 						"w": 37,
 						"h": 104
+					}
+				},
+				{
+					"filename": "chat_icon.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 50,
+						"h": 44
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 48,
+						"h": 43
+					},
+					"frame": {
+						"x": 56,
+						"y": 203,
+						"w": 48,
+						"h": 43
 					}
 				},
 				{
@@ -67,7 +130,7 @@
 					},
 					"frame": {
 						"x": 203,
-						"y": 107,
+						"y": 159,
 						"w": 20,
 						"h": 20
 					}
@@ -87,7 +150,7 @@
 						"h": 23
 					},
 					"frame": {
-						"x": 1,
+						"x": 106,
 						"y": 203,
 						"w": 100,
 						"h": 23
@@ -108,7 +171,7 @@
 						"h": 23
 					},
 					"frame": {
-						"x": 1,
+						"x": 106,
 						"y": 203,
 						"w": 100,
 						"h": 23
@@ -120,6 +183,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:b01b2e9cf237e00729966ad22edb4a69:ae60e1e80c7f13f86e5e231b6c587fd6:612dcbdb08476a0aba06aeca925f16b2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:7de8e92e4881f5d2c24ea7aaf3338a71:a0e2c783cd4e1534acc46ab6a54f44ba:612dcbdb08476a0aba06aeca925f16b2$"
 	}
 }

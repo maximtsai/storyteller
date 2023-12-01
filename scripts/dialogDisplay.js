@@ -78,6 +78,7 @@ class DialogBranchButton {
     setInactive() {
         this.text.visible = false;
         this.dialogButton.setState(DISABLE);
+        this.publishMessage = null;
     }
 }
 
@@ -123,6 +124,17 @@ class DialogDisplay {
         this.dialogFace.setScale(0.7);
         this.dialogFace.scrollFactorX = 0;
         this.dialogFace.scrollFactorY = 0;
+
+        this.speakerStars = [];
+        for (let i = 0; i < 7; i++) {
+            this.speakerStars[i] = this.scene.add.sprite(40 + i * 18.5, gameConsts.height - 30, 'misc', 'star.png');
+            this.speakerStars[i].setDepth(999);
+            this.speakerStars[i].setScale(0.4);
+            this.speakerStars[i].scrollFactorX = 0;
+            this.speakerStars[i].scrollFactorY = 0;
+            this.speakerStars[i].alpha = 0;
+
+        }
 
         scene.tweens.add({
             targets: this.dialogPrompt,
@@ -198,6 +210,11 @@ class DialogDisplay {
         messageBus.subscribe("unclickable", this.setUnclickable.bind(this));
 
         messageBus.subscribe("setDialogBtnToTop", this.setDialogBtnToTop.bind(this));
+        messageBus.subscribe("updateInfluenceAnimation", this.updateInfluenceAnimation.bind(this));
+        messageBus.subscribe("showInfluence", this.showInfluence.bind(this));
+
+
+        messageBus.subscribe("pointerMove", this.checkCornerHover.bind(this));
 
 
         this.buttons = [];
@@ -221,12 +238,31 @@ class DialogDisplay {
         this.dialogSpeaker.visible = false;
         this.dialogBox.visible = false;
         this.dialogFace.visible = false;
+        for (let i in this.speakerStars) {
+            this.speakerStars[i].alpha = 0;
+            this.speakerStars[i].visible = false;
+        }
+        this.canHideStars = true;
         this.dialogPrompt.visible = false;
         this.dialogButton.setState(DISABLE);
 
         this.hideTalkText();
-
     }
+
+    checkCornerHover(x, y) {
+        if (x < 140 && y > 490) {
+            if (!this.speakerStars[0].visible) {
+                for (let i in this.speakerStars) {
+                    this.speakerStars[i].visible = true;
+                }
+            }
+        } else if (this.canHideStars && this.speakerStars[0].visible) {
+            for (let i in this.speakerStars) {
+                this.speakerStars[i].visible = false;
+            }
+        }
+    }
+
     showDialogSpeaker(name) {
         this.dialogSpeaker.setText(name);
         this.dialogSpeaker.visible = true;
@@ -267,6 +303,11 @@ class DialogDisplay {
         this.dialogText.visible = true;
         this.dialogText.setFontSize(26);
         this.dialogFace.visible = false;
+        for (let i in this.speakerStars) {
+            this.speakerStars[i].alpha = 0;
+            this.speakerStars[i].visible = false;
+        }
+        this.canHideStars = true;
 
         this.dialogBox.visible = true;
         this.dialogBox.x = gameConsts.halfWidth;
@@ -320,6 +361,19 @@ class DialogDisplay {
         this.dialogFace.visible = true;
         this.dialogFace.x = this.dialogFace.startX;
         this.dialogFace.setFrame(faceFrame);
+
+        let numStars = this.getNumStars();
+        setTimeout(() => {
+            for (let i = 0; i < this.speakerStars.length; i++) {
+                if (!this.speakerStars[i].animating) {
+                    if (i < numStars) {
+                        this.speakerStars[i].alpha = 0.5;
+                    } else {
+                        this.speakerStars[i].alpha = 0;
+                    }
+                }
+            }
+        }, 0);
     }
 
     finishTypingText() {
@@ -365,7 +419,7 @@ class DialogDisplay {
         for (let i = 0; i < branches.length; i++) {
             let currButton = this.buttons[i];
             let branchData = branches[i];
-            let yPos = gameConsts.halfHeight - (branches.length - 1) * 32 + i * 64;
+            let yPos = gameConsts.halfHeight - (branches.length - 1) * 32 + i * 64 - branches.length * 12;
             currButton.setPosition(gameConsts.halfWidth + gameVars.cameraPosX, yPos);
             currButton.setText(branchData.text);
             currButton.setDestNode(branchData.targetNode);
@@ -390,6 +444,9 @@ class DialogDisplay {
     }
 
     clickNextDialog() {
+        if (this.dialogButton.getState() === DISABLE) {
+            return;
+        }
         if (this.typingText) {
             this.finishTypingText();
         } else {
@@ -422,5 +479,126 @@ class DialogDisplay {
     setDialogBtnToTop() {
         buttonManager.removeButton(this.dialogButton);
         buttonManager.addToButtonList(this.dialogButton);
+    }
+
+    getNumStars() {
+        let speakerName = this.dialogSpeaker.text;
+        switch(speakerName) {
+            case 'Maggie':
+                return gameState.MaggieInfluence || 0;
+            case 'Bruna':
+                return gameState.BrunaInfluence || 0;
+            case 'Juan':
+                return gameState.JuanInfluence || 0;
+            case 'Edith':
+                return gameState.EdithInfluence || 0;
+                return 2;
+            case 'Ethan':
+                return gameState.EthanInfluence || 0;
+            default:
+                return 0;
+        }
+        return 0;
+    }
+
+    updateInfluenceAnimation() {
+        let numStars = this.getNumStars();
+        this.canHideStars = false;
+        for (let i = 0; i < this.speakerStars.length; i++) {
+            if (i < numStars) {
+                this.speakerStars[i].visible = true;
+                if (this.speakerStars[i].alpha === 0) {
+                    // animate to visible
+                    this.speakerStars[i].animating = true;
+                    this.speakerStars[i].setScale(0.9);
+                    this.speakerStars[i].setAlpha(0.01);
+                    this.speakerStars[i].rotation = -0.05;
+                    this.scene.tweens.add({
+                        targets: this.speakerStars[i],
+                        alpha: 1,
+                        scaleX: 0.3,
+                        scaleY: 0.3,
+                        rotation: 0,
+                        duration: 350,
+                        ease: 'Quad.easeIn',
+                        onComplete: () => {
+                            this.scene.tweens.add({
+                                targets: this.speakerStars[i],
+                                alpha: 1,
+                                scaleX: 0.65,
+                                scaleY: 0.65,
+                                rotation: 0.12,
+                                duration: 300,
+                                ease: 'Cubic.easeOut',
+                                onComplete: () => {
+                                    this.scene.tweens.add({
+                                        targets: this.speakerStars[i],
+                                        alpha: 0.5,
+                                        scaleX: 0.4,
+                                        scaleY: 0.4,
+                                        rotation: 0,
+                                        duration: 300,
+                                        ease: 'Cubic.easeIn',
+                                        onComplete: () => {
+                                            this.speakerStars[i].animating = false;
+                                        }
+                                    });
+                                }
+                            });
+                        }
+                    });
+                }
+            } else {
+                if (this.speakerStars[i].alpha > 0) {
+                    // animate to hidden when it isn't
+                    this.speakerStars[i].animating = true;
+                    this.scene.tweens.add({
+                        targets: this.speakerStars[i],
+                        alpha: 0,
+                        scaleX: 1,
+                        scaleY: 1,
+                        duration: 200,
+                        ease: 'Cubic.easeOut',
+                        onComplete: () => {
+                            this.speakerStars[i].setScale(0.4);
+                            this.speakerStars[i].animating = false;
+                        }
+                    });
+                }
+            }
+        }
+    }
+
+    showInfluence() {
+        let numStars = this.getNumStars();
+        this.canHideStars = false;
+        for (let i = 0; i < this.speakerStars.length; i++) {
+            this.speakerStars[i].visible = true;
+            if (i < numStars) {
+                this.speakerStars[i].alpha = 0.35;
+                this.speakerStars[i].setScale(0.3);
+                this.scene.tweens.add({
+                    targets: this.speakerStars[i],
+                    alpha: 1,
+                    scaleX: 0.5,
+                    scaleY: 0.5,
+                    rotation: 0,
+                    duration: 350,
+                    ease: 'Cubic.easeOut',
+                    onComplete: () => {
+                        this.scene.tweens.add({
+                            targets: this.speakerStars[i],
+                            alpha: 0.5,
+                            scaleX: 0.4,
+                            scaleY: 0.4,
+                            duration: 450,
+                            ease: 'Back.easeOut',
+                        });
+                    }
+                });
+            } else {
+                this.speakerStars[i].alpha = 0;
+            }
+        }
     }
 }

@@ -38,7 +38,7 @@ let furnitureDialog = {
                     "in the rain, something big! We're setting up ref-••••••••••••••\"\n\n" +
                     "\".••••••.•••.•••Hello? Buddy? Buddy are you there-\""},
             {speaker: 'Radio', size: 'small', text: "\"-at Hope Springs! We're set- *garbled* -uge at Hope- ••••.•••••••••.•••••••••.•••••••\"\n*static*\n\n\"Hopefully he calls back. Next song is...\"\n"},
-            {speaker: "You", text: "Hope Springs huh. Wonder where that is?", data: {property: "radio2Done", value: "true"} },
+            {speaker: "You", text: "\"Hope Springs\" huh. Wonder where that is?", data: {property: "radio2Done", value: "true"} },
         ]
     },
     radioActTwo2: {
@@ -52,7 +52,7 @@ let furnitureDialog = {
                     "in the rain, something big! We're setting up ref-••••••••••••••\"\n\n" +
                     "\".••••••.•••.•••Hello? Buddy? Buddy are you there-\""},
             {speaker: 'Radio', size: 'small', text: "\"-at Hope Springs! We're set- *garbled* -uge at Hope- ••••.•••••••••.•••••••••.•••••••\"\n*static*\n\n\"Hopefully he calls back. Next song is...\"\n"},
-            {speaker: "You", text: "Hope Springs huh. Maybe Bruna knows where\nit is.", data: {property: "radio2Done", value: "true"} },
+            {speaker: "You", text: "Hope Springs huh. Maybe Bruna knows where\nthat is.", data: {property: "radio2Done", value: "true"} },
         ]
     },
 
@@ -72,10 +72,10 @@ let furnitureDialog = {
     tv2: {
         speech: [
             {speaker: 'TV', size: 'small', text: "\"Hahaha! What a cute dog trick, no wonder it went viral.\"\n" +
-                    "That's right Marge, so cute. In other news we've been\n" +
+                    "\"That's right Marge, so cute. In other news we've been\n" +
                     "hearing reports that one of the live feeds of a local\n" +
-                    "Peregrine Falcon nest on Heaven Towers cut out."},
-            {speaker: 'TV', size: 'small', text: "Rest assured, the beloved birds are fine and the feed will\n" +
+                    "Peregrine Falcon nest on Heaven Towers cut out.\""},
+            {speaker: 'TV', size: 'small', text: "\"Rest assured, the beloved birds are fine and the feed will\n" +
                     "be restored shortly. The images of a humanoid figure in\n" +
                     "the live feed are just an internet hoax.\""},
             {speaker: 'TV', size: 'small', text: "\"That nest is thirty stories in the air Homer. Who'd believe\n" +
@@ -157,6 +157,11 @@ let furnitureDialog = {
             {speaker: '', text: "I should talk to Maggie first before going out back."},
         ]
     },
+    BackdoorNoPoint: {
+        speech: [
+            {speaker: '', text: "No point in going to the back."},
+        ]
+    },
     BackdoorScratcing1: {
         speech: [
             {speaker: '', forceProgress: true, text: "You hear scratching behind the door.\nOpen the door?•••••••••••••••••••"},
@@ -182,6 +187,25 @@ let furnitureDialog = {
             {text: "Come back later"},
         ]
     },
+    ScratchDoorInterruptEthanTired: {
+        speech: [
+            {speaker: "Juan", face: "juan_normal.png", text: "Hold on what are you doing?"},
+            {speaker: "You", text: "I'm checking out what's causing this noise."},
+            {speaker: "Juan", face: "juan_sad.png", text: "Well don't just open the door like that.\nYou don't know what's on the other side."},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "Now there, if it's a customer I can't well\nturn them away."},
+            {speaker: "Juan", face: "juan_sad.png", text: "If it was a customer they'd come in from\nthe front."},
+            {speaker: "Edith", face: "edith_normal.png", text: "I have to agree, it doesn't sound like\nit's a person on the other side."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Nah• man.•••••.•••••••••.••••••••• door's cool•••••••••.•••••••••.•••••••••. You• can• open•\nit."},
+            {speaker: "Juan", face: "juan_normal.png", text: "Sure, listen to the guy high out of\nhis-••••••\nHey you don't look so good."},
+            {speaker: "Bruna", face: "bruna_normal.png", text: "             (quietly records)"},
+            {speaker: "", text: "What should you do?"},
+        ],
+        branches: [
+            {text: "Open the door", targetNode: "OpenScratchDoor"},
+            {text: "Lock the door", targetNode: "LockScratchDoorEthanTired"},
+            {text: "Come back later"},
+        ]
+    },
     ScratchDoorReturn: {
         speech: [
             {speaker: "", text: "What should you do?"},
@@ -192,9 +216,19 @@ let furnitureDialog = {
             {text: "Come back later"},
         ]
     },
+    ScratchDoorReturnEthanTired: {
+        speech: [
+            {speaker: "", text: "What should you do?"},
+        ],
+        branches: [
+            {text: "Open the door", targetNode: "OpenScratchDoor"},
+            {text: "Lock the door", targetNode: "LockScratchDoorEthanTired"},
+            {text: "Come back later"},
+        ]
+    },
     OpenScratchDoor: {
         speech: [
-            {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "No wait hold up-••••••••••••••••••", publish: "openScratchDoor"},
+            {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "Wait hold up!-••••••••••••••••", publish: "openScratchDoor"},
         ],
     },
     OpenScratchDoorFinish: {
@@ -205,11 +239,11 @@ let furnitureDialog = {
             {speaker: "Juan", face: "juan_sad.png", text: "You didn't know what was out there.\nIt could have been dangerous."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Nah the door wasn't dangerous.••••••••••••••••\n.••••••••.•••••••It's the windows you gotta watch out for."},
             {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuiet'},
-            {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "What are you talking about I don't\nsee anything out the windows-•••••••••••"},
+            {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "What are you talking about I don't\nsee anything out the windows-•••••••••••••••"},
             {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: " "},
-            {speaker: "", text: "   *SHATTER*\n(The window near Juan and Ethan breaks)", publish: "windowBreak"},
+            {speaker: "", text: "   *SHATTER*", publish: "windowBreak"},
             {speaker: "Juan", face: "juan_sad.png", text: "SONOFA-"},
-            {speaker: "", text: "   (Rain starts pouring in from the windows)."},
+            {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan)."},
         ],
     },
     LockScratchDoor: {
@@ -220,13 +254,44 @@ let furnitureDialog = {
             {speaker: "Juan", face: "juan_normal.png", text: "You don't know what's out there.\nIt could've been dangerous."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Nah the door's not dangerous.••••••••••••••••\n.••••••••.•••••••It's the windows you gotta watch out for."},
             {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuiet'},
-            {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "What are you talking about I don't\nsee anything out the windows-•••••••••••"},
+            {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "What are you talking about I don't\nsee anything out the windows-•••••••••••••••"},
             {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: " "},
             {speaker: "", text: "   *SHATTER*", publish: "windowBreak"},
             {speaker: "Juan", face: "juan_sad.png", text: "SONOFA-"},
-            {speaker: "", text: "   (Rain starts pouring in from the windows)."},
+            {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan)."},
         ]
     },
+    OpenScratchDoorFinishEthanTired: {
+        speech: [
+            {speaker: "Bruna", face: "bruna_happy.png", text: "Doggie!"},
+            {speaker: "Maggie", face: "maggie_happy.png", text: "My goodness."},
+            {speaker: "Juan", face: "juan_normal.png", text: ".•.•.••••••Got lucky this time."},
+            {speaker: "Juan", face: "juan_sad.png", text: "You didn't know what was out there.\nIt could have been dangerous."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Door•.•••.•••.••• not dangerous.•••••••••\n.••••••••.•••••••Gotta watch out...•••••••• windows."},
+            {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuiet'},
+            {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "What are you talking about I don't\nsee anything out the windows-•••••••••••••••"},
+            {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: " "},
+            {speaker: "", text: "   *SHATTER*", publish: "windowBreak"},
+            {speaker: "Juan", face: "juan_sad.png", text: "SONOFA-"},
+            {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan)."},
+        ],
+    },
+    LockScratchDoorEthanTired: {
+        speech: [
+            {speaker: "", text: "   You lock the door shut."},
+            {speaker: "", text: "   The scratching noises stop.", publish: "lockScratchDoor"},
+            {speaker: "Ethan", face: "ethan_sad.png", text: "Aw it.•••.•••.••• wanted to come in."},
+            {speaker: "Juan", face: "juan_normal.png", text: "You don't know what's out there.\nIt could've been dangerous."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Door•.•••.•••.••• not dangerous.•••••••••\n.••••••••.•••••••Gotta watch out...•••••••• windows."},
+            {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuiet'},
+            {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "What are you talking about I don't\nsee anything out the windows-•••••••••••••••"},
+            {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: " "},
+            {speaker: "", text: "   *SHATTER*", publish: "windowBreak"},
+            {speaker: "Juan", face: "juan_sad.png", text: "SONOFA-"},
+            {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan)."},
+        ]
+    },
+
 
     BackdoorActTemporary: {
         speech: [
@@ -271,8 +336,8 @@ let furnitureDialog = {
         speech: [
             {speaker: "",  text: "  (You feel the room has relaxed now that\n    the power is back on)"},
             {speaker: "Maggie", face: "maggie_happy.png", text: "Thank you honey. I'll go turn off some of\nthe kitchen equipment to save power."},
-            {speaker: "You", text: "Could we keep the radio on? There might be\nuseful information on there."},
-            {speaker: "Maggie", face: "maggie_normal.png", text: "Of course. You do what you need to do\nand I'll have a meal prepared for\nyou shortly."},
+            {speaker: "You", text: "Could we keep the radio on? It might have\nuseful information."},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "Of course. You do what you need to do\nand I'll have a meal prepared for you\nshortly."},
         ]
     },
 
@@ -291,11 +356,30 @@ let furnitureDialog = {
             {text: "Not yet"},
         ]
     },
+    ExitSceneThree: {
+        speech: [
+            {speaker: '', text: "Leave the diner, or stay and lock up?"},
+        ],
+        branches: [
+            {text: "Leave the diner", publish: "exitFinale"},
+            {text: "Lock the door and stay here", publish: "stayFinale"},
+            {text: "Decide later"},
+        ]
+    },
+    ExitSceneThreeNoStay: {
+        speech: [
+            {speaker: '', text: "Leave the diner with everyone?"},
+        ],
+        branches: [
+            {text: "Yes", publish: "exitFinale"},
+            {text: "Not yet"},
+        ]
+    },
+
     DoorScratchStart: {
         speech: [
             {speaker: '', text: "You hear scratching noises from the door."},
         ],
     }
-
 
 };

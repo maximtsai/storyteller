@@ -4,11 +4,11 @@ function createWorldButtons() {
         normal: {
             "atlas": "pixels",
             "ref": "blue_pixel.png",
-            "x": 350,
-            "y": 250,
-            "scaleX": 125,
+            x: 350,
+            y: 250,
+            scaleX: 125,
             scaleY: 170,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
             alpha: 0.05
@@ -18,6 +18,13 @@ function createWorldButtons() {
         },
         disable: {
             alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('chat_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
         },
         onMouseUp() {
             shiftOver(globalObjects.diner.maggieButton.getXPos());
@@ -32,9 +39,9 @@ function createWorldButtons() {
         normal: {
             atlas: "pixels",
             ref: "blue_pixel.png",
-            x: 1080,
-            y: 370,
-            scaleX: 110,
+            x: 1095,
+            y: 390,
+            scaleX: 95,
             scaleY: 170,
             alpha: 0.1
         },
@@ -46,6 +53,13 @@ function createWorldButtons() {
         },
         disable: {
             alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('chat_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
         },
         onMouseUp() {
             shiftOver(globalObjects.diner.EdithButton.getXPos());
@@ -60,9 +74,9 @@ function createWorldButtons() {
         normal: {
             atlas: "pixels",
             ref: "blue_pixel.png",
-            x: 1315,
-            y: 360,
-            scaleX: 120,
+            x: 1325,
+            y: 380,
+            scaleX: 100,
             scaleY: 180,
             alpha: 0.1
         },
@@ -74,6 +88,13 @@ function createWorldButtons() {
         },
         disable: {
             alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('chat_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
         },
         onMouseUp() {
             shiftOver(globalObjects.diner.EthanButton.getXPos());
@@ -90,7 +111,7 @@ function createWorldButtons() {
             ref: "blue_pixel.png",
             x: 1875,
             y: 390,
-            scaleX: 240,
+            scaleX: 200,
             scaleY: 200,
             alpha: 0.1
         },
@@ -102,6 +123,13 @@ function createWorldButtons() {
         },
         disable: {
             alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('chat_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
         },
         onMouseUp() {
             shiftOver(globalObjects.diner.JuanButton.getXPos());
@@ -120,7 +148,7 @@ function createWorldButtons() {
             ref: "blue_pixel.png",
             x: -635,
             y: 420,
-            scaleX: 110,
+            scaleX: 100,
             scaleY: 170,
             alpha: 0.1
         },
@@ -132,6 +160,13 @@ function createWorldButtons() {
         },
         disable: {
             alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('chat_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
         },
         onMouseUp() {
             shiftOver(globalObjects.diner.BrunaButton.getXPos());
@@ -146,7 +181,7 @@ function createWorldButtons() {
         normal: {
             atlas: "pixels",
             ref: "blue_pixel.png",
-            x: -1135,
+            x: -1160,
             y: 420,
             scaleX: 110,
             scaleY: 170,
@@ -160,6 +195,13 @@ function createWorldButtons() {
         },
         disable: {
             alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('chat_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
         },
         onMouseUp() {
             shiftOver(globalObjects.diner.CasparButton.getXPos());
@@ -189,6 +231,13 @@ function createWorldButtons() {
         disable: {
             alpha: 0.001
         },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
         onMouseUp() {
             shiftOver(globalObjects.diner.ExitButton.getXPos());
             clickExit();
@@ -215,6 +264,13 @@ function createWorldButtons() {
         },
         disable: {
             alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
         },
         onMouseUp() {
             if (gameState.scratchingDoor || true) {
@@ -247,6 +303,13 @@ function createWorldButtons() {
         disable: {
             alpha: 0.001
         },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
         onMouseUp() {
             clickIndoor();
         }
@@ -271,6 +334,13 @@ function createWorldButtons() {
         },
         disable: {
             alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
         },
         onMouseUp() {
             enterShed();
@@ -297,6 +367,13 @@ function createWorldButtons() {
         disable: {
             alpha: 0.001
         },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
         onMouseUp() {
             clickGravestone();
         }
@@ -321,6 +398,13 @@ function createWorldButtons() {
         },
         disable: {
             alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
         },
         onMouseUp() {
             exitShed();
@@ -347,6 +431,13 @@ function createWorldButtons() {
         disable: {
             alpha: 0.001
         },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
         onMouseUp() {
             clickGenerator();
         }
@@ -357,7 +448,7 @@ function createWorldButtons() {
         normal: {
             atlas: "pixels",
             ref: "blue_pixel.png",
-            x: 1330,
+            x: 1325,
             y: 80,
             scaleX: 100,
             scaleY: 80,
@@ -371,6 +462,13 @@ function createWorldButtons() {
         },
         disable: {
             alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
         },
         onMouseUp() {
             shiftOver(globalObjects.diner.TVButton.getXPos());
@@ -398,6 +496,13 @@ function createWorldButtons() {
         },
         disable: {
             alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
         },
         onMouseUp() {
             shiftOver(globalObjects.diner.RadioButton.getXPos());
@@ -445,7 +550,9 @@ function clickMaggie() {
         }
 
     } else if (gameState.currentScene == 3) {
-
+        if (gameState.windowBroken) {
+            dialogManager.showDialogNode('WindowBroken');
+        }
     }
 
 
@@ -501,11 +608,44 @@ function clickEdith() {
             }
         }
     } else if (gameState.currentScene == 3) {
-        if (gameState.edithThinking) {
+        if (gameState.EdithRefuse) {
+            dialogManager.showDialogNode('Edith3Refused');
+        } else if (gameState.EdithSaved) {
+            dialogManager.showDialogNode('Edith3LeaveComeWithSuccess');
+        } else if (gameState.windowFixed) {
+            if (gameState.ethanSleeping) {
+                if (gameState.edithChattedEthanCatatonic) {
+                    dialogManager.showDialogNode('Edith3LeaveQuickYesNoCatatonic');
+                } else {
+                    gameState.edithChattedEthanCatatonic = true;
+                    dialogManager.showDialogNode('Edith3LeaveCatatonic');
+                }
+            } else if (gameState.edithThinking) {
+                if (gameState.EthanSaved) {
+                    dialogManager.showDialogNode('Edith3LeaveThinkingPromiseEthan');
+                } else {
+                    dialogManager.showDialogNode('Edith3LeaveThinking');
+                }
+            } else {
+                if (gameState.EthanSaved) {
+                    dialogManager.showDialogNode('Edith3LeaveNormalPlusEthan');
+                } else {
+                    dialogManager.showDialogNode('Edith3LeaveNormal');
+                }
+            }
+        } else if (gameState.windowBroken) {
+            if (gameState.ethanSleeping) {
+                dialogManager.showDialogNode('Edith3Catatonic');
+            } else {
+                dialogManager.showDialogNode('WindowBroken');
+            }
+        } else if (gameState.edithThinking) {
             dialogManager.showDialogNode('Edith3Thinking');
         } else {
-            dialogManager.showDialogNode('Edith3HitRoad');
+            dialogManager.showDialogNode('EdithDefault');
         }
+    } else {
+        dialogManager.showDialogNode('EdithDefault');
     }
 }
 
@@ -551,7 +691,19 @@ function clickEthan() {
         }
 
     } else if (gameState.currentScene == 3) {
-        if (!gameState.askedEthanEdithTV) {
+        if (gameState.windowFixed) {
+            if (gameState.ethanBlocked) {
+                dialogManager.showDialogNode('Ethan3Blocked');
+            } else {
+                dialogManager.showDialogNode('Ethan3Chat');
+            }
+        } else if (gameState.windowBroken) {
+            if (gameState.ethanSleeping) {
+                dialogManager.showDialogNode('WindowBrokenEthanSleeping');
+            } else {
+                dialogManager.showDialogNode('WindowBroken');
+            }
+        } else if (gameState.ethanSleeping) {
             dialogManager.showDialogNode('Ethan3Catatonic');
         }
     }
@@ -584,11 +736,45 @@ function clickJuan() {
             } else {
                 gameState.juan2Chatted = true;
                 dialogManager.showDialogNode('Juan2Chat');
-
             }
         }
     } else if (gameState.currentScene == 3) {
+        if (gameState.windowFixed) {
+            if (gameState.juanLeaveStatus) {
+                switch(gameState.juanLeaveStatus) {
+                    case "blocked":
+                        dialogManager.showDialogNode('JuanAct3NoComeFin');
+                        break;
+                    case "onlyUseful":
+                        dialogManager.showDialogNode('JuanAct3Leave3UsefulFin');
+                        break;
+                    case "refuse":
+                        dialogManager.showDialogNode('JuanAct3Leave3RefuseFin');
+                        break;
+                    case "softRefuse":
+                        dialogManager.showDialogNode('JuanAct3Leave3RefuseFin');
+                        break;
+                    case "accept":
+                        dialogManager.showDialogNode('JuanAct3Leave3AcceptFin');
+                        break;
 
+                    default:
+                }
+            } else if (gameState.youHelpedWindowFix) {
+                dialogManager.showDialogNode('JuanAct3Leave');
+            } else {
+                dialogManager.showDialogNode('JuanStillFixingWindow');
+            }
+
+        } else if (gameState.windowBroken) {
+            if (gameState.ethanSleeping) {
+                dialogManager.showDialogNode('WindowBrokenDiscussEthanSleeping');
+            } else {
+                dialogManager.showDialogNode('WindowBrokenDiscuss');
+            }
+        } else {
+            dialogManager.showDialogNode('JuanDefault');
+        }
     }
 }
 
@@ -616,8 +802,8 @@ function clickBruna() {
                 dialogManager.showDialogNode('Bruna2Chat');
             } else if (gameState.bruna2ChattedAngry) {
                 dialogManager.showDialogNode('Bruna2ChatAngry');
-            } else if (gameState.radio2Done && !gameState.bruna2HopeSpringsChatted) {
-                gameState.bruna2HopeSpringsChatted = true;
+            } else if (gameState.radio2Done && !gameState.brunaHopeSpringsChatted) {
+                gameState.brunaHopeSpringsChatted = true;
                 dialogManager.showDialogNode('Bruna2ChatHopeSprings');
             } else {
                 if (gameState.scratchingDoor) {
@@ -626,6 +812,37 @@ function clickBruna() {
                     dialogManager.showDialogNode('Bruna2ChatFin');
                 }
             }
+        }
+    } else if (gameState.currentScene == 3) {
+        let canAskAboutRadio = gameState.radio2Done || gameState.radio3Done;
+        if (gameState.BrunaRefuse) {
+            dialogManager.showDialogNode('Bruna3Refused');
+        } else if (gameState.BrunaSaved) {
+            dialogManager.showDialogNode('Bruna3Success');
+        } else if (gameState.windowFixed) {
+            if (gameState.BrunaFortify) {
+                if (gameState.brunaHopeSpringsChatted) {
+                    // You know of Hope Springs
+                    dialogManager.showDialogNode('Bruna3DecisionFortify');
+                } else if (canAskAboutRadio) {
+                    dialogManager.showDialogNode('Bruna3DecisionFortifyWithRadio');
+                } else {
+                    dialogManager.showDialogNode('Bruna3DecisionFortifyDead');
+                }
+            } else {
+                if (gameState.brunaHopeSpringsChatted) {
+                    // You know of Hope Springs
+                    dialogManager.showDialogNode('Bruna3Decision');
+                } else if (canAskAboutRadio) {
+                    dialogManager.showDialogNode('Bruna3DecisionWithRadio');
+                } else {
+                    dialogManager.showDialogNode('Bruna3DecisionDead');
+                }
+            }
+        } else if (gameState.windowBroken) {
+            dialogManager.showDialogNode('WindowBroken');
+        } else {
+            dialogManager.showDialogNode('BrunaDefault');
         }
     }
 }
@@ -656,7 +873,12 @@ function clickCaspar() {
             }
         } else {
             if (gameState.scratchingDoor) {
-                dialogManager.showDialogNode('CasparAct2DoorScratch');
+                if (gameState.caspar2ScratchDoored) {
+                    dialogManager.showDialogNode('CasparAct2DoorScratchFin');
+                } else {
+                    gameState.caspar2ScratchDoored = true;
+                    dialogManager.showDialogNode('CasparAct2DoorScratch');
+                }
             } else if (gameState.caspar2Welcomed) {
                 dialogManager.showDialogNode('CasparAct2Ask');
             } else {
@@ -683,7 +905,20 @@ function clickCaspar() {
 
         }
     } else if (gameState.currentScene == 3) {
-
+        let knowsFinalDest = gameState.radio2Done || gameState.radio3Done || gameState.askedCasparRadio;
+        if (gameState.windowFixed) {
+            if (gameState.BrunaSaved && gameState.EdithSaved && gameState.EthanSaved && gameState.juanLeaveStatus == "accept") {
+                dialogManager.showDialogNode('Caspar3Final');
+            } else if (gameState.caspar3ChatDone) {
+                dialogManager.showDialogNode('Caspar3Waiting');
+            } else if (knowsFinalDest) {
+                dialogManager.showDialogNode('CasparAct3Final');
+            } else {
+                dialogManager.showDialogNode('CasparAct3FinalNoDest');
+            }
+        } else if (gameState.windowBroken) {
+            dialogManager.showDialogNode('CasparWindowBroken');
+        }
     }
 }
 
@@ -729,7 +964,11 @@ function clickExit() {
     } else if (gameState.currentScene == 2) {
         dialogManager.showDialogNode('ExitSceneTwo');
     } else if (gameState.currentScene == 3) {
-
+        if (gameState.goodEndLocked) {
+            dialogManager.showDialogNode('ExitSceneThreeNoStay');
+        } else {
+            dialogManager.showDialogNode('ExitSceneThree');
+        }
     }
 }
 
@@ -762,8 +1001,10 @@ function clickRadio() {
         // 356 = 98 secret
         // 386.25 = 100,
         // 446.75 = 104, 506 = 108
-        globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0, true);
-        globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0, true);
+        if (!globalObjsTemp.radioStatic1) {
+            globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0, true);
+            globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0, true);
+        }
         globalObjsTemp.radio.radioClickBlocker = new Button({
             normal: {
                 ref: "blackPixel",
@@ -987,9 +1228,11 @@ function adjustRadioUpdate(barPos) {
         globalObjsTemp.radioMusic.volume = 1 - staticSoundMult;
         let sqrtSoundMult = Math.sqrt(staticSoundMult);
         globalObjsTemp.radioStatic1.volume = sqrtSoundMult * (1 - panMult) * 0.5;
-        globalObjsTemp.radioStatic2.volume = sqrtSoundMult * panMult * 0.5;
         globalObjsTemp.radioStatic1.trueVolume = globalObjsTemp.radioStatic1.volume;
-        globalObjsTemp.radioStatic2.trueVolume = globalObjsTemp.radioStatic2.volume;
+        if (globalObjsTemp.radioStatic2) {
+            globalObjsTemp.radioStatic2.volume = sqrtSoundMult * panMult * 0.5;
+            globalObjsTemp.radioStatic2.trueVolume = globalObjsTemp.radioStatic2.volume;
+        }
         if (distToClosestObj > 10) {
             if (globalObjsTemp.radioMusic.isPlaying) {
                 globalObjsTemp.radioMusic.stop();
@@ -1029,7 +1272,9 @@ function adjustRadioUpdate(barPos) {
     } else {
         globalObjsTemp.radioMusic.volume = 1;
         globalObjsTemp.radioStatic1.volume = 0;
-        globalObjsTemp.radioStatic2.volume = 0;
+        if (globalObjsTemp.radioStatic2) {
+            globalObjsTemp.radioStatic2.volume = 0;
+        }
         // closestObj
         // globalObjsTemp.radioMusic
     }
@@ -1113,7 +1358,11 @@ function clickBackdoor() {
     } else if (gameState.currentScene == 2) {
         if (gameState.scratchingDoor) {
             if (gameState.startedBackdoorDebate) {
-                dialogManager.showDialogNode('ScratchDoorReturn');
+                if (gameState.ethan2Chatted) {
+                    dialogManager.showDialogNode('ScratchDoorReturn');
+                } else {
+                    dialogManager.showDialogNode('ScratchDoorReturnEthanTired');
+                }
             } else {
                 gameState.startedBackdoorDebate = true;
                 dialogManager.showDialogNode('BackdoorScratcing1');
@@ -1126,7 +1375,11 @@ function clickBackdoor() {
         }
         // dialogManager.showDialogNode('Backdoor2NoReasonToGo');
     } else if (gameState.currentScene == 3) {
-
+        if (gameState.goodEndLocked) {
+            dialogManager.showDialogNode('BackdoorNoPoint');
+        } else {
+            exitBackdoor();
+        }
     }
 }
 
@@ -1734,12 +1987,11 @@ function startGenerator() {
     }
     if (globalObjsTemp.generator.red.socket % 2 == 0) {
         // must be odd, is invalid
-        showGeneratorInvalid(4193);
+        showGeneratorInvalid(4195);
         playSound('generatorFail', 1);
         return false;
     }
     if (globalObjsTemp.generator.blue.socket <= globalObjsTemp.generator.red.socket) {
-        // must be odd, is invalid
         showGeneratorInvalid(4247);
         playSound('generatorFail', 1);
         return false;
@@ -1760,18 +2012,18 @@ function startGenerator() {
         greenCrosses++
     }
     if (greenCrosses != 1) {
-        showGeneratorInvalid(4301);
+        showGeneratorInvalid(4286);
         playSound('generatorFail', 1);
         return false;
     }
 
     if (globalObjsTemp.generator.yellow.socket >= globalObjsTemp.generator.green.socket) {
-        showGeneratorInvalid(4356);
+        showGeneratorInvalid(4342);
         playSound('generatorFail', 1);
         return false;
     }
     if (globalObjsTemp.generator.purple.socket == 1 || globalObjsTemp.generator.purple.socket == 2) {
-        showGeneratorInvalid(4413);
+        showGeneratorInvalid(4386);
         playSound('generatorFail', 1);
         return false;
     }
@@ -1789,7 +2041,7 @@ function startGenerator() {
         numWiresUpward++;
     }
     if (numWiresUpward < 3) {
-        showGeneratorInvalid(4460);
+        showGeneratorInvalid(4438);
         playSound('generatorFail', 1);
         return;
     }
@@ -1814,6 +2066,7 @@ function turnOnPower() {
         duration: 600
     });
     gameState.powerOff = false;
+    globalObjsTemp.outdoorBackgrounds.bg1.setFrame('bgout1Light.png');
     dialogManager.showDialogNode('GeneratorTurnedOn');
     setCharactersNormal();
     gameCharacters.ethan.setFrame('ethan_tired.png');

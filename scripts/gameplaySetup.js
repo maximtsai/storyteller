@@ -78,6 +78,7 @@ function setupGame() {
     setupDialogManager();
     let dialogDisplay = new DialogDisplay(PhaserScene);
     let miscSubscribe = new MiscSubscribe(PhaserScene);
+    globalObjects.exclamation = new ExclamationHover(PhaserScene);
     setupKeyPresses(PhaserScene);
 
     initializeMisc();
@@ -316,9 +317,11 @@ function realGameStart() {
     bgRain.depth = -2;
     bgRain.scrollFactorX = 0.5;
     let bg1 = PhaserScene.add.image(-987.5, gameConsts.halfHeight, 'backgrounds', 'bg1.png');
+    let window1 = PhaserScene.add.image(-765, gameConsts.halfHeight - 63, 'characters', 'window.png').setDepth(-1);
     let bg2 = PhaserScene.add.image(12, gameConsts.halfHeight, 'backgrounds', 'bg2.png');
     let bg3 = PhaserScene.add.image(1011.05, gameConsts.halfHeight, 'backgrounds', 'bg3.png');
     let bg4 = PhaserScene.add.image(2011, gameConsts.halfHeight, 'backgrounds', 'bg4.png');
+    globalObjects.window2 = PhaserScene.add.image(1713, gameConsts.halfHeight - 63, 'characters', 'window.png').setDepth(-1);
     let fakeBase = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'startFakeBase.png');
     let darkGloom = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(999, 999);
     let fakeBaseOverlay = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'startFakeBaseOverlay.png');

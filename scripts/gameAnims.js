@@ -20,7 +20,7 @@ function createAnimations(scene) {
             end: 5,
             zeroPad: 1,
         }),
-        frameRate: 15,
+        frameRate: 20,
         repeat: 0
     });
     scene.anims.create({

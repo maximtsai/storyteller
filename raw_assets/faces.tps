@@ -175,6 +175,7 @@
         <map type="IndividualSpriteSettingsMap">
             <key type="filename">faces/bruna_behind.png</key>
             <key type="filename">faces/bruna_dark_scared.png</key>
+            <key type="filename">faces/bruna_grin.png</key>
             <key type="filename">faces/bruna_happy.png</key>
             <key type="filename">faces/bruna_normal.png</key>
             <key type="filename">faces/bruna_sad.png</key>
