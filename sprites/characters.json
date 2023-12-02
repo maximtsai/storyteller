@@ -431,6 +431,27 @@
 					}
 				},
 				{
+					"filename": "caspar2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 132,
+						"h": 383
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 15,
+						"w": 118,
+						"h": 357
+					},
+					"frame": {
+						"x": 2,
+						"y": 654,
+						"w": 118,
+						"h": 357
+					}
+				},
+				{
 					"filename": "ethan_dark_void.png",
 					"rotated": false,
 					"trimmed": true,
@@ -445,7 +466,7 @@
 						"h": 355
 					},
 					"frame": {
-						"x": 2,
+						"x": 123,
 						"y": 654,
 						"w": 154,
 						"h": 355
@@ -466,7 +487,7 @@
 						"h": 355
 					},
 					"frame": {
-						"x": 159,
+						"x": 280,
 						"y": 654,
 						"w": 149,
 						"h": 355
@@ -487,31 +508,10 @@
 						"h": 355
 					},
 					"frame": {
-						"x": 311,
+						"x": 432,
 						"y": 654,
 						"w": 147,
 						"h": 355
-					}
-				},
-				{
-					"filename": "ethan_tired.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 355
-					},
-					"spriteSourceSize": {
-						"x": 29,
-						"y": 13,
-						"w": 142,
-						"h": 342
-					},
-					"frame": {
-						"x": 461,
-						"y": 654,
-						"w": 142,
-						"h": 342
 					}
 				},
 				{
@@ -550,7 +550,7 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 606,
+						"x": 582,
 						"y": 611,
 						"w": 253,
 						"h": 404
@@ -578,45 +578,24 @@
 					}
 				},
 				{
-					"filename": "maggie1.png",
+					"filename": "maggie_coffee.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 130,
-						"h": 200
+						"w": 200,
+						"h": 415
 					},
 					"spriteSourceSize": {
-						"x": 15,
-						"y": 4,
-						"w": 112,
-						"h": 196
+						"x": 18,
+						"y": 9,
+						"w": 164,
+						"h": 404
 					},
 					"frame": {
-						"x": 862,
+						"x": 838,
 						"y": 611,
-						"w": 112,
-						"h": 196
-					}
-				},
-				{
-					"filename": "dog.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 110,
-						"h": 140
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 108,
-						"h": 124
-					},
-					"frame": {
-						"x": 862,
-						"y": 810,
-						"w": 108,
-						"h": 124
+						"w": 164,
+						"h": 404
 					}
 				}
 			]
@@ -625,7 +604,7 @@
 			"image": "sprites/characters-3.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 985,
+				"w": 978,
 				"h": 1020
 			},
 			"scale": 1,
@@ -799,7 +778,7 @@
 					}
 				},
 				{
-					"filename": "maggie_coffee.png",
+					"filename": "maggie_coffee_dark.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -841,7 +820,7 @@
 					}
 				},
 				{
-					"filename": "maggie_coffee_dark.png",
+					"filename": "maggie_coffee_sad.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -862,45 +841,24 @@
 					}
 				},
 				{
-					"filename": "maggie_coffee_sad.png",
+					"filename": "ethan2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 200,
-						"h": 415
+						"w": 120,
+						"h": 440
 					},
 					"spriteSourceSize": {
-						"x": 18,
-						"y": 9,
-						"w": 164,
-						"h": 404
+						"x": 10,
+						"y": 4,
+						"w": 93,
+						"h": 428
 					},
 					"frame": {
-						"x": 169,
-						"y": 409,
-						"w": 164,
-						"h": 404
-					}
-				},
-				{
-					"filename": "tv_shake4.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 245,
-						"h": 205
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 245,
-						"h": 202
-					},
-					"frame": {
-						"x": 250,
-						"y": 816,
-						"w": 245,
-						"h": 202
+						"x": 880,
+						"y": 2,
+						"w": 93,
+						"h": 428
 					}
 				},
 				{
@@ -918,10 +876,31 @@
 						"h": 378
 					},
 					"frame": {
-						"x": 880,
-						"y": 2,
+						"x": 169,
+						"y": 409,
 						"w": 103,
 						"h": 378
+					}
+				},
+				{
+					"filename": "ethan_tired.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 355
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 13,
+						"w": 142,
+						"h": 342
+					},
+					"frame": {
+						"x": 275,
+						"y": 392,
+						"w": 142,
+						"h": 342
 					}
 				},
 				{
@@ -939,52 +918,10 @@
 						"h": 327
 					},
 					"frame": {
-						"x": 336,
+						"x": 420,
 						"y": 392,
 						"w": 143,
 						"h": 327
-					}
-				},
-				{
-					"filename": "ethan_sleep.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 300,
-						"h": 365
-					},
-					"spriteSourceSize": {
-						"x": 18,
-						"y": 101,
-						"w": 211,
-						"h": 264
-					},
-					"frame": {
-						"x": 482,
-						"y": 391,
-						"w": 211,
-						"h": 264
-					}
-				},
-				{
-					"filename": "eyeCorner.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 550,
-						"h": 274
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
-						"w": 158,
-						"h": 270
-					},
-					"frame": {
-						"x": 696,
-						"y": 409,
-						"w": 158,
-						"h": 270
 					}
 				},
 				{
@@ -1002,8 +939,8 @@
 						"h": 326
 					},
 					"frame": {
-						"x": 498,
-						"y": 658,
+						"x": 566,
+						"y": 391,
 						"w": 142,
 						"h": 326
 					}
@@ -1023,8 +960,8 @@
 						"h": 324
 					},
 					"frame": {
-						"x": 643,
-						"y": 682,
+						"x": 711,
+						"y": 409,
 						"w": 131,
 						"h": 324
 					}
@@ -1044,10 +981,73 @@
 						"h": 324
 					},
 					"frame": {
-						"x": 777,
-						"y": 682,
+						"x": 845,
+						"y": 433,
 						"w": 131,
 						"h": 324
+					}
+				},
+				{
+					"filename": "tv_shake4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 245,
+						"h": 205
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 245,
+						"h": 202
+					},
+					"frame": {
+						"x": 250,
+						"y": 790,
+						"w": 245,
+						"h": 202
+					}
+				},
+				{
+					"filename": "ethan_sleep.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 365
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 101,
+						"w": 211,
+						"h": 264
+					},
+					"frame": {
+						"x": 498,
+						"y": 736,
+						"w": 211,
+						"h": 264
+					}
+				},
+				{
+					"filename": "dog.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 110,
+						"h": 140
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 108,
+						"h": 124
+					},
+					"frame": {
+						"x": 712,
+						"y": 736,
+						"w": 108,
+						"h": 124
 					}
 				}
 			]
@@ -1056,8 +1056,8 @@
 			"image": "sprites/characters-4.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 134,
-				"h": 327
+				"w": 162,
+				"h": 799
 			},
 			"scale": 1,
 			"frames": [
@@ -1081,6 +1081,48 @@
 						"w": 130,
 						"h": 323
 					}
+				},
+				{
+					"filename": "eyeCorner.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 550,
+						"h": 274
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 158,
+						"h": 270
+					},
+					"frame": {
+						"x": 2,
+						"y": 328,
+						"w": 158,
+						"h": 270
+					}
+				},
+				{
+					"filename": "maggie1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 130,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 4,
+						"w": 112,
+						"h": 196
+					},
+					"frame": {
+						"x": 2,
+						"y": 601,
+						"w": 112,
+						"h": 196
+					}
 				}
 			]
 		}
@@ -1088,6 +1130,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:8ddefaf0ec9fcf0b8120bbb958f050f7:acc94c32fbbecefbc53b6e63451c9b6f:c3474a0b9bffbb5fb9fd66a2b93cd767$"
+		"smartupdate": "$TexturePacker:SmartUpdate:53f9ecaa2a027f517c54646bbc46c653:8951e77c79b44eb59018c349a619e355:c3474a0b9bffbb5fb9fd66a2b93cd767$"
 	}
 }
