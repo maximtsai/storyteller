@@ -146,8 +146,8 @@ class MiscSubscribe {
             this.moveMaggieToBrokenWindow();
             gameCharacters.juan.setFrame('juan2.png');
             gameCharacters.juan.x = 1920; gameCharacters.juan.y = gameConsts.halfHeight + 90;
-            globalObjects.diner.JuanButton.setPos(1890, globalObjects.diner.JuanButton.getPosY());
-            globalObjects.diner.JuanButton.setScale(200, 200);
+            globalObjects.diner.JuanButton.setPos(1925, globalObjects.diner.JuanButton.getPosY());
+            globalObjects.diner.JuanButton.setScale(170, 200);
 
             globalObjects.window2.setFrame('window_broken.png');
         }, 300);
@@ -483,6 +483,7 @@ class MiscSubscribe {
     }
 
     ethanRefreshed() {
+        messageBus.publish('EthanInfluence');
         gameCharacters.ethan.setFrame('ethan1.png');
     }
 

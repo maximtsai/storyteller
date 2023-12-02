@@ -149,7 +149,7 @@ let furnitureDialog = {
 
     BackdoorActOne: {
         speech: [
-            {speaker: '', text: "No reason to go out there right now."},
+            {speaker: '', text: "No reason to go there right now."},
         ]
     },
     BackdoorLocked: {

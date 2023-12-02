@@ -550,8 +550,15 @@ function clickMaggie() {
         }
 
     } else if (gameState.currentScene == 3) {
-        if (gameState.windowBroken) {
-            dialogManager.showDialogNode('WindowBroken');
+        if (gameState.windowFixed) {
+
+        } else if (gameState.windowBroken) {
+            shiftOver(globalObjects.diner.JuanButton.getXPos());
+            if (gameState.ethanSleeping) {
+                dialogManager.showDialogNode('WindowBrokenDiscussEthanSleeping');
+            } else {
+                dialogManager.showDialogNode('WindowBrokenDiscuss');
+            }
         }
     }
 
@@ -707,6 +714,9 @@ function clickEthan() {
                         break;
                     case 'ethanNotTalk':
                         dialogManager.showDialogNode('Ethan3NotTalk');
+                        break;
+                    case 'ethanStayingHere':
+                        dialogManager.showDialogNode('Ethan3LeavingChangeMind');
                         break;
                     default:
                         dialogManager.showDialogNode('EthanDefault');

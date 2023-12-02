@@ -168,22 +168,23 @@ class DialogDisplay {
                 ref: "continue_btn.png",
                 x: gameConsts.halfWidth,
                 y: gameConsts.height- 85,
-                alpha: 0.01
+                scaleY: 20,
+                alpha: 0.001
             },
             hover: {
                 atlas: "buttons",
                 "ref": "continue_btn_hover.png",
-                alpha: 0.5
+                alpha: 0.001
             },
             press: {
                 "atlas": "buttons",
                 "ref": "continue_btn_hover.png",
-                alpha: 1
+                alpha: 0.001
             },
             disable: {
                 "atlas": "buttons",
                 "ref": "continue_btn_hover.png",
-                alpha: 0.01
+                alpha: 0.001
             },
             onMouseUp: () => {
                 messageBus.publish('clickNextDialog');
