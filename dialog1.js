@@ -330,6 +330,19 @@ let dialogList1 = {
             {text: "Invite only Edith", targetNode: "Edith3LeaveThinkingEdithOnly"},
         ]
     },
+    Edith3LeaveThinkingNoEthan: {
+        speech: [
+            {speaker: "You", text: "Did you figure out what you saw in Ethan\nin the first place?"},
+            {speaker: "Edith", face: "edith_normal.png", text: "Yeah. He's sweet and gentle when he's\nfully himself."},
+            {speaker: "Edith", face: "edith_happy.png", text: "He made me my favorite meal after he\nfound out I flunked a test."},
+            {speaker: "Edith", face: "edith_happy.png", text: "And he's always volunteering down at\nthe animal shelter."},
+            {speaker: "You", text: "Sounds like he's got a little more going on\nthan just getting high."},
+            {speaker: "Edith", face: "edith_sad.png", text: "I guess. But I'm still mad at him.\nAnd... ugh he's doing it again."},
+        ],
+        branches: [
+            {text: "Invite only Edith", targetNode: "Edith3LeaveThinkingEdithOnlyNoEthan"},
+        ]
+    },
     Edith3LeaveThinkingPromiseEthan: {
         speech: [
             {speaker: "You", text: "Did you figure out what you saw in Ethan\nin the first place?"},
@@ -344,11 +357,21 @@ let dialogList1 = {
             {text: "Invite Edith along with Ethan", targetNode: "Edith3LeaveThinkingEdithEthan"},
         ]
     },
+    Edith3LeaveThinkingEdithOnlyNoEthan: {
+        speech: [
+            {speaker: "You", text: "I'm leaving, and I'd like to invite you along."},
+            {speaker: "You", text: "But this might be your last chance to talk\nwith Ethan."},
+            {speaker: "Edith", face: "edith_normal.png", text: "Ethan... no I'm going to leave him alone\nwith his drugs. Let's go.", onFinish: () => {
+                    dialogManager.showDialogNode("Edith3LeaveComeWithSuccessBlockEthan");
+                }
+            },
+        ],
+    },
     Edith3LeaveThinkingEdithOnly: {
         speech: [
             {speaker: "You", text: "I'm leaving, and I'd like to invite you along."},
             {speaker: "You", text: "But this might be your last chance to talk\nwith Ethan."},
-            {speaker: "Edith", face: "edith_normal.png", text: "Oh. Oooh. I... okay, I'll be\nready to go.", onFinish: () => {
+            {speaker: "Edith", face: "edith_normal.png", text: "Oh. Oooh. I... okay, I'll be ready to go.", onFinish: () => {
                     dialogManager.showDialogNode("Edith3LeaveComeWithSuccessBlockEthan");
                 }
             },
@@ -356,7 +379,7 @@ let dialogList1 = {
     },
     Edith3LeaveThinkingEdithEthan: {
         speech: [
-            {speaker: "You", text: "I'm leaving, and I want to bring both you\nand Ethan with me."},
+            {speaker: "You", text: "I'm leaving, and I want to bring both you and\nEthan with me."},
             {speaker: "Edith", face: "edith_sad.png", text: "Why do you want him to come?!"},
         ],
         branches: [
@@ -366,23 +389,52 @@ let dialogList1 = {
     },
     Edith3LeaveFine: {
         speech: [
-            {speaker: "Edith", face: "edith_normal.png", text: "Fine.", publish: "showInfluence", onFinish: () => {
+            {speaker: "Edith", face: "edith_normal.png", text: "Hmm...", publish: "showInfluence", onFinish: () => {
+                // if (gameState.ethanStandingUp) {
+                //     dialogManager.showDialogNode("Edith3EthanStandUp");
+                // } else {
                 if (gameState.EdithInfluence >= 2) {
                     dialogManager.showDialogNode("Edith3LeaveFineSuccess");
+                } else if (gameState.EdithInfluence >= 1) {
+                    dialogManager.showDialogNode("Edith3LeaveFineFence");
                 } else {
                     dialogManager.showDialogNode("Edith3LeaveFineFail");
                 }
+                //}
                 }},
         ]
     },
     Edith3LeaveFineSuccess: {
         speech: [
-            {speaker: "Edith", face: "edith_normal.png", text: "He can come."},
+            {speaker: "Edith", face: "edith_normal.png", text: "Alright. He can come."},
+        ]
+    },
+    Edith3LeaveFineFence: {
+        speech: [
+            {speaker: "Edith", face: "edith_normal.png", text: "I don't know...", onFinish: () => {
+                if (gameState.ethanStandingUp) {
+                    dialogManager.showDialogNode("Edith3EthanStandUp");
+                } else {
+                    dialogManager.showDialogNode("Edith3EthanSitDown");
+                }
+                }},
+        ]
+    },
+    Edith3EthanStandUp: {
+        speech: [
+            {speaker: "You", text: "Look, I've talked with Ethan. He's definitely got a lot\nof work to do, but I think he wants to make up."},
+            {speaker: "Ethan", face: "ethan_normal.png", publish: "ethanApproachEdith", text: "*Sigh* sorry but I just... I just can't.\nYou can go with Ethan, but I'm staying here.\n(Not enough trust)"},
+        ]
+    },
+    Edith3EthanSitDown: {
+        speech: [
+            {speaker: " ", text: "   (Edith looks over at Ethan who's still slouching)"},
+            {speaker: "Edith", face: "edith_normal.png", publish: "showInfluenceSmall", text: "*Sigh* sorry but I just... I just can't.\nYou can go with Ethan, but I'm staying here.\n(Not enough trust)"},
         ]
     },
     Edith3LeaveFineFail: {
         speech: [
-            {speaker: "Edith", face: "edith_sad.png", text: "Then I'm staying here.\n(Not enough trust)"},
+            {speaker: "Edith", face: "edith_sad.png", publish: "showInfluenceSmall", text: "Then I'm staying here.\n(Not enough trust)"},
         ]
     },
     Edith3LeaveNormal: {
@@ -723,11 +775,11 @@ let dialogList1 = {
     },
     Ethan3Disagreement: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "It's just a disagreement, she'll\ncome around"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "It's just a disagreement, she'll\ncome around."},
         ],
         branches: [
-            {text: "\"That's one approach,\nI guess.\"", targetNode: "Ethan3OneApproach"},
-            {text: "\"No she won't. Not without\nan apology from you.\"", targetNode: "Ethan3Dad"},
+            {text: "That's one approach,\nI guess.", targetNode: "Ethan3OneApproach"},
+            {text: "No she won't. Not without\nan apology from you.", targetNode: "Ethan3Dad"},
         ]
     },
     Ethan3OneApproach: {
@@ -804,7 +856,7 @@ let dialogList1 = {
     Ethan3DrugFail: {
         speech: [
             {speaker: "Ethan", face: "ethan_sad.png", text: "Well now you're just stealing the fun\nof doing drugs."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "No, I'm not your damn radar system.\nLeave me alone.\n(Not enough trust)", data: {property: "ethanState", value: "ethanNotTalk"}},
+            {speaker: "Ethan", face: "ethan_normal.png", publish: "showInfluenceSmall", text: "No, I'm not your damn radar system.\nLeave me alone.\n(Not enough trust)", data: {property: "ethanState", value: "ethanNotTalk"}},
         ]
     },
 
@@ -833,7 +885,7 @@ let dialogList1 = {
     },
     Ethan3NotTalk: {
         speech: [
-            {speaker: "",  text: "   (Ethan isn't interested in talking anymore. You spot him\n   lazily trying to keep a needle hidden.)"},
+            {speaker: "",  text: "(Ethan isn't interested in talking anymore. You spot\n him lazily trying to keep a needle hidden.)"},
         ]
     },
     Ethan3AngryFather: {
@@ -859,7 +911,7 @@ let dialogList1 = {
         speech: [
             {speaker: "You", text: "I'm leaving, and I'd like you both to come,\nbut you need to make peace first."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Hmm...", publish: "showInfluence", onFinish: () => {
-                    if (gameState.EthanInfluence >= 4) {
+                    if (gameState.EthanInfluence >= 3) {
                         dialogManager.showDialogNode("Ethan3LeavingSuccess");
                     } else {
                         dialogManager.showDialogNode("Ethan3Fail");
@@ -880,7 +932,7 @@ let dialogList1 = {
         speech: [
             {speaker: "You", text: "I've changed my mind. I'm leaving, and I'd like\nyou both to come, but you need to make\npeace first."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Aww...", publish: "showInfluence", onFinish: () => {
-                    if (gameState.EthanInfluence >= 4) {
+                    if (gameState.EthanInfluence >= 3) {
                         dialogManager.showDialogNode("Ethan3LeavingSuccess");
                     } else {
                         dialogManager.showDialogNode("Ethan3Fail");
@@ -894,9 +946,14 @@ let dialogList1 = {
             {speaker: "", text: "   (Ethan will come with you when you leave)", publish: "ethanStandUp"},
         ],
     },
+    Ethan3SuccessFin: {
+        speech: [
+            {speaker: "", text: "   (Ethan will come with you when you leave)"},
+        ],
+    },
     Ethan3Fail: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Nah. You can go. I'll wait this out.\nCan always talk to her later.\n(Not enough trust)", data: {property: "ethanState", value: "ethanNotTalk"}},
+            {speaker: "Ethan", face: "ethan_normal.png",  publish: "showInfluenceSmall", text: "Nah. You can go. I'll wait this out.\nCan always talk to her later.\n(Not enough trust)", data: {property: "ethanState", value: "ethanNotTalk"}},
         ],
     },
 
@@ -1276,7 +1333,7 @@ let dialogList1 = {
 
     Bruna3NotSaved: {
         speech: [
-            {speaker: "Bruna", face: "bruna_sad.png", text: "No, I'm staying here.\n(Not enough trust)", data: {property: "BrunaRefuse", value: true}},
+            {speaker: "Bruna", face: "bruna_sad.png",  publish: "showInfluenceSmall", text: "No, I'm staying here.\n(Not enough trust)", data: {property: "BrunaRefuse", value: true}},
         ],
     },
 
@@ -1679,7 +1736,7 @@ let dialogList1 = {
 
     DogFullTrustBring: {
         speech: [
-            {speaker: " ",  text: "You will now bring the dog with you once\nyou leave. She looks at you expectantly.", data: {property: "dogSaved", value: true}},
+            {speaker: " ",  text: "You will bring the dog with you once you\nleave. She looks at you expectantly.", data: {property: "dogSaved", value: true}},
         ],
     },
 
@@ -1837,9 +1894,9 @@ let dialogList1 = {
             {speaker: "Juan", face: "juan_normal.png", text: "Wait, how many people are you planning\non taking?"},
         ],
         branches: [
-            {text: "What makes you think\nyou're coming along?", targetNode: "JuanAct3NoCome"},
             {text: "Only whoever's useful", targetNode: "JuanAct3Leave3Useful"},
             {text: "As many as I can", targetNode: "JuanAct3Leave3All"},
+            {text: "What makes you think\nyou're coming along?", targetNode: "JuanAct3NoCome"},
         ]
     },
 
@@ -1883,10 +1940,10 @@ let dialogList1 = {
 
     JuanAct3Leave3AllCarry: {
         speech: [
-            {speaker: "You", text: "They'll carry their own\nweight, don't worry"},
             {speaker: "Juan", face: "juan_normal.png", text: "I guess you've been talking with them\nmore than me."},
-            {speaker: "You", text: "Wwe can cross train each other so we're all\nready for whatever's in the next town."},
-            {speaker: "You", text: "So, are you coming with?", publish: "showInfluence", onFinish: () => {
+            {speaker: "You", text: "We can cross train each other so we're all\nready for whatever's in the next town."},
+            {speaker: "You", text: "So, are you coming with?"},
+            {speaker: "Juan", face: "juan_normal.png", text: "...", publish: "showInfluence", onFinish: () => {
                     if (gameState.JuanInfluence < 1) {
                         gameState.juanLeaveStatus = "refuse"
                         dialogManager.showDialogNode("JuanAct3Refuse");
@@ -1903,14 +1960,14 @@ let dialogList1 = {
 
     JuanAct3Refuse: {
         speech: [
-            {speaker: "Juan", face: "juan_sad.png", text: "A big part of survival is the company\nyou keep. And I intend to keep\nfar away from you.\n(Not enough trust)"},
+            {speaker: "Juan", face: "juan_sad.png", publish: "showInfluenceSmall", text: "A big part of survival is the company\nyou keep. And I intend to keep\nfar away from you.\n(Not enough trust)"},
         ],
     },
 
     JuanAct3SoftRefuse: {
         speech: [
-            {speaker: "Juan", face: "juan_normal.png", text: "You got skills I'll give you that.\nBut you ain't going to make it if\nyou're dragged down by every person\nwho needs help."},
-            {speaker: "Juan", face: "juan_normal.png", text: "Sorry but I won't be coming.\n(Not enough trust)"},
+            {speaker: "Juan", face: "juan_normal.png", text: "You got skills I'll give you that. But\nyou ain't going to make it if you're dragged\ndown by every person who needs help."},
+            {speaker: "Juan", face: "juan_normal.png", publish: "showInfluenceSmall", text: "Sorry but I won't be coming.\n(Not enough trust)"},
         ],
     },
 

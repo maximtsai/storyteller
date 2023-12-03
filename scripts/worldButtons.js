@@ -553,7 +553,8 @@ function clickMaggie() {
         if (gameState.windowFixed) {
 
         } else if (gameState.windowBroken) {
-            shiftOver(globalObjects.diner.JuanButton.getXPos());
+            let goalPos = globalObjects.diner.maggieButton.getXPos() * 0.2 + globalObjects.diner.JuanButton.getXPos() * 0.8;
+            shiftOver(goalPos);
             if (gameState.ethanSleeping) {
                 dialogManager.showDialogNode('WindowBrokenDiscussEthanSleeping');
             } else {
@@ -630,6 +631,9 @@ function clickEdith() {
             } else if (gameState.edithThinking) {
                 if (gameState.EthanSaved) {
                     dialogManager.showDialogNode('Edith3LeaveThinkingPromiseEthan');
+                } else if (gameState.ethanState == 'ethanNotTalk') {
+                    // can only invite edith
+                    dialogManager.showDialogNode('Edith3LeaveThinkingNoEthan');
                 } else {
                     dialogManager.showDialogNode('Edith3LeaveThinking');
                 }
@@ -699,7 +703,9 @@ function clickEthan() {
 
     } else if (gameState.currentScene == 3) {
         if (gameState.windowFixed) {
-            if (gameState.ethanBlocked) {
+            if (gameState.ethanSaved) {
+                dialogManager.showDialogNode('Ethan3SuccessFin');
+            } else if (gameState.ethanBlocked) {
                 dialogManager.showDialogNode('Ethan3Blocked');
             } else if (!gameState.ethan3Chatted) {
                 gameState.ethan3Chatted = true;
@@ -1411,8 +1417,8 @@ function clickBackdoor() {
 function shiftOver(x, strong) {
     let distDiff = x - (gameVars.cameraPosX + gameConsts.halfWidth);
     let shiftThreshold = strong ? 40 : 175;
-    let shiftBaseline = strong ? 0.35 : 0.25;
-    let shiftRatio = strong ? 220 : 300;
+    let shiftBaseline = strong ? 0.35 : 0.27;
+    let shiftRatio = strong ? 220 : 325;
     if (distDiff < -shiftThreshold) {
         gameVars.cameraMoveAcc = (distDiff / shiftRatio) - shiftBaseline;
     } else if (distDiff > shiftThreshold) {

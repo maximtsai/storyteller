@@ -214,7 +214,7 @@ class DialogDisplay {
         messageBus.subscribe("setDialogBtnToTop", this.setDialogBtnToTop.bind(this));
         messageBus.subscribe("updateInfluenceAnimation", this.updateInfluenceAnimation.bind(this));
         messageBus.subscribe("showInfluence", this.showInfluence.bind(this));
-
+        messageBus.subscribe("showInfluenceSmall", this.showInfluenceSmall.bind(this));
 
         messageBus.subscribe("pointerMove", this.checkCornerHover.bind(this));
         messageBus.subscribe("pointerUp", this.checkCornerHover.bind(this));
@@ -523,6 +523,9 @@ class DialogDisplay {
                         this.speakerStars[i].setScale(0.9);
                         this.speakerStars[i].setAlpha(0.01);
                         this.speakerStars[i].rotation = -0.05;
+                        if (Math.random() < 0.04) {
+                            this.speakerStars[i].rotation = -3.14;
+                        }
                         this.scene.tweens.add({
                             targets: this.speakerStars[i],
                             alpha: 1,
@@ -534,11 +537,11 @@ class DialogDisplay {
                             onComplete: () => {
                                 this.scene.tweens.add({
                                     targets: this.speakerStars[i],
-                                    alpha: 1,
-                                    scaleX: 0.65,
-                                    scaleY: 0.65,
-                                    rotation: 0.12,
-                                    duration: 300,
+                                    alpha: 1.05,
+                                    scaleX: 0.8,
+                                    scaleY: 0.8,
+                                    rotation: 0.09 + 0.045 * Math.random(),
+                                    duration: 350,
                                     ease: 'Cubic.easeOut',
                                     onComplete: () => {
                                         this.scene.tweens.add({
@@ -595,20 +598,28 @@ class DialogDisplay {
         }
     }
 
-    showInfluence() {
+    showInfluenceSmall() {
+        this.showInfluence(true);
+    }
+
+    showInfluence(isSmall = false) {
         let numStars = this.getNumStars();
+        let startSize = isSmall ? 0.55 : 0.3;
+        let biggestSize = isSmall ? 0.35 : 0.6;
+        let randRot = (Math.random() * 0.55);
+        let finalRot = isSmall ? randRot * randRot - 0.15 : 0;
         this.canHideStars = false;
         for (let i = 0; i < this.speakerStars.length; i++) {
             this.speakerStars[i].visible = true;
             if (i < numStars) {
                 this.speakerStars[i].alpha = 0.35;
-                this.speakerStars[i].setScale(0.3);
+                this.speakerStars[i].setScale(startSize);
                 this.scene.tweens.add({
                     targets: this.speakerStars[i],
                     alpha: 1,
-                    scaleX: 0.5,
-                    scaleY: 0.5,
-                    rotation: 0,
+                    scaleX: biggestSize,
+                    scaleY: biggestSize,
+                    rotation: finalRot,
                     duration: 350,
                     ease: 'Cubic.easeOut',
                     onComplete: () => {

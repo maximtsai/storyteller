@@ -44,6 +44,9 @@ class MiscSubscribe {
         messageBus.subscribe("juanLeft", this.juanLeft.bind(this));
 
         messageBus.subscribe("edithSaved", this.edithSaved.bind(this));
+        messageBus.subscribe("ethanStandUp", this.ethanStandUp.bind(this));
+        messageBus.subscribe("ethanApproachEdith", this.ethanApproachEdith.bind(this));
+
 
         messageBus.subscribe("goodEndLocked", this.goodEndLocked.bind(this));
 
@@ -73,7 +76,34 @@ class MiscSubscribe {
     }
 
     edithSaved() {
-        gameCharacters.edith.scaleX = -1;
+        gameCharacters.edith.scaleX = 1;
+        if (gameState.EthanSaved) {
+            let EdithFinalPosX = 1100;
+            globalObjects.diner.EdithButton.setPos(EdithFinalPosX, globalObjects.diner.EdithButton.getPosY());
+            // gameCharacters.edith
+            this.scene.tweens.add({
+                targets: gameCharacters.edith,
+                duration: 1000,
+                x: EdithFinalPosX,
+                ease: 'Cubic.easeInOut'
+            });
+        }
+    }
+
+    ethanStandUp() {
+        gameCharacters.ethan.setFrame('ethan2.png');
+        gameState.ethanStandingUp = true;
+    }
+
+    ethanApproachEdith() {
+        let ethanGoalPosX = 1450;
+        gameCharacters.diner.EthanButton.setPos(ethanGoalPosX, gameCharacters.diner.EthanButton.getPosY());
+        this.scene.tweens.add({
+            targets: [gameCharacters.ethan],
+            x: ethanGoalPosX,
+            ease: 'Cubic.easeInOut',
+            duration: 2000
+        });
     }
 
     juanLeft() {
@@ -273,6 +303,7 @@ class MiscSubscribe {
             duration: 1100,
             onComplete: () => {
                 playSound('hammermany');
+                gameCharacters.maggieCoffee.visible = false;
                 globalObjects.window2.setFrame('window_fixed.png').setDepth(9);
                 this.scene.tweens.add({
                     delay: 1250,
@@ -280,6 +311,15 @@ class MiscSubscribe {
                     alpha: 0,
                     duration: 1400,
                 });
+                gameCharacters.maggie.alpha = 1;
+                globalObjects.diner.maggieButton.setPos(350, 250);
+                globalObjects.diner.maggieButton.setScale(125, 170);
+
+                gameCharacters.edith.scaleX = 1;
+                let EdithFinalPosX = 900;
+                globalObjects.diner.EdithButton.setPos(EdithFinalPosX, globalObjects.diner.EdithButton.getPosY());
+                gameCharacters.edith.x = EdithFinalPosX;
+
                 setTimeout(() => {
                     buttonManager.enableAllInput();
                     if (youFixed) {
