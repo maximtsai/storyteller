@@ -75,6 +75,13 @@ class DialogNode {
         this.currTextIdx++
         let nextDialogSpeech = this.speech[this.currTextIdx];
         if (nextDialogSpeech) {
+            if (nextDialogSpeech.dependentState && !gameState[nextDialogSpeech.dependentState]) {
+                this.showNext();
+                return;
+            } else if (nextDialogSpeech.rejectState && gameState[nextDialogSpeech.rejectState]) {
+                this.showNext();
+                return;
+            }
             messageBus.publish("showTalkText", nextDialogSpeech.text, nextDialogSpeech.instant);
             messageBus.publish("showTalkSpeaker", nextDialogSpeech.speaker);
             if (nextDialogSpeech.size) {

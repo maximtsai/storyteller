@@ -311,6 +311,7 @@ function createWorldButtons() {
             globalObjects.exclamation.setAlpha(0);
         },
         onMouseUp() {
+            globalObjects.exclamation.setAlpha(0);
             clickIndoor();
         }
     });
@@ -551,9 +552,21 @@ function clickMaggie() {
 
     } else if (gameState.currentScene == 3) {
         if (gameState.windowFixed) {
-
+            if (gameState.casparFinale) {
+                if (gameState.maggieReadyFinale) {
+                    dialogManager.showDialogNode('MaggieReadyFinale');
+                } else {
+                    dialogManager.showDialogNode('MaggieHoldOn');
+                }
+            } else if (gameState.maggieSandwichEnd) {
+                dialogManager.showDialogNode('MaggieSandwichEnd');
+            } else if (gameState.EthanSaved && gameState.EdithSaved && gameState.BrunaSaved &&  gameState.juanLeaveStatus == "accept") {
+                dialogManager.showDialogNode('MaggieAct3ChatAllGoing');
+            } else {
+                dialogManager.showDialogNode('MaggieAct3Chat');
+            }
         } else if (gameState.windowBroken) {
-            let goalPos = globalObjects.diner.maggieButton.getXPos() * 0.2 + globalObjects.diner.JuanButton.getXPos() * 0.8;
+            let goalPos = globalObjects.diner.maggieButton.getXPos() * 0.08 + globalObjects.diner.JuanButton.getXPos() * 0.92;
             shiftOver(goalPos);
             if (gameState.ethanSleeping) {
                 dialogManager.showDialogNode('WindowBrokenDiscussEthanSleeping');
@@ -619,7 +632,15 @@ function clickEdith() {
         if (gameState.EdithRefuse) {
             dialogManager.showDialogNode('Edith3Refused');
         } else if (gameState.EdithSaved) {
-            dialogManager.showDialogNode('Edith3LeaveComeWithSuccess');
+            if (gameState.EthanEdithTogether) {
+                dialogManager.showDialogNode('EthanEdithTogether');
+            } else {
+                if (gameState.ethanState == 'ethanNotTalk') {
+                    dialogManager.showDialogNode('Edith3LeaveComeWithSuccessFailEthan');
+                } else {
+                    dialogManager.showDialogNode('Edith3LeaveComeWithSuccess');
+                }
+            }
         } else if (gameState.windowFixed) {
             if (gameState.ethanSleeping) {
                 if (gameState.edithChattedEthanCatatonic) {
@@ -703,7 +724,11 @@ function clickEthan() {
 
     } else if (gameState.currentScene == 3) {
         if (gameState.windowFixed) {
-            if (gameState.ethanSaved) {
+            if (gameState.ethanSleeping) {
+                dialogManager.showDialogNode('Ethan3Catatonic');
+            } else if (gameState.EthanEdithTogether) {
+                dialogManager.showDialogNode('EthanEdithTogether');
+            } else if (gameState.EthanSaved) {
                 dialogManager.showDialogNode('Ethan3SuccessFin');
             } else if (gameState.ethanBlocked) {
                 dialogManager.showDialogNode('Ethan3Blocked');
@@ -847,7 +872,19 @@ function clickBruna() {
     } else if (gameState.currentScene == 3) {
         let canAskAboutRadio = gameState.radio2Done || gameState.radio3Done;
         if (gameState.BrunaRefuse) {
-            dialogManager.showDialogNode('Bruna3Refused');
+            let numSaved = gameState.EthanSaved + gameState.EdithSaved + (gameState.juanLeaveStatus === "accept");
+            if ((!gameState.brunaPleaded || numSaved >= 1) && !gameState.hopeSpringsLocationMissing) {
+                gameState.brunaPleaded = true;
+                if (gameState.brunaHardReject) {
+                    dialogManager.showDialogNode('Bruna3HardReject');
+                } else if (numSaved === 0) {
+                    dialogManager.showDialogNode('Bruna3PleadSolo');
+                } else {
+                    dialogManager.showDialogNode('Bruna3Plead');
+                }
+            } else {
+                dialogManager.showDialogNode('Bruna3Refused');
+            }
         } else if (gameState.BrunaSaved) {
             dialogManager.showDialogNode('Bruna3Success');
         } else if (gameState.windowFixed) {
@@ -936,8 +973,28 @@ function clickCaspar() {
         }
     } else if (gameState.currentScene == 3) {
         let knowsFinalDest = gameState.radio2Done || gameState.radio3Done || gameState.askedCasparRadio;
-        if (gameState.windowFixed) {
-            if (gameState.BrunaSaved && gameState.EdithSaved && gameState.EthanSaved && gameState.juanLeaveStatus == "accept") {
+        if (gameState.casparFinale) {
+            if (gameState.MaggieSaved) {
+
+            } else if (gameState.casparFinaleChatted) {
+                if (gameState.maggieReadyFinale) {
+                    dialogManager.showDialogNode('Caspar3FinaleEnd2');
+                } else {
+                    dialogManager.showDialogNode('Caspar3FinaleEnd');
+                }
+            } else {
+                gameState.casparFinaleChatted = true;
+                dialogManager.showDialogNode('Caspar3Finale');
+            }
+        } else if (gameState.windowFixed) {
+            if (gameState.maggieSandwichEnd) {
+                if (gameState.casparChattedSandwich) {
+                    dialogManager.showDialogNode('Caspar3Sandwich2');
+                } else {
+                    dialogManager.showDialogNode('Caspar3Sandwich');
+                    gameState.casparChattedSandwich = true;
+                }
+            } else if (gameState.BrunaSaved && gameState.EdithSaved && gameState.EthanSaved && gameState.juanLeaveStatus == "accept") {
                 dialogManager.showDialogNode('Caspar3Final');
             } else if (gameState.caspar3ChatDone) {
                 dialogManager.showDialogNode('Caspar3Waiting');
@@ -1006,6 +1063,10 @@ function clickRadio() {
     if (gameState.powerOff) {
         dialogManager.showDialogNode('radioPowerless');
         return;
+    } else if (gameState.MaggieSaved) {
+        dialogManager.showDialogNode('radioDone');
+        return;
+
     }
     if (!globalObjsTemp.radio) {
         PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.height - 180, 'blackPixel');
@@ -1110,10 +1171,14 @@ function clickRadio() {
                 let distFromKnob = Math.sqrt(distFromKnobX * distFromKnobX + distFromKnobY * distFromKnobY);
                 if (distFromKnob <= 140) {
                     globalObjsTemp.radio.knob.setScale(1.012);
+                    canvas.style.cursor = 'grab';
+                } else {
+                    canvas.style.cursor = 'default';
                 }
             },
             onHoverOut: () => {
                 globalObjsTemp.radio.knob.setScale(1);
+                canvas.style.cursor = 'default';
             },
             onMouseDown: () => {
                 let distFromKnobX = globalObjsTemp.radio.knob.x - gameVars.mouseposx;
@@ -1249,6 +1314,9 @@ function adjustRadioUpdate(barPos) {
     // 206 leftmost = 88 slowwalk,
     // 235.75 = 90, 266.5. 294.25, 326, 356 = 98 386.25 = 100, 446.75 = 104, 506 = 108
     if (distToClosestObj > 5) {
+        if (gameState.goodEndLocked) {
+            gameState.maggieReadyFinale = false;
+        }
         // globalObjsTemp.radioStatic1
         let staticSoundMult = 1 - Math.min(0.99, (10 - distToClosestObj) / 5);
         let panMult = (barPos - 206) / 300
@@ -1292,7 +1360,11 @@ function adjustRadioUpdate(barPos) {
                         }
                     }
                 } else if (closestObj == 'news3') {
-
+                    if (gameState.radio3Done) {
+                        dialogManager.showDialogNode('radioActThreeDone');
+                    } else {
+                        dialogManager.showDialogNode('radioActThree1');
+                    }
                 }
             }
             if (!globalObjsTemp.radioMusic.isPlaying) {
@@ -1304,6 +1376,9 @@ function adjustRadioUpdate(barPos) {
         globalObjsTemp.radioStatic1.volume = 0;
         if (globalObjsTemp.radioStatic2) {
             globalObjsTemp.radioStatic2.volume = 0;
+        }
+        if (gameState.goodEndLocked && closestObj === 'foolrushin_ok') {
+            gameState.maggieReadyFinale = true;
         }
         // closestObj
         // globalObjsTemp.radioMusic
@@ -1579,6 +1654,12 @@ function clickGenerator() {
             disable: {
                 alpha: 0.001
             },
+            onHover: () => {
+                canvas.style.cursor = 'pointer';
+            },
+            onHoverOut: () => {
+                canvas.style.cursor = 'default';
+            },
             onMouseUp() {
                 startGenerator();
             }
@@ -1618,12 +1699,14 @@ function clickGenerator() {
                 playSound('crackle1');
             },
             onDrag: () => {
+                canvas.style.cursor = 'grab';
                 let wireXPos = globalObjsTemp.generator.red.getXPos();
                 let wireYPos = globalObjsTemp.generator.red.getYPos();
                 attachWire(wireXPos, wireYPos, globalObjsTemp.generator.red);
                 updateWireVisual(globalObjsTemp.generator.red, globalObjsTemp.generatorWires.red);
             },
             onDrop: () => {
+                canvas.style.cursor = 'default';
                 let wireXPos = globalObjsTemp.generator.red.getXPos();
                 let wireYPos = globalObjsTemp.generator.red.getYPos();
                 let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.red);
@@ -1676,12 +1759,14 @@ function clickGenerator() {
                 playSound('crackle1');
             },
             onDrag: () => {
+                canvas.style.cursor = 'grab';
                 let wireXPos = globalObjsTemp.generator.blue.getXPos();
                 let wireYPos = globalObjsTemp.generator.blue.getYPos();
                 attachWire(wireXPos, wireYPos, globalObjsTemp.generator.blue);
                 updateWireVisual(globalObjsTemp.generator.blue, globalObjsTemp.generatorWires.blue);
             },
             onDrop: () => {
+                canvas.style.cursor = 'default';
                 let wireXPos = globalObjsTemp.generator.blue.getXPos();
                 let wireYPos = globalObjsTemp.generator.blue.getYPos();
                 let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.blue);
@@ -1733,12 +1818,14 @@ function clickGenerator() {
                 playSound('crackle1');
             },
             onDrag: () => {
+                canvas.style.cursor = 'grab';
                 let wireXPos = globalObjsTemp.generator.green.getXPos();
                 let wireYPos = globalObjsTemp.generator.green.getYPos();
                 attachWire(wireXPos, wireYPos, globalObjsTemp.generator.green);
                 updateWireVisual(globalObjsTemp.generator.green, globalObjsTemp.generatorWires.green);
             },
             onDrop: () => {
+                canvas.style.cursor = 'default';
                 let wireXPos = globalObjsTemp.generator.green.getXPos();
                 let wireYPos = globalObjsTemp.generator.green.getYPos();
                 let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.green);
@@ -1790,12 +1877,14 @@ function clickGenerator() {
                 playSound('crackle1');
             },
             onDrag: () => {
+                canvas.style.cursor = 'grab';
                 let wireXPos = globalObjsTemp.generator.yellow.getXPos();
                 let wireYPos = globalObjsTemp.generator.yellow.getYPos();
                 attachWire(wireXPos, wireYPos, globalObjsTemp.generator.yellow);
                 updateWireVisual(globalObjsTemp.generator.yellow, globalObjsTemp.generatorWires.yellow);
             },
             onDrop: () => {
+                canvas.style.cursor = 'default';
                 let wireXPos = globalObjsTemp.generator.yellow.getXPos();
                 let wireYPos = globalObjsTemp.generator.yellow.getYPos();
                 let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.yellow);
@@ -1847,12 +1936,14 @@ function clickGenerator() {
                 playSound('crackle1');
             },
             onDrag: () => {
+                canvas.style.cursor = 'grab';
                 let wireXPos = globalObjsTemp.generator.purple.getXPos();
                 let wireYPos = globalObjsTemp.generator.purple.getYPos();
                 attachWire(wireXPos, wireYPos, globalObjsTemp.generator.purple);
                 updateWireVisual(globalObjsTemp.generator.purple, globalObjsTemp.generatorWires.purple);
             },
             onDrop: () => {
+                canvas.style.cursor = 'default';
                 let wireXPos = globalObjsTemp.generator.purple.getXPos();
                 let wireYPos = globalObjsTemp.generator.purple.getYPos();
                 let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.purple);

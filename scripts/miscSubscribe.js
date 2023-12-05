@@ -13,7 +13,6 @@ class MiscSubscribe {
         messageBus.subscribe("tvemergencyEnd", this.tvemergencyEnd.bind(this));
         messageBus.subscribe("tvJumpscare", this.tvJumpscare.bind(this));
 
-        messageBus.subscribe("exitEarlySceneTwo", this.exitEarlySceneTwo.bind(this));
         messageBus.subscribe("generatorFixed", this.generatorFixed.bind(this));
 
         messageBus.subscribe("edithStandCorner", this.edithStandCorner.bind(this));
@@ -46,7 +45,11 @@ class MiscSubscribe {
         messageBus.subscribe("edithSaved", this.edithSaved.bind(this));
         messageBus.subscribe("ethanStandUp", this.ethanStandUp.bind(this));
         messageBus.subscribe("ethanApproachEdith", this.ethanApproachEdith.bind(this));
+        messageBus.subscribe("edithScootTowardsEthan", this.edithScootTowardsEthan.bind(this));
 
+        messageBus.subscribe("casparExit", this.casparExit.bind(this));
+        messageBus.subscribe("casparGoodExit", this.casparGoodExit.bind(this));
+        messageBus.subscribe("casparExitFast", this.casparExitFast.bind(this));
 
         messageBus.subscribe("goodEndLocked", this.goodEndLocked.bind(this));
 
@@ -68,10 +71,93 @@ class MiscSubscribe {
         messageBus.publish('updateInfluenceAnimation', amt);
     }
 
+    casparExit() {
+        gameCharacters.caspar.setFrame('caspar2.png');
+        globalObjects.diner.CasparButton.destroy();
+        this.scene.tweens.add({
+            targets: gameCharacters.caspar,
+            duration: 3000,
+            x: gameCharacters.backdoor.x,
+            ease: 'Quad.easeInOut',
+            onComplete: () => {
+                this.scene.tweens.add({
+                    targets: [gameCharacters.backdoor],
+                    scaleX: 0.25,
+                    ease: 'Cubic.easeIn',
+                    duration: 1000,
+                    onComplete: () => {
+                        this.scene.tweens.add({
+                            targets: gameCharacters.caspar,
+                            duration: 750,
+                            y: 50,
+                            ease: 'Quad.easeInOut',
+                            onComplete: () => {
+                                gameCharacters.caspar.setDepth(0);
+                                playSound('doorOpen', 0.4);
+                                this.scene.tweens.add({
+                                    targets: [gameCharacters.backdoor],
+                                    scaleX: 1,
+                                    ease: 'Cubic.easeIn',
+                                    duration: 1500,
+                                    onComplete: () => {
+                                        gameCharacters.caspar.destroy();
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        });
+    }
 
+    casparGoodExit() {
+        buttonManager.disableAllInput();
+        gameCharacters.caspar.setFrame('caspar2.png');
+        globalObjects.diner.CasparButton.destroy();
+        this.scene.tweens.add({
+            targets: gameCharacters.caspar,
+            duration: 800,
+            x: gameCharacters.backdoor.x - 20,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                shiftOver(globalObjects.backdoor.x);
+                buttonManager.enableAllInput();
+                dialogManager.showDialogNode('CasparExitGood');
+            }
+        });
+    }
+
+    casparExitFast() {
+        buttonManager.disableAllInput();
+        this.scene.tweens.add({
+            targets: [gameCharacters.backdoor],
+            scaleX: 0.25,
+            ease: 'Cubic.easeInOut',
+            duration: 1250,
+            onComplete: () => {
+                buttonManager.enableAllInput();
+                dialogManager.showDialogNode('CasparExitGood3');
+            }
+        });
+    }
+
+    casparCloseDoor() {
+        buttonManager.disableAllInput();
+        this.scene.tweens.add({
+            targets: [gameCharacters.backdoor],
+            scaleX: 1,
+            ease: 'Cubic.easeIn',
+            duration: 1000,
+            onComplete: () => {
+                buttonManager.enableAllInput();
+            }
+        });
+    }
 
     goodEndLocked() {
         gameState.goodEndLocked = true;
+        resetRadioPosition();
         this.updateRadioChannels();
     }
 
@@ -91,13 +177,36 @@ class MiscSubscribe {
     }
 
     ethanStandUp() {
-        gameCharacters.ethan.setFrame('ethan2.png');
         gameState.ethanStandingUp = true;
+        this.scene.tweens.add({
+            targets: [gameCharacters.ethan],
+            alpha: 0.8,
+            duration: 500,
+            onComplete: () => {
+                gameCharacters.ethan.setFrame('ethan2.png');
+                this.scene.tweens.add({
+                    targets: [gameCharacters.ethan],
+                    alpha: 1,
+                    duration: 500
+                });
+            }
+        });
+    }
+
+    edithScootTowardsEthan() {
+        this.scene.tweens.add({
+            targets: [gameCharacters.ethan],
+            x: "+=15",
+            ease: 'Cubic.easeInOut',
+            duration: 1000
+        });
     }
 
     ethanApproachEdith() {
-        let ethanGoalPosX = 1450;
-        gameCharacters.diner.EthanButton.setPos(ethanGoalPosX, gameCharacters.diner.EthanButton.getPosY());
+        shiftOver(globalObjects.diner.EthanButton.getXPos() * 0.4 + globalObjects.diner.EdithButton.getXPos() * 0.6);
+
+        let ethanGoalPosX = 1200;
+        globalObjects.diner.EthanButton.setPos(ethanGoalPosX, globalObjects.diner.EthanButton.getPosY());
         this.scene.tweens.add({
             targets: [gameCharacters.ethan],
             x: ethanGoalPosX,
@@ -220,10 +329,10 @@ class MiscSubscribe {
                                     alpha: 0.001
                                 },
                                 onHover: () => {
-                                    globalObjects.exclamation.setPosition(globalObjects.diner.DogButton.getXPos(), globalObjects.diner.DogButton.getYPos() - 30);
+                                    globalObjects.exclamation.setAlpha(0.75);
                                 },
                                 onHoverOut: () => {
-                                    globalObjects.exclamation.hide();
+                                    globalObjects.exclamation.setAlpha(0);
                                 },
                                 onMouseUp() {
                                     shiftOver(globalObjects.diner.DogButton.getXPos());
@@ -316,8 +425,13 @@ class MiscSubscribe {
                 globalObjects.diner.maggieButton.setScale(125, 170);
 
                 gameCharacters.edith.scaleX = 1;
-                let EdithFinalPosX = 900;
-                globalObjects.diner.EdithButton.setPos(EdithFinalPosX, globalObjects.diner.EdithButton.getPosY());
+                let EdithFinalPosX = gameState.edithThinking ? 920 : 660;
+                if (gameState.ethanSleeping) {
+                    EdithFinalPosX = 1100;
+                }
+                let clickShiftAmt = gameState.edithThinking ? 15 : -15;
+                globalObjects.diner.EdithButton.setPos(EdithFinalPosX + clickShiftAmt, globalObjects.diner.EdithButton.getPosY());
+                globalObjects.diner.EdithButton.setScale(60, 170);
                 gameCharacters.edith.x = EdithFinalPosX;
 
                 setTimeout(() => {
@@ -473,7 +587,7 @@ class MiscSubscribe {
                     dialogManager.showDialogNode('ScratchDoorInterruptEthanTired');
                 }
             }
-        }, 750);
+        }, 500);
 
     }
 
@@ -812,10 +926,6 @@ class MiscSubscribe {
         dialogManager.showDialogNode('Ethan2EldritchFin');
     }
 
-    exitEarlySceneTwo() {
-        console.log("Exit early scene two, TODO");
-    }
-
     tvemergency() {
         playSound('emergency');
         setRadioVolume(0);
@@ -1071,9 +1181,9 @@ class MiscSubscribe {
                             }, 300);
                         }, 50);
                     }, 500);
-                }, 70);
-            }, 700);
-        }, 70);
+                }, 80);
+            }, 1100);
+        }, 100);
     }
 
     actTwoEnd() {
@@ -1136,7 +1246,6 @@ class MiscSubscribe {
     }
 
     updateRadioChannels() {
-        console.log("updating radio channels ", gameState.currentScene)
         if (gameState.currentScene == 1) {
             globalObjsTemp.songs = {
                 235.75: 'slowwalk',
@@ -1157,10 +1266,7 @@ class MiscSubscribe {
         } else if (gameState.goodEndLocked) {
             // Final music find
             globalObjsTemp.songs = {
-                235.75: 'lofi',
-                294.25: 'dabbda',
                 356: 'foolrushin_ok',
-                506: 'news3'
             };
         } if (gameState.currentScene == 3) {
             if (globalObjsTemp.radioStatic1) {
@@ -1169,12 +1275,11 @@ class MiscSubscribe {
             }
             globalObjsTemp.radioStatic1 = playSound('sellafieldalarm', 0, true);
             globalObjsTemp.songs = {
-                235.75: 'lofi',
+                235.75: 'news3',
                 294.25: 'dabbda',
                 356: 'foolrushin_poor',
-                386.25: 'news3',
+                386.25: 'lofi',
             };
         }
-        console.log(globalObjsTemp.songs);
     }
 }

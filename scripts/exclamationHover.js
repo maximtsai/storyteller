@@ -14,10 +14,16 @@ class ExclamationHover {
     }
 
     setFrame(frame) {
-        this.image.setFrame(frame);
+        if (this.image.frame != frame) {
+            canvas.style.cursor = 'none';
+            this.image.setFrame(frame);
+        }
     }
 
     setAlpha(alpha = 1) {
+        if (alpha === 0) {
+            canvas.style.cursor = 'default';
+        }
         this.image.alpha = alpha;
     }
 

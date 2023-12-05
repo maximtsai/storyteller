@@ -25,7 +25,7 @@ const audioFiles = [
     {name: 'stormfull', src: 'audio/stormfull.mp3'},
     {name: 'news1', src: 'audio/news1.mp3'},
     {name: 'news2', src: 'audio/news1.mp3'},
-    {name: 'news3', src: 'audio/news1.mp3'},
+    {name: 'news3', src: 'audio/news3.mp3'},
     {name: 'sizzle', src: 'audio/sizzle.mp3'},
     {name: 'stopscreech', src: 'audio/stopscreech.mp3'},
     {name: 'crackle1', src: 'audio/crackle1.mp3'},

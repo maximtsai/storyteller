@@ -179,6 +179,7 @@
             <key type="filename">faces/bruna_happy.png</key>
             <key type="filename">faces/bruna_normal.png</key>
             <key type="filename">faces/bruna_sad.png</key>
+            <key type="filename">faces/caspar_angry.png</key>
             <key type="filename">faces/caspar_dark_calm.png</key>
             <key type="filename">faces/caspar_dark_scared.png</key>
             <key type="filename">faces/caspar_doubt.png</key>

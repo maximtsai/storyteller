@@ -22,6 +22,7 @@ class DialogBranchButton {
                 alpha: 0.001
             },
             onMouseUp: () => {
+                playSound('button');
                 messageBus.publish("clearBranchOptions");
                 if (this.publishMessage) {
                     messageBus.publish(this.publishMessage, this.publishParam);
@@ -35,7 +36,7 @@ class DialogBranchButton {
         });
         this.dialogButton.setDepth(998);
         this.dialogButton.setState(DISABLE);
-        this.dialogButton.setScale(204, 29.5);
+        this.dialogButton.setScale(215, 29.5);
 
         this.text = this.scene.add.bitmapText(x, y, 'dialog', '...', 26);
         this.text.align = 1;
@@ -419,19 +420,24 @@ class DialogDisplay {
     showBranches() {
         this.dialogPrompt.visible = false;
         let branches = this.branchesToSet;
+        let branchIndexOffset = 0;
         for (let i = 0; i < branches.length; i++) {
-            let currButton = this.buttons[i];
             let branchData = branches[i];
-            let yPos = gameConsts.halfHeight - (branches.length - 1) * 32 + i * 64 - branches.length * 12;
-            currButton.setPosition(gameConsts.halfWidth + gameVars.cameraPosX, yPos);
-            currButton.setText(branchData.text);
-            currButton.setDestNode(branchData.targetNode);
-            if (branchData.publish) {
-                currButton.setPublishData(branchData.publish, branchData.param);
-
+            let idx = i - branchIndexOffset;
+            let currButton = this.buttons[idx];
+            if (!branchData.dependentState || gameState[branchData.dependentState]) {
+                let yPos = gameConsts.halfHeight - (branches.length - 1) * 32 + idx * 64 - branches.length * 12;
+                currButton.setPosition(gameConsts.halfWidth + gameVars.cameraPosX, yPos);
+                currButton.setText(branchData.text);
+                currButton.setDestNode(branchData.targetNode);
+                if (branchData.publish) {
+                    currButton.setPublishData(branchData.publish, branchData.param);
+                }
+                currButton.setActive();
+            } else {
+                // hidden option, make sure button is used for next option if it comes
+                branchIndexOffset++;
             }
-
-            currButton.setActive();
         }
         this.branchesToSet = null;
         if (branches.length > 0) {
@@ -509,7 +515,6 @@ class DialogDisplay {
         let oldNumStars = numStars - change;
         let gainedStar = false;
         this.canHideStars = false;
-        console.log("updating influence animation", numStars)
         for (let i = 0; i < this.speakerStars.length; i++) {
             if (i < numStars) {
                 this.speakerStars[i].visible = true;
@@ -542,7 +547,7 @@ class DialogDisplay {
                                     scaleY: 0.8,
                                     rotation: 0.09 + 0.045 * Math.random(),
                                     duration: 350,
-                                    ease: 'Cubic.easeOut',
+                                    ease: 'Quart.easeOut',
                                     onComplete: () => {
                                         this.scene.tweens.add({
                                             targets: this.speakerStars[i],
@@ -606,6 +611,7 @@ class DialogDisplay {
         let numStars = this.getNumStars();
         let startSize = isSmall ? 0.55 : 0.3;
         let biggestSize = isSmall ? 0.35 : 0.6;
+        let finalSize = isSmall ? 0.32 : 0.4;
         let randRot = (Math.random() * 0.55);
         let finalRot = isSmall ? randRot * randRot - 0.15 : 0;
         this.canHideStars = false;
@@ -626,8 +632,8 @@ class DialogDisplay {
                         this.scene.tweens.add({
                             targets: this.speakerStars[i],
                             alpha: 0.5,
-                            scaleX: 0.4,
-                            scaleY: 0.4,
+                            scaleX: finalSize,
+                            scaleY: finalSize,
                             duration: 450,
                             ease: 'Back.easeOut',
                         });

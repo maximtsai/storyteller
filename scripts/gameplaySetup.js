@@ -78,6 +78,8 @@ function setupGame() {
     setupDialogManager();
     let dialogDisplay = new DialogDisplay(PhaserScene);
     let miscSubscribe = new MiscSubscribe(PhaserScene);
+    let gameFinal = new GameFinal(PhaserScene);
+
     globalObjects.exclamation = new ExclamationHover(PhaserScene);
     setupKeyPresses(PhaserScene);
 
@@ -127,7 +129,13 @@ function setupMoveButtons() {
         disable: {
             "atlas": "buttons",
             "ref": "move_btn_disable.png"
-        }
+        },
+        onHover: () => {
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            canvas.style.cursor = 'default';
+        },
     });
     globalObjects.moveLeftBtn.setDepth(20);
     globalObjects.moveLeftBtn.setState(DISABLE);
@@ -161,7 +169,13 @@ function setupMoveButtons() {
         disable: {
             "atlas": "buttons",
             "ref": "move_btn_disable.png"
-        }
+        },
+        onHover: () => {
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            canvas.style.cursor = 'default';
+        },
     });
     globalObjects.moveRightBtn.setDepth(20);
     globalObjects.moveRightBtn.setState(DISABLE);
@@ -277,10 +291,10 @@ function tickKeyPresses(deltaScale) {
         } else {
             let panAmt = 0;
             if (distToRadio > 0) {
-                panAmt = Math.min(0.38, (distToRadio - 220) / 1100);
+                panAmt = Math.min(0.25, (distToRadio - 220) / 1200);
                 setRadioPan(panAmt);
             } else {
-                panAmt = Math.max(-0.38, (distToRadio + 220) / 1100);
+                panAmt = Math.max(-0.25, (distToRadio + 220) / 1200);
                 setRadioPan(panAmt);
             }
         }
@@ -379,7 +393,7 @@ function setupCharacters() {
     gameCharacters.juan = PhaserScene.add.image(1870, gameConsts.halfHeight + 107, 'characters', 'juan1.png').setDepth(11);
     gameCharacters.tv = PhaserScene.add.sprite(1319, gameConsts.halfHeight - 257, 'characters').play('tv');
     gameCharacters.dog = PhaserScene.add.sprite(-189, gameConsts.halfHeight + 188, 'characters', 'dog.png').setDepth(1);
-    gameCharacters.backdoor = PhaserScene.add.sprite(-48, gameConsts.halfHeight + 39, 'characters', 'backdoor1.png').setDepth(1).setOrigin(1, 0.5);
+    gameCharacters.backdoor = PhaserScene.add.sprite(-71, gameConsts.halfHeight + 39, 'characters', 'backdoor1.png').setDepth(1).setOrigin(0.918, 0.5);
 }
 
 function showExclamation() {
@@ -562,6 +576,7 @@ function cleanupIntro() {
 
 function enterShop() {
 
+
     globalObjsTemp.skipButton.destroy();
     playSound('entershop');
     setBackground('intro', 'diner2.png');
@@ -576,6 +591,9 @@ function enterShop() {
                     dinerLighting.alpha = 0;
                     dinerLighting.destroy();
                     let darkScreen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setAlpha(0);
+                    console.log(gameState.asdf);
+                    gameState.asdf = 3;
+                    PhaserScene.scene.start('preload');
                     darkScreen.setScale(999, 999);
                     PhaserScene.tweens.add({
                         targets: [darkScreen],
