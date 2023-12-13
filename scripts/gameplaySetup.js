@@ -50,7 +50,9 @@ function setupLoadingBar(scene) {
 
 }
 
-
+let dialogDisplay ;
+let miscSubscribe;
+let gameFinal;
 
 function setupGame() {
     // PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'background');
@@ -76,9 +78,9 @@ function setupGame() {
     createWorldButtons();
     setupMoveButtons();
     setupDialogManager();
-    let dialogDisplay = new DialogDisplay(PhaserScene);
-    let miscSubscribe = new MiscSubscribe(PhaserScene);
-    let gameFinal = new GameFinal(PhaserScene);
+    dialogDisplay = new DialogDisplay(PhaserScene);
+    miscSubscribe = new MiscSubscribe(PhaserScene);
+    gameFinal = new GameFinal(PhaserScene);
 
     globalObjects.exclamation = new ExclamationHover(PhaserScene);
     setupKeyPresses(PhaserScene);
@@ -324,6 +326,11 @@ function manualSkipIntro() {
 }
 
 function realGameStart() {
+    canvas = game.canvas;
+    if (gameVars.started) {
+        return;
+    }
+    gameVars.started = true;
     setBackground('intro', 'diner1.png');
     // 1000
     let bgRain = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'rain.png');
@@ -333,8 +340,8 @@ function realGameStart() {
     let bg1 = PhaserScene.add.image(-987.5, gameConsts.halfHeight, 'backgrounds', 'bg1.png');
     let window1 = PhaserScene.add.image(-765, gameConsts.halfHeight - 63, 'characters', 'window.png').setDepth(-1);
     let bg2 = PhaserScene.add.image(12, gameConsts.halfHeight, 'backgrounds', 'bg2.png');
-    let bg3 = PhaserScene.add.image(1011.05, gameConsts.halfHeight, 'backgrounds', 'bg3.png');
-    let bg4 = PhaserScene.add.image(2011, gameConsts.halfHeight, 'backgrounds', 'bg4.png');
+    globalObjects.bg3 = PhaserScene.add.image(1011.05, gameConsts.halfHeight, 'backgrounds', 'bg3.png');
+    globalObjects.bg4 = PhaserScene.add.image(2011, gameConsts.halfHeight, 'backgrounds', 'bg4.png');
     globalObjects.window2 = PhaserScene.add.image(1713, gameConsts.halfHeight - 63, 'characters', 'window.png').setDepth(-1);
     let fakeBase = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'startFakeBase.png');
     let darkGloom = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(999, 999);
@@ -371,6 +378,8 @@ function realGameStart() {
                         fakeBase.destroy();
                         setupCharacters();
                         setRadioMusic('guitarboogieshuffle', 0.75);
+                        globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0.01, true);
+                        globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0.01, true);
                         enableDinerButtons();
                         dialogManager.showDialogNode('intro');
                     }, 200);
@@ -471,11 +480,15 @@ function runIntroSequence() {
     gameVars.canSkipIntro = true;
     setBackground('intro', 'start.png');
     let thunderSfx = playSound('thunder', 0.8);
-    let dinerSign = PhaserScene.add.image(gameConsts.width, 230, 'intro', 'dinersign.png').setScale(0.7).setAlpha(0);
-    let greyCover = PhaserScene.add.image(gameConsts.width, 210, 'intro', 'greycover.png').setScale(0.7, 1).setOrigin(0.5, 0.68);
+    let greyCover = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'greycover.png').setScale(100, 4).setOrigin(0.5, 0.5).setDepth(-1);
+    let dinerSign = PhaserScene.add.image(gameConsts.width, 430, 'intro', 'dinersign.png').setScale(0.7).setAlpha(0).setOrigin(0.5, 0.95);
 
-    globalObjsTemp.rainForeground = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'startrain.png');
-    globalObjsTemp.rainForeground.setDepth(1);
+    // TODO replace
+    globalObjsTemp.rainBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'rainheavy1.png').setDepth(1).setScale(3).setRotation(0.15);
+    globalObjsTemp.rainBackground.play('rain_heavy')
+    globalObjsTemp.rainForeground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'rainheavy1.png').setDepth(1).setScale(3).setRotation(0.15).play('rain_lite');
+    globalObjsTemp.rainForeground.play('rain_lite')
+    // globalObjsTemp.rainForeground;
     addToShakeObjects(globalObjsTemp.rainForeground);
 
     globalObjsTemp.skipBox = PhaserScene.add.image(gameConsts.width, 210, 'blackPixel').setScale(146, 15).setOrigin(1, 1);
@@ -523,12 +536,19 @@ function runIntroSequence() {
     });
 
     PhaserScene.tweens.add({
-        targets: [dinerSign, greyCover],
+        targets: [greyCover],
+        scaleY: 4.25,
+        duration: 3800,
+        ease: 'Cubic.easeIn',
+    })
+
+    PhaserScene.tweens.add({
+        targets: [dinerSign],
         alpha: 1,
-        x: gameConsts.width - 100,
-        scaleX: 1.35,
-        scaleY: 1.35,
-        duration: 3400,
+        x: gameConsts.width - 125,
+        scaleX: 1.4,
+        scaleY: 1.4,
+        duration: 3800,
         ease: 'Cubic.easeIn',
         onComplete: () => {
             dinerSign.destroy();
@@ -566,6 +586,7 @@ function cleanupIntro() {
     globalObjsTemp.skipText.destroy();
 
     gameVars.canSkipIntro = false;
+    globalObjsTemp.rainBackground.destroy();
     globalObjsTemp.rainForeground.destroy();
     setBackground('intro', 'diner1.png');
     if (globalObjsTemp.outdoorsrain) {
@@ -591,9 +612,6 @@ function enterShop() {
                     dinerLighting.alpha = 0;
                     dinerLighting.destroy();
                     let darkScreen = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setAlpha(0);
-                    console.log(gameState.asdf);
-                    gameState.asdf = 3;
-                    PhaserScene.scene.start('preload');
                     darkScreen.setScale(999, 999);
                     PhaserScene.tweens.add({
                         targets: [darkScreen],
@@ -618,7 +636,6 @@ function setupDialogManager() {
         let dialogNode = new DialogNode(dialogList1[nodeName]);
         dialogManager.addDialogNode(nodeName, dialogNode);
     }
-
 
     for (let nodeName in furnitureDialog) {
         let dialogNode = new DialogNode(furnitureDialog[nodeName]);

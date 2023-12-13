@@ -1,7 +1,6 @@
 class DialogManager {
     constructor() {
-        this.dialogNodes = {};
-        this.currNode = null;
+        this.reset();
         messageBus.subscribe("gotoDialogNode", this.showDialogNode.bind(this));
     }
 
@@ -24,6 +23,11 @@ class DialogManager {
             this.dialogNodes[this.currNode].hide();
             this.currNode = null;
         }
+    }
+
+    reset() {
+        this.dialogNodes = {};
+        this.currNode = null;
     }
 }
 

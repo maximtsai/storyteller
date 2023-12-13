@@ -274,6 +274,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">characters/cracks.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>137,48,273,95</rect>
+                <key>scale9Paddings</key>
+                <rect>137,48,273,95</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">characters/dog.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -400,6 +415,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">characters/juan_fall.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>90,55,180,110</rect>
+                <key>scale9Paddings</key>
+                <rect>90,55,180,110</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">characters/maggie1.png</key>
             <key type="filename">characters/maggie_dark.png</key>
             <struct type="IndividualSpriteSettings">
@@ -462,33 +492,18 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">characters/shadowEye.png</key>
+            <key type="filename">characters/tentacle.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.8</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>75,60,150,120</rect>
+                <rect>273,96,546,191</rect>
                 <key>scale9Paddings</key>
-                <rect>75,60,150,120</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">characters/tablecloth.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>134,98,267,197</rect>
-                <key>scale9Paddings</key>
-                <rect>134,98,267,197</rect>
+                <rect>273,96,546,191</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

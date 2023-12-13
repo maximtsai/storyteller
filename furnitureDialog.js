@@ -57,6 +57,7 @@ let furnitureDialog = {
     },
     radioActThree1: {
         speech: [
+            {speaker: ' ', text: "(The radio clicks aloud with a message)"},
             {speaker: 'Radio', size: 'small', text: "*BZZZ* \"-To anyone who can hear this, we have establi-\"\n" +
                     "*TSS*\"-stronghold at Hope Springs. Don't try to engage\n" +
                     "with the Storm.\"", data: {property: "radio3Done", value: "true"}},
@@ -191,7 +192,7 @@ let furnitureDialog = {
         speech: [
             {speaker: "Juan", face: "juan_normal.png", text: "Hold on what are you doing?"},
             {speaker: "You", text: "I'm checking out what's causing this noise."},
-            {speaker: "Juan", face: "juan_sad.png", text: "Well don't just open the door like that.\nYou don't know what's on the other side."},
+            {speaker: "Juan", face: "juan_sad.png", text: "Well don't just open the door like that.\nYou don't know what's behind it."},
             {speaker: "Maggie", face: "maggie_sad.png", text: "Now there, if it's a customer I can't well\nturn them away."},
             {speaker: "Juan", face: "juan_sad.png", text: "If it was a customer they'd come in from\nthe front."},
             {speaker: "Edith", face: "edith_normal.png", text: "I have to agree, it doesn't sound like\nit's a person on the other side."},
@@ -210,7 +211,7 @@ let furnitureDialog = {
         speech: [
             {speaker: "Juan", face: "juan_normal.png", text: "Hold on what are you doing?"},
             {speaker: "You", text: "I'm checking out what's causing this noise."},
-            {speaker: "Juan", face: "juan_sad.png", text: "Well don't just open the door like that.\nYou don't know what's on the other side."},
+            {speaker: "Juan", face: "juan_sad.png", text: "Well don't just open the door like that.\nYou don't know what's behind it."},
             {speaker: "Maggie", face: "maggie_sad.png", text: "Now there, if it's a customer I can't well\nturn them away."},
             {speaker: "Juan", face: "juan_sad.png", text: "If it was a customer they'd come in from\nthe front."},
             {speaker: "Edith", face: "edith_normal.png", text: "I have to agree, it doesn't sound like\nit's a person on the other side."},
@@ -291,7 +292,7 @@ let furnitureDialog = {
             {speaker: "Ethan", face: "ethan_normal.png", text: "Door•• wasn't•• dangerous.•••••••••\n.••••••••.•••••••Gotta watch out...•••••••• windows."},
             {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuiet'},
             {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "What kind of cryptic nonsense- I don't\nsee anything out the windows-••••••••••••••••••••••"},
-            {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: ""},
+            {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: "•"},
             {speaker: "", text: "   *SHATTER*", publish: "windowBreak"},
             {speaker: "Juan", face: "juan_sad.png", text: "SONOFA-"},
             {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan)."},
@@ -306,7 +307,7 @@ let furnitureDialog = {
             {speaker: "Ethan", face: "ethan_normal.png", text: "Door•• wasn't•• dangerous.•••••••••\n.••••••••.•••••••Gotta watch out...•••••••• windows."},
             {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuiet'},
             {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "What kind of cryptic nonsense- I don't\nsee anything out the windows-••••••••••••••••••••••"},
-            {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: " "},
+            {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: "•"},
             {speaker: "", text: "   *SHATTER*", publish: "windowBreak"},
             {speaker: "Juan", face: "juan_sad.png", text: "SONOFA-"},
             {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan)."},
@@ -353,10 +354,22 @@ let furnitureDialog = {
             {speaker: "",  text: "   \"Beloved husband and father-\"\n   (The name is too worn out to read)"},
         ]
     },
+    GravestoneClickedGood: {
+        speech: [
+            {speaker: "",  text: "(The gravestone seems a little more upright)"},
+        ]
+    },
+    GravestoneClickedBad: {
+        speech: [
+            {speaker: "",  text: "(You feel a sense of sadness when near this gravestone)"},
+        ]
+    },
+
+
     DinerCheer: {
         speech: [
             {speaker: "",  text: "  (You feel the room has relaxed now that\n    the power is back on)"},
-            {speaker: "Maggie", face: "maggie_happy.png", text: "Thank you honey. I'll go turn off some of\nthe kitchen equipment to save power."},
+            {speaker: "Maggie", face: "maggie_happy.png", text: "Thank you honey. I'll go turn off some of\nthe kitchen equipment to save power.", publish: 'MaggieInfluence'},
             {speaker: "You", text: "Could we keep the radio on? It might have\nuseful information."},
             {speaker: "Maggie", face: "maggie_normal.png", text: "Of course. You do what you need to do\nand I'll have a meal prepared for you\nshortly."},
         ]
@@ -382,15 +395,33 @@ let furnitureDialog = {
             {speaker: '', text: "   (You exit the diner)", publish: "exitEarlySceneTwo"},
         ],
     },
+    ExitFinaleAlone: {
+        speech: [
+            {speaker: '', text: "Warning: You will be leaving the diner on your own.\nAre you sure?"},
+        ],
+        branches: [
+            {text: "Yes", targetNode: "ExitFinale"},
+            {text: "Nevermind."},
+        ]
+    },
+
+
     ExitFinale: {
         speech: [
-            {speaker: '', text: "   (You exit the diner)", publish: "exitFinale"},
+            {speaker: '', text: "   (You get ready to exit the diner)", data: {property: "isExiting", value: true}, onFinish: () => {
+                messageBus.publish("exitFinale");
+                }},
         ],
     },
     StayFinale: {
         speech: [
-            {speaker: '', text: "   (You lock the diner door)"},
-            {speaker: 'You', text: "I've locked the door. Let's bunker\nhere until the storm clears up.", publish: "stayFinale"},
+            {speaker: '', text: "   (You lock the diner door)", data: {property: "doorLocked", value: true}},
+            {speaker: 'You', text: "Hey everyone, let's bunker up here until\nthe storm clears up.", publish: "stayFinale"},
+            {rejectState: 'juanLeft', speaker: 'Juan', face: "juan_normal.png", text: "We'll have to patch this place up\nbetter. It's falling apart."},
+            {dependentState: 'juanLeft', speaker: 'Maggie', face: "maggie_normal.png", text: "Do what you think is best dear."},
+            {speaker: 'Edith', face: "edith_normal.png", text: "Do any of you feel... shaking?"},
+            {rejectState: 'ethanSleeping', unclickable: true, speaker: 'Ethan', face: "ethan_sad.png", text: "Guys, I think it's coming back."},
+            {dependentState: 'ethanSleeping', unclickable: true, speaker: 'Ethan', face: "ethan_sad.png", text: "Coming... it's coming back!", publish: "ethanAwake"},
         ],
     },
 
@@ -405,14 +436,32 @@ let furnitureDialog = {
             {text: "Decide later"},
         ]
     },
+    ExitSceneThreeAlone: {
+        speech: [
+            {speaker: '', text: "Leave the diner, or stay and lock up?"},
+        ],
+        branches: [
+            {text: "Leave the diner", targetNode: "ExitFinaleAlone"},
+            {text: "Lock the door and stay here", targetNode: "StayFinale"},
+            {text: "Decide later"},
+        ]
+    },
+
     ExitSceneThreeNoStay: {
         speech: [
             {speaker: '', text: "Leave the diner with everyone?"},
         ],
         branches: [
-            {text: "Yes", publish: "exitFinale"},
+            {text: "Yes", targetNode: "ExitFinaleAll"},
             {text: "Not yet"},
         ]
+    },
+    ExitFinaleAll: {
+        speech: [
+            {speaker: '', text: "   (You get ready to exit the diner)", data: {property: "isExiting", value: true}, onFinish: () => {
+                    messageBus.publish("exitFinale");
+                }},
+        ],
     },
 
     DoorScratchStart: {

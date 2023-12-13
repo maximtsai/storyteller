@@ -17,6 +17,19 @@ helperFunction.runFunctionOverIntervals = function runFunctionOverIntervals(func
     }
 }
 
+helperFunction.setShake = function setShake(amt) {
+    PhaserScene.cameras.main.shakeAmt = amt;
+    if (!PhaserScene.cameras.main.xAway) {
+        PhaserScene.cameras.main.xAway = 0;
+        PhaserScene.cameras.main.yAway = 0;
+    }
+}
+
+helperFunction.scrollTo = function setScrollTo(x, y = 0) {
+    PhaserScene.cameras.main.xAway = PhaserScene.cameras.main.scrollX - x;
+    PhaserScene.cameras.main.yAway = PhaserScene.cameras.main.scrollY - y;
+}
+
 helperFunction.screenShake = function screenshake() {
     PhaserScene.tweens.add({
         targets: [PhaserScene.cameras.main],

@@ -35,4 +35,28 @@ function createAnimations(scene) {
         frameRate: 4,
         repeat: -1
     });
+    scene.anims.create({
+        key: 'rain_heavy',
+        frames: scene.anims.generateFrameNames('intro', {
+            prefix: 'rainheavy',
+            suffix: '.png',
+            start: 1,
+            end: 3,
+            zeroPad: 1,
+        }),
+        frameRate: 7,
+        repeat: -1
+    });
+    scene.anims.create({
+        key: 'rain_lite',
+        frames: scene.anims.generateFrameNames('intro', {
+            prefix: 'rainlite',
+            suffix: '.png',
+            start: 1,
+            end: 3,
+            zeroPad: 1,
+        }),
+        frameRate: 8,
+        repeat: -1
+    });
 }

@@ -379,6 +379,7 @@ function createWorldButtons() {
             clickGravestone();
         }
     });
+    globalObjects.diner.graveButton.setRotation(0.08);
     globalObjects.diner.graveButton.setDepth(1);
 
     globalObjects.diner.ExitShedButton = new Button({
@@ -525,6 +526,7 @@ function enableDinerButtons() {
 function clickMaggie() {
     if (gameState.currentScene == 1) {
         if (!gameState.askedSeat) {
+            gameState.MaggieIntroduced;
             dialogManager.showDialogNode('findSeat');
         } else {
             dialogManager.showDialogNode('findSeatEnd');
@@ -553,14 +555,16 @@ function clickMaggie() {
     } else if (gameState.currentScene == 3) {
         if (gameState.windowFixed) {
             if (gameState.casparFinale) {
-                if (gameState.maggieReadyFinale) {
+                if (gameState.MaggieSaved) {
+                    dialogManager.showDialogNode('EveryoneSaved');
+                } else if (gameState.maggieReadyFinale) {
                     dialogManager.showDialogNode('MaggieReadyFinale');
                 } else {
                     dialogManager.showDialogNode('MaggieHoldOn');
                 }
             } else if (gameState.maggieSandwichEnd) {
                 dialogManager.showDialogNode('MaggieSandwichEnd');
-            } else if (gameState.EthanSaved && gameState.EdithSaved && gameState.BrunaSaved &&  gameState.juanLeaveStatus == "accept") {
+            } else if (gameState.EthanSaved && gameState.EdithSaved && gameState.BrunaSaved && (gameState.juanLeaveStatus == "accept" || gameState.juanLeaveStatus == "onlyUseful")) {
                 dialogManager.showDialogNode('MaggieAct3ChatAllGoing');
             } else {
                 dialogManager.showDialogNode('MaggieAct3Chat');
@@ -581,17 +585,31 @@ function clickMaggie() {
 
 function clickEdith() {
     if (gameState.currentScene == 1) {
-        gameState.EdithIntroduced = true;
         if (gameState.EthanAct1Fin) {
             if (gameState.EdithAct1Fin) {
-                dialogManager.showDialogNode('introEdith3');
+                if (gameState.EdithEthanFinChat) {
+                    dialogManager.showDialogNode('introEdith4');
+                } else {
+                    gameState.EdithEthanFinChat = true;
+                    dialogManager.showDialogNode('introEdith3');
+                }
             } else {
                 gameState.EdithAct1Fin = true;
                 dialogManager.showDialogNode('introEdith2');
             }
         } else {
-            dialogManager.showDialogNode('introEdith');
+            if (gameState.EdithIntroduced) {
+                if (gameState.talkBooth) {
+                    dialogManager.showDialogNode('introEdith4');
+                } else {
+                    gameState.talkBooth = true;
+                    dialogManager.showDialogNode('introEdith2');
+                }
+            } else {
+                dialogManager.showDialogNode('introEdith');
+            }
         }
+        gameState.EdithIntroduced = true;
     } else if (gameState.currentScene == 2) {
         if (gameState.EthanEdithSeparated) {
             if (gameState.edithThinking) {
@@ -742,6 +760,9 @@ function clickEthan() {
                         break;
                     case 'ethanWaitForever':
                         dialogManager.showDialogNode('Ethan3MustApologize');
+                        break;
+                    case 'ethanFailedBest':
+                        dialogManager.showDialogNode('Ethan3FailedBest');
                         break;
                     case 'ethanNotTalk':
                         dialogManager.showDialogNode('Ethan3NotTalk');
@@ -923,8 +944,16 @@ function clickCaspar() {
             gameState.casparIntroduced = true;
             dialogManager.showDialogNode('CasparIntro');
         } else {
-            if (gameState.brunaIntroduced && gameState.juanIntroduced && gameState.EthanIntroduced && gameState.EdithIntroduced) {
+            let c1 = gameState.brunaIntroduced && 2;
+            let c2 = gameState.EthanIntroduced && 1;
+            let c3 = gameState.juanIntroduced && 1;
+            let c4 = gameState.EdithIntroduced && 1;
+            let c5 = gameState.MaggieIntroduced && 1;
+
+            if (c1+c2+c3+c4+c5 >= 3) {
                 dialogManager.showDialogNode('CasparTalkOthersDone');
+            } else if (c1+c2+c3+c4+c5 >= 1) {
+                dialogManager.showDialogNode('CasparTalkOthersSomeDone');
             } else {
                 dialogManager.showDialogNode('CasparTalkOthersNotDone');
             }
@@ -1028,7 +1057,7 @@ function clickDog() {
             }
         });
     } else if (gameState.dogTrust == 2) {
-        if (gameState.dogSaved) {
+        if (gameState.DogSaved) {
             dialogManager.showDialogNode('DogFullTrustSaved');
         } else {
             dialogManager.showDialogNode('DogFullTrust');
@@ -1047,14 +1076,23 @@ function clickDog() {
 
 function clickExit() {
     if (gameState.currentScene == 1) {
+        //dialogManager.showDialogNode('ExitSceneTwo');
+        // dialogManager.showDialogNode('ExitSceneThree');
         dialogManager.showDialogNode('ExitNoReason');
     } else if (gameState.currentScene == 2) {
         dialogManager.showDialogNode('ExitSceneTwo');
     } else if (gameState.currentScene == 3) {
-        if (gameState.goodEndLocked) {
+        if (gameState.isExiting) {
+            // Not sure why this got stuck
+            messageBus.publish('exitFinaleForce');
+        } else if (gameState.goodEndLocked) {
             dialogManager.showDialogNode('ExitSceneThreeNoStay');
         } else {
-            dialogManager.showDialogNode('ExitSceneThree');
+            if (!gameState.BrunaSaved && !gameState.EthanSaved && !gameState.EdithSaved && !gameState.JuanSaved && !gameState.DogSaved) {
+                dialogManager.showDialogNode('ExitSceneThreeAlone');
+            } else {
+                dialogManager.showDialogNode('ExitSceneThree');
+            }
         }
     }
 }
@@ -1262,7 +1300,7 @@ function updateRadio(deltaTime) {
     }
 }
 
-function resetRadioPosition() {
+function resetRadioPosition(position = 418) {
     if (globalObjsTemp.radio) {
         globalObjsTemp.radio.bar.x = 418;
         adjustRadioUpdate(globalObjsTemp.radio.bar.x);
@@ -1313,12 +1351,12 @@ function adjustRadioUpdate(barPos) {
     }
     // 206 leftmost = 88 slowwalk,
     // 235.75 = 90, 266.5. 294.25, 326, 356 = 98 386.25 = 100, 446.75 = 104, 506 = 108
-    if (distToClosestObj > 5) {
+    if (distToClosestObj > 6) {
         if (gameState.goodEndLocked) {
             gameState.maggieReadyFinale = false;
         }
         // globalObjsTemp.radioStatic1
-        let staticSoundMult = 1 - Math.min(0.99, (10 - distToClosestObj) / 5);
+        let staticSoundMult = 1 - Math.min(0.99, (10 - distToClosestObj) / 5.5);
         let panMult = (barPos - 206) / 300
         if (gameState.currentScene == 3) {
             panMult = 0.5;
@@ -1405,7 +1443,9 @@ function clickTV() {
             dialogManager.showDialogNode('tvOff');
         }
     } else if (gameState.currentScene == 3) {
-        if (gameState.tvSceneThreeEnded) {
+        if (gameState.goodEndLocked) {
+            dialogManager.showDialogNode('radioDone');
+        } else if (gameState.tvSceneThreeEnded) {
             dialogManager.showDialogNode('tvCrackEnd');
         } else if (gameState.tvScreaming) {
             // stop tv screaming
@@ -1480,11 +1520,7 @@ function clickBackdoor() {
         }
         // dialogManager.showDialogNode('Backdoor2NoReasonToGo');
     } else if (gameState.currentScene == 3) {
-        if (gameState.goodEndLocked) {
-            dialogManager.showDialogNode('BackdoorNoPoint');
-        } else {
-            exitBackdoor();
-        }
+        exitBackdoor();
     }
 }
 
@@ -1503,17 +1539,38 @@ function shiftOver(x, strong) {
 
 }
 
+function shiftOverTween(x) {
+    PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+    PhaserScene.tweens.add({
+        targets: [PhaserScene.cameras.main, gameVars],
+        scrollX: x,
+        cameraPosX: x,
+        ease: 'Cubic.easeInOut',
+        duration: 3000,
+    });
+
+    messageBus.publish("delayUpdateClickLocation");
+}
+
 function exitBackdoor() {
     playSound('dooropen', 0.4);
     globalObjects.diner.IndoorButton.setState(NORMAL);
     // globalObjects.indoorRain.setVolume(0.01);
 
     if (!globalObjects.outdoorRain) {
-        globalObjects.outdoorRain = playSound('stormfull', 1, true);
+        globalObjects.outdoorRain = playSound('stormfull', .88, true);
     } else {
         globalObjects.outdoorRain.play();
     }
-    setRadioVolume(0);
+
+    if (!gameState.casparGone) {
+        setRadioVolume(0);
+        globalObjects.outdoorRain.volume = 0.88;
+    } else if (!gameState.lookForCaspar) {
+        globalObjects.outdoorRain.volume = 0.75;
+        gameState.lookForCaspar = true;
+        dialogManager.showDialogNode('LookForCaspar');
+    }
     gameVars.cameraMoveAcc = 0;
     gameVars.cameraMoveVel = 0.01;
     gameState.isOutdoors = true;
@@ -1560,8 +1617,15 @@ function enterShed() {
 
 function clickGravestone() {
     gameState.gravestoneClicked = true;
-    dialogManager.showDialogNode('GravestoneClicked');
-
+    if (gameState.casparGone) {
+        if (gameState.MaggieSaved) {
+            dialogManager.showDialogNode('GravestoneClickedGood');
+        } else {
+            dialogManager.showDialogNode('GravestoneClickedBad');
+        }
+    } else {
+        dialogManager.showDialogNode('GravestoneClicked');
+    }
 }
 
 function exitShed() {

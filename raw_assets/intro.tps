@@ -2,9 +2,9 @@
 <data version="1.0">
     <struct type="Settings">
         <key>fileFormatVersion</key>
-        <int>5</int>
+        <int>6</int>
         <key>texturePackerVersion</key>
-        <string>6.0.2</string>
+        <string>7.0.3</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -127,8 +127,8 @@
                 <filename>../sprites/intro.json</filename>
             </struct>
         </map>
-        <key>multiPack</key>
-        <true/>
+        <key>multiPackMode</key>
+        <enum type="SettingsBase::MultiPackMode">MultiPackAuto</enum>
         <key>forceIdenticalLayout</key>
         <false/>
         <key>outputFormat</key>
@@ -180,7 +180,6 @@
             <key type="filename">intro/offtruck2.png</key>
             <key type="filename">intro/offtruck3.png</key>
             <key type="filename">intro/start.png</key>
-            <key type="filename">intro/startrain.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -225,11 +224,37 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">intro/rainheavy1.png</key>
+            <key type="filename">intro/rainheavy2.png</key>
+            <key type="filename">intro/rainheavy3.png</key>
+            <key type="filename">intro/rainlite1.png</key>
+            <key type="filename">intro/rainlite2.png</key>
+            <key type="filename">intro/rainlite3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>77,68,153,136</rect>
+                <key>scale9Paddings</key>
+                <rect>77,68,153,136</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
         </map>
-        <key>fileList</key>
-        <array>
-            <filename>intro</filename>
-        </array>
+        <key>fileLists</key>
+        <map type="SpriteSheetMap">
+            <key>default</key>
+            <struct type="SpriteSheet">
+                <key>files</key>
+                <array>
+                    <filename>intro</filename>
+                </array>
+            </struct>
+        </map>
         <key>ignoreFileList</key>
         <array/>
         <key>replaceList</key>

@@ -31,6 +31,10 @@ class UpdateManager {
             }
         }
     }
+
+    removeAllFunctions() {
+        this.listOfFunctions = [];
+    }
 }
 
 updateManager = new UpdateManager();

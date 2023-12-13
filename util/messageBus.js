@@ -6,7 +6,7 @@
 	let topics;
 	let index;
 	let messageBus;
-	
+
 	//     messageBus.publish(messages.gameStarted);
 	class InternalMessageBus {
 		constructor() {
@@ -89,6 +89,11 @@
 					}
 				}
 			}
+		}
+
+		destroy() {
+			topics = {};
+			index = 0;
 		}
 	}
 

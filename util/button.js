@@ -220,6 +220,13 @@ class Button {
         }
     }
 
+    setRotation(rot) {
+        this.normal.rotation = rot;
+        this.hover.rotation = rot;
+        this.press.rotation = rot;
+        this.disable.rotation = rot;
+    }
+
     getPosX() {
         return this.getXPos();
     }

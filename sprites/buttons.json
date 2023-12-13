@@ -4,8 +4,8 @@
 			"image": "sprites/buttons-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 805,
-				"h": 338
+				"w": 851,
+				"h": 329
 			},
 			"scale": 1,
 			"frames": [
@@ -52,24 +52,24 @@
 					}
 				},
 				{
-					"filename": "move_btn_disable.png",
+					"filename": "restart.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 2,
-						"h": 2
+						"w": 170,
+						"h": 90
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 3,
-						"h": 3
+						"x": 9,
+						"y": 9,
+						"w": 152,
+						"h": 72
 					},
 					"frame": {
-						"x": 2,
-						"y": 330,
-						"w": 3,
-						"h": 3
+						"x": 687,
+						"y": 2,
+						"w": 152,
+						"h": 72
 					}
 				},
 				{
@@ -88,30 +88,9 @@
 					},
 					"frame": {
 						"x": 687,
-						"y": 2,
+						"y": 77,
 						"w": 64,
 						"h": 115
-					}
-				},
-				{
-					"filename": "continue_prompt.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 44,
-						"h": 30
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 44,
-						"h": 30
-					},
-					"frame": {
-						"x": 754,
-						"y": 2,
-						"w": 44,
-						"h": 30
 					}
 				},
 				{
@@ -130,8 +109,29 @@
 					},
 					"frame": {
 						"x": 687,
-						"y": 120,
+						"y": 195,
 						"w": 57,
+						"h": 107
+					}
+				},
+				{
+					"filename": "move_btn_over.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 500
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 263,
+						"w": 56,
+						"h": 107
+					},
+					"frame": {
+						"x": 754,
+						"y": 77,
+						"w": 56,
 						"h": 107
 					}
 				},
@@ -150,31 +150,52 @@
 						"h": 106
 					},
 					"frame": {
-						"x": 687,
-						"y": 230,
+						"x": 747,
+						"y": 195,
 						"w": 55,
 						"h": 106
 					}
 				},
 				{
-					"filename": "move_btn_over.png",
+					"filename": "continue_prompt.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 44,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 44,
+						"h": 30
+					},
+					"frame": {
+						"x": 805,
+						"y": 187,
+						"w": 44,
+						"h": 30
+					}
+				},
+				{
+					"filename": "move_btn_disable.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 120,
-						"h": 500
+						"w": 2,
+						"h": 2
 					},
 					"spriteSourceSize": {
-						"x": 10,
-						"y": 263,
-						"w": 56,
-						"h": 107
+						"x": 0,
+						"y": 0,
+						"w": 3,
+						"h": 3
 					},
 					"frame": {
-						"x": 747,
-						"y": 120,
-						"w": 56,
-						"h": 107
+						"x": 687,
+						"y": 305,
+						"w": 3,
+						"h": 3
 					}
 				}
 			]
@@ -183,6 +204,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:02990d717b96c2f63d94207f82cfbc78:260cbbc32ea0d88225a0205ba3d3de69:65710e74d82152c30eef887a1ead3394$"
+		"smartupdate": "$TexturePacker:SmartUpdate:6df0f7e06ae3e634ab5881897501b61b:34312f44a7904a8ae2224e8f857e8881:65710e74d82152c30eef887a1ead3394$"
 	}
 }

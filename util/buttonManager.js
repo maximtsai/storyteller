@@ -14,6 +14,7 @@ class InternalButtonManager {
         messageBus.subscribe("pointerDown", this.onPointerDown.bind(this));
     }
 
+
     update(delta) {
         if (!this.active) {
             return;

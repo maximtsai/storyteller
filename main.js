@@ -4,7 +4,8 @@ let config = {
         parent: 'phaser-app',
         width: 720,
         height: 640,
-
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
         autoRound: true,
     },
     render: {
@@ -39,10 +40,6 @@ function isSafariIOS() {
 
 let game;
 let canvas;
-setTimeout(() => {
-    game = new Phaser.Game(config); // var canvas = game.canvas;
-    canvas = game.canvas;
-}, 10);
 
 // console.log(game.canvas);
 let gameConsts = {
@@ -82,7 +79,8 @@ let gameState = {
     brunaIntroduced: false,
     juanIntroduced: false,
     EthanIntroduced: false,
-    EdithIntroduced: false
+    EdithIntroduced: false,
+    MaggieIntroduced: false
 }
 let gameCharacters = {};
 
@@ -93,12 +91,78 @@ let globalObjsTemp = {
     noPower: false
 };
 let globalObjects = {};
-let updateFunctions = {};
 let PhaserScene = null; // Global
 let oldTime = 0;
 let deltaScale = 1;
 let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 5;
+
+function fullRestart() {
+    if (game) {
+        updateManager.removeAllFunctions();
+        dialogManager.reset();
+        soundList = [];
+        dialogDisplay.reset();
+        miscSubscribe.reset();
+        gameFinal.reset();
+        game.destroy();
+    }
+    gameVars = {
+        typeWriterOverflow: 0,
+        averageDeltaScale: 1,
+        gameConstructed: false,
+        mousedown: false,
+        mouseJustDowned: false,
+        mouseposx: 0,
+        mouseposy: 0,
+        lastmousedown: {x: 0, y: 0},
+        timeSlowRatio: 1,
+        playerSpeed: 1,
+        cameraPosX: 0,
+        cameraPosY: 0,
+        cameraPosMaxX: 1750,
+        cameraPosMinX: -1400,
+        cameraPosMaxXInside: 1750,
+        cameraPosMinXInside: -1400,
+        cameraPosMaxXOutside: 1580,
+        cameraPosMinXOutside: -500,
+        cameraMoveVel: 0,
+        cameraMoveAcc: 0,
+        moveSine: 0
+    };
+    gameState = {
+        currentScene: 1,
+        brunaIntroduced: false,
+        juanIntroduced: false,
+        EthanIntroduced: false,
+        EdithIntroduced: false,
+        MaggieIntroduced: false,
+        DogSaved: false,
+        BrunaSaved: false,
+        MaggieSaved: false,
+        EdithSaved: false,
+        EthanSaved: false,
+        JuanSaved: false
+    }
+    gameCharacters = {};
+
+    globalObjsTemp = {
+        noPower: false
+    };
+    globalObjects = {};
+    PhaserScene = null; // Global
+    oldTime = 0;
+    deltaScale = 1;
+    timeUpdateCounter = 0;
+    // Rebegin
+    game = new Phaser.Game(config); // var canvas = game.canvas;
+    canvas = game.canvas;
+}
+
+setTimeout(() => {
+    fullRestart();
+}, 10)
+
 
 function preload ()
 {
@@ -134,7 +198,7 @@ function onLoadComplete(scene) {
 
 let shakingObjects = [];
 let shakeCd = 0;
-let shakeOffset = 3;
+let shakeOffset = 5;
 
 function addToShakeObjects(obj) {
     shakingObjects.push(obj);
@@ -162,6 +226,34 @@ function update(time, delta) {
         shakeOffset = -shakeOffset;
     } else {
         shakeCd += delta;
+    }
+
+
+    if (PhaserScene.cameras && PhaserScene.cameras.main.shakeAmt) {
+
+        let randAngle = Math.PI * 2 * Math.random();
+        let xShift = PhaserScene.cameras.main.shakeAmt * 2 * Math.sin(randAngle);
+        let yShift = PhaserScene.cameras.main.shakeAmt * Math.cos(randAngle);
+
+        let finalShiftX = xShift - PhaserScene.cameras.main.xAway * 0.05 * deltaScale;
+        let finalShiftY = yShift - PhaserScene.cameras.main.yAway * 0.05 * deltaScale;
+
+        PhaserScene.cameras.main.scrollX += finalShiftX;
+        PhaserScene.cameras.main.scrollY += finalShiftY;
+        PhaserScene.cameras.main.xAway += finalShiftX;
+        PhaserScene.cameras.main.yAway += finalShiftY;
+    } else if (PhaserScene.cameras.main.xAway) {
+        let shiftAmt = 0.005 + 0.02 * deltaScale;
+        PhaserScene.cameras.main.scrollX -= PhaserScene.cameras.main.xAway * shiftAmt;
+        PhaserScene.cameras.main.scrollY -= PhaserScene.cameras.main.yAway * shiftAmt;
+        PhaserScene.cameras.main.xAway *= 1 - shiftAmt;
+        PhaserScene.cameras.main.yAway *= 1 - shiftAmt;
+        if (Math.abs(PhaserScene.cameras.main.xAway) < 0.1) {
+            PhaserScene.cameras.main.scrollX = Math.floor(PhaserScene.cameras.main.scrollX);
+            PhaserScene.cameras.main.scrollY = Math.floor(PhaserScene.cameras.main.scrollY);
+            PhaserScene.cameras.main.xAway = 0;
+            PhaserScene.cameras.main.yAway = 0;
+        }
     }
 
     buttonManager.update(deltaScale);

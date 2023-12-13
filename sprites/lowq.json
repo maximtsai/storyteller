@@ -4,8 +4,8 @@
 			"image": "sprites/lowq-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1607,
-				"h": 1559
+				"w": 1752,
+				"h": 1654
 			},
 			"scale": 1,
 			"frames": [
@@ -31,6 +31,27 @@
 					}
 				},
 				{
+					"filename": "maw.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 590,
+						"h": 590
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 590,
+						"h": 590
+					},
+					"frame": {
+						"x": 2,
+						"y": 1045,
+						"w": 590,
+						"h": 590
+					}
+				},
+				{
 					"filename": "spook0.jpg",
 					"rotated": false,
 					"trimmed": false,
@@ -45,10 +66,31 @@
 						"h": 512
 					},
 					"frame": {
-						"x": 1029,
-						"y": 2,
+						"x": 595,
+						"y": 1045,
 						"w": 576,
 						"h": 512
+					}
+				},
+				{
+					"filename": "shadowEye.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 620,
+						"h": 620
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 620,
+						"h": 620
+					},
+					"frame": {
+						"x": 1029,
+						"y": 2,
+						"w": 620,
+						"h": 620
 					}
 				},
 				{
@@ -66,8 +108,8 @@
 						"h": 512
 					},
 					"frame": {
-						"x": 1029,
-						"y": 517,
+						"x": 1174,
+						"y": 625,
 						"w": 576,
 						"h": 512
 					}
@@ -87,12 +129,23 @@
 						"h": 512
 					},
 					"frame": {
-						"x": 1029,
-						"y": 1032,
+						"x": 1174,
+						"y": 1140,
 						"w": 576,
 						"h": 512
 					}
-				},
+				}
+			]
+		},
+		{
+			"image": "sprites/lowq-1.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 580,
+				"h": 516
+			},
+			"scale": 1,
+			"frames": [
 				{
 					"filename": "spook3.jpg",
 					"rotated": false,
@@ -109,7 +162,7 @@
 					},
 					"frame": {
 						"x": 2,
-						"y": 1045,
+						"y": 2,
 						"w": 576,
 						"h": 512
 					}
@@ -120,6 +173,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:b738db683a536cdfbc40fdb112064538:35ee44ed30cb9c9b41272e5b66d9e462:0644d9afadc5ec39d626109554d3f3bc$"
+		"smartupdate": "$TexturePacker:SmartUpdate:2cf430619a6106f650abe9c6e57617ba:d827c189dfc93029e249c6cae1afebe3:f370068b913c8d62cf32d629b9ea5881$"
 	}
 }

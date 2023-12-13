@@ -1,65 +1,70 @@
 class MiscSubscribe {
     constructor(scene) {
         this.scene = scene || PhaserScene;
+        this.subscriptions = [
+            messageBus.subscribe("startDark", this.startDark.bind(this)),
+            messageBus.subscribe("MaggieCoffee", this.maggieCoffee.bind(this)),
+            messageBus.subscribe("maggieCoffeeEnd", this.maggieCoffeeEnd.bind(this)),
+            messageBus.subscribe("harshStorm", this.harshStorm.bind(this)),
 
-        messageBus.subscribe("startDark", this.startDark.bind(this));
-        messageBus.subscribe("MaggieCoffee", this.maggieCoffee.bind(this));
-        messageBus.subscribe("maggieCoffeeEnd", this.maggieCoffeeEnd.bind(this));
-        messageBus.subscribe("harshStorm", this.harshStorm.bind(this));
+            messageBus.subscribe("ActOneEnd", this.actOneEnd.bind(this)),
+            messageBus.subscribe("playSound", this.playSound.bind(this)),
+            messageBus.subscribe("tvemergency", this.tvemergency.bind(this)),
+            messageBus.subscribe("tvemergencyEnd", this.tvemergencyEnd.bind(this)),
+            messageBus.subscribe("tvJumpscare", this.tvJumpscare.bind(this)),
 
-        messageBus.subscribe("ActOneEnd", this.actOneEnd.bind(this));
-        messageBus.subscribe("playSound", this.playSound.bind(this));
-        messageBus.subscribe("tvemergency", this.tvemergency.bind(this));
-        messageBus.subscribe("tvemergencyEnd", this.tvemergencyEnd.bind(this));
-        messageBus.subscribe("tvJumpscare", this.tvJumpscare.bind(this));
+            messageBus.subscribe("generatorFixed", this.generatorFixed.bind(this)),
 
-        messageBus.subscribe("generatorFixed", this.generatorFixed.bind(this));
+            messageBus.subscribe("edithStandCorner", this.edithStandCorner.bind(this)),
 
-        messageBus.subscribe("edithStandCorner", this.edithStandCorner.bind(this));
+            messageBus.subscribe("startEldritchEthan", this.startEldritchEthan.bind(this)),
+            messageBus.subscribe("endEldritchEthan", this.endEldritchEthan.bind(this)),
 
-        messageBus.subscribe("startEldritchEthan", this.startEldritchEthan.bind(this));
-        messageBus.subscribe("endEldritchEthan", this.endEldritchEthan.bind(this));
-
-        messageBus.subscribe("ethanEldritch1", this.ethanEldritch1.bind(this));
-        messageBus.subscribe("ethanEldritch2", this.ethanEldritch2.bind(this));
-        messageBus.subscribe("EthanRefreshed", this.ethanRefreshed.bind(this));
-        messageBus.subscribe("ethanAsleep", this.ethanAsleep.bind(this));
-
-        messageBus.subscribe("startPhaseThree", this.startPhaseThree.bind(this));
-
-        messageBus.subscribe("radioTempQuiet", this.radioTempQuiet.bind(this));
-        messageBus.subscribe("radioTempQuietResume", this.radioTempQuietResume.bind(this));
-
-        messageBus.subscribe("JuanScratchDoorInterrupt", this.juanScratchDoorInterrupt.bind(this));
-
-        messageBus.subscribe("lockScratchDoor", this.lockScratchDoor.bind(this));
-        messageBus.subscribe("openScratchDoor", this.openScratchDoor.bind(this));
-
-        messageBus.subscribe("windowBreak", this.windowBreak.bind(this));
-        messageBus.subscribe("doggoJump", this.doggoJump.bind(this));
-        messageBus.subscribe("doggoAngry", this.doggoAngry.bind(this));
-
-        messageBus.subscribe("fixWindow", this.fixWindow.bind(this));
-        messageBus.subscribe("juanLeft", this.juanLeft.bind(this));
-
-        messageBus.subscribe("edithSaved", this.edithSaved.bind(this));
-        messageBus.subscribe("ethanStandUp", this.ethanStandUp.bind(this));
-        messageBus.subscribe("ethanApproachEdith", this.ethanApproachEdith.bind(this));
-        messageBus.subscribe("edithScootTowardsEthan", this.edithScootTowardsEthan.bind(this));
-
-        messageBus.subscribe("casparExit", this.casparExit.bind(this));
-        messageBus.subscribe("casparGoodExit", this.casparGoodExit.bind(this));
-        messageBus.subscribe("casparExitFast", this.casparExitFast.bind(this));
-
-        messageBus.subscribe("goodEndLocked", this.goodEndLocked.bind(this));
-
-        messageBus.subscribe("MaggieInfluence", (amt) => this.updateInfluence("MaggieInfluence", amt));
-        messageBus.subscribe("BrunaInfluence", (amt) => this.updateInfluence("BrunaInfluence", amt));
-        messageBus.subscribe("JuanInfluence", (amt) => this.updateInfluence("JuanInfluence", amt));
-        messageBus.subscribe("EdithInfluence", (amt) => this.updateInfluence("EdithInfluence", amt));
-        messageBus.subscribe("EthanInfluence", (amt) => this.updateInfluence("EthanInfluence", amt));
+            messageBus.subscribe("ethanEldritch1", this.ethanEldritch1.bind(this)),
+            messageBus.subscribe("ethanEldritch2", this.ethanEldritch2.bind(this)),
+            messageBus.subscribe("EthanRefreshed", this.ethanRefreshed.bind(this)),
+            messageBus.subscribe("ethanAsleep", this.ethanAsleep.bind(this)),
+            messageBus.subscribe("ethanAwake", this.ethanAwake.bind(this)),
 
 
+
+            messageBus.subscribe("startPhaseThree", this.startPhaseThree.bind(this)),
+
+            messageBus.subscribe("radioTempQuiet", this.radioTempQuiet.bind(this)),
+            messageBus.subscribe("radioTempQuietResume", this.radioTempQuietResume.bind(this)),
+
+            messageBus.subscribe("JuanScratchDoorInterrupt", this.juanScratchDoorInterrupt.bind(this)),
+
+            messageBus.subscribe("lockScratchDoor", this.lockScratchDoor.bind(this)),
+            messageBus.subscribe("openScratchDoor", this.openScratchDoor.bind(this)),
+
+            messageBus.subscribe("windowBreak", this.windowBreak.bind(this)),
+            messageBus.subscribe("doggoJump", this.doggoJump.bind(this)),
+            messageBus.subscribe("doggoAngry", this.doggoAngry.bind(this)),
+
+            messageBus.subscribe("fixWindow", this.fixWindow.bind(this)),
+            messageBus.subscribe("juanLeft", this.juanLeft.bind(this)),
+
+            messageBus.subscribe("edithSaved", this.edithSaved.bind(this)),
+            messageBus.subscribe("ethanStandUp", this.ethanStandUp.bind(this)),
+            messageBus.subscribe("ethanApproachEdith", this.ethanApproachEdith.bind(this)),
+            messageBus.subscribe("edithScootTowardsEthan", this.edithScootTowardsEthan.bind(this)),
+
+            messageBus.subscribe("casparExit", this.casparExit.bind(this)),
+            messageBus.subscribe("casparGoodExit", this.casparGoodExit.bind(this)),
+            messageBus.subscribe("casparExitFast", this.casparExitFast.bind(this)),
+            messageBus.subscribe("casparFadeAway", this.casparFadeAway.bind(this)),
+
+            messageBus.subscribe("goodEndLocked", this.goodEndLocked.bind(this)),
+            messageBus.subscribe("casparToBackdoor", this.casparToBackdoor.bind(this)),
+
+
+            messageBus.subscribe("MaggieInfluence", (amt) => this.updateInfluence("MaggieInfluence", amt)),
+            messageBus.subscribe("BrunaInfluence", (amt) => this.updateInfluence("BrunaInfluence", amt)),
+            messageBus.subscribe("JuanInfluence", (amt) => this.updateInfluence("JuanInfluence", amt)),
+            messageBus.subscribe("EdithInfluence", (amt) => this.updateInfluence("EdithInfluence", amt)),
+            messageBus.subscribe("EthanInfluence", (amt) => this.updateInfluence("EthanInfluence", amt))
+        ];
     }
 
     updateInfluence(character = "MaggieInfluence", amt = 1) {
@@ -72,6 +77,8 @@ class MiscSubscribe {
     }
 
     casparExit() {
+        buttonManager.disableAllInput();
+        gameState.casparGone = true;
         gameCharacters.caspar.setFrame('caspar2.png');
         globalObjects.diner.CasparButton.destroy();
         this.scene.tweens.add({
@@ -82,27 +89,21 @@ class MiscSubscribe {
             onComplete: () => {
                 this.scene.tweens.add({
                     targets: [gameCharacters.backdoor],
-                    scaleX: 0.25,
+                    scaleX: 1,
                     ease: 'Cubic.easeIn',
-                    duration: 1000,
+                    duration: 100,
                     onComplete: () => {
                         this.scene.tweens.add({
                             targets: gameCharacters.caspar,
-                            duration: 750,
-                            y: 50,
+                            scaleX: 0.95,
+                            scaleY: 0.95,
+                            alpha: 0,
+                            duration: 1200,
+                            y: "-=40",
                             ease: 'Quad.easeInOut',
                             onComplete: () => {
-                                gameCharacters.caspar.setDepth(0);
-                                playSound('doorOpen', 0.4);
-                                this.scene.tweens.add({
-                                    targets: [gameCharacters.backdoor],
-                                    scaleX: 1,
-                                    ease: 'Cubic.easeIn',
-                                    duration: 1500,
-                                    onComplete: () => {
-                                        gameCharacters.caspar.destroy();
-                                    }
-                                });
+                                buttonManager.enableAllInput();
+
                             }
                         });
                     }
@@ -118,11 +119,12 @@ class MiscSubscribe {
         this.scene.tweens.add({
             targets: gameCharacters.caspar,
             duration: 800,
-            x: gameCharacters.backdoor.x - 20,
+            x: gameCharacters.backdoor.x - 150,
             ease: 'Cubic.easeOut',
             onComplete: () => {
-                shiftOver(globalObjects.backdoor.x);
+                shiftOver(gameCharacters.backdoor.x, true);
                 buttonManager.enableAllInput();
+                globalObjects.diner.graveButton.setRotation(0);
                 dialogManager.showDialogNode('CasparExitGood');
             }
         });
@@ -155,10 +157,65 @@ class MiscSubscribe {
         });
     }
 
+    casparFadeAway() {
+        gameState.casparGone = true;
+        shiftOver(gameCharacters.backdoor.x);
+        buttonManager.disableAllInput();
+        this.scene.tweens.add({
+            targets: [gameCharacters.caspar],
+            x: gameCharacters.backdoor.x - 145,
+            y: "-=40",
+            scaleX: 0.95,
+            scaleY: 0.95,
+            ease: 'Cubic.easeIn',
+            duration: 1000,
+            onComplete: () => {
+                this.scene.tweens.add({
+                    targets: [gameCharacters.caspar],
+                    alpha: 0,
+                    duration: 1000,
+                    onComplete: () => {
+                        buttonManager.enableAllInput();
+                    }
+                });
+            }
+        });
+    }
+
     goodEndLocked() {
+        this.scene.tweens.add({
+            targets: [globalObjsTemp.radioMusic, globalObjsTemp.radioStatic1, globalObjsTemp.radioStatic2],
+            volume: 0,
+            duration: 2000,
+            onComplete: () => {
+                if (globalObjsTemp.radioStatic1) {
+                    globalObjsTemp.radioStatic1.stop();
+                }
+                if (globalObjsTemp.radioStatic2) {
+                    globalObjsTemp.radioStatic2.stop();
+                }
+                globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0.05, true);
+                globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0.05, true);
+                resetRadioPosition();
+                this.updateRadioChannels();
+            }
+        });
         gameState.goodEndLocked = true;
-        resetRadioPosition();
-        this.updateRadioChannels();
+    }
+
+    casparToBackdoor() {
+        gameCharacters.caspar.setFrame('caspar2.png');
+        let casparButtonY = globalObjects.diner.CasparButton.getPosY();
+        this.scene.tweens.add({
+            targets: gameCharacters.caspar,
+            duration: 3000,
+            x: gameCharacters.backdoor.x - 300,
+            ease: 'Quad.easeInOut',
+            onComplete: () => {
+                globalObjects.diner.CasparButton.setPos(gameCharacters.backdoor.x - 310, casparButtonY);
+
+            }
+        });
     }
 
     edithSaved() {
@@ -195,15 +252,15 @@ class MiscSubscribe {
 
     edithScootTowardsEthan() {
         this.scene.tweens.add({
-            targets: [gameCharacters.ethan],
-            x: "+=15",
-            ease: 'Cubic.easeInOut',
-            duration: 1000
+            targets: [gameCharacters.edith],
+            x: "+=30",
+            ease: 'Cubic.easeOut',
+            duration: 1250
         });
     }
 
     ethanApproachEdith() {
-        shiftOver(globalObjects.diner.EthanButton.getXPos() * 0.4 + globalObjects.diner.EdithButton.getXPos() * 0.6);
+        shiftOver(globalObjects.diner.EthanButton.getXPos() * 0.4 + globalObjects.diner.EdithButton.getXPos() * 0.6, true);
 
         let ethanGoalPosX = 1200;
         globalObjects.diner.EthanButton.setPos(ethanGoalPosX, globalObjects.diner.EthanButton.getPosY());
@@ -216,6 +273,7 @@ class MiscSubscribe {
     }
 
     juanLeft() {
+        gameState.juanLeft = true;
         gameCharacters.juan.scaleX = -1;
         this.scene.tweens.add({
             targets: [gameCharacters.juan],
@@ -233,7 +291,9 @@ class MiscSubscribe {
         this.scene.tweens.add({
             targets: [gameCharacters.juan],
             delay: 500,
-            y: gameConsts.halfHeight + 50,
+            y: gameConsts.halfHeight + 55,
+            scaleX: -0.92,
+            scaleY: -0.92,
             ease: 'Cubic.easeInOut',
             duration: 1500,
         });
@@ -265,6 +325,7 @@ class MiscSubscribe {
 
     windowBreak() {
         gameState.currentScene = 3;
+        resetRadioPosition(206);
         this.updateRadioChannels();
         playSound('glassbreak');
         gameState.windowBroken = true;
@@ -287,6 +348,15 @@ class MiscSubscribe {
             gameCharacters.juan.x = 1920; gameCharacters.juan.y = gameConsts.halfHeight + 90;
             globalObjects.diner.JuanButton.setPos(1925, globalObjects.diner.JuanButton.getPosY());
             globalObjects.diner.JuanButton.setScale(170, 200);
+
+            globalObjsTemp.gloom.setAlpha(0.4);
+            PhaserScene.tweens.add({
+                targets: globalObjsTemp.gloom,
+                alpha: 0,
+                ease: 'Cubic.easeOut',
+                duration: 1000
+            });
+
 
             globalObjects.window2.setFrame('window_broken.png');
         }, 300);
@@ -411,9 +481,14 @@ class MiscSubscribe {
             alpha: 1,
             duration: 1100,
             onComplete: () => {
+                PhaserScene.tweens.add({
+                    targets: globalObjects.indoorRain,
+                    volume: 0.45,
+                    duration: 1000
+                });
                 playSound('hammermany');
                 gameCharacters.maggieCoffee.visible = false;
-                globalObjects.window2.setFrame('window_fixed.png').setDepth(9);
+                globalObjects.window2.setFrame('window_fixed.png').setDepth(9).setAlpha(0.8);
                 this.scene.tweens.add({
                     delay: 1250,
                     targets: globalObjsTemp.black,
@@ -643,12 +718,15 @@ class MiscSubscribe {
 
     ethanAsleep() {
         gameCharacters.ethan.setFrame('ethan_sleep.png');
+    }
 
+    ethanAwake() {
+        gameCharacters.ethan.setFrame('ethan_tired.png');
     }
 
     startEldritchEthan() {
         setRadioVolume(0);
-        globalObjsTemp.gloom.setAlpha(1);
+        globalObjsTemp.gloom.setAlpha(0.96);
         playSound('crackle1', 1);
         setCharactersDark();
         globalObjects.indoorRain.setVolume(0);
@@ -760,7 +838,7 @@ class MiscSubscribe {
                                         realisticEye.x = gameConsts.halfWidth; realisticEye.y = gameConsts.halfHeight;
                                         realisticEye.setFrame('spook1.jpg')
                                         realisticEye.visible = true; realisticEye.alpha = 1;
-                                        let startScale = 2.4;
+                                        let startScale = 3;
                                         realisticEye.setScale(startScale);
                                         setTimeout(() => {
                                             realisticEye.setFrame('spook2.jpg')
@@ -797,7 +875,7 @@ class MiscSubscribe {
                                                 }, 30);
                                             }, 30);
                                         }, 30);
-                                    }, 2200);
+                                    }, 3500);
                                 }, 10);
                             }, 1800);
                             this.scene.tweens.add({
@@ -838,7 +916,7 @@ class MiscSubscribe {
                                     setTimeout(() => {
                                         globalObjsTemp.gloom.setAlpha(0.8);
                                         setTimeout(() => {
-                                            globalObjsTemp.gloom.setAlpha(1);
+                                            globalObjsTemp.gloom.setAlpha(0.96);
                                             setTimeout(() => {
                                                 globalObjsTemp.gloom.setAlpha(0.8);
                                                 setTimeout(() => {
@@ -846,7 +924,7 @@ class MiscSubscribe {
                                                     setTimeout(() => {
                                                         blackBg.destroy();
                                                     }, 50);
-                                                    globalObjsTemp.gloom.setAlpha(1);
+                                                    globalObjsTemp.gloom.setAlpha(0.96);
                                                     setTimeout(() => {
                                                         this.endEldritchEthan();
                                                     }, 1750);
@@ -1003,7 +1081,7 @@ class MiscSubscribe {
 
     harshStorm() {
         let shadow = globalObjsTemp.shadow;
-        let eye = this.scene.add.image(-850, gameConsts.halfHeight - 75, 'characters', 'shadowEye.png').setDepth(-1);
+        let eye = this.scene.add.image(-850, gameConsts.halfHeight - 75, 'lowq', 'shadowEye.png').setDepth(-1);
         eye.setScale(1.26, 1.26);
         eye.alpha = 0.05;
         setTimeout(() => {
@@ -1018,8 +1096,8 @@ class MiscSubscribe {
                     this.scene.tweens.add({
                         targets: eye,
                         duration: 350,
-                        scaleX: 0.95,
-                        scaleY: 0.95,
+                        scaleX: 0.94,
+                        scaleY: 0.94,
                         alpha: 1,
                         ease: 'Quart.easeIn',
                         completeDelay: 100,
@@ -1036,15 +1114,15 @@ class MiscSubscribe {
                                 duration: 700,
                                 x: "+=2",
                                 y: "-=2",
-                                scaleX: 1.03,
-                                scaleY: 1.03,
+                                scaleX: 1.02,
+                                scaleY: 1.02,
                                 ease: 'Cubic.easeOut',
                                 onComplete: () => {
                                     this.scene.tweens.add({
                                         targets: eye,
                                         duration: 300,
-                                        scaleX: 1.015,
-                                        scaleY: 1.015,
+                                        scaleX: 1,
+                                        scaleY: 1,
                                         ease: 'Back.easeOut',
                                     });
                                 }
@@ -1059,8 +1137,8 @@ class MiscSubscribe {
                                     this.scene.tweens.add({
                                         targets: eye,
                                         duration: 400,
-                                        scaleX: 1,
-                                        scaleY: 1,
+                                        scaleX: 0.99,
+                                        scaleY: 0.99,
                                         ease: 'Back.easeOut',
                                     });
                                     this.scene.tweens.add({
@@ -1162,7 +1240,7 @@ class MiscSubscribe {
                                     setTimeout(() => {
                                         playSound('stopscreech', 1);
 
-                                        globalObjsTemp.gloom.setAlpha(1);
+                                        globalObjsTemp.gloom.setAlpha(0.96);
                                         globalObjsTemp.black.setAlpha(1);
                                         setCharactersDark();
                                         gameCharacters.maggieCoffee.setFrame('maggie_coffee_dark.png');
@@ -1172,7 +1250,7 @@ class MiscSubscribe {
                                             setTimeout(() => {
                                                 globalObjsTemp.gloom.setAlpha(0.9);
                                                 setTimeout(() => {
-                                                    globalObjsTemp.gloom.setAlpha(1);
+                                                    globalObjsTemp.gloom.setAlpha(0.96);
                                                 }, 70);
                                             }, 2000);
                                         }, 80);
@@ -1268,18 +1346,26 @@ class MiscSubscribe {
             globalObjsTemp.songs = {
                 356: 'foolrushin_ok',
             };
-        } if (gameState.currentScene == 3) {
+        } else if (gameState.currentScene == 3) {
             if (globalObjsTemp.radioStatic1) {
                 globalObjsTemp.radioStatic1.stop();
-                globalObjsTemp.radioStatic2.stop();
+                if (globalObjsTemp.radioStatic2) {
+                    globalObjsTemp.radioStatic2.stop();
+                }
             }
-            globalObjsTemp.radioStatic1 = playSound('sellafieldalarm', 0, true);
+            globalObjsTemp.radioStatic1 = playSound('sellafieldalarm', 0.2, true);
             globalObjsTemp.songs = {
                 235.75: 'news3',
                 294.25: 'dabbda',
                 356: 'foolrushin_poor',
                 386.25: 'lofi',
             };
+        }
+    }
+
+    reset() {
+        for (let i in this.subscriptions) {
+            this.subscriptions[i].unsubscribe();
         }
     }
 }

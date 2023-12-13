@@ -86,6 +86,7 @@ class DialogBranchButton {
 class DialogDisplay {
     constructor(scene) {
         this.scene = scene || PhaserScene;
+        this.lastSpeaker = "";
 
         this.dialogBox = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.height - 183, 'blackPixel');
         this.dialogBox.setScale(gameConsts.width * 0.5 - 20, 84);
@@ -169,7 +170,8 @@ class DialogDisplay {
                 ref: "continue_btn.png",
                 x: gameConsts.halfWidth,
                 y: gameConsts.height- 85,
-                scaleY: 20,
+                scaleX: 10,
+                scaleY: 200,
                 alpha: 0.001
             },
             hover: {
@@ -195,30 +197,32 @@ class DialogDisplay {
         this.dialogButton.setDepth(998);
         this.dialogButton.setState(DISABLE);
 
-        messageBus.subscribe("hideAllDialog", this.hideAll.bind(this));
-        messageBus.subscribe("showTalkText", this.showTalkText.bind(this));
-        messageBus.subscribe("showTalkFace", this.showTalkFace.bind(this));
-        messageBus.subscribe("hideTalkText", this.hideTalkText.bind(this));
-        messageBus.subscribe("showTalkSpeaker", this.showDialogSpeaker.bind(this));
-        messageBus.subscribe("updateTextSize", this.updateTextSize.bind(this));
+        this.subscriptions = [
+            messageBus.subscribe("hideAllDialog", this.hideAll.bind(this)),
+            messageBus.subscribe("showTalkText", this.showTalkText.bind(this)),
+            messageBus.subscribe("showTalkFace", this.showTalkFace.bind(this)),
+            messageBus.subscribe("hideTalkText", this.hideTalkText.bind(this)),
+            messageBus.subscribe("showTalkSpeaker", this.showDialogSpeaker.bind(this)),
+            messageBus.subscribe("updateTextSize", this.updateTextSize.bind(this)),
 
-        messageBus.subscribe("hideTalkSpeaker", this.hideDialogSpeaker.bind(this));
-        messageBus.subscribe("showNextButton", this.showNextButton.bind(this));
-        messageBus.subscribe("setBranches", this.setBranchesDelayed.bind(this));
-        messageBus.subscribe("clearBranchOptions", this.clearBranchOptions.bind(this));
+            messageBus.subscribe("hideTalkSpeaker", this.hideDialogSpeaker.bind(this)),
+            messageBus.subscribe("showNextButton", this.showNextButton.bind(this)),
+            messageBus.subscribe("setBranches", this.setBranchesDelayed.bind(this)),
+            messageBus.subscribe("clearBranchOptions", this.clearBranchOptions.bind(this)),
 
-        messageBus.subscribe("clickNextDialog", this.clickNextDialog.bind(this));
-        messageBus.subscribe("delayUpdateClickLocation", this.delayUpdateClickLocation.bind(this));
-        messageBus.subscribe("forceTextProgress", this.setForceTextProgress.bind(this));
-        messageBus.subscribe("unclickable", this.setUnclickable.bind(this));
+            messageBus.subscribe("clickNextDialog", this.clickNextDialog.bind(this)),
+            messageBus.subscribe("delayUpdateClickLocation", this.delayUpdateClickLocation.bind(this)),
+            messageBus.subscribe("forceTextProgress", this.setForceTextProgress.bind(this)),
+            messageBus.subscribe("unclickable", this.setUnclickable.bind(this)),
 
-        messageBus.subscribe("setDialogBtnToTop", this.setDialogBtnToTop.bind(this));
-        messageBus.subscribe("updateInfluenceAnimation", this.updateInfluenceAnimation.bind(this));
-        messageBus.subscribe("showInfluence", this.showInfluence.bind(this));
-        messageBus.subscribe("showInfluenceSmall", this.showInfluenceSmall.bind(this));
+            messageBus.subscribe("setDialogBtnToTop", this.setDialogBtnToTop.bind(this)),
+            messageBus.subscribe("updateInfluenceAnimation", this.updateInfluenceAnimation.bind(this)),
+            messageBus.subscribe("showInfluence", this.showInfluence.bind(this)),
+            messageBus.subscribe("showInfluenceSmall", this.showInfluenceSmall.bind(this)),
 
-        messageBus.subscribe("pointerMove", this.checkCornerHover.bind(this));
-        messageBus.subscribe("pointerUp", this.checkCornerHover.bind(this));
+            messageBus.subscribe("pointerMove", this.checkCornerHover.bind(this)),
+            messageBus.subscribe("pointerUp", this.checkCornerHover.bind(this)),
+        ];
 
 
         this.buttons = [];
@@ -242,11 +246,15 @@ class DialogDisplay {
         this.dialogSpeaker.visible = false;
         this.dialogBox.visible = false;
         this.dialogFace.visible = false;
+        if (this.showStarAnim) {
+            this.showStarAnim.stop();
+        }
         for (let i in this.speakerStars) {
             this.speakerStars[i].alpha = 0;
             this.speakerStars[i].visible = false;
+            this.speakerStars[i].rotation = 0;
+            this.speakerStars[i].setScale(0.4);
         }
-        this.canHideStars = true;
         this.dialogPrompt.visible = false;
         this.dialogButton.setState(DISABLE);
 
@@ -254,20 +262,25 @@ class DialogDisplay {
     }
 
     checkCornerHover(x, y) {
+        if (this.starsActive) {
+            return;
+        }
         if (x < 140 && y > 490) {
-            if (!this.speakerStars[0].visible) {
-                for (let i in this.speakerStars) {
-                    this.speakerStars[i].visible = true;
-                }
+            if (this.hideStarAnim) {
+                this.hideStarAnim.stop();
             }
-        } else if (this.canHideStars && this.speakerStars[0].visible) {
-            for (let i in this.speakerStars) {
-                this.speakerStars[i].visible = false;
+            this.starsActive = true;
+            let numStars = this.getNumStars();
+            for (let i = 0; i < numStars; i++) {
+                console.log("Set stars visible 1");
+                this.speakerStars[i].visible = true;
+                this.speakerStars[i].alpha = 0.5;
             }
         }
     }
 
     showDialogSpeaker(name) {
+        this.lastSpeaker = this.dialogSpeaker.text;
         this.dialogSpeaker.setText(name);
         this.dialogSpeaker.visible = true;
         this.dialogBox.visible = true;
@@ -297,7 +310,7 @@ class DialogDisplay {
         this.currentlyTypedText = '';
 
         this.finalText = text;
-        if (this.finalText.length > 1) {
+        if (this.finalText.length >= 2) {
             this.finalText += "•••••••";
         }
 
@@ -307,11 +320,28 @@ class DialogDisplay {
         this.dialogText.visible = true;
         this.dialogText.setFontSize(26);
         this.dialogFace.visible = false;
-        for (let i in this.speakerStars) {
-            this.speakerStars[i].alpha = 0;
-            this.speakerStars[i].visible = false;
-        }
-        this.canHideStars = true;
+        this.starsActive = false;
+        this.numStars = this.getNumStars();
+        setTimeout(() => {
+            if (!this.starsActive) {
+                // Hide em all
+                console.log("hide em stars")
+                let fadeDur = this.lastSpeaker == this.dialogSpeaker.text ? 1000 : 25;
+
+                this.hideStarAnim = this.scene.tweens.add({
+                    targets: this.speakerStars,
+                    alpha: 0,
+                    duration: fadeDur,
+                    ease: 'Quad.easeIn'
+                });
+            }
+        }, 50);
+
+        // for (let i in this.speakerStars) {
+        //     this.speakerStars[i].alpha = 0;
+        //     this.speakerStars[i].visible = false;
+        // }
+        // this.canHideStars = true;
 
         this.dialogBox.visible = true;
         this.dialogBox.x = gameConsts.halfWidth;
@@ -366,18 +396,18 @@ class DialogDisplay {
         this.dialogFace.x = this.dialogFace.startX;
         this.dialogFace.setFrame(faceFrame);
 
-        let numStars = this.getNumStars();
-        setTimeout(() => {
-            for (let i = 0; i < this.speakerStars.length; i++) {
-                if (!this.speakerStars[i].animating) {
-                    if (i < numStars) {
-                        this.speakerStars[i].alpha = 0.5;
-                    } else {
-                        this.speakerStars[i].alpha = 0;
-                    }
-                }
-            }
-        }, 0);
+        this.numStars = this.getNumStars();
+        // setTimeout(() => {
+        //     if (this.starsActive) {
+        //         for (let i = 0; i < this.speakerStars.length; i++) {
+        //             if (i < this.numStars) {
+        //                 this.speakerStars[i].alpha = 0.5;
+        //             } else {
+        //                 this.speakerStars[i].alpha = 0;
+        //             }
+        //         }
+        //     }
+        // }, 0);
     }
 
     finishTypingText() {
@@ -425,7 +455,11 @@ class DialogDisplay {
             let branchData = branches[i];
             let idx = i - branchIndexOffset;
             let currButton = this.buttons[idx];
-            if (!branchData.dependentState || gameState[branchData.dependentState]) {
+
+            if ((branchData.dependentState && !gameState[branchData.dependentState]) || (branchData.rejectState && gameState[branchData.rejectState])) {
+                // hidden option, make sure button is used for next option if it comes
+                branchIndexOffset++;
+            } else {
                 let yPos = gameConsts.halfHeight - (branches.length - 1) * 32 + idx * 64 - branches.length * 12;
                 currButton.setPosition(gameConsts.halfWidth + gameVars.cameraPosX, yPos);
                 currButton.setText(branchData.text);
@@ -434,9 +468,6 @@ class DialogDisplay {
                     currButton.setPublishData(branchData.publish, branchData.param);
                 }
                 currButton.setActive();
-            } else {
-                // hidden option, make sure button is used for next option if it comes
-                branchIndexOffset++;
             }
         }
         this.branchesToSet = null;
@@ -511,27 +542,34 @@ class DialogDisplay {
     }
 
     updateInfluenceAnimation(change) {
-        let numStars = this.getNumStars();
-        let oldNumStars = numStars - change;
+        this.numStars = this.getNumStars();
+        let oldNumStars = this.numStars - change;
         let gainedStar = false;
-        this.canHideStars = false;
+        this.starsActive = true;
+        if (this.hideStarAnim) {
+            this.hideStarAnim.stop();
+        }
         for (let i = 0; i < this.speakerStars.length; i++) {
-            if (i < numStars) {
+            if (i < this.numStars) {
+                console.log("Setting num stars to visible", this.numStars, i);
                 this.speakerStars[i].visible = true;
-                if (this.speakerStars[i].alpha === 0) {
+                if (this.speakerStars[i].alpha < 0.5) {
                     if (i < oldNumStars) {
+                        console.log(i, " is old star");
                         this.speakerStars[i].setAlpha(0.5);
                     } else {
+                        console.log(i, " is new animated star");
                         gainedStar = true;
                         // animate to visible
-                        this.speakerStars[i].animating = true;
                         this.speakerStars[i].setScale(0.9);
                         this.speakerStars[i].setAlpha(0.01);
                         this.speakerStars[i].rotation = -0.05;
-                        if (Math.random() < 0.04) {
+                        if (i >= 3 && Math.random() < 0.3) {
+                            this.speakerStars[i].rotation = -3.14;
+                        } else if (i >= 2 && Math.random() < 0.05) {
                             this.speakerStars[i].rotation = -3.14;
                         }
-                        this.scene.tweens.add({
+                        this.showStarAnim = this.scene.tweens.add({
                             targets: this.speakerStars[i],
                             alpha: 1,
                             scaleX: 0.3,
@@ -540,7 +578,7 @@ class DialogDisplay {
                             duration: 350,
                             ease: 'Quad.easeIn',
                             onComplete: () => {
-                                this.scene.tweens.add({
+                                this.showStarAnim = this.scene.tweens.add({
                                     targets: this.speakerStars[i],
                                     alpha: 1.05,
                                     scaleX: 0.8,
@@ -549,7 +587,7 @@ class DialogDisplay {
                                     duration: 350,
                                     ease: 'Quart.easeOut',
                                     onComplete: () => {
-                                        this.scene.tweens.add({
+                                        this.showStarAnim = this.scene.tweens.add({
                                             targets: this.speakerStars[i],
                                             alpha: 0.5,
                                             scaleX: 0.4,
@@ -557,9 +595,6 @@ class DialogDisplay {
                                             rotation: 0,
                                             duration: 300,
                                             ease: 'Cubic.easeIn',
-                                            onComplete: () => {
-                                                this.speakerStars[i].animating = false;
-                                            }
                                         });
                                     }
                                 });
@@ -573,9 +608,7 @@ class DialogDisplay {
                     this.speakerStars[i].alpha = 0.5;
                 }
                 if (this.speakerStars[i].alpha > 0) {
-                    console.log("Animate to hidden");
                     // animate to hidden when it isn't
-                    this.speakerStars[i].animating = true;
                     this.speakerStars[i].alpha = 0.8;
                     this.speakerStars[i].setScale(0.6);
                     this.scene.tweens.add({
@@ -591,7 +624,6 @@ class DialogDisplay {
                             this.speakerStars[i].setScale(0.4);
                             this.speakerStars[i].y = this.speakerStars[i].startY;
                             this.speakerStars[i].rotation = 0;
-                            this.speakerStars[i].animating = false;
                         }
                     });
                 }
@@ -608,19 +640,19 @@ class DialogDisplay {
     }
 
     showInfluence(isSmall = false) {
-        let numStars = this.getNumStars();
+        this.numStars = this.getNumStars();
         let startSize = isSmall ? 0.55 : 0.3;
         let biggestSize = isSmall ? 0.35 : 0.6;
         let finalSize = isSmall ? 0.32 : 0.4;
         let randRot = (Math.random() * 0.55);
         let finalRot = isSmall ? randRot * randRot - 0.15 : 0;
-        this.canHideStars = false;
+        this.starsActive = true;
         for (let i = 0; i < this.speakerStars.length; i++) {
             this.speakerStars[i].visible = true;
-            if (i < numStars) {
+            if (i < this.numStars) {
                 this.speakerStars[i].alpha = 0.35;
                 this.speakerStars[i].setScale(startSize);
-                this.scene.tweens.add({
+                this.showStarAnim = this.scene.tweens.add({
                     targets: this.speakerStars[i],
                     alpha: 1,
                     scaleX: biggestSize,
@@ -629,7 +661,7 @@ class DialogDisplay {
                     duration: 350,
                     ease: 'Cubic.easeOut',
                     onComplete: () => {
-                        this.scene.tweens.add({
+                        this.showStarAnim = this.scene.tweens.add({
                             targets: this.speakerStars[i],
                             alpha: 0.5,
                             scaleX: finalSize,
@@ -642,6 +674,12 @@ class DialogDisplay {
             } else {
                 this.speakerStars[i].alpha = 0;
             }
+        }
+    }
+
+    reset() {
+        for (let i in this.subscriptions) {
+            this.subscriptions[i].unsubscribe();
         }
     }
 }
