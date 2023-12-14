@@ -341,8 +341,8 @@
 			"image": "sprites/characters-2.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 983,
-				"h": 1013
+				"w": 997,
+				"h": 1003
 			},
 			"scale": 1,
 			"frames": [
@@ -389,69 +389,6 @@
 					}
 				},
 				{
-					"filename": "tv2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 245,
-						"h": 205
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 245,
-						"h": 202
-					},
-					"frame": {
-						"x": 2,
-						"y": 809,
-						"w": 245,
-						"h": 202
-					}
-				},
-				{
-					"filename": "tv_off.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 245,
-						"h": 205
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 245,
-						"h": 202
-					},
-					"frame": {
-						"x": 250,
-						"y": 809,
-						"w": 245,
-						"h": 202
-					}
-				},
-				{
-					"filename": "tv_shake5.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 245,
-						"h": 205
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 245,
-						"h": 202
-					},
-					"frame": {
-						"x": 250,
-						"y": 809,
-						"w": 245,
-						"h": 202
-					}
-				},
-				{
 					"filename": "backdoor5.png",
 					"rotated": false,
 					"trimmed": true,
@@ -466,115 +403,10 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 258,
-						"y": 402,
-						"w": 253,
-						"h": 404
-					}
-				},
-				{
-					"filename": "tv_red.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 245,
-						"h": 205
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 245,
-						"h": 202
-					},
-					"frame": {
-						"x": 498,
-						"y": 809,
-						"w": 245,
-						"h": 202
-					}
-				},
-				{
-					"filename": "juan_dark.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 250,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 10,
-						"w": 238,
-						"h": 387
-					},
-					"frame": {
 						"x": 402,
 						"y": 2,
-						"w": 238,
-						"h": 387
-					}
-				},
-				{
-					"filename": "juan1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 250,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 11,
-						"w": 238,
-						"h": 386
-					},
-					"frame": {
-						"x": 514,
-						"y": 392,
-						"w": 238,
-						"h": 386
-					}
-				},
-				{
-					"filename": "maggie1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 130,
-						"h": 200
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 4,
-						"w": 112,
-						"h": 196
-					},
-					"frame": {
-						"x": 746,
-						"y": 781,
-						"w": 112,
-						"h": 196
-					}
-				},
-				{
-					"filename": "bruna2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 197,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 48,
-						"y": 31,
-						"w": 133,
-						"h": 361
-					},
-					"frame": {
-						"x": 643,
-						"y": 2,
-						"w": 133,
-						"h": 361
+						"w": 253,
+						"h": 404
 					}
 				},
 				{
@@ -592,8 +424,8 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 755,
-						"y": 366,
+						"x": 658,
+						"y": 2,
 						"w": 226,
 						"h": 404
 					}
@@ -613,8 +445,8 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 755,
-						"y": 366,
+						"x": 658,
+						"y": 2,
 						"w": 226,
 						"h": 404
 					}
@@ -634,8 +466,8 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 755,
-						"y": 366,
+						"x": 658,
+						"y": 2,
 						"w": 226,
 						"h": 404
 					}
@@ -655,8 +487,8 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 755,
-						"y": 366,
+						"x": 658,
+						"y": 2,
 						"w": 226,
 						"h": 404
 					}
@@ -676,8 +508,8 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 755,
-						"y": 366,
+						"x": 658,
+						"y": 2,
 						"w": 226,
 						"h": 404
 					}
@@ -697,31 +529,115 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 755,
-						"y": 366,
+						"x": 658,
+						"y": 2,
 						"w": 226,
 						"h": 404
 					}
 				},
 				{
-					"filename": "dog.png",
+					"filename": "bruna2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 110,
-						"h": 140
+						"w": 197,
+						"h": 400
 					},
 					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 108,
-						"h": 124
+						"x": 48,
+						"y": 31,
+						"w": 133,
+						"h": 361
 					},
 					"frame": {
-						"x": 861,
-						"y": 773,
-						"w": 108,
-						"h": 124
+						"x": 258,
+						"y": 402,
+						"w": 133,
+						"h": 361
+					}
+				},
+				{
+					"filename": "juan_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 250,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 10,
+						"w": 238,
+						"h": 387
+					},
+					"frame": {
+						"x": 394,
+						"y": 409,
+						"w": 238,
+						"h": 387
+					}
+				},
+				{
+					"filename": "juan1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 250,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 11,
+						"w": 238,
+						"h": 386
+					},
+					"frame": {
+						"x": 635,
+						"y": 409,
+						"w": 238,
+						"h": 386
+					}
+				},
+				{
+					"filename": "diner.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 364,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 1,
+						"w": 360,
+						"h": 158
+					},
+					"frame": {
+						"x": 2,
+						"y": 809,
+						"w": 360,
+						"h": 158
+					}
+				},
+				{
+					"filename": "tv2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 245,
+						"h": 205
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 245,
+						"h": 202
+					},
+					"frame": {
+						"x": 365,
+						"y": 799,
+						"w": 245,
+						"h": 202
 					}
 				},
 				{
@@ -739,10 +655,94 @@
 						"h": 357
 					},
 					"frame": {
-						"x": 779,
-						"y": 2,
+						"x": 876,
+						"y": 409,
 						"w": 118,
 						"h": 357
+					}
+				},
+				{
+					"filename": "dog.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 110,
+						"h": 140
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 108,
+						"h": 124
+					},
+					"frame": {
+						"x": 887,
+						"y": 2,
+						"w": 108,
+						"h": 124
+					}
+				},
+				{
+					"filename": "tv_off.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 245,
+						"h": 205
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 245,
+						"h": 202
+					},
+					"frame": {
+						"x": 635,
+						"y": 798,
+						"w": 245,
+						"h": 202
+					}
+				},
+				{
+					"filename": "tv_shake5.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 245,
+						"h": 205
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 245,
+						"h": 202
+					},
+					"frame": {
+						"x": 635,
+						"y": 798,
+						"w": 245,
+						"h": 202
+					}
+				},
+				{
+					"filename": "maggie1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 130,
+						"h": 200
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 4,
+						"w": 112,
+						"h": 196
+					},
+					"frame": {
+						"x": 883,
+						"y": 769,
+						"w": 112,
+						"h": 196
 					}
 				}
 			]
@@ -751,8 +751,8 @@
 			"image": "sprites/characters-3.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 951,
-				"h": 964
+				"w": 912,
+				"h": 943
 			},
 			"scale": 1,
 			"frames": [
@@ -799,7 +799,7 @@
 					}
 				},
 				{
-					"filename": "tv_shake1.png",
+					"filename": "tv_red.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -820,7 +820,7 @@
 					}
 				},
 				{
-					"filename": "tv_shake2.png",
+					"filename": "tv_shake1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -841,7 +841,7 @@
 					}
 				},
 				{
-					"filename": "tv_shake3.png",
+					"filename": "tv_shake2.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -883,27 +883,6 @@
 					}
 				},
 				{
-					"filename": "ethan_tired.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 355
-					},
-					"spriteSourceSize": {
-						"x": 29,
-						"y": 13,
-						"w": 142,
-						"h": 342
-					},
-					"frame": {
-						"x": 169,
-						"y": 614,
-						"w": 142,
-						"h": 342
-					}
-				},
-				{
 					"filename": "edith_dark.png",
 					"rotated": false,
 					"trimmed": true,
@@ -918,10 +897,31 @@
 						"h": 327
 					},
 					"frame": {
-						"x": 314,
+						"x": 169,
 						"y": 614,
 						"w": 143,
 						"h": 327
+					}
+				},
+				{
+					"filename": "bruna_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 197,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 192,
+						"h": 277
+					},
+					"frame": {
+						"x": 315,
+						"y": 614,
+						"w": 192,
+						"h": 277
 					}
 				},
 				{
@@ -960,8 +960,8 @@
 						"h": 355
 					},
 					"frame": {
-						"x": 460,
-						"y": 565,
+						"x": 493,
+						"y": 207,
 						"w": 149,
 						"h": 355
 					}
@@ -981,10 +981,31 @@
 						"h": 355
 					},
 					"frame": {
-						"x": 493,
-						"y": 207,
+						"x": 510,
+						"y": 565,
 						"w": 147,
 						"h": 355
+					}
+				},
+				{
+					"filename": "tv_shake3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 245,
+						"h": 205
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 245,
+						"h": 202
+					},
+					"frame": {
+						"x": 660,
+						"y": 207,
+						"w": 245,
+						"h": 202
 					}
 				},
 				{
@@ -1002,52 +1023,10 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 643,
-						"y": 207,
+						"x": 660,
+						"y": 412,
 						"w": 245,
 						"h": 202
-					}
-				},
-				{
-					"filename": "edith1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 340
-					},
-					"spriteSourceSize": {
-						"x": 57,
-						"y": 12,
-						"w": 142,
-						"h": 326
-					},
-					"frame": {
-						"x": 612,
-						"y": 565,
-						"w": 142,
-						"h": 326
-					}
-				},
-				{
-					"filename": "bruna_dark.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 197,
-						"h": 280
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 192,
-						"h": 277
-					},
-					"frame": {
-						"x": 757,
-						"y": 412,
-						"w": 192,
-						"h": 277
 					}
 				},
 				{
@@ -1065,8 +1044,8 @@
 						"h": 270
 					},
 					"frame": {
-						"x": 757,
-						"y": 692,
+						"x": 660,
+						"y": 617,
 						"w": 158,
 						"h": 270
 					}
@@ -1077,11 +1056,53 @@
 			"image": "sprites/characters-4.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 402,
-				"h": 328
+				"w": 692,
+				"h": 346
 			},
 			"scale": 1,
 			"frames": [
+				{
+					"filename": "ethan_tired.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 355
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 13,
+						"w": 142,
+						"h": 342
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 142,
+						"h": 342
+					}
+				},
+				{
+					"filename": "edith1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 340
+					},
+					"spriteSourceSize": {
+						"x": 57,
+						"y": 12,
+						"w": 142,
+						"h": 326
+					},
+					"frame": {
+						"x": 147,
+						"y": 2,
+						"w": 142,
+						"h": 326
+					}
+				},
 				{
 					"filename": "caspar_dark.png",
 					"rotated": false,
@@ -1097,7 +1118,7 @@
 						"h": 324
 					},
 					"frame": {
-						"x": 2,
+						"x": 292,
 						"y": 2,
 						"w": 131,
 						"h": 324
@@ -1118,7 +1139,7 @@
 						"h": 324
 					},
 					"frame": {
-						"x": 136,
+						"x": 426,
 						"y": 2,
 						"w": 131,
 						"h": 324
@@ -1139,7 +1160,7 @@
 						"h": 323
 					},
 					"frame": {
-						"x": 270,
+						"x": 560,
 						"y": 2,
 						"w": 130,
 						"h": 323
@@ -1151,6 +1172,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:7410f5cdaa8e9a2bbe44716d1be6d90d:d6b37167b2cfe7267f3dc31c819d40b8:c3474a0b9bffbb5fb9fd66a2b93cd767$"
+		"smartupdate": "$TexturePacker:SmartUpdate:a5024f75efd4e548fae6c2e3b5a79fc6:6654ddd3d408fabd9d01acdb2ae15b4e:c3474a0b9bffbb5fb9fd66a2b93cd767$"
 	}
 }

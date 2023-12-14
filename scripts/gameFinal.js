@@ -18,6 +18,10 @@ class GameFinal {
             this.subscriptions[i].unsubscribe();
         }
         this.displayedLines = [];
+        helperFunction.destroyList([
+            this.theEnd, this.theEndTitle,
+            this.restartButton
+        ]);
     }
 
     stayFinale() {
@@ -685,6 +689,7 @@ class GameFinal {
                 } else {
                     dialogManager.showDialogNode('CasparSorry2');
                 }
+                let maw = this.scene.add.image(1698, gameConsts.halfHeight - 100, 'lowq', 'maw.png').setDepth(-1).setScale(1.2, 0.3).setOrigin(0.5, 0.45).setAlpha(0);
                 this.scene.tweens.add({
                     targets: [this.blackScreen],
                     duration: 4850,
@@ -697,11 +702,11 @@ class GameFinal {
                             setTimeout(() => {
                                 this.blackScreen.alpha = 1;
                                 this.playStayEpilogue();
+                                maw.destroy();
                             }, 120);
                         }, 25);
                     }
                 });
-                let maw = this.scene.add.image(1698, gameConsts.halfHeight - 100, 'lowq', 'maw.png').setDepth(-1).setScale(1.2, 0.3).setOrigin(0.5, 0.45).setAlpha(0);
                 this.scene.tweens.add({
                     targets: [maw],
                     duration: 500,

@@ -1,0 +1,62 @@
+{
+	"textures": [
+		{
+			"image": "epilogue-0.webp",
+			"format": "RGB565",
+			"size": {
+				"w": 544,
+				"h": 967
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "diner2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 540,
+						"h": 480
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 540,
+						"h": 480
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 540,
+						"h": 480
+					}
+				},
+				{
+					"filename": "scene1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 540,
+						"h": 480
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 540,
+						"h": 480
+					},
+					"frame": {
+						"x": 2,
+						"y": 485,
+						"w": 540,
+						"h": 480
+					}
+				}
+			]
+		}
+	],
+	"meta": {
+		"app": "https://www.codeandweb.com/texturepacker",
+		"version": "3.0",
+		"smartupdate": "$TexturePacker:SmartUpdate:5f0135d5a3568185b4ba8a4f2c648ec3:e112ec934fb620a546b4eb9f704b7313:e9b7b4ee753d39c92d187c308e50b33b$"
+	}
+}

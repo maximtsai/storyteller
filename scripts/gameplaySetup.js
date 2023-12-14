@@ -319,6 +319,7 @@ function manualSkipIntro() {
     gameVars.canSkipIntro = false;
     globalObjsTemp.skipBox.destroy();
     globalObjsTemp.skipText.destroy();
+    if (globalObjsTemp.rainBackground) globalObjsTemp.rainBackground.destroy();
     if (globalObjsTemp.rainForeground) globalObjsTemp.rainForeground.destroy();
     if (globalObjsTemp.outdoorsrain) globalObjsTemp.outdoorsrain.stop();
     globalObjects.indoorRain = playSound('brownnoise', 1, true);

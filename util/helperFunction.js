@@ -67,3 +67,11 @@ helperFunction.screenShake = function screenshake() {
     });
 
 }
+
+helperFunction.destroyList = function destroyList(list) {
+    for (let i = 0; i < list.length; i++) {
+        if (list[i] && list[i].destroy) {
+            list[i].destroy();
+        }
+    }
+}
