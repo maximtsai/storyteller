@@ -45,7 +45,7 @@ function setupLoadingBar(scene) {
                     onLoadComplete(scene);
                 }
             });
-        }, 900);
+        }, 10);
     });
 
 }
@@ -74,6 +74,26 @@ function setupGame() {
         }
     });
 
+    // create credits button
+    setTimeout(() => {
+        globalObjects.creditsButton = new Button({
+            normal: {
+                "ref": "credits",
+                "x": gameConsts.width - 75,
+                "y": gameConsts.height - 30,
+                "alpha": 0.9
+            },
+            hover: {
+                "alpha": 1
+            },
+            press: {
+                "alpha": 0.8
+            },
+            onMouseUp: () => {
+                clickCredits();
+            }
+        });
+    }, 0);
 
     createWorldButtons();
     setupMoveButtons();
@@ -109,6 +129,40 @@ function setupKeyPresses(scene) {
     keyPresses.keySpace = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
 
     updateManager.addFunction(tickKeyPresses);
+}
+
+function clickCredits() {
+    globalObjects.closeCreditsButton = new Button({
+        normal: {
+            "ref": "blackPixel",
+            "x": gameConsts.halfWidth,
+            "y": gameConsts.halfHeight,
+            alpha: 0.75
+        },
+        onMouseUp: () => {
+            closeCredits();
+        }
+    });
+    globalObjects.closeCreditsButton.setScale(500, 500);
+    globalObjects.creditsText = PhaserScene.add.text(40, 40, 'Game built by Maxim Tsai\nWriting and story by Rowa Skipson\n');
+    globalObjects.creditsText.setFontSize(26);
+
+}
+
+function closeCredits() {
+    if (!gameVars.showedCreditsSpook) {
+        if (Math.random() < 0.3) {
+            let eye = PhaserScene.add.image(gameConsts.halfWidth + 260, gameConsts.halfHeight - 255, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.15).setScale(3);
+            setTimeout(() => {
+                eye.destroy();
+            }, 20)
+        }
+        gameVars.showedCreditsSpook = true;
+    }
+    if (globalObjects.closeCreditsButton) {
+        globalObjects.closeCreditsButton.destroy();
+        globalObjects.creditsText.destroy();
+    }
 }
 
 function setupMoveButtons() {
@@ -277,14 +331,9 @@ function tickKeyPresses(deltaScale) {
         gameVars.cameraPosY = startY - distToStartY * 0.8;
         PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
         PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
-        let offsetY = 0
-        if (gameState.isInShed) {
-            offsetY = gameConsts.shedStartY;
-        } else if (gameState.isOutdoors) {
-            offsetY = gameConsts.outdoorStartY;
-        }
-        globalObjects.moveLeftBtn.setPos(15 + gameVars.cameraPosX, gameConsts.halfHeight + offsetY);
-        globalObjects.moveRightBtn.setPos(gameConsts.width - 15 + gameVars.cameraPosX, gameConsts.halfHeight + offsetY);
+
+        globalObjects.moveLeftBtn.setPos(15 + gameVars.cameraPosX, gameConsts.halfHeight + gameVars.cameraPosY);
+        globalObjects.moveRightBtn.setPos(gameConsts.width - 15 + gameVars.cameraPosX, gameConsts.halfHeight + gameVars.cameraPosY);
 
         let radioCenter = 450;
         let distToRadio = radioCenter - gameVars.cameraPosX;
@@ -404,6 +453,7 @@ function setupCharacters() {
     gameCharacters.tv = PhaserScene.add.sprite(1319, gameConsts.halfHeight - 257, 'characters').play('tv');
     gameCharacters.dog = PhaserScene.add.sprite(-189, gameConsts.halfHeight + 188, 'characters', 'dog.png').setDepth(1);
     gameCharacters.backdoor = PhaserScene.add.sprite(-71, gameConsts.halfHeight + 39, 'characters', 'backdoor1.png').setDepth(1).setOrigin(0.918, 0.5);
+    gameCharacters.sign = PhaserScene.add.sprite(290, 130, 'characters', 'diner.png').setDepth(1).setOrigin(0.25, 0.7);
 }
 
 function showExclamation() {
@@ -478,6 +528,7 @@ function setCharactersNormal() {
 
 function runIntroSequence() {
     globalObjects.optionsButton.destroy();
+    globalObjects.creditsButton.destroy();
     gameVars.canSkipIntro = true;
     setBackground('intro', 'start.png');
     let thunderSfx = playSound('thunder', 0.8);
@@ -597,8 +648,7 @@ function cleanupIntro() {
 }
 
 function enterShop() {
-
-
+    closeCredits()
     globalObjsTemp.skipButton.destroy();
     playSound('entershop');
     setBackground('intro', 'diner2.png');
@@ -616,20 +666,20 @@ function enterShop() {
                     darkScreen.setScale(999, 999);
                     PhaserScene.tweens.add({
                         targets: [darkScreen],
-                        delay: 300,
+                        delay: 550,
                         alpha: 1,
                         ease: 'Cubic.easeIn',
-                        duration: 600,
+                        duration: 750,
                         completeDelay: 250,
                         onComplete: () => {
                             darkScreen.destroy();
                             realGameStart();
                         }
                     });
-                }, 150);
-            }, 250);
-        }, 250);
-    }, 150);
+                }, 120);
+            }, 350);
+        }, 100);
+    }, 50);
 }
 
 function setupDialogManager() {

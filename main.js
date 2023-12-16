@@ -4,8 +4,6 @@ let config = {
         parent: 'phaser-app',
         width: 720,
         height: 640,
-        mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
         autoRound: true,
     },
     render: {
@@ -26,7 +24,7 @@ let config = {
         createContainer: true,
     },
 };
-
+// scale: {...
 // mode: Phaser.Scale.FIT,
 //     autoCenter: Phaser.Scale.CENTER_BOTH,
 

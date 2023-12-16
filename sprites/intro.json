@@ -4,7 +4,7 @@
 			"image": "sprites/intro-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1746,
+				"w": 1444,
 				"h": 1926
 			},
 			"scale": 1,
@@ -32,6 +32,27 @@
 				},
 				{
 					"filename": "diner2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 720,
+						"h": 640
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 720,
+						"h": 640
+					},
+					"frame": {
+						"x": 723,
+						"y": 1,
+						"w": 720,
+						"h": 640
+					}
+				},
+				{
+					"filename": "dinerlighting.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -88,7 +109,7 @@
 					},
 					"frame": {
 						"x": 723,
-						"y": 1,
+						"y": 643,
 						"w": 720,
 						"h": 640
 					}
@@ -109,11 +130,22 @@
 					},
 					"frame": {
 						"x": 723,
-						"y": 643,
+						"y": 1285,
 						"w": 720,
 						"h": 640
 					}
-				},
+				}
+			]
+		},
+		{
+			"image": "sprites/intro-1.webp",
+			"format": "RGBA8888",
+			"size": {
+				"w": 1024,
+				"h": 1096
+			},
+			"scale": 1,
+			"frames": [
 				{
 					"filename": "start.png",
 					"rotated": false,
@@ -129,8 +161,8 @@
 						"h": 640
 					},
 					"frame": {
-						"x": 723,
-						"y": 1285,
+						"x": 1,
+						"y": 1,
 						"w": 720,
 						"h": 640
 					}
@@ -150,7 +182,7 @@
 						"h": 272
 					},
 					"frame": {
-						"x": 1445,
+						"x": 723,
 						"y": 1,
 						"w": 300,
 						"h": 272
@@ -171,7 +203,7 @@
 						"h": 272
 					},
 					"frame": {
-						"x": 1445,
+						"x": 723,
 						"y": 275,
 						"w": 300,
 						"h": 272
@@ -192,7 +224,7 @@
 						"h": 272
 					},
 					"frame": {
-						"x": 1445,
+						"x": 723,
 						"y": 549,
 						"w": 299,
 						"h": 272
@@ -213,8 +245,8 @@
 						"h": 272
 					},
 					"frame": {
-						"x": 1445,
-						"y": 823,
+						"x": 1,
+						"y": 643,
 						"w": 274,
 						"h": 272
 					}
@@ -234,10 +266,31 @@
 						"h": 272
 					},
 					"frame": {
-						"x": 1445,
-						"y": 1097,
+						"x": 277,
+						"y": 643,
 						"w": 273,
 						"h": 272
+					}
+				},
+				{
+					"filename": "dinersign.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 181,
+						"h": 250
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 1,
+						"w": 166,
+						"h": 249
+					},
+					"frame": {
+						"x": 552,
+						"y": 643,
+						"w": 166,
+						"h": 249
 					}
 				},
 				{
@@ -255,31 +308,10 @@
 						"h": 272
 					},
 					"frame": {
-						"x": 1445,
-						"y": 1371,
+						"x": 720,
+						"y": 823,
 						"w": 273,
 						"h": 272
-					}
-				},
-				{
-					"filename": "dinersign.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 181,
-						"h": 237
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 1,
-						"w": 168,
-						"h": 235
-					},
-					"frame": {
-						"x": 1445,
-						"y": 1645,
-						"w": 168,
-						"h": 235
 					}
 				},
 				{
@@ -297,42 +329,10 @@
 						"h": 160
 					},
 					"frame": {
-						"x": 1615,
-						"y": 1645,
+						"x": 995,
+						"y": 823,
 						"w": 10,
 						"h": 160
-					}
-				}
-			]
-		},
-		{
-			"image": "sprites/intro-1.webp",
-			"format": "RGBA8888",
-			"size": {
-				"w": 652,
-				"h": 171
-			},
-			"scale": 1,
-			"frames": [
-				{
-					"filename": "dinerlighting.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 720,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 70,
-						"y": 84,
-						"w": 650,
-						"h": 169
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 650,
-						"h": 169
 					}
 				}
 			]
@@ -341,6 +341,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:e6eb9f9f3ae9ff300f0fa91665fb907c:1ec2a3e464a63cb0d7b46f7684ba0727:53747adcc0c5e04ed783201651b4c023$"
+		"smartupdate": "$TexturePacker:SmartUpdate:6ca8c399cb038715b675264afd818c45:d787ea65aceab24783b164c2d0e5c11d:53747adcc0c5e04ed783201651b4c023$"
 	}
 }

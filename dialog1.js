@@ -2,7 +2,9 @@ let dialogList1 = {
     intro: {
         speech: [
             {speaker: "Maggie", face: "maggie_happy.png", text: "Come on in honey, and close the door\nbehind you. Lord knows the rain ain\'t\ngonna let you get any further tonight.", data: {property: "brunaNotIntroduced", value: true}},
-            {speaker: "Maggie", face: "maggie_normal.png", text: "Grab a seat and I\'ll bring a coffee\nand menu right over.", data: {property: "hopeSpringsLocationMissing", value: true}},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "Grab a seat and I\'ll bring a coffee\nand menu right over.", data: {property: "hopeSpringsLocationMissing", value: true}, onFinish: () => {
+                    messageBus.publish("startAction")
+                }},
         ]
     },
     findSeat: {
@@ -462,6 +464,7 @@ let dialogList1 = {
         ],
         branches: [
             {text: "Yeah, he is.", targetNode: "Edith2Dump"},
+            {dependentState: "hoops", text: "...I guess it really isn't\nhoops he's shooting then?", targetNode: "Edith2Hoops"},
             {text: "This is a kind of weird\nsituation to be fair.", targetNode: "Edith2Situation"},
             {text: "What did you see in him\nin the first place?", targetNode: "Edith2SeeInHim"},
         ]
@@ -472,6 +475,7 @@ let dialogList1 = {
         ],
         branches: [
             {text: "Yeah, you should.", targetNode: "Edith2Dump"},
+            {dependentState: "hoops", text: "...I guess it really isn't\nhoops he's shooting then?", targetNode: "Edith2Hoops"},
             {text: "This is a kind of weird\nsituation to be fair.", targetNode: "Edith2Situation"},
             {text: "What did you see in him\nin the first place?", targetNode: "Edith2SeeInHim"},
         ]
@@ -481,6 +485,19 @@ let dialogList1 = {
             {speaker: "Edith", face: "edith_normal.png", text: "Once we leave this place, I'm going to\nbreak up with him.", publish: 'EdithInfluence'},
         ],
     },
+    Edith2Hoops: {
+        speech: [
+            {speaker: "Edith", face: "edith_sad.png", text: "No it's not basketball hoops it's-"},
+            {speaker: "Edith", face: "edith_normal.png", text: "..."},
+            {speaker: "Edith", face: "edith_happy.png", text: "Oh my god."},
+            {speaker: "Edith", face: "edith_normal.png", text: "I can't tell if you're serious or\nif you just have a really good\npoker face when you're joking..."},
+            {speaker: "Edith", face: "edith_happy.png", text: "...but it's nice to hear a guy talk\nabout something other than\ngetting high for once.", publish: 'EdithInfluence'},
+        ],
+        branches: [
+            {text: "You should dump him.", targetNode: "Edith2Dump"},
+            {text: "What did you see in him\nin the first place?", targetNode: "Edith2SeeInHim"},
+        ]
+    },
     Edith2Situation: {
         speech: [
             {speaker: "Edith", face: "edith_normal.png", text: "He can't handle normal situations either!"},
@@ -488,6 +505,7 @@ let dialogList1 = {
         ],
         branches: [
             {text: "You should dump him.", targetNode: "Edith2Dump"},
+            {dependentState: "hoops", text: "I guess it really isn't\nhoops he's shooting then.", targetNode: "Edith2Hoops"},
             {text: "What did you see in him\nin the first place?", targetNode: "Edith2SeeInHim"},
         ]
     },
@@ -850,7 +868,7 @@ let dialogList1 = {
     },
     EthanEdithLaugh: {
         speech: [
-            {speaker: "Ethan and Edith", face: "ethan_and_edith.png", text: "Haha!"},
+            {speaker: "Ethan and Edith", face: "ethan_and_edith.png", text: "Haha!", data: {property: "hoops", value: true}},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Nah man, drugs!"},
             {speaker: "You", text: "How many drugs are you on?"},
             {speaker: "Edith", face: "edith_normal.png", text: "Ethan here gets whatever's on sale\nthat week."},
@@ -1615,7 +1633,7 @@ let dialogList1 = {
     },
     Bruna2ChatFin: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: " (Bruna is busy with her phone. Her face is locked\n in a frown as she scrolls.)"},
+            {speaker: "Bruna", face: "bruna_normal.png", text: " (Bruna is busy with her phone. Her face\nis locked in a frown as she scrolls.)"},
         ],
     },
     Bruna2ChatFinScratch: {

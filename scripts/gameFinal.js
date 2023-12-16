@@ -20,7 +20,8 @@ class GameFinal {
         this.displayedLines = [];
         helperFunction.destroyList([
             this.theEnd, this.theEndTitle,
-            this.restartButton
+            this.restartButton,
+            this.text1, this.text2
         ]);
     }
 

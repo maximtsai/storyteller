@@ -1,11 +1,11 @@
 {
 	"textures": [
 		{
-			"image": "sprites/lowq-0.webp",
+			"image": "lowq-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1752,
-				"h": 1654
+				"w": 2025,
+				"h": 1732
 			},
 			"scale": 1,
 			"frames": [
@@ -14,20 +14,62 @@
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 1024,
-						"h": 1040
+						"w": 819,
+						"h": 832
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 1024,
-						"h": 1040
+						"w": 819,
+						"h": 832
 					},
 					"frame": {
 						"x": 2,
 						"y": 2,
-						"w": 1024,
-						"h": 1040
+						"w": 819,
+						"h": 832
+					}
+				},
+				{
+					"filename": "tentacle.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 990,
+						"h": 278
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 990,
+						"h": 278
+					},
+					"frame": {
+						"x": 2,
+						"y": 837,
+						"w": 990,
+						"h": 278
+					}
+				},
+				{
+					"filename": "shadowEye.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 620,
+						"h": 620
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 620,
+						"h": 620
+					},
+					"frame": {
+						"x": 824,
+						"y": 2,
+						"w": 620,
+						"h": 620
 					}
 				},
 				{
@@ -45,8 +87,8 @@
 						"h": 590
 					},
 					"frame": {
-						"x": 2,
-						"y": 1045,
+						"x": 995,
+						"y": 625,
 						"w": 590,
 						"h": 590
 					}
@@ -66,31 +108,10 @@
 						"h": 512
 					},
 					"frame": {
-						"x": 595,
-						"y": 1045,
+						"x": 1447,
+						"y": 2,
 						"w": 576,
 						"h": 512
-					}
-				},
-				{
-					"filename": "shadowEye.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 620,
-						"h": 620
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 620,
-						"h": 620
-					},
-					"frame": {
-						"x": 1029,
-						"y": 2,
-						"w": 620,
-						"h": 620
 					}
 				},
 				{
@@ -108,10 +129,31 @@
 						"h": 512
 					},
 					"frame": {
-						"x": 1174,
-						"y": 625,
+						"x": 2,
+						"y": 1118,
 						"w": 576,
 						"h": 512
+					}
+				},
+				{
+					"filename": "spook4.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 288,
+						"h": 256
+					},
+					"spriteSourceSize": {
+						"x": 21,
+						"y": 16,
+						"w": 260,
+						"h": 240
+					},
+					"frame": {
+						"x": 581,
+						"y": 1118,
+						"w": 260,
+						"h": 240
 					}
 				},
 				{
@@ -129,23 +171,12 @@
 						"h": 512
 					},
 					"frame": {
-						"x": 1174,
-						"y": 1140,
+						"x": 844,
+						"y": 1218,
 						"w": 576,
 						"h": 512
 					}
-				}
-			]
-		},
-		{
-			"image": "sprites/lowq-1.webp",
-			"format": "RGBA5555",
-			"size": {
-				"w": 580,
-				"h": 516
-			},
-			"scale": 1,
-			"frames": [
+				},
 				{
 					"filename": "spook3.jpg",
 					"rotated": false,
@@ -161,8 +192,8 @@
 						"h": 512
 					},
 					"frame": {
-						"x": 2,
-						"y": 2,
+						"x": 1423,
+						"y": 1218,
 						"w": 576,
 						"h": 512
 					}
@@ -173,6 +204,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:2cf430619a6106f650abe9c6e57617ba:d827c189dfc93029e249c6cae1afebe3:f370068b913c8d62cf32d629b9ea5881$"
+		"smartupdate": "$TexturePacker:SmartUpdate:1e5dbffaa80c3a2d0cd1a8ec5d46d5cc:ea856ca03e2fcee5aa6fb0fd336f0f3b:0644d9afadc5ec39d626109554d3f3bc$"
 	}
 }

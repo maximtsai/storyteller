@@ -4,10 +4,10 @@ function createWorldButtons() {
         normal: {
             "atlas": "pixels",
             "ref": "blue_pixel.png",
-            x: 350,
-            y: 250,
-            scaleX: 125,
-            scaleY: 170,
+            x: 360,
+            y: 290,
+            scaleX: 120,
+            scaleY: 110,
             alpha: 0.001
         },
         hover: {

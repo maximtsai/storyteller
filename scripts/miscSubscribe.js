@@ -2,6 +2,7 @@ class MiscSubscribe {
     constructor(scene) {
         this.scene = scene || PhaserScene;
         this.subscriptions = [
+            messageBus.subscribe("startAction", this.startAction.bind(this)),
             messageBus.subscribe("startDark", this.startDark.bind(this)),
             messageBus.subscribe("MaggieCoffee", this.maggieCoffee.bind(this)),
             messageBus.subscribe("maggieCoffeeEnd", this.maggieCoffeeEnd.bind(this)),
@@ -452,7 +453,7 @@ class MiscSubscribe {
             alpha: 0,
         });
         globalObjects.diner.maggieButton.setPos(1055, 400);
-        globalObjects.diner.maggieButton.setScale(75, 170);
+        globalObjects.diner.maggieButton.setScale(75, 160);
 
         if (!gameCharacters.maggieCoffee) {
             gameCharacters.maggieCoffee = this.scene.add.image(-580, gameConsts.halfHeight + 105, 'characters', 'maggie_coffee.png');
@@ -496,8 +497,8 @@ class MiscSubscribe {
                     duration: 1400,
                 });
                 gameCharacters.maggie.alpha = 1;
-                globalObjects.diner.maggieButton.setPos(350, 250);
-                globalObjects.diner.maggieButton.setScale(125, 170);
+                globalObjects.diner.maggieButton.setPos(360, 290);
+                globalObjects.diner.maggieButton.setScale(120, 110);
 
                 gameCharacters.edith.scaleX = 1;
                 let EdithFinalPosX = gameState.edithThinking ? 920 : 660;
@@ -735,7 +736,7 @@ class MiscSubscribe {
         let spikesEldritch = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'lowq', 'spikes.png').setDepth(10000);
         let realisticEye = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'lowq', 'spook0.jpg').setDepth(10000);
         spikesEldritch.scrollFactorX = 0;
-        spikesEldritch.setScale(1.5);
+        spikesEldritch.setScale(1.875);
         realisticEye.scrollFactorX = 0;
         realisticEye.setScale(0.86);
         realisticEye.visible = false;
@@ -814,12 +815,12 @@ class MiscSubscribe {
                             globalObjsTemp.eyeEldritchCorner1 = null;
                         }
                     });
-                    globalObjsTemp.blackEye = PhaserScene.add.image(globalObjsTemp.eyeEldritch.x, globalObjsTemp.eyeEldritch.y, 'characters', 'blackEye.png').setDepth(10000).setScale(0.37);
+                    globalObjsTemp.blackEye = PhaserScene.add.image(globalObjsTemp.eyeEldritch.x, globalObjsTemp.eyeEldritch.y, 'characters', 'blackEye.png').setDepth(10000).setScale(0.4625);
                     globalObjsTemp.blackEye.scrollFactorX = 0;
                     this.scene.tweens.add({
                         targets: globalObjsTemp.blackEye,
-                        scaleX: 0.44,
-                        scaleY: 0.44,
+                        scaleX: 0.55,
+                        scaleY: 0.55,
                         ease: 'Quad.easeOut',
                         duration: 750,
                         onComplete: () => {
@@ -892,8 +893,8 @@ class MiscSubscribe {
                             });
                             this.scene.tweens.add({
                                 targets: [globalObjsTemp.blackEye],
-                                scaleX: 2.4,
-                                scaleY: 2.4,
+                                scaleX: 3,
+                                scaleY: 3,
                                 ease: 'Cubic.easeIn',
                                 duration: 6000,
                             });
@@ -936,8 +937,8 @@ class MiscSubscribe {
                             });
                             this.scene.tweens.add({
                                 targets: spikesEldritch,
-                                scaleX: 0.85,
-                                scaleY: 0.85,
+                                scaleX: 1.06,
+                                scaleY: 1.06,
                                 ease: 'Quint.easeIn',
                                 duration: 6000,
                             });
@@ -1157,6 +1158,13 @@ class MiscSubscribe {
                                                 playSound('eyeclose');
                                             }, 100);
                                             this.scene.tweens.add({
+                                                targets: eye,
+                                                duration: 300,
+                                                scaleX: 0.85,
+                                                scaleY: 0.85,
+                                                ease: 'Cubic.easeOut',
+                                            });
+                                            this.scene.tweens.add({
                                                 targets: [eyelid1, eyelid2, eyelid3],
                                                 duration: 275,
                                                 scaleX: 5,
@@ -1183,7 +1191,7 @@ class MiscSubscribe {
                                                     setTimeout(() => {
                                                         eye.setScale(0.95);
                                                         eye.visible = true;
-                                                        eye.alpha = 0.25;
+                                                        eye.alpha = 0.1;
                                                         playSound('click', 0.8);
                                                         setTimeout(() => {
                                                             eye.destroy();
@@ -1361,6 +1369,13 @@ class MiscSubscribe {
                 386.25: 'lofi',
             };
         }
+    }
+
+    startAction() {
+        globalObjects.moveLeftBtn.setScale(-0.5, 0.9);
+        globalObjects.moveRightBtn.setScale(0.5, 0.9);
+        globalObjects.moveLeftBtn.tweenToScale(-1, 1, 750, 'Back.easeOut')
+        globalObjects.moveRightBtn.tweenToScale(1, 1, 750, 'Back.easeOut')
     }
 
     reset() {

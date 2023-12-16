@@ -421,6 +421,25 @@ class Button {
         this.scene.tweens.add(tweenObj);
     }
 
+    tweenToScale(x, y, duration, ease, onUpdate) {
+        let tweenObj = {
+            targets: this.imageRefs[this.currImageRef],
+            ease: ease,
+            duration: duration,
+            onUpdate: onUpdate,
+            onComplete: () => {
+                this.setScale(x, y);
+            }
+        }
+        if (x !== undefined) {
+            tweenObj.scaleX = x;
+        }
+        if (y !== undefined) {
+            tweenObj.scaleY = y;
+        }
+        this.scene.tweens.add(tweenObj);
+    }
+
     // Special case where we want the button to fully initialize asap
     handlePreload() {
         if (this.hover.preload) {
