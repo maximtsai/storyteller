@@ -106,7 +106,6 @@ class MiscSubscribe {
                             ease: 'Quad.easeInOut',
                             onComplete: () => {
                                 buttonManager.enableAllInput();
-
                             }
                         });
                     }
@@ -1203,16 +1202,16 @@ class MiscSubscribe {
                                             }, 100);
                                             this.scene.tweens.add({
                                                 targets: eye,
-                                                duration: 300,
-                                                scaleX: 0.85,
-                                                scaleY: 0.85,
+                                                duration: 350,
+                                                scaleX: 0.65,
+                                                scaleY: 0.65,
                                                 ease: 'Cubic.easeOut',
                                             });
                                             this.scene.tweens.add({
                                                 targets: [eyelid1, eyelid2, eyelid3],
                                                 duration: 275,
-                                                scaleX: 5,
-                                                scaleY: 5,
+                                                scaleX: 4.9,
+                                                scaleY: 4.9,
                                                 x: -850,
                                                 y: gameConsts.halfHeight - 65,
                                                 ease: 'Cubic.easeIn',
