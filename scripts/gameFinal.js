@@ -216,8 +216,10 @@ class GameFinal {
     }
 
     checkJuanThenContinue() {
+        console.log("Checking juan")
         if (gameState.juanLeaveStatus !== "accept" && gameState.juanLeaveStatus !== "onlyUseful") {
             // Juan already not coming
+            console.log("juan not coming");
             this.endGameForce();
             return;
         }
@@ -235,6 +237,8 @@ class GameFinal {
             } else {
                 dialogManager.showDialogNode('JuanQuestionMulti');
             }
+        } else {
+            this.endGameForce();
         }
     }
 
@@ -259,14 +263,14 @@ class GameFinal {
             let countdownSaved = numTotalSaved;
             if (gameState.BrunaSaved) {
                 countdownSaved -= 1;
-                pushText += " Bruna"
+                pushText += " Bruna,"
             }
             if (gameState.EthanSaved) {
                 countdownSaved -= 1;
                 if (countdownSaved === 0) {
                     pushText += " and Ethan."
                 } else {
-                    pushText += ", Ethan"
+                    pushText += " Ethan,"
                 }
             }
             if (countdownSaved > 0 && gameState.EdithSaved) {
@@ -274,7 +278,7 @@ class GameFinal {
                 if (countdownSaved === 0) {
                     pushText += " and Edith."
                 } else {
-                    pushText += ", Edith"
+                    pushText += " Edith,"
                 }
             }
             if (countdownSaved > 0 && gameState.JuanSaved) {
@@ -282,7 +286,7 @@ class GameFinal {
                 if (countdownSaved === 0) {
                     pushText += " and Juan."
                 } else {
-                    pushText += ", Juan"
+                    pushText += " Juan,"
                 }
             }
             if (countdownSaved > 0 && gameState.DogSaved) {
@@ -326,7 +330,7 @@ class GameFinal {
             this.displayedLines.push("\n\nWhile driving, you notice something impossibly large quickly\napproaching your truck.");
             this.displayedLines.push("\n\nYou floor the vehicle, but it is too late and you feel the truck\ntopple over.");
             if (numTotalSaved >= 1) {
-                this.theEndTitle.setText('Ending #3: Devoured in the Wilds')
+                this.theEndTitle.setText('Ending #3: Devoured');
             }
             this.addEndingFailedLine();
             return;

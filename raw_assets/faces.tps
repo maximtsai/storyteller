@@ -195,7 +195,6 @@
             <key type="filename">faces/ethan_and_edith.png</key>
             <key type="filename">faces/ethan_dark_eye.png</key>
             <key type="filename">faces/ethan_dark_eye_2.png</key>
-            <key type="filename">faces/ethan_dark_eye_2x.png</key>
             <key type="filename">faces/ethan_dark_eye_3.png</key>
             <key type="filename">faces/ethan_dark_eye_3x.png</key>
             <key type="filename">faces/ethan_dark_eye_4.png</key>

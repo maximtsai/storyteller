@@ -561,7 +561,7 @@ let dialogList1 = {
     },
     Edith3LeaveWhatAboutEthan: {
         speech: [
-            {speaker: "Edith", face: "edith_normal.png", text: "Ethan will... he'll find a way back\nonce he comes to. I've decided to\nmove on."},
+            {speaker: "Edith", face: "edith_normal.png", text: "Ethan will... he'll find a way back once\nhe comes to. I've decided to move on."},
         ],
         branches: [
             {text: "You're welcome to join me", targetNode: "Edith3LeaveComeWithSuccessCataEthan"},
@@ -1046,6 +1046,14 @@ let dialogList1 = {
             {speaker: "Ethan", face: "ethan_sad.png", unclickable: true, forceProgress: true, text: "Y'know I think it's better if I just sho"},
             {speaker: "Ethan", face: "ethan_dark_scared.png", forceProgress: true, text: "•...", publish: "startEldritchEthan"},
             {speaker: "Ethan", face: "ethan_dark_scared.png", unclickable: true, text: "..."},
+        ],
+    },
+    Ethan2EldritchFlash: {
+        speech: [
+            {speaker: "Ethan", face: "ethan_dark_eye_2.png", forceProgress: true, instant: true, unclickable: true, text: "..."},
+            {speaker: "Ethan", face: "ethan_dark_eye_3.png", forceProgress: true, instant: true, unclickable: true, text: "..."},
+            {speaker: "Ethan", face: "ethan_dark_eye_3x.png", forceProgress: true, instant: true, unclickable: true, text: "..."},
+            {speaker: "Ethan", face: "ethan_dark_scared.png", instant: true, unclickable: true, text: "..."},
         ],
     },
     Ethan2EldritchFin: {
@@ -1731,7 +1739,7 @@ let dialogList1 = {
             {speaker: "Bruna", face: "bruna_sad.png", text: "You want to go out there?!", data: {property: "BrunaFortify", value: false}},
         ],
         branches: [
-            {text: "My rig can reach the next town.\nAnd we can't stay here.", targetNode: "Bruna3Rig"},
+            {text: "My rig can get through this storm.\nAnd we can't stay here.", targetNode: "Bruna3Rig"},
             {text: "We need to find out what's happening.\nWe can't do that from here.", targetNode: "Bruna3FindOut"},
         ]
     },

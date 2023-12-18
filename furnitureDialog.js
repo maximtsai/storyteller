@@ -67,7 +67,7 @@ let furnitureDialog = {
     },
     radioActThreeDone: {
         speech: [
-            {speaker: 'Radio', text: "(The Hope Springs announcement is repeated\n with coordinates, but you still need someone with\n a map or GPS to get there)"},
+            {speaker: 'Radio', text: "(The Hope Springs announcement is repeated\n with coordinates, but you still need someone\nwith a good map or GPS to get there)"},
         ]
     },
     radioDone: {
@@ -258,7 +258,7 @@ let furnitureDialog = {
             {speaker: "Juan", face: "juan_normal.png", text: ".•.•.••••••Got lucky this time."},
             {speaker: "Juan", face: "juan_sad.png", text: "You didn't know what was out there.\nIt could have been dangerous."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Nah the door wasn't dangerous.••••••••••••••••\n.••••••••.•••••••It's the windows you gotta watch out for."},
-            {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuiet'},
+            {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuietSprawl'},
             {dependentState: "invisibleGiant", speaker: "Juan", face: "juan_sad.png", text: "Great, is this the invisible giant Noah\nwas blabbing about?"},
             {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "I don't see a damn thing out the windows-••••••••••••••••••••••"},
             {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: " "},
@@ -274,7 +274,7 @@ let furnitureDialog = {
             {speaker: "Ethan", face: "ethan_sad.png", text: "Aw it really wanted to come in."},
             {speaker: "Juan", face: "juan_normal.png", text: "You don't know what's out there.\nIt could've been dangerous."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Nah the door's not dangerous.••••••••••••••••\n.••••••••.•••••••It's the windows you gotta watch out for."},
-            {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuiet'},
+            {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuietSprawl'},
             {dependentState: "invisibleGiant", speaker: "Juan", face: "juan_sad.png", text: "Great, is this the invisible giant Noah\nwas blabbing about?"},
             {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "I don't see a damn thing out the windows-••••••••••••••••••••••"},
             {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: " "},
@@ -290,7 +290,7 @@ let furnitureDialog = {
             {speaker: "Juan", face: "juan_normal.png", text: ".•.•.••••••Got lucky this time."},
             {speaker: "Juan", face: "juan_sad.png", text: "You didn't know what was out there.\nIt could have been dangerous."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Door•• wasn't•• dangerous.•••••••••\n.••••••••.•••••••Gotta watch out...•••••••• windows."},
-            {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuiet'},
+            {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuietSprawl'},
             {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "What kind of cryptic nonsense- I don't\nsee anything out the windows-••••••••••••••••••••••"},
             {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: "•"},
             {speaker: "", text: "   *SHATTER*", publish: "windowBreak"},
@@ -305,7 +305,7 @@ let furnitureDialog = {
             {speaker: "Ethan", face: "ethan_sad.png", text: "Aw it.•••.•••.••• wanted to come in."},
             {speaker: "Juan", face: "juan_normal.png", text: "You don't know what's out there.\nIt could've been dangerous."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Door•• wasn't•• dangerous.•••••••••\n.••••••••.•••••••Gotta watch out...•••••••• windows."},
-            {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuiet'},
+            {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuietSprawl'},
             {speaker: "Juan", face: "juan_sad.png", unclickable: true, forceProgress: true, text: "What kind of cryptic nonsense- I don't\nsee anything out the windows-••••••••••••••••••••••"},
             {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: "•"},
             {speaker: "", text: "   *SHATTER*", publish: "windowBreak"},
@@ -409,6 +409,7 @@ let furnitureDialog = {
     ExitFinale: {
         speech: [
             {speaker: '', text: "   (You get ready to exit the diner)", data: {property: "isExiting", value: true}, onFinish: () => {
+                console.log("exit the diner")
                 messageBus.publish("exitFinale");
                 }},
         ],
@@ -420,8 +421,9 @@ let furnitureDialog = {
             {rejectState: 'juanLeft', speaker: 'Juan', face: "juan_normal.png", text: "We'll have to patch this place up\nbetter. It's falling apart."},
             {dependentState: 'juanLeft', speaker: 'Maggie', face: "maggie_normal.png", text: "Do what you think is best dear."},
             {speaker: 'Edith', face: "edith_normal.png", text: "Do any of you feel... shaking?"},
-            {rejectState: 'ethanSleeping', unclickable: true, speaker: 'Ethan', face: "ethan_sad.png", text: "Guys, I think it's coming back."},
-            {dependentState: 'ethanSleeping', unclickable: true, speaker: 'Ethan', face: "ethan_sad.png", text: "Coming... it's coming back!", publish: "ethanAwake"},
+            {rejectState: 'ethanSleeping', unclickable: true, speaker: 'Ethan', face: "ethan_yell.png", text: "Guys, I think it's coming back."},
+            {dependentState: 'ethanSleeping', speaker: 'Ethan', face: "ethan_normal.png", text: "It's coming...", publish: "ethanAwake"},
+            {dependentState: 'ethanSleeping', unclickable: true, speaker: 'Ethan', face: "ethan_yell.png", text: "it's COMING BACK!"},
         ],
     },
 

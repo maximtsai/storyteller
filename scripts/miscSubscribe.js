@@ -32,6 +32,8 @@ class MiscSubscribe {
             messageBus.subscribe("startPhaseThree", this.startPhaseThree.bind(this)),
 
             messageBus.subscribe("radioTempQuiet", this.radioTempQuiet.bind(this)),
+            messageBus.subscribe("radioTempQuietSprawl", this.radioTempQuietSprawl.bind(this)),
+
             messageBus.subscribe("radioTempQuietResume", this.radioTempQuietResume.bind(this)),
 
             messageBus.subscribe("JuanScratchDoorInterrupt", this.juanScratchDoorInterrupt.bind(this)),
@@ -330,6 +332,19 @@ class MiscSubscribe {
         this.updateRadioChannels();
         playSound('glassbreak');
         gameState.windowBroken = true;
+
+        PhaserScene.tweens.add({
+            targets: gameCharacters.sprawl,
+            x: 900,
+            scaleX: 1.25,
+            scaleY: 1.4,
+            alpha: 0.5,
+            ease: 'Back.easeIn',
+            duration: 700,
+            onComplete: () => {
+                gameCharacters.sprawl.destroy();
+            }
+        });
         setTimeout(() => {
             PhaserScene.tweens.add({
                 targets: globalObjects.indoorRain,
@@ -523,10 +538,21 @@ class MiscSubscribe {
     }
 
     lockScratchDoor() {
+        this.createTentacle();
         this.stopAnimDoor();
     }
 
+    createTentacle() {
+        gameCharacters.sprawl = PhaserScene.add.sprite(-100, -100, 'lowq', 'sprawl.png').setDepth(2).setScale(1.5, 1.5).setOrigin(0.5, 0).setBlendMode(Phaser.BlendModes.MULTIPLY).setAlpha(0.001);
+        globalObjsTemp.sprawlAnim = this.scene.tweens.add({
+            targets: [gameCharacters.sprawl],
+            alpha: 0.014,
+            duration: 10000,
+        });
+    }
+
     openScratchDoor() {
+        this.createTentacle();
         buttonManager.disableAllInput();
         gameState.dogAlive = true;
         this.stopAnimDoor();
@@ -664,6 +690,20 @@ class MiscSubscribe {
                 }
             }
         }, 500);
+
+    }
+
+    radioTempQuietSprawl() {
+        this.radioTempQuiet();
+        if (globalObjsTemp.sprawlAnim) {
+            globalObjsTemp.sprawlAnim.stop();
+        } else {
+            gameCharacters.sprawl = PhaserScene.add.sprite(-100, -100, 'lowq', 'sprawl.png').setDepth(2).setScale(1.5, 1.5).setOrigin(0.5, 0).setBlendMode(Phaser.BlendModes.MULTIPLY).setAlpha(0.1);
+        }
+        gameCharacters.sprawl.setAlpha(0.1);
+        setTimeout(() => {
+            gameCharacters.sprawl.setAlpha(0.005);
+        }, 10);
 
     }
 
@@ -926,9 +966,13 @@ class MiscSubscribe {
                                                         blackBg.destroy();
                                                     }, 50);
                                                     globalObjsTemp.gloom.setAlpha(0.96);
+
                                                     setTimeout(() => {
-                                                        this.endEldritchEthan();
-                                                    }, 1750);
+                                                        dialogManager.showDialogNode('Ethan2EldritchFlash');
+                                                        setTimeout(() => {
+                                                            this.endEldritchEthan();
+                                                        }, 1100);
+                                                    }, 900);
                                                 }, 50);
                                             }, 175);
                                         }, 50);
@@ -1173,6 +1217,7 @@ class MiscSubscribe {
                                                 y: gameConsts.halfHeight - 65,
                                                 ease: 'Cubic.easeIn',
                                                 onComplete: () => {
+                                                    gameCharacters.sprawl = PhaserScene.add.sprite(-1000, 0, 'lowq', 'sprawl.png').setDepth(-1).setScale(2.4, 2.4).setAlpha(0.01);
                                                     eyelid1.destroy();
                                                     eyelid2.destroy();
                                                     eyelid3.destroy();
@@ -1188,15 +1233,31 @@ class MiscSubscribe {
                                                         }
                                                     });
                                                     eye.visible = false;
-                                                    setTimeout(() => {
-                                                        eye.setScale(0.95);
-                                                        eye.visible = true;
-                                                        eye.alpha = 0.1;
-                                                        playSound('click', 0.8);
-                                                        setTimeout(() => {
+                                                    this.scene.tweens.add({
+                                                        targets: [gameCharacters.sprawl],
+                                                        duration: 4500,
+                                                        scaleX: 2.41,
+                                                        alpha: 0.2,
+                                                        ease: 'Cubic.easeIn',
+                                                        onComplete: () => {
+                                                            setTimeout(() => {
+                                                                playSound('click', 0.8);
+                                                            }, 150);
                                                             eye.destroy();
-                                                        }, 25);
-                                                    }, 4750);
+                                                            this.scene.tweens.add({
+                                                                targets: [gameCharacters.sprawl],
+                                                                scaleX: 1.5,
+                                                                scaleY: 1.5,
+                                                                x: "+=800",
+                                                                duration: 500,
+                                                                alpha: 1.75,
+                                                                ease: 'Cubic.easeInOut',
+                                                                onComplete: () => {
+                                                                    gameCharacters.sprawl.destroy();
+                                                                }
+                                                            });
+                                                        }
+                                                    });
                                                 }
                                             });
                                         }
