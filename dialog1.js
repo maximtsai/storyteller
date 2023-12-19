@@ -1471,7 +1471,7 @@ let dialogList1 = {
             {speaker: "You", text: "Excuse me but who are you?", data: {property: "brunaNotIntroduced", value: false}},
             {speaker: "Bruna", face: "bruna_grin.png", text: "Don't you know me? I'm Bruna Starr.\nI have three million followers on I-posty."},
             {speaker: "You", text: "Sorry, I'm not on that app."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "What? How do you keep up with people?"},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "What? How do you keep up with people?"},
             {speaker: "You", text: "I've got a HAMM radio in my rig.\nGot a pretty good range on it too."},
             {speaker: "Bruna", face: "bruna_grin.png", text: "Huh. Cool! Would you want to do a\nlivestreamed interview with me about it?"},
         ],
@@ -1508,7 +1508,7 @@ let dialogList1 = {
 
     BrunaInterviewHappy: {
         speech: [
-            {speaker: "Bruna", face: "bruna_grin.png", text: "Great!", publish: "BrunaInfluence", data: {property: "brunaInterview", value: true}},
+            {speaker: "Bruna", face: "bruna_happy.png", text: "Great!", publish: "BrunaInfluence", data: {property: "brunaInterview", value: true}},
         ]
     },
 
@@ -1551,7 +1551,7 @@ let dialogList1 = {
     Bruna2Chat: {
         speech: [
             {speaker: "Bruna", face: "bruna_happy.png", text: "Thank you for fixing the power!", publish: 'BrunaInfluence', data: {property: "brunaChatted2", value: true}},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "Do you think there will be enough power\nto charge my phone?"},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "Do you think there will be enough power\nto charge my phone?"},
             {speaker: "You", text: "Hard to say, Bruna. What's so important\non your phone anyway?"},
             {speaker: "Bruna", face: "bruna_normal.png", text: "My friends are posting updates."},
         ],
@@ -1568,7 +1568,7 @@ let dialogList1 = {
 
     Bruna2ChatAngry: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: "What do you want?"},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "What do you want?"},
         ],
         branches: [
             {text: "Nothing."},
@@ -1589,7 +1589,7 @@ let dialogList1 = {
         speech: [
             {speaker: "You", text: "Hey Bruna, do you know of a place called\n\"Hope Springs\"?"},
             {speaker: "Bruna", face: "bruna_normal.png", text: "Let me check, H••-O••-P••-E•••• S••-P••-R••-I••-N••-G••-S•.•.•.••••••• \nIt is not too far from here, but it is\nnear the top of a mountain."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "The road is very tricky in that direction.\nWhat makes you want to head there?", data: {property: "hopeSpringsLocationMissing", value: false}},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "The road is very tricky in that direction.\nWhat makes you want to head there?", data: {property: "hopeSpringsLocationMissing", value: false}},
         ],
         branches: [
             {text: "I think it would be safer there\nwith everything that's going on.", targetNode: "Bruna2Safer"},
@@ -1604,16 +1604,16 @@ let dialogList1 = {
     },
     Bruna2OldMan: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: "Old man behind me..."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "Old man behind me..."},
             {speaker: "Bruna", face: "bruna_behind.png", text: "._.", publish: "radioTempQuiet"},
             {speaker: "Bruna", face: "bruna_sad.png", text: "This is no time for joking.", publish: "radioTempQuietResume"},
         ]
     },
     Bruna2Updates: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: "The power outage we just had...\nIt was world-wide."},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "The power outage we just had...\nIt was world-wide."},
             {speaker: "You", text: "That's not possible."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "It is! Everyone's posting about it.\nI have friends on five continents\nand they all confirmed it!"},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "It is! Everyone's posting about it.\nI have friends on five continents\nand they all confirmed it!"},
         ],
         branches: [
             {text: "Maybe it was a solar flare?", targetNode: "Bruna2Solar"},
@@ -1624,7 +1624,7 @@ let dialogList1 = {
         speech: [
             {speaker: "Bruna", face: "bruna_normal.png", text: "Maybe, but my satellite wifi still works.\n•••••Oh, my buddy in Buenos Aires says\nthere's lava erupting down town."},
             {speaker: "You", text: "Is that one of those island nations?"},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "No. There's no history of volcanos\nanywhere near there. And yet, he just\nsent a video of it."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "No. There's no history of volcanos\nanywhere near there. And yet, he just\nsent a video of it."},
             {speaker: "You", text: "Video? How close was he?"},
             {speaker: "Bruna", face: "bruna_sad.png", text: "Close. The lava was moving funny and\nhe wanted to show it. But I can't get\nahold of him now."},
             {speaker: "You", text: "Keep at it. I'm sure he's just distracted."},
@@ -1633,15 +1633,15 @@ let dialogList1 = {
     Bruna2Prank: {
         speech: [
             {speaker: "Bruna", face: "bruna_sad.png", text: "No. And that's not all. Tokyo went dark\nthirty minutes ago. My friend does\nVR work there."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "She says there's something outside her\nwindow looking in."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "She says there's something outside her\nwindow looking in."},
             {speaker: "You", text: "I'm sure it's just a critter. They still have owls\nin Japan, right?"},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "She's on the 48th floor."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "She's on the 48th floor."},
             {speaker: "Bruna", face: "bruna_sad.png", text: "And she's not answering my calls\nanymore."},
         ],
     },
     Bruna2ChatFin: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: " (Bruna is busy with her phone. Her face\nis locked in a frown as she scrolls.)"},
+            {speaker: "Bruna", face: "bruna_concern.png", text: " (Bruna is busy with her phone. Her face\nis locked in a frown as she scrolls.)"},
         ],
     },
     Bruna2ChatFinScratch: {
@@ -1711,14 +1711,14 @@ let dialogList1 = {
         speech: [
             {speaker: "Bruna", face: "bruna_normal.png", text: "Where do you plan to go?"},
             {speaker: "You", text: "Not sure yet. Maybe the next stop, or the\nnext city. Anywhere else that's safe.\nJust not here."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "This place is as good as any to me.\nI think I prefer to stay here."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "This place is as good as any to me.\nI think I prefer to stay here."},
         ],
     },
 
     Bruna3ChatHopeSprings: {
         speech: [
             {speaker: "Bruna", face: "bruna_normal.png", text: "Let me check, H••-O••-P••-E•••• S••-P••-R••-I••-N••-G••-S•.•.•.••••••• \nIt is not too far from here, but it is\nnear the top of a mountain.", data: {property: "brunaHopeSpringsChatted", value: true}},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "The road is very tricky in that direction.\nWhat makes you want to head there?", data: {property: "hopeSpringsLocationMissing", value: false}},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "The road is very tricky in that direction.\nWhat makes you want to head there?", data: {property: "hopeSpringsLocationMissing", value: false}},
         ],
         branches: [
             {text: "This place is getting dangerous.\nHope Springs should be safer.", targetNode: "Bruna3GoOutThere"},
@@ -1729,7 +1729,7 @@ let dialogList1 = {
     Bruna3Fortify: {
         speech: [
             {speaker: "You", text: "Let's fortify this place and hunker down until\nhelp comes."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "Cell signal isn't very strong here."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "Cell signal isn't very strong here."},
             {speaker: "You", text: "That's fine. There are plenty of supplies here.\nWe'll be okay.", data: {property: "BrunaFortify", value: true}},
         ],
     },
@@ -1756,8 +1756,8 @@ let dialogList1 = {
         speech: [
             {speaker: "Bruna", face: "bruna_normal.png", text: "We have food, water, and internet."},
             {speaker: "You", text: "Not for long. We'll need to go out eventually."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "In a week or so."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "By then someone will be able to\ntell us what's happening."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "In a week or so."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "By then someone will be able to\ntell us what's happening."},
         ],
         branches: [
             {text: "Who's left to tell us anything?", targetNode: "Bruna3WhosLeft"},
@@ -1769,7 +1769,7 @@ let dialogList1 = {
         speech: [
             {speaker: "Bruna", face: "bruna_sad.png", text: "We all want to know what's\ngoing on!"},
             {speaker: "You", text: "Then let's go find out."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "...\n\n\n[Hard Difficulty]", publish: 'BrunaInfluence', onFinish: () => {
+            {speaker: "Bruna", face: "bruna_concern.png", text: "...\n\n\n[Hard Difficulty]", publish: 'BrunaInfluence', onFinish: () => {
                     messageBus.publish('showInfluence');
                     if (gameState.BrunaInfluence >= 3) {
                         dialogManager.showDialogNode("Bruna3Saved");
@@ -1783,7 +1783,7 @@ let dialogList1 = {
     Bruna3Silent: {
         speech: [
             {speaker: "Bruna", face: "bruna_sad.png", text: "Of course not!\nBut if I go out there I will be!"},
-            {speaker: "Bruna", face: "bruna_sad.png", text: "There's a dead zone between us\nand anywhere."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "There's a dead zone between us\nand anywhere."},
             {speaker: "You", text: "If you stay here you'll be dead!"},
             {speaker: "Bruna", face: "bruna_sad.png", text: "Noah, you're scaring me.\n\n\n[Hard Difficulty]", publish: 'showInfluence', onFinish: () => {
                     if (gameState.BrunaInfluence >= 3) {
@@ -1874,7 +1874,7 @@ let dialogList1 = {
     Bruna3PleadSolo: {
         speech: [
             {speaker: "You", text: "Please Bruna, I need you for the trip!"},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "Is anyone else coming with you?"},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "Is anyone else coming with you?"},
             {speaker: "You", text: "It's just me, for now."},
             {speaker: "Bruna", face: "bruna_sad.png", text: "Then my answer is still no. I'm not going\nto risk my life so that one person\nI barely know can go on a suicide trip."},
         ],
@@ -1883,12 +1883,12 @@ let dialogList1 = {
     Bruna3Plead: {
         speech: [
             {speaker: "You", text: "Please Bruna, we need you for the trip!\nNobody else has working signal."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "Is anyone else coming with you?"},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "Is anyone else coming with you?"},
             {speaker: "You", text: "Yeah, some of the other diners are heading out\nwith me too."},
             {dependentState: "brunaInterview", speaker: "You", text: "And I'm sure there will be plenty of interesting\npeople to interview once we all get to\nHope Springs."},
             {dependentState: "brunaInterview", speaker: "Bruna", face: "bruna_normal.png", text: "Getting to talk to more locals would\nbe nice.", publish: "BrunaInfluence"},
             {dependentState: "DogSaved", speaker: "You", text: "We're bringing the dog too.", publish: "BrunaInfluence"},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "Hmm...", publish: 'showInfluence', onFinish: () => {
+            {speaker: "Bruna", face: "bruna_concern.png", text: "Hmm...", publish: 'showInfluence', onFinish: () => {
                 if (gameState.bruna2ChattedAngry && gameState.BrunaInfluence <= 2) {
                     dialogManager.showDialogNode("Bruna3ExtraRefuse");
                 } else if (gameState.BrunaInfluence <= 0) {
@@ -1916,7 +1916,7 @@ let dialogList1 = {
 
     Bruna3AltRefuse: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: "My answer is still no."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "My answer is still no."},
             {speaker: "You", text: "Really? Why?"},
             {speaker: "Bruna", face: "bruna_sad.png", text: "You've been helpful but, I hardly know\nyou. I can't just follow random strangers\nto questionable destinations.", data: {property: "BrunaFailed", value: true}},
             {speaker: "", text: "   (Bruna will not come with you)", data: {property: "brunaHardReject", value: true}},
@@ -1925,7 +1925,7 @@ let dialogList1 = {
 
     Bruna3ExtraRefuse: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: "My answer is still no."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "My answer is still no."},
             {speaker: "You", text: "Really? Why?"},
             {speaker: "Bruna", face: "bruna_sad.png", text: "You're kind of a jerk if I'm being honest.\nYou tell me to unplug my phone,\nand now you want me to come with\nbecause nobody else has phone."},
             {speaker: "You", text: "Yeah but-"},

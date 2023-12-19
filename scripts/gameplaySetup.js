@@ -368,8 +368,7 @@ function manualSkipIntro() {
     gameVars.canSkipIntro = false;
     globalObjsTemp.skipBox.destroy();
     globalObjsTemp.skipText.destroy();
-    if (globalObjsTemp.rainBackground) globalObjsTemp.rainBackground.destroy();
-    if (globalObjsTemp.rainForeground) globalObjsTemp.rainForeground.destroy();
+    realGameRain();
     if (globalObjsTemp.outdoorsrain) globalObjsTemp.outdoorsrain.stop();
     globalObjects.indoorRain = playSound('brownnoise', 1, true);
     enterShop();
@@ -445,7 +444,7 @@ function realGameStart() {
 
 function setupCharacters() {
     gameCharacters.caspar = PhaserScene.add.image(-1132, gameConsts.halfHeight + 120, 'characters', 'caspar1.png').setDepth(11);
-    gameCharacters.bruna = PhaserScene.add.image(-614, gameConsts.halfHeight + 134, 'characters', 'bruna1.png').setDepth(11);
+    gameCharacters.bruna = PhaserScene.add.image(-617, gameConsts.halfHeight + 134, 'characters', 'bruna1.png').setDepth(11);
     gameCharacters.maggie = PhaserScene.add.image(370, gameConsts.halfHeight - 25, 'characters', 'maggie1.png').setDepth(11);
     gameCharacters.edith = PhaserScene.add.image(1085, gameConsts.halfHeight + 117, 'characters', 'edith1.png').setDepth(11);
     gameCharacters.ethan = PhaserScene.add.image(1310, gameConsts.halfHeight + 103, 'characters', 'ethan1.png').setDepth(11);
@@ -538,8 +537,10 @@ function runIntroSequence() {
     // TODO replace
     globalObjsTemp.rainBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'rainheavy1.png').setDepth(1).setScale(3).setRotation(0.15);
     globalObjsTemp.rainBackground.play('rain_heavy')
+    globalObjsTemp.rainBackground.scrollFactorX = 0.2; globalObjsTemp.rainBackground.scrollFactorY = 0;
     globalObjsTemp.rainForeground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'rainheavy1.png').setDepth(1).setScale(3).setRotation(0.15).play('rain_lite');
     globalObjsTemp.rainForeground.play('rain_lite')
+    globalObjsTemp.rainForeground.scrollFactorX = 0.2; globalObjsTemp.rainForeground.scrollFactorY = 0;
     // globalObjsTemp.rainForeground;
     addToShakeObjects(globalObjsTemp.rainForeground);
 
@@ -633,13 +634,29 @@ function runIntroSequence() {
     });
 }
 
+function realGameRain() {
+    gameVars.updateRain = true;
+    gameVars.updateRainCounter = 0;
+    if (globalObjsTemp.rainBackground) {
+        globalObjsTemp.rainBackground.setDepth(-1);
+        globalObjsTemp.rainBackground.setRotation(0);
+        globalObjsTemp.rainBackground.setScale(4.5);
+        globalObjsTemp.rainBackground.setAlpha(0.3);
+    }
+    if (globalObjsTemp.rainForeground) {
+        globalObjsTemp.rainForeground.setDepth(-1);
+        globalObjsTemp.rainForeground.setRotation(0);
+        globalObjsTemp.rainForeground.setScale(4.5);
+        globalObjsTemp.rainForeground.setAlpha(0.4);
+    }
+}
+
 function cleanupIntro() {
     globalObjsTemp.skipBox.destroy();
     globalObjsTemp.skipText.destroy();
 
     gameVars.canSkipIntro = false;
-    globalObjsTemp.rainBackground.destroy();
-    globalObjsTemp.rainForeground.destroy();
+    realGameRain();
     setBackground('intro', 'diner1.png');
     if (globalObjsTemp.outdoorsrain) {
         globalObjsTemp.outdoorsrain.stop();

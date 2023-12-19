@@ -198,7 +198,7 @@ let furnitureDialog = {
             {speaker: "Edith", face: "edith_normal.png", text: "I have to agree, it doesn't sound like\nit's a person on the other side."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Nah man the door is cool. It's all good\nif you open it."},
             {speaker: "Juan", face: "juan_normal.png", text: "Sure, listen to the guy high out of\nhis mind."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "             (quietly records)"},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "             (quietly records)"},
             {speaker: "", text: "What should you do?"},
         ],
         branches: [
@@ -217,7 +217,7 @@ let furnitureDialog = {
             {speaker: "Edith", face: "edith_normal.png", text: "I have to agree, it doesn't sound like\nit's a person on the other side."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Nah• man.•••••.•••••••••.••••••••• door's cool•••••••••.•••••••••.•••••••••. You• can• open•\nit."},
             {speaker: "Juan", face: "juan_normal.png", text: "Sure, listen to the guy high out of his-••••••\nHey you don't look so good."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "             (quietly records)"},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "             (quietly records)"},
             {speaker: "", text: "What should you do?"},
         ],
         branches: [

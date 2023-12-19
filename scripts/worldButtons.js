@@ -150,15 +150,6 @@ function createWorldButtons() {
             y: 420,
             scaleX: 100,
             scaleY: 170,
-            alpha: 0.1
-        },
-        hover: {
-            alpha: 0.05
-        },
-        press: {
-            alpha: 0.12
-        },
-        disable: {
             alpha: 0.001
         },
         onHover: () => {
@@ -1461,7 +1452,8 @@ function clickTV() {
 
 function clickIndoor() {
     globalObjects.diner.IndoorButton.setState(DISABLE);
-
+    globalObjsTemp.rainBackground.setDepth(-1);
+    globalObjsTemp.rainForeground.setDepth(-1);
     globalObjects.outdoorRain.stop();
     if (gameState.powerOff) {
         globalObjects.indoorRain.setVolume(1);
@@ -1556,6 +1548,8 @@ function exitBackdoor() {
     playSound('dooropen', 0.4);
     globalObjects.diner.IndoorButton.setState(NORMAL);
     // globalObjects.indoorRain.setVolume(0.01);
+    globalObjsTemp.rainBackground.setDepth(1);
+    globalObjsTemp.rainForeground.setDepth(1);
 
     if (!globalObjects.outdoorRain) {
         globalObjects.outdoorRain = playSound('stormfull', .88, true);
@@ -1604,7 +1598,8 @@ function enterShed() {
     if (globalObjsTemp.generatorSound) {
         globalObjsTemp.generatorSound.setVolume(0.25);
     }
-
+    globalObjsTemp.rainBackground.setDepth(-1);
+    globalObjsTemp.rainForeground.setDepth(-1);
     gameVars.cameraPosY = gameConsts.shedStartY;
     PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
     gameVars.cameraPosX = 0;
@@ -1636,6 +1631,8 @@ function exitShed() {
     if (globalObjsTemp.generatorSound) {
         globalObjsTemp.generatorSound.setVolume(0);
     }
+    globalObjsTemp.rainBackground.setDepth(1);
+    globalObjsTemp.rainForeground.setDepth(1);
 
     gameVars.cameraPosY = gameConsts.outdoorStartY; PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
     gameVars.cameraPosX = 1440; PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;

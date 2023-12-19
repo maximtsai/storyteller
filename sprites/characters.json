@@ -383,7 +383,7 @@
 			"image": "sprites/characters-2.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 960,
+				"w": 962,
 				"h": 1020
 			},
 			"scale": 1,
@@ -557,7 +557,7 @@
 					}
 				},
 				{
-					"filename": "juan1.png",
+					"filename": "juan_dark.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -565,16 +565,16 @@
 						"h": 400
 					},
 					"spriteSourceSize": {
-						"x": 9,
+						"x": 8,
 						"y": 7,
-						"w": 226,
-						"h": 388
+						"w": 228,
+						"h": 389
 					},
 					"frame": {
 						"x": 231,
 						"y": 409,
-						"w": 226,
-						"h": 388
+						"w": 228,
+						"h": 389
 					}
 				},
 				{
@@ -593,7 +593,7 @@
 					},
 					"frame": {
 						"x": 250,
-						"y": 800,
+						"y": 801,
 						"w": 245,
 						"h": 202
 					}
@@ -614,13 +614,13 @@
 					},
 					"frame": {
 						"x": 250,
-						"y": 800,
+						"y": 801,
 						"w": 245,
 						"h": 202
 					}
 				},
 				{
-					"filename": "juan_dark.png",
+					"filename": "juan1.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
@@ -655,7 +655,7 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 460,
+						"x": 462,
 						"y": 393,
 						"w": 164,
 						"h": 404
@@ -718,7 +718,7 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 627,
+						"x": 629,
 						"y": 269,
 						"w": 164,
 						"h": 404
@@ -746,24 +746,24 @@
 					}
 				},
 				{
-					"filename": "bruna1.png",
+					"filename": "bruna_dark.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 197,
+						"w": 195,
 						"h": 280
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 192,
-						"h": 277
+						"x": 1,
+						"y": 1,
+						"w": 194,
+						"h": 279
 					},
 					"frame": {
 						"x": 746,
 						"y": 676,
-						"w": 192,
-						"h": 277
+						"w": 194,
+						"h": 279
 					}
 				},
 				{
@@ -781,7 +781,7 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 794,
+						"x": 796,
 						"y": 207,
 						"w": 164,
 						"h": 404
@@ -793,8 +793,8 @@
 			"image": "sprites/characters-3.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 928,
-				"h": 959
+				"w": 862,
+				"h": 964
 			},
 			"scale": 1,
 			"frames": [
@@ -828,16 +828,37 @@
 						"h": 355
 					},
 					"spriteSourceSize": {
-						"x": 46,
+						"x": 44,
 						"y": 0,
-						"w": 149,
+						"w": 153,
 						"h": 355
 					},
 					"frame": {
-						"x": 146,
-						"y": 2,
-						"w": 149,
+						"x": 2,
+						"y": 455,
+						"w": 153,
 						"h": 355
+					}
+				},
+				{
+					"filename": "dog.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 110,
+						"h": 140
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 108,
+						"h": 124
+					},
+					"frame": {
+						"x": 2,
+						"y": 813,
+						"w": 108,
+						"h": 124
 					}
 				},
 				{
@@ -855,7 +876,7 @@
 						"h": 355
 					},
 					"frame": {
-						"x": 298,
+						"x": 146,
 						"y": 2,
 						"w": 147,
 						"h": 355
@@ -876,94 +897,10 @@
 						"h": 342
 					},
 					"frame": {
-						"x": 448,
-						"y": 2,
+						"x": 158,
+						"y": 360,
 						"w": 142,
 						"h": 342
-					}
-				},
-				{
-					"filename": "caspar2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 132,
-						"h": 383
-					},
-					"spriteSourceSize": {
-						"x": 10,
-						"y": 15,
-						"w": 118,
-						"h": 357
-					},
-					"frame": {
-						"x": 2,
-						"y": 455,
-						"w": 118,
-						"h": 357
-					}
-				},
-				{
-					"filename": "bruna_dark.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 197,
-						"h": 280
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 192,
-						"h": 277
-					},
-					"frame": {
-						"x": 593,
-						"y": 2,
-						"w": 192,
-						"h": 277
-					}
-				},
-				{
-					"filename": "caspar1.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 132,
-						"h": 324
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 132,
-						"h": 324
-					},
-					"frame": {
-						"x": 788,
-						"y": 2,
-						"w": 132,
-						"h": 324
-					}
-				},
-				{
-					"filename": "edith1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 340
-					},
-					"spriteSourceSize": {
-						"x": 55,
-						"y": 7,
-						"w": 141,
-						"h": 328
-					},
-					"frame": {
-						"x": 123,
-						"y": 455,
-						"w": 141,
-						"h": 328
 					}
 				},
 				{
@@ -972,61 +909,19 @@
 					"trimmed": true,
 					"sourceSize": {
 						"w": 200,
-						"h": 340
+						"h": 330
 					},
 					"spriteSourceSize": {
-						"x": 55,
-						"y": 7,
-						"w": 141,
-						"h": 328
+						"x": 54,
+						"y": 1,
+						"w": 143,
+						"h": 329
 					},
 					"frame": {
-						"x": 267,
-						"y": 360,
-						"w": 141,
-						"h": 328
-					}
-				},
-				{
-					"filename": "caspar_dark.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 132,
-						"h": 324
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 132,
-						"h": 324
-					},
-					"frame": {
-						"x": 411,
-						"y": 360,
-						"w": 132,
-						"h": 324
-					}
-				},
-				{
-					"filename": "caspar_dark_calm.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 132,
-						"h": 324
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 132,
-						"h": 324
-					},
-					"frame": {
-						"x": 546,
-						"y": 347,
-						"w": 132,
-						"h": 324
+						"x": 296,
+						"y": 2,
+						"w": 143,
+						"h": 329
 					}
 				},
 				{
@@ -1044,10 +939,94 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 681,
-						"y": 329,
+						"x": 158,
+						"y": 705,
 						"w": 245,
 						"h": 202
+					}
+				},
+				{
+					"filename": "edith1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 330
+					},
+					"spriteSourceSize": {
+						"x": 55,
+						"y": 3,
+						"w": 141,
+						"h": 327
+					},
+					"frame": {
+						"x": 303,
+						"y": 334,
+						"w": 141,
+						"h": 327
+					}
+				},
+				{
+					"filename": "caspar1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 132,
+						"h": 324
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 132,
+						"h": 324
+					},
+					"frame": {
+						"x": 442,
+						"y": 2,
+						"w": 132,
+						"h": 324
+					}
+				},
+				{
+					"filename": "bruna1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 195,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 186,
+						"h": 277
+					},
+					"frame": {
+						"x": 406,
+						"y": 664,
+						"w": 186,
+						"h": 277
+					}
+				},
+				{
+					"filename": "caspar_dark.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 132,
+						"h": 324
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 132,
+						"h": 324
+					},
+					"frame": {
+						"x": 447,
+						"y": 329,
+						"w": 132,
+						"h": 324
 					}
 				},
 				{
@@ -1065,8 +1044,8 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 681,
-						"y": 534,
+						"x": 595,
+						"y": 2,
 						"w": 245,
 						"h": 202
 					}
@@ -1086,52 +1065,10 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 267,
-						"y": 691,
+						"x": 595,
+						"y": 207,
 						"w": 245,
 						"h": 202
-					}
-				},
-				{
-					"filename": "dog.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 110,
-						"h": 140
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 108,
-						"h": 124
-					},
-					"frame": {
-						"x": 2,
-						"y": 815,
-						"w": 108,
-						"h": 124
-					}
-				},
-				{
-					"filename": "eyeCorner.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 550,
-						"h": 274
-					},
-					"spriteSourceSize": {
-						"x": 2,
-						"y": 2,
-						"w": 158,
-						"h": 270
-					},
-					"frame": {
-						"x": 515,
-						"y": 687,
-						"w": 158,
-						"h": 270
 					}
 				},
 				{
@@ -1149,10 +1086,105 @@
 						"h": 199
 					},
 					"frame": {
-						"x": 676,
-						"y": 739,
+						"x": 582,
+						"y": 412,
 						"w": 117,
 						"h": 199
+					}
+				},
+				{
+					"filename": "eyeCorner.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 550,
+						"h": 274
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 2,
+						"w": 158,
+						"h": 270
+					},
+					"frame": {
+						"x": 702,
+						"y": 412,
+						"w": 158,
+						"h": 270
+					}
+				},
+				{
+					"filename": "bruna1_worry.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 195,
+						"h": 280
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 186,
+						"h": 277
+					},
+					"frame": {
+						"x": 595,
+						"y": 685,
+						"w": 186,
+						"h": 277
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/characters-4.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 257,
+				"h": 361
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "caspar2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 132,
+						"h": 383
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 15,
+						"w": 118,
+						"h": 357
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 118,
+						"h": 357
+					}
+				},
+				{
+					"filename": "caspar_dark_calm.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 132,
+						"h": 324
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 132,
+						"h": 324
+					},
+					"frame": {
+						"x": 123,
+						"y": 2,
+						"w": 132,
+						"h": 324
 					}
 				}
 			]
@@ -1161,6 +1193,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:3beb54a2f9f2f7ce48b7f2b676ff08d5:d5e241d849a567310897b978bd8a90f0:93e56341e9149919c539b9e3c6d79170$"
+		"smartupdate": "$TexturePacker:SmartUpdate:40003716134e09476e559011a2259a85:e393f3aace7f3605f63e163533e09600:c3474a0b9bffbb5fb9fd66a2b93cd767$"
 	}
 }
