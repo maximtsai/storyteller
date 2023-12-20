@@ -1069,7 +1069,6 @@ class MiscSubscribe {
     }
 
     startDark() {
-        globalObjsTemp.black = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(5000, 999);
         globalObjsTemp.black.setAlpha(0).setDepth(8);
         setTimeout(() => {
             globalObjsTemp.black.setAlpha(0.12);
@@ -1275,10 +1274,7 @@ class MiscSubscribe {
         gameState.currentScene = 2;
         resetRadioPosition();
         this.updateRadioChannels();
-        if (!globalObjsTemp.black) {
-            globalObjsTemp.black = this.scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(5000, 999);
-            globalObjsTemp.black.setAlpha(0).setDepth(8);
-        }
+        globalObjsTemp.black.setAlpha(0).setDepth(8);
         globalObjsTemp.gloom.setAlpha(0.3).setDepth(8);
         playSound('crackle1', 1);
 

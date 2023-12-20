@@ -530,6 +530,7 @@ class GameFinal {
                     repeat: 6,
                     onComplete: () => {
                         this.blackScreen.alpha = 1;
+                        this.blackScreen2 = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setDepth(-1).setScale(5000, 1000);
                         let eye = this.scene.add.image(1698, gameConsts.halfHeight - 50, 'lowq', 'shadowEye.png').setDepth(-1).setScale(1.6).setOrigin(0.5, 0.53);
                         this.scene.tweens.add({
                             targets: eye,
@@ -694,6 +695,12 @@ class GameFinal {
                 } else {
                     dialogManager.showDialogNode('CasparSorry2');
                 }
+                PhaserScene.tweens.add({
+                    targets: globalObjects.indoorRain,
+                    volume: 0,
+                    ease: "Quad.easeIn",
+                    duration: 5000
+                });
                 let maw = this.scene.add.image(1698, gameConsts.halfHeight - 100, 'lowq', 'maw.png').setDepth(-1).setScale(1.2, 0.3).setOrigin(0.5, 0.45).setAlpha(0);
                 this.scene.tweens.add({
                     targets: [this.blackScreen],

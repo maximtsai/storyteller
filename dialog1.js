@@ -1581,7 +1581,7 @@ let dialogList1 = {
             {speaker: "Bruna", face: "bruna_normal.png", text: ".••••••.•••••••.•••••Thank you.\nI should not have called you a\nDosbaddel either.", publish: "BrunaInfluence"},
             {speaker: "You", text: "Fresh start?"},
             {speaker: "Bruna", face: "bruna_grin.png", text: "Ja, fresh start.\nOh! My friend in Cairo is calling!"},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "She claims the Nile is flowing the\nwrong way."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "She claims the Nile is flowing the\nwrong way."},
             {speaker: "You", text: "Huh, I'l leave you to it.", data: {property: "bruna2ChattedAngry", value: false}},
         ],
     },

@@ -230,15 +230,15 @@ function update(time, delta) {
         gameVars.updateRainCounter = 8;
         let xOffset = 0;
         if (gameState.isOutdoors) {
-            xOffset = 1000;
+            xOffset = 10;
         }
         globalObjsTemp.rainBackground.x = xOffset + gameConsts.halfWidth + (Math.random() - 0.5) * 100;
         globalObjsTemp.rainBackground.y = gameConsts.halfHeight + (Math.random() - 0.6) * 300;
         globalObjsTemp.rainForeground.x = xOffset + gameConsts.halfWidth + (Math.random() - 0.5) * 100;
         globalObjsTemp.rainForeground.y = gameConsts.halfHeight + (Math.random() - 0.6) * 300;
     } else if (gameVars.updateRain) {
-        globalObjsTemp.rainBackground.y += deltaScale * 10;
-        globalObjsTemp.rainForeground.y += deltaScale * 12;
+        globalObjsTemp.rainBackground.y += deltaScale * 25;
+        globalObjsTemp.rainForeground.y += deltaScale * 30;
         gameVars.updateRainCounter -= deltaScale;
     }
 

@@ -379,6 +379,7 @@ function realGameStart() {
     if (gameVars.started) {
         return;
     }
+
     gameVars.started = true;
     setBackground('intro', 'diner1.png');
     // 1000
@@ -395,6 +396,7 @@ function realGameStart() {
     let fakeBase = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'startFakeBase.png');
     let darkGloom = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(999, 999);
     let fakeBaseOverlay = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'startFakeBaseOverlay.png');
+    globalObjsTemp.black = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(5000, 999).setAlpha(0);
     let time = Date.now();
     console.log("Time log start");
     console.log(Date.now() - time);
@@ -421,17 +423,33 @@ function realGameStart() {
                         duration: 1000
                     });
                     setTimeout(() => {
-                        console.log(Date.now() - time);
-                        darkGloom.destroy();
-                        fakeBaseOverlay.destroy();
-                        fakeBase.destroy();
-                        setupCharacters();
-                        setRadioMusic('guitarboogieshuffle', 0.75);
-                        globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0.01, true);
-                        globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0.01, true);
-                        enableDinerButtons();
-                        dialogManager.showDialogNode('intro');
-                    }, 200);
+                        fakeBaseOverlay.setScale(1.1, 1);
+                        fakeBase.setScale(1.1, 1);
+                        setTimeout(() => {
+                            fakeBaseOverlay.setScale(1.05, 1).setRotation(-0.02);
+                            fakeBase.setScale(1.05, 1);
+                            setTimeout(() => {
+                                fakeBaseOverlay.setScale(1.2, 1).setRotation(-0.08);
+                                fakeBase.setScale(1.2, 1);
+                            }, 5);
+                        }, 0);
+                        setTimeout(() => {
+                            globalObjsTemp.black.alpha = 1;
+                            playSound('crackle1')
+                            setTimeout(() => {
+                                globalObjsTemp.black.alpha = 0;
+                                darkGloom.destroy();
+                                fakeBaseOverlay.destroy();
+                                fakeBase.destroy();
+                                setupCharacters();
+                                setRadioMusic('guitarboogieshuffle', 0.75);
+                                globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0.01, true);
+                                globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0.01, true);
+                                enableDinerButtons();
+                                dialogManager.showDialogNode('intro');
+                            }, 40);
+                        }, 15);
+                    }, 190);
                 }, 1100);
             }, 20);
         }, 200);
