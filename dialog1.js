@@ -175,6 +175,16 @@ let dialogList1 = {
         ]
     },
 
+    MaggieAct3ChatAllGoingButDog: {
+        speech: [
+            {speaker: "You", text: "Maggie..."},
+        ],
+        branches: [
+            {text: "All of us are leaving together to\nHope Springs. Come with us.", targetNode: "MaggieAct3LeaveAllButDog"},
+            {text: "Nevermind"},
+        ]
+    },
+
     MaggieAct3Fortify: {
         speech: [
             {speaker: "Maggie", face: "maggie_sad.png", text: "Of course. Do whatever you think will\nmake it safe."},
@@ -187,6 +197,13 @@ let dialogList1 = {
             {speaker: "You", text: "But Maggie..."},
             {speaker: "Maggie", face: "maggie_angry.png", text: "And that's final!"},
         ],
+    },
+
+    MaggieAct3LeaveAllButDog: {
+        speech: [
+            {speaker: "Maggie", face: "maggie_sad.png", text: "I'm sorry honey but as someone is still\nhere, even if it's a lost dog, I'll\nhave to watch over them."},
+            {speaker: "Doggo", face: "doggo_angry.png", text: "Arf!"},
+        ]
     },
 
     MaggieAct3LeaveAll: {
@@ -1175,7 +1192,11 @@ let dialogList1 = {
             {speaker: "You", text: "I think we should leave, and it would help if we\nhad some warning before running into anything\non the road."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "So wait, you'll drive us to who knows\nwhere and you want me to get high\nand act as a... a radar?\n[Medium Difficulty]", publish: "showInfluence", onFinish: () => {
                     if (gameState.EthanInfluence >= 2) {
-                        dialogManager.showDialogNode("Ethan3DrugSuccess");
+                        if (!gameState.dogAlive && gameState.EthanInfluence <= 2) {
+                            dialogManager.showDialogNode("Ethan3DogFail");
+                        } else {
+                            dialogManager.showDialogNode("Ethan3DrugSuccess");
+                        }
                     } else {
                         dialogManager.showDialogNode("Ethan3DrugFail");
                     }
@@ -1212,6 +1233,18 @@ let dialogList1 = {
         speech: [
             {speaker: "Ethan", face: "ethan_sad.png", text: "Well now you're just stealing the fun\nof getting high."},
             {speaker: "Ethan", face: "ethan_normal.png", publish: "showInfluenceSmall", text: "And no, I'm not your damn radar system.\nLeave me alone.\n(Not enough trust)", data: {property: "ethanState", value: "ethanNotTalk"}},
+        ]
+    },
+
+    Ethan3DogFail: {
+        speech: [
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Noah, you've been a bro to me and all,\nbut I think you're just saying things\nto get me come with you."},
+            {speaker: "You", text: "What do you mean?"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Remember earlier when I told you the\ndoor was fine but you locked it\nout anyways?"},
+            {speaker: "Ethan", face: "ethan_sad.png", text: "It was friendly, but now it ran off."},
+            {speaker: "Ethan", face: "ethan_sad.png", publish: "showInfluenceSmall", text: "If it wasn't friendly and I told you\nnot to open the door, would you still\nignore me and open it anyways?", data: {property: "ethanState", value: "ethanNotTalk"}},
+            {speaker: "You", text: "What? Of course not. I'd always listen to you-"},
+            {speaker: " ", text: "   (Ethan is no longer paying attention)\n\n\n   (Not enough trust)"},
         ]
     },
 
@@ -1258,7 +1291,11 @@ let dialogList1 = {
             {speaker: "You", text: "It's fine if you don't talk to Edith. But\nI'd still like to invite you along."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Hmm...\n\n\n[Medium Difficulty]", publish: "showInfluence", onFinish: () => {
                     if (gameState.EthanInfluence >= 2) {
-                        dialogManager.showDialogNode("Ethan3LeavingSuccessSolo");
+                        if (!gameState.dogAlive && gameState.EthanInfluence <= 2) {
+                            dialogManager.showDialogNode("Ethan3DogFail");
+                        } else {
+                            dialogManager.showDialogNode("Ethan3LeavingSuccessSolo");
+                        }
                     } else {
                         dialogManager.showDialogNode("Ethan3FailSolo");
                     }
@@ -1322,9 +1359,13 @@ let dialogList1 = {
     Ethan3LeavingSolo: {
         speech: [
             {speaker: "You", text: "I've changed my mind. I'm leaving, and I'd like\nyou to come."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Hmm...\n\n\n[Medium Difficulty Trust]", publish: "showInfluence", onFinish: () => {
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Hmm...\n\n\n[Medium Difficulty]", publish: "showInfluence", onFinish: () => {
                     if (gameState.EthanInfluence >= 2) {
-                        dialogManager.showDialogNode("Ethan3LeavingSuccessSolo");
+                        if (!gameState.dogAlive && gameState.EthanInfluence <= 2) {
+                            dialogManager.showDialogNode("Ethan3DogFail");
+                        } else {
+                            dialogManager.showDialogNode("Ethan3LeavingSuccessSolo");
+                        }
                     } else {
                         dialogManager.showDialogNode("Ethan3FailSolo");
                     }

@@ -19,6 +19,7 @@ const imageAtlases = [
     {name: 'lowq', src: 'sprites/lowq.json'},
     {name: 'radio', src: 'sprites/radio.json'},
     {name: 'misc', src: 'sprites/misc.json'},
+    {name: 'epilogue', src: 'sprites/epilogue.json'},
 ];
 
 const imageFiles = [

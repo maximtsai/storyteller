@@ -4,7 +4,7 @@
 			"image": "sprites/pixels.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 11,
+				"w": 16,
 				"h": 16
 			},
 			"scale": 1,
@@ -73,7 +73,7 @@
 					}
 				},
 				{
-					"filename": "red_pixel.png",
+					"filename": "grey_pixel.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -88,6 +88,27 @@
 					},
 					"frame": {
 						"x": 7,
+						"y": 2,
+						"w": 2,
+						"h": 2
+					}
+				},
+				{
+					"filename": "red_pixel.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 2,
+						"h": 2
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 2,
+						"h": 2
+					},
+					"frame": {
+						"x": 12,
 						"y": 2,
 						"w": 2,
 						"h": 2
@@ -141,6 +162,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:aeb486465e3193ff077f4ab5812047aa:4676b3a9360a57dc67702b676c1f3266:1b79fc7d42966befa1016d29f4ccadf3$"
+		"smartupdate": "$TexturePacker:SmartUpdate:3059d88139ebfb75d9de813f585791a2:38b4fb2db2af758610ab921187f4a18c:1b79fc7d42966befa1016d29f4ccadf3$"
 	}
 }

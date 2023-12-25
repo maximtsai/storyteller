@@ -34,7 +34,7 @@
         <key>dataFormat</key>
         <string>phaser</string>
         <key>textureFileName</key>
-        <filename>../sprites/backgrounds-{n}.webp</filename>
+        <filename>../sprites/epilogue-{n}.webp</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrQualityLevel</key>
@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>85</uint>
+        <uint>101</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -124,7 +124,7 @@
             <key>json</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../sprites/backgrounds.json</filename>
+                <filename>../sprites/epilogue.json</filename>
             </struct>
         </map>
         <key>multiPackMode</key>
@@ -173,15 +173,8 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
-            <key type="filename">backgrounds/bg1.png</key>
-            <key type="filename">backgrounds/bg2.png</key>
-            <key type="filename">backgrounds/bg3.png</key>
-            <key type="filename">backgrounds/bg4.png</key>
-            <key type="filename">backgrounds/bgout1.png</key>
-            <key type="filename">backgrounds/bgout2.png</key>
-            <key type="filename">backgrounds/bgout2x.png</key>
-            <key type="filename">backgrounds/bgout3.png</key>
-            <key type="filename">backgrounds/bgshed.png</key>
+            <key type="filename">epilogue/casparfront.png</key>
+            <key type="filename">epilogue/casparwave.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -190,29 +183,13 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>250,188,500,375</rect>
+                <rect>31,75,63,149</rect>
                 <key>scale9Paddings</key>
-                <rect>250,188,500,375</rect>
+                <rect>31,75,63,149</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/bg3_broke.png</key>
-            <key type="filename">backgrounds/bg4_broke.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>0.6667</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>250,188,500,375</rect>
-                <key>scale9Paddings</key>
-                <rect>250,188,500,375</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">backgrounds/bgout1Light.png</key>
+            <key type="filename">epilogue/casparhand.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -221,13 +198,13 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>250,175,500,350</rect>
+                <rect>33,33,65,66</rect>
                 <key>scale9Paddings</key>
-                <rect>250,175,500,350</rect>
+                <rect>33,33,65,66</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/rain.png</key>
+            <key type="filename">epilogue/monster.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -236,14 +213,26 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>250,94,500,187</rect>
+                <rect>103,139,206,278</rect>
                 <key>scale9Paddings</key>
-                <rect>250,94,500,187</rect>
+                <rect>103,139,206,278</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/startFakeBase.png</key>
-            <key type="filename">backgrounds/startFakeBaseOverlay.png</key>
+            <key type="filename">epilogue/scene1a.png</key>
+            <key type="filename">epilogue/scene1b.png</key>
+            <key type="filename">epilogue/scene1c.png</key>
+            <key type="filename">epilogue/scene1d.png</key>
+            <key type="filename">epilogue/scene1e.png</key>
+            <key type="filename">epilogue/scene1f.png</key>
+            <key type="filename">epilogue/scene1g.png</key>
+            <key type="filename">epilogue/scene1h.png</key>
+            <key type="filename">epilogue/scene2a.png</key>
+            <key type="filename">epilogue/scene5a.png</key>
+            <key type="filename">epilogue/scene5b.png</key>
+            <key type="filename">epilogue/scene5c.png</key>
+            <key type="filename">epilogue/scene5d.png</key>
+            <key type="filename">epilogue/scene5e.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -252,9 +241,24 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>206,188,413,375</rect>
+                <rect>180,160,360,320</rect>
                 <key>scale9Paddings</key>
-                <rect>206,188,413,375</rect>
+                <rect>180,160,360,320</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/scene3a.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>300,267,600,533</rect>
+                <key>scale9Paddings</key>
+                <rect>300,267,600,533</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -265,7 +269,7 @@
             <struct type="SpriteSheet">
                 <key>files</key>
                 <array>
-                    <filename>backgrounds</filename>
+                    <filename>epilogue</filename>
                 </array>
             </struct>
         </map>

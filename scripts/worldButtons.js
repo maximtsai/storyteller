@@ -556,7 +556,11 @@ function clickMaggie() {
             } else if (gameState.maggieSandwichEnd) {
                 dialogManager.showDialogNode('MaggieSandwichEnd');
             } else if (gameState.EthanSaved && gameState.EdithSaved && gameState.BrunaSaved && (gameState.juanLeaveStatus == "accept" || gameState.juanLeaveStatus == "onlyUseful")) {
-                dialogManager.showDialogNode('MaggieAct3ChatAllGoing');
+                if (gameState.dogAlive && !gameState.DogSaved) {
+                    dialogManager.showDialogNode('MaggieAct3ChatAllGoingButDog');
+                } else {
+                    dialogManager.showDialogNode('MaggieAct3ChatAllGoing');
+                }
             } else {
                 dialogManager.showDialogNode('MaggieAct3Chat');
             }
@@ -1067,9 +1071,10 @@ function clickDog() {
 
 function clickExit() {
     if (gameState.currentScene == 1) {
-        //dialogManager.showDialogNode('ExitSceneTwo');
-        // dialogManager.showDialogNode('ExitSceneThree');
-        dialogManager.showDialogNode('ExitNoReason');
+
+        gameState.MaggieSaved = true;
+        messageBus.publish('forceGoodEnd');
+        // dialogManager.showDialogNode('ExitNoReason');
     } else if (gameState.currentScene == 2) {
         dialogManager.showDialogNode('ExitSceneTwo');
     } else if (gameState.currentScene == 3) {

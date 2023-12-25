@@ -271,7 +271,7 @@ let furnitureDialog = {
         speech: [
             {speaker: "", text: "   You lock the door shut."},
             {speaker: "", text: "   The scratching noises stop.", publish: "lockScratchDoor"},
-            {speaker: "Ethan", face: "ethan_sad.png", text: "Aw it really wanted to come in."},
+            {speaker: "Ethan", face: "ethan_sad.png", text: "Aw it really wanted to come in.", publish: 'ethanInfluence', param: -1},
             {speaker: "Juan", face: "juan_normal.png", text: "You don't know what's out there.\nIt could've been dangerous."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Nah the door's not dangerous.••••••••••••••••\n.••••••••.•••••••It's the windows you gotta watch out for."},
             {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuietSprawl'},
@@ -302,7 +302,7 @@ let furnitureDialog = {
         speech: [
             {speaker: "", text: "   You lock the door shut."},
             {speaker: "", text: "   The scratching noises stop.", publish: "lockScratchDoor"},
-            {speaker: "Ethan", face: "ethan_sad.png", text: "Aw it.•••.•••.••• wanted to come in."},
+            {speaker: "Ethan", face: "ethan_sad.png", text: "Aw it.•••.•••.••• wanted to come in.", publish: 'ethanInfluence', param: -1},
             {speaker: "Juan", face: "juan_normal.png", text: "You don't know what's out there.\nIt could've been dangerous."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Door•• wasn't•• dangerous.•••••••••\n.••••••••.•••••••Gotta watch out...•••••••• windows."},
             {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuietSprawl'},
@@ -314,16 +314,6 @@ let furnitureDialog = {
         ]
     },
 
-
-    BackdoorActTemporary: {
-        speech: [
-            {speaker: '', text: "TODO: Implement gameplay for fixing generator.\nFix generator for now?"},
-        ],
-        branches: [
-            {text: "Yes", targetNode: "BackdoorActTemporaryFixed"},
-            {text: "Not yet"},
-        ]
-    },
     BackdoorActTemporaryFixed: {
         speech: [
             {speaker: '', text: " (generator magically fixed)", publish: "generatorFixed", param: 99},

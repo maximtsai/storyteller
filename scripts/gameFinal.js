@@ -6,6 +6,7 @@ class GameFinal {
             messageBus.subscribe("exitFinale", this.endGame.bind(this)),
             messageBus.subscribe("exitFinaleForce", this.endGameForce.bind(this)),
             messageBus.subscribe("stayFinale", this.stayFinale.bind(this)),
+            messageBus.subscribe("forceGoodEnd", this.showGoodEnd2.bind(this)),
 
             messageBus.subscribe("juanContinue", this.endGameForce.bind(this)),
         ];
@@ -180,9 +181,193 @@ class GameFinal {
 
     endGameForce() {
         this.fadeOut();
-        this.createEpilogue();
-        this.createDisplayedLines();
-        this.playDisplayedLines();
+        if (gameState.MaggieSaved) {
+            this.showGoodEnd();
+        } else {
+            this.createEpilogue();
+            this.createDisplayedLines();
+            this.playDisplayedLines();
+        }
+    }
+
+    showGoodEnd() {
+        this.blackScreen.alpha = 0;
+        globalObjsTemp.epilogueBG = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'epilogue', 'scene1a.png').setDepth(9998);
+        globalObjsTemp.epilogueBG.scrollFactorX = 0;
+        globalObjsTemp.epilogueBG.scrollFactorY = 0;
+        this.showSlideshow(globalObjsTemp.epilogueBG, [
+            {image: 'scene1b.png', delay: 1250},
+            {image: 'scene1c.png', delay: 1250},
+            {image: 'scene1d.png', delay: 1000},
+            {image: 'scene1e.png', delay: 750},
+            {image: 'scene1f.png', delay: 750},
+        ],
+            () => {
+            // Screenshake
+                setTimeout(() => {
+                    globalObjsTemp.epilogueBG.x += 3;
+                    setTimeout(() => {
+                        this.blackScreen.alpha = 1;
+                        setTimeout(() => {
+                            this.blackScreen.alpha = 0;
+                        }, 25);
+
+                        if (!gameVars.eldritchShown) {
+                            globalObjsTemp.epilogueBG.setFrame('scene1g.png');
+                        }
+                    }, 900)
+                    this.scene.tweens.add({
+                        targets: globalObjsTemp.epilogueBG,
+                        duration: 120,
+                        x: globalObjsTemp.epilogueBG.x - 6,
+                        yoyo: true,
+                        repeat: 13,
+                        onComplete: () => {
+                            this.showFinaleMonsterErupt();
+                        }
+                    });
+                }, 1000);
+
+            }
+            );
+    }
+
+    showSlideshow(image, data = [], onFinish) {
+        let nextDataObj = data.shift();
+        if (nextDataObj) {
+            setTimeout(() => {
+                image.setFrame(nextDataObj.image);
+                this.showSlideshow(image, data, onFinish);
+            }, nextDataObj.delay);
+        } else if (onFinish) {
+            onFinish();
+        }
+    }
+
+    showFinaleMonsterErupt() {
+        this.blackScreen.alpha = 1;
+        setTimeout(() => {
+            this.blackScreen.alpha = 0;
+        }, 25);
+        gameVars.eldritchShown = true;
+        globalObjsTemp.epilogueBG.setFrame('scene1h.png');
+        globalObjsTemp.epilogueMonster = PhaserScene.add.sprite(gameConsts.halfWidth - 50, gameConsts.halfHeight + 120, 'epilogue', 'monster.png').setDepth(9998).setOrigin(0.5, 1).setScale(0.96, 0.92);
+        globalObjsTemp.epilogueMonster.scrollFactorX = 0; globalObjsTemp.epilogueMonster.scrollFactorY = 0;
+        this.scene.tweens.add({
+            targets: [globalObjsTemp.epilogueMonster],
+            scaleX: 1,
+            scaleY: 1.1,
+            duration: 2100,
+            ease: 'Cubic.easeOut',
+            onComplete: () => {
+                globalObjsTemp.epilogueMonster.destroy();
+                globalObjsTemp.epilogueBG.setScale(1.08, 1.08);
+                globalObjsTemp.epilogueBG.x = gameConsts.halfWidth;
+                globalObjsTemp.epilogueBG.y = gameConsts.halfHeight - 5;
+                globalObjsTemp.epilogueBG.setFrame('scene2a.png');
+                this.scene.tweens.add({
+                    targets: globalObjsTemp.epilogueBG,
+                    duration: 1200,
+                    scaleX: 1,
+                    scaleY: 1,
+                    ease: 'Quad.easeOut',
+                });
+                this.scene.tweens.add({
+                    targets: globalObjsTemp.epilogueBG,
+                    duration: 350,
+                    y: globalObjsTemp.epilogueBG.y + 10,
+                    ease: 'Cubic.easeIn',
+                    yoyo: true,
+                    repeat: 3,
+                    onComplete: () => {
+                        this.showCasparZoomOut();
+                    }
+                });
+            }
+        });
+    }
+
+    showCasparZoomOut() {
+        globalObjsTemp.epilogueBG.y = gameConsts.halfHeight;
+        PhaserScene.cameras.main.setZoom(1.05);
+        globalObjsTemp.GreyBG = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'grey_pixel.png').setDepth(9997).setScale(5000, 1000);
+        globalObjsTemp.epilogueBG.setFrame('scene3a.png');
+        globalObjsTemp.monsterBG = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 400, 'epilogue', 'monster.png').setDepth(9997).setScale(1.85).setOrigin(0.5, 0.9);
+        globalObjsTemp.monsterBG.scrollFactorX = 0; globalObjsTemp.monsterBG.scrollFactorY = 0;
+        globalObjsTemp.CasparWave = PhaserScene.add.sprite(gameConsts.halfWidth - 10, gameConsts.halfHeight + 160, 'epilogue', 'casparwave.png').setDepth(9998).setScale(0.6);
+        globalObjsTemp.CasparWave.scrollFactorX = 0; globalObjsTemp.CasparWave.scrollFactorY = 0;
+        globalObjsTemp.CasparWaveHand = PhaserScene.add.sprite(globalObjsTemp.CasparWave.x + 10, globalObjsTemp.CasparWave.y - 15, 'epilogue', 'casparhand.png').setDepth(9998).setScale(0.6);
+        globalObjsTemp.CasparWaveHand.scrollFactorX = 0; globalObjsTemp.CasparWaveHand.scrollFactorY = 0;
+        globalObjsTemp.CasparWaveHand.rotation = -0.03;
+        globalObjsTemp.CasparWaveFront = PhaserScene.add.sprite(globalObjsTemp.CasparWave.x, globalObjsTemp.CasparWave.y, 'epilogue', 'casparfront.png').setDepth(9998).setScale(0.6);
+        globalObjsTemp.CasparWaveFront.scrollFactorX = 0; globalObjsTemp.CasparWaveFront.scrollFactorY = 0;
+
+        PhaserScene.tweens.add({
+            targets: globalObjsTemp.CasparWaveHand,
+            rotation: 0.2,
+            duration: 900,
+            ease: 'Cubic.easeInOut',
+            yoyo: true,
+            repeat: 1,
+            onComplete: () => {
+                PhaserScene.tweens.add({
+                    targets: globalObjsTemp.CasparWaveHand,
+                    rotation: 0.9,
+                    duration: 1800,
+                    ease: 'Quad.easeIn',
+                });
+            }
+        });
+
+        PhaserScene.tweens.add({
+            targets: globalObjsTemp.monsterBG,
+            scaleX: 2.25,
+            scaleY: 2.25,
+            duration: 6000
+        });
+
+        PhaserScene.tweens.add({
+            delay: 4000,
+            targets: [globalObjsTemp.CasparWave, globalObjsTemp.CasparWaveHand, globalObjsTemp.CasparWaveFront],
+            alpha: 0,
+            duration: 1500,
+        });
+
+        PhaserScene.tweens.add({
+            targets: PhaserScene.cameras.main,
+            zoom: 0.75,
+            duration: 6000,
+            onComplete: () => {
+                globalObjsTemp.monsterBG.destroy();
+                globalObjsTemp.CasparWave.destroy();
+                globalObjsTemp.CasparWaveHand.destroy();
+                globalObjsTemp.CasparWaveFront.destroy();
+                PhaserScene.cameras.main.setZoom(1);
+                globalObjsTemp.epilogueBG.setFrame('scene5a.png');
+                this.showSlideshow(globalObjsTemp.epilogueBG, [
+                    {image: 'scene5a.png', delay: 50},
+                    {image: 'scene5b.png', delay: 650},
+                    {image: 'scene5c.png', delay: 650},
+                    {image: 'scene5d.png', delay: 650},
+                    {image: 'scene5e.png', delay: 650},
+                ],
+                    () => {
+                        PhaserScene.tweens.add({
+                            targets: this.blackScreen,
+                            alpha: 1,
+                            duration: 1000,
+                            onComplete: () => {
+                                this.createDisplayedLinesBest();
+                                this.playDisplayedLines();
+                            }
+                        });
+                    });
+            }
+        });
+    }
+
+    showGoodEnd2() {
+        this.fadeOut(this.showGoodEnd);
     }
 
     playStayEpilogue() {
@@ -358,6 +543,35 @@ class GameFinal {
 
     }
 
+    createDisplayedLinesBest() {
+        globalObjects.moveLeftBtn.destroy();
+        globalObjects.moveRightBtn.destroy();
+        globalObjects.diner.ExitButton.destroy();
+        globalObjects.diner.JuanButton.destroy();
+        globalObjects.diner.EthanButton.destroy();
+        globalObjects.diner.EdithButton.destroy();
+        globalObjects.diner.maggieButton.destroy();
+        globalObjects.diner.BrunaButton.destroy();
+        globalObjects.diner.RadioButton.destroy();
+        globalObjects.diner.TVButton.destroy();
+        globalObjects.diner.BackdoorButton.destroy();
+        globalObjects.diner.CasparButton.destroy();
+
+        this.displayedLines[0] = "You exit the diner with everyone on board.";
+        this.displayedLines.push("\n\nMoments after you leave, the diner gets completely destroyed,")
+        this.displayedLines.push("\nbut you all make it out safe.")
+        this.displayedLines.push("\n\nWith everyone's help, you make it to the Hope Springs Stronghold\nwithout further difficulty.")
+        this.displayedLines.push("\n\nThe stronghold is more like a makeshift camp, but Juan's\ncarpentry expertise provides everyone with sturdier shelter.")
+        this.displayedLines.push("\n\nBruna's social media posts allow many more refugees to find the\ngrowing camp.")
+        this.displayedLines.push("\n\nLife in Hope Springs is tough, but Maggie's smile and good\ncooking never fails to cheer everyone up.")
+
+        this.createEpilogue();
+        this.theEnd.setText('THE BEST END');
+        this.theEndTitle.setText('Thank you for playing Diner in the Storm');
+
+
+    }
+
     addEndingFailedLine() {
         let numTotalSaved = gameState.EdithSaved + gameState.EthanSaved + gameState.BrunaSaved + gameState.JuanSaved + gameState.MaggieSaved + gameState.DogSaved;
         if (numTotalSaved === 0) {
@@ -395,7 +609,7 @@ class GameFinal {
         }, 2100 + nextLine.length * 17);
     }
 
-    fadeOut() {
+    fadeOut(finishFunc) {
         globalObjects.moveLeftBtn.destroy();
         globalObjects.moveRightBtn.destroy();
         buttonManager.disableAllInput();
@@ -409,14 +623,22 @@ class GameFinal {
                 targets: [gameVars, globalObjsTemp.radioMusic, globalObjsTemp.radioStatic1, globalObjsTemp.radioStatic2],
                 radioVolume: 0,
                 volume: 0,
-                duration: 1000
+                duration: 1000,
+                onComplete: () => {
+                    let fullRushIn = playSound('foolrushin_full', 0.6, false);
+                    this.scene.tweens.add({
+                        targets: [fullRushIn],
+                        volume: 1,
+                        duration: 1500,
+                        onComplete: () => {
+                            if (finishFunc) {
+                                finishFunc.bind(this)();
+                            }
+                        }
+                    });
+                }
             });
-            let fullRushIn = playSound('foolrushin_full', 0.1, false);
-            this.scene.tweens.add({
-                targets: [fullRushIn],
-                volume: 0,
-                duration: 1000
-            });
+
         } else {
             this.scene.tweens.add({
                 targets: [gameVars, globalObjsTemp.radioMusic, globalObjsTemp.radioStatic1, globalObjsTemp.radioStatic2],
