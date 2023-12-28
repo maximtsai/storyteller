@@ -36,7 +36,8 @@ let dialogList1 = {
     MaggieAct2PowerOff: {
         speech: [
             {speaker: "You", text: "Maggie, you said you have a generator\nsomewhere?"},
-            {speaker: "Maggie", face: "maggie_dark_scared.png", text: "Out back, but its wires are all tangled\nup. I've been meaning to fix it, but it was\nalways my late husband who was good\nat these things."},
+            {speaker: "Maggie", face: "maggie_dark_scared.png", text: "Out back, but its wires are all\ntangled up."},
+            {speaker: "Maggie", face: "maggie_dark_scared.png", text: "I've been meaning to fix it, but it was\nalways my late husband who was good\nat these things."},
             {speaker: "You", text: "I'm pretty handy with machines.\nLet me take a crack at it."},
             {speaker: "Maggie", face: "maggie_dark_scared.png", text: "Thank you honey.\nYou'll need these keys to the shed."},
             {speaker: "", text: "  (You can now exit the backdoor)"},
@@ -201,14 +202,14 @@ let dialogList1 = {
 
     MaggieAct3LeaveAllButDog: {
         speech: [
-            {speaker: "Maggie", face: "maggie_sad.png", text: "I'm sorry honey but as someone is still\nhere, even if it's a lost dog, I'll\nhave to watch over them."},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "I'm sorry honey but as long as someone\nis still here, even if it's a lost dog,\nI'll have to watch over em'."},
             {speaker: "Doggo", face: "doggo_angry.png", text: "Arf!"},
         ]
     },
 
     MaggieAct3LeaveAll: {
         speech: [
-            {speaker: "Maggie", face: "maggie_sad.png", text: "I'm sorry honey but I'm still not\nleavin' my diner behind."},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "I'm sorry honey but I'm still not leavin'\nmy diner behind."},
         ],
         branches: [
             {text: "I won't force you to come.", targetNode: "MaggieAct3Sandwich"},
@@ -278,7 +279,7 @@ let dialogList1 = {
     MaggieAct3Husband: {
         speech: [
             {speaker: "Maggie", face: "maggie_sad.png", text: "But he's not here anymore."},
-            {speaker: "Maggie", face: "maggie_normal.png", text: "This Roadhouse was my husband's dream.\nHe loved it, and I still love him.", publish: 'casparToBackdoor'},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "This Roadhouse was my husband's\ndream. He loved it, and I still love him.", publish: 'casparToBackdoor'},
             {speaker: "Maggie", face: "maggie_sad.png", text: "I can't leave it behind."},
         ],
         branches: [
@@ -290,7 +291,7 @@ let dialogList1 = {
     MaggieAct3NotSafe: {
         speech: [
             {speaker: "You", text: "This place is not safe, and that's not your fault.\nCome with me."},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "...", publish: 'showInfluence', onFinish: () => {
+            {speaker: "Maggie", face: "maggie_sad.png", text: "...\n\n\n[Impossible Difficulty]", publish: 'showInfluence', onFinish: () => {
                     if (gameState.MaggieInfluence >= 5) {
                         dialogManager.showDialogNode("MaggieAct3Almost");
                     } else {
@@ -303,7 +304,7 @@ let dialogList1 = {
     MaggieAct3NotSafeBoost: {
         speech: [
             {speaker: "You", text: "He would have wanted to see you live life to\nits fullest, even if he's no longer around."},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "...", publish: 'MaggieInfluence', onFinish: () => {
+            {speaker: "Maggie", face: "maggie_sad.png", text: "...\n\n\n[Impossible Difficulty]", publish: 'MaggieInfluence', onFinish: () => {
                     if (gameState.MaggieInfluence >= 5) {
                         dialogManager.showDialogNode("MaggieAct3Almost");
                     } else {
@@ -353,9 +354,9 @@ let dialogList1 = {
 
     MaggieReadyFinale: {
         speech: [
-            {speaker: "Maggie", face: "maggie_normal.png", text: "This song...\nThis was the song that was played on\nour honeymoon."},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "This song...\nThis was the song we danced to on\nour honeymoon."},
             {speaker: "Maggie", face: "maggie_sad.png", text: "I was so uncertain about our future back\nthen."},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "Folks weren't so kind those days when\nthey saw a kindly gentleman like him\ncourting an out of place woman\nlike me."},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "Folks weren't so accepting those days when\nthey saw a kindly gentleman like him\ncourting an out of place woman\nlike me."},
             {speaker: "Maggie", face: "maggie_reminisce.png", text: "But we took the leap anyways, and I\ndon't think I could have been happier."},
             {speaker: "You", text: "You ready to take another leap now?"},
             {speaker: "You", text: "There's a lot of tired, hungry people headed\nto Hope Springs. They could use someone with\na big friendly smile."},
@@ -378,7 +379,7 @@ let dialogList1 = {
         speech: [
             {speaker: "Caspar", face: "caspar_normal.png", text: "Noah..."},
             {speaker: "Caspar", face: "caspar_normal.png", text: "Seems like it's time for you to go."},
-            {speaker: "You", text: "Come on Caspar, you could still leave with us\n. Come join Maggie, you care for her don't you?"},
+            {speaker: "You", text: "Come on Caspar, you could still leave with us.\nCome join Maggie, you care for her don't you?"},
             {speaker: "Caspar", face: "caspar_normal.png", text: "I feel light, like a great weight has\nbeen lifted off my shoulders."},
             {speaker: "Caspar", face: "caspar_normal.png", text: "Thank you Noah, and I truly mean it.\nBut it is time for me to move on.", onFinish: () => {
                     messageBus.publish('casparFadeAway')
@@ -688,7 +689,7 @@ let dialogList1 = {
     },
     Edith3LeaveFine: {
         speech: [
-            {speaker: "Edith", face: "edith_normal.png", text: "Hmm...", publish: "showInfluence", onFinish: () => {
+            {speaker: "Edith", face: "edith_normal.png", text: "Hmm...\n\n\n[Medium Difficulty]", publish: "showInfluence", onFinish: () => {
                 // if (gameState.ethanStandingUp) {
                 //     dialogManager.showDialogNode("Edith3EthanStandUp");
                 // } else {
@@ -742,9 +743,10 @@ let dialogList1 = {
             {speaker: "Ethan", face: "ethan_sad.png", text: "Geez, you really are like my dad."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Okay uh, Edith. I've been... irresponsible."},
             {speaker: "Edith", face: "edith_normal.png", text: "."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "And I know I haven't always been the\nboyfriend I should be. I dunno if I could\nmake up for it again after messing\nup so much but..."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "And I know I haven't always been the\nboyfriend I should be."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "I dunno if I could\nmake up for it again after messing\nup so much but..."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "I'd like to try again.\nDo better, if you're okay with that."},
-            {speaker: "You", text: "•••••••••Anything else...?"},
+            {speaker: "You", text: "...•••••••••\nAnything else...?"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Oh yeah I'll toss out my stash.\nNo more substances and stuff."},
             {speaker: "Edith", face: "edith_normal.png", text: "...••••••••••Okay.\n••••••••••••I'll give you another chance.", data: {property: "EthanEdithTogether", value: true}},
             {speaker: "Edith", face: "edith_sad.png", text: "But make it count!", publish: "edithScootTowardsEthan"},
@@ -2067,7 +2069,7 @@ let dialogList1 = {
             {speaker: "You", text: "..."},
             {speaker: "Maggie", face: "maggie_normal.png", text: "Here Honey, one hot coffee.", publish: "MaggieCoffee"},
             {speaker: "Maggie", face: "maggie_normal.png", forceProgress: true, text: "Sorry about the wait. What can I get\nstarted for...••••••••••••••••••", publish: "ActOneEnd"},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "...••••••••I swear I changed these lights not\ntwo weeks ago,•••• and now they actin'\nup again!"},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "...••••••••I swear I changed these lights not\ntwo weeks ago,• and now they actin'\nup again!"},
             {speaker: "Maggie", face: "maggie_sad.png", unclickable: true, text: "Once this storm blows over, I reckon\nI'll need to get some new light bulbs."},
         ]
     },
@@ -2729,7 +2731,7 @@ let dialogList1 = {
             {speaker: "Juan", face: "juan_normal.png", text: "You actually managed to convince\neveryone to join."},
             {dependentState: "DogSaved", speaker: "Doggo", face: "doggo_happy.png", text: "Arf!"},
             {dependentState: "DogSaved", speaker: "Juan", face: "juan_normal.png", text: "Even the dog."},
-            {speaker: "Juan", face: "juan_normal.png", text: "I highly doubt you could actually justify\neveryone's usefulness here, but you know\nwhat? I'm impressed nonetheless."},
+            {speaker: "Juan", face: "juan_normal.png", text: "I highly doubt you could justify every\nperson's usefulness here, but you know\nwhat? I'm impressed nonetheless."},
             {speaker: "Juan", face: "juan_happy.png", text: "I'm gonna stick with you all even if it's\njust to see what the hell you're getting\nus into."},
             {speaker: "You", text: "Glad you're still on board Juan.", onFinish: () => {
                     gameState.JuanSaved = true;

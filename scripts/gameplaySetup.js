@@ -57,6 +57,8 @@ let gameFinal;
 function setupGame() {
     // PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'background');
     createAnimations(PhaserScene)
+    globalObjects.exclamation = new ExclamationHover(PhaserScene);
+
     globalObjects.optionsButton = new Button({
         normal: {
             "ref": "buttonStart",
@@ -102,7 +104,6 @@ function setupGame() {
     miscSubscribe = new MiscSubscribe(PhaserScene);
     gameFinal = new GameFinal(PhaserScene);
 
-    globalObjects.exclamation = new ExclamationHover(PhaserScene);
     setupKeyPresses(PhaserScene);
 
     initializeMisc();
@@ -110,10 +111,10 @@ function setupGame() {
 
 function initializeMisc() {
     globalObjsTemp.songs = {
-        235.75: 'slowwalk',
-        294.25: 'dabbda',
-        356: 'foolrushin_poor',
-        386.25: 'guitarboogieshuffle',
+        235.75: 'dabbda',
+        294.25: 'off_to_osaka',
+        356: 'main_poor',
+        386.25: 'matts_blues',
         446.75: 'weatherblur',
         506: 'news1'
     };
@@ -144,8 +145,10 @@ function clickCredits() {
         }
     });
     globalObjects.closeCreditsButton.setScale(500, 500);
-    globalObjects.creditsText = PhaserScene.add.text(40, 40, 'Programming and stick figure art by Maxim Tsai\n\nWriting and story by Rowa Skipson\n\nFinal scene art by Theresa Kao.');
-    globalObjects.creditsText.setFontSize(23);
+    globalObjects.creditsText = PhaserScene.add.text(40, 40, 'Programming and stick figure art by Maxim Tsai\n\nWriting and story by Rowa Skipson\n\nFinal scene art by Theresa Kao.' +
+        '\n\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod');
+    globalObjects.creditsText.setFontSize(28);
+    globalObjects.creditsText.setScale(0.82);
 
 }
 
@@ -442,7 +445,7 @@ function realGameStart() {
                                 fakeBaseOverlay.destroy();
                                 fakeBase.destroy();
                                 setupCharacters();
-                                setRadioMusic('guitarboogieshuffle', 0.75);
+                                setRadioMusic('matts_blues', 0.75);
                                 runMusicNote();
                                 globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0.01, true);
                                 globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0.01, true);

@@ -181,10 +181,10 @@ class GameFinal {
     }
 
     endGameForce() {
-        this.fadeOut();
         if (gameState.MaggieSaved) {
-            this.showGoodEnd();
+            this.fadeOut(this.showGoodEnd);
         } else {
+            this.fadeOut();
             this.createEpilogue();
             this.createDisplayedLines();
             this.playDisplayedLines();
@@ -636,7 +636,7 @@ class GameFinal {
                 volume: 0,
                 duration: 1000,
                 onComplete: () => {
-                    let fullRushIn = playSound('foolrushin_full', 0.6, false);
+                    let fullRushIn = playSound('main_full', 0.6, false);
                     this.scene.tweens.add({
                         targets: [fullRushIn],
                         volume: 1,

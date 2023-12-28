@@ -62,6 +62,7 @@ let furnitureDialog = {
                     "*TSS*\"-stronghold at Hope Springs. Don't try to engage\n" +
                     "with the Storm.\"", data: {property: "radio3Done", value: "true"}},
             {speaker: 'Radio', size: 'small', text: "\"I repeat, have established a stronghold at-\"\n"},
+            {speaker: 'Radio', size: 'small', text: "*BZZZ* \"-Hope Springs!\" *ZZT*"},
             {dependentState: "hopeSpringsLocationMissing", speaker: 'You', text: "\"Hope Springs\" huh. Maybe Bruna knows where\nthat is."},
         ]
     },
@@ -73,6 +74,17 @@ let furnitureDialog = {
     radioDone: {
         speech: [
             {speaker: ' ', text: "   (It's time to head out)"},
+        ]
+    },
+    waysideDiner: {
+        speech: [
+            {speaker: ' ', text: "    \"Welcome to the Wayside Diner!\""},
+        ]
+    },
+    waysideDinerOff: {
+        speech: [
+            {speaker: ' ', forceProgress: true, text: "    \"Welcome to the Sideways Diner!\"••••••••••••••••••"},
+            {speaker: ' ', instant: true, text: "    \"Welcome to the Wayside Diner!\""},
         ]
     },
 
@@ -447,7 +459,7 @@ let furnitureDialog = {
     },
     ExitFinaleAlone: {
         speech: [
-            {speaker: '', text: "Warning: You will be leaving the diner on your own.\nAre you sure?"},
+            {speaker: '', text: "Warning: You will be leaving the diner all on\nyour own. Are you sure?"},
         ],
         branches: [
             {text: "Yes", targetNode: "ExitFinale"},

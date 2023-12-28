@@ -328,6 +328,7 @@ class MiscSubscribe {
 
     windowBreak() {
         gameCharacters.tv.setFrame('tv_cracked.png');
+        gameCharacters.sign.rotation = 0.1;
         gameState.currentScene = 3;
         resetRadioPosition(206);
         this.updateRadioChannels();
@@ -547,7 +548,7 @@ class MiscSubscribe {
         gameCharacters.sprawl = PhaserScene.add.sprite(-100, -100, 'lowq', 'sprawl.png').setDepth(2).setScale(1.5, 1.5).setOrigin(0.5, 0).setBlendMode(Phaser.BlendModes.MULTIPLY).setAlpha(0.001);
         globalObjsTemp.sprawlAnim = this.scene.tweens.add({
             targets: [gameCharacters.sprawl],
-            alpha: 0.014,
+            alpha: 0.007,
             duration: 10000,
         });
     }
@@ -787,7 +788,7 @@ class MiscSubscribe {
         globalObjsTemp.eldritchBlack.visible = false;
 
         globalObjsTemp.eyeShakeAmt = 1;
-        globalObjsTemp.eyeEldritch = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'characters', 'blackCircle.png').setDepth(10000).setScale(0.36);
+        globalObjsTemp.eyeEldritch = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'characters', 'blackCircle.png').setDepth(10000).setScale(0.39);
         globalObjsTemp.eyeEldritch.startX = globalObjsTemp.eyeEldritch.x; globalObjsTemp.eyeEldritch.startY = globalObjsTemp.eyeEldritch.y;
         globalObjsTemp.eyeEldritch.velX = 0; globalObjsTemp.eyeEldritch.velY = 0;
         globalObjsTemp.eyeEldritch.scrollFactorX = 0;
@@ -941,8 +942,8 @@ class MiscSubscribe {
                             });
                             this.scene.tweens.add({
                                 targets: [globalObjsTemp.eyeEldritch],
-                                scaleX: 1.25,
-                                scaleY: 1.25,
+                                scaleX: 1.48,
+                                scaleY: 1.48,
                                 ease: 'Cubic.easeIn',
                                 duration: 5950,
                                 onComplete: () => {
@@ -1303,6 +1304,8 @@ class MiscSubscribe {
         globalObjsTemp.gloom.setAlpha(0.3).setDepth(8);
         playSound('crackle1', 1);
 
+        gameCharacters.sign.rotation = 0.08;
+
         setTimeout(() => {
             globalObjsTemp.gloom.setAlpha(0);
             setTimeout(() => {
@@ -1415,10 +1418,10 @@ class MiscSubscribe {
     updateRadioChannels() {
         if (gameState.currentScene == 1) {
             globalObjsTemp.songs = {
-                235.75: 'slowwalk',
-                294.25: 'dabbda',
-                356: 'foolrushin_poor',
-                386.25: 'guitarboogieshuffle',
+                235.75: 'dabbda',
+                294.25: 'off_to_osaka',
+                356: 'main_poor',
+                386.25: 'matts_blues',
                 446.75: 'weatherblur',
                 506: 'news1'
             };
@@ -1426,14 +1429,14 @@ class MiscSubscribe {
             globalObjsTemp.songs = {
                 235.75: 'lofi',
                 294.25: 'news2',
-                356: 'foolrushin_poor',
-                386.25: 'guitarboogieshufflebad',
+                356: 'main_poor',
+                386.25: 'matts_blues_bad',
                 446.75: 'weatherblur',
             };
         } else if (gameState.goodEndLocked) {
             // Final music find
             globalObjsTemp.songs = {
-                356: 'foolrushin_ok',
+                356: 'main_ok',
             };
         } else if (gameState.currentScene == 3) {
             if (globalObjsTemp.radioStatic1) {
@@ -1445,9 +1448,9 @@ class MiscSubscribe {
             globalObjsTemp.radioStatic1 = playSound('sellafieldalarm', 0.2, true);
             globalObjsTemp.songs = {
                 235.75: 'news3',
-                294.25: 'dabbda',
-                356: 'foolrushin_poor',
-                386.25: 'lofi',
+                294.25: 'off_to_osaka',
+                356: 'main_poor',
+                446.75: 'lofi',
             };
         }
     }

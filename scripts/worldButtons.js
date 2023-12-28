@@ -507,7 +507,42 @@ function createWorldButtons() {
     });
     globalObjects.diner.RadioButton.setDepth(1);
     globalObjects.diner.RadioButton.setState(DISABLE);
+
+    globalObjects.diner.DinerButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 370,
+            y: 110,
+            scaleX: 160,
+            scaleY: 55,
+            alpha: 0.201
+        },
+        hover: {
+            alpha: 0.101
+        },
+        press: {
+            alpha: 0.101
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            clickDiner();
+        }
+    });
+    globalObjects.diner.DinerButton.setDepth(1);
+    globalObjects.diner.DinerButton.setState(DISABLE);
 }
+
+
 
 function runMusicNote() {
     let distToRadio = 400 - gameVars.cameraPosX;
@@ -1166,6 +1201,99 @@ function clickExit() {
     }
 }
 
+function clickDiner() {
+
+    if (gameState.currentScene == 1) {
+        dialogManager.showDialogNode('waysideDiner');
+    } else if (gameState.currentScene == 2) {
+        if (gameCharacters.sign.rotation > 0.001) {
+            playSound('sizzle');
+            globalObjects.diner.DinerButton.setState(DISABLE);
+            PhaserScene.tweens.add({
+                targets: gameCharacters.sign,
+                rotation: 0,
+                ease: 'Quad.easeOut',
+                duration: 350,
+                onComplete: () => {
+                    globalObjects.diner.DinerButton.setState(NORMAL);
+                }
+            });
+        } else {
+            dialogManager.showDialogNode('waysideDiner');
+        }
+    } else if (gameState.currentScene === 3) {
+        if (gameCharacters.sign.rotation > 0.001) {
+            globalObjects.diner.DinerButton.setState(DISABLE);
+            if (gameState.signAdjusted) {
+                PhaserScene.tweens.add({
+                    targets: gameCharacters.sign,
+                    rotation: 0.1,
+                    ease: 'Cubic.easeOut',
+                    duration: 500,
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: gameCharacters.sign,
+                            rotation: 0.9,
+                            ease: 'Back.easeOut',
+                            duration: 800,
+                            completeDelay: 200,
+                            onComplete: () => {
+                                let table = PhaserScene.add.sprite(gameConsts.halfWidth + 4, gameConsts.height - 190, 'characters', 'table.png').setDepth(1);
+                                PhaserScene.tweens.add({
+                                    targets: gameCharacters.sign,
+                                    y: "+=380",
+                                    rotation: 0.98,
+                                    ease: 'Quad.easeIn',
+                                    duration: 350,
+                                    onComplete: () => {
+                                        table.destroy();
+                                        gameCharacters.sign.destroy();
+                                        playSound('break')
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            } else {
+                PhaserScene.tweens.add({
+                    targets: gameCharacters.sign,
+                    rotation: 0,
+                    ease: 'Quad.easeOut',
+                    duration: 350,
+                    onComplete: () => {
+                        globalObjects.diner.DinerButton.setState(NORMAL);
+                        setTimeout(() => {
+                            globalObjects.diner.DinerButton.setState(DISABLE);
+                            playSound('stopscreech');
+                            gameState.signAdjusted = true;
+                            PhaserScene.tweens.add({
+                                delay: 1500,
+                                targets: gameCharacters.sign,
+                                rotation: 0.5,
+                                ease: 'Back.easeOut',
+                                duration: 550,
+                                onComplete: () => {
+                                    globalObjects.diner.DinerButton.setPos(globalObjects.diner.DinerButton.getXPos(), globalObjects.diner.DinerButton.getYPos() + 20)
+                                    globalObjects.diner.DinerButton.setScale(155, 80)
+                                    globalObjects.diner.DinerButton.setState(NORMAL);
+                                }
+                            });
+                        }, 2500);
+                    }
+                });
+            }
+        } else {
+            if (gameState.showedWaysideOff) {
+                dialogManager.showDialogNode('waysideDiner');
+            } else {
+                gameState.showedWaysideOff = true;
+                dialogManager.showDialogNode('waysideDinerOff');
+            }
+        }
+    }
+}
+
 function clickRadio() {
     if (gameState.powerOff) {
         dialogManager.showDialogNode('radioPowerless');
@@ -1176,7 +1304,6 @@ function clickRadio() {
 
     }
     if (!globalObjsTemp.radio) {
-        PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.height - 180, 'blackPixel');
         updateManager.addFunction(updateRadio);
         globalObjsTemp.radio = {
             radioClickBlocker: {},
@@ -1194,8 +1321,8 @@ function clickRadio() {
         }
         // 206 leftmost = 88,
         // 235.75 = 90 slowwalk, 266.5,
-        // 294.25 = 94 dabbda,
-        // 326 = 96 guitarboogieshuffle,
+        // 294.25 = 94 off_to_osaka,
+        // 326 = 96 matts_blues,
         // 356 = 98 secret
         // 386.25 = 100,
         // 446.75 = 104, 506 = 108
@@ -1484,7 +1611,11 @@ function adjustRadioUpdate(barPos) {
         if (globalObjsTemp.radioStatic2) {
             globalObjsTemp.radioStatic2.volume = 0;
         }
-        if (gameState.goodEndLocked && closestObj === 'foolrushin_ok') {
+        globalObjsTemp.radioStatic1.trueVolume = 0;
+        if (globalObjsTemp.radioStatic2) {
+            globalObjsTemp.radioStatic2.trueVolume = 0;
+        }
+        if (gameState.goodEndLocked && closestObj === 'main_ok') {
             gameState.maggieReadyFinale = true;
         }
         // closestObj
@@ -1665,7 +1796,6 @@ function exitBackdoor() {
             bg0: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'whitePixel').setScale(9999,500),
             bg1: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout1.png'),
             bg2: PhaserScene.add.image(999.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout2.png'),
-            bg3: PhaserScene.add.image(999.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout2x.png').setVisible(false),
             bg4: PhaserScene.add.image(1999, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout3.png'),
         }
     }
@@ -1687,6 +1817,7 @@ function enterShed() {
     PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
 
     if (!globalObjsTemp.shedBackgrounds) {
+        globalObjsTemp.shedBackgroundColor = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + gameConsts.shedStartY, 'pixels', 'grey_pixel.png').setScale(1000, 400).setDepth(-2);
         globalObjsTemp.shedBackgrounds = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + gameConsts.shedStartY, 'backgrounds', 'bgshed.png');
     }
 }
@@ -1717,6 +1848,34 @@ function exitShed() {
 
     gameVars.cameraPosY = gameConsts.outdoorStartY; PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
     gameVars.cameraPosX = 1440; PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+
+    if (gameState.dogLooking) {
+        gameState.dogLooking = false;
+        globalObjsTemp.dogEyes.x = 1200;
+        globalObjsTemp.dogEyes.y += 40;
+        globalObjsTemp.dogEyes.scrollFactorX = 0.8;
+        globalObjsTemp.dogEyes.setScale(0.6);
+        globalObjsTemp.dogEyes.setDepth(1);
+        globalObjsTemp.dogEyes.alpha = 0.8;
+        PhaserScene.tweens.add({
+            delay: 600,
+            x: "+=15",
+            targets: globalObjsTemp.dogEyes,
+            duration: 50,
+            onComplete: () => {
+                PhaserScene.tweens.add({
+                    delay: 300,
+                    alpha: 0.4,
+                    targets: globalObjsTemp.dogEyes,
+                    scaleY: 0,
+                    duration: 100,
+                    onComplete: () => {
+                        globalObjsTemp.dogEyes.destroy();
+                    }
+                });
+            }
+        });
+    }
 }
 
 function clickGenerator() {
@@ -2329,6 +2488,7 @@ function turnOnPower() {
         duration: 600
     });
     gameState.powerOff = false;
+    globalObjsTemp.shedBackgrounds.setFrame('bgshed2.png');
     globalObjsTemp.outdoorBackgrounds.bg1.setFrame('bgout1Light.png');
     dialogManager.showDialogNode('GeneratorTurnedOn');
     setCharactersNormal();
@@ -2411,6 +2571,34 @@ function closeGenerator() {
     }
     for (let j in globalObjsTemp.generatorWires) {
         globalObjsTemp.generatorWires[j].visible = false;
+    }
+    if (!gameState.powerOff && !gameState.showedEyes) {
+        gameState.showedEyes = true;
+        globalObjsTemp.dogEyes = PhaserScene.add.sprite(gameConsts.halfWidth - 80, gameConsts.halfHeight + 200, 'lowq', 'eyes.png').setOrigin(0.5, 0.5).setDepth(-1).setScale(0.95, 0.8);
+        globalObjsTemp.dogEyes.scrollFactorX = 0;
+        globalObjsTemp.dogEyes.scrollFactorY = 0;
+        PhaserScene.tweens.add({
+            targets: globalObjsTemp.dogEyes,
+            x: "-=12",
+            scaleX: 1,
+            scaleY: 1,
+            ease: 'Quad.easeOut',
+            duration: 100,
+            onComplete: () => {
+                PhaserScene.tweens.add({
+                    delay: 200,
+                    targets: globalObjsTemp.dogEyes,
+                    x: "+=80",
+                    ease: 'Quart.easeIn',
+                    duration: 500,
+                    onComplete: () => {
+                        gameState.dogLooking = true
+                        globalObjsTemp.dogEyes.x = 999;
+                    }
+                });
+            }
+        });
+
     }
 }
 

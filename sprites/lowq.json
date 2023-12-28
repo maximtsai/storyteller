@@ -4,7 +4,7 @@
 			"image": "sprites/lowq-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1796,
+				"w": 1828,
 				"h": 1974
 			},
 			"scale": 1,
@@ -78,6 +78,31 @@
 						"y": 2,
 						"w": 260,
 						"h": 240
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "eyes.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 63,
+						"h": 26
+					},
+					"frame": {
+						"x": 1763,
+						"y": 2,
+						"w": 63,
+						"h": 26
 					},
 					"anchor": {
 						"x": 0.5,
@@ -240,6 +265,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:a04c52b5172ae5e8968204ea67fb632e:b9afae9e59b62822648ac36d475531e7:0644d9afadc5ec39d626109554d3f3bc$"
+		"smartupdate": "$TexturePacker:SmartUpdate:195c585c489c6a95c776bc9a44441f59:040e6f0d7665ace5269407361c16801c:0644d9afadc5ec39d626109554d3f3bc$"
 	}
 }
