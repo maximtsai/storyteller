@@ -151,6 +151,7 @@ class GameFinal {
                             });
                             helperFunction.scrollTo(1353)
                             helperFunction.setShake(0.75);
+                            gameCharacters.edith.destroy();
                             gameCharacters.juan.setFrame('juan_fall.png');
                             gameCharacters.juan.x += 15;
                             gameCharacters.juan.y = gameConsts.halfHeight + 198;
@@ -292,7 +293,7 @@ class GameFinal {
         PhaserScene.cameras.main.setZoom(1.05);
         globalObjsTemp.GreyBG = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'grey_pixel.png').setDepth(9997).setScale(5000, 1000);
         globalObjsTemp.epilogueBG.setFrame('scene3a.png');
-        globalObjsTemp.monsterBG = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight + 400, 'epilogue', 'monster.png').setDepth(9997).setScale(1.85).setOrigin(0.5, 0.9);
+        globalObjsTemp.monsterBG = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 210, 'epilogue', 'monster.png').setDepth(9997).setScale(1.8).setOrigin(0.5, 0.46);
         globalObjsTemp.monsterBG.scrollFactorX = 0; globalObjsTemp.monsterBG.scrollFactorY = 0;
         globalObjsTemp.CasparWave = PhaserScene.add.sprite(gameConsts.halfWidth - 10, gameConsts.halfHeight + 160, 'epilogue', 'casparwave.png').setDepth(9998).setScale(0.6);
         globalObjsTemp.CasparWave.scrollFactorX = 0; globalObjsTemp.CasparWave.scrollFactorY = 0;
@@ -432,14 +433,14 @@ class GameFinal {
         let numTotalSaved = 0;
         numTotalSaved += gameState.EdithSaved + gameState.EthanSaved + gameState.BrunaSaved + gameState.JuanSaved + gameState.MaggieSaved + gameState.DogSaved;
         if (gameState.EdithSaved && gameState.EthanSaved && gameState.BrunaSaved && gameState.JuanSaved && gameState.MaggieSaved) {
-            this.displayedLines.push("[DEV NOTE: PLAY SPECIAL ANIMATION]")
+            this.displayedLines.push("[ERROR 1: Not sure how you got in this state,\nbut you did save everyone somehow]")
         } else if (numTotalSaved === 1) {
             let pushText = ", with " + (gameState.BrunaSaved ? "Bruna." : "")
                 + (gameState.EthanSaved ? "Ethan." : "")
                 + (gameState.EdithSaved ? "Edith." : "")
                 + (gameState.JuanSaved ? "Juan." : "")
                 + (gameState.DogSaved ? "the dog." : "")
-                + (gameState.MaggieSaved && "Maggie and nobody else somehow (did you cheat?).")
+                + (gameState.MaggieSaved ? "[ERROR 2]." : "")
             this.displayedLines.push(pushText)
         } else if (numTotalSaved === 0) {
             this.displayedLines.push(". Alone.")
@@ -481,7 +482,11 @@ class GameFinal {
         }
         if (gameState.radio2Done || gameState.radio3Done) {
             if (gameState.BrunaSaved) {
-                this.displayedLines.push("\n\nBruna charts a route with you to Hope Springs.")
+                if (gameState.JuanSaved) {
+                    this.displayedLines.push("\n\nBruna and Juan chart a route with you to Hope Springs.")
+                } else {
+                    this.displayedLines.push("\n\nBruna charts a route with you to Hope Springs.")
+                }
             } else {
                 this.displayedLines.push("\n\nYou check your maps for a place called Hope Springs.")
                 if (gameState.JuanSaved) {
@@ -510,21 +515,26 @@ class GameFinal {
         }
         if (gameState.EthanSaved) {
             this.displayedLines.push("\n\nWhile driving, Ethan suddenly shouts with uncharacteristic energy\n\"Step on it man! It's coming!\"");
-            this.displayedLines.push("\n\nYou don't question him and floor the vehicle. You go as fast as\nyou can without crashing. In your back mirror, you see a vague\nglimpse of an impossibly large shadow in the distance.\nEthan calms down soon after.");
+            this.displayedLines.push("\nYou don't question him and go as fast as you can without crashing.\nIn your back mirror, you see a vague glimpse of an impossibly large\nshadow in the distance. Ethan calms down soon after.");
+        } else if (gameState.JuanSaved) {
+            this.displayedLines.push("\n\nWhile driving, Juan points out something impossibly large quickly\napproaching your truck.");
+            this.displayedLines.push("\n\nYou floor the vehicle and feel something trying to claw at it, but\nyou barely manage to make it away.");
         } else {
             this.displayedLines.push("\n\nWhile driving, you notice something impossibly large quickly\napproaching your truck.");
-            this.displayedLines.push("\n\nYou floor the vehicle, but it is too late and you feel the truck\ntopple over.");
+            this.displayedLines.push("\n\nYou floor the vehicle, but it is too late and you feel something\ncrash into the truck toppling it over.");
             if (numTotalSaved >= 1) {
-                this.theEndTitle.setText('Ending #3: Devoured');
+                this.theEndTitle.setText("Ending #3: Devoured");
             }
             this.addEndingFailedLine();
             return;
         }
-        this.displayedLines.push("\n\nYou finally arrive at the Hope Springs stronghold where a number of\nother survivors are gathered.");
+
+        this.displayedLines.push("\n\nYou finally arrive at the Hope Springs stronghold where a number\nof other survivors are gathered.");
+
         if (gameState.JuanSaved) {
-            this.displayedLines.push("\n\nThe stronghold is more like a makeshift camp, but Juan's carpentry\nexpertise provides everyone with sturdier shelter.");
+            this.displayedLines.push("The stronghold is more like\na makeshift camp, but Juan\"s carpentry expertise provides\neveryone with sturdier shelter.");
         } else {
-            this.displayedLines.push("\n\nThe stronghold is more like a makeshift camp in the chilly wind.");
+            this.displayedLines.push("The stronghold is more like\na makeshift camp in the chilly wind.");
         }
 
         if (gameState.MaggieSaved) {
@@ -532,8 +542,9 @@ class GameFinal {
             this.theEndTitle.setText('Ending #6: Future Hope');
         } else if (gameState.maggieSandwichEnd) {
             this.displayedLines.push("\n\nThe stronghold's rations are stale and cold, so you bring out\nMaggie's sandwiches and dig in.");
-            this.displayedLines.push("\n\nMaggie's sandwiches are delicious.");
-            this.displayedLines.push("\n\nMaggie's sandwiches are gone.");
+            this.displayedLines.push("\nMaggie's sandwiches are delicious.");
+            this.displayedLines.push("\n...");
+            this.displayedLines.push("\nMaggie's sandwiches are gone.••••••••••••••••");
             this.theEndTitle.setText('Ending #5: The Last Tasty Supper');
         } else {
             this.displayedLines.push("\n\nThe stronghold's rations are stale and cold.");
@@ -606,7 +617,7 @@ class GameFinal {
         this.showNextText(nextLine);
         setTimeout(() => {
             this.playNextDisplayedLine();
-        }, 2100 + nextLine.length * 17);
+        }, 2150 + nextLine.length * 28);
     }
 
     fadeOut(finishFunc) {
@@ -658,11 +669,11 @@ class GameFinal {
     }
 
     createEpilogue() {
-        this.text1 = this.scene.add.bitmapText(35, 40, 'dialog', ' ', 20).setOrigin(0, 0).setDepth(10000);
+        this.text1 = this.scene.add.bitmapText(30, 33, 'dialog', ' ', 20).setOrigin(0, 0).setDepth(10000);
         this.text1.scrollFactorX = 0;
         this.text1.scrollFactorY = 0;
 
-        this.text2 = this.scene.add.bitmapText(35, 40, 'dialog', ' ', 20).setOrigin(0, 0).setAlpha(0).setDepth(10000);
+        this.text2 = this.scene.add.bitmapText(30, 33, 'dialog', ' ', 20).setOrigin(0, 0).setAlpha(0).setDepth(10000);
         this.text2.scrollFactorX = 0;
         this.text2.scrollFactorY = 0;
 
@@ -884,6 +895,7 @@ class GameFinal {
                         globalObjects.bg4.setFrame('bg4_broke.png').setScale(1.5);
                         gameCharacters.cracks.destroy();
                         gameCharacters.tentacle.destroy();
+                        playSound('crumble');
                     }
                 });
             }
@@ -924,9 +936,10 @@ class GameFinal {
                     duration: 5000
                 });
                 let maw = this.scene.add.image(1698, gameConsts.halfHeight - 100, 'lowq', 'maw.png').setDepth(-1).setScale(1.2, 0.3).setOrigin(0.5, 0.45).setAlpha(0);
+                this.blackScreen.alpha = -0.1;
                 this.scene.tweens.add({
                     targets: [this.blackScreen],
-                    duration: 4850,
+                    duration: 5250,
                     alpha: 0.75,
                     ease: "Cubic.easeIn",
                     onComplete: () => {
@@ -951,9 +964,9 @@ class GameFinal {
                     onComplete: () => {
                         this.scene.tweens.add({
                             targets: [maw],
-                            duration: 4500,
-                            scaleX: 3.4,
-                            scaleY: 3.4,
+                            duration: 5000,
+                            scaleX: 3.5,
+                            scaleY: 3.5,
                             alpha: 2,
                             ease: "Cubic.easeIn"
                         });

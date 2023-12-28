@@ -134,6 +134,11 @@ let furnitureDialog = {
             {speaker: ' ', text: "   The TV is off to save energy••.•••••••\n   Not like the news was good anyway."},
         ]
     },
+    tvOff2: {
+        speech: [
+            {speaker: ' ', text: "   You never did trust what was on TV anyways."},
+        ]
+    },
     tvCrack1: {
         speech: [
             {speaker: ' ', text: "   Got to save energy••••••••••••.•••••••••••.••••••••••\n   Wait was that crack always there?"},
@@ -146,15 +151,60 @@ let furnitureDialog = {
     },
     tvCrack3: {
         speech: [
-            {speaker: ' ', text: "   I could try turning it on anyways\n   to see what would happen."},
+            {speaker: ' ', text: "   I could try turning it on anyways to see\n   what would happen."},
         ]
     },
     tvCrack4: {
         speech: [
-            {speaker: ' ', forceProgress: true, text: "   The TV is most definitely••••••••••••• absolutely••••••••••••• brok•••••••••••••••••••••••••••••••••••••••••••", data: {property: "tvSceneThreeEnded", value: "true"}},
+            {speaker: ' ', forceProgress: true, text: "   The TV is most definitely••••••••••••• absolutely••••••••••••• brok•••••••", data: {property: "tvSceneThreeEnded", value: "true"}},
             {speaker: ' ', instant: true, text: "   The TV is most definitely absolutel̶y̷ ̶b̸r̴o̵k̶", publish: "tvJumpscare"},
         ]
     },
+    turnOffTV: {
+        speech: [
+            {speaker: ' ', text: "   The TV is screaming."},
+        ],
+        branches: [
+            {text: "Turn it on", targetNode: "tvAlreadyOn"},
+            {text: "Turn it off", targetNode: "tvCantTurnOff"},
+            {text: "Break the TV", targetNode: "tvBreak"},
+        ]
+    },
+    tvAlreadyOn: {
+        speech: [
+            {speaker: ' ', text: "   The TV is already on."},
+        ],
+        branches: [
+            {text: "Turn it off", targetNode: "tvCantTurnOff"},
+            {text: "Break the TV", targetNode: "tvBreak"},
+        ]
+    },
+    tvCantTurnOff: {
+        speech: [
+            {speaker: ' ', text: "   You press the off button.\n   The TV is still screaming."},
+        ],
+        branches: [
+            {text: "Turn it on", targetNode: "tvAlreadyOn"},
+            {text: "Turn it off", targetNode: "tvCantTurnOff2"},
+            {text: "Break the TV", targetNode: "tvBreak"},
+        ]
+    },
+    tvCantTurnOff2: {
+        speech: [
+            {speaker: ' ', text: "  You press the off button again.\n  ...The button might be broken."},
+        ],
+        branches: [
+            {text: "Turn it on", targetNode: "tvAlreadyOn"},
+            {text: "Turn it off", targetNode: "tvCantTurnOff"},
+            {text: "Break the TV", targetNode: "tvBreak"},
+        ]
+    },
+    tvBreak: {
+        speech: [
+            {speaker: ' ', text: "   You break the TV.•••••••••••\n   It stops screaming.••••••••••••••••••••\n   You never liked television anyways.••••••", publish: 'tvSmash'},
+        ]
+    },
+
     tvCrackEnd: {
         speech: [
             {speaker: ' ', text: "   I'm not touching that TV again."},
@@ -271,7 +321,7 @@ let furnitureDialog = {
         speech: [
             {speaker: "", text: "   You lock the door shut."},
             {speaker: "", text: "   The scratching noises stop.", publish: "lockScratchDoor"},
-            {speaker: "Ethan", face: "ethan_sad.png", text: "Aw it really wanted to come in.", publish: 'ethanInfluence', param: -1},
+            {speaker: "Ethan", face: "ethan_sad.png", text: "Aw it really wanted to come in.", publish: 'EthanInfluence', param: -1},
             {speaker: "Juan", face: "juan_normal.png", text: "You don't know what's out there.\nIt could've been dangerous."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Nah the door's not dangerous.••••••••••••••••\n.••••••••.•••••••It's the windows you gotta watch out for."},
             {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuietSprawl'},
@@ -302,7 +352,7 @@ let furnitureDialog = {
         speech: [
             {speaker: "", text: "   You lock the door shut."},
             {speaker: "", text: "   The scratching noises stop.", publish: "lockScratchDoor"},
-            {speaker: "Ethan", face: "ethan_sad.png", text: "Aw it.•••.•••.••• wanted to come in.", publish: 'ethanInfluence', param: -1},
+            {speaker: "Ethan", face: "ethan_sad.png", text: "Aw it.•••.•••.••• wanted to come in.", publish: 'EthanInfluence', param: -1},
             {speaker: "Juan", face: "juan_normal.png", text: "You don't know what's out there.\nIt could've been dangerous."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Door•• wasn't•• dangerous.•••••••••\n.••••••••.•••••••Gotta watch out...•••••••• windows."},
             {speaker: "Juan", face: "juan_normal.png", text: "windows...?", publish: 'radioTempQuietSprawl'},
@@ -314,6 +364,16 @@ let furnitureDialog = {
         ]
     },
 
+
+    BackdoorActTemporary: {
+        speech: [
+            {speaker: '', text: "TODO: Implement gameplay for fixing generator.\nFix generator for now?"},
+        ],
+        branches: [
+            {text: "Yes", targetNode: "BackdoorActTemporaryFixed"},
+            {text: "Not yet"},
+        ]
+    },
     BackdoorActTemporaryFixed: {
         speech: [
             {speaker: '', text: " (generator magically fixed)", publish: "generatorFixed", param: 99},
@@ -351,7 +411,7 @@ let furnitureDialog = {
     },
     GravestoneClickedBad: {
         speech: [
-            {speaker: "",  text: "(You feel a sense of sadness when near this gravestone)"},
+            {speaker: "",  text: "(You feel a sense of sadness when near\nthis gravestone)"},
         ]
     },
 

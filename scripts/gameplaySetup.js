@@ -144,8 +144,8 @@ function clickCredits() {
         }
     });
     globalObjects.closeCreditsButton.setScale(500, 500);
-    globalObjects.creditsText = PhaserScene.add.text(40, 40, 'Game built by Maxim Tsai\nWriting and story by Rowa Skipson\n');
-    globalObjects.creditsText.setFontSize(26);
+    globalObjects.creditsText = PhaserScene.add.text(40, 40, 'Programming and stick figure art by Maxim Tsai\n\nWriting and story by Rowa Skipson\n\nFinal scene art by Theresa Kao.');
+    globalObjects.creditsText.setFontSize(23);
 
 }
 
@@ -414,14 +414,14 @@ function realGameStart() {
             setTimeout(() => {
                 console.log(Date.now() - time);
                 darkGloom.setAlpha(1);
+                PhaserScene.tweens.add({
+                    targets: globalObjects.indoorRain,
+                    volume: 0.25,
+                    duration: 1500
+                });
                 setTimeout(() => {
                     console.log(Date.now() - time);
                     darkGloom.setAlpha(0.8);
-                    PhaserScene.tweens.add({
-                        targets: globalObjects.indoorRain,
-                        volume: 0.35,
-                        duration: 1000
-                    });
                     setTimeout(() => {
                         fakeBaseOverlay.setScale(1.1, 1);
                         fakeBase.setScale(1.1, 1);
@@ -443,6 +443,7 @@ function realGameStart() {
                                 fakeBase.destroy();
                                 setupCharacters();
                                 setRadioMusic('guitarboogieshuffle', 0.75);
+                                runMusicNote();
                                 globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0.01, true);
                                 globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0.01, true);
                                 enableDinerButtons();
@@ -461,7 +462,7 @@ function realGameStart() {
 
 
 function setupCharacters() {
-    gameCharacters.caspar = PhaserScene.add.image(-1132, gameConsts.halfHeight + 120, 'characters', 'caspar1.png').setDepth(11);
+    gameCharacters.caspar = PhaserScene.add.image(-1163, gameConsts.halfHeight + 126, 'characters', 'caspar1.png').setDepth(11);
     gameCharacters.bruna = PhaserScene.add.image(-617, gameConsts.halfHeight + 134, 'characters', 'bruna1.png').setDepth(11);
     gameCharacters.maggie = PhaserScene.add.image(370, gameConsts.halfHeight - 25, 'characters', 'maggie1.png').setDepth(11);
     gameCharacters.edith = PhaserScene.add.image(1085, gameConsts.halfHeight + 117, 'characters', 'edith1.png').setDepth(11);
@@ -563,12 +564,12 @@ function runIntroSequence() {
     addToShakeObjects(globalObjsTemp.rainForeground);
 
     globalObjsTemp.skipBox = PhaserScene.add.image(gameConsts.width, 210, 'blackPixel').setScale(146, 15).setOrigin(1, 1);
-    globalObjsTemp.skipBox.setPosition(gameConsts.width - 10, gameConsts.height - 18);
+    globalObjsTemp.skipBox.setPosition(gameConsts.width, gameConsts.height - 12);
     globalObjsTemp.skipBox.alpha = 0;
     globalObjsTemp.skipBox.setDepth(999);
 
-    globalObjsTemp.skipText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 40, 'PRESS SPACE TO SKIP INTRO');
-    globalObjsTemp.skipText.setFontSize(18);
+    globalObjsTemp.skipText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 36, 'CLICK TO SKIP INTRO');
+    globalObjsTemp.skipText.setFontSize(20);
     globalObjsTemp.skipText.setAlign('right');
     globalObjsTemp.skipText.setOrigin(1, 0);
     globalObjsTemp.skipText.alpha = 0;
@@ -585,10 +586,10 @@ function runIntroSequence() {
             alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.1
         },
         press: {
-            alpha: 0.12
+            alpha: 0.2
         },
         disable: {
             alpha: 0.001
@@ -601,7 +602,7 @@ function runIntroSequence() {
     PhaserScene.tweens.add({
         delay: 500,
         targets: [globalObjsTemp.skipText, globalObjsTemp.skipBox],
-        alpha: 0.7,
+        alpha: 0.65,
         ease: 'Cubic.easeInOut',
         duration: 1200
     });
@@ -794,6 +795,7 @@ function girlsMoveAwayFromDoor() {
         let edithOrigButtonPosY = globalObjects.diner.EdithButton.getPosY();
         globalObjects.diner.EdithButton.setPos(EdithFinalPos, globalObjects.diner.EdithButton.getPosY() - 9999);
         // gameCharacters.edith
+        gameCharacters.bruna.setFrame('bruna1_worry.png');
         globalObjects.scratchSound = playSound('scratchsound', 1, true);
 
         PhaserScene.tweens.add({

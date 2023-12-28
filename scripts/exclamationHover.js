@@ -4,7 +4,7 @@ class ExclamationHover {
         this.image = this.scene.add.image(0, -9999, 'misc', 'chat_icon.png');
         this.image.scrollFactorX = 0; this.image.scrollFactorY = 0;
         this.image.alpha = 0;
-        this.image.setOrigin(0.5, 0.5);
+        this.image.setOrigin(0.5, 0.25);
         this.image.setDepth(100);
         messageBus.subscribe("pointerMove", this.setPosition.bind(this));
     }

@@ -5,6 +5,8 @@ let config = {
         width: 720,
         height: 640,
         autoRound: true,
+        mode: Phaser.Scale.FIT,
+        autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     render: {
         // Leave on to prevent pixelated graphics
@@ -192,6 +194,7 @@ function onPreloadComplete (scene)
 function onLoadComplete(scene) {
     initializeSounds(scene);
     setupGame(scene);
+    // setupFPS(scene);
 }
 
 let shakingObjects = [];
@@ -202,7 +205,25 @@ function addToShakeObjects(obj) {
     shakingObjects.push(obj);
 }
 
+function setupFPS(scene) {
+    globalObjects.fpsBack = scene.add.sprite(30, 28, 'blackPixel').setDepth(10001).setScale(12, 10);
+    globalObjects.fpsBack.scrollFactorX = 0; globalObjects.fpsBack.scrollFactorY = 0;
+    globalObjects.fps = scene.add.text(20, 20, '0').setDepth(10002);
+    globalObjects.fps.scrollFactorX = 0; globalObjects.fps.scrollFactorY = 0;
+    gameVars.fpsCount = 0;
+    gameVars.elapsedFPS = 0;
+}
 function update(time, delta) {
+    // if (globalObjects.fps) {
+    //     gameVars.fpsCount++;
+    //     gameVars.elapsedFPS += delta;
+    //     if (gameVars.fpsCount >= 60) {
+    //         let fps = 60000 / gameVars.elapsedFPS;
+    //         globalObjects.fps.setText(Math.floor(fps))
+    //         gameVars.fpsCount = 0;
+    //         gameVars.elapsedFPS = 0;
+    //     }
+    // }
     // check mouse
     if (timeUpdateCounter >= timeUpdateCounterMax) {
         timeUpdateCounter = 0;

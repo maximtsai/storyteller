@@ -4,7 +4,7 @@
 			"image": "sprites/misc.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 242,
+				"w": 247,
 				"h": 257
 			},
 			"scale": 1,
@@ -66,10 +66,31 @@
 						"h": 50
 					},
 					"frame": {
-						"x": 203,
-						"y": 1,
+						"x": 56,
+						"y": 203,
 						"w": 38,
 						"h": 50
+					}
+				},
+				{
+					"filename": "notegood.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 43,
+						"h": 70
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 41,
+						"h": 70
+					},
+					"frame": {
+						"x": 203,
+						"y": 1,
+						"w": 41,
+						"h": 70
 					}
 				},
 				{
@@ -88,7 +109,7 @@
 					},
 					"frame": {
 						"x": 203,
-						"y": 53,
+						"y": 73,
 						"w": 37,
 						"h": 104
 					}
@@ -108,31 +129,10 @@
 						"h": 43
 					},
 					"frame": {
-						"x": 56,
+						"x": 96,
 						"y": 203,
 						"w": 48,
 						"h": 43
-					}
-				},
-				{
-					"filename": "invalid.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 20,
-						"h": 20
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 20,
-						"h": 20
-					},
-					"frame": {
-						"x": 203,
-						"y": 159,
-						"w": 20,
-						"h": 20
 					}
 				},
 				{
@@ -150,7 +150,7 @@
 						"h": 23
 					},
 					"frame": {
-						"x": 106,
+						"x": 146,
 						"y": 203,
 						"w": 100,
 						"h": 23
@@ -171,10 +171,31 @@
 						"h": 23
 					},
 					"frame": {
-						"x": 106,
+						"x": 146,
 						"y": 203,
 						"w": 100,
 						"h": 23
+					}
+				},
+				{
+					"filename": "invalid.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 20,
+						"h": 20
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 20,
+						"h": 20
+					},
+					"frame": {
+						"x": 203,
+						"y": 179,
+						"w": 20,
+						"h": 20
 					}
 				}
 			]
@@ -183,6 +204,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:7de8e92e4881f5d2c24ea7aaf3338a71:a0e2c783cd4e1534acc46ab6a54f44ba:612dcbdb08476a0aba06aeca925f16b2$"
+		"smartupdate": "$TexturePacker:SmartUpdate:c57b59f94ed69db5350be59ac6c6fe95:25933df957a8dd323e1e6311aed2c8a3:612dcbdb08476a0aba06aeca925f16b2$"
 	}
 }

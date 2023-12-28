@@ -234,7 +234,6 @@ class DialogDisplay {
     }
 
     disableClickNext() {
-        console.log("Disable click next")
         this.dialogButton.setState(DISABLE);
     }
 
@@ -325,7 +324,6 @@ class DialogDisplay {
         setTimeout(() => {
             if (!this.starsActive) {
                 // Hide em all
-                console.log("hide em stars")
                 let fadeDur = this.lastSpeaker == this.dialogSpeaker.text ? 1000 : 25;
 
                 this.hideStarAnim = this.scene.tweens.add({
@@ -555,10 +553,8 @@ class DialogDisplay {
                 this.speakerStars[i].visible = true;
                 if (this.speakerStars[i].alpha < 0.5) {
                     if (i < oldNumStars) {
-                        console.log(i, " is old star");
                         this.speakerStars[i].setAlpha(0.5);
                     } else {
-                        console.log(i, " is new animated star");
                         gainedStar = true;
                         // animate to visible
                         this.speakerStars[i].setScale(0.9);

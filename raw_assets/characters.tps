@@ -215,7 +215,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>0.8</double>
+                <double>0.72</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -539,6 +539,8 @@
             </struct>
             <key type="filename">characters/tv1.png</key>
             <key type="filename">characters/tv2.png</key>
+            <key type="filename">characters/tv_broken.png</key>
+            <key type="filename">characters/tv_cracked.png</key>
             <key type="filename">characters/tv_off.png</key>
             <key type="filename">characters/tv_red.png</key>
             <key type="filename">characters/tv_shake1.png</key>

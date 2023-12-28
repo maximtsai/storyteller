@@ -226,7 +226,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">backgrounds/bgout3x.png</key>
+            <key type="filename">backgrounds/bgshed2.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -235,9 +235,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>375,175,750,350</rect>
+                <rect>225,169,450,337</rect>
                 <key>scale9Paddings</key>
-                <rect>375,175,750,350</rect>
+                <rect>225,169,450,337</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

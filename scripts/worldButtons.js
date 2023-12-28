@@ -11,10 +11,10 @@ function createWorldButtons() {
             alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -43,13 +43,13 @@ function createWorldButtons() {
             y: 390,
             scaleX: 95,
             scaleY: 170,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -78,13 +78,13 @@ function createWorldButtons() {
             y: 380,
             scaleX: 100,
             scaleY: 180,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -113,13 +113,13 @@ function createWorldButtons() {
             y: 390,
             scaleX: 200,
             scaleY: 200,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -176,13 +176,13 @@ function createWorldButtons() {
             y: 420,
             scaleX: 110,
             scaleY: 170,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -211,13 +211,13 @@ function createWorldButtons() {
             y: 360,
             scaleX: 100,
             scaleY: 200,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -245,13 +245,13 @@ function createWorldButtons() {
             y: 315,
             scaleX: 115,
             scaleY: 260,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -283,13 +283,13 @@ function createWorldButtons() {
             y: 2410,
             scaleX: 110,
             scaleY: 215,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -319,10 +319,10 @@ function createWorldButtons() {
             alpha: 0.1
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -348,16 +348,16 @@ function createWorldButtons() {
             y: 2540,
             scaleX: 60,
             scaleY: 75,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.0001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.0001
         },
         disable: {
-            alpha: 0.001
+            alpha: 0.0001
         },
         onHover: () => {
             globalObjects.exclamation.setAlpha(0.75);
@@ -381,13 +381,13 @@ function createWorldButtons() {
             y: 4355,
             scaleX: 110,
             scaleY: 205,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -413,13 +413,13 @@ function createWorldButtons() {
             y: 4510,
             scaleX: 75,
             scaleY: 70,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -445,13 +445,13 @@ function createWorldButtons() {
             y: 80,
             scaleX: 100,
             scaleY: 80,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -471,6 +471,9 @@ function createWorldButtons() {
     globalObjects.diner.TVButton.setDepth(1);
     globalObjects.diner.TVButton.setState(DISABLE);
 
+    globalObjects.musicNote = PhaserScene.add.sprite(800, 340, 'misc', 'notegood.png').setDepth(1);
+    globalObjects.musicNote.startX = globalObjects.musicNote.x; globalObjects.musicNote.startY = globalObjects.musicNote.y;
+
     globalObjects.diner.RadioButton = new Button({
         normal: {
             atlas: "pixels",
@@ -479,13 +482,13 @@ function createWorldButtons() {
             y: 385,
             scaleX: 80,
             scaleY: 90,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.05
+            alpha: 0.001
         },
         press: {
-            alpha: 0.12
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -504,6 +507,78 @@ function createWorldButtons() {
     });
     globalObjects.diner.RadioButton.setDepth(1);
     globalObjects.diner.RadioButton.setState(DISABLE);
+}
+
+function runMusicNote() {
+    let distToRadio = 400 - gameVars.cameraPosX;
+    let randOffsetX = (Math.random() - 0.5) * 50;
+    let horizMove = 0;
+    if (Math.abs(distToRadio) < 180) {
+        horizMove = 0;
+    } else {
+        if (distToRadio > 0) {
+            horizMove = (distToRadio - 180) / 2;
+        } else {
+            horizMove = (distToRadio + 180) / 2;
+        }
+    }
+    horizMove += randOffsetX * 1.25;
+
+    globalObjects.musicNote.x = globalObjects.musicNote.startX - horizMove * 0.4;
+    globalObjects.musicNote.y = globalObjects.musicNote.startY;
+    globalObjects.musicNote.setScale(0.4);
+    let moveAmt = Math.max(-70, Math.min(70, -horizMove));
+    let finalScale = 0.3;
+    if (globalObjsTemp.radioMusic) {
+        finalScale += globalObjsTemp.radioMusic.volume * 0.5;
+    }
+    PhaserScene.tweens.add({
+        targets: globalObjects.musicNote,
+        scaleX: finalScale,
+        scaleY: finalScale,
+        ease: 'Cubic.easeOut',
+        duration: 200,
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                targets: globalObjects.musicNote,
+                scaleX: 0,
+                scaleY: 0,
+                ease: 'Quart.easeIn',
+                duration: 900,
+            });
+        }
+    });
+    PhaserScene.tweens.add({
+        targets: globalObjects.musicNote,
+        y: "-=60",
+        x: "+=" + moveAmt,
+        ease: 'Cubic.easeOut',
+        duration: 1100,
+        completeDelay: 400,
+        onComplete: () => {
+            if (!gameState.powerOff && globalObjsTemp.radioMusic.volume > 0.2) {
+                runMusicNote()
+            } else {
+                delayMusicNote()
+            }
+        }
+    });
+}
+
+function delayMusicNote() {
+    PhaserScene.tweens.add({
+        targets: globalObjects.musicNote,
+        scaleX: 0,
+        scaleY: 0,
+        duration: 1000,
+        onComplete: () => {
+            if (!gameState.powerOff && globalObjsTemp.radioMusic.volume > 0.2) {
+                runMusicNote()
+            } else {
+                delayMusicNote()
+            }
+        }
+    });
 }
 
 function enableDinerButtons() {
@@ -1071,10 +1146,8 @@ function clickDog() {
 
 function clickExit() {
     if (gameState.currentScene == 1) {
-
-        gameState.MaggieSaved = true;
-        messageBus.publish('forceGoodEnd');
-        // dialogManager.showDialogNode('ExitNoReason');
+        // messageBus.publish('forceGoodEnd');
+        dialogManager.showDialogNode('ExitNoReason');
     } else if (gameState.currentScene == 2) {
         dialogManager.showDialogNode('ExitSceneTwo');
     } else if (gameState.currentScene == 3) {
@@ -1436,16 +1509,19 @@ function clickTV() {
                 dialogManager.showDialogNode('tvPowerless');
             }
         } else {
-            dialogManager.showDialogNode('tvOff');
+            if (gameState.seenEldritchEthan) {
+                dialogManager.showDialogNode('tvOff2');
+            } else {
+                dialogManager.showDialogNode('tvOff');
+            }
         }
     } else if (gameState.currentScene == 3) {
         if (gameState.goodEndLocked) {
             dialogManager.showDialogNode('radioDone');
-        } else if (gameState.tvSceneThreeEnded) {
+        } else if (gameState.tvSmashed) {
             dialogManager.showDialogNode('tvCrackEnd');
-        } else if (gameState.tvScreaming) {
-            // stop tv screaming
-            gameState.tvSceneThreeEnded = true;
+        } else if (gameState.tvSceneThreeEnded) {
+            // do nothing
         } else {
             let tvThreeNum = gameState.tvThreeNum || 1;
             dialogManager.showDialogNode('tvCrack' + tvThreeNum);
@@ -1464,7 +1540,7 @@ function clickIndoor() {
         globalObjects.indoorRain.setVolume(1);
         // setRadioVolume(0.75);
     } else {
-        globalObjects.indoorRain.setVolume(0.35);
+        globalObjects.indoorRain.setVolume(0.25);
         setRadioMusic('radiostatic2', 0.4);
     }
     playSound('dooropen', 0.8);

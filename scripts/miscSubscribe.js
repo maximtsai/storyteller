@@ -13,6 +13,7 @@ class MiscSubscribe {
             messageBus.subscribe("tvemergency", this.tvemergency.bind(this)),
             messageBus.subscribe("tvemergencyEnd", this.tvemergencyEnd.bind(this)),
             messageBus.subscribe("tvJumpscare", this.tvJumpscare.bind(this)),
+            messageBus.subscribe("tvSmash", this.tvSmash.bind(this)),
 
             messageBus.subscribe("generatorFixed", this.generatorFixed.bind(this)),
 
@@ -87,14 +88,14 @@ class MiscSubscribe {
         this.scene.tweens.add({
             targets: gameCharacters.caspar,
             duration: 3000,
-            x: gameCharacters.backdoor.x,
+            x: gameCharacters.backdoor.x - 150,
             ease: 'Quad.easeInOut',
             onComplete: () => {
                 this.scene.tweens.add({
                     targets: [gameCharacters.backdoor],
                     scaleX: 1,
                     ease: 'Cubic.easeIn',
-                    duration: 100,
+                    duration: 1,
                     onComplete: () => {
                         this.scene.tweens.add({
                             targets: gameCharacters.caspar,
@@ -121,7 +122,7 @@ class MiscSubscribe {
         this.scene.tweens.add({
             targets: gameCharacters.caspar,
             duration: 800,
-            x: gameCharacters.backdoor.x - 150,
+            x: gameCharacters.backdoor.x - 170,
             ease: 'Cubic.easeOut',
             onComplete: () => {
                 shiftOver(gameCharacters.backdoor.x, true);
@@ -165,7 +166,7 @@ class MiscSubscribe {
         buttonManager.disableAllInput();
         this.scene.tweens.add({
             targets: [gameCharacters.caspar],
-            x: gameCharacters.backdoor.x - 145,
+            x: gameCharacters.backdoor.x - 165,
             y: "-=40",
             scaleX: 0.95,
             scaleY: 0.95,
@@ -295,7 +296,7 @@ class MiscSubscribe {
             delay: 500,
             y: gameConsts.halfHeight + 55,
             scaleX: -0.92,
-            scaleY: -0.92,
+            scaleY: 0.92,
             ease: 'Cubic.easeInOut',
             duration: 1500,
         });
@@ -326,6 +327,7 @@ class MiscSubscribe {
     }
 
     windowBreak() {
+        gameCharacters.tv.setFrame('tv_cracked.png');
         gameState.currentScene = 3;
         resetRadioPosition(206);
         this.updateRadioChannels();
@@ -347,7 +349,7 @@ class MiscSubscribe {
         setTimeout(() => {
             PhaserScene.tweens.add({
                 targets: globalObjects.indoorRain,
-                volume: 0.85,
+                volume: 0.8,
                 duration: 1000
             });
             showExclamation();
@@ -498,7 +500,7 @@ class MiscSubscribe {
             onComplete: () => {
                 PhaserScene.tweens.add({
                     targets: globalObjects.indoorRain,
-                    volume: 0.45,
+                    volume: 0.4,
                     duration: 1000
                 });
                 playSound('hammermany');
@@ -699,7 +701,7 @@ class MiscSubscribe {
         } else {
             gameCharacters.sprawl = PhaserScene.add.sprite(-100, -100, 'lowq', 'sprawl.png').setDepth(2).setScale(1.5, 1.5).setOrigin(0.5, 0).setBlendMode(Phaser.BlendModes.MULTIPLY).setAlpha(0.1);
         }
-        gameCharacters.sprawl.setAlpha(0.1);
+        gameCharacters.sprawl.setAlpha(0.05);
         setTimeout(() => {
             gameCharacters.sprawl.setAlpha(0.005);
         }, 10);
@@ -858,8 +860,8 @@ class MiscSubscribe {
                     globalObjsTemp.blackEye.scrollFactorX = 0;
                     this.scene.tweens.add({
                         targets: globalObjsTemp.blackEye,
-                        scaleX: 0.55,
-                        scaleY: 0.55,
+                        scaleX: 0.65,
+                        scaleY: 0.65,
                         ease: 'Quad.easeOut',
                         duration: 750,
                         onComplete: () => {
@@ -1040,7 +1042,7 @@ class MiscSubscribe {
         this.scene.tweens.add({
             targets: globalObjects.indoorRain,
             duration: 400,
-            volume: 0.4,
+            volume: 0.32,
         });
         setRadioVolume(0.7);
         globalObjsTemp.gloom.setAlpha(0);
@@ -1049,7 +1051,7 @@ class MiscSubscribe {
     }
 
     tvemergency() {
-        playSound('emergency');
+        playSound('emergency', 0.85);
         setRadioVolume(0);
         showExclamation();
     }
@@ -1059,9 +1061,32 @@ class MiscSubscribe {
         gameVars.emergencyBroadcasted = true;
     }
 
+    tvSmash() {
+        gameCharacters.tv.setFrame('tv_broken.png');
+        globalObjsTemp.tvScreamSound.stop();
+        gameState.tvSmashed = true;
+        playSound('break', 1);
+
+    }
     tvJumpscare() {
-        playSound('emergency');
-        gameState.tvScreaming = true;
+        gameCharacters.tv.setFrame('tv_red.png');
+        globalObjsTemp.tvScreamSound = playSound('emergency', 1, true);
+        gameState.tvSceneThreeEnded = true;
+
+        if (globalObjsTemp.black) {
+            globalObjsTemp.black.setAlpha(0.4)
+            setTimeout(() => {
+                globalObjsTemp.black.setAlpha(0);
+                setTimeout(() => {
+                    globalObjsTemp.black.setAlpha(1);
+                    setTimeout(() => {
+                        globalObjsTemp.black.setAlpha(0);
+                    }, 10);
+                }, 1500);
+            }, 10);
+        }
+
+        dialogManager.showDialogNode('turnOffTV');
     }
 
     playSound(sound) {
