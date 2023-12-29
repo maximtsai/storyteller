@@ -213,7 +213,7 @@ let furnitureDialog = {
     },
     tvBreak: {
         speech: [
-            {speaker: ' ', text: "   You break the TV.•••••••••••\n   It stops screaming.••••••••••••••••••••\n   You never liked television anyways.••••••", publish: 'tvSmash'},
+            {speaker: ' ', text: "   You break the TV.••••••••••••••••\n   ...•••••••••••••••\n   You never liked television anyways.••••••", publish: 'tvSmash'},
         ]
     },
 

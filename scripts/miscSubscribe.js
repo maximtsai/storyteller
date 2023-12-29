@@ -788,7 +788,7 @@ class MiscSubscribe {
         globalObjsTemp.eldritchBlack.visible = false;
 
         globalObjsTemp.eyeShakeAmt = 1;
-        globalObjsTemp.eyeEldritch = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'characters', 'blackCircle.png').setDepth(10000).setScale(0.39);
+        globalObjsTemp.eyeEldritch = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'characters', 'blackCircle.png').setDepth(10000).setScale(0.41);
         globalObjsTemp.eyeEldritch.startX = globalObjsTemp.eyeEldritch.x; globalObjsTemp.eyeEldritch.startY = globalObjsTemp.eyeEldritch.y;
         globalObjsTemp.eyeEldritch.velX = 0; globalObjsTemp.eyeEldritch.velY = 0;
         globalObjsTemp.eyeEldritch.scrollFactorX = 0;
@@ -857,7 +857,7 @@ class MiscSubscribe {
                             globalObjsTemp.eyeEldritchCorner1 = null;
                         }
                     });
-                    globalObjsTemp.blackEye = PhaserScene.add.image(globalObjsTemp.eyeEldritch.x, globalObjsTemp.eyeEldritch.y, 'characters', 'blackEye.png').setDepth(10000).setScale(0.4625);
+                    globalObjsTemp.blackEye = PhaserScene.add.image(globalObjsTemp.eyeEldritch.x, globalObjsTemp.eyeEldritch.y, 'characters', 'blackEye.png').setDepth(10000).setScale(0.45);
                     globalObjsTemp.blackEye.scrollFactorX = 0;
                     this.scene.tweens.add({
                         targets: globalObjsTemp.blackEye,
@@ -881,7 +881,7 @@ class MiscSubscribe {
                                         realisticEye.x = gameConsts.halfWidth; realisticEye.y = gameConsts.halfHeight;
                                         realisticEye.setFrame('spook1.jpg')
                                         realisticEye.visible = true; realisticEye.alpha = 1;
-                                        let startScale = 3;
+                                        let startScale = 3.05;
                                         realisticEye.setScale(startScale);
                                         setTimeout(() => {
                                             realisticEye.setFrame('spook2.jpg')
@@ -918,7 +918,7 @@ class MiscSubscribe {
                                                 }, 30);
                                             }, 30);
                                         }, 30);
-                                    }, 3500);
+                                    }, 3200);
                                 }, 10);
                             }, 1800);
                             this.scene.tweens.add({
@@ -935,15 +935,15 @@ class MiscSubscribe {
                             });
                             this.scene.tweens.add({
                                 targets: [globalObjsTemp.blackEye],
-                                scaleX: 3,
-                                scaleY: 3,
+                                scaleX: 2.95,
+                                scaleY: 2.95,
                                 ease: 'Cubic.easeIn',
                                 duration: 6000,
                             });
                             this.scene.tweens.add({
                                 targets: [globalObjsTemp.eyeEldritch],
-                                scaleX: 1.48,
-                                scaleY: 1.48,
+                                scaleX: 1.5,
+                                scaleY: 1.5,
                                 ease: 'Cubic.easeIn',
                                 duration: 5950,
                                 onComplete: () => {

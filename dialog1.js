@@ -356,7 +356,7 @@ let dialogList1 = {
         speech: [
             {speaker: "Maggie", face: "maggie_normal.png", text: "This song...\nThis was the song we danced to on\nour honeymoon."},
             {speaker: "Maggie", face: "maggie_sad.png", text: "I was so uncertain about our future back\nthen."},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "Folks weren't so accepting those days when\nthey saw a kindly gentleman like him\ncourting an out of place woman\nlike me."},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "Folks weren't so accepting those days\nwhen they saw a kindly gentleman like\nhim courting an out of place woman\nlike me."},
             {speaker: "Maggie", face: "maggie_reminisce.png", text: "But we took the leap anyways, and I\ndon't think I could have been happier."},
             {speaker: "You", text: "You ready to take another leap now?"},
             {speaker: "You", text: "There's a lot of tired, hungry people headed\nto Hope Springs. They could use someone with\na big friendly smile."},
@@ -1930,7 +1930,7 @@ let dialogList1 = {
             {speaker: "You", text: "Yeah, some of the other diners are heading out\nwith me too."},
             {dependentState: "brunaInterview", speaker: "You", text: "And I'm sure there will be plenty of interesting\npeople to interview once we all get to\nHope Springs."},
             {dependentState: "brunaInterview", speaker: "Bruna", face: "bruna_normal.png", text: "Getting to talk to more locals would\nbe nice.", publish: "BrunaInfluence"},
-            {dependentState: "DogSaved", speaker: "You", text: "We're bringing the dog too.", publish: "BrunaInfluence"},
+            {dependentState: "DogSaved", speaker: "You", text: "We're bringing the dog too."},
             {speaker: "Bruna", face: "bruna_concern.png", text: "Hmm...", publish: 'showInfluence', onFinish: () => {
                 if (gameState.bruna2ChattedAngry && gameState.BrunaInfluence <= 2) {
                     dialogManager.showDialogNode("Bruna3ExtraRefuse");
@@ -2577,7 +2577,7 @@ let dialogList1 = {
     },
     JuanAct3Leave: {
         speech: [
-            {speaker: "Juan", face: "juan_happy.png", text: "Could've done a better job if I had my\nrip claw steel hammer with me, but\nthis should hold."},
+            {speaker: "Juan", face: "juan_happy.png", text: "Could've done a better job if I had my\nsteel rip claw hammer with me, but\nthis should hold."},
             {speaker: "Juan", face: "juan_normal.png", text: "...I think. "},
             {speaker: "Juan", face: "juan_normal.png", text: "Actually I'm not sure what even broke\nthis window in the first place.\nDon't see a branch or rock anywhere."},
             {dependentState: "invisibleGiant", speaker: "Juan", face: "juan_normal.png", text: "I still think it's ridiculous but...\nmaybe you were onto something about\nthat invisible giant.", publish: "JuanInfluence"},

@@ -516,13 +516,13 @@ function createWorldButtons() {
             y: 110,
             scaleX: 160,
             scaleY: 55,
-            alpha: 0.201
+            alpha: 0.001
         },
         hover: {
-            alpha: 0.101
+            alpha: 0.001
         },
         press: {
-            alpha: 0.101
+            alpha: 0.001
         },
         disable: {
             alpha: 0.001
@@ -1181,8 +1181,9 @@ function clickDog() {
 
 function clickExit() {
     if (gameState.currentScene == 1) {
-        // messageBus.publish('forceGoodEnd');
-        dialogManager.showDialogNode('ExitNoReason');
+        gameState.MaggieSaved = true;
+        messageBus.publish('forceGoodEnd');
+        // dialogManager.showDialogNode('ExitNoReason');
     } else if (gameState.currentScene == 2) {
         dialogManager.showDialogNode('ExitSceneTwo');
     } else if (gameState.currentScene == 3) {
@@ -1241,7 +1242,7 @@ function clickDiner() {
                                 let table = PhaserScene.add.sprite(gameConsts.halfWidth + 4, gameConsts.height - 190, 'characters', 'table.png').setDepth(1);
                                 PhaserScene.tweens.add({
                                     targets: gameCharacters.sign,
-                                    y: "+=380",
+                                    y: "+=330",
                                     rotation: 0.98,
                                     ease: 'Quad.easeIn',
                                     duration: 350,
@@ -1268,7 +1269,6 @@ function clickDiner() {
                             playSound('stopscreech');
                             gameState.signAdjusted = true;
                             PhaserScene.tweens.add({
-                                delay: 1500,
                                 targets: gameCharacters.sign,
                                 rotation: 0.5,
                                 ease: 'Back.easeOut',
@@ -1279,7 +1279,7 @@ function clickDiner() {
                                     globalObjects.diner.DinerButton.setState(NORMAL);
                                 }
                             });
-                        }, 2500);
+                        }, 2000);
                     }
                 });
             }
@@ -1865,10 +1865,13 @@ function exitShed() {
             onComplete: () => {
                 PhaserScene.tweens.add({
                     delay: 300,
-                    alpha: 0.4,
+                    alpha: 0,
+                    scaleX: 0.4,
+                    scaleY: 0.48,
                     targets: globalObjsTemp.dogEyes,
-                    scaleY: 0,
-                    duration: 100,
+                    x: "-=150",
+                    duration: 500,
+                    ease: 'Quad.easeIn',
                     onComplete: () => {
                         globalObjsTemp.dogEyes.destroy();
                     }

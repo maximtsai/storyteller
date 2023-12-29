@@ -197,11 +197,11 @@ class GameFinal {
         globalObjsTemp.epilogueBG.scrollFactorX = 0;
         globalObjsTemp.epilogueBG.scrollFactorY = 0;
         this.showSlideshow(globalObjsTemp.epilogueBG, [
-            {image: 'scene1b.png', delay: 1250},
-            {image: 'scene1c.png', delay: 1250},
-            {image: 'scene1d.png', delay: 1000},
-            {image: 'scene1e.png', delay: 750},
-            {image: 'scene1f.png', delay: 750},
+            {image: 'scene1b.png', delay: 1100},
+            {image: 'scene1c.png', delay: 1000},
+            {image: 'scene1d.png', delay: 900},
+            {image: 'scene1e.png', delay: 700},
+            {image: 'scene1f.png', delay: 700},
         ],
             () => {
             // Screenshake
@@ -222,13 +222,12 @@ class GameFinal {
                         duration: 120,
                         x: globalObjsTemp.epilogueBG.x - 6,
                         yoyo: true,
-                        repeat: 13,
+                        repeat: 12,
                         onComplete: () => {
                             this.showFinaleMonsterErupt();
                         }
                     });
-                }, 1000);
-
+                }, 300);
             }
             );
     }
@@ -258,39 +257,45 @@ class GameFinal {
             targets: [globalObjsTemp.epilogueMonster],
             scaleX: 1,
             scaleY: 1.1,
-            duration: 2100,
-            ease: 'Cubic.easeOut',
+            duration: 1900,
+            ease: 'Quad.easeOut',
             onComplete: () => {
                 globalObjsTemp.epilogueMonster.destroy();
-                globalObjsTemp.epilogueBG.setScale(1.08, 1.08);
+                globalObjsTemp.epilogueBG.setScale(1.02, 1.02);
                 globalObjsTemp.epilogueBG.x = gameConsts.halfWidth;
                 globalObjsTemp.epilogueBG.y = gameConsts.halfHeight - 5;
                 globalObjsTemp.epilogueBG.setFrame('scene2a.png');
-                this.scene.tweens.add({
-                    targets: globalObjsTemp.epilogueBG,
-                    duration: 1200,
-                    scaleX: 1,
-                    scaleY: 1,
-                    ease: 'Quad.easeOut',
-                });
-                this.scene.tweens.add({
-                    targets: globalObjsTemp.epilogueBG,
-                    duration: 350,
-                    y: globalObjsTemp.epilogueBG.y + 10,
-                    ease: 'Cubic.easeIn',
-                    yoyo: true,
-                    repeat: 3,
-                    onComplete: () => {
-                        this.showCasparZoomOut();
-                    }
-                });
+                setTimeout(() => {
+                    globalObjsTemp.epilogueBG.setFrame('scene2b.png');
+                    setTimeout(() => {
+                        globalObjsTemp.epilogueBG.setFrame('scene2c.png');
+                        this.scene.tweens.add({
+                            targets: globalObjsTemp.epilogueBG,
+                            duration: 1000,
+                            scaleX: 1,
+                            scaleY: 1,
+                            ease: 'Quad.easeOut',
+                        });
+                        this.scene.tweens.add({
+                            targets: globalObjsTemp.epilogueBG,
+                            duration: 300,
+                            y: globalObjsTemp.epilogueBG.y + 10,
+                            ease: 'Cubic.easeIn',
+                            yoyo: true,
+                            repeat: 3,
+                            onComplete: () => {
+                                this.showCasparZoomOut();
+                            }
+                        });
+                    }, 600);
+                }, 600);
             }
         });
     }
 
     showCasparZoomOut() {
         globalObjsTemp.epilogueBG.y = gameConsts.halfHeight;
-        PhaserScene.cameras.main.setZoom(1.05);
+        PhaserScene.cameras.main.setZoom(1.09);
         globalObjsTemp.GreyBG = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'grey_pixel.png').setDepth(9997).setScale(5000, 1000);
         globalObjsTemp.epilogueBG.setFrame('scene3a.png');
         globalObjsTemp.monsterBG = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 210, 'epilogue', 'monster.png').setDepth(9997).setScale(1.8).setOrigin(0.5, 0.46);
@@ -346,11 +351,11 @@ class GameFinal {
                 PhaserScene.cameras.main.setZoom(1);
                 globalObjsTemp.epilogueBG.setFrame('scene5a.png');
                 this.showSlideshow(globalObjsTemp.epilogueBG, [
-                    {image: 'scene5a.png', delay: 50},
-                    {image: 'scene5b.png', delay: 650},
-                    {image: 'scene5c.png', delay: 650},
-                    {image: 'scene5d.png', delay: 650},
-                    {image: 'scene5e.png', delay: 650},
+                    {image: 'scene5a.png', delay: 20},
+                    {image: 'scene5b.png', delay: 600},
+                    {image: 'scene5c.png', delay: 600},
+                    {image: 'scene5d.png', delay: 600},
+                    {image: 'scene5e.png', delay: 600},
                 ],
                     () => {
                         PhaserScene.tweens.add({
@@ -532,9 +537,9 @@ class GameFinal {
         this.displayedLines.push("\n\nYou finally arrive at the Hope Springs stronghold where a number\nof other survivors are gathered.");
 
         if (gameState.JuanSaved) {
-            this.displayedLines.push("The stronghold is more like\na makeshift camp, but Juan\"s carpentry expertise provides\neveryone with sturdier shelter.");
+            this.displayedLines.push(" The stronghold is more like\na makeshift camp, but Juan\"s carpentry expertise provides\neveryone with sturdier shelter.");
         } else {
-            this.displayedLines.push("The stronghold is more like\na makeshift camp in the chilly wind.");
+            this.displayedLines.push(" The stronghold is more like\na makeshift camp in the chilly wind.");
         }
 
         if (gameState.MaggieSaved) {
@@ -542,7 +547,7 @@ class GameFinal {
             this.theEndTitle.setText('Ending #6: Future Hope');
         } else if (gameState.maggieSandwichEnd) {
             this.displayedLines.push("\n\nThe stronghold's rations are stale and cold, so you bring out\nMaggie's sandwiches and dig in.");
-            this.displayedLines.push("\nMaggie's sandwiches are delicious.");
+            this.displayedLines.push("\n\nMaggie's sandwiches are delicious.");
             this.displayedLines.push("\n...");
             this.displayedLines.push("\nMaggie's sandwiches are gone.••••••••••••••••");
             this.theEndTitle.setText('Ending #5: The Last Tasty Supper');
@@ -569,8 +574,7 @@ class GameFinal {
         globalObjects.diner.CasparButton.destroy();
 
         this.displayedLines[0] = "You exit the diner with everyone on board.";
-        this.displayedLines.push("\n\nMoments after you leave, the diner gets completely destroyed,")
-        this.displayedLines.push("\nbut you all make it out safe.")
+        this.displayedLines.push("\n\nMoments after you leave, the diner gets completely destroyed,\nbut you all make it out safe.")
         this.displayedLines.push("\n\nWith everyone's help, you make it to the Hope Springs Stronghold\nwithout further difficulty.")
         this.displayedLines.push("\n\nThe stronghold is more like a makeshift camp, but Juan's\ncarpentry expertise provides everyone with sturdier shelter.")
         this.displayedLines.push("\n\nBruna's social media posts allow many more refugees to find the\ngrowing camp.")
@@ -587,6 +591,9 @@ class GameFinal {
         let numTotalSaved = gameState.EdithSaved + gameState.EthanSaved + gameState.BrunaSaved + gameState.JuanSaved + gameState.MaggieSaved + gameState.DogSaved;
         if (numTotalSaved === 0) {
             this.displayedLines.push("\n\nYou head out alone into the dark and are never heard from again.")
+            if (gameState.powerOff && gameState.hasBackdoorKey) {
+                this.displayedLines.push("\n\n(You also took Maggie's backdoor keys while leaving everyone\nin the dark. Shame on you.")
+            }
         } else {
             this.displayedLines.push("\n\nYou and your group are never heard from again.")
         }
@@ -610,14 +617,14 @@ class GameFinal {
                     this.restartButton.setState(NORMAL);
                     buttonManager.enableAllInput();
                 }, 1500);
-            }, 2000);
+            }, 1000);
             return;
         }
         let nextLine = this.displayedLines.shift();
         this.showNextText(nextLine);
         setTimeout(() => {
             this.playNextDisplayedLine();
-        }, 2150 + nextLine.length * 28);
+        }, 2080 + nextLine.length * 25);
     }
 
     fadeOut(finishFunc) {
@@ -634,13 +641,13 @@ class GameFinal {
                 targets: [gameVars, globalObjsTemp.radioMusic, globalObjsTemp.radioStatic1, globalObjsTemp.radioStatic2],
                 radioVolume: 0,
                 volume: 0,
-                duration: 1000,
+                duration: 3000,
                 onComplete: () => {
-                    let fullRushIn = playSound('main_full', 0.6, false);
+                    let fullRushIn = playSound('main_full', 0.5, false);
                     this.scene.tweens.add({
                         targets: [fullRushIn],
                         volume: 1,
-                        duration: 1500,
+                        duration: 50,
                         onComplete: () => {
                             if (finishFunc) {
                                 finishFunc.bind(this)();

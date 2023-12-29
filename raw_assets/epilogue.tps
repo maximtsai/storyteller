@@ -204,6 +204,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">epilogue/monster - Copy.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>122,139,243,278</rect>
+                <key>scale9Paddings</key>
+                <rect>122,139,243,278</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">epilogue/monster.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -244,6 +259,22 @@
                 <rect>180,160,360,320</rect>
                 <key>scale9Paddings</key>
                 <rect>180,160,360,320</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/scene2b.png</key>
+            <key type="filename">epilogue/scene2c.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>183,163,365,325</rect>
+                <key>scale9Paddings</key>
+                <rect>183,163,365,325</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
