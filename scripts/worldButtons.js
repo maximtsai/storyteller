@@ -1181,9 +1181,9 @@ function clickDog() {
 
 function clickExit() {
     if (gameState.currentScene == 1) {
-        gameState.MaggieSaved = true;
-        messageBus.publish('forceGoodEnd');
-        // dialogManager.showDialogNode('ExitNoReason');
+        //gameState.MaggieSaved = true;
+        //messageBus.publish('forceGoodEnd');
+        dialogManager.showDialogNode('ExitNoReason');
     } else if (gameState.currentScene == 2) {
         dialogManager.showDialogNode('ExitSceneTwo');
     } else if (gameState.currentScene == 3) {

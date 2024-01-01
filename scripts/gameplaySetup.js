@@ -149,7 +149,7 @@ function clickCredits() {
     globalObjects.creditsText.setFontSize(28);
     globalObjects.creditsText.setScale(0.82);
 
-    globalObjects.creditsText2 = PhaserScene.add.text(40, 150, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org, sonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
+    globalObjects.creditsText2 = PhaserScene.add.text(40, 150, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org,\nsonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
     globalObjects.creditsText2.setFontSize(24);
     globalObjects.creditsText2.setScale(0.82);
 
