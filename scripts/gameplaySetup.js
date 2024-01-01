@@ -128,7 +128,7 @@ function setupKeyPresses(scene) {
 
     keyPresses.keyEnter = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.ENTER);
     keyPresses.keySpace = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.SPACE);
-
+    // keyPresses.keySpace.isUp
     updateManager.addFunction(tickKeyPresses);
 }
 
@@ -145,10 +145,13 @@ function clickCredits() {
         }
     });
     globalObjects.closeCreditsButton.setScale(500, 500);
-    globalObjects.creditsText = PhaserScene.add.text(40, 40, 'Programming and stick figure art by Maxim Tsai\n\nWriting and story by Rowa Skipson\n\nFinal scene art by Theresa Kao.' +
-        '\n\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod');
+    globalObjects.creditsText = PhaserScene.add.text(40, 40, 'Programming and stick figure art by Maxim Tsai\n\nWriting and story by Rowa Skipson\n\nFinal scene art by Theresa Kao.')
     globalObjects.creditsText.setFontSize(28);
     globalObjects.creditsText.setScale(0.82);
+
+    globalObjects.creditsText2 = PhaserScene.add.text(40, 150, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org, sonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
+    globalObjects.creditsText2.setFontSize(24);
+    globalObjects.creditsText2.setScale(0.82);
 
 }
 
@@ -165,6 +168,7 @@ function closeCredits() {
     if (globalObjects.closeCreditsButton) {
         globalObjects.closeCreditsButton.destroy();
         globalObjects.creditsText.destroy();
+        globalObjects.creditsText2.destroy();
     }
 }
 
@@ -208,7 +212,6 @@ function setupMoveButtons() {
         }
     })
 
-
     globalObjects.moveRightBtn = new Button({
         normal: {
             "atlas": "buttons",
@@ -249,6 +252,8 @@ function setupMoveButtons() {
     })
 }
 
+let wasMovingLeftKeyboard = false;
+let wasMovingRightKeyboard = false;
 function tickKeyPresses(deltaScale) {
     if (gameVars.canSkipIntro) {
         if (keyPresses.keySpace.isDown) {
@@ -261,17 +266,42 @@ function tickKeyPresses(deltaScale) {
         messageBus.publish('clickNextDialog');
     }
 
-    if (globalObjects.moveLeftBtn.getState() == PRESS) {
+    let tryingToMoveLeft = (keyPresses.keyA.isDown || keyPresses.keyLeft.isDown) && globalObjects.moveLeftBtn.getState() === NORMAL;
+    let tryingToMoveRight = (keyPresses.keyD.isDown || keyPresses.keyRight.isDown) && globalObjects.moveLeftBtn.getState() === NORMAL && !tryingToMoveLeft;
+
+    if (wasMovingLeftKeyboard && !tryingToMoveLeft) {
+        if (gameState.currentScene === 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
+            gameState.scratchingDoor = true;
+            gameCharacters.backdoor.play('backdoor_shake');
+
+            dialogManager.showDialogNode('DoorScratchStart');
+            girlsMoveAwayFromDoor();
+        }
+    }
+
+    if (wasMovingRightKeyboard && !tryingToMoveRight) {
+        if (gameState.currentScene === 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
+            gameState.scratchingDoor = true;
+            gameCharacters.backdoor.play('backdoor_shake');
+
+            dialogManager.showDialogNode('DoorScratchStart');
+            girlsMoveAwayFromDoor();
+        }
+    }
+
+    if (globalObjects.moveLeftBtn.getState() == PRESS || tryingToMoveLeft) {
         if (gameVars.cameraPosX > gameVars.cameraPosMinX) {
+            if (tryingToMoveLeft) {
+                wasMovingLeftKeyboard = true;
+            }
             if (gameVars.cameraMoveAcc > -0.1) {
                 gameVars.cameraMoveVel -= 1;
             }
             gameVars.cameraMoveAcc = -0.6;
             gameVars.stickyAcc = 25;
-
         }
     }
-    if (globalObjects.moveRightBtn.getState() == PRESS) {
+    if (globalObjects.moveRightBtn.getState() == PRESS || tryingToMoveRight) {
         if (gameVars.cameraPosX < gameVars.cameraPosMaxX) {
             if (gameVars.cameraMoveAcc < 0.1) {
                 gameVars.cameraMoveVel += 1;

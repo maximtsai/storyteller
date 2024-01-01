@@ -788,7 +788,7 @@ class MiscSubscribe {
         globalObjsTemp.eldritchBlack.visible = false;
 
         globalObjsTemp.eyeShakeAmt = 1;
-        globalObjsTemp.eyeEldritch = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'characters', 'blackCircle.png').setDepth(10000).setScale(0.41);
+        globalObjsTemp.eyeEldritch = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'characters', 'blackCircle.png').setDepth(10000).setScale(0.413);
         globalObjsTemp.eyeEldritch.startX = globalObjsTemp.eyeEldritch.x; globalObjsTemp.eyeEldritch.startY = globalObjsTemp.eyeEldritch.y;
         globalObjsTemp.eyeEldritch.velX = 0; globalObjsTemp.eyeEldritch.velY = 0;
         globalObjsTemp.eyeEldritch.scrollFactorX = 0;
@@ -925,27 +925,27 @@ class MiscSubscribe {
                                 targets: globalObjsTemp.eldritchBlack,
                                 alpha: 0.25,
                                 ease: 'Cubic.easeIn',
-                                duration: 6000,
+                                duration: 6020,
                             });
                             this.scene.tweens.add({
                                 targets: globalObjsTemp,
                                 eyeShakeAmt: 20,
                                 ease: 'Cubic.easeIn',
-                                duration: 6000,
+                                duration: 6020,
                             });
                             this.scene.tweens.add({
                                 targets: [globalObjsTemp.blackEye],
                                 scaleX: 2.95,
                                 scaleY: 2.95,
                                 ease: 'Cubic.easeIn',
-                                duration: 6000,
+                                duration: 6020,
                             });
                             this.scene.tweens.add({
                                 targets: [globalObjsTemp.eyeEldritch],
                                 scaleX: 1.5,
                                 scaleY: 1.5,
                                 ease: 'Cubic.easeIn',
-                                duration: 5950,
+                                duration: 5980,
                                 onComplete: () => {
                                     setTimeout(() => {
                                         eyeZoominSound.destroy();

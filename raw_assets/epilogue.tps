@@ -173,6 +173,22 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">epilogue/campfire.png</key>
+            <key type="filename">epilogue/grave.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>38,38,75,75</rect>
+                <key>scale9Paddings</key>
+                <rect>38,38,75,75</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">epilogue/casparfront.png</key>
             <key type="filename">epilogue/casparwave.png</key>
             <struct type="IndividualSpriteSettings">
@@ -189,6 +205,21 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">epilogue/casparfull.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>39,75,77,150</rect>
+                <key>scale9Paddings</key>
+                <rect>39,75,77,150</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">epilogue/casparhand.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -201,6 +232,52 @@
                 <rect>33,33,65,66</rect>
                 <key>scale9Paddings</key>
                 <rect>33,33,65,66</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/eye.png</key>
+            <key type="filename">epilogue/maw.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,50,100,100</rect>
+                <key>scale9Paddings</key>
+                <rect>50,50,100,100</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/eyes.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,8,32,15</rect>
+                <key>scale9Paddings</key>
+                <rect>16,8,32,15</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/eyes_many.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>38,13,75,26</rect>
+                <key>scale9Paddings</key>
+                <rect>38,13,75,26</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

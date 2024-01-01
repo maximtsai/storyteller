@@ -19,6 +19,12 @@ class GameFinal {
             this.subscriptions[i].unsubscribe();
         }
         this.displayedLines = [];
+        if (this.endImage) {
+            this.endImage.destroy();
+        }
+        if (globalObjsTemp.epilogueBG) {
+            globalObjsTemp.epilogueBG.destroy();
+        }
         helperFunction.destroyList([
             this.theEnd, this.theEndTitle,
             this.restartButton,
@@ -169,6 +175,7 @@ class GameFinal {
     }
 
     exitEarlySceneTwo() {
+        playSound('dooropen');
         this.fadeOut();
         this.createEpilogue();
         this.createDisplayedLines();
@@ -181,6 +188,7 @@ class GameFinal {
     }
 
     endGameForce() {
+        playSound('dooropen');
         if (gameState.MaggieSaved) {
             this.fadeOut(this.showGoodEnd);
         } else {
@@ -278,7 +286,7 @@ class GameFinal {
                         });
                         this.scene.tweens.add({
                             targets: globalObjsTemp.epilogueBG,
-                            duration: 300,
+                            duration: 310,
                             y: globalObjsTemp.epilogueBG.y + 10,
                             ease: 'Cubic.easeIn',
                             yoyo: true,
@@ -287,8 +295,8 @@ class GameFinal {
                                 this.showCasparZoomOut();
                             }
                         });
-                    }, 600);
-                }, 600);
+                    }, 670);
+                }, 670);
             }
         });
     }
@@ -329,20 +337,20 @@ class GameFinal {
             targets: globalObjsTemp.monsterBG,
             scaleX: 2.25,
             scaleY: 2.25,
-            duration: 6000
+            duration: 6500
         });
 
         PhaserScene.tweens.add({
-            delay: 4000,
+            delay: 4400,
             targets: [globalObjsTemp.CasparWave, globalObjsTemp.CasparWaveHand, globalObjsTemp.CasparWaveFront],
             alpha: 0,
-            duration: 1500,
+            duration: 1300,
         });
 
         PhaserScene.tweens.add({
             targets: PhaserScene.cameras.main,
             zoom: 0.75,
-            duration: 6000,
+            duration: 6500,
             onComplete: () => {
                 globalObjsTemp.monsterBG.destroy();
                 globalObjsTemp.CasparWave.destroy();
@@ -382,10 +390,13 @@ class GameFinal {
 
         this.theEnd = this.scene.add.text(gameConsts.halfWidth, gameConsts.height - 90, 'THE END', {fontFamily: 'Times New Roman', fontSize: 36, color: '#ffffff', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.001).setDepth(10000);
         this.theEndTitle = this.scene.add.text(gameConsts.halfWidth, gameConsts.height - 44, 'Ending #-1: YOU STAYED', {fontFamily: 'Times New Roman', fontSize: 18, color: '#ffffff', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.001).setDepth(10000);
+        this.endImage = PhaserScene.add.sprite(40, gameConsts.height - 40, "epilogue", "eye.png").setAlpha(0).setDepth(10000).setOrigin(0, 1);
         this.theEnd.scrollFactorX = 0;
         this.theEnd.scrollFactorY = 0;
         this.theEndTitle.scrollFactorX = 0;
         this.theEndTitle.scrollFactorY = 0;
+        this.endImage.scrollFactorX = 0;
+        this.endImage.scrollFactorY = 0;
 
         this.scene.tweens.add({
             delay: 1000,
@@ -395,7 +406,7 @@ class GameFinal {
         });
         this.scene.tweens.add({
             delay: 3000,
-            targets: [this.theEnd, this.theEndTitle],
+            targets: [this.theEnd, this.theEndTitle, this.endImage],
             alpha: 1,
             duration: 2500
         });
@@ -513,7 +524,8 @@ class GameFinal {
             this.displayedLines.push("\n\nThe storm makes it difficult to find your way and the road signs\nare illegible.")
             this.displayedLines.push("\n\nIt is not long before you are hopelessly lost.")
             if (numTotalSaved >= 1) {
-                this.theEndTitle.setText('Ending #2: Lost Together')
+                this.theEndTitle.setText('Ending #2: Lost Together');
+                this.endImage.setFrame('eyes_many.png')
             }
             this.addEndingFailedLine();
             return;
@@ -529,6 +541,7 @@ class GameFinal {
             this.displayedLines.push("\n\nYou floor the vehicle, but it is too late and you feel something\ncrash into the truck toppling it over.");
             if (numTotalSaved >= 1) {
                 this.theEndTitle.setText("Ending #3: Devoured");
+                this.endImage.setFrame('maw.png')
             }
             this.addEndingFailedLine();
             return;
@@ -545,16 +558,19 @@ class GameFinal {
         if (gameState.MaggieSaved) {
             this.displayedLines.push("\n\nThe stronghold's rations are stale and cold, but Maggie's extra\nsupplies and cooking brings warmth and smiles.");
             this.theEndTitle.setText('Ending #6: Future Hope');
+            this.endImage.setFrame('campfire.png');
         } else if (gameState.maggieSandwichEnd) {
             this.displayedLines.push("\n\nThe stronghold's rations are stale and cold, so you bring out\nMaggie's sandwiches and dig in.");
             this.displayedLines.push("\n\nMaggie's sandwiches are delicious.");
             this.displayedLines.push("\n...");
             this.displayedLines.push("\nMaggie's sandwiches are gone.••••••••••••••••");
             this.theEndTitle.setText('Ending #5: The Last Tasty Supper');
+            this.endImage.setFrame('grave.png');
         } else {
             this.displayedLines.push("\n\nThe stronghold's rations are stale and cold.");
             this.displayedLines.push("\n\nThey are enough to survive on, but only barely.");
             this.theEndTitle.setText('Ending #4: Bare Minimum');
+            this.endImage.setFrame('campfire.png');
         }
 
     }
@@ -582,8 +598,13 @@ class GameFinal {
 
         this.createEpilogue();
         this.theEnd.setText('THE BEST END');
+        this.theEnd.x -= 10;
         this.theEndTitle.setText('Thank you for playing Diner in the Storm');
-
+        this.theEndTitle.x -= 10;
+        this.restartButton.setPos(this.restartButton.getXPos() + 10, this.restartButton.getYPos());
+        this.endImage.setFrame('casparfull.png');
+        this.endImage.setScale(0.78)
+        this.endImage.setPosition(35, gameConsts.height - 9);
 
     }
 
@@ -608,8 +629,12 @@ class GameFinal {
     playNextDisplayedLine() {
         if (this.displayedLines.length === 0) {
             setTimeout(() => {
+                if (!this.endImage) {
+                    this.endImage = PhaserScene.add.sprite(40, gameConsts.height - 40, "epilogue", "campfire.png").setAlpha(0).setDepth(10000).setOrigin(0, 1);
+                    this.endImage.scrollFactorX = 0; this.endImage.scrollFactorY = 0;
+                }
                 this.scene.tweens.add({
-                    targets: [this.theEnd, this.theEndTitle],
+                    targets: [this.theEnd, this.theEndTitle, this.endImage],
                     alpha: 1,
                     duration: 2500
                 });
@@ -617,14 +642,15 @@ class GameFinal {
                     this.restartButton.setState(NORMAL);
                     buttonManager.enableAllInput();
                 }, 1500);
-            }, 1000);
+            }, 900);
             return;
         }
         let nextLine = this.displayedLines.shift();
         this.showNextText(nextLine);
+        let subtractDur = gameState.MaggieSaved ? -200 : 0;
         setTimeout(() => {
             this.playNextDisplayedLine();
-        }, 2080 + nextLine.length * 25);
+        }, 2080 + nextLine.length * 25 + subtractDur);
     }
 
     fadeOut(finishFunc) {
@@ -638,22 +664,25 @@ class GameFinal {
 
         if (gameState.MaggieSaved) {
             this.scene.tweens.add({
-                targets: [gameVars, globalObjsTemp.radioMusic, globalObjsTemp.radioStatic1, globalObjsTemp.radioStatic2],
+                targets: [gameVars, globalObjsTemp.radioMusic],
                 radioVolume: 0,
                 volume: 0,
-                duration: 3000,
+                duration: 4000,
+            });
+            this.scene.tweens.add({
+                targets: [globalObjsTemp.radioStatic1, globalObjsTemp.radioStatic2],
+                volume: 0,
+                duration: 2800,
                 onComplete: () => {
-                    let fullRushIn = playSound('main_full', 0.5, false);
-                    this.scene.tweens.add({
-                        targets: [fullRushIn],
-                        volume: 1,
-                        duration: 50,
-                        onComplete: () => {
-                            if (finishFunc) {
-                                finishFunc.bind(this)();
-                            }
-                        }
-                    });
+                    globalObjsTemp.radioStatic1.stop();
+                    globalObjsTemp.radioStatic2.stop();
+                    if (finishFunc) {
+                        finishFunc.bind(this)();
+                    }
+                    setTimeout(() => {
+                        globalObjsTemp.radioMusic.stop();
+                        playSound('main_full', 1, false)
+                    }, 1310);
                 }
             });
 
@@ -686,10 +715,14 @@ class GameFinal {
 
         this.theEnd = this.scene.add.text(gameConsts.halfWidth, gameConsts.height - 90, 'THE END', {fontFamily: 'Times New Roman', fontSize: 36, color: '#ffffff', align: 'center'}).setOrigin(0.5, 0).setAlpha(0).setDepth(10000);
         this.theEndTitle = this.scene.add.text(gameConsts.halfWidth, gameConsts.height - 48, 'Ending #1: All Alone', {fontFamily: 'Times New Roman', fontSize: 18, color: '#ffffff', align: 'center'}).setOrigin(0.5, 0).setAlpha(0).setDepth(10000);
+        this.endImage = PhaserScene.add.sprite(40, gameConsts.height - 40, "epilogue", "eyes.png").setAlpha(0).setDepth(10000).setOrigin(0, 1);
+
         this.theEnd.scrollFactorX = 0;
         this.theEnd.scrollFactorY = 0;
         this.theEndTitle.scrollFactorX = 0;
         this.theEndTitle.scrollFactorY = 0;
+        this.endImage.scrollFactorX = 0;
+        this.endImage.scrollFactorY = 0;
 
         this.createRestartButton();
 
@@ -702,7 +735,7 @@ class GameFinal {
             normal: {
                 "atlas": "buttons",
                 "ref": "restart.png",
-                x: gameConsts.halfWidth + 235,
+                x: gameConsts.halfWidth + 250,
                 y: gameConsts.height - 60,
                 alpha: 0.92
             },

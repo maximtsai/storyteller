@@ -22,7 +22,6 @@ class DialogBranchButton {
                 alpha: 0.001
             },
             onMouseUp: () => {
-                playSound('button');
                 messageBus.publish("clearBranchOptions");
                 if (this.publishMessage) {
                     messageBus.publish(this.publishMessage, this.publishParam);
@@ -604,6 +603,8 @@ class DialogDisplay {
                     this.speakerStars[i].alpha = 0.5;
                 }
                 if (this.speakerStars[i].alpha > 0) {
+                    playSound('button');
+
                     // animate to hidden when it isn't
                     this.speakerStars[i].alpha = 0.8;
                     this.speakerStars[i].setScale(0.6);
