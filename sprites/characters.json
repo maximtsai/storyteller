@@ -530,7 +530,7 @@
 			"image": "sprites/characters-2.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 1017,
+				"w": 1018,
 				"h": 1024
 			},
 			"scale": 1,
@@ -666,20 +666,20 @@
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 197,
-						"h": 400
+						"w": 130,
+						"h": 365
 					},
 					"spriteSourceSize": {
-						"x": 48,
-						"y": 31,
-						"w": 133,
-						"h": 361
+						"x": 13,
+						"y": 0,
+						"w": 117,
+						"h": 357
 					},
 					"frame": {
 						"x": 158,
 						"y": 646,
-						"w": 133,
-						"h": 361
+						"w": 117,
+						"h": 357
 					}
 				},
 				{
@@ -697,7 +697,7 @@
 						"h": 356
 					},
 					"frame": {
-						"x": 291,
+						"x": 275,
 						"y": 646,
 						"w": 118,
 						"h": 356
@@ -718,7 +718,7 @@
 						"h": 355
 					},
 					"frame": {
-						"x": 409,
+						"x": 393,
 						"y": 646,
 						"w": 154,
 						"h": 355
@@ -760,7 +760,7 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 563,
+						"x": 547,
 						"y": 606,
 						"w": 226,
 						"h": 404
@@ -781,7 +781,7 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 563,
+						"x": 547,
 						"y": 606,
 						"w": 226,
 						"h": 404
@@ -802,7 +802,7 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 563,
+						"x": 547,
 						"y": 606,
 						"w": 226,
 						"h": 404
@@ -823,7 +823,7 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 563,
+						"x": 547,
 						"y": 606,
 						"w": 226,
 						"h": 404
@@ -844,7 +844,7 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 563,
+						"x": 547,
 						"y": 606,
 						"w": 226,
 						"h": 404
@@ -865,7 +865,7 @@
 						"h": 404
 					},
 					"frame": {
-						"x": 563,
+						"x": 547,
 						"y": 606,
 						"w": 226,
 						"h": 404
@@ -914,227 +914,6 @@
 					}
 				},
 				{
-					"filename": "juan_dark.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 250,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 8,
-						"y": 7,
-						"w": 228,
-						"h": 389
-					},
-					"frame": {
-						"x": 789,
-						"y": 606,
-						"w": 228,
-						"h": 389
-					}
-				}
-			]
-		},
-		{
-			"image": "sprites/characters-3.webp",
-			"format": "RGBA5555",
-			"size": {
-				"w": 862,
-				"h": 1011
-			},
-			"scale": 1,
-			"frames": [
-				{
-					"filename": "ethan2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 120,
-						"h": 440
-					},
-					"spriteSourceSize": {
-						"x": 10,
-						"y": 4,
-						"w": 93,
-						"h": 428
-					},
-					"frame": {
-						"x": 0,
-						"y": 0,
-						"w": 93,
-						"h": 428
-					}
-				},
-				{
-					"filename": "juan1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 250,
-						"h": 400
-					},
-					"spriteSourceSize": {
-						"x": 9,
-						"y": 7,
-						"w": 226,
-						"h": 388
-					},
-					"frame": {
-						"x": 0,
-						"y": 428,
-						"w": 226,
-						"h": 388
-					}
-				},
-				{
-					"filename": "maggie_coffee.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 415
-					},
-					"spriteSourceSize": {
-						"x": 17,
-						"y": 26,
-						"w": 158,
-						"h": 383
-					},
-					"frame": {
-						"x": 93,
-						"y": 0,
-						"w": 158,
-						"h": 383
-					}
-				},
-				{
-					"filename": "ethan_dark.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 355
-					},
-					"spriteSourceSize": {
-						"x": 44,
-						"y": 0,
-						"w": 153,
-						"h": 355
-					},
-					"frame": {
-						"x": 226,
-						"y": 383,
-						"w": 153,
-						"h": 355
-					}
-				},
-				{
-					"filename": "ethan_sleep.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 300,
-						"h": 365
-					},
-					"spriteSourceSize": {
-						"x": 18,
-						"y": 101,
-						"w": 211,
-						"h": 264
-					},
-					"frame": {
-						"x": 226,
-						"y": 738,
-						"w": 211,
-						"h": 264
-					}
-				},
-				{
-					"filename": "ethan_tired.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 355
-					},
-					"spriteSourceSize": {
-						"x": 29,
-						"y": 13,
-						"w": 142,
-						"h": 342
-					},
-					"frame": {
-						"x": 251,
-						"y": 0,
-						"w": 142,
-						"h": 342
-					}
-				},
-				{
-					"filename": "caspar_dark.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 180,
-						"h": 335
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 180,
-						"h": 335
-					},
-					"frame": {
-						"x": 379,
-						"y": 342,
-						"w": 180,
-						"h": 335
-					}
-				},
-				{
-					"filename": "caspar1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 180,
-						"h": 335
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 180,
-						"h": 334
-					},
-					"frame": {
-						"x": 437,
-						"y": 677,
-						"w": 180,
-						"h": 334
-					}
-				},
-				{
-					"filename": "caspar_dark_calm.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 332
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 0,
-						"w": 196,
-						"h": 332
-					},
-					"frame": {
-						"x": 393,
-						"y": 0,
-						"w": 196,
-						"h": 332
-					}
-				},
-				{
 					"filename": "tv_red.png",
 					"rotated": false,
 					"trimmed": true,
@@ -1149,8 +928,8 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 617,
-						"y": 0,
+						"x": 773,
+						"y": 606,
 						"w": 245,
 						"h": 202
 					}
@@ -1170,10 +949,63 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 617,
-						"y": 202,
+						"x": 773,
+						"y": 808,
 						"w": 245,
 						"h": 202
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/characters-3.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 877,
+				"h": 979
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "juan_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 250,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 8,
+						"y": 7,
+						"w": 228,
+						"h": 389
+					},
+					"frame": {
+						"x": 0,
+						"y": 0,
+						"w": 228,
+						"h": 389
+					}
+				},
+				{
+					"filename": "juan1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 250,
+						"h": 400
+					},
+					"spriteSourceSize": {
+						"x": 9,
+						"y": 7,
+						"w": 226,
+						"h": 388
+					},
+					"frame": {
+						"x": 0,
+						"y": 389,
+						"w": 226,
+						"h": 388
 					}
 				},
 				{
@@ -1191,10 +1023,31 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 617,
-						"y": 404,
+						"x": 0,
+						"y": 777,
 						"w": 245,
 						"h": 202
+					}
+				},
+				{
+					"filename": "caspar_dark_calm.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 332
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 196,
+						"h": 332
+					},
+					"frame": {
+						"x": 226,
+						"y": 389,
+						"w": 196,
+						"h": 332
 					}
 				},
 				{
@@ -1212,10 +1065,94 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 617,
-						"y": 606,
+						"x": 245,
+						"y": 721,
 						"w": 245,
 						"h": 202
+					}
+				},
+				{
+					"filename": "maggie_coffee.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 415
+					},
+					"spriteSourceSize": {
+						"x": 17,
+						"y": 26,
+						"w": 158,
+						"h": 383
+					},
+					"frame": {
+						"x": 228,
+						"y": 0,
+						"w": 158,
+						"h": 383
+					}
+				},
+				{
+					"filename": "caspar_dark.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 180,
+						"h": 335
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 180,
+						"h": 335
+					},
+					"frame": {
+						"x": 386,
+						"y": 0,
+						"w": 180,
+						"h": 335
+					}
+				},
+				{
+					"filename": "caspar1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 335
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 1,
+						"w": 180,
+						"h": 334
+					},
+					"frame": {
+						"x": 422,
+						"y": 335,
+						"w": 180,
+						"h": 334
+					}
+				},
+				{
+					"filename": "ethan_sleep.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 300,
+						"h": 365
+					},
+					"spriteSourceSize": {
+						"x": 18,
+						"y": 101,
+						"w": 211,
+						"h": 264
+					},
+					"frame": {
+						"x": 566,
+						"y": 0,
+						"w": 211,
+						"h": 264
 					}
 				},
 				{
@@ -1233,10 +1170,73 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 617,
-						"y": 808,
+						"x": 490,
+						"y": 669,
 						"w": 245,
 						"h": 202
+					}
+				},
+				{
+					"filename": "ethan_dark.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 355
+					},
+					"spriteSourceSize": {
+						"x": 44,
+						"y": 0,
+						"w": 153,
+						"h": 355
+					},
+					"frame": {
+						"x": 602,
+						"y": 264,
+						"w": 153,
+						"h": 355
+					}
+				},
+				{
+					"filename": "ethan_tired.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 200,
+						"h": 355
+					},
+					"spriteSourceSize": {
+						"x": 29,
+						"y": 13,
+						"w": 142,
+						"h": 342
+					},
+					"frame": {
+						"x": 735,
+						"y": 619,
+						"w": 142,
+						"h": 342
+					}
+				},
+				{
+					"filename": "ethan2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 440
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 4,
+						"w": 93,
+						"h": 428
+					},
+					"frame": {
+						"x": 777,
+						"y": 0,
+						"w": 93,
+						"h": 428
 					}
 				}
 			]
@@ -1245,6 +1245,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:99a8d75105662e2d5d977605413d5154:455dcce9fd5ef8e815d142e0dedc7b4b:93e56341e9149919c539b9e3c6d79170$"
+		"smartupdate": "$TexturePacker:SmartUpdate:67577edd70d8c045ecdae07c405b3693:20e6e445e5183651ff6676f2ce03a560:93e56341e9149919c539b9e3c6d79170$"
 	}
 }

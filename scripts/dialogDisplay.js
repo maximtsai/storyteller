@@ -270,7 +270,6 @@ class DialogDisplay {
             this.starsActive = true;
             let numStars = this.getNumStars();
             for (let i = 0; i < numStars; i++) {
-                console.log("Set stars visible 1");
                 this.speakerStars[i].visible = true;
                 this.speakerStars[i].alpha = 0.5;
             }
@@ -548,7 +547,6 @@ class DialogDisplay {
         }
         for (let i = 0; i < this.speakerStars.length; i++) {
             if (i < this.numStars) {
-                console.log("Setting num stars to visible", this.numStars, i);
                 this.speakerStars[i].visible = true;
                 if (this.speakerStars[i].alpha < 0.5) {
                     if (i < oldNumStars) {

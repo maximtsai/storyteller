@@ -61,7 +61,7 @@ class MiscSubscribe {
 
             messageBus.subscribe("goodEndLocked", this.goodEndLocked.bind(this)),
             messageBus.subscribe("casparToBackdoor", this.casparToBackdoor.bind(this)),
-
+            messageBus.subscribe("BrunaStandUp", this.brunaStandUp.bind(this)),
 
             messageBus.subscribe("MaggieInfluence", (amt) => this.updateInfluence("MaggieInfluence", amt)),
             messageBus.subscribe("BrunaInfluence", (amt) => this.updateInfluence("BrunaInfluence", amt)),
@@ -183,6 +183,10 @@ class MiscSubscribe {
                 });
             }
         });
+    }
+
+    brunaStandUp() {
+        gameCharacters.bruna.setFrame('bruna2.png');
     }
 
     goodEndLocked() {

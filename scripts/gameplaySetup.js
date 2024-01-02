@@ -57,7 +57,9 @@ let gameFinal;
 function setupGame() {
     // PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'background');
     createAnimations(PhaserScene)
-    globalObjects.exclamation = new ExclamationHover(PhaserScene);
+    if (!globalObjects.exclamation) {
+        globalObjects.exclamation = new ExclamationHover(PhaserScene);
+    }
 
     globalObjects.optionsButton = new Button({
         normal: {
@@ -431,21 +433,16 @@ function realGameStart() {
     let fakeBaseOverlay = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'startFakeBaseOverlay.png');
     globalObjsTemp.black = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(5000, 999).setAlpha(0);
     let time = Date.now();
-    console.log("Time log start");
-    console.log(Date.now() - time);
 
     setTimeout(() => {
-        console.log(Date.now() - time);
 
         darkGloom.setAlpha(0.9);
         setTimeout(() => {
             darkGloom.setAlpha(1);
         }, 20);
         setTimeout(() => {
-            console.log(Date.now() - time);
             darkGloom.setAlpha(0.85);
             setTimeout(() => {
-                console.log(Date.now() - time);
                 darkGloom.setAlpha(1);
                 PhaserScene.tweens.add({
                     targets: globalObjects.indoorRain,
@@ -453,7 +450,6 @@ function realGameStart() {
                     duration: 1500
                 });
                 setTimeout(() => {
-                    console.log(Date.now() - time);
                     darkGloom.setAlpha(0.8);
                     setTimeout(() => {
                         fakeBaseOverlay.setScale(1.1, 1);

@@ -183,7 +183,6 @@ class GameFinal {
     }
 
     endGame() {
-        console.log("Epilogue");
         this.checkJuanThenContinue();
     }
 
@@ -418,10 +417,8 @@ class GameFinal {
     }
 
     checkJuanThenContinue() {
-        console.log("Checking juan")
         if (gameState.juanLeaveStatus !== "accept" && gameState.juanLeaveStatus !== "onlyUseful") {
             // Juan already not coming
-            console.log("juan not coming");
             this.endGameForce();
             return;
         }
@@ -656,6 +653,7 @@ class GameFinal {
     fadeOut(finishFunc) {
         globalObjects.moveLeftBtn.destroy();
         globalObjects.moveRightBtn.destroy();
+        globalObjects.exclamation.destroy();
         buttonManager.disableAllInput();
 
         if (!globalObjsTemp.radioStatic2) {
@@ -663,15 +661,20 @@ class GameFinal {
         }
 
         if (gameState.MaggieSaved) {
+            console.log("Fading out radio");
             this.scene.tweens.add({
                 targets: [gameVars, globalObjsTemp.radioMusic],
                 radioVolume: 0,
                 volume: 0,
                 duration: 4000,
+                onComplete: () => {
+                    globalObjsTemp.radioMusic.stop();
+                }
             });
             this.scene.tweens.add({
                 targets: [globalObjsTemp.radioStatic1, globalObjsTemp.radioStatic2],
                 volume: 0,
+                trueVolume: 0,
                 duration: 2800,
                 onComplete: () => {
                     globalObjsTemp.radioStatic1.stop();

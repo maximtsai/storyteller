@@ -6,7 +6,7 @@ class ExclamationHover {
         this.image.alpha = 0;
         this.image.setOrigin(0.5, 0.25);
         this.image.setDepth(100);
-        messageBus.subscribe("pointerMove", this.setPosition.bind(this));
+        this.subscription = messageBus.subscribe("pointerMove", this.setPosition.bind(this));
     }
 
     setPosition(x, y) {
@@ -29,5 +29,10 @@ class ExclamationHover {
 
     hide() {
         this.image.y = -9999;
+    }
+
+    destroy() {
+        this.image.destroy();
+        this.subscription.unsubscribe();
     }
 }

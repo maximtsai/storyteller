@@ -55,6 +55,10 @@ function createWorldButtons() {
             alpha: 0.001
         },
         onHover: () => {
+            if (!globalObjects.exclamation) {
+                // Odd buggy case fix
+                globalObjects.exclamation = new ExclamationHover(PhaserScene);
+            }
             globalObjects.exclamation.setAlpha(0.75);
             globalObjects.exclamation.setFrame('chat_icon.png');
         },
@@ -1429,7 +1433,6 @@ function clickRadio() {
                         dragStartPosX *= multAmt;
                         dragStartPosY *= multAmt;
                     }
-                    console.log(dragStartPosX, dragStartPosY, distFromKnob);
                     globalObjsTemp.radio.arrow.setPosition(globalObjsTemp.radio.knob.x - dragStartPosX, globalObjsTemp.radio.knob.y - dragStartPosY);
                     globalObjsTemp.radio.arrow.alpha = 1;
                     globalObjsTemp.radio.arrow.setScale(0.05, 1);

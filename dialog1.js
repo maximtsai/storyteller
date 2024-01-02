@@ -1095,7 +1095,7 @@ let dialogList1 = {
 
     Ethan3Blocked: {
         speech: [
-            {speaker: "",  text: " (You already promised Edith that you wouldn't\n  bring Ethan with you. From his silent stare, you suspect\n  Ethan may have overheard)"},
+            {speaker: "",  text: " (You already promised Edith that you wouldn't\n  bring Ethan with you. From Ethan's silent stare, you\n  suspect he must have overheard)"},
         ]
     },
 
@@ -1891,14 +1891,14 @@ let dialogList1 = {
     Bruna3Saved: {
         speech: [
             {speaker: "Bruna", face: "bruna_grin.png", text: "Okay, you're right.\nI'll leave with you.", data: {property: "BrunaSaved", value: true}},
-            {speaker: "", text: "  (Bruna will come with you when you leave)"},
+            {speaker: "", text: "  (Bruna will come with you when you leave)", publish: "BrunaStandUp"},
         ],
     },
 
     Bruna3Saved2: {
         speech: [
             {speaker: "Bruna", face: "bruna_normal.png", text: "But I'll trust you this time.\nI'll go when you're ready.", data: {property: "BrunaSaved", value: true}},
-            {speaker: "", text: "  (Bruna will come with you when you leave)"},
+            {speaker: "", text: "  (Bruna will come with you when you leave)", publish: "BrunaStandUp"},
         ],
     },
 
@@ -1947,7 +1947,7 @@ let dialogList1 = {
         speech: [
             {speaker: "Bruna", face: "bruna_normal.png", text: "Alright. I'll join you all."},
             {speaker: "Bruna", face: "bruna_sad.png", text: "But you better be thankful that I'm the\nonly one with working reception here!", data: {property: "BrunaSaved", value: true}},
-            {speaker: "", text: "  (Bruna will come with you when you leave)"},
+            {speaker: "", text: "  (Bruna will come with you when you leave)", publish: "BrunaStandUp"},
         ],
     },
 
@@ -2449,7 +2449,8 @@ let dialogList1 = {
             {speaker: "Maggie", face: "maggie_dark_scared.png", text: "I'll get the keys for the backup generator.", publish: "maggieCoffeeEnd"},
             {speaker: "Caspar", face: "caspar_dark_calm.png", text: "Heh, storm must be particularly\nharsh tonight.", publish: "harshStorm"},
             {speaker: "Caspar", face: "caspar_dark_calm.png", text: "There's some important stuff I gotta\nprepare you for. Hope you can lend\na listenin' ear."},
-            {speaker: "Caspar", face: "caspar_dark_calm.png", unclickable: true, text: "This might sound strange, but I think\nyou ought to be on the lookout for a\nsafer location. Just in case."},
+            {speaker: "Caspar", face: "caspar_dark_calm.png", text: "This might sound strange, but I think\nyou ought to be on the lookout for a\nsafer location.••••••••• Just in case."},
+            {speaker: "Caspar", face: "caspar_dark_calm.png", unclickable: true, text: "Now the first thing I'd recommend is\nlending a hand to Maggie with that\ngenerator..."},
         ]
     },
     Interrupt: {

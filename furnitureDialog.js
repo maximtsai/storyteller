@@ -471,7 +471,6 @@ let furnitureDialog = {
     ExitFinale: {
         speech: [
             {speaker: '', text: "   (You get ready to exit the diner)", data: {property: "isExiting", value: true}, onFinish: () => {
-                console.log("exit the diner")
                 messageBus.publish("exitFinale");
                 }},
         ],
