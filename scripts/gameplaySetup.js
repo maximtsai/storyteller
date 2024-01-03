@@ -331,6 +331,9 @@ function tickKeyPresses(deltaScale) {
     if (gameVars.cameraMoveVel != 0) {
         let sineMoveMult = Math.min(1, 1 + 0.2 * Math.sin(gameVars.moveSine));
         let outdoorsMoveMult = gameState.isOutdoors ? 0.6 : 1;
+        if (gameState.powerOff === false && gameState.isOutdoors && !gameState.MaggieSaved) {
+            outdoorsMoveMult *= 0.6;
+        }
         gameVars.moveSine += deltaScale * 0.165 * outdoorsMoveMult;
         gameVars.cameraPosX += gameVars.cameraMoveVel * sineMoveMult * deltaScale * deltaDecay * (outdoorsMoveMult * 0.8 + 0.2);
         if(gameVars.cameraPosX > gameVars.cameraPosMaxX) {
@@ -418,8 +421,7 @@ function realGameStart() {
     gameVars.started = true;
     setBackground('intro', 'diner1.png');
     // 1000
-    let bgRain = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'rain.png');
-    bgRain.setScale(2, 2);
+    let bgRain = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'rain.png').setScale(4);
     bgRain.depth = -2;
     bgRain.scrollFactorX = 0.5;
     let bg1 = PhaserScene.add.image(-987.5, gameConsts.halfHeight, 'backgrounds', 'bg1.png');

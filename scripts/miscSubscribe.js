@@ -332,7 +332,7 @@ class MiscSubscribe {
 
     windowBreak() {
         gameCharacters.tv.setFrame('tv_cracked.png');
-        gameCharacters.sign.rotation = 0.1;
+        gameCharacters.sign.rotation = 0.135;
         gameState.currentScene = 3;
         resetRadioPosition(206);
         this.updateRadioChannels();
@@ -1070,6 +1070,7 @@ class MiscSubscribe {
         gameCharacters.tv.setFrame('tv_broken.png');
         globalObjsTemp.tvScreamSound.stop();
         gameState.tvSmashed = true;
+        gameState.tvSmashedAskMaggie = true;
         playSound('break', 1);
 
     }
@@ -1308,7 +1309,7 @@ class MiscSubscribe {
         globalObjsTemp.gloom.setAlpha(0.3).setDepth(8);
         playSound('crackle1', 1);
 
-        gameCharacters.sign.rotation = 0.08;
+        gameCharacters.sign.rotation = 0.11;
 
         setTimeout(() => {
             globalObjsTemp.gloom.setAlpha(0);

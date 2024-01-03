@@ -160,6 +160,7 @@ let dialogList1 = {
             {speaker: "You", text: "Maggie..."},
         ],
         branches: [
+            {dependentState: "tvSmashedAskMaggie", text: "Sorry about your TV.", targetNode: "MaggieAct3TV"},
             {text: "We need to fortify this place.", targetNode: "MaggieAct3Fortify"},
             {text: "We need to leave, come with me.", targetNode: "MaggieAct3Leave"},
             {text: "Nevermind."},
@@ -184,6 +185,12 @@ let dialogList1 = {
             {text: "All of us are leaving together to\nHope Springs. Come with us.", targetNode: "MaggieAct3LeaveAllButDog"},
             {text: "Nevermind"},
         ]
+    },
+
+    MaggieAct3TV: {
+        speech: [
+            {speaker: "Maggie", face: "maggie_sad.png", text: "That's alright dear. It's been acting\nup for awhile and I had to replace it\nsoon anyways.", data: {property: "tvSmashedAskMaggie", value: false}},
+        ],
     },
 
     MaggieAct3Fortify: {

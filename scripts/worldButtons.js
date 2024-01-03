@@ -320,7 +320,7 @@ function createWorldButtons() {
             y: 2400,
             scaleX: 105,
             scaleY: 200,
-            alpha: 0.1
+            alpha: 0.001
         },
         hover: {
             alpha: 0.001
@@ -1666,6 +1666,21 @@ function clickTV() {
 }
 
 function clickIndoor() {
+    if (gameState.shownFlashEldritch && !gameState.shownIndoorEldritch) {
+        gameState.shownIndoorEldritch = true;
+        let eyeflash2 = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'lowq', 'spook1.jpg').setScale(1.7, 1.7).setAlpha(0.3).setDepth(1000).setBlendMode(Phaser.BlendModes.DARKEN);
+        eyeflash2.scrollFactorX = 0;
+        setTimeout(() => {
+            eyeflash2.setAlpha(0.06);
+            setTimeout(() => {
+                let blackFlash = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(5000, 999);
+                eyeflash2.destroy();
+                setTimeout(() => {
+                    blackFlash.destroy();
+                }, 1)
+            }, 300);
+        }, 15);
+    }
     globalObjects.diner.IndoorButton.setState(DISABLE);
     globalObjsTemp.rainBackground.setDepth(-1);
     globalObjsTemp.rainForeground.setDepth(-1);
@@ -1796,11 +1811,23 @@ function exitBackdoor() {
 
     if (!globalObjsTemp.outdoorBackgrounds) {
         globalObjsTemp.outdoorBackgrounds = {
-            bg0: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'whitePixel').setScale(9999,500),
+            bg0: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'rain.png').setScale(10, 6),
             bg1: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout1.png'),
             bg2: PhaserScene.add.image(999.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout2.png'),
             bg4: PhaserScene.add.image(1999, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout3.png'),
+            bg5: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
+            bg6: PhaserScene.add.image(796, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
+            bg7: PhaserScene.add.image(1592, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
         }
+        globalObjsTemp.outdoorBackgrounds.bg5.scrollFactorX = 0.3;
+        globalObjsTemp.outdoorBackgrounds.bg6.scrollFactorX = 0.3;
+        globalObjsTemp.outdoorBackgrounds.bg7.scrollFactorX = 0.3;
+        PhaserScene.tweens.add({
+            alpha: 1,
+            targets: [globalObjsTemp.outdoorBackgrounds.bg5, globalObjsTemp.outdoorBackgrounds.bg6, globalObjsTemp.outdoorBackgrounds.bg7],
+            duration: 3000,
+            ease: 'Quad.easeOut',
+        });
     }
 }
 
@@ -1851,6 +1878,37 @@ function exitShed() {
 
     gameVars.cameraPosY = gameConsts.outdoorStartY; PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
     gameVars.cameraPosX = 1440; PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+
+    if (!gameState.shownFlashEldritch) {
+        gameState.shownFlashEldritch = true;
+        setTimeout(() => {
+            let eyeflash = PhaserScene.add.sprite(450, 200, 'lowq', 'spook4.png').setScale(0.8, 0.6).setAlpha(0.01).setDepth(1);
+            eyeflash.scrollFactorX = 0.2;
+            eyeflash.scrollFactorY = 0;
+            PhaserScene.tweens.add({
+                delay: 300,
+                alpha: 0.04,
+                targets: eyeflash,
+                duration: 5000,
+                ease: 'Quad.easeIn',
+                onComplete: () => {
+                    playSound('click');
+                    eyeflash.x += 100;
+                    eyeflash.y += 25;
+                    eyeflash.setScale(1);
+                    eyeflash.setAlpha(0.08);
+                    setTimeout(() => {
+                        eyeflash.x -= 50;
+                        eyeflash.setScale(1.25);
+                        eyeflash.setAlpha(0.12);
+                        setTimeout(() => {
+                            eyeflash.destroy();
+                        }, 10);
+                    }, 40);
+                }
+            });
+        }, 0);
+    }
 
     if (gameState.dogLooking) {
         gameState.dogLooking = false;
