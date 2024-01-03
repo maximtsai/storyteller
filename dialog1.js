@@ -1455,7 +1455,21 @@ let dialogList1 = {
         speech: [
             {speaker: "Juan", face: "juan_dark_scared.png", text: "\"Something gigantic\" huh?"},
             {speaker: "", text: "   (Juan looks out the window)", data: {property: "juanPragmatic", value: false}},
-            {speaker: "Juan", face: "juan_dark_scared.png", text: "And what, did it turn invisible?", data: {property: "invisibleGiant", value: true}},
+            {speaker: "Juan", face: "juan_dark_scared.png", text: "And what, did it turn invisible?", data: {property: "invisibleGiant", value: true}, onFinish: () => {
+                setTimeout(() => {
+                    let tempSpook = PhaserScene.add.sprite(-100, 0, 'lowq', 'spook4.png').setDepth(-1).setScale(2.8, 2.8).setAlpha(1);
+                    playSound('meatclick');
+                    PhaserScene.tweens.add({
+                        targets: [tempSpook],
+                        duration: 500,
+                        x: 3500,
+                        alpha: 0,
+                        onComplete: () => {
+                            tempSpook.destroy();
+                        }
+                    });
+                }, 750);
+                }},
         ]
     },
     Juan2Lightning: {

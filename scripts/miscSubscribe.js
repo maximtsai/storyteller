@@ -1246,7 +1246,7 @@ class MiscSubscribe {
                                                 y: gameConsts.halfHeight - 65,
                                                 ease: 'Cubic.easeIn',
                                                 onComplete: () => {
-                                                    gameCharacters.sprawl = PhaserScene.add.sprite(-1000, 0, 'lowq', 'sprawl.png').setDepth(-1).setScale(2.4, 2.4).setAlpha(0.01);
+                                                    gameCharacters.sprawl = PhaserScene.add.sprite(-1000, 0, 'lowq', 'sprawl.png').setDepth(-1).setScale(2.8, 2.8).setAlpha(0.01);
                                                     eyelid1.destroy();
                                                     eyelid2.destroy();
                                                     eyelid3.destroy();
@@ -1266,25 +1266,32 @@ class MiscSubscribe {
                                                         targets: [gameCharacters.sprawl],
                                                         duration: 4500,
                                                         scaleX: 2.41,
-                                                        alpha: 0.2,
+                                                        alpha: 0.15,
                                                         ease: 'Cubic.easeIn',
                                                         onComplete: () => {
                                                             setTimeout(() => {
                                                                 playSound('click', 0.8);
                                                             }, 150);
                                                             eye.destroy();
-                                                            this.scene.tweens.add({
-                                                                targets: [gameCharacters.sprawl],
-                                                                scaleX: 1.5,
-                                                                scaleY: 1.5,
-                                                                x: "+=800",
-                                                                duration: 500,
-                                                                alpha: 1.75,
-                                                                ease: 'Cubic.easeInOut',
-                                                                onComplete: () => {
-                                                                    gameCharacters.sprawl.destroy();
-                                                                }
-                                                            });
+                                                            setTimeout(() => {
+                                                                gameCharacters.sprawl.setScale(2.1);
+                                                                gameCharacters.sprawl.setAlpha(0.25);
+                                                                gameCharacters.sprawl.x += 100;
+                                                                setTimeout(() => {
+                                                                    gameCharacters.sprawl.setScale(2.3);
+                                                                    gameCharacters.sprawl.setAlpha(0.4);
+                                                                    gameCharacters.sprawl.x += 150;
+                                                                    setTimeout(() => {
+                                                                        gameCharacters.sprawl.setScale(2.5);
+                                                                        gameCharacters.sprawl.setAlpha(0.6);
+                                                                        gameCharacters.sprawl.x += 250;
+                                                                        setTimeout(() => {
+                                                                            gameCharacters.sprawl.destroy();
+                                                                        }, 10)
+                                                                    }, 100);
+                                                                }, 100);
+                                                            }, 100);
+
                                                         }
                                                     });
                                                 }
