@@ -28,7 +28,7 @@ class MiscSubscribe {
             messageBus.subscribe("ethanAsleep", this.ethanAsleep.bind(this)),
             messageBus.subscribe("ethanAwake", this.ethanAwake.bind(this)),
 
-
+            messageBus.subscribe("BrunaFrown", this.brunaFrown.bind(this)),
 
             messageBus.subscribe("startPhaseThree", this.startPhaseThree.bind(this)),
 
@@ -769,6 +769,11 @@ class MiscSubscribe {
 
     ethanAwake() {
         gameCharacters.ethan.setFrame('ethan_tired.png');
+    }
+
+    brunaFrown() {
+        gameCharacters.bruna.setFrame('bruna2.png');
+
     }
 
     startEldritchEthan() {

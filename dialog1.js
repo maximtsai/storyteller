@@ -1690,7 +1690,7 @@ let dialogList1 = {
             {speaker: "You", text: "Is that one of those island nations?"},
             {speaker: "Bruna", face: "bruna_concern.png", text: "No. There's no history of volcanos\nanywhere near there. And yet, he just\nsent a video of it."},
             {speaker: "You", text: "Video? How close was he?"},
-            {speaker: "Bruna", face: "bruna_sad.png", text: "Close. The lava was moving funny and\nhe wanted to show it. But I can't get\nahold of him now."},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "Close. The lava was moving funny and\nhe wanted to show it. But I can't get\nahold of him now.", publish: "BrunaFrown"},
             {speaker: "You", text: "Keep at it. I'm sure he's just distracted."},
         ],
     },
@@ -1700,7 +1700,7 @@ let dialogList1 = {
             {speaker: "Bruna", face: "bruna_concern.png", text: "She says there's something outside her\nwindow looking in."},
             {speaker: "You", text: "I'm sure it's just a critter. They still have owls\nin Japan, right?"},
             {speaker: "Bruna", face: "bruna_concern.png", text: "She's on the 48th floor."},
-            {speaker: "Bruna", face: "bruna_sad.png", text: "And she's not answering my calls\nanymore."},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "And she's not answering my calls\nanymore.", publish: "BrunaFrown"},
         ],
     },
     Bruna2ChatFin: {
