@@ -409,13 +409,13 @@ class MiscSubscribe {
                                     y: gameCharacters.dog.y,
                                     scaleX: 70,
                                     scaleY: 80,
-                                    alpha: 0.1
+                                    alpha: 0.001
                                 },
                                 hover: {
-                                    alpha: 0.05
+                                    alpha: 0.001
                                 },
                                 press: {
-                                    alpha: 0.12
+                                    alpha: 0.001
                                 },
                                 disable: {
                                     alpha: 0.001
@@ -505,7 +505,7 @@ class MiscSubscribe {
             onComplete: () => {
                 PhaserScene.tweens.add({
                     targets: globalObjects.indoorRain,
-                    volume: 0.4,
+                    volume: 0.38,
                     duration: 1000
                 });
                 playSound('hammermany');
@@ -772,7 +772,7 @@ class MiscSubscribe {
     }
 
     brunaFrown() {
-        gameCharacters.bruna.setFrame('bruna2.png');
+        gameCharacters.bruna.setFrame('bruna1_worry.png');
 
     }
 
@@ -1237,14 +1237,24 @@ class MiscSubscribe {
                                             }, 100);
                                             this.scene.tweens.add({
                                                 targets: eye,
-                                                duration: 350,
-                                                scaleX: 0.65,
-                                                scaleY: 0.65,
+                                                duration: 150,
+                                                scaleX: 0.69,
+                                                scaleY: 0.69,
                                                 ease: 'Cubic.easeOut',
+                                                onComplete: () => {
+                                                    this.scene.tweens.add({
+                                                        targets: eye,
+                                                        duration: 250,
+                                                        scaleX: 0.95,
+                                                        scaleY: 0.95,
+                                                        ease: 'Cubic.easeIn',
+                                                    });
+                                                }
                                             });
                                             this.scene.tweens.add({
                                                 targets: [eyelid1, eyelid2, eyelid3],
-                                                duration: 275,
+                                                delay: 150,
+                                                duration: 200,
                                                 scaleX: 4.9,
                                                 scaleY: 4.9,
                                                 x: -850,
@@ -1285,17 +1295,17 @@ class MiscSubscribe {
                                                                 setTimeout(() => {
                                                                     gameCharacters.sprawl.setScale(2.3);
                                                                     gameCharacters.sprawl.setAlpha(0.4);
-                                                                    gameCharacters.sprawl.x += 150;
+                                                                    gameCharacters.sprawl.x += 220;
                                                                     setTimeout(() => {
                                                                         gameCharacters.sprawl.setScale(2.5);
                                                                         gameCharacters.sprawl.setAlpha(0.6);
-                                                                        gameCharacters.sprawl.x += 250;
+                                                                        gameCharacters.sprawl.x += 240;
                                                                         setTimeout(() => {
                                                                             gameCharacters.sprawl.destroy();
-                                                                        }, 10)
-                                                                    }, 100);
-                                                                }, 100);
-                                                            }, 100);
+                                                                        }, 50)
+                                                                    }, 240);
+                                                                }, 240);
+                                                            }, 150);
 
                                                         }
                                                     });
@@ -1449,6 +1459,7 @@ class MiscSubscribe {
                 356: 'main_poor',
                 386.25: 'matts_blues_bad',
                 446.75: 'weatherblur',
+                506: 'off_to_osaka',
             };
         } else if (gameState.goodEndLocked) {
             // Final music find

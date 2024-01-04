@@ -563,6 +563,8 @@ class GameFinal {
             this.displayedLines.push("\nMaggie's sandwiches are gone.••••••••••••••••");
             this.theEndTitle.setText('Ending #5: The Last Tasty Supper');
             this.endImage.setFrame('grave.png');
+            this.endImage.setScale(this.endImage.scaleX * 0.85);
+            this.endImage.y = gameConsts.height;
         } else {
             this.displayedLines.push("\n\nThe stronghold's rations are stale and cold.");
             this.displayedLines.push("\n\nThey are enough to survive on, but only barely.");
@@ -627,7 +629,7 @@ class GameFinal {
         if (this.displayedLines.length === 0) {
             setTimeout(() => {
                 if (!this.endImage) {
-                    this.endImage = PhaserScene.add.sprite(40, gameConsts.height - 40, "epilogue", "campfire.png").setAlpha(0).setDepth(10000).setOrigin(0, 1);
+                    this.endImage = PhaserScene.add.sprite(40, gameConsts.height - 28, "epilogue", "campfire.png").setAlpha(0).setDepth(10000).setOrigin(0, 1);
                     this.endImage.scrollFactorX = 0; this.endImage.scrollFactorY = 0;
                 }
                 this.scene.tweens.add({
@@ -666,10 +668,7 @@ class GameFinal {
                 targets: [gameVars, globalObjsTemp.radioMusic],
                 radioVolume: 0,
                 volume: 0,
-                duration: 4000,
-                onComplete: () => {
-                    globalObjsTemp.radioMusic.stop();
-                }
+                duration: 3000
             });
             this.scene.tweens.add({
                 targets: [globalObjsTemp.radioStatic1, globalObjsTemp.radioStatic2],

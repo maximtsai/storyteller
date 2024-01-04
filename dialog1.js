@@ -751,7 +751,7 @@ let dialogList1 = {
             {speaker: "Ethan", face: "ethan_normal.png", text: "Okay uh, Edith. I've been... irresponsible."},
             {speaker: "Edith", face: "edith_normal.png", text: "."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "And I know I haven't always been the\nboyfriend I should be."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "I dunno if I could\nmake up for it again after messing\nup so much but..."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "I dunno if I could make up for it again\nafter messing up so much but..."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "I'd like to try again.\nDo better, if you're okay with that."},
             {speaker: "You", text: "...•••••••••\nAnything else...?"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Oh yeah I'll toss out my stash.\nNo more substances and stuff."},
@@ -1265,13 +1265,14 @@ let dialogList1 = {
             {speaker: "Ethan", face: "ethan_normal.png", text: ".••••.••••.••••••What scared you so bad?"},
         ],
         branches: [
-            {text: "The angry father of a girl\nI was fooling around with.", targetNode: "Ethan3AngryFather"},
-            {text: "Something I still don't like\nto admit.", targetNode: "Ethan3KeepSecrets"},
+            {text: "Share your past", targetNode: "Ethan3AngryFather"},
+            {text: "Don't tell Ethan anything", targetNode: "Ethan3KeepSecrets"},
         ]
     },
 
     Ethan3KeepSecrets: {
         speech: [
+            {speaker: "You", text: "...Something I still don't like to admit."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Fine.••••••\nKeep your secrets."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Why are you telling me this?"},
         ],
@@ -1314,6 +1315,7 @@ let dialogList1 = {
 
     Ethan3AngryFather: {
         speech: [
+            {speaker: "You", text: "The angry father of a girl I was fooling\naround with."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "You're just saying that."},
             {speaker: "You", text: "I'd give a lot to be lying."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Huh.\nWhy are you telling me this?", publish: "EthanInfluence"},
@@ -1448,7 +1450,21 @@ let dialogList1 = {
     },
     Juan2FeltIt: {
         speech: [
-            {speaker: "Juan", face: "juan_dark_scared.png", text: "Good to know someone else has got their\nsenses together.", publish: 'JuanInfluence'},
+            {speaker: "Juan", face: "juan_dark_scared.png", text: "Good to know someone else has got their\nsenses together.", publish: 'JuanInfluence', onFinish: () => {
+                    setTimeout(() => {
+                        let tempSpook = PhaserScene.add.sprite(-100, 0, 'lowq', 'spook4.png').setDepth(-1).setScale(2.8, 2.8).setAlpha(1);
+                        playSound('meatclick');
+                        PhaserScene.tweens.add({
+                            targets: [tempSpook],
+                            duration: 500,
+                            x: 3500,
+                            alpha: 0,
+                            onComplete: () => {
+                                tempSpook.destroy();
+                            }
+                        });
+                    }, 750);
+                }},
         ]
     },
     Juan2Eye: {
@@ -1645,7 +1661,7 @@ let dialogList1 = {
             {speaker: "Bruna", face: "bruna_normal.png", text: ".••••••.•••••••.•••••Thank you.\nI should not have called you a\nDosbaddel either.", publish: "BrunaInfluence"},
             {speaker: "You", text: "Fresh start?"},
             {speaker: "Bruna", face: "bruna_grin.png", text: "Ja, fresh start.\nOh! My friend in Cairo is calling!"},
-            {speaker: "Bruna", face: "bruna_concern.png", text: "She claims the Nile is flowing the\nwrong way."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "She claims the Nile is flowing the\nwrong way.", publish: "BrunaFrown"},
             {speaker: "You", text: "Huh, I'l leave you to it.", data: {property: "bruna2ChattedAngry", value: false}},
         ],
     },
@@ -2709,13 +2725,16 @@ let dialogList1 = {
     JuanAct3Leave3AllCall: {
         speech: [
             {speaker: "You", text: "It's my rig, it's my call."},
-            {speaker: "You", text: "They, and you, are all getting\nout of here together with me."},
+            {speaker: "You", text: "They, and you, are all getting out of here together\nwith me."},
             {speaker: "You", text: "So, are you coming with?\n\n\n[Hard Difficulty]", publish: "showInfluence", onFinish: () => {
                     if (gameState.JuanInfluence < 2) {
+                        gameState.juanLeaveStatus = "refuse"
                         dialogManager.showDialogNode("JuanAct3Refuse");
                     } else if (gameState.JuanInfluence < 3) {
+                        gameState.juanLeaveStatus = "softRefuse"
                         dialogManager.showDialogNode("JuanAct3SoftRefuse");
                     } else {
+                        gameState.juanLeaveStatus = "accept";
                         dialogManager.showDialogNode("JuanAct3Join");
                     }
                 }},

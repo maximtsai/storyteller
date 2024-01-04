@@ -1668,17 +1668,17 @@ function clickTV() {
 function clickIndoor() {
     if (gameState.shownFlashEldritch && !gameState.shownIndoorEldritch) {
         gameState.shownIndoorEldritch = true;
-        let eyeflash2 = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'lowq', 'spook1.jpg').setScale(1.7, 1.7).setAlpha(0.3).setDepth(1000).setBlendMode(Phaser.BlendModes.DARKEN);
+        let eyeflash2 = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'lowq', 'spook1.jpg').setScale(1.7, 1.7).setAlpha(0.15).setDepth(1000).setBlendMode(Phaser.BlendModes.DARKEN);
         eyeflash2.scrollFactorX = 0;
         setTimeout(() => {
-            eyeflash2.setAlpha(0.06);
+            eyeflash2.setAlpha(0.05);
             setTimeout(() => {
                 let blackFlash = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(5000, 999);
                 eyeflash2.destroy();
                 setTimeout(() => {
                     blackFlash.destroy();
                 }, 1)
-            }, 300);
+            }, 80);
         }, 15);
     }
     globalObjects.diner.IndoorButton.setState(DISABLE);
@@ -1688,9 +1688,13 @@ function clickIndoor() {
     if (gameState.powerOff) {
         globalObjects.indoorRain.setVolume(1);
         // setRadioVolume(0.75);
+    } else if (!gameState.resetRadioPowerOn) {
+        gameState.resetRadioPowerOn = true;
+        globalObjects.indoorRain.setVolume(0.22);
+        setRadioMusic('radiostatic2', 0.4);
     } else {
         globalObjects.indoorRain.setVolume(0.25);
-        setRadioMusic('radiostatic2', 0.4);
+        setRadioVolume(gameState.oldRadioVolume);
     }
     playSound('dooropen', 0.8);
 
@@ -1788,7 +1792,8 @@ function exitBackdoor() {
     }
 
     if (!gameState.casparGone) {
-        setRadioVolume(0);
+        gameState.oldRadioVolume = gameVars.radioVolume;
+        setRadioVolume(0.001);
         globalObjects.outdoorRain.volume = 0.88;
     } else if (!gameState.lookForCaspar) {
         globalObjects.outdoorRain.volume = 0.75;
@@ -1882,7 +1887,8 @@ function exitShed() {
     if (!gameState.shownFlashEldritch) {
         gameState.shownFlashEldritch = true;
         setTimeout(() => {
-            let eyeflash = PhaserScene.add.sprite(450, 200, 'lowq', 'spook4.png').setScale(0.8, 0.6).setAlpha(0.01).setDepth(1);
+            let eyeflash = PhaserScene.add.sprite(450, 200, 'lowq', 'spook4.png').setScale(0.8, 0.6).setAlpha(0.005).setDepth(1);
+            let blackPixelTemp = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setAlpha(0.07).setDepth(9999).setScale(10000,500);
             eyeflash.scrollFactorX = 0.2;
             eyeflash.scrollFactorY = 0;
             PhaserScene.tweens.add({
@@ -1890,20 +1896,22 @@ function exitShed() {
                 alpha: 0.04,
                 targets: eyeflash,
                 duration: 5000,
-                ease: 'Quad.easeIn',
+                ease: 'Cubic.easeIn',
                 onComplete: () => {
                     playSound('click');
                     eyeflash.x += 100;
                     eyeflash.y += 25;
                     eyeflash.setScale(1);
-                    eyeflash.setAlpha(0.08);
+                    eyeflash.setAlpha(0.1);
                     setTimeout(() => {
                         eyeflash.x -= 50;
                         eyeflash.setScale(1.25);
-                        eyeflash.setAlpha(0.12);
+                        eyeflash.setAlpha(0.05);
+                        blackPixelTemp.setAlpha(0.09)
                         setTimeout(() => {
                             eyeflash.destroy();
-                        }, 10);
+                            blackPixelTemp.destroy();
+                        }, 20);
                     }, 40);
                 }
             });
