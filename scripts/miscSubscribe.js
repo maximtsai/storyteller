@@ -1288,25 +1288,29 @@ class MiscSubscribe {
                                                                 playSound('click', 0.8);
                                                             }, 150);
                                                             eye.destroy();
+                                                            gameCharacters.sprawl.setScale(2.1);
+                                                            gameCharacters.sprawl.setAlpha(0.2);
+                                                            gameCharacters.sprawl.x += 70;
                                                             setTimeout(() => {
-                                                                gameCharacters.sprawl.setScale(2.1);
+                                                                gameCharacters.sprawl.setScale(2.05);
                                                                 gameCharacters.sprawl.setAlpha(0.25);
-                                                                gameCharacters.sprawl.x += 100;
+                                                                gameCharacters.sprawl.x += 10;
                                                                 setTimeout(() => {
-                                                                    gameCharacters.sprawl.setScale(2.3);
-                                                                    gameCharacters.sprawl.setAlpha(0.3);
-                                                                    gameCharacters.sprawl.x += 220;
                                                                     setTimeout(() => {
-                                                                        gameCharacters.sprawl.setScale(2.5);
-                                                                        gameCharacters.sprawl.setAlpha(0.4);
-                                                                        gameCharacters.sprawl.x += 240;
+                                                                        gameCharacters.sprawl.setScale(2.25);
+                                                                        gameCharacters.sprawl.setAlpha(0.3);
+                                                                        gameCharacters.sprawl.x += 100;
                                                                         setTimeout(() => {
-                                                                            gameCharacters.sprawl.destroy();
-                                                                        }, 50)
+                                                                            gameCharacters.sprawl.setScale(2.3);
+                                                                            gameCharacters.sprawl.setAlpha(0.4);
+                                                                            gameCharacters.sprawl.x += 150;
+                                                                            setTimeout(() => {
+                                                                                gameCharacters.sprawl.destroy();
+                                                                            }, 50)
+                                                                        }, 50);
                                                                     }, 200);
-                                                                }, 200);
-                                                            }, 150);
-
+                                                                }, 350)
+                                                            }, 50);
                                                         }
                                                     });
                                                 }
