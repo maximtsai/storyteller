@@ -662,6 +662,27 @@
 					}
 				},
 				{
+					"filename": "caspar2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 120,
+						"h": 360
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 2,
+						"w": 118,
+						"h": 358
+					},
+					"frame": {
+						"x": 158,
+						"y": 646,
+						"w": 118,
+						"h": 358
+					}
+				},
+				{
 					"filename": "bruna2.png",
 					"rotated": false,
 					"trimmed": true,
@@ -676,31 +697,10 @@
 						"h": 357
 					},
 					"frame": {
-						"x": 158,
+						"x": 276,
 						"y": 646,
 						"w": 117,
 						"h": 357
-					}
-				},
-				{
-					"filename": "caspar2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 120,
-						"h": 360
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 4,
-						"w": 118,
-						"h": 356
-					},
-					"frame": {
-						"x": 275,
-						"y": 646,
-						"w": 118,
-						"h": 356
 					}
 				},
 				{
@@ -961,8 +961,8 @@
 			"image": "sprites/characters-3.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 877,
-				"h": 979
+				"w": 904,
+				"h": 985
 			},
 			"scale": 1,
 			"frames": [
@@ -1051,24 +1051,24 @@
 					}
 				},
 				{
-					"filename": "tv_shake3.png",
+					"filename": "ethan_sleep.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 245,
-						"h": 205
+						"w": 300,
+						"h": 365
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 1,
-						"w": 245,
-						"h": 202
+						"x": 18,
+						"y": 101,
+						"w": 211,
+						"h": 264
 					},
 					"frame": {
 						"x": 245,
 						"y": 721,
-						"w": 245,
-						"h": 202
+						"w": 211,
+						"h": 264
 					}
 				},
 				{
@@ -1093,7 +1093,7 @@
 					}
 				},
 				{
-					"filename": "caspar_dark.png",
+					"filename": "caspar1.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -1114,45 +1114,45 @@
 					}
 				},
 				{
-					"filename": "caspar1.png",
+					"filename": "caspar_dark.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
 						"w": 180,
 						"h": 335
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 1,
+						"y": 0,
 						"w": 180,
-						"h": 334
+						"h": 335
 					},
 					"frame": {
 						"x": 422,
 						"y": 335,
 						"w": 180,
-						"h": 334
+						"h": 335
 					}
 				},
 				{
-					"filename": "ethan_sleep.png",
+					"filename": "tv_shake3.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 300,
-						"h": 365
+						"w": 245,
+						"h": 205
 					},
 					"spriteSourceSize": {
-						"x": 18,
-						"y": 101,
-						"w": 211,
-						"h": 264
+						"x": 0,
+						"y": 1,
+						"w": 245,
+						"h": 202
 					},
 					"frame": {
 						"x": 566,
 						"y": 0,
-						"w": 211,
-						"h": 264
+						"w": 245,
+						"h": 202
 					}
 				},
 				{
@@ -1170,8 +1170,8 @@
 						"h": 202
 					},
 					"frame": {
-						"x": 490,
-						"y": 669,
+						"x": 456,
+						"y": 670,
 						"w": 245,
 						"h": 202
 					}
@@ -1192,7 +1192,7 @@
 					},
 					"frame": {
 						"x": 602,
-						"y": 264,
+						"y": 202,
 						"w": 153,
 						"h": 355
 					}
@@ -1212,8 +1212,8 @@
 						"h": 342
 					},
 					"frame": {
-						"x": 735,
-						"y": 619,
+						"x": 701,
+						"y": 557,
 						"w": 142,
 						"h": 342
 					}
@@ -1233,7 +1233,7 @@
 						"h": 428
 					},
 					"frame": {
-						"x": 777,
+						"x": 811,
 						"y": 0,
 						"w": 93,
 						"h": 428
@@ -1245,6 +1245,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:67577edd70d8c045ecdae07c405b3693:20e6e445e5183651ff6676f2ce03a560:93e56341e9149919c539b9e3c6d79170$"
+		"smartupdate": "$TexturePacker:SmartUpdate:8d288c18010ba479da8b98ebe8da88d6:0a7df0d2b2d06a9649b621d1ca4f979a:93e56341e9149919c539b9e3c6d79170$"
 	}
 }
