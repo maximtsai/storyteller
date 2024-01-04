@@ -1884,12 +1884,12 @@ function exitShed() {
     gameVars.cameraPosY = gameConsts.outdoorStartY; PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
     gameVars.cameraPosX = 1440; PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
 
-    if (!gameState.shownFlashEldritch) {
+    if (!gameState.shownFlashEldritch && gameState.turnedOnPowerSlow) {
         gameState.shownFlashEldritch = true;
         setTimeout(() => {
-            let eyeflash = PhaserScene.add.sprite(450, 200, 'lowq', 'spook4.png').setScale(0.8, 0.6).setAlpha(0.005).setDepth(1);
+            let eyeflash = PhaserScene.add.sprite(340, 200, 'lowq', 'spook4.png').setScale(0.8, 0.6).setAlpha(0.005).setDepth(1);
             let blackPixelTemp = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setAlpha(0.07).setDepth(9999).setScale(10000,500);
-            eyeflash.scrollFactorX = 0.2;
+            eyeflash.scrollFactorX = 0.225;
             eyeflash.scrollFactorY = 0;
             PhaserScene.tweens.add({
                 delay: 300,
@@ -1920,6 +1920,7 @@ function exitShed() {
 
     if (gameState.dogLooking) {
         gameState.dogLooking = false;
+        globalObjsTemp.dogEyeAnim.stop();
         globalObjsTemp.dogEyes.x = 1200;
         globalObjsTemp.dogEyes.y += 40;
         globalObjsTemp.dogEyes.scrollFactorX = 0.8;
@@ -1952,6 +1953,13 @@ function exitShed() {
 
 function clickGenerator() {
     if (!globalObjsTemp.generator) {
+        setTimeout(() => {
+            // if not fixed after 50 seconds, show extra spook.
+            if (gameState.powerOff === true) {
+                console.log("Spook on");
+                gameState.turnedOnPowerSlow = true;
+            }
+        }, 50000);
         gameState.viewedGenerator = true;
         let startYPos = gameConsts.halfHeight + gameConsts.shedStartY;
         updateManager.addFunction(updateGenerator);
@@ -2649,7 +2657,8 @@ function closeGenerator() {
         globalObjsTemp.dogEyes = PhaserScene.add.sprite(gameConsts.halfWidth - 80, gameConsts.halfHeight + 200, 'lowq', 'eyes.png').setOrigin(0.5, 0.5).setDepth(-1).setScale(0.95, 0.8);
         globalObjsTemp.dogEyes.scrollFactorX = 0;
         globalObjsTemp.dogEyes.scrollFactorY = 0;
-        PhaserScene.tweens.add({
+        gameState.dogLooking = true
+        globalObjsTemp.dogEyeAnim = PhaserScene.tweens.add({
             targets: globalObjsTemp.dogEyes,
             x: "-=12",
             scaleX: 1,
@@ -2664,7 +2673,6 @@ function closeGenerator() {
                     ease: 'Quart.easeIn',
                     duration: 500,
                     onComplete: () => {
-                        gameState.dogLooking = true
                         globalObjsTemp.dogEyes.x = 999;
                     }
                 });

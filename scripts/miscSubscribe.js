@@ -1294,17 +1294,17 @@ class MiscSubscribe {
                                                                 gameCharacters.sprawl.x += 100;
                                                                 setTimeout(() => {
                                                                     gameCharacters.sprawl.setScale(2.3);
-                                                                    gameCharacters.sprawl.setAlpha(0.4);
+                                                                    gameCharacters.sprawl.setAlpha(0.3);
                                                                     gameCharacters.sprawl.x += 220;
                                                                     setTimeout(() => {
                                                                         gameCharacters.sprawl.setScale(2.5);
-                                                                        gameCharacters.sprawl.setAlpha(0.6);
+                                                                        gameCharacters.sprawl.setAlpha(0.4);
                                                                         gameCharacters.sprawl.x += 240;
                                                                         setTimeout(() => {
                                                                             gameCharacters.sprawl.destroy();
                                                                         }, 50)
-                                                                    }, 240);
-                                                                }, 240);
+                                                                    }, 200);
+                                                                }, 200);
                                                             }, 150);
 
                                                         }
