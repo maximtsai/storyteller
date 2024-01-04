@@ -638,6 +638,9 @@ class GameFinal {
                     duration: 2500
                 });
                 setTimeout(() => {
+                    if (gameState.MaggieSaved) {
+                        window.CrazyGames.SDK.game.happytime();
+                    }
                     this.restartButton.setState(NORMAL);
                     buttonManager.enableAllInput();
                 }, 1500);
@@ -751,6 +754,12 @@ class GameFinal {
                 alpha: 0
             },
             onMouseUp() {
+                const callbacks = {
+                    adFinished: () => console.log("End midgame ad (callback)"),
+                    adStarted: () => console.log("Start midgame ad (callback)"),
+                };
+
+                window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
                 fullRestart();
             }
         });

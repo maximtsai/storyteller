@@ -189,11 +189,18 @@ function onPreloadComplete (scene)
     loadFileList(scene, fontFiles, 'bitmap_font');
 
     scene.load.start();
+    window.CrazyGames.SDK.game.sdkGameLoadingStart();
+    window.CrazyGames.SDK.banner.requestBanner({
+        id: "banner-container",
+        width: 468,
+        height: 60,
+    });
 }
 
 function onLoadComplete(scene) {
     initializeSounds(scene);
     setupGame(scene);
+    window.CrazyGames.SDK.game.sdkGameLoadingStop();
     // setupFPS(scene);
 }
 

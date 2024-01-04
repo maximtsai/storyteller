@@ -74,7 +74,9 @@ function setupGame() {
             "ref": "buttonStart3"
         },
         onMouseUp: () => {
+            clearBannerAndHideDiv();
             runIntroSequence();
+            window.CrazyGames.SDK.game.gameplayStart();
         }
     });
 
@@ -94,10 +96,12 @@ function setupGame() {
                 "alpha": 0.8
             },
             onMouseUp: () => {
+                clearBannerAndHideDiv();
                 clickCredits();
             }
         });
     }, 0);
+
 
     createWorldButtons();
     setupMoveButtons();
@@ -120,6 +124,13 @@ function initializeMisc() {
         446.75: 'weatherblur',
         506: 'news1'
     };
+}
+
+function clearBannerAndHideDiv() {
+    window.CrazyGames.SDK.banner.clearAllBanners();
+    
+    const elem = document.getElementById("banner-container");
+    elem.style.top = "-1000px";
 }
 
 function setupKeyPresses(scene) {
