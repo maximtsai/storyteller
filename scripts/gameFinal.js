@@ -666,7 +666,6 @@ class GameFinal {
         }
 
         if (gameState.MaggieSaved) {
-            console.log("Fading out radio");
             this.scene.tweens.add({
                 targets: [gameVars, globalObjsTemp.radioMusic],
                 radioVolume: 0,
@@ -705,7 +704,10 @@ class GameFinal {
         this.scene.tweens.add({
             targets: [this.blackScreen],
             alpha: 1,
-            duration: 2500
+            duration: 2500,
+            onComplete: () => {
+                window.CrazyGames.SDK.game.gameplayStop();
+            }
         });
     }
 
