@@ -158,13 +158,32 @@ function clickCredits() {
         }
     });
     globalObjects.closeCreditsButton.setScale(500, 500);
-    globalObjects.creditsText = PhaserScene.add.text(40, 40, 'Programming and stick figure art by Maxim Tsai\n\nWriting and story by Rowa Skipson\n\nFinal scene art by Theresa Kao.')
+    globalObjects.creditsText = PhaserScene.add.text(50, 50, 'Programming and stick figure art\nby Maxim Tsai (maximtsai.com)\n\nWriting and story by Rowa Skipson\n\nFinal scene art by Theresa Kao.')
     globalObjects.creditsText.setFontSize(28);
     globalObjects.creditsText.setScale(0.82);
 
     globalObjects.creditsText2 = PhaserScene.add.text(40, 150, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org,\nsonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
     globalObjects.creditsText2.setFontSize(24);
     globalObjects.creditsText2.setScale(0.82);
+
+    globalObjects.creditsCloseIcon = new Button({
+        normal: {
+            "ref": "closebtn",
+            "x": gameConsts.width - 50,
+            "y": 45,
+            alpha: 0.85,
+            scaleX: 0.98,
+            scaleY: 0.98,
+        },
+        hover: {
+            alpha: 1,
+            scaleX: 1,
+            scaleY: 1,
+        },
+        onMouseUp: () => {
+            closeCredits();
+        }
+    });
 
 }
 
@@ -182,6 +201,7 @@ function closeCredits() {
         globalObjects.closeCreditsButton.destroy();
         globalObjects.creditsText.destroy();
         globalObjects.creditsText2.destroy();
+        globalObjects.creditsCloseIcon.destroy();
     }
 }
 
@@ -343,7 +363,7 @@ function tickKeyPresses(deltaScale) {
         let sineMoveMult = Math.min(1, 1 + 0.2 * Math.sin(gameVars.moveSine));
         let outdoorsMoveMult = gameState.isOutdoors ? 0.6 : 1;
         if (gameState.powerOff === false && gameState.isOutdoors && !gameState.MaggieSaved) {
-            outdoorsMoveMult *= 0.6;
+            outdoorsMoveMult *= 0.8;
         }
         gameVars.moveSine += deltaScale * 0.165 * outdoorsMoveMult;
         gameVars.cameraPosX += gameVars.cameraMoveVel * sineMoveMult * deltaScale * deltaDecay * (outdoorsMoveMult * 0.8 + 0.2);

@@ -157,7 +157,7 @@ class DialogDisplay {
                 scaleY: 10000
             },
             onMouseUp: () => {
-                console.log('block')
+                // console.log('block')
             }
         });
         this.dialogClickBlocker.setDepth(9998);
