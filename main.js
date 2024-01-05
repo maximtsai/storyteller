@@ -91,11 +91,14 @@ let globalObjsTemp = {
     noPower: false
 };
 let globalObjects = {};
+let nameStr2 = '1001juegos';
 let PhaserScene = null; // Global
 let oldTime = 0;
 let deltaScale = 1;
 let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 5;
+let nameStr = 'crazygames';
+
 
 function fullRestart() {
     if (game) {
@@ -106,6 +109,9 @@ function fullRestart() {
         miscSubscribe.reset();
         gameFinal.reset();
         game.destroy();
+    }
+    if (!document.location.href.includes(nameStr) && !document.location.href.includes(nameStr2)) {
+        return;
     }
     gameVars = {
         typeWriterOverflow: 0,
