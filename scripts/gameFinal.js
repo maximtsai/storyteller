@@ -32,7 +32,7 @@ class GameFinal {
         ]);
     }
 
-    stayFinale() {
+    destroyWorldButtons() {
         globalObjects.diner.ExitButton.destroy();
         globalObjects.diner.JuanButton.destroy();
         globalObjects.diner.EthanButton.destroy();
@@ -45,6 +45,10 @@ class GameFinal {
         globalObjects.diner.CasparButton.destroy();
         globalObjects.moveLeftBtn.destroy();
         globalObjects.moveRightBtn.destroy();
+    }
+
+    stayFinale() {
+        this.destroyWorldButtons();
 
         if (!globalObjsTemp.radioStatic1) {
             globalObjsTemp.radioStatic1 = {volume: 1};
@@ -157,7 +161,7 @@ class GameFinal {
                             });
                             helperFunction.scrollTo(1353)
                             helperFunction.setShake(0.75);
-                            gameCharacters.edith.destroy();
+
                             gameCharacters.juan.setFrame('juan_fall.png');
                             gameCharacters.juan.x += 15;
                             gameCharacters.juan.y = gameConsts.halfHeight + 198;
@@ -575,18 +579,7 @@ class GameFinal {
     }
 
     createDisplayedLinesBest() {
-        globalObjects.moveLeftBtn.destroy();
-        globalObjects.moveRightBtn.destroy();
-        globalObjects.diner.ExitButton.destroy();
-        globalObjects.diner.JuanButton.destroy();
-        globalObjects.diner.EthanButton.destroy();
-        globalObjects.diner.EdithButton.destroy();
-        globalObjects.diner.maggieButton.destroy();
-        globalObjects.diner.BrunaButton.destroy();
-        globalObjects.diner.RadioButton.destroy();
-        globalObjects.diner.TVButton.destroy();
-        globalObjects.diner.BackdoorButton.destroy();
-        globalObjects.diner.CasparButton.destroy();
+        this.destroyWorldButtons();
 
         this.displayedLines[0] = "You exit the diner with everyone on board.";
         this.displayedLines.push("\n\nMoments after you leave, the diner gets completely destroyed,\nbut you all make it out safe.")
@@ -656,8 +649,7 @@ class GameFinal {
     }
 
     fadeOut(finishFunc) {
-        globalObjects.moveLeftBtn.destroy();
-        globalObjects.moveRightBtn.destroy();
+        this.destroyWorldButtons();
         globalObjects.exclamation.destroy();
         buttonManager.disableAllInput();
 
@@ -733,7 +725,6 @@ class GameFinal {
 
         this.createRestartButton();
 
-
         this.textOneActive = true;
     }
 
@@ -797,7 +788,7 @@ class GameFinal {
             yoyo: true,
             repeat: 6,
             onComplete: () => {
-                gameCharacters.cracks = PhaserScene.add.sprite(1698, gameConsts.halfHeight - 150, 'characters', 'cracks.png').setDepth(0).setScale(1.95);
+                gameCharacters.cracks = PhaserScene.add.sprite(1698, gameConsts.halfHeight - 170, 'characters', 'cracks.png').setDepth(0).setScale(1.95);
                 gameCharacters.tv.destroy();
                 this.blackScreen.alpha = 1;
                 playSound('click');

@@ -236,7 +236,7 @@ function setupMoveButtons() {
     globalObjects.moveLeftBtn.setDepth(20);
     globalObjects.moveLeftBtn.setState(DISABLE);
     globalObjects.moveLeftBtn.setOnMouseUpFunc(() => {
-        if (gameState.currentScene == 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
+        if (!gameState.isOutdoors && gameState.currentScene == 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
             gameState.scratchingDoor = true;
             gameCharacters.backdoor.play('backdoor_shake');
 
@@ -275,7 +275,7 @@ function setupMoveButtons() {
     globalObjects.moveRightBtn.setDepth(20);
     globalObjects.moveRightBtn.setState(DISABLE);
     globalObjects.moveRightBtn.setOnMouseUpFunc(() => {
-        if (gameState.currentScene == 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
+        if (!gameState.isOutdoors && gameState.currentScene == 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
             gameState.scratchingDoor = true;
             gameCharacters.backdoor.play('backdoor_shake');
 
@@ -303,7 +303,7 @@ function tickKeyPresses(deltaScale) {
     let tryingToMoveRight = (keyPresses.keyD.isDown || keyPresses.keyRight.isDown) && globalObjects.moveLeftBtn.getState() === NORMAL && !tryingToMoveLeft;
 
     if (wasMovingLeftKeyboard && !tryingToMoveLeft) {
-        if (gameState.currentScene === 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
+        if (!gameState.isOutdoors && gameState.currentScene === 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
             gameState.scratchingDoor = true;
             gameCharacters.backdoor.play('backdoor_shake');
 
@@ -313,7 +313,7 @@ function tickKeyPresses(deltaScale) {
     }
 
     if (wasMovingRightKeyboard && !tryingToMoveRight) {
-        if (gameState.currentScene === 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
+        if (!gameState.isOutdoors && gameState.currentScene === 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
             gameState.scratchingDoor = true;
             gameCharacters.backdoor.play('backdoor_shake');
 

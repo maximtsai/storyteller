@@ -677,4 +677,8 @@ class DialogDisplay {
             this.subscriptions[i].unsubscribe();
         }
     }
+
+    destroy() {
+        this.reset();
+    }
 }
