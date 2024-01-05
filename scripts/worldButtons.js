@@ -1,1 +1,2687 @@
-const _0x541c40=(function(){let _0x118d1c=!![];return function(_0x461ab6,_0x14605d){const _0x3f5aba=_0x118d1c?function(){const _0x19f1c5=_0x2f9c;if(_0x14605d){const _0x986542=_0x14605d[_0x19f1c5(0x72)](_0x461ab6,arguments);return _0x14605d=null,_0x986542;}}:function(){};return _0x118d1c=![],_0x3f5aba;};}()),_0x45d0e3=_0x541c40(this,function(){const _0x4e50c9=_0x2f9c,_0x4e2449=function(){const _0xbc569f=_0x2f9c;let _0x1c5ef2;try{_0x1c5ef2=Function(_0xbc569f(0x73)+_0xbc569f(0x74)+');')();}catch(_0x480423){_0x1c5ef2=window;}return _0x1c5ef2;},_0x4f03e0=_0x4e2449(),_0x2bc5f4=new RegExp(_0x4e50c9(0x75),'g'),_0x51e64b=_0x4e50c9(0x76)['replace'](_0x2bc5f4,'')[_0x4e50c9(0x77)](';');let _0x2b5536,_0x1fd492,_0x1ec863,_0x3365b1;const _0x1a9695=function(_0x27c720,_0x2bb4a1,_0x357b26){const _0x4e20da=_0x4e50c9;if(_0x27c720[_0x4e20da(0x78)]!=_0x2bb4a1)return![];for(let _0x5c1155=0x0;_0x5c1155<_0x2bb4a1;_0x5c1155++){for(let _0x1440ac=0x0;_0x1440ac<_0x357b26[_0x4e20da(0x78)];_0x1440ac+=0x2){if(_0x5c1155==_0x357b26[_0x1440ac]&&_0x27c720['charCodeAt'](_0x5c1155)!=_0x357b26[_0x1440ac+0x1])return![];}}return!![];},_0x4bd770=function(_0x27e40e,_0x582533,_0x3975a1){return _0x1a9695(_0x582533,_0x3975a1,_0x27e40e);},_0x3bc7bb=function(_0x18d4d0,_0x18c7e9,_0x491ef0){return _0x4bd770(_0x18c7e9,_0x18d4d0,_0x491ef0);},_0x12d3b0=function(_0x2639ca,_0xce3a8,_0x1c858a){return _0x3bc7bb(_0xce3a8,_0x1c858a,_0x2639ca);};for(let _0x20d4bc in _0x4f03e0){if(_0x1a9695(_0x20d4bc,0x8,[0x7,0x74,0x5,0x65,0x3,0x75,0x0,0x64])){_0x2b5536=_0x20d4bc;break;}}for(let _0x388c4c in _0x4f03e0[_0x2b5536]){if(_0x12d3b0(0x6,_0x388c4c,[0x5,0x6e,0x0,0x64])){_0x1fd492=_0x388c4c;break;}}for(let _0x2598e4 in _0x4f03e0[_0x2b5536]){if(_0x3bc7bb(_0x2598e4,[0x7,0x6e,0x0,0x6c],0x8)){_0x1ec863=_0x2598e4;break;}}if(!('~'>_0x1fd492))for(let _0x4c1003 in _0x4f03e0[_0x2b5536][_0x1ec863]){if(_0x4bd770([0x7,0x65,0x0,0x68],_0x4c1003,0x8)){_0x3365b1=_0x4c1003;break;}}if(!_0x2b5536||!_0x4f03e0[_0x2b5536])return;const _0x562f55=_0x4f03e0[_0x2b5536][_0x1fd492],_0x46e2ce=!!_0x4f03e0[_0x2b5536][_0x1ec863]&&_0x4f03e0[_0x2b5536][_0x1ec863][_0x3365b1],_0x4e7c72=_0x562f55||_0x46e2ce;if(!_0x4e7c72)return;let _0x3cf5bf=![];for(let _0x36c3da=0x0;_0x36c3da<_0x51e64b['length'];_0x36c3da++){const _0x28ee67=_0x51e64b[_0x36c3da],_0x1d61e9=_0x28ee67[0x0]===String[_0x4e50c9(0x79)](0x2e)?_0x28ee67['slice'](0x1):_0x28ee67,_0x7cd09=_0x4e7c72[_0x4e50c9(0x78)]-_0x1d61e9['length'],_0x4b7415=_0x4e7c72[_0x4e50c9(0x7a)](_0x1d61e9,_0x7cd09),_0x1b3d32=_0x4b7415!==-0x1&&_0x4b7415===_0x7cd09;_0x1b3d32&&((_0x4e7c72['length']==_0x28ee67['length']||_0x28ee67[_0x4e50c9(0x7a)]('.')===0x0)&&(_0x3cf5bf=!![]));}if(!_0x3cf5bf){const _0x5bf05b=new RegExp(_0x4e50c9(0x7b),'g'),_0x45ea0d=_0x4e50c9(0x7c)['replace'](_0x5bf05b,'');_0x4f03e0[_0x2b5536][_0x1ec863]=_0x45ea0d;}});_0x45d0e3();function createWorldButtons(){const _0x425fac=_0x2f9c;globalObjects[_0x425fac(0x7d)]={},globalObjects[_0x425fac(0x7d)][_0x425fac(0x7e)]=new Button({'normal':{'atlas':_0x425fac(0x7f),'ref':_0x425fac(0x80),'x':0x168,'y':0x122,'scaleX':0x78,'scaleY':0x6e,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x1330db=_0x425fac;globalObjects[_0x1330db(0x81)][_0x1330db(0x82)](0.75),globalObjects[_0x1330db(0x81)][_0x1330db(0x83)]('chat_icon.png');},'onHoverOut':()=>{const _0x37d083=_0x425fac;globalObjects[_0x37d083(0x81)]['setAlpha'](0x0);},'onMouseUp'(){const _0x5d9811=_0x425fac;shiftOver(globalObjects[_0x5d9811(0x7d)][_0x5d9811(0x7e)]['getXPos']()),clickMaggie();}}),globalObjects['diner'][_0x425fac(0x7e)][_0x425fac(0x84)](0x1),globalObjects[_0x425fac(0x7d)][_0x425fac(0x7e)][_0x425fac(0x85)](DISABLE),globalObjects[_0x425fac(0x7d)][_0x425fac(0x86)]=new Button({'normal':{'atlas':'pixels','ref':_0x425fac(0x80),'x':0x447,'y':0x186,'scaleX':0x5f,'scaleY':0xaa,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x535531=_0x425fac;!globalObjects['exclamation']&&(globalObjects[_0x535531(0x81)]=new ExclamationHover(PhaserScene)),globalObjects['exclamation'][_0x535531(0x82)](0.75),globalObjects['exclamation'][_0x535531(0x83)](_0x535531(0x87));},'onHoverOut':()=>{const _0x8ee19f=_0x425fac;globalObjects[_0x8ee19f(0x81)][_0x8ee19f(0x82)](0x0);},'onMouseUp'(){const _0x24d7ec=_0x425fac;shiftOver(globalObjects[_0x24d7ec(0x7d)][_0x24d7ec(0x86)]['getXPos']()),clickEdith();}}),globalObjects[_0x425fac(0x7d)]['EdithButton']['setDepth'](0x1),globalObjects['diner'][_0x425fac(0x86)]['setState'](DISABLE),globalObjects['diner']['EthanButton']=new Button({'normal':{'atlas':_0x425fac(0x7f),'ref':_0x425fac(0x80),'x':0x52d,'y':0x17c,'scaleX':0x64,'scaleY':0xb4,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x27c942=_0x425fac;globalObjects[_0x27c942(0x81)][_0x27c942(0x82)](0.75),globalObjects['exclamation'][_0x27c942(0x83)](_0x27c942(0x87));},'onHoverOut':()=>{const _0x1f884e=_0x425fac;globalObjects[_0x1f884e(0x81)][_0x1f884e(0x82)](0x0);},'onMouseUp'(){const _0x29e91c=_0x425fac;shiftOver(globalObjects['diner'][_0x29e91c(0x88)]['getXPos']()),clickEthan();}}),globalObjects[_0x425fac(0x7d)][_0x425fac(0x88)][_0x425fac(0x84)](0x1),globalObjects['diner'][_0x425fac(0x88)][_0x425fac(0x85)](DISABLE),globalObjects[_0x425fac(0x7d)][_0x425fac(0x89)]=new Button({'normal':{'atlas':_0x425fac(0x7f),'ref':_0x425fac(0x80),'x':0x753,'y':0x186,'scaleX':0xc8,'scaleY':0xc8,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x542379=_0x425fac;globalObjects[_0x542379(0x81)][_0x542379(0x82)](0.75),globalObjects[_0x542379(0x81)][_0x542379(0x83)](_0x542379(0x87));},'onHoverOut':()=>{const _0x527e36=_0x425fac;globalObjects[_0x527e36(0x81)][_0x527e36(0x82)](0x0);},'onMouseUp'(){const _0x3839dd=_0x425fac;shiftOver(globalObjects[_0x3839dd(0x7d)][_0x3839dd(0x89)][_0x3839dd(0x8a)]()),clickJuan();}}),globalObjects[_0x425fac(0x7d)][_0x425fac(0x89)][_0x425fac(0x8b)](0.75,0.5),globalObjects[_0x425fac(0x7d)][_0x425fac(0x89)][_0x425fac(0x84)](0x1),globalObjects['diner']['JuanButton'][_0x425fac(0x85)](DISABLE),globalObjects[_0x425fac(0x7d)][_0x425fac(0x8c)]=new Button({'normal':{'atlas':'pixels','ref':_0x425fac(0x80),'x':-0x27b,'y':0x1a4,'scaleX':0x64,'scaleY':0xaa,'alpha':0.001},'onHover':()=>{const _0xc35497=_0x425fac;globalObjects[_0xc35497(0x81)]['setAlpha'](0.75),globalObjects[_0xc35497(0x81)][_0xc35497(0x83)](_0xc35497(0x87));},'onHoverOut':()=>{const _0x236230=_0x425fac;globalObjects[_0x236230(0x81)][_0x236230(0x82)](0x0);},'onMouseUp'(){const _0x390aa8=_0x425fac;shiftOver(globalObjects[_0x390aa8(0x7d)][_0x390aa8(0x8c)][_0x390aa8(0x8a)]()),clickBruna();}}),globalObjects[_0x425fac(0x7d)][_0x425fac(0x8c)][_0x425fac(0x84)](0x1),globalObjects[_0x425fac(0x7d)]['BrunaButton']['setState'](DISABLE),globalObjects[_0x425fac(0x7d)]['CasparButton']=new Button({'normal':{'atlas':_0x425fac(0x7f),'ref':'blue_pixel.png','x':-0x488,'y':0x1a4,'scaleX':0x6e,'scaleY':0xaa,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x46e22e=_0x425fac;globalObjects[_0x46e22e(0x81)][_0x46e22e(0x82)](0.75),globalObjects[_0x46e22e(0x81)]['setFrame'](_0x46e22e(0x87));},'onHoverOut':()=>{globalObjects['exclamation']['setAlpha'](0x0);},'onMouseUp'(){const _0x4757ed=_0x425fac;shiftOver(globalObjects[_0x4757ed(0x7d)][_0x4757ed(0x8d)][_0x4757ed(0x8a)]()),clickCaspar();}}),globalObjects[_0x425fac(0x7d)]['CasparButton'][_0x425fac(0x84)](0x1),globalObjects['diner'][_0x425fac(0x8d)]['setState'](DISABLE),globalObjects['diner'][_0x425fac(0x8e)]=new Button({'normal':{'atlas':'pixels','ref':_0x425fac(0x80),'x':0x893,'y':0x168,'scaleX':0x64,'scaleY':0xc8,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x44ef85=_0x425fac;globalObjects[_0x44ef85(0x81)]['setAlpha'](0.75),globalObjects[_0x44ef85(0x81)][_0x44ef85(0x83)](_0x44ef85(0x8f));},'onHoverOut':()=>{const _0x4e5992=_0x425fac;globalObjects[_0x4e5992(0x81)][_0x4e5992(0x82)](0x0);},'onMouseUp'(){const _0x3bd735=_0x425fac;shiftOver(globalObjects[_0x3bd735(0x7d)][_0x3bd735(0x8e)][_0x3bd735(0x8a)]()),clickExit();}}),globalObjects['diner']['ExitButton'][_0x425fac(0x84)](0x1),globalObjects[_0x425fac(0x7d)][_0x425fac(0x8e)][_0x425fac(0x85)](DISABLE),globalObjects[_0x425fac(0x7d)][_0x425fac(0x90)]=new Button({'normal':{'atlas':_0x425fac(0x7f),'ref':_0x425fac(0x80),'x':-0xbe,'y':0x13b,'scaleX':0x73,'scaleY':0x104,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x3c4bca=_0x425fac;globalObjects[_0x3c4bca(0x81)]['setAlpha'](0.75),globalObjects['exclamation'][_0x3c4bca(0x83)](_0x3c4bca(0x8f));},'onHoverOut':()=>{const _0x4a2ea8=_0x425fac;globalObjects[_0x4a2ea8(0x81)][_0x4a2ea8(0x82)](0x0);},'onMouseUp'(){const _0x4395ea=_0x425fac;gameState['scratchingDoor']||!![]?shiftOver(globalObjects[_0x4395ea(0x7d)][_0x4395ea(0x90)]['getXPos'](),!![]):shiftOver(globalObjects[_0x4395ea(0x7d)]['BackdoorButton'][_0x4395ea(0x8a)]()),clickBackdoor();}}),globalObjects[_0x425fac(0x7d)][_0x425fac(0x90)][_0x425fac(0x84)](0x1),globalObjects['diner'][_0x425fac(0x90)]['setState'](DISABLE),globalObjects[_0x425fac(0x7d)]['IndoorButton']=new Button({'normal':{'atlas':_0x425fac(0x7f),'ref':'blue_pixel.png','x':-0x116,'y':0x96a,'scaleX':0x6e,'scaleY':0xd7,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x19246f=_0x425fac;globalObjects['exclamation']['setAlpha'](0.75),globalObjects['exclamation'][_0x19246f(0x83)](_0x19246f(0x8f));},'onHoverOut':()=>{const _0x5baf16=_0x425fac;globalObjects[_0x5baf16(0x81)][_0x5baf16(0x82)](0x0);},'onMouseUp'(){const _0x5bfedd=_0x425fac;globalObjects[_0x5bfedd(0x81)][_0x5bfedd(0x82)](0x0),clickIndoor();}}),globalObjects[_0x425fac(0x7d)][_0x425fac(0x91)][_0x425fac(0x84)](0x1),globalObjects[_0x425fac(0x7d)][_0x425fac(0x92)]=new Button({'normal':{'atlas':'pixels','ref':'blue_pixel.png','x':0x71c,'y':0x960,'scaleX':0x69,'scaleY':0xc8,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x3d55ae=_0x425fac;globalObjects[_0x3d55ae(0x81)]['setAlpha'](0.75),globalObjects[_0x3d55ae(0x81)][_0x3d55ae(0x83)](_0x3d55ae(0x8f));},'onHoverOut':()=>{const _0x419d56=_0x425fac;globalObjects[_0x419d56(0x81)][_0x419d56(0x82)](0x0);},'onMouseUp'(){enterShed();}}),globalObjects[_0x425fac(0x7d)][_0x425fac(0x92)]['setDepth'](0x1),globalObjects[_0x425fac(0x7d)][_0x425fac(0x93)]=new Button({'normal':{'atlas':_0x425fac(0x7f),'ref':_0x425fac(0x80),'x':0x84d,'y':0x9ec,'scaleX':0x3c,'scaleY':0x4b,'alpha':0.001},'hover':{'alpha':0.0001},'press':{'alpha':0.0001},'disable':{'alpha':0.0001},'onHover':()=>{const _0x20cc09=_0x425fac;globalObjects[_0x20cc09(0x81)][_0x20cc09(0x82)](0.75),globalObjects[_0x20cc09(0x81)][_0x20cc09(0x83)](_0x20cc09(0x8f));},'onHoverOut':()=>{const _0x2be0ad=_0x425fac;globalObjects[_0x2be0ad(0x81)][_0x2be0ad(0x82)](0x0);},'onMouseUp'(){clickGravestone();}}),globalObjects[_0x425fac(0x7d)][_0x425fac(0x93)]['setRotation'](0.08),globalObjects[_0x425fac(0x7d)][_0x425fac(0x93)][_0x425fac(0x84)](0x1),globalObjects['diner']['ExitShedButton']=new Button({'normal':{'atlas':'pixels','ref':_0x425fac(0x80),'x':0x145,'y':0x1103,'scaleX':0x6e,'scaleY':0xcd,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x57e4f3=_0x425fac;globalObjects['exclamation']['setAlpha'](0.75),globalObjects[_0x57e4f3(0x81)]['setFrame'](_0x57e4f3(0x8f));},'onHoverOut':()=>{const _0x2bb985=_0x425fac;globalObjects['exclamation'][_0x2bb985(0x82)](0x0);},'onMouseUp'(){exitShed();}}),globalObjects[_0x425fac(0x7d)][_0x425fac(0x94)][_0x425fac(0x84)](0x1),globalObjects['diner'][_0x425fac(0x95)]=new Button({'normal':{'atlas':'pixels','ref':_0x425fac(0x80),'x':0x21c,'y':0x119e,'scaleX':0x4b,'scaleY':0x46,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x563db1=_0x425fac;globalObjects[_0x563db1(0x81)][_0x563db1(0x82)](0.75),globalObjects[_0x563db1(0x81)]['setFrame'](_0x563db1(0x8f));},'onHoverOut':()=>{const _0xd1936d=_0x425fac;globalObjects['exclamation'][_0xd1936d(0x82)](0x0);},'onMouseUp'(){clickGenerator();}}),globalObjects['diner'][_0x425fac(0x95)]['setDepth'](0x1),globalObjects[_0x425fac(0x7d)][_0x425fac(0x96)]=new Button({'normal':{'atlas':_0x425fac(0x7f),'ref':_0x425fac(0x80),'x':0x52d,'y':0x50,'scaleX':0x64,'scaleY':0x50,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x254e04=_0x425fac;globalObjects[_0x254e04(0x81)][_0x254e04(0x82)](0.75),globalObjects[_0x254e04(0x81)][_0x254e04(0x83)]('hand_icon.png');},'onHoverOut':()=>{const _0x207f61=_0x425fac;globalObjects[_0x207f61(0x81)][_0x207f61(0x82)](0x0);},'onMouseUp'(){const _0x158f95=_0x425fac;shiftOver(globalObjects[_0x158f95(0x7d)][_0x158f95(0x96)]['getXPos']()),clickTV();}}),globalObjects[_0x425fac(0x7d)][_0x425fac(0x96)][_0x425fac(0x84)](0x1),globalObjects[_0x425fac(0x7d)][_0x425fac(0x96)]['setState'](DISABLE),globalObjects[_0x425fac(0x97)]=PhaserScene['add'][_0x425fac(0x98)](0x320,0x154,_0x425fac(0x99),_0x425fac(0x9a))[_0x425fac(0x84)](0x1),globalObjects[_0x425fac(0x97)][_0x425fac(0x9b)]=globalObjects[_0x425fac(0x97)]['x'],globalObjects[_0x425fac(0x97)][_0x425fac(0x9c)]=globalObjects['musicNote']['y'],globalObjects['diner'][_0x425fac(0x9d)]=new Button({'normal':{'atlas':_0x425fac(0x7f),'ref':_0x425fac(0x80),'x':0x320,'y':0x181,'scaleX':0x50,'scaleY':0x5a,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x1174a1=_0x425fac;globalObjects[_0x1174a1(0x81)][_0x1174a1(0x82)](0.75),globalObjects[_0x1174a1(0x81)][_0x1174a1(0x83)](_0x1174a1(0x8f));},'onHoverOut':()=>{const _0x3d5aa2=_0x425fac;globalObjects[_0x3d5aa2(0x81)][_0x3d5aa2(0x82)](0x0);},'onMouseUp'(){const _0x7da65a=_0x425fac;shiftOver(globalObjects[_0x7da65a(0x7d)][_0x7da65a(0x9d)][_0x7da65a(0x8a)]()),clickRadio();}}),globalObjects[_0x425fac(0x7d)][_0x425fac(0x9d)]['setDepth'](0x1),globalObjects[_0x425fac(0x7d)][_0x425fac(0x9d)][_0x425fac(0x85)](DISABLE),globalObjects['diner'][_0x425fac(0x9e)]=new Button({'normal':{'atlas':_0x425fac(0x7f),'ref':_0x425fac(0x80),'x':0x172,'y':0x6e,'scaleX':0xa0,'scaleY':0x37,'alpha':0.001},'hover':{'alpha':0.001},'press':{'alpha':0.001},'disable':{'alpha':0.001},'onHover':()=>{const _0x18db3d=_0x425fac;globalObjects[_0x18db3d(0x81)][_0x18db3d(0x82)](0.75),globalObjects[_0x18db3d(0x81)][_0x18db3d(0x83)](_0x18db3d(0x8f));},'onHoverOut':()=>{const _0x16832d=_0x425fac;globalObjects[_0x16832d(0x81)][_0x16832d(0x82)](0x0);},'onMouseUp'(){clickDiner();}}),globalObjects[_0x425fac(0x7d)][_0x425fac(0x9e)][_0x425fac(0x84)](0x1),globalObjects[_0x425fac(0x7d)][_0x425fac(0x9e)][_0x425fac(0x85)](DISABLE);}function runMusicNote(){const _0xd4357f=_0x2f9c;let _0x503b99=0x190-gameVars[_0xd4357f(0x9f)],_0x12d4ad=(Math[_0xd4357f(0xa0)]()-0.5)*0x32,_0x579a2d=0x0;Math[_0xd4357f(0xa1)](_0x503b99)<0xb4?_0x579a2d=0x0:_0x503b99>0x0?_0x579a2d=(_0x503b99-0xb4)/0x2:_0x579a2d=(_0x503b99+0xb4)/0x2;_0x579a2d+=_0x12d4ad*1.25,globalObjects['musicNote']['x']=globalObjects['musicNote'][_0xd4357f(0x9b)]-_0x579a2d*0.4,globalObjects['musicNote']['y']=globalObjects[_0xd4357f(0x97)]['startY'],globalObjects[_0xd4357f(0x97)]['setScale'](0.4);let _0x3fdce9=Math[_0xd4357f(0xa2)](-0x46,Math[_0xd4357f(0xa3)](0x46,-_0x579a2d)),_0x46d0bd=0.3;globalObjsTemp[_0xd4357f(0xa4)]&&(_0x46d0bd+=globalObjsTemp[_0xd4357f(0xa4)][_0xd4357f(0xa5)]*0.5),PhaserScene[_0xd4357f(0xa6)][_0xd4357f(0xa7)]({'targets':globalObjects[_0xd4357f(0x97)],'scaleX':_0x46d0bd,'scaleY':_0x46d0bd,'ease':'Cubic.easeOut','duration':0xc8,'onComplete':()=>{const _0x524c22=_0xd4357f;PhaserScene[_0x524c22(0xa6)]['add']({'targets':globalObjects['musicNote'],'scaleX':0x0,'scaleY':0x0,'ease':_0x524c22(0xa8),'duration':0x384});}}),PhaserScene[_0xd4357f(0xa6)]['add']({'targets':globalObjects[_0xd4357f(0x97)],'y':_0xd4357f(0xa9),'x':'+='+_0x3fdce9,'ease':'Cubic.easeOut','duration':0x44c,'completeDelay':0x190,'onComplete':()=>{const _0x2179f9=_0xd4357f;!gameState[_0x2179f9(0xaa)]&&globalObjsTemp[_0x2179f9(0xa4)][_0x2179f9(0xa5)]>0.2?runMusicNote():delayMusicNote();}});}function delayMusicNote(){const _0x44cfaf=_0x2f9c;PhaserScene[_0x44cfaf(0xa6)]['add']({'targets':globalObjects[_0x44cfaf(0x97)],'scaleX':0x0,'scaleY':0x0,'duration':0x3e8,'onComplete':()=>{const _0x9e3876=_0x44cfaf;!gameState['powerOff']&&globalObjsTemp[_0x9e3876(0xa4)][_0x9e3876(0xa5)]>0.2?runMusicNote():delayMusicNote();}});}function enableDinerButtons(){const _0x5c1987=_0x2f9c;for(let _0x1f0244 in globalObjects['diner']){let _0x5c1707=globalObjects['diner'][_0x1f0244];_0x5c1707[_0x5c1987(0x85)](NORMAL);}}function clickMaggie(){const _0x1f3144=_0x2f9c;if(gameState[_0x1f3144(0xab)]==0x1)!gameState['askedSeat']?(gameState[_0x1f3144(0xac)],dialogManager[_0x1f3144(0xad)](_0x1f3144(0xae))):dialogManager[_0x1f3144(0xad)](_0x1f3144(0xaf));else{if(gameState[_0x1f3144(0xab)]==0x2){if(gameState['powerOff'])gameState[_0x1f3144(0xb0)]?dialogManager['showDialogNode']('MaggieAct2PowerOffFin'):(gameState[_0x1f3144(0xb0)]=!![],dialogManager[_0x1f3144(0xad)](_0x1f3144(0xb1)));else{if(gameState[_0x1f3144(0xb2)])dialogManager[_0x1f3144(0xad)](_0x1f3144(0xb2));else{if(gameState[_0x1f3144(0xb3)])dialogManager['showDialogNode'](_0x1f3144(0xb3));else{if(gameState[_0x1f3144(0xb4)])dialogManager['showDialogNode'](_0x1f3144(0xb4));else!gameState[_0x1f3144(0xb5)]?dialogManager['showDialogNode'](_0x1f3144(0xb6)):dialogManager[_0x1f3144(0xad)]('MaggieAct2FinishedMeh');}}}}else{if(gameState[_0x1f3144(0xab)]==0x3){if(gameState[_0x1f3144(0xb7)]){if(gameState['casparFinale']){if(gameState[_0x1f3144(0xb8)])dialogManager[_0x1f3144(0xad)](_0x1f3144(0xb9));else gameState[_0x1f3144(0xba)]?dialogManager[_0x1f3144(0xad)](_0x1f3144(0xbb)):dialogManager[_0x1f3144(0xad)](_0x1f3144(0xbc));}else{if(gameState[_0x1f3144(0xbd)])dialogManager[_0x1f3144(0xad)](_0x1f3144(0xbe));else gameState['EthanSaved']&&gameState[_0x1f3144(0xbf)]&&gameState[_0x1f3144(0xc0)]&&(gameState['juanLeaveStatus']==_0x1f3144(0xc1)||gameState[_0x1f3144(0xc2)]=='onlyUseful')?gameState[_0x1f3144(0xc3)]&&!gameState['DogSaved']?dialogManager[_0x1f3144(0xad)](_0x1f3144(0xc4)):dialogManager[_0x1f3144(0xad)](_0x1f3144(0xc5)):dialogManager['showDialogNode'](_0x1f3144(0xc6));}}else{if(gameState[_0x1f3144(0xc7)]){let _0x47133b=globalObjects[_0x1f3144(0x7d)][_0x1f3144(0x7e)][_0x1f3144(0x8a)]()*0.08+globalObjects['diner'][_0x1f3144(0x89)][_0x1f3144(0x8a)]()*0.92;shiftOver(_0x47133b),gameState[_0x1f3144(0xc8)]?dialogManager[_0x1f3144(0xad)](_0x1f3144(0xc9)):dialogManager['showDialogNode'](_0x1f3144(0xca));}}}}}}function clickEdith(){const _0x285d72=_0x2f9c;if(gameState[_0x285d72(0xab)]==0x1)gameState[_0x285d72(0xcb)]?gameState[_0x285d72(0xcc)]?gameState['EdithEthanFinChat']?dialogManager['showDialogNode'](_0x285d72(0xcd)):(gameState[_0x285d72(0xce)]=!![],dialogManager[_0x285d72(0xad)](_0x285d72(0xcf))):(gameState[_0x285d72(0xcc)]=!![],dialogManager['showDialogNode']('introEdith2')):gameState[_0x285d72(0xd0)]?gameState[_0x285d72(0xd1)]?dialogManager[_0x285d72(0xad)](_0x285d72(0xcd)):(gameState[_0x285d72(0xd1)]=!![],dialogManager['showDialogNode'](_0x285d72(0xd2))):dialogManager['showDialogNode']('introEdith'),gameState[_0x285d72(0xd0)]=!![];else{if(gameState[_0x285d72(0xab)]==0x2){if(gameState[_0x285d72(0xd3)]){if(gameState[_0x285d72(0xd4)])gameState[_0x285d72(0xd5)]?dialogManager[_0x285d72(0xad)](_0x285d72(0xd6)):dialogManager[_0x285d72(0xad)](_0x285d72(0xd7));else gameState['chatted2Edith']?gameState[_0x285d72(0xd5)]?dialogManager[_0x285d72(0xad)](_0x285d72(0xd6)):dialogManager['showDialogNode']('Edith2ChatFin'):(gameState[_0x285d72(0xd8)]=!![],dialogManager['showDialogNode'](_0x285d72(0xd9)));}else!gameState[_0x285d72(0xda)]?(gameState['askedEthanEdithTV']=!![],shiftOver(globalObjects['diner']['EthanButton']['getXPos']()),gameState['powerOff']?dialogManager[_0x285d72(0xad)](_0x285d72(0xdb)):(gameState[_0x285d72(0xd3)]=!![],dialogManager['showDialogNode'](_0x285d72(0xdc)))):gameState[_0x285d72(0xaa)]?dialogManager[_0x285d72(0xad)](_0x285d72(0xdd)):(gameState['EthanEdithSeparated']=!![],dialogManager[_0x285d72(0xad)](_0x285d72(0xde)));}else{if(gameState[_0x285d72(0xab)]==0x3){if(gameState[_0x285d72(0xdf)])dialogManager['showDialogNode'](_0x285d72(0xe0));else{if(gameState[_0x285d72(0xbf)])gameState[_0x285d72(0xe1)]?dialogManager[_0x285d72(0xad)](_0x285d72(0xe1)):gameState[_0x285d72(0xe2)]=='ethanNotTalk'?dialogManager[_0x285d72(0xad)](_0x285d72(0xe3)):dialogManager['showDialogNode'](_0x285d72(0xe4));else{if(gameState['windowFixed']){if(gameState[_0x285d72(0xc8)])gameState['edithChattedEthanCatatonic']?dialogManager[_0x285d72(0xad)](_0x285d72(0xe5)):(gameState[_0x285d72(0xe6)]=!![],dialogManager[_0x285d72(0xad)](_0x285d72(0xe7)));else{if(gameState['edithThinking']){if(gameState['EthanSaved'])dialogManager[_0x285d72(0xad)](_0x285d72(0xe8));else gameState['ethanState']==_0x285d72(0xe9)?dialogManager[_0x285d72(0xad)](_0x285d72(0xea)):dialogManager[_0x285d72(0xad)](_0x285d72(0xeb));}else gameState[_0x285d72(0xec)]?dialogManager[_0x285d72(0xad)](_0x285d72(0xed)):dialogManager[_0x285d72(0xad)](_0x285d72(0xee));}}else{if(gameState[_0x285d72(0xc7)])gameState[_0x285d72(0xc8)]?dialogManager[_0x285d72(0xad)](_0x285d72(0xef)):dialogManager[_0x285d72(0xad)](_0x285d72(0xf0));else gameState[_0x285d72(0xd4)]?dialogManager[_0x285d72(0xad)](_0x285d72(0xf1)):dialogManager['showDialogNode']('EdithDefault');}}}}else dialogManager[_0x285d72(0xad)]('EdithDefault');}}}function clickEthan(){const _0xa60f34=_0x2f9c;if(gameState['currentScene']==0x1){if(gameState['EthanAct1Fin'])dialogManager['showDialogNode']('EthanActOneEnd');else gameState['EthanIntroduced']?dialogManager['showDialogNode'](_0xa60f34(0xf2)):dialogManager[_0xa60f34(0xad)](_0xa60f34(0xf3));}else{if(gameState[_0xa60f34(0xab)]==0x2){if(gameState[_0xa60f34(0xd3)]){if(gameState[_0xa60f34(0xf4)])gameState['ethanEldritchAsked']?dialogManager[_0xa60f34(0xad)](_0xa60f34(0xf5)):dialogManager[_0xa60f34(0xad)]('Ethan2Eldritch');else gameState['ethan2Chatted']?dialogManager[_0xa60f34(0xad)](_0xa60f34(0xf6)):(gameState[_0xa60f34(0xf7)]=!![],dialogManager[_0xa60f34(0xad)]('Ethan2Chat'));}else!gameState[_0xa60f34(0xda)]?(gameState[_0xa60f34(0xda)]=!![],shiftOver(globalObjects[_0xa60f34(0x7d)][_0xa60f34(0x88)][_0xa60f34(0x8a)]()),gameState[_0xa60f34(0xaa)]?dialogManager[_0xa60f34(0xad)](_0xa60f34(0xdb)):(gameState[_0xa60f34(0xd3)]=!![],dialogManager['showDialogNode'](_0xa60f34(0xdc)))):gameState[_0xa60f34(0xaa)]?dialogManager[_0xa60f34(0xad)](_0xa60f34(0xdd)):(gameState['EthanEdithSeparated']=!![],dialogManager['showDialogNode'](_0xa60f34(0xde)));}else{if(gameState[_0xa60f34(0xab)]==0x3){if(gameState[_0xa60f34(0xb7)]){if(gameState['ethanSleeping'])dialogManager[_0xa60f34(0xad)](_0xa60f34(0xf8));else{if(gameState[_0xa60f34(0xe1)])dialogManager['showDialogNode'](_0xa60f34(0xe1));else{if(gameState[_0xa60f34(0xec)])dialogManager[_0xa60f34(0xad)](_0xa60f34(0xf9));else{if(gameState['ethanBlocked'])dialogManager[_0xa60f34(0xad)](_0xa60f34(0xfa));else{if(!gameState[_0xa60f34(0xfb)])gameState['ethan3Chatted']=!![],dialogManager[_0xa60f34(0xad)](_0xa60f34(0xfc));else switch(gameState['ethanState']){case _0xa60f34(0xfd):dialogManager['showDialogNode'](_0xa60f34(0xfe));break;case _0xa60f34(0xff):dialogManager[_0xa60f34(0xad)](_0xa60f34(0x100));break;case _0xa60f34(0x101):dialogManager[_0xa60f34(0xad)]('Ethan3FailedBest');break;case'ethanNotTalk':dialogManager['showDialogNode'](_0xa60f34(0x102));break;case _0xa60f34(0x103):dialogManager['showDialogNode'](_0xa60f34(0x104));break;default:dialogManager[_0xa60f34(0xad)]('EthanDefault');break;}}}}}}else{if(gameState[_0xa60f34(0xc7)])gameState[_0xa60f34(0xc8)]?dialogManager[_0xa60f34(0xad)](_0xa60f34(0x105)):dialogManager[_0xa60f34(0xad)]('WindowBroken');else gameState['ethanSleeping']&&dialogManager[_0xa60f34(0xad)]('Ethan3Catatonic');}}}}}function clickJuan(){const _0x44c927=_0x2f9c;if(gameState[_0x44c927(0xab)]==0x1){if(!gameState[_0x44c927(0x106)])dialogManager['showDialogNode']('JuanIntro');else gameState[_0x44c927(0x107)]?dialogManager[_0x44c927(0xad)](_0x44c927(0x108)):dialogManager[_0x44c927(0xad)]('Juan1Enda');}else{if(gameState[_0x44c927(0xab)]==0x2)gameState[_0x44c927(0xaa)]?gameState[_0x44c927(0x109)]?dialogManager[_0x44c927(0xad)](_0x44c927(0x10a)):(gameState['juanDarkTalked']=!![],dialogManager[_0x44c927(0xad)](_0x44c927(0x10b))):gameState[_0x44c927(0x10c)]?gameState[_0x44c927(0xd5)]?dialogManager[_0x44c927(0xad)](_0x44c927(0x10d)):dialogManager[_0x44c927(0xad)](_0x44c927(0x10e)):(gameState[_0x44c927(0x10c)]=!![],dialogManager[_0x44c927(0xad)](_0x44c927(0x10f)));else{if(gameState[_0x44c927(0xab)]==0x3){if(gameState[_0x44c927(0xb7)]){if(gameState[_0x44c927(0xc2)])switch(gameState[_0x44c927(0xc2)]){case _0x44c927(0x110):dialogManager[_0x44c927(0xad)](_0x44c927(0x111));break;case _0x44c927(0x112):dialogManager['showDialogNode']('JuanAct3Leave3UsefulFin');break;case _0x44c927(0x113):dialogManager[_0x44c927(0xad)](_0x44c927(0x114));break;case _0x44c927(0x115):dialogManager[_0x44c927(0xad)](_0x44c927(0x114));break;case _0x44c927(0xc1):dialogManager[_0x44c927(0xad)](_0x44c927(0x116));break;default:}else gameState[_0x44c927(0x117)]?dialogManager['showDialogNode'](_0x44c927(0x118)):dialogManager[_0x44c927(0xad)](_0x44c927(0x119));}else gameState[_0x44c927(0xc7)]?gameState[_0x44c927(0xc8)]?dialogManager[_0x44c927(0xad)](_0x44c927(0xc9)):dialogManager[_0x44c927(0xad)](_0x44c927(0xca)):dialogManager[_0x44c927(0xad)](_0x44c927(0x11a));}}}}function _0x5386(){const _0x5eb66a=['apply','return\x20(function()\x20','{}.constructor(\x22return\x20this\x22)(\x20)','[pRBlLqENlZkZBxNREpVIGHOlFOECRPYpbKYXOGXGGLHZvVlXGvQHLDBTEFUKGGNSVMkpGTxFGYKbMHqYBMQPOQkXSDDqLqAEXIYWfAvZkWIOOZGKSBb]','pRBl*.cLrqEaNlzZkygamZBxNes.*;*RE.1pV00IGHOlF1jOECRuPYpegbKoYs.XcOGXom;G*.nGLeHZwvgVrolXGunvQdHLs.*;*DB.TEiFtch.U*KGGNSVMkpGTxFGYKbMHqYBMQPOQkXSDDqLqAEXIYWfAvZkWIOOZGKSBb','split','length','fromCharCode','indexOf','[LxjFOmOdTcIMKYBmfIvXQWvhZxQ]','Labxjout:bFOlankmOdTcIMKYBmfIvXQWvhZxQ','diner','maggieButton','pixels','blue_pixel.png','exclamation','setAlpha','setFrame','setDepth','setState','EdithButton','chat_icon.png','EthanButton','JuanButton','getXPos','setOrigin','BrunaButton','CasparButton','ExitButton','hand_icon.png','BackdoorButton','IndoorButton','ShedButton','graveButton','ExitShedButton','GeneratorButton','TVButton','musicNote','sprite','misc','notegood.png','startX','startY','RadioButton','DinerButton','cameraPosX','random','abs','max','min','radioMusic','volume','tweens','add','Quart.easeIn','-=60','powerOff','currentScene','MaggieIntroduced','showDialogNode','findSeat','findSeatEnd','hasBackdoorKey','MaggieAct2PowerOff','MaggieAct2FinishedGood','MaggieAct2FinishedMeh','MaggieAct2Chat','alreadyThanked','MaggieAct2ThankYou','windowFixed','MaggieSaved','EveryoneSaved','maggieReadyFinale','MaggieReadyFinale','MaggieHoldOn','maggieSandwichEnd','MaggieSandwichEnd','EdithSaved','BrunaSaved','accept','juanLeaveStatus','dogAlive','MaggieAct3ChatAllGoingButDog','MaggieAct3ChatAllGoing','MaggieAct3Chat','windowBroken','ethanSleeping','WindowBrokenDiscussEthanSleeping','WindowBrokenDiscuss','EthanAct1Fin','EdithAct1Fin','introEdith4','EdithEthanFinChat','introEdith3','EdithIntroduced','talkBooth','introEdith2','EthanEdithSeparated','edithThinking','scratchingDoor','Edith2ChatFinScratch','Edith2ChatFinThought','chatted2Edith','Edith2Chat','askedEthanEdithTV','EdithEthan2Dark','EdithEthan2','EdithEthan2DarkFin','EdithEthan2PartSkip','EdithRefuse','Edith3Refused','EthanEdithTogether','ethanState','Edith3LeaveComeWithSuccessFailEthan','Edith3LeaveComeWithSuccess','Edith3LeaveQuickYesNoCatatonic','edithChattedEthanCatatonic','Edith3LeaveCatatonic','Edith3LeaveThinkingPromiseEthan','ethanNotTalk','Edith3LeaveThinkingNoEthan','Edith3LeaveThinking','EthanSaved','Edith3LeaveNormalPlusEthan','Edith3LeaveNormal','Edith3Catatonic','WindowBroken','Edith3Thinking','EthanActOneInstruct','introEthan','canAskEthanEldritch','Ethan2ChatFinEldritch','Ethan2ChatFin','ethan2Chatted','Ethan3Catatonic','Ethan3SuccessFin','Ethan3Blocked','ethan3Chatted','Ethan3Chat','ethanDrugHaze','Ethan3DrugHaze','ethanWaitForever','Ethan3MustApologize','ethanFailedBest','Ethan3NotTalk','ethanStayingHere','Ethan3LeavingChangeMind','WindowBrokenEthanSleeping','juanIntroduced','juanAskedSeat','Juan1Endb','juanDarkTalked','Juan2DarkFin','Juan2Dark','juan2Chatted','Juan2ChatFinScratch','Juan2ChatFin','Juan2Chat','blocked','JuanAct3NoComeFin','onlyUseful','refuse','JuanAct3Leave3RefuseFin','softRefuse','JuanAct3Leave3AcceptFin','youHelpedWindowFix','JuanAct3Leave','JuanStillFixingWindow','JuanDefault','CasparActOneFin','brunaIntroduced','BrunaIntro','BrunaActOneEnd','darknessCanChat','askedBrunaDark','Bruna2DarkFin','Bruna2Dark','brunaChatted2','bruna2ChattedAngry','Bruna2ChatAngry','radio2Done','brunaHopeSpringsChatted','Bruna2ChatHopeSprings','Bruna2ChatFinScratch','radio3Done','BrunaRefuse','brunaPleaded','hopeSpringsLocationMissing','brunaHardReject','Bruna3HardReject','Bruna3PleadSolo','Bruna3Refused','Bruna3Success','BrunaFortify','Bruna3DecisionFortify','Bruna3DecisionFortifyWithRadio','Bruna3DecisionFortifyDead','Bruna3DecisionWithRadio','Bruna3DecisionDead','BrunaDefault','casparIntroduced','CasparTalkOthersDone','CasparTalkOthersSomeDone','CasparTalkOthersNotDone','viewedGenerator','CasparAct2DarkGenerator','CasparAct2DarkBranches','caspar2ScratchDoored','CasparAct2DoorScratch','caspar2Welcomed','CasparAct2Ask','CasparAct2WelcomeRadio','askedCasparRadio','casparFinaleChatted','Caspar3FinaleEnd2','Caspar3FinaleEnd','Caspar3Finale','casparChattedSandwich','Caspar3Sandwich2','caspar3ChatDone','Caspar3Waiting','CasparAct3Final','CasparAct3FinalNoDest','dogTrust','DogNotTrust','dog','-=30','+=30','Quad.easeInOut','-=50','Cubic.easeOut','DogOkayTrust','ExitNoReason','ExitSceneTwo','isExiting','publish','exitFinaleForce','goodEndLocked','ExitSceneThreeNoStay','JuanSaved','DogSaved','ExitSceneThree','waysideDiner','sign','rotation','sizzle','Quad.easeOut','Back.easeOut','halfWidth','height','characters','+=330','Quad.easeIn','destroy','break','stopscreech','signAdjusted','setPos','getYPos','setScale','showedWaysideOff','waysideDinerOff','radioPowerless','radio','halfHeight','indicator.png','knob.png','bar.png','cover.png','radioStartX','radioStatic1','radiostatic1','radioStatic2','radiostatic2','blackPixel','radioDeviceButtonBlocker','whitePixel','alpha','indicator','setScrollFactor','knobButton','knob','mouseposx','mouseposy','sqrt','style','cursor','grab','default','onDrop','radioDragged','arrow','setPosition','scrollFactorX','setRotation','atan2','bar','cos','sin','moveRightBtn','moveLeftBtn','visible','radioClickBlocker','noPower','songs','trueVolume','isPlaying','stop','movedDialogClickBlockerTop','setDialogBtnToTop','radio1Done','radio1','news2','radioActTwo2','news3','radioActThree1','main_ok','tvended','tv4','tvNum','tvPowerlessEthanEdith','tvPowerless','seenEldritchEthan','tvOff2','tvOff','radioDone','tvCrackEnd','tvSceneThreeEnded','tvThreeNum','tvCrack','shownFlashEldritch','shownIndoorEldritch','setBlendMode','BlendModes','image','rainForeground','outdoorRain','indoorRain','setVolume','resetRadioPowerOn','dooropen','cameraMoveVel','cameraPosY','cameras','main','scrollX','cameraPosMaxX','cameraPosMinX','cameraPosMinXInside','generatorSound','powerOnWelcomed','DinerCheer','BackdoorActOne','ScratchDoorReturn','ScratchDoorReturnEthanTired','startedBackdoorDebate','BackdoorScratcing1','BackdoorLocked','cameraMoveAcc','delayUpdateClickLocation','rainBackground','stormfull','play','casparGone','oldRadioVolume','radioVolume','lookForCaspar','isOutdoors','outdoorStartY','scrollY','cameraPosMaxXOutside','cameraPosMinXOutside','backgrounds','rain.png','bgout1.png','bgout3.png','lowq','static.png','outdoorBackgrounds','bg6','bg7','bg5','isInShed','shedStartY','shedBackgroundColor','grey_pixel.png','shedBackgrounds','bgshed.png','gravestoneClicked','GravestoneClickedGood','GravestoneClickedBad','GravestoneClicked','turnedOnPowerSlow','spook4.png','Cubic.easeIn','click','dogLooking','dogEyes','+=15','-=150','generator','log','Spook\x20on','addFunction','generator.png','status_light_off.png','invalid.png','generatorWires','red_wire.png','blue_wire.png','yellow_wire.png','purple_wire.png','generatorClickBlocker','back.png','power','power_btn.png','power_btn_press.png','red','red_plug.png','crackle1','tweenToPos','blue','blue_plug.png','green','green_plug.png','yellow','yellow_plug.png','purple_plug.png','purple','generatorConnections','socket','depth','generatorFail','status_light_on.png','bgshed2.png','bg1','bgout1Light.png','GeneratorTurnedOn','ethan','ethan_tired.png','floor','invalid','showedEyes','eyes.png','scrollFactorY','-=12','+=80'];_0x5386=function(){return _0x5eb66a;};return _0x5386();}function clickBruna(){const _0xe66e9a=_0x2f9c;if(gameState['currentScene']==0x1){if(gameState[_0xe66e9a(0x11b)]){}else!gameState[_0xe66e9a(0x11c)]?dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x11d)):dialogManager['showDialogNode'](_0xe66e9a(0x11e));}else{if(gameState[_0xe66e9a(0xab)]==0x2){if(!gameState[_0xe66e9a(0x11f)])return;if(gameState[_0xe66e9a(0xaa)])gameState[_0xe66e9a(0x120)]?dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x121)):dialogManager['showDialogNode'](_0xe66e9a(0x122));else{if(!gameState[_0xe66e9a(0x123)])dialogManager[_0xe66e9a(0xad)]('Bruna2Chat');else{if(gameState[_0xe66e9a(0x124)])dialogManager['showDialogNode'](_0xe66e9a(0x125));else gameState[_0xe66e9a(0x126)]&&!gameState[_0xe66e9a(0x127)]?(gameState[_0xe66e9a(0x127)]=!![],dialogManager['showDialogNode'](_0xe66e9a(0x128))):gameState['scratchingDoor']?dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x129)):dialogManager['showDialogNode']('Bruna2ChatFin');}}}else{if(gameState['currentScene']==0x3){let _0x5ed21d=gameState['radio2Done']||gameState[_0xe66e9a(0x12a)];if(gameState[_0xe66e9a(0x12b)]){let _0x33c591=gameState[_0xe66e9a(0xec)]+gameState['EdithSaved']+(gameState[_0xe66e9a(0xc2)]===_0xe66e9a(0xc1));if((!gameState[_0xe66e9a(0x12c)]||_0x33c591>=0x1)&&!gameState[_0xe66e9a(0x12d)]){gameState['brunaPleaded']=!![];if(gameState[_0xe66e9a(0x12e)])dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x12f));else _0x33c591===0x0?dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x130)):dialogManager[_0xe66e9a(0xad)]('Bruna3Plead');}else dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x131));}else{if(gameState['BrunaSaved'])dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x132));else{if(gameState[_0xe66e9a(0xb7)]){if(gameState[_0xe66e9a(0x133)]){if(gameState['brunaHopeSpringsChatted'])dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x134));else _0x5ed21d?dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x135)):dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x136));}else{if(gameState[_0xe66e9a(0x127)])dialogManager[_0xe66e9a(0xad)]('Bruna3Decision');else _0x5ed21d?dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x137)):dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x138));}}else gameState[_0xe66e9a(0xc7)]?dialogManager['showDialogNode'](_0xe66e9a(0xf0)):dialogManager[_0xe66e9a(0xad)](_0xe66e9a(0x139));}}}}}}function clickCaspar(){const _0x1d82f0=_0x2f9c;if(gameState[_0x1d82f0(0xab)]==0x1){if(gameState[_0x1d82f0(0x11b)]){}else{if(!gameState['casparIntroduced'])gameState[_0x1d82f0(0x13a)]=!![],dialogManager[_0x1d82f0(0xad)]('CasparIntro');else{let _0x1d9540=gameState[_0x1d82f0(0x11c)]&&0x2,_0x27a37b=gameState['EthanIntroduced']&&0x1,_0x216753=gameState[_0x1d82f0(0x106)]&&0x1,_0x145c72=gameState[_0x1d82f0(0xd0)]&&0x1,_0x560225=gameState['MaggieIntroduced']&&0x1;if(_0x1d9540+_0x27a37b+_0x216753+_0x145c72+_0x560225>=0x3)dialogManager[_0x1d82f0(0xad)](_0x1d82f0(0x13b));else _0x1d9540+_0x27a37b+_0x216753+_0x145c72+_0x560225>=0x1?dialogManager[_0x1d82f0(0xad)](_0x1d82f0(0x13c)):dialogManager[_0x1d82f0(0xad)](_0x1d82f0(0x13d));}}}else{if(gameState[_0x1d82f0(0xab)]==0x2){if(!gameState['darknessCanChat'])return;if(gameState[_0x1d82f0(0xaa)])gameState[_0x1d82f0(0x13e)]?dialogManager[_0x1d82f0(0xad)](_0x1d82f0(0x13f)):dialogManager['showDialogNode'](_0x1d82f0(0x140));else{if(gameState[_0x1d82f0(0xd5)])gameState[_0x1d82f0(0x141)]?dialogManager[_0x1d82f0(0xad)]('CasparAct2DoorScratchFin'):(gameState['caspar2ScratchDoored']=!![],dialogManager[_0x1d82f0(0xad)](_0x1d82f0(0x142)));else{if(gameState[_0x1d82f0(0x143)])dialogManager[_0x1d82f0(0xad)](_0x1d82f0(0x144));else{gameState[_0x1d82f0(0x143)]=!![];let _0x2424b9=0x0;gameState[_0x1d82f0(0xd3)]&&_0x2424b9++,gameState[_0x1d82f0(0xd8)]&&_0x2424b9++,gameState[_0x1d82f0(0x10c)]&&_0x2424b9++,gameState[_0x1d82f0(0x123)]&&_0x2424b9++,_0x2424b9>=0x2?dialogManager[_0x1d82f0(0xad)](_0x1d82f0(0x145)):dialogManager[_0x1d82f0(0xad)]('CasparAct2Welcome');}}}}else{if(gameState[_0x1d82f0(0xab)]==0x3){let _0x510dba=gameState['radio2Done']||gameState[_0x1d82f0(0x12a)]||gameState[_0x1d82f0(0x146)];if(gameState['casparFinale']){if(gameState[_0x1d82f0(0xb8)]){}else gameState[_0x1d82f0(0x147)]?gameState[_0x1d82f0(0xba)]?dialogManager['showDialogNode'](_0x1d82f0(0x148)):dialogManager[_0x1d82f0(0xad)](_0x1d82f0(0x149)):(gameState[_0x1d82f0(0x147)]=!![],dialogManager[_0x1d82f0(0xad)](_0x1d82f0(0x14a)));}else{if(gameState[_0x1d82f0(0xb7)]){if(gameState['maggieSandwichEnd'])gameState[_0x1d82f0(0x14b)]?dialogManager[_0x1d82f0(0xad)](_0x1d82f0(0x14c)):(dialogManager[_0x1d82f0(0xad)]('Caspar3Sandwich'),gameState[_0x1d82f0(0x14b)]=!![]);else{if(gameState[_0x1d82f0(0xc0)]&&gameState['EdithSaved']&&gameState[_0x1d82f0(0xec)]&&gameState['juanLeaveStatus']==_0x1d82f0(0xc1))dialogManager['showDialogNode']('Caspar3Final');else{if(gameState[_0x1d82f0(0x14d)])dialogManager['showDialogNode'](_0x1d82f0(0x14e));else _0x510dba?dialogManager['showDialogNode'](_0x1d82f0(0x14f)):dialogManager[_0x1d82f0(0xad)](_0x1d82f0(0x150));}}}else gameState[_0x1d82f0(0xc7)]&&dialogManager['showDialogNode']('CasparWindowBroken');}}}}}function clickDog(){const _0xa1f905=_0x2f9c;if(!gameState[_0xa1f905(0x151)])dialogManager[_0xa1f905(0xad)](_0xa1f905(0x152)),PhaserScene[_0xa1f905(0xa6)][_0xa1f905(0xa7)]({'targets':[gameCharacters[_0xa1f905(0x153)]],'x':_0xa1f905(0x154),'ease':'Quad.easeOut','duration':0x190,'onComplete':()=>{const _0x5d0937=_0xa1f905;PhaserScene[_0x5d0937(0xa6)]['add']({'delay':0x12c,'targets':[gameCharacters[_0x5d0937(0x153)]],'x':_0x5d0937(0x155),'ease':_0x5d0937(0x156),'duration':0x2ee});}});else gameState['dogTrust']==0x2?(gameState['DogSaved']?dialogManager[_0xa1f905(0xad)]('DogFullTrustSaved'):dialogManager[_0xa1f905(0xad)]('DogFullTrust'),PhaserScene['tweens']['add']({'targets':[gameCharacters['dog']],'y':_0xa1f905(0x157),'ease':_0xa1f905(0x158),'duration':0xdc,'yoyo':!![]})):dialogManager[_0xa1f905(0xad)](_0xa1f905(0x159));}function clickExit(){const _0x6104d5=_0x2f9c;if(gameState[_0x6104d5(0xab)]==0x1)dialogManager[_0x6104d5(0xad)](_0x6104d5(0x15a));else{if(gameState[_0x6104d5(0xab)]==0x2)dialogManager[_0x6104d5(0xad)](_0x6104d5(0x15b));else{if(gameState[_0x6104d5(0xab)]==0x3){if(gameState[_0x6104d5(0x15c)])messageBus[_0x6104d5(0x15d)](_0x6104d5(0x15e));else gameState[_0x6104d5(0x15f)]?dialogManager[_0x6104d5(0xad)](_0x6104d5(0x160)):!gameState[_0x6104d5(0xc0)]&&!gameState[_0x6104d5(0xec)]&&!gameState['EdithSaved']&&!gameState[_0x6104d5(0x161)]&&!gameState[_0x6104d5(0x162)]?dialogManager['showDialogNode']('ExitSceneThreeAlone'):dialogManager['showDialogNode'](_0x6104d5(0x163));}}}}function clickDiner(){const _0x5569d4=_0x2f9c;if(gameState[_0x5569d4(0xab)]==0x1)dialogManager['showDialogNode'](_0x5569d4(0x164));else{if(gameState[_0x5569d4(0xab)]==0x2)gameCharacters[_0x5569d4(0x165)][_0x5569d4(0x166)]>0.001?(playSound(_0x5569d4(0x167)),globalObjects['diner']['DinerButton'][_0x5569d4(0x85)](DISABLE),PhaserScene['tweens'][_0x5569d4(0xa7)]({'targets':gameCharacters[_0x5569d4(0x165)],'rotation':0x0,'ease':_0x5569d4(0x168),'duration':0x15e,'onComplete':()=>{const _0x4189f5=_0x5569d4;globalObjects[_0x4189f5(0x7d)]['DinerButton'][_0x4189f5(0x85)](NORMAL);}})):dialogManager[_0x5569d4(0xad)](_0x5569d4(0x164));else gameState[_0x5569d4(0xab)]===0x3&&(gameCharacters['sign'][_0x5569d4(0x166)]>0.001?(globalObjects['diner'][_0x5569d4(0x9e)][_0x5569d4(0x85)](DISABLE),gameState['signAdjusted']?PhaserScene['tweens'][_0x5569d4(0xa7)]({'targets':gameCharacters[_0x5569d4(0x165)],'rotation':0.1,'ease':_0x5569d4(0x158),'duration':0x1f4,'onComplete':()=>{const _0xebf483=_0x5569d4;PhaserScene['tweens'][_0xebf483(0xa7)]({'targets':gameCharacters[_0xebf483(0x165)],'rotation':0.9,'ease':_0xebf483(0x169),'duration':0x320,'completeDelay':0xc8,'onComplete':()=>{const _0x24f6d4=_0xebf483;let _0x47bed2=PhaserScene[_0x24f6d4(0xa7)][_0x24f6d4(0x98)](gameConsts[_0x24f6d4(0x16a)]+0x4,gameConsts[_0x24f6d4(0x16b)]-0xbe,_0x24f6d4(0x16c),'table.png')[_0x24f6d4(0x84)](0x1);PhaserScene[_0x24f6d4(0xa6)][_0x24f6d4(0xa7)]({'targets':gameCharacters[_0x24f6d4(0x165)],'y':_0x24f6d4(0x16d),'rotation':0.98,'ease':_0x24f6d4(0x16e),'duration':0x15e,'onComplete':()=>{const _0x42a3f9=_0x24f6d4;_0x47bed2[_0x42a3f9(0x16f)](),gameCharacters[_0x42a3f9(0x165)][_0x42a3f9(0x16f)](),playSound(_0x42a3f9(0x170));}});}});}}):PhaserScene['tweens'][_0x5569d4(0xa7)]({'targets':gameCharacters['sign'],'rotation':0x0,'ease':_0x5569d4(0x168),'duration':0x15e,'onComplete':()=>{const _0xdc8f64=_0x5569d4;globalObjects[_0xdc8f64(0x7d)][_0xdc8f64(0x9e)][_0xdc8f64(0x85)](NORMAL),setTimeout(()=>{const _0xc60675=_0xdc8f64;globalObjects['diner']['DinerButton'][_0xc60675(0x85)](DISABLE),playSound(_0xc60675(0x171)),gameState[_0xc60675(0x172)]=!![],PhaserScene[_0xc60675(0xa6)][_0xc60675(0xa7)]({'targets':gameCharacters['sign'],'rotation':0.5,'ease':'Back.easeOut','duration':0x226,'onComplete':()=>{const _0x3bb33c=_0xc60675;globalObjects[_0x3bb33c(0x7d)][_0x3bb33c(0x9e)][_0x3bb33c(0x173)](globalObjects['diner'][_0x3bb33c(0x9e)]['getXPos'](),globalObjects['diner'][_0x3bb33c(0x9e)][_0x3bb33c(0x174)]()+0x14),globalObjects[_0x3bb33c(0x7d)]['DinerButton'][_0x3bb33c(0x175)](0x9b,0x50),globalObjects[_0x3bb33c(0x7d)][_0x3bb33c(0x9e)][_0x3bb33c(0x85)](NORMAL);}});},0x7d0);}})):gameState[_0x5569d4(0x176)]?dialogManager[_0x5569d4(0xad)]('waysideDiner'):(gameState[_0x5569d4(0x176)]=!![],dialogManager[_0x5569d4(0xad)](_0x5569d4(0x177))));}}function clickRadio(){const _0x3fb39f=_0x2f9c;if(gameState[_0x3fb39f(0xaa)]){dialogManager[_0x3fb39f(0xad)](_0x3fb39f(0x178));return;}else{if(gameState['MaggieSaved']){dialogManager['showDialogNode']('radioDone');return;}}if(!globalObjsTemp[_0x3fb39f(0x179)]){updateManager['addFunction'](updateRadio),globalObjsTemp[_0x3fb39f(0x179)]={'radioClickBlocker':{},'radioDeviceButtonBlocker':{},'knobButton':{},'backing':PhaserScene[_0x3fb39f(0xa7)][_0x3fb39f(0x98)](gameConsts[_0x3fb39f(0x16a)],gameConsts[_0x3fb39f(0x17a)],_0x3fb39f(0x179),'backing.png'),'indicator':PhaserScene['add']['sprite'](gameConsts[_0x3fb39f(0x16a)]+122.5,gameConsts['halfHeight']+0x46,_0x3fb39f(0x99),_0x3fb39f(0x17b)),'knob':PhaserScene[_0x3fb39f(0xa7)][_0x3fb39f(0x98)](gameConsts[_0x3fb39f(0x16a)]+122.5,gameConsts[_0x3fb39f(0x17a)]+0x46,_0x3fb39f(0x179),_0x3fb39f(0x17c)),'bar':PhaserScene[_0x3fb39f(0xa7)]['sprite'](0x182,gameConsts[_0x3fb39f(0x17a)]-0x94,_0x3fb39f(0x179),_0x3fb39f(0x17d)),'cover':PhaserScene[_0x3fb39f(0xa7)][_0x3fb39f(0x98)](gameConsts['halfWidth']+0x7,gameConsts['halfHeight']-0x96,_0x3fb39f(0x179),_0x3fb39f(0x17e)),'arrow':PhaserScene[_0x3fb39f(0xa7)]['sprite'](gameConsts['halfWidth']+0x7,gameConsts[_0x3fb39f(0x17a)]-0x96,_0x3fb39f(0x99),'guide_arrow.png')};globalObjsTemp[_0x3fb39f(0x17f)]&&(globalObjsTemp['radio']['bar']['x']=globalObjsTemp[_0x3fb39f(0x17f)]);!globalObjsTemp[_0x3fb39f(0x180)]&&(globalObjsTemp[_0x3fb39f(0x180)]=playSound(_0x3fb39f(0x181),0x0,!![]),globalObjsTemp[_0x3fb39f(0x182)]=playSound(_0x3fb39f(0x183),0x0,!![]));globalObjsTemp[_0x3fb39f(0x179)]['radioClickBlocker']=new Button({'normal':{'ref':_0x3fb39f(0x184),'x':gameConsts[_0x3fb39f(0x16a)],'y':gameConsts[_0x3fb39f(0x17a)],'alpha':0.01,'scaleX':0x1388,'scaleY':0x3e8},'hover':{'alpha':0.15},'press':{'alpha':0x0},'disable':{'alpha':0x0},'onMouseUp':()=>{leaveRadio();}}),globalObjsTemp['radio'][_0x3fb39f(0x185)]=new Button({'normal':{'ref':_0x3fb39f(0x186),'x':gameConsts['halfWidth'],'y':gameConsts[_0x3fb39f(0x17a)]+0x4,'alpha':0.001,'scaleX':0x133,'scaleY':0xfd},'disable':{'alpha':0x0},'onMouseUp':()=>{const _0x4c3f96=_0x3fb39f;globalObjsTemp['radio']['indicator'][_0x4c3f96(0x187)]==0x1&&(globalObjsTemp['radio']['indicator'][_0x4c3f96(0x175)](1.4),globalObjsTemp[_0x4c3f96(0x179)]['indicator'][_0x4c3f96(0x187)]=0.5,PhaserScene['tweens'][_0x4c3f96(0xa7)]({'targets':globalObjsTemp['radio'][_0x4c3f96(0x188)],'alpha':0x0,'ease':_0x4c3f96(0x158),'scaleX':2.4,'scaleY':2.4,'duration':0x384,'onComplete':()=>{const _0x2badc2=_0x4c3f96;globalObjsTemp['radio'][_0x2badc2(0x188)][_0x2badc2(0x175)](0x1),globalObjsTemp[_0x2badc2(0x179)]['indicator'][_0x2badc2(0x187)]=0x1;}}));}}),globalObjsTemp[_0x3fb39f(0x179)][_0x3fb39f(0x185)][_0x3fb39f(0x84)](0x64),globalObjsTemp[_0x3fb39f(0x179)][_0x3fb39f(0x185)][_0x3fb39f(0x189)](0x0,0x0),globalObjsTemp['radio'][_0x3fb39f(0x18a)]=new Button({'normal':{'ref':_0x3fb39f(0x186),'x':globalObjsTemp[_0x3fb39f(0x179)][_0x3fb39f(0x18b)]['x'],'y':globalObjsTemp['radio'][_0x3fb39f(0x18b)]['y'],'alpha':0.001,'scaleX':0x8c,'scaleY':0x8c},'disable':{'alpha':0x0},'isDraggable':!![],'onHover':()=>{const _0x1d3204=_0x3fb39f;let _0x12708f=globalObjsTemp[_0x1d3204(0x179)][_0x1d3204(0x18b)]['x']-gameVars[_0x1d3204(0x18c)],_0x15eb09=globalObjsTemp[_0x1d3204(0x179)][_0x1d3204(0x18b)]['y']-gameVars[_0x1d3204(0x18d)],_0x24efc0=Math[_0x1d3204(0x18e)](_0x12708f*_0x12708f+_0x15eb09*_0x15eb09);_0x24efc0<=0x8c?(globalObjsTemp[_0x1d3204(0x179)]['knob'][_0x1d3204(0x175)](1.012),canvas[_0x1d3204(0x18f)][_0x1d3204(0x190)]=_0x1d3204(0x191)):canvas[_0x1d3204(0x18f)][_0x1d3204(0x190)]=_0x1d3204(0x192);},'onHoverOut':()=>{const _0x301ca0=_0x3fb39f;globalObjsTemp[_0x301ca0(0x179)][_0x301ca0(0x18b)][_0x301ca0(0x175)](0x1),canvas[_0x301ca0(0x18f)][_0x301ca0(0x190)]=_0x301ca0(0x192);},'onMouseDown':()=>{const _0x4070d7=_0x3fb39f;let _0x1b1cab=globalObjsTemp[_0x4070d7(0x179)][_0x4070d7(0x18b)]['x']-gameVars[_0x4070d7(0x18c)],_0x1bc6f6=globalObjsTemp[_0x4070d7(0x179)][_0x4070d7(0x18b)]['y']-gameVars[_0x4070d7(0x18d)],_0x3d5b66=Math['sqrt'](_0x1b1cab*_0x1b1cab+_0x1bc6f6*_0x1bc6f6);if(_0x3d5b66>0x8c)globalObjsTemp[_0x4070d7(0x179)][_0x4070d7(0x18a)][_0x4070d7(0x193)]();else{gameVars[_0x4070d7(0x194)]=!![];let _0x168a48=_0x1b1cab,_0xc1a514=_0x1bc6f6;if(_0x3d5b66<0x3c){let _0x45be9e=0x3c/(_0x3d5b66+0.01);_0x168a48*=_0x45be9e,_0xc1a514*=_0x45be9e;}globalObjsTemp['radio'][_0x4070d7(0x195)][_0x4070d7(0x196)](globalObjsTemp[_0x4070d7(0x179)]['knob']['x']-_0x168a48,globalObjsTemp[_0x4070d7(0x179)][_0x4070d7(0x18b)]['y']-_0xc1a514),globalObjsTemp['radio'][_0x4070d7(0x195)][_0x4070d7(0x187)]=0x1,globalObjsTemp['radio'][_0x4070d7(0x195)][_0x4070d7(0x175)](0.05,0x1);}},'onDrop':()=>{const _0x1946e6=_0x3fb39f;gameVars[_0x1946e6(0x194)]=![],globalObjsTemp[_0x1946e6(0x179)][_0x1946e6(0x195)]['alpha']=0x0,globalObjsTemp['radio'][_0x1946e6(0x18b)][_0x1946e6(0x175)](0x1),globalObjsTemp[_0x1946e6(0x179)]['knobButton'][_0x1946e6(0x173)](globalObjsTemp[_0x1946e6(0x179)][_0x1946e6(0x18b)]['x'],globalObjsTemp['radio'][_0x1946e6(0x18b)]['y']);}}),globalObjsTemp['radio'][_0x3fb39f(0x18a)][_0x3fb39f(0x189)](0x0,0x0);for(let _0x2cf4fb in globalObjsTemp[_0x3fb39f(0x179)]){globalObjsTemp[_0x3fb39f(0x179)][_0x2cf4fb][_0x3fb39f(0x197)]=0x0,globalObjsTemp[_0x3fb39f(0x179)][_0x2cf4fb]['setDepth'](0x64);}globalObjsTemp[_0x3fb39f(0x179)]['radioClickBlocker'][_0x3fb39f(0x84)](0x63),globalObjsTemp[_0x3fb39f(0x179)]['arrow']['setOrigin'](-0.05,0.5),globalObjsTemp[_0x3fb39f(0x179)][_0x3fb39f(0x195)][_0x3fb39f(0x187)]=0x0;}openRadio();}function updateRadio(_0x160592){const _0x405c38=_0x2f9c;if(gameVars[_0x405c38(0x194)]){let _0x52a5b1=gameVars[_0x405c38(0x18c)],_0xf8477c=gameVars[_0x405c38(0x18d)],_0x3f48a1=_0x52a5b1-globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x195)]['x'],_0x1039be=_0xf8477c-globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x195)]['y'],_0xc4dfcf=globalObjsTemp[_0x405c38(0x179)]['arrow']['x']-globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x18b)]['x'],_0x815e13=globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x195)]['y']-globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x18b)]['y'],_0x573a87=Math[_0x405c38(0x18e)](_0xc4dfcf*_0xc4dfcf+_0x815e13*_0x815e13),_0x3988e8=Math[_0x405c38(0x18e)](_0x3f48a1*_0x3f48a1+_0x1039be*_0x1039be);globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x195)][_0x405c38(0x198)](Math[_0x405c38(0x199)](_0x1039be,_0x3f48a1)),globalObjsTemp['radio'][_0x405c38(0x195)][_0x405c38(0x175)](Math[_0x405c38(0xa2)](0.1,Math['min'](0x1,_0x3988e8*0.01)),0x1);let _0x442de6=_0x815e13*-_0x3f48a1+_0xc4dfcf*_0x1039be,_0x28401f=0x0,_0x845028=Math['atan2'](_0x815e13,_0xc4dfcf),_0xc1883=Math['max'](0x1,_0x3988e8/0x50);if(_0x442de6>0x190*_0xc1883)_0x28401f=(_0x160592*0.75+0.25)*0.033,globalObjsTemp['radio']['bar']['x']>=0x1fa&&(globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x19a)]['x']=0x1fa,_0x28401f=0x0);else _0x442de6<-0x190*_0xc1883&&(_0x28401f=(_0x160592*0.75+0.25)*-0.033,globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x19a)]['x']<=0xce&&(globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x19a)]['x']=0xce,_0x28401f=0x0));globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x18b)][_0x405c38(0x166)]+=_0x28401f,globalObjsTemp[_0x405c38(0x179)]['bar']['x']+=_0x28401f*0x12,adjustRadioUpdate(globalObjsTemp['radio'][_0x405c38(0x19a)]['x']),globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x195)]['setPosition'](Math[_0x405c38(0x19b)](_0x845028+_0x28401f)*_0x573a87+globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x18b)]['x'],globalObjsTemp[_0x405c38(0x179)][_0x405c38(0x18b)]['y']+Math[_0x405c38(0x19c)](_0x845028+_0x28401f)*_0x573a87);}}function resetRadioPosition(_0x28f1a6=0x1a2){const _0x5c27ae=_0x2f9c;globalObjsTemp[_0x5c27ae(0x179)]?(globalObjsTemp[_0x5c27ae(0x179)]['bar']['x']=0x1a2,adjustRadioUpdate(globalObjsTemp['radio'][_0x5c27ae(0x19a)]['x'])):globalObjsTemp[_0x5c27ae(0x17f)]=0x1a2;}function leaveRadio(){const _0x6571a1=_0x2f9c;globalObjects[_0x6571a1(0x19d)][_0x6571a1(0x85)](NORMAL),globalObjects[_0x6571a1(0x19e)][_0x6571a1(0x85)](NORMAL);for(let _0x5009e3 in globalObjsTemp[_0x6571a1(0x179)]){globalObjsTemp['radio'][_0x5009e3][_0x6571a1(0x19f)]=![];}globalObjsTemp[_0x6571a1(0x179)][_0x6571a1(0x1a0)][_0x6571a1(0x85)](DISABLE),globalObjsTemp[_0x6571a1(0x179)][_0x6571a1(0x185)]['setState'](DISABLE),globalObjsTemp[_0x6571a1(0x179)][_0x6571a1(0x18a)][_0x6571a1(0x85)](DISABLE),!globalObjsTemp['noPower']&&setRadioVolume(0.75);}function openRadio(){const _0xe9617a=_0x2f9c;globalObjects['moveRightBtn'][_0xe9617a(0x85)](DISABLE),globalObjects['moveLeftBtn'][_0xe9617a(0x85)](DISABLE);for(let _0x462834 in globalObjsTemp[_0xe9617a(0x179)]){globalObjsTemp[_0xe9617a(0x179)][_0x462834]['visible']=!![];}globalObjsTemp['radio'][_0xe9617a(0x1a0)][_0xe9617a(0x85)](NORMAL),globalObjsTemp[_0xe9617a(0x179)]['radioDeviceButtonBlocker']['setState'](NORMAL),globalObjsTemp['radio'][_0xe9617a(0x18a)][_0xe9617a(0x85)](NORMAL),!globalObjsTemp[_0xe9617a(0x1a1)]&&setRadioVolume(0x1);}function adjustRadioUpdate(_0x1087f8){const _0x2af020=_0x2f9c;let _0x4784ac=0x63,_0x47768c=0x63,_0x2d0400=null;for(let _0x1bba1d in globalObjsTemp[_0x2af020(0x1a2)]){_0x4784ac=Math['abs'](_0x1bba1d-_0x1087f8),_0x4784ac<_0x47768c&&(_0x47768c=_0x4784ac,_0x2d0400=globalObjsTemp[_0x2af020(0x1a2)][_0x1bba1d]);}if(_0x47768c>0x6){gameState[_0x2af020(0x15f)]&&(gameState['maggieReadyFinale']=![]);let _0x4b9dab=0x1-Math[_0x2af020(0xa3)](0.99,(0xa-_0x47768c)/5.5),_0x308f0a=(_0x1087f8-0xce)/0x12c;gameState[_0x2af020(0xab)]==0x3&&(_0x308f0a=0.5);globalObjsTemp[_0x2af020(0xa4)][_0x2af020(0xa5)]=0x1-_0x4b9dab;let _0x38e0aa=Math[_0x2af020(0x18e)](_0x4b9dab);globalObjsTemp[_0x2af020(0x180)][_0x2af020(0xa5)]=_0x38e0aa*(0x1-_0x308f0a)*0.5,globalObjsTemp[_0x2af020(0x180)][_0x2af020(0x1a3)]=globalObjsTemp[_0x2af020(0x180)][_0x2af020(0xa5)];globalObjsTemp[_0x2af020(0x182)]&&(globalObjsTemp[_0x2af020(0x182)][_0x2af020(0xa5)]=_0x38e0aa*_0x308f0a*0.5,globalObjsTemp[_0x2af020(0x182)][_0x2af020(0x1a3)]=globalObjsTemp[_0x2af020(0x182)][_0x2af020(0xa5)]);if(_0x47768c>0xa)globalObjsTemp[_0x2af020(0xa4)][_0x2af020(0x1a4)]&&globalObjsTemp[_0x2af020(0xa4)]['stop']();else{if(globalObjsTemp[_0x2af020(0xa4)]['key']!=_0x2d0400){globalObjsTemp[_0x2af020(0xa4)][_0x2af020(0x1a5)](),globalObjsTemp[_0x2af020(0xa4)]=playSound(_0x2d0400,0x1,!![]);!gameState[_0x2af020(0x1a6)]&&(gameState[_0x2af020(0x1a6)]=!![],messageBus[_0x2af020(0x15d)](_0x2af020(0x1a7)));if(_0x2d0400=='news1')gameState[_0x2af020(0x1a8)]?dialogManager['showDialogNode'](_0x2af020(0x1a8)):dialogManager[_0x2af020(0xad)](_0x2af020(0x1a9));else{if(_0x2d0400==_0x2af020(0x1aa))gameState['radio2Done']?dialogManager[_0x2af020(0xad)](_0x2af020(0x126)):gameState[_0x2af020(0x11c)]||gameState[_0x2af020(0x123)]?dialogManager[_0x2af020(0xad)](_0x2af020(0x1ab)):dialogManager[_0x2af020(0xad)]('radioActTwo1');else _0x2d0400==_0x2af020(0x1ac)&&(gameState[_0x2af020(0x12a)]?dialogManager[_0x2af020(0xad)]('radioActThreeDone'):dialogManager['showDialogNode'](_0x2af020(0x1ad)));}}!globalObjsTemp['radioMusic'][_0x2af020(0x1a4)]&&globalObjsTemp[_0x2af020(0xa4)]['play']();}}else globalObjsTemp['radioMusic']['volume']=0x1,globalObjsTemp['radioStatic1'][_0x2af020(0xa5)]=0x0,globalObjsTemp[_0x2af020(0x182)]&&(globalObjsTemp[_0x2af020(0x182)][_0x2af020(0xa5)]=0x0),globalObjsTemp[_0x2af020(0x180)]['trueVolume']=0x0,globalObjsTemp[_0x2af020(0x182)]&&(globalObjsTemp['radioStatic2'][_0x2af020(0x1a3)]=0x0),gameState[_0x2af020(0x15f)]&&_0x2d0400===_0x2af020(0x1ae)&&(gameState['maggieReadyFinale']=!![]);}function clickTV(){const _0x275d82=_0x2f9c;if(gameState['currentScene']==0x1){if(gameState[_0x275d82(0x1af)])dialogManager['showDialogNode'](_0x275d82(0x1b0));else{let _0x1a58da=gameState['tvNum']||0x1;dialogManager['showDialogNode']('tv'+_0x1a58da),gameState[_0x275d82(0x1b1)]=_0x1a58da+0x1;}}else{if(gameState[_0x275d82(0xab)]==0x2)gameState[_0x275d82(0xaa)]?gameState['askedEthanEdithTV']?dialogManager['showDialogNode'](_0x275d82(0x1b2)):dialogManager['showDialogNode'](_0x275d82(0x1b3)):gameState[_0x275d82(0x1b4)]?dialogManager[_0x275d82(0xad)](_0x275d82(0x1b5)):dialogManager['showDialogNode'](_0x275d82(0x1b6));else{if(gameState[_0x275d82(0xab)]==0x3){if(gameState[_0x275d82(0x15f)])dialogManager[_0x275d82(0xad)](_0x275d82(0x1b7));else{if(gameState['tvSmashed'])dialogManager['showDialogNode'](_0x275d82(0x1b8));else{if(gameState[_0x275d82(0x1b9)]){}else{let _0x55c6b4=gameState[_0x275d82(0x1ba)]||0x1;dialogManager['showDialogNode'](_0x275d82(0x1bb)+_0x55c6b4),gameState['tvThreeNum']=_0x55c6b4+0x1;}}}}}}}function clickIndoor(){const _0x311147=_0x2f9c;if(gameState[_0x311147(0x1bc)]&&!gameState[_0x311147(0x1bd)]){gameState[_0x311147(0x1bd)]=!![];let _0x16fe50=PhaserScene[_0x311147(0xa7)]['sprite'](gameConsts[_0x311147(0x16a)],gameConsts['halfHeight']-0x28,'lowq','spook1.jpg')[_0x311147(0x175)](1.7,1.7)['setAlpha'](0.15)[_0x311147(0x84)](0x3e8)[_0x311147(0x1be)](Phaser[_0x311147(0x1bf)]['DARKEN']);_0x16fe50[_0x311147(0x197)]=0x0,setTimeout(()=>{const _0x179f9e=_0x311147;_0x16fe50[_0x179f9e(0x82)](0.05),setTimeout(()=>{const _0x5d7f90=_0x179f9e;let _0x51ab90=PhaserScene[_0x5d7f90(0xa7)][_0x5d7f90(0x1c0)](gameConsts['halfWidth'],gameConsts[_0x5d7f90(0x17a)],'blackPixel')['setScale'](0x1388,0x3e7);_0x16fe50[_0x5d7f90(0x16f)](),setTimeout(()=>{const _0x244afb=_0x5d7f90;_0x51ab90[_0x244afb(0x16f)]();},0x1);},0x50);},0xf);}globalObjects[_0x311147(0x7d)][_0x311147(0x91)]['setState'](DISABLE),globalObjsTemp['rainBackground'][_0x311147(0x84)](-0x1),globalObjsTemp[_0x311147(0x1c1)][_0x311147(0x84)](-0x1),globalObjects[_0x311147(0x1c2)][_0x311147(0x1a5)]();if(gameState[_0x311147(0xaa)])globalObjects[_0x311147(0x1c3)][_0x311147(0x1c4)](0x1);else!gameState[_0x311147(0x1c5)]?(gameState[_0x311147(0x1c5)]=!![],globalObjects[_0x311147(0x1c3)][_0x311147(0x1c4)](0.22),setRadioMusic(_0x311147(0x183),0.4)):(globalObjects[_0x311147(0x1c3)][_0x311147(0x1c4)](0.25),setRadioVolume(gameState['oldRadioVolume']));playSound(_0x311147(0x1c6),0.8),gameVars['cameraMoveAcc']=0x0,gameVars[_0x311147(0x1c7)]=0.01,gameState['isOutdoors']=![],gameVars[_0x311147(0x1c8)]=0x0,PhaserScene[_0x311147(0x1c9)][_0x311147(0x1ca)]['scrollY']=gameVars[_0x311147(0x1c8)],gameVars[_0x311147(0x9f)]=-0x1fe,PhaserScene[_0x311147(0x1c9)][_0x311147(0x1ca)][_0x311147(0x1cb)]=gameVars[_0x311147(0x9f)],gameVars[_0x311147(0x1cc)]=gameVars['cameraPosMaxXInside'],gameVars[_0x311147(0x1cd)]=gameVars[_0x311147(0x1ce)],globalObjsTemp['generatorSound']&&globalObjsTemp[_0x311147(0x1cf)][_0x311147(0x1a5)](),gameState[_0x311147(0xaa)]===![]&&!gameState[_0x311147(0x1d0)]&&(gameState['powerOnWelcomed']=!![],dialogManager['showDialogNode'](_0x311147(0x1d1)));}function clickBackdoor(){const _0x43a897=_0x2f9c;if(gameState['currentScene']==0x1)dialogManager[_0x43a897(0xad)](_0x43a897(0x1d2));else{if(gameState['currentScene']==0x2){if(gameState[_0x43a897(0xd5)])gameState['startedBackdoorDebate']?gameState[_0x43a897(0xf7)]?dialogManager[_0x43a897(0xad)](_0x43a897(0x1d3)):dialogManager[_0x43a897(0xad)](_0x43a897(0x1d4)):(gameState[_0x43a897(0x1d5)]=!![],dialogManager[_0x43a897(0xad)](_0x43a897(0x1d6)));else gameState[_0x43a897(0xb0)]?exitBackdoor():dialogManager[_0x43a897(0xad)](_0x43a897(0x1d7));}else gameState[_0x43a897(0xab)]==0x3&&exitBackdoor();}}function shiftOver(_0x34116e,_0x41addd){const _0x4923a3=_0x2f9c;let _0x4e25cb=_0x34116e-(gameVars[_0x4923a3(0x9f)]+gameConsts['halfWidth']),_0x1cd558=_0x41addd?0x28:0xaf,_0x25ada2=_0x41addd?0.35:0.27,_0x1ccbed=_0x41addd?0xdc:0x145;if(_0x4e25cb<-_0x1cd558)gameVars[_0x4923a3(0x1d8)]=_0x4e25cb/_0x1ccbed-_0x25ada2;else _0x4e25cb>_0x1cd558&&(gameVars[_0x4923a3(0x1d8)]=_0x4e25cb/_0x1ccbed+_0x25ada2);messageBus[_0x4923a3(0x15d)](_0x4923a3(0x1d9));}function shiftOverTween(_0x3d71d1){const _0x4feba3=_0x2f9c;PhaserScene[_0x4feba3(0x1c9)][_0x4feba3(0x1ca)][_0x4feba3(0x1cb)]=gameVars['cameraPosX'],PhaserScene[_0x4feba3(0xa6)][_0x4feba3(0xa7)]({'targets':[PhaserScene[_0x4feba3(0x1c9)][_0x4feba3(0x1ca)],gameVars],'scrollX':_0x3d71d1,'cameraPosX':_0x3d71d1,'ease':'Cubic.easeInOut','duration':0xbb8}),messageBus[_0x4feba3(0x15d)](_0x4feba3(0x1d9));}function _0x2f9c(_0x1aec0e,_0x5032de){const _0x45d0e3=_0x5386();return _0x2f9c=function(_0x541c40,_0x1cf2b6){_0x541c40=_0x541c40-0x72;let _0x4edf3e=_0x45d0e3[_0x541c40];return _0x4edf3e;},_0x2f9c(_0x1aec0e,_0x5032de);}function exitBackdoor(){const _0x1f07d3=_0x2f9c;playSound(_0x1f07d3(0x1c6),0.4),globalObjects[_0x1f07d3(0x7d)][_0x1f07d3(0x91)][_0x1f07d3(0x85)](NORMAL),globalObjsTemp[_0x1f07d3(0x1da)][_0x1f07d3(0x84)](0x1),globalObjsTemp[_0x1f07d3(0x1c1)]['setDepth'](0x1);!globalObjects[_0x1f07d3(0x1c2)]?globalObjects[_0x1f07d3(0x1c2)]=playSound(_0x1f07d3(0x1db),0.88,!![]):globalObjects[_0x1f07d3(0x1c2)][_0x1f07d3(0x1dc)]();if(!gameState[_0x1f07d3(0x1dd)])gameState[_0x1f07d3(0x1de)]=gameVars[_0x1f07d3(0x1df)],setRadioVolume(0.001),globalObjects[_0x1f07d3(0x1c2)][_0x1f07d3(0xa5)]=0.88;else!gameState[_0x1f07d3(0x1e0)]&&(globalObjects['outdoorRain'][_0x1f07d3(0xa5)]=0.75,gameState[_0x1f07d3(0x1e0)]=!![],dialogManager['showDialogNode']('LookForCaspar'));gameVars[_0x1f07d3(0x1d8)]=0x0,gameVars['cameraMoveVel']=0.01,gameState[_0x1f07d3(0x1e1)]=!![],gameVars[_0x1f07d3(0x1c8)]=gameConsts[_0x1f07d3(0x1e2)],PhaserScene[_0x1f07d3(0x1c9)][_0x1f07d3(0x1ca)][_0x1f07d3(0x1e3)]=gameVars[_0x1f07d3(0x1c8)],gameVars[_0x1f07d3(0x9f)]=-0x1e0,PhaserScene[_0x1f07d3(0x1c9)][_0x1f07d3(0x1ca)][_0x1f07d3(0x1cb)]=gameVars[_0x1f07d3(0x9f)],gameVars[_0x1f07d3(0x1cc)]=gameVars[_0x1f07d3(0x1e4)],gameVars[_0x1f07d3(0x1cd)]=gameVars[_0x1f07d3(0x1e5)],!globalObjsTemp['outdoorBackgrounds']&&(globalObjsTemp['outdoorBackgrounds']={'bg0':PhaserScene[_0x1f07d3(0xa7)][_0x1f07d3(0x1c0)](0x0,gameConsts[_0x1f07d3(0x17a)]+gameConsts[_0x1f07d3(0x1e2)],_0x1f07d3(0x1e6),_0x1f07d3(0x1e7))[_0x1f07d3(0x175)](0xa,0x6),'bg1':PhaserScene[_0x1f07d3(0xa7)][_0x1f07d3(0x1c0)](0x0,gameConsts['halfHeight']+gameConsts[_0x1f07d3(0x1e2)],'backgrounds',_0x1f07d3(0x1e8)),'bg2':PhaserScene['add'][_0x1f07d3(0x1c0)](999.5,gameConsts[_0x1f07d3(0x17a)]+gameConsts['outdoorStartY'],_0x1f07d3(0x1e6),'bgout2.png'),'bg4':PhaserScene[_0x1f07d3(0xa7)]['image'](0x7cf,gameConsts[_0x1f07d3(0x17a)]+gameConsts[_0x1f07d3(0x1e2)],_0x1f07d3(0x1e6),_0x1f07d3(0x1e9)),'bg5':PhaserScene[_0x1f07d3(0xa7)][_0x1f07d3(0x1c0)](0x0,gameConsts[_0x1f07d3(0x17a)]+gameConsts[_0x1f07d3(0x1e2)],'lowq','static.png')[_0x1f07d3(0x175)](0x2,1.75)['setDepth'](0x1),'bg6':PhaserScene[_0x1f07d3(0xa7)][_0x1f07d3(0x1c0)](0x31c,gameConsts[_0x1f07d3(0x17a)]+gameConsts[_0x1f07d3(0x1e2)],_0x1f07d3(0x1ea),_0x1f07d3(0x1eb))[_0x1f07d3(0x175)](0x2,1.75)[_0x1f07d3(0x84)](0x1),'bg7':PhaserScene['add']['image'](0x638,gameConsts['halfHeight']+gameConsts['outdoorStartY'],'lowq',_0x1f07d3(0x1eb))[_0x1f07d3(0x175)](0x2,1.75)['setDepth'](0x1)},globalObjsTemp[_0x1f07d3(0x1ec)]['bg5'][_0x1f07d3(0x197)]=0.3,globalObjsTemp['outdoorBackgrounds'][_0x1f07d3(0x1ed)][_0x1f07d3(0x197)]=0.3,globalObjsTemp[_0x1f07d3(0x1ec)][_0x1f07d3(0x1ee)][_0x1f07d3(0x197)]=0.3,PhaserScene[_0x1f07d3(0xa6)]['add']({'alpha':0x1,'targets':[globalObjsTemp[_0x1f07d3(0x1ec)][_0x1f07d3(0x1ef)],globalObjsTemp[_0x1f07d3(0x1ec)][_0x1f07d3(0x1ed)],globalObjsTemp[_0x1f07d3(0x1ec)][_0x1f07d3(0x1ee)]],'duration':0xbb8,'ease':'Quad.easeOut'}));}function enterShed(){const _0x334b0e=_0x2f9c;gameState[_0x334b0e(0x1f0)]=!![],globalObjects[_0x334b0e(0x1c2)]['setVolume'](0.25),gameVars[_0x334b0e(0x1d8)]=0x0,gameVars[_0x334b0e(0x1c7)]=0x0,globalObjsTemp[_0x334b0e(0x1cf)]&&globalObjsTemp[_0x334b0e(0x1cf)][_0x334b0e(0x1c4)](0.25),globalObjsTemp[_0x334b0e(0x1da)][_0x334b0e(0x84)](-0x1),globalObjsTemp['rainForeground'][_0x334b0e(0x84)](-0x1),gameVars[_0x334b0e(0x1c8)]=gameConsts[_0x334b0e(0x1f1)],PhaserScene['cameras'][_0x334b0e(0x1ca)][_0x334b0e(0x1e3)]=gameVars[_0x334b0e(0x1c8)],gameVars[_0x334b0e(0x9f)]=0x0,PhaserScene['cameras'][_0x334b0e(0x1ca)][_0x334b0e(0x1cb)]=gameVars[_0x334b0e(0x9f)],!globalObjsTemp['shedBackgrounds']&&(globalObjsTemp[_0x334b0e(0x1f2)]=PhaserScene[_0x334b0e(0xa7)][_0x334b0e(0x1c0)](gameConsts[_0x334b0e(0x16a)],gameConsts[_0x334b0e(0x17a)]+gameConsts[_0x334b0e(0x1f1)],_0x334b0e(0x7f),_0x334b0e(0x1f3))[_0x334b0e(0x175)](0x3e8,0x190)[_0x334b0e(0x84)](-0x2),globalObjsTemp[_0x334b0e(0x1f4)]=PhaserScene[_0x334b0e(0xa7)][_0x334b0e(0x1c0)](gameConsts[_0x334b0e(0x16a)],gameConsts['halfHeight']+gameConsts[_0x334b0e(0x1f1)],_0x334b0e(0x1e6),_0x334b0e(0x1f5)));}function clickGravestone(){const _0x49240c=_0x2f9c;gameState[_0x49240c(0x1f6)]=!![],gameState[_0x49240c(0x1dd)]?gameState['MaggieSaved']?dialogManager[_0x49240c(0xad)](_0x49240c(0x1f7)):dialogManager[_0x49240c(0xad)](_0x49240c(0x1f8)):dialogManager[_0x49240c(0xad)](_0x49240c(0x1f9));}function exitShed(){const _0x3a67d6=_0x2f9c;gameState[_0x3a67d6(0x1f0)]=![],globalObjects[_0x3a67d6(0x1c2)][_0x3a67d6(0x1c4)](0x1),gameVars[_0x3a67d6(0x1d8)]=0x0,gameVars['cameraMoveVel']=-0.01,globalObjsTemp['generatorSound']&&globalObjsTemp[_0x3a67d6(0x1cf)][_0x3a67d6(0x1c4)](0x0),globalObjsTemp[_0x3a67d6(0x1da)][_0x3a67d6(0x84)](0x1),globalObjsTemp[_0x3a67d6(0x1c1)][_0x3a67d6(0x84)](0x1),gameVars[_0x3a67d6(0x1c8)]=gameConsts[_0x3a67d6(0x1e2)],PhaserScene['cameras'][_0x3a67d6(0x1ca)][_0x3a67d6(0x1e3)]=gameVars[_0x3a67d6(0x1c8)],gameVars[_0x3a67d6(0x9f)]=0x5a0,PhaserScene[_0x3a67d6(0x1c9)][_0x3a67d6(0x1ca)][_0x3a67d6(0x1cb)]=gameVars[_0x3a67d6(0x9f)],!gameState[_0x3a67d6(0x1bc)]&&gameState[_0x3a67d6(0x1fa)]&&(gameState[_0x3a67d6(0x1bc)]=!![],setTimeout(()=>{const _0xab9c5d=_0x3a67d6;let _0x1f5745=PhaserScene[_0xab9c5d(0xa7)][_0xab9c5d(0x98)](0x154,0xc8,'lowq',_0xab9c5d(0x1fb))[_0xab9c5d(0x175)](0.8,0.6)['setAlpha'](0.005)[_0xab9c5d(0x84)](0x1),_0x341de9=PhaserScene[_0xab9c5d(0xa7)][_0xab9c5d(0x98)](gameConsts['halfWidth'],gameConsts[_0xab9c5d(0x17a)],'blackPixel')['setAlpha'](0.07)[_0xab9c5d(0x84)](0x270f)[_0xab9c5d(0x175)](0x2710,0x1f4);_0x1f5745[_0xab9c5d(0x197)]=0.225,_0x1f5745['scrollFactorY']=0x0,PhaserScene['tweens']['add']({'delay':0x12c,'alpha':0.04,'targets':_0x1f5745,'duration':0x1388,'ease':_0xab9c5d(0x1fc),'onComplete':()=>{const _0x24090e=_0xab9c5d;playSound(_0x24090e(0x1fd)),_0x1f5745['x']+=0x64,_0x1f5745['y']+=0x19,_0x1f5745['setScale'](0x1),_0x1f5745[_0x24090e(0x82)](0.1),setTimeout(()=>{const _0x127d00=_0x24090e;_0x1f5745['x']-=0x32,_0x1f5745['setScale'](1.25),_0x1f5745[_0x127d00(0x82)](0.05),_0x341de9[_0x127d00(0x82)](0.09),setTimeout(()=>{const _0x5efb12=_0x127d00;_0x1f5745[_0x5efb12(0x16f)](),_0x341de9[_0x5efb12(0x16f)]();},0x14);},0x28);}});},0x0)),gameState[_0x3a67d6(0x1fe)]&&(gameState[_0x3a67d6(0x1fe)]=![],globalObjsTemp['dogEyeAnim'][_0x3a67d6(0x1a5)](),globalObjsTemp[_0x3a67d6(0x1ff)]['x']=0x4b0,globalObjsTemp[_0x3a67d6(0x1ff)]['y']+=0x28,globalObjsTemp[_0x3a67d6(0x1ff)][_0x3a67d6(0x197)]=0.8,globalObjsTemp[_0x3a67d6(0x1ff)][_0x3a67d6(0x175)](0.6),globalObjsTemp[_0x3a67d6(0x1ff)][_0x3a67d6(0x84)](0x1),globalObjsTemp[_0x3a67d6(0x1ff)][_0x3a67d6(0x187)]=0.8,PhaserScene['tweens'][_0x3a67d6(0xa7)]({'delay':0x258,'x':_0x3a67d6(0x200),'targets':globalObjsTemp[_0x3a67d6(0x1ff)],'duration':0x32,'onComplete':()=>{const _0x27336f=_0x3a67d6;PhaserScene['tweens'][_0x27336f(0xa7)]({'delay':0x12c,'alpha':0x0,'scaleX':0.4,'scaleY':0.48,'targets':globalObjsTemp['dogEyes'],'x':_0x27336f(0x201),'duration':0x1f4,'ease':_0x27336f(0x16e),'onComplete':()=>{globalObjsTemp['dogEyes']['destroy']();}});}}));}function clickGenerator(){const _0x2bc6db=_0x2f9c;if(!globalObjsTemp[_0x2bc6db(0x202)]){setTimeout(()=>{const _0x459fc5=_0x2bc6db;gameState[_0x459fc5(0xaa)]===!![]&&(console[_0x459fc5(0x203)](_0x459fc5(0x204)),gameState[_0x459fc5(0x1fa)]=!![]);},0xc350),gameState[_0x2bc6db(0x13e)]=!![];let _0x1bf5d7=gameConsts['halfHeight']+gameConsts[_0x2bc6db(0x1f1)];updateManager[_0x2bc6db(0x205)](updateGenerator),globalObjsTemp[_0x2bc6db(0x202)]={'generatorClickBlocker':{},'backing':PhaserScene[_0x2bc6db(0xa7)]['sprite'](gameConsts[_0x2bc6db(0x16a)],_0x1bf5d7,_0x2bc6db(0x179),_0x2bc6db(0x206)),'exit':{},'power':{},'red':{},'blue':{},'green':{},'yellow':{},'purple':{},'indicator':PhaserScene[_0x2bc6db(0xa7)]['sprite'](gameConsts['halfWidth']-0x40,_0x1bf5d7+0xd1,'radio',_0x2bc6db(0x207))[_0x2bc6db(0x82)](0.9),'invalid':PhaserScene[_0x2bc6db(0xa7)][_0x2bc6db(0x98)](-0x3e7,-0x3e7,_0x2bc6db(0x99),_0x2bc6db(0x208))['setAlpha'](0x0)},globalObjsTemp[_0x2bc6db(0x209)]={'red':PhaserScene['add']['sprite'](gameConsts['halfWidth']-0xdd,_0x1bf5d7-0xd0,_0x2bc6db(0x179),_0x2bc6db(0x20a))['setOrigin'](0x0,0.5)[_0x2bc6db(0x175)](0.01,0x1),'blue':PhaserScene['add'][_0x2bc6db(0x98)](gameConsts[_0x2bc6db(0x16a)]-0xdd,_0x1bf5d7-0x80,'radio',_0x2bc6db(0x20b))['setOrigin'](0x0,0.5)[_0x2bc6db(0x175)](0.01,0x1),'green':PhaserScene[_0x2bc6db(0xa7)][_0x2bc6db(0x98)](gameConsts[_0x2bc6db(0x16a)]-0xdd,_0x1bf5d7-0x30,_0x2bc6db(0x179),'green_wire.png')[_0x2bc6db(0x8b)](0x0,0.5)[_0x2bc6db(0x175)](0.01,0x1),'yellow':PhaserScene[_0x2bc6db(0xa7)][_0x2bc6db(0x98)](gameConsts[_0x2bc6db(0x16a)]-0xdd,_0x1bf5d7+0x20,_0x2bc6db(0x179),_0x2bc6db(0x20c))[_0x2bc6db(0x8b)](0x0,0.5)[_0x2bc6db(0x175)](0.01,0x1),'purple':PhaserScene[_0x2bc6db(0xa7)][_0x2bc6db(0x98)](gameConsts[_0x2bc6db(0x16a)]-0xdd,_0x1bf5d7+0x70,_0x2bc6db(0x179),_0x2bc6db(0x20d))['setOrigin'](0x0,0.5)[_0x2bc6db(0x175)](0.01,0x1)},globalObjsTemp[_0x2bc6db(0x202)][_0x2bc6db(0x20e)]=new Button({'normal':{'ref':'blackPixel','x':gameConsts[_0x2bc6db(0x16a)],'y':_0x1bf5d7,'alpha':0.01,'scaleX':0x1388,'scaleY':0x3e8}}),globalObjsTemp['generator']['exit']=new Button({'normal':{'atlas':_0x2bc6db(0x179),'ref':_0x2bc6db(0x20f),'x':gameConsts[_0x2bc6db(0x16a)]-0x136,'y':_0x1bf5d7+0x118,'alpha':0.75},'hover':{'alpha':0x1},'press':{'alpha':0.65},'disable':{'alpha':0.001},'onMouseUp'(){closeGenerator();}}),globalObjsTemp['generator'][_0x2bc6db(0x210)]=new Button({'normal':{'atlas':_0x2bc6db(0x179),'ref':_0x2bc6db(0x211),'x':gameConsts[_0x2bc6db(0x16a)]-0xf,'y':_0x1bf5d7+0xf0,'alpha':0x1},'hover':{'atlas':_0x2bc6db(0x179),'ref':'power_btn_hover.png','alpha':0x1},'press':{'atlas':_0x2bc6db(0x179),'ref':_0x2bc6db(0x212),'alpha':0x1},'disable':{'alpha':0.001},'onHover':()=>{const _0x229d47=_0x2bc6db;canvas[_0x229d47(0x18f)][_0x229d47(0x190)]='pointer';},'onHoverOut':()=>{const _0x5c3ebd=_0x2bc6db;canvas[_0x5c3ebd(0x18f)][_0x5c3ebd(0x190)]='default';},'onMouseUp'(){startGenerator();}}),globalObjsTemp[_0x2bc6db(0x202)][_0x2bc6db(0x213)]=new Button({'normal':{'atlas':'radio','ref':_0x2bc6db(0x214),'x':0x12c,'y':0x101e,'alpha':0x1,'scaleX':0x1,'scaleY':0x1},'hover':{'atlas':'radio','ref':_0x2bc6db(0x214),'scaleX':0x1,'scaleY':1.03,'alpha':0x1},'press':{'atlas':_0x2bc6db(0x179),'ref':'red_plug.png','scaleX':1.08,'scaleY':1.08,'alpha':0.8},'disable':{'scaleX':0x1,'scaleY':0x1,'alpha':0x1},'isDraggable':!![],'onMouseDown':()=>{playSound('crackle1');},'onDrag':()=>{const _0x22e896=_0x2bc6db;canvas[_0x22e896(0x18f)]['cursor']='grab';let _0x446475=globalObjsTemp['generator'][_0x22e896(0x213)]['getXPos'](),_0x4e5754=globalObjsTemp[_0x22e896(0x202)][_0x22e896(0x213)][_0x22e896(0x174)]();attachWire(_0x446475,_0x4e5754,globalObjsTemp['generator'][_0x22e896(0x213)]),updateWireVisual(globalObjsTemp['generator'][_0x22e896(0x213)],globalObjsTemp[_0x22e896(0x209)]['red']);},'onDrop':()=>{const _0x25ac5d=_0x2bc6db;canvas[_0x25ac5d(0x18f)][_0x25ac5d(0x190)]='default';let _0x354bfc=globalObjsTemp[_0x25ac5d(0x202)]['red'][_0x25ac5d(0x8a)](),_0x1a2415=globalObjsTemp[_0x25ac5d(0x202)][_0x25ac5d(0x213)][_0x25ac5d(0x174)](),_0x4157f8=attachWire(_0x354bfc,_0x1a2415,globalObjsTemp['generator'][_0x25ac5d(0x213)]);_0x4157f8?(setWireAttach(globalObjsTemp[_0x25ac5d(0x202)][_0x25ac5d(0x213)],_0x4157f8),updateWireVisual(globalObjsTemp['generator']['red'],globalObjsTemp[_0x25ac5d(0x209)]['red']),playSound(_0x25ac5d(0x215))):(detatchWire(globalObjsTemp['generator'][_0x25ac5d(0x213)]),globalObjsTemp[_0x25ac5d(0x202)][_0x25ac5d(0x213)][_0x25ac5d(0x216)](gameConsts[_0x25ac5d(0x16a)]-0xd3,_0x1bf5d7-0xd0,0xc8,_0x25ac5d(0x16e)),retractWireVisual(globalObjsTemp[_0x25ac5d(0x202)][_0x25ac5d(0x213)],globalObjsTemp['generatorWires'][_0x25ac5d(0x213)]));}}),globalObjsTemp['generator'][_0x2bc6db(0x213)]=globalObjsTemp[_0x2bc6db(0x202)][_0x2bc6db(0x213)],globalObjsTemp[_0x2bc6db(0x202)][_0x2bc6db(0x213)]['setOrigin'](0.8,0.5),globalObjsTemp[_0x2bc6db(0x202)][_0x2bc6db(0x217)]=new Button({'normal':{'atlas':'radio','ref':'blue_plug.png','x':0x12c,'y':0x106d,'alpha':0x1,'scaleX':0x1,'scaleY':0x1},'hover':{'atlas':_0x2bc6db(0x179),'ref':_0x2bc6db(0x218),'scaleX':0x1,'scaleY':1.03,'alpha':0x1},'press':{'atlas':_0x2bc6db(0x179),'ref':_0x2bc6db(0x218),'scaleX':1.08,'scaleY':1.08,'alpha':0.8},'disable':{'scaleX':0x1,'scaleY':0x1,'alpha':0x1},'isDraggable':!![],'onMouseDown':()=>{const _0x5371d5=_0x2bc6db;playSound(_0x5371d5(0x215));},'onDrag':()=>{const _0x1e1328=_0x2bc6db;canvas[_0x1e1328(0x18f)][_0x1e1328(0x190)]='grab';let _0xbff6d9=globalObjsTemp['generator'][_0x1e1328(0x217)]['getXPos'](),_0x266aea=globalObjsTemp[_0x1e1328(0x202)][_0x1e1328(0x217)]['getYPos']();attachWire(_0xbff6d9,_0x266aea,globalObjsTemp[_0x1e1328(0x202)][_0x1e1328(0x217)]),updateWireVisual(globalObjsTemp[_0x1e1328(0x202)][_0x1e1328(0x217)],globalObjsTemp[_0x1e1328(0x209)][_0x1e1328(0x217)]);},'onDrop':()=>{const _0x4d4f32=_0x2bc6db;canvas[_0x4d4f32(0x18f)][_0x4d4f32(0x190)]=_0x4d4f32(0x192);let _0x27a75a=globalObjsTemp[_0x4d4f32(0x202)]['blue'][_0x4d4f32(0x8a)](),_0x67552a=globalObjsTemp[_0x4d4f32(0x202)][_0x4d4f32(0x217)][_0x4d4f32(0x174)](),_0x199470=attachWire(_0x27a75a,_0x67552a,globalObjsTemp[_0x4d4f32(0x202)][_0x4d4f32(0x217)]);_0x199470?(setWireAttach(globalObjsTemp['generator'][_0x4d4f32(0x217)],_0x199470),updateWireVisual(globalObjsTemp[_0x4d4f32(0x202)]['blue'],globalObjsTemp[_0x4d4f32(0x209)][_0x4d4f32(0x217)]),playSound('crackle1')):(detatchWire(globalObjsTemp[_0x4d4f32(0x202)]['blue']),globalObjsTemp[_0x4d4f32(0x202)][_0x4d4f32(0x217)][_0x4d4f32(0x216)](gameConsts[_0x4d4f32(0x16a)]-0xd3,_0x1bf5d7-128.5,0xc8,_0x4d4f32(0x16e)),retractWireVisual(globalObjsTemp[_0x4d4f32(0x202)][_0x4d4f32(0x217)],globalObjsTemp[_0x4d4f32(0x209)][_0x4d4f32(0x217)]));}}),globalObjsTemp[_0x2bc6db(0x202)][_0x2bc6db(0x217)][_0x2bc6db(0x8b)](0.8,0.5),globalObjsTemp['generator'][_0x2bc6db(0x219)]=new Button({'normal':{'atlas':_0x2bc6db(0x179),'ref':'green_plug.png','x':gameConsts[_0x2bc6db(0x16a)]-0xd3,'y':_0x1bf5d7-0x31,'alpha':0x1,'scaleX':0x1,'scaleY':0x1},'hover':{'atlas':'radio','ref':_0x2bc6db(0x21a),'scaleX':0x1,'scaleY':1.03,'alpha':0x1},'press':{'atlas':_0x2bc6db(0x179),'ref':_0x2bc6db(0x21a),'scaleX':1.08,'scaleY':1.08,'alpha':0.8},'disable':{'scaleX':0x1,'scaleY':0x1,'alpha':0x1},'isDraggable':!![],'onMouseDown':()=>{const _0x50fe49=_0x2bc6db;playSound(_0x50fe49(0x215));},'onDrag':()=>{const _0x403aed=_0x2bc6db;canvas['style']['cursor']=_0x403aed(0x191);let _0x408520=globalObjsTemp['generator'][_0x403aed(0x219)]['getXPos'](),_0x1f8a17=globalObjsTemp[_0x403aed(0x202)][_0x403aed(0x219)][_0x403aed(0x174)]();attachWire(_0x408520,_0x1f8a17,globalObjsTemp[_0x403aed(0x202)][_0x403aed(0x219)]),updateWireVisual(globalObjsTemp[_0x403aed(0x202)][_0x403aed(0x219)],globalObjsTemp[_0x403aed(0x209)][_0x403aed(0x219)]);},'onDrop':()=>{const _0x30b73d=_0x2bc6db;canvas[_0x30b73d(0x18f)][_0x30b73d(0x190)]=_0x30b73d(0x192);let _0x7aa596=globalObjsTemp[_0x30b73d(0x202)][_0x30b73d(0x219)][_0x30b73d(0x8a)](),_0x52cf41=globalObjsTemp[_0x30b73d(0x202)][_0x30b73d(0x219)][_0x30b73d(0x174)](),_0x3beb9b=attachWire(_0x7aa596,_0x52cf41,globalObjsTemp[_0x30b73d(0x202)][_0x30b73d(0x219)]);_0x3beb9b?(setWireAttach(globalObjsTemp['generator'][_0x30b73d(0x219)],_0x3beb9b),updateWireVisual(globalObjsTemp[_0x30b73d(0x202)][_0x30b73d(0x219)],globalObjsTemp['generatorWires']['green']),playSound(_0x30b73d(0x215))):(detatchWire(globalObjsTemp[_0x30b73d(0x202)][_0x30b73d(0x219)]),globalObjsTemp[_0x30b73d(0x202)][_0x30b73d(0x219)]['tweenToPos'](gameConsts['halfWidth']-0xd3,_0x1bf5d7-0x31,0xc8,_0x30b73d(0x16e)),retractWireVisual(globalObjsTemp[_0x30b73d(0x202)][_0x30b73d(0x219)],globalObjsTemp[_0x30b73d(0x209)]['green']));}}),globalObjsTemp[_0x2bc6db(0x202)]['green'][_0x2bc6db(0x8b)](0.8,0.5),globalObjsTemp[_0x2bc6db(0x202)][_0x2bc6db(0x21b)]=new Button({'normal':{'atlas':_0x2bc6db(0x179),'ref':_0x2bc6db(0x21c),'x':0x12c,'y':0x10bc,'alpha':0x1,'scaleX':0x1,'scaleY':0x1},'hover':{'atlas':_0x2bc6db(0x179),'ref':_0x2bc6db(0x21c),'scaleX':0x1,'scaleY':1.03,'alpha':0x1},'press':{'atlas':_0x2bc6db(0x179),'ref':_0x2bc6db(0x21c),'scaleX':1.08,'scaleY':1.08,'alpha':0.8},'disable':{'scaleX':0x1,'scaleY':0x1,'alpha':0x1},'isDraggable':!![],'onMouseDown':()=>{const _0x1d4954=_0x2bc6db;playSound(_0x1d4954(0x215));},'onDrag':()=>{const _0x5f587e=_0x2bc6db;canvas[_0x5f587e(0x18f)]['cursor']=_0x5f587e(0x191);let _0x3c643=globalObjsTemp[_0x5f587e(0x202)][_0x5f587e(0x21b)][_0x5f587e(0x8a)](),_0x303447=globalObjsTemp['generator'][_0x5f587e(0x21b)][_0x5f587e(0x174)]();attachWire(_0x3c643,_0x303447,globalObjsTemp[_0x5f587e(0x202)][_0x5f587e(0x21b)]),updateWireVisual(globalObjsTemp['generator'][_0x5f587e(0x21b)],globalObjsTemp[_0x5f587e(0x209)][_0x5f587e(0x21b)]);},'onDrop':()=>{const _0x303f1d=_0x2bc6db;canvas[_0x303f1d(0x18f)][_0x303f1d(0x190)]='default';let _0x520c84=globalObjsTemp['generator'][_0x303f1d(0x21b)][_0x303f1d(0x8a)](),_0x3d6642=globalObjsTemp[_0x303f1d(0x202)][_0x303f1d(0x21b)]['getYPos'](),_0x4e3d26=attachWire(_0x520c84,_0x3d6642,globalObjsTemp['generator'][_0x303f1d(0x21b)]);_0x4e3d26?(setWireAttach(globalObjsTemp[_0x303f1d(0x202)]['yellow'],_0x4e3d26),updateWireVisual(globalObjsTemp[_0x303f1d(0x202)][_0x303f1d(0x21b)],globalObjsTemp[_0x303f1d(0x209)]['yellow']),playSound('crackle1')):(detatchWire(globalObjsTemp[_0x303f1d(0x202)][_0x303f1d(0x21b)]),globalObjsTemp[_0x303f1d(0x202)][_0x303f1d(0x21b)]['tweenToPos'](gameConsts[_0x303f1d(0x16a)]-0xd3,_0x1bf5d7+30.5,0xc8,_0x303f1d(0x16e)),retractWireVisual(globalObjsTemp[_0x303f1d(0x202)]['yellow'],globalObjsTemp[_0x303f1d(0x209)]['yellow']));}}),globalObjsTemp[_0x2bc6db(0x202)]['yellow'][_0x2bc6db(0x8b)](0.8,0.5),globalObjsTemp[_0x2bc6db(0x202)]['purple']=new Button({'normal':{'atlas':_0x2bc6db(0x179),'ref':_0x2bc6db(0x21d),'x':gameConsts[_0x2bc6db(0x16a)]-0xd3,'y':_0x1bf5d7+0x6e,'alpha':0x1,'scaleX':0x1,'scaleY':0x1},'hover':{'atlas':'radio','ref':_0x2bc6db(0x21d),'scaleX':0x1,'scaleY':1.03,'alpha':0x1},'press':{'atlas':_0x2bc6db(0x179),'ref':'purple_plug.png','scaleX':1.08,'scaleY':1.08,'alpha':0.8},'disable':{'scaleX':0x1,'scaleY':0x1,'alpha':0x1},'isDraggable':!![],'onMouseDown':()=>{const _0x5e2ec5=_0x2bc6db;playSound(_0x5e2ec5(0x215));},'onDrag':()=>{const _0x53b73f=_0x2bc6db;canvas[_0x53b73f(0x18f)][_0x53b73f(0x190)]=_0x53b73f(0x191);let _0x478b16=globalObjsTemp[_0x53b73f(0x202)][_0x53b73f(0x21e)][_0x53b73f(0x8a)](),_0x5e18c6=globalObjsTemp['generator'][_0x53b73f(0x21e)][_0x53b73f(0x174)]();attachWire(_0x478b16,_0x5e18c6,globalObjsTemp['generator'][_0x53b73f(0x21e)]),updateWireVisual(globalObjsTemp[_0x53b73f(0x202)][_0x53b73f(0x21e)],globalObjsTemp[_0x53b73f(0x209)]['purple']);},'onDrop':()=>{const _0x17b287=_0x2bc6db;canvas['style'][_0x17b287(0x190)]='default';let _0xe46251=globalObjsTemp[_0x17b287(0x202)][_0x17b287(0x21e)][_0x17b287(0x8a)](),_0x6fa6e6=globalObjsTemp[_0x17b287(0x202)][_0x17b287(0x21e)]['getYPos'](),_0x48002b=attachWire(_0xe46251,_0x6fa6e6,globalObjsTemp['generator'][_0x17b287(0x21e)]);_0x48002b?(setWireAttach(globalObjsTemp[_0x17b287(0x202)]['purple'],_0x48002b),updateWireVisual(globalObjsTemp[_0x17b287(0x202)][_0x17b287(0x21e)],globalObjsTemp['generatorWires'][_0x17b287(0x21e)]),playSound('crackle1')):(detatchWire(globalObjsTemp[_0x17b287(0x202)][_0x17b287(0x21e)]),globalObjsTemp[_0x17b287(0x202)][_0x17b287(0x21e)][_0x17b287(0x216)](gameConsts[_0x17b287(0x16a)]-0xd3,_0x1bf5d7+0x6e,0xc8,_0x17b287(0x16e)),retractWireVisual(globalObjsTemp[_0x17b287(0x202)][_0x17b287(0x21e)],globalObjsTemp[_0x17b287(0x209)][_0x17b287(0x21e)]));}}),globalObjsTemp[_0x2bc6db(0x202)][_0x2bc6db(0x21e)]['setOrigin'](0.8,0.5),globalObjsTemp[_0x2bc6db(0x21f)]={0x1:![],0x2:![],0x3:globalObjsTemp['generator'][_0x2bc6db(0x21b)],0x4:globalObjsTemp[_0x2bc6db(0x202)]['blue'],0x5:globalObjsTemp['generator']['red']},globalObjsTemp[_0x2bc6db(0x202)][_0x2bc6db(0x21b)][_0x2bc6db(0x220)]=0x3,globalObjsTemp[_0x2bc6db(0x202)][_0x2bc6db(0x217)][_0x2bc6db(0x220)]=0x4,globalObjsTemp[_0x2bc6db(0x202)][_0x2bc6db(0x213)]['socket']=0x5,updateWireVisual(globalObjsTemp['generator'][_0x2bc6db(0x213)],globalObjsTemp['generatorWires']['red']),updateWireVisual(globalObjsTemp[_0x2bc6db(0x202)]['blue'],globalObjsTemp[_0x2bc6db(0x209)][_0x2bc6db(0x217)]),updateWireVisual(globalObjsTemp['generator'][_0x2bc6db(0x21b)],globalObjsTemp['generatorWires'][_0x2bc6db(0x21b)]);for(let _0x209f0d in globalObjsTemp[_0x2bc6db(0x202)]){globalObjsTemp[_0x2bc6db(0x202)][_0x209f0d][_0x2bc6db(0x197)]=0x0,globalObjsTemp[_0x2bc6db(0x202)][_0x209f0d][_0x2bc6db(0x84)]&&(globalObjsTemp[_0x2bc6db(0x202)][_0x209f0d][_0x2bc6db(0x189)](0x0,0x1),globalObjsTemp['generator'][_0x209f0d][_0x2bc6db(0x84)](0x64));}for(let _0x2166ba in globalObjsTemp[_0x2bc6db(0x209)]){globalObjsTemp['generatorWires'][_0x2166ba][_0x2bc6db(0x197)]=0x0,globalObjsTemp[_0x2bc6db(0x209)][_0x2166ba][_0x2bc6db(0x221)]=0x64;}setTimeout(()=>{const _0x2fd9fa=_0x2bc6db;messageBus[_0x2fd9fa(0x15d)]('setDialogBtnToTop'),dialogManager[_0x2fd9fa(0xad)]('GeneratorWiredWrong');},0xfa);}openGenerator();}function updateWireVisual(_0x47dfd1,_0x2d85c3){const _0x5117e4=_0x2f9c;let _0x5852d4=_0x47dfd1[_0x5117e4(0x8a)]()-0x7,_0x393c76=_0x47dfd1[_0x5117e4(0x174)](),_0xfda9e5=_0x5852d4-_0x2d85c3['x'],_0x58cc18=_0x393c76-_0x2d85c3['y'],_0x22ed69=Math[_0x5117e4(0x18e)](_0xfda9e5*_0xfda9e5+_0x58cc18*_0x58cc18);_0x2d85c3[_0x5117e4(0x166)]=Math[_0x5117e4(0x199)](_0x58cc18,_0xfda9e5),_0x2d85c3[_0x5117e4(0x175)](0.01*_0x22ed69,0x1);}function retractWireVisual(_0x536241,_0x5b080a){const _0x5b8c59=_0x2f9c;updateWireVisual(_0x536241,_0x5b080a),PhaserScene[_0x5b8c59(0xa6)][_0x5b8c59(0xa7)]({'targets':_0x5b080a,'ease':'Quad.easeIn','scaleX':0.01,'duration':0xc8});}function attachWire(_0x204786,_0x1cac15,_0x1dd3b0){if(_0x204786>0x11e&&_0x204786<0x159){let _0x161751=0xa;if(_0x1cac15>0xffa+_0x161751&&_0x1cac15<0x1045-_0x161751&&wireCanAttach(_0x1dd3b0,0x5))return setWireAttach(_0x1dd3b0,0x5),0x5;else{if(_0x1cac15>0x1045+_0x161751&&_0x1cac15<0x1095-_0x161751&&wireCanAttach(_0x1dd3b0,0x4))return setWireAttach(_0x1dd3b0,0x4),0x4;else{if(_0x1cac15>0x1095+_0x161751&&_0x1cac15<0x10e5-_0x161751&&wireCanAttach(_0x1dd3b0,0x3))return setWireAttach(_0x1dd3b0,0x3),0x3;else{if(_0x1cac15>0x10e5+_0x161751&&_0x1cac15<0x1135-_0x161751&&wireCanAttach(_0x1dd3b0,0x2))return setWireAttach(_0x1dd3b0,0x2),0x2;else{if(_0x1cac15>0x1135+_0x161751&&_0x1cac15<0x1180-_0x161751&&wireCanAttach(_0x1dd3b0,0x1))return setWireAttach(_0x1dd3b0,0x1),0x1;}}}}}return![];}function setWireAttach(_0x4c024f,_0x4a6154){const _0x538bdd=_0x2f9c;if(wireCanAttach(_0x4c024f,_0x4a6154)){detatchWire(_0x4c024f),globalObjsTemp[_0x538bdd(0x21f)][_0x4a6154]=_0x4c024f;switch(_0x4a6154){case 0x5:_0x4c024f[_0x538bdd(0x220)]=0x5,_0x4c024f[_0x538bdd(0x173)](0x12c,0xffa+0x24);break;case 0x4:_0x4c024f[_0x538bdd(0x220)]=0x4,_0x4c024f['setPos'](0x12c,0x1049+0x24);break;case 0x3:_0x4c024f['socket']=0x3,_0x4c024f[_0x538bdd(0x173)](0x12c,0x1098+0x24);break;case 0x2:_0x4c024f[_0x538bdd(0x220)]=0x2,_0x4c024f[_0x538bdd(0x173)](0x12c,0x10e7+0x24);break;case 0x1:_0x4c024f[_0x538bdd(0x220)]=0x1,_0x4c024f[_0x538bdd(0x173)](0x12c,0x1135+0x24);break;}return!![];}return![];}function detatchWire(_0x10cc13){const _0x26cf7e=_0x2f9c;for(let _0x584d44 in globalObjsTemp['generatorConnections']){globalObjsTemp[_0x26cf7e(0x21f)][_0x584d44]==_0x10cc13&&(globalObjsTemp[_0x26cf7e(0x21f)][_0x584d44]=![]);}_0x10cc13['socket']=undefined;}function wireCanAttach(_0x46705a,_0x58d23c){const _0x328ae9=_0x2f9c;let _0x2bda31=!globalObjsTemp['generatorConnections'][_0x58d23c]||globalObjsTemp[_0x328ae9(0x21f)][_0x58d23c]===_0x46705a;return _0x2bda31;}function startGenerator(){const _0x1b6711=_0x2f9c;if(gameState[_0x1b6711(0xaa)]===![]){dialogManager[_0x1b6711(0xad)]('GeneratorAlreadyFixed');return;}if(!globalObjsTemp[_0x1b6711(0x21f)][0x1]||!globalObjsTemp['generatorConnections'][0x2]||!globalObjsTemp[_0x1b6711(0x21f)][0x3]||!globalObjsTemp[_0x1b6711(0x21f)][0x4]||!globalObjsTemp[_0x1b6711(0x21f)][0x5])return showGeneratorInvalid(0x1015),playSound(_0x1b6711(0x171),0x1),![];if(globalObjsTemp['generator'][_0x1b6711(0x213)][_0x1b6711(0x220)]%0x2==0x0)return showGeneratorInvalid(0x1063),playSound('generatorFail',0x1),![];if(globalObjsTemp[_0x1b6711(0x202)][_0x1b6711(0x217)][_0x1b6711(0x220)]<=globalObjsTemp[_0x1b6711(0x202)]['red'][_0x1b6711(0x220)])return showGeneratorInvalid(0x1097),playSound(_0x1b6711(0x222),0x1),![];let _0x31a7ad=globalObjsTemp['generator'][_0x1b6711(0x219)][_0x1b6711(0x220)],_0x3611ad=0x0;globalObjsTemp['generator'][_0x1b6711(0x213)][_0x1b6711(0x220)]<_0x31a7ad&&_0x3611ad++;globalObjsTemp[_0x1b6711(0x202)][_0x1b6711(0x217)]['socket']<_0x31a7ad&&_0x3611ad++;globalObjsTemp[_0x1b6711(0x202)]['yellow'][_0x1b6711(0x220)]>_0x31a7ad&&_0x3611ad++;globalObjsTemp[_0x1b6711(0x202)]['purple'][_0x1b6711(0x220)]>_0x31a7ad&&_0x3611ad++;if(_0x3611ad!=0x1)return showGeneratorInvalid(0x10be),playSound('generatorFail',0x1),![];if(globalObjsTemp[_0x1b6711(0x202)][_0x1b6711(0x21b)][_0x1b6711(0x220)]>=globalObjsTemp[_0x1b6711(0x202)][_0x1b6711(0x219)][_0x1b6711(0x220)])return showGeneratorInvalid(0x10f6),playSound(_0x1b6711(0x222),0x1),![];if(globalObjsTemp[_0x1b6711(0x202)]['purple'][_0x1b6711(0x220)]==0x1||globalObjsTemp[_0x1b6711(0x202)][_0x1b6711(0x21e)][_0x1b6711(0x220)]==0x2)return showGeneratorInvalid(0x1122),playSound(_0x1b6711(0x222),0x1),![];let _0x3b4a6f=0x0;globalObjsTemp[_0x1b6711(0x202)][_0x1b6711(0x217)][_0x1b6711(0x220)]==0x5&&_0x3b4a6f++;globalObjsTemp['generator']['green']['socket']>=0x4&&_0x3b4a6f++;globalObjsTemp[_0x1b6711(0x202)][_0x1b6711(0x21b)][_0x1b6711(0x220)]>=0x3&&_0x3b4a6f++;globalObjsTemp[_0x1b6711(0x202)][_0x1b6711(0x21e)][_0x1b6711(0x220)]>=0x2&&_0x3b4a6f++;if(_0x3b4a6f<0x3){showGeneratorInvalid(0x1156),playSound(_0x1b6711(0x222),0x1);return;}return turnOnPower(),!![];}function turnOnPower(){const _0x58b682=_0x2f9c;globalObjsTemp[_0x58b682(0x202)][_0x58b682(0x188)][_0x58b682(0x83)]('status_light_on.png'),setTimeout(()=>{const _0xe14fc4=_0x58b682;globalObjsTemp['generator'][_0xe14fc4(0x188)][_0xe14fc4(0x83)]('status_light_off.png'),setTimeout(()=>{const _0x51b366=_0xe14fc4;globalObjsTemp['generator'][_0x51b366(0x188)][_0x51b366(0x83)](_0x51b366(0x223));},0x2ee);},0x4b),playSound(_0x58b682(0x215),0x2),globalObjsTemp['generatorSound']=playSound(_0x58b682(0x202),0.1,!![]),PhaserScene[_0x58b682(0xa6)]['add']({'targets':globalObjsTemp[_0x58b682(0x1cf)],'volume':0x1,'ease':_0x58b682(0x168),'duration':0x258}),gameState[_0x58b682(0xaa)]=![],globalObjsTemp[_0x58b682(0x1f4)][_0x58b682(0x83)](_0x58b682(0x224)),globalObjsTemp['outdoorBackgrounds'][_0x58b682(0x225)][_0x58b682(0x83)](_0x58b682(0x226)),dialogManager['showDialogNode'](_0x58b682(0x227)),setCharactersNormal(),gameCharacters[_0x58b682(0x228)][_0x58b682(0x83)](_0x58b682(0x229)),globalObjsTemp['gloom'][_0x58b682(0x82)](0x0),globalObjsTemp[_0x58b682(0x202)][_0x58b682(0x213)]['setState'](DISABLE),globalObjsTemp['generator'][_0x58b682(0x217)][_0x58b682(0x85)](DISABLE),globalObjsTemp[_0x58b682(0x202)][_0x58b682(0x219)][_0x58b682(0x85)](DISABLE),globalObjsTemp[_0x58b682(0x202)][_0x58b682(0x21b)][_0x58b682(0x85)](DISABLE),globalObjsTemp[_0x58b682(0x202)][_0x58b682(0x21e)][_0x58b682(0x85)](DISABLE);}function showGeneratorInvalid(_0x8e4141){const _0x584307=_0x2f9c;globalObjsTemp[_0x584307(0x202)][_0x584307(0x188)][_0x584307(0x83)](_0x584307(0x223)),setTimeout(()=>{const _0xb3d03d=_0x584307;globalObjsTemp[_0xb3d03d(0x202)][_0xb3d03d(0x188)]['setFrame'](_0xb3d03d(0x207)),setTimeout(()=>{const _0x233056=_0xb3d03d;globalObjsTemp[_0x233056(0x202)]['indicator'][_0x233056(0x83)]('status_light_on.png'),setTimeout(()=>{const _0x1231aa=_0x233056;globalObjsTemp[_0x1231aa(0x202)]['indicator']['setFrame'](_0x1231aa(0x207));},0x1e);},Math[_0xb3d03d(0x22a)](0x15e+Math['random']*0xc8));},0x32),globalObjsTemp['generator'][_0x584307(0x22b)]['x']=0x1ad,globalObjsTemp[_0x584307(0x202)]['invalid']['y']=_0x8e4141,globalObjsTemp[_0x584307(0x202)][_0x584307(0x22b)][_0x584307(0x82)](0.75),globalObjsTemp[_0x584307(0x202)][_0x584307(0x22b)]['visible']=!![],PhaserScene[_0x584307(0xa6)][_0x584307(0xa7)]({'targets':globalObjsTemp[_0x584307(0x202)]['invalid'],'scaleX':1.65,'scaleY':1.65,'alpha':0x1,'ease':'Bounce.easeOut','duration':0xfa,'onComplete':()=>{const _0x4089b1=_0x584307;PhaserScene['tweens'][_0x4089b1(0xa7)]({'delay':0x12c,'targets':globalObjsTemp[_0x4089b1(0x202)][_0x4089b1(0x22b)],'scaleX':0x1,'scaleY':0x1,'alpha':0x0,'ease':'Cubic.easeIn','duration':0x258,'onComplete':()=>{const _0xfcaaaa=_0x4089b1;globalObjsTemp[_0xfcaaaa(0x202)][_0xfcaaaa(0x22b)]['y']=0x270f;}});}});}function openGenerator(){const _0x3b4a25=_0x2f9c;globalObjsTemp['generatorSound']&&globalObjsTemp[_0x3b4a25(0x1cf)]['setVolume'](0x1);for(let _0x286d32 in globalObjsTemp[_0x3b4a25(0x202)]){globalObjsTemp[_0x3b4a25(0x202)][_0x286d32][_0x3b4a25(0x19f)]=!![],globalObjsTemp[_0x3b4a25(0x202)][_0x286d32][_0x3b4a25(0x85)]&&(globalObjsTemp[_0x3b4a25(0x202)][_0x286d32]['setState'](NORMAL),globalObjsTemp['generator'][_0x286d32][_0x3b4a25(0x82)](0x1));}for(let _0x55394f in globalObjsTemp['generatorWires']){globalObjsTemp[_0x3b4a25(0x209)][_0x55394f][_0x3b4a25(0x19f)]=!![];}}function closeGenerator(){const _0x548b51=_0x2f9c;globalObjsTemp['generatorSound']&&globalObjsTemp[_0x548b51(0x1cf)]['setVolume'](0.25);for(let _0x5c8fab in globalObjsTemp[_0x548b51(0x202)]){globalObjsTemp[_0x548b51(0x202)][_0x5c8fab][_0x548b51(0x19f)]=![],globalObjsTemp[_0x548b51(0x202)][_0x5c8fab][_0x548b51(0x85)]&&(globalObjsTemp[_0x548b51(0x202)][_0x5c8fab][_0x548b51(0x85)](DISABLE),globalObjsTemp['generator'][_0x5c8fab][_0x548b51(0x82)](0.001));}for(let _0x3cc56b in globalObjsTemp[_0x548b51(0x209)]){globalObjsTemp[_0x548b51(0x209)][_0x3cc56b][_0x548b51(0x19f)]=![];}!gameState['powerOff']&&!gameState['showedEyes']&&(gameState[_0x548b51(0x22c)]=!![],globalObjsTemp[_0x548b51(0x1ff)]=PhaserScene[_0x548b51(0xa7)][_0x548b51(0x98)](gameConsts[_0x548b51(0x16a)]-0x50,gameConsts[_0x548b51(0x17a)]+0xc8,_0x548b51(0x1ea),_0x548b51(0x22d))['setOrigin'](0.5,0.5)['setDepth'](-0x1)[_0x548b51(0x175)](0.95,0.8),globalObjsTemp['dogEyes'][_0x548b51(0x197)]=0x0,globalObjsTemp[_0x548b51(0x1ff)][_0x548b51(0x22e)]=0x0,gameState[_0x548b51(0x1fe)]=!![],globalObjsTemp['dogEyeAnim']=PhaserScene[_0x548b51(0xa6)]['add']({'targets':globalObjsTemp[_0x548b51(0x1ff)],'x':_0x548b51(0x22f),'scaleX':0x1,'scaleY':0x1,'ease':_0x548b51(0x168),'duration':0x64,'onComplete':()=>{const _0x46fca2=_0x548b51;PhaserScene[_0x46fca2(0xa6)][_0x46fca2(0xa7)]({'delay':0xc8,'targets':globalObjsTemp[_0x46fca2(0x1ff)],'x':_0x46fca2(0x230),'ease':'Quart.easeIn','duration':0x1f4,'onComplete':()=>{const _0x22d1fe=_0x46fca2;globalObjsTemp[_0x22d1fe(0x1ff)]['x']=0x3e7;}});}}));}function updateGenerator(){}
+function createWorldButtons() {
+    globalObjects.diner = {};
+    globalObjects.diner.maggieButton = new Button({
+        normal: {
+            "atlas": "pixels",
+            "ref": "blue_pixel.png",
+            x: 360,
+            y: 290,
+            scaleX: 120,
+            scaleY: 110,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('chat_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            shiftOver(globalObjects.diner.maggieButton.getXPos());
+            clickMaggie();
+        }
+    });
+    globalObjects.diner.maggieButton.setDepth(1);
+    globalObjects.diner.maggieButton.setState(DISABLE);
+
+    // Edith
+    globalObjects.diner.EdithButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 1095,
+            y: 390,
+            scaleX: 95,
+            scaleY: 170,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            if (!globalObjects.exclamation) {
+                // Odd buggy case fix
+                globalObjects.exclamation = new ExclamationHover(PhaserScene);
+            }
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('chat_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            shiftOver(globalObjects.diner.EdithButton.getXPos());
+            clickEdith();
+        }
+    });
+    globalObjects.diner.EdithButton.setDepth(1);
+    globalObjects.diner.EdithButton.setState(DISABLE);
+
+    // Ethan
+    globalObjects.diner.EthanButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 1325,
+            y: 380,
+            scaleX: 100,
+            scaleY: 180,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('chat_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            shiftOver(globalObjects.diner.EthanButton.getXPos());
+            clickEthan();
+        }
+    });
+    globalObjects.diner.EthanButton.setDepth(1);
+    globalObjects.diner.EthanButton.setState(DISABLE);
+
+    // Juan
+    globalObjects.diner.JuanButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 1875,
+            y: 390,
+            scaleX: 200,
+            scaleY: 200,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('chat_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            shiftOver(globalObjects.diner.JuanButton.getXPos());
+            clickJuan();
+        }
+    });
+
+    globalObjects.diner.JuanButton.setOrigin(0.75, 0.5);
+    globalObjects.diner.JuanButton.setDepth(1);
+    globalObjects.diner.JuanButton.setState(DISABLE);
+
+    // Bruna
+    globalObjects.diner.BrunaButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: -635,
+            y: 420,
+            scaleX: 100,
+            scaleY: 170,
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('chat_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            shiftOver(globalObjects.diner.BrunaButton.getXPos());
+            clickBruna();
+        }
+    });
+    globalObjects.diner.BrunaButton.setDepth(1);
+    globalObjects.diner.BrunaButton.setState(DISABLE);
+
+    // Bruna
+    globalObjects.diner.CasparButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: -1160,
+            y: 420,
+            scaleX: 110,
+            scaleY: 170,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('chat_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            shiftOver(globalObjects.diner.CasparButton.getXPos());
+            clickCaspar();
+        }
+    });
+    globalObjects.diner.CasparButton.setDepth(1);
+    globalObjects.diner.CasparButton.setState(DISABLE);
+
+    // Exit
+    globalObjects.diner.ExitButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 2195,
+            y: 360,
+            scaleX: 100,
+            scaleY: 200,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            shiftOver(globalObjects.diner.ExitButton.getXPos());
+            clickExit();
+        }
+    });
+    globalObjects.diner.ExitButton.setDepth(1);
+    globalObjects.diner.ExitButton.setState(DISABLE);
+
+    globalObjects.diner.BackdoorButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: -190,
+            y: 315,
+            scaleX: 115,
+            scaleY: 260,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            if (gameState.scratchingDoor || true) {
+                shiftOver(globalObjects.diner.BackdoorButton.getXPos(), true);
+            } else {
+                shiftOver(globalObjects.diner.BackdoorButton.getXPos());
+            }
+            clickBackdoor();
+        }
+    });
+    globalObjects.diner.BackdoorButton.setDepth(1);
+    globalObjects.diner.BackdoorButton.setState(DISABLE);
+
+    globalObjects.diner.IndoorButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: -278,
+            y: 2410,
+            scaleX: 110,
+            scaleY: 215,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            globalObjects.exclamation.setAlpha(0);
+            clickIndoor();
+        }
+    });
+    globalObjects.diner.IndoorButton.setDepth(1);
+
+    globalObjects.diner.ShedButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 1820,
+            y: 2400,
+            scaleX: 105,
+            scaleY: 200,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            enterShed();
+        }
+    });
+    globalObjects.diner.ShedButton.setDepth(1);
+
+    globalObjects.diner.graveButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 2125,
+            y: 2540,
+            scaleX: 60,
+            scaleY: 75,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.0001
+        },
+        press: {
+            alpha: 0.0001
+        },
+        disable: {
+            alpha: 0.0001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            clickGravestone();
+        }
+    });
+    globalObjects.diner.graveButton.setRotation(0.08);
+    globalObjects.diner.graveButton.setDepth(1);
+
+    globalObjects.diner.ExitShedButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 325,
+            y: 4355,
+            scaleX: 110,
+            scaleY: 205,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            exitShed();
+        }
+    });
+    globalObjects.diner.ExitShedButton.setDepth(1);
+
+    globalObjects.diner.GeneratorButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 540,
+            y: 4510,
+            scaleX: 75,
+            scaleY: 70,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            clickGenerator();
+        }
+    });
+    globalObjects.diner.GeneratorButton.setDepth(1);
+
+    globalObjects.diner.TVButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 1325,
+            y: 80,
+            scaleX: 100,
+            scaleY: 80,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            shiftOver(globalObjects.diner.TVButton.getXPos());
+            clickTV();
+        }
+    });
+    globalObjects.diner.TVButton.setDepth(1);
+    globalObjects.diner.TVButton.setState(DISABLE);
+
+    globalObjects.musicNote = PhaserScene.add.sprite(800, 340, 'misc', 'notegood.png').setDepth(1);
+    globalObjects.musicNote.startX = globalObjects.musicNote.x; globalObjects.musicNote.startY = globalObjects.musicNote.y;
+
+    globalObjects.diner.RadioButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 800,
+            y: 385,
+            scaleX: 80,
+            scaleY: 90,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            shiftOver(globalObjects.diner.RadioButton.getXPos());
+            clickRadio();
+        }
+    });
+    globalObjects.diner.RadioButton.setDepth(1);
+    globalObjects.diner.RadioButton.setState(DISABLE);
+
+    globalObjects.diner.DinerButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: 370,
+            y: 110,
+            scaleX: 160,
+            scaleY: 55,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            clickDiner();
+        }
+    });
+    globalObjects.diner.DinerButton.setDepth(1);
+    globalObjects.diner.DinerButton.setState(DISABLE);
+}
+
+
+
+function runMusicNote() {
+    let distToRadio = 400 - gameVars.cameraPosX;
+    let randOffsetX = (Math.random() - 0.5) * 50;
+    let horizMove = 0;
+    if (Math.abs(distToRadio) < 180) {
+        horizMove = 0;
+    } else {
+        if (distToRadio > 0) {
+            horizMove = (distToRadio - 180) / 2;
+        } else {
+            horizMove = (distToRadio + 180) / 2;
+        }
+    }
+    horizMove += randOffsetX * 1.25;
+
+    globalObjects.musicNote.x = globalObjects.musicNote.startX - horizMove * 0.4;
+    globalObjects.musicNote.y = globalObjects.musicNote.startY;
+    globalObjects.musicNote.setScale(0.4);
+    let moveAmt = Math.max(-70, Math.min(70, -horizMove));
+    let finalScale = 0.3;
+    if (globalObjsTemp.radioMusic) {
+        finalScale += globalObjsTemp.radioMusic.volume * 0.5;
+    }
+    PhaserScene.tweens.add({
+        targets: globalObjects.musicNote,
+        scaleX: finalScale,
+        scaleY: finalScale,
+        ease: 'Cubic.easeOut',
+        duration: 200,
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                targets: globalObjects.musicNote,
+                scaleX: 0,
+                scaleY: 0,
+                ease: 'Quart.easeIn',
+                duration: 900,
+            });
+        }
+    });
+    PhaserScene.tweens.add({
+        targets: globalObjects.musicNote,
+        y: "-=60",
+        x: "+=" + moveAmt,
+        ease: 'Cubic.easeOut',
+        duration: 1100,
+        completeDelay: 400,
+        onComplete: () => {
+            if (!gameState.powerOff && globalObjsTemp.radioMusic.volume > 0.2) {
+                runMusicNote()
+            } else {
+                delayMusicNote()
+            }
+        }
+    });
+}
+
+function delayMusicNote() {
+    PhaserScene.tweens.add({
+        targets: globalObjects.musicNote,
+        scaleX: 0,
+        scaleY: 0,
+        duration: 1000,
+        onComplete: () => {
+            if (!gameState.powerOff && globalObjsTemp.radioMusic.volume > 0.2) {
+                runMusicNote()
+            } else {
+                delayMusicNote()
+            }
+        }
+    });
+}
+
+function enableDinerButtons() {
+    for (let i in globalObjects.diner) {
+        let button = globalObjects.diner[i];
+        button.setState(NORMAL);
+    }
+}
+
+
+function clickMaggie() {
+    if (gameState.currentScene == 1) {
+        if (!gameState.askedSeat) {
+            gameState.MaggieIntroduced;
+            dialogManager.showDialogNode('findSeat');
+        } else {
+            dialogManager.showDialogNode('findSeatEnd');
+        }
+    } else if (gameState.currentScene == 2) {
+        if (gameState.powerOff) {
+            if (gameState.hasBackdoorKey) {
+                dialogManager.showDialogNode('MaggieAct2PowerOffFin');
+            } else {
+                gameState.hasBackdoorKey = true;
+                dialogManager.showDialogNode('MaggieAct2PowerOff');
+            }
+        }  else if (gameState.MaggieAct2FinishedGood) {
+            dialogManager.showDialogNode('MaggieAct2FinishedGood');
+
+        } else if (gameState.MaggieAct2FinishedMeh) {
+            dialogManager.showDialogNode('MaggieAct2FinishedMeh');
+        } else if (gameState.MaggieAct2Chat) {
+            dialogManager.showDialogNode('MaggieAct2Chat');
+        } else if (!gameState.alreadyThanked) {
+            dialogManager.showDialogNode('MaggieAct2ThankYou');
+        } else {
+            dialogManager.showDialogNode('MaggieAct2FinishedMeh');
+        }
+
+    } else if (gameState.currentScene == 3) {
+        if (gameState.windowFixed) {
+            if (gameState.casparFinale) {
+                if (gameState.MaggieSaved) {
+                    dialogManager.showDialogNode('EveryoneSaved');
+                } else if (gameState.maggieReadyFinale) {
+                    dialogManager.showDialogNode('MaggieReadyFinale');
+                } else {
+                    dialogManager.showDialogNode('MaggieHoldOn');
+                }
+            } else if (gameState.maggieSandwichEnd) {
+                dialogManager.showDialogNode('MaggieSandwichEnd');
+            } else if (gameState.EthanSaved && gameState.EdithSaved && gameState.BrunaSaved && (gameState.juanLeaveStatus == "accept" || gameState.juanLeaveStatus == "onlyUseful")) {
+                if (gameState.dogAlive && !gameState.DogSaved) {
+                    dialogManager.showDialogNode('MaggieAct3ChatAllGoingButDog');
+                } else {
+                    dialogManager.showDialogNode('MaggieAct3ChatAllGoing');
+                }
+            } else {
+                dialogManager.showDialogNode('MaggieAct3Chat');
+            }
+        } else if (gameState.windowBroken) {
+            let goalPos = globalObjects.diner.maggieButton.getXPos() * 0.08 + globalObjects.diner.JuanButton.getXPos() * 0.92;
+            shiftOver(goalPos);
+            if (gameState.ethanSleeping) {
+                dialogManager.showDialogNode('WindowBrokenDiscussEthanSleeping');
+            } else {
+                dialogManager.showDialogNode('WindowBrokenDiscuss');
+            }
+        }
+    }
+
+
+}
+
+function clickEdith() {
+    if (gameState.currentScene == 1) {
+        if (gameState.EthanAct1Fin) {
+            if (gameState.EdithAct1Fin) {
+                if (gameState.EdithEthanFinChat) {
+                    dialogManager.showDialogNode('introEdith4');
+                } else {
+                    gameState.EdithEthanFinChat = true;
+                    dialogManager.showDialogNode('introEdith3');
+                }
+            } else {
+                gameState.EdithAct1Fin = true;
+                dialogManager.showDialogNode('introEdith2');
+            }
+        } else {
+            if (gameState.EdithIntroduced) {
+                if (gameState.talkBooth) {
+                    dialogManager.showDialogNode('introEdith4');
+                } else {
+                    gameState.talkBooth = true;
+                    dialogManager.showDialogNode('introEdith2');
+                }
+            } else {
+                dialogManager.showDialogNode('introEdith');
+            }
+        }
+        gameState.EdithIntroduced = true;
+    } else if (gameState.currentScene == 2) {
+        if (gameState.EthanEdithSeparated) {
+            if (gameState.edithThinking) {
+                if (gameState.scratchingDoor) {
+                    dialogManager.showDialogNode('Edith2ChatFinScratch');
+                } else {
+                    dialogManager.showDialogNode('Edith2ChatFinThought');
+                }
+            } else if (gameState.chatted2Edith) {
+                if (gameState.scratchingDoor) {
+                    dialogManager.showDialogNode('Edith2ChatFinScratch');
+                } else {
+                    dialogManager.showDialogNode('Edith2ChatFin');
+                }
+            } else {
+                gameState.chatted2Edith = true;
+                dialogManager.showDialogNode('Edith2Chat');
+            }
+
+        } else if (!gameState.askedEthanEdithTV) {
+            gameState.askedEthanEdithTV = true;
+            shiftOver(globalObjects.diner.EthanButton.getXPos());
+            if (gameState.powerOff) {
+                dialogManager.showDialogNode('EdithEthan2Dark');
+            } else {
+                gameState.EthanEdithSeparated = true;
+                dialogManager.showDialogNode('EdithEthan2');
+            }
+        } else {
+            if (gameState.powerOff) {
+                dialogManager.showDialogNode('EdithEthan2DarkFin');
+            } else {
+                gameState.EthanEdithSeparated = true;
+                dialogManager.showDialogNode('EdithEthan2PartSkip');
+            }
+        }
+    } else if (gameState.currentScene == 3) {
+        if (gameState.EdithRefuse) {
+            dialogManager.showDialogNode('Edith3Refused');
+        } else if (gameState.EdithSaved) {
+            if (gameState.EthanEdithTogether) {
+                dialogManager.showDialogNode('EthanEdithTogether');
+            } else {
+                if (gameState.ethanState == 'ethanNotTalk') {
+                    dialogManager.showDialogNode('Edith3LeaveComeWithSuccessFailEthan');
+                } else {
+                    dialogManager.showDialogNode('Edith3LeaveComeWithSuccess');
+                }
+            }
+        } else if (gameState.windowFixed) {
+            if (gameState.ethanSleeping) {
+                if (gameState.edithChattedEthanCatatonic) {
+                    dialogManager.showDialogNode('Edith3LeaveQuickYesNoCatatonic');
+                } else {
+                    gameState.edithChattedEthanCatatonic = true;
+                    dialogManager.showDialogNode('Edith3LeaveCatatonic');
+                }
+            } else if (gameState.edithThinking) {
+                if (gameState.EthanSaved) {
+                    dialogManager.showDialogNode('Edith3LeaveThinkingPromiseEthan');
+                } else if (gameState.ethanState == 'ethanNotTalk') {
+                    // can only invite edith
+                    dialogManager.showDialogNode('Edith3LeaveThinkingNoEthan');
+                } else {
+                    dialogManager.showDialogNode('Edith3LeaveThinking');
+                }
+            } else {
+                if (gameState.EthanSaved) {
+                    dialogManager.showDialogNode('Edith3LeaveNormalPlusEthan');
+                } else {
+                    dialogManager.showDialogNode('Edith3LeaveNormal');
+                }
+            }
+        } else if (gameState.windowBroken) {
+            if (gameState.ethanSleeping) {
+                dialogManager.showDialogNode('Edith3Catatonic');
+            } else {
+                dialogManager.showDialogNode('WindowBroken');
+            }
+        } else if (gameState.edithThinking) {
+            dialogManager.showDialogNode('Edith3Thinking');
+        } else {
+            dialogManager.showDialogNode('EdithDefault');
+        }
+    } else {
+        dialogManager.showDialogNode('EdithDefault');
+    }
+}
+
+function clickEthan() {
+    if (gameState.currentScene == 1) {
+        if (gameState.EthanAct1Fin) {
+            dialogManager.showDialogNode('EthanActOneEnd');
+        } else if (gameState.EthanIntroduced) {
+            dialogManager.showDialogNode('EthanActOneInstruct');
+        } else {
+            dialogManager.showDialogNode('introEthan');
+        }
+    } else if (gameState.currentScene == 2) {
+        if (gameState.EthanEdithSeparated) {
+            if (gameState.canAskEthanEldritch) {
+                if (gameState.ethanEldritchAsked) {
+                    dialogManager.showDialogNode('Ethan2ChatFinEldritch');
+                } else {
+                    dialogManager.showDialogNode('Ethan2Eldritch');
+                }
+            } else if (gameState.ethan2Chatted) {
+                dialogManager.showDialogNode('Ethan2ChatFin');
+            } else {
+                gameState.ethan2Chatted = true;
+                dialogManager.showDialogNode('Ethan2Chat');
+            }
+        } else if (!gameState.askedEthanEdithTV) {
+            gameState.askedEthanEdithTV = true;
+            shiftOver(globalObjects.diner.EthanButton.getXPos());
+            if (gameState.powerOff) {
+                dialogManager.showDialogNode('EdithEthan2Dark');
+            } else {
+                gameState.EthanEdithSeparated = true;
+                dialogManager.showDialogNode('EdithEthan2');
+            }
+        } else {
+            if (gameState.powerOff) {
+                dialogManager.showDialogNode('EdithEthan2DarkFin');
+            } else {
+                gameState.EthanEdithSeparated = true;
+                dialogManager.showDialogNode('EdithEthan2PartSkip');
+            }
+        }
+
+    } else if (gameState.currentScene == 3) {
+        if (gameState.windowFixed) {
+            if (gameState.ethanSleeping) {
+                dialogManager.showDialogNode('Ethan3Catatonic');
+            } else if (gameState.EthanEdithTogether) {
+                dialogManager.showDialogNode('EthanEdithTogether');
+            } else if (gameState.EthanSaved) {
+                dialogManager.showDialogNode('Ethan3SuccessFin');
+            } else if (gameState.ethanBlocked) {
+                dialogManager.showDialogNode('Ethan3Blocked');
+            } else if (!gameState.ethan3Chatted) {
+                gameState.ethan3Chatted = true;
+                dialogManager.showDialogNode('Ethan3Chat');
+            } else {
+                switch(gameState.ethanState) {
+                    case 'ethanDrugHaze':
+                        dialogManager.showDialogNode('Ethan3DrugHaze');
+                        break;
+                    case 'ethanWaitForever':
+                        dialogManager.showDialogNode('Ethan3MustApologize');
+                        break;
+                    case 'ethanFailedBest':
+                        dialogManager.showDialogNode('Ethan3FailedBest');
+                        break;
+                    case 'ethanNotTalk':
+                        dialogManager.showDialogNode('Ethan3NotTalk');
+                        break;
+                    case 'ethanStayingHere':
+                        dialogManager.showDialogNode('Ethan3LeavingChangeMind');
+                        break;
+                    default:
+                        dialogManager.showDialogNode('EthanDefault');
+                        break;
+                }
+            }
+        } else if (gameState.windowBroken) {
+            if (gameState.ethanSleeping) {
+                dialogManager.showDialogNode('WindowBrokenEthanSleeping');
+            } else {
+                dialogManager.showDialogNode('WindowBroken');
+            }
+        } else if (gameState.ethanSleeping) {
+            dialogManager.showDialogNode('Ethan3Catatonic');
+        }
+    }
+}
+
+function clickJuan() {
+    if (gameState.currentScene == 1) {
+        if (!gameState.juanIntroduced) {
+            dialogManager.showDialogNode('JuanIntro');
+        } else if (gameState.juanAskedSeat) {
+            dialogManager.showDialogNode('Juan1Endb');
+        } else {
+            dialogManager.showDialogNode('Juan1Enda');
+        }
+    } else if (gameState.currentScene == 2) {
+        if (gameState.powerOff) {
+            if (gameState.juanDarkTalked) {
+                dialogManager.showDialogNode('Juan2DarkFin');
+            } else {
+                gameState.juanDarkTalked = true;
+                dialogManager.showDialogNode('Juan2Dark');
+            }
+        } else {
+            if (gameState.juan2Chatted) {
+                if (gameState.scratchingDoor) {
+                    dialogManager.showDialogNode('Juan2ChatFinScratch');
+                } else {
+                    dialogManager.showDialogNode('Juan2ChatFin');
+                }
+            } else {
+                gameState.juan2Chatted = true;
+                dialogManager.showDialogNode('Juan2Chat');
+            }
+        }
+    } else if (gameState.currentScene == 3) {
+        if (gameState.windowFixed) {
+            if (gameState.juanLeaveStatus) {
+                switch(gameState.juanLeaveStatus) {
+                    case "blocked":
+                        dialogManager.showDialogNode('JuanAct3NoComeFin');
+                        break;
+                    case "onlyUseful":
+                        dialogManager.showDialogNode('JuanAct3Leave3UsefulFin');
+                        break;
+                    case "refuse":
+                        dialogManager.showDialogNode('JuanAct3Leave3RefuseFin');
+                        break;
+                    case "softRefuse":
+                        dialogManager.showDialogNode('JuanAct3Leave3RefuseFin');
+                        break;
+                    case "accept":
+                        dialogManager.showDialogNode('JuanAct3Leave3AcceptFin');
+                        break;
+                    default:
+                }
+            } else if (gameState.youHelpedWindowFix) {
+                dialogManager.showDialogNode('JuanAct3Leave');
+            } else {
+                dialogManager.showDialogNode('JuanStillFixingWindow');
+            }
+
+        } else if (gameState.windowBroken) {
+            if (gameState.ethanSleeping) {
+                dialogManager.showDialogNode('WindowBrokenDiscussEthanSleeping');
+            } else {
+                dialogManager.showDialogNode('WindowBrokenDiscuss');
+            }
+        } else {
+            dialogManager.showDialogNode('JuanDefault');
+        }
+    }
+}
+
+function clickBruna() {
+    if (gameState.currentScene == 1) {
+        if (gameState.CasparActOneFin) {
+            // do nothing
+        }else if (!gameState.brunaIntroduced) {
+            dialogManager.showDialogNode('BrunaIntro');
+        } else {
+            dialogManager.showDialogNode('BrunaActOneEnd');
+        }
+    } else if (gameState.currentScene == 2) {
+        if (!gameState.darknessCanChat) {
+            return;
+        }
+        if (gameState.powerOff) {
+            if (gameState.askedBrunaDark) {
+                dialogManager.showDialogNode('Bruna2DarkFin');
+            } else {
+                dialogManager.showDialogNode('Bruna2Dark');
+            }
+        } else {
+            if (!gameState.brunaChatted2) {
+                dialogManager.showDialogNode('Bruna2Chat');
+            } else if (gameState.bruna2ChattedAngry) {
+                dialogManager.showDialogNode('Bruna2ChatAngry');
+            } else if (gameState.radio2Done && !gameState.brunaHopeSpringsChatted) {
+                gameState.brunaHopeSpringsChatted = true;
+                dialogManager.showDialogNode('Bruna2ChatHopeSprings');
+            } else {
+                if (gameState.scratchingDoor) {
+                    dialogManager.showDialogNode('Bruna2ChatFinScratch');
+                } else {
+                    dialogManager.showDialogNode('Bruna2ChatFin');
+                }
+            }
+        }
+    } else if (gameState.currentScene == 3) {
+        let canAskAboutRadio = gameState.radio2Done || gameState.radio3Done;
+        if (gameState.BrunaRefuse) {
+            let numSaved = gameState.EthanSaved + gameState.EdithSaved + (gameState.juanLeaveStatus === "accept");
+            if ((!gameState.brunaPleaded || numSaved >= 1) && !gameState.hopeSpringsLocationMissing) {
+                gameState.brunaPleaded = true;
+                if (gameState.brunaHardReject) {
+                    dialogManager.showDialogNode('Bruna3HardReject');
+                } else if (numSaved === 0) {
+                    dialogManager.showDialogNode('Bruna3PleadSolo');
+                } else {
+                    dialogManager.showDialogNode('Bruna3Plead');
+                }
+            } else {
+                dialogManager.showDialogNode('Bruna3Refused');
+            }
+        } else if (gameState.BrunaSaved) {
+            dialogManager.showDialogNode('Bruna3Success');
+        } else if (gameState.windowFixed) {
+            if (gameState.BrunaFortify) {
+                if (gameState.brunaHopeSpringsChatted) {
+                    // You know of Hope Springs
+                    dialogManager.showDialogNode('Bruna3DecisionFortify');
+                } else if (canAskAboutRadio) {
+                    dialogManager.showDialogNode('Bruna3DecisionFortifyWithRadio');
+                } else {
+                    dialogManager.showDialogNode('Bruna3DecisionFortifyDead');
+                }
+            } else {
+                if (gameState.brunaHopeSpringsChatted) {
+                    // You know of Hope Springs
+                    dialogManager.showDialogNode('Bruna3Decision');
+                } else if (canAskAboutRadio) {
+                    dialogManager.showDialogNode('Bruna3DecisionWithRadio');
+                } else {
+                    dialogManager.showDialogNode('Bruna3DecisionDead');
+                }
+            }
+        } else if (gameState.windowBroken) {
+            dialogManager.showDialogNode('WindowBroken');
+        } else {
+            dialogManager.showDialogNode('BrunaDefault');
+        }
+    }
+}
+
+function clickCaspar() {
+    if (gameState.currentScene == 1) {
+        if (gameState.CasparActOneFin) {
+            // do nothing.
+        } else if (!gameState.casparIntroduced) {
+            gameState.casparIntroduced = true;
+            dialogManager.showDialogNode('CasparIntro');
+        } else {
+            let c1 = gameState.brunaIntroduced && 2;
+            let c2 = gameState.EthanIntroduced && 1;
+            let c3 = gameState.juanIntroduced && 1;
+            let c4 = gameState.EdithIntroduced && 1;
+            let c5 = gameState.MaggieIntroduced && 1;
+
+            if (c1+c2+c3+c4+c5 >= 3) {
+                dialogManager.showDialogNode('CasparTalkOthersDone');
+            } else if (c1+c2+c3+c4+c5 >= 1) {
+                dialogManager.showDialogNode('CasparTalkOthersSomeDone');
+            } else {
+                dialogManager.showDialogNode('CasparTalkOthersNotDone');
+            }
+        }
+    } else if (gameState.currentScene == 2) {
+        if (!gameState.darknessCanChat) {
+            return;
+        }
+        if (gameState.powerOff) {
+            if (gameState.viewedGenerator) {
+                dialogManager.showDialogNode('CasparAct2DarkGenerator');
+            } else {
+                dialogManager.showDialogNode('CasparAct2DarkBranches');
+            }
+        } else {
+            if (gameState.scratchingDoor) {
+                if (gameState.caspar2ScratchDoored) {
+                    dialogManager.showDialogNode('CasparAct2DoorScratchFin');
+                } else {
+                    gameState.caspar2ScratchDoored = true;
+                    dialogManager.showDialogNode('CasparAct2DoorScratch');
+                }
+            } else if (gameState.caspar2Welcomed) {
+                dialogManager.showDialogNode('CasparAct2Ask');
+            } else {
+                gameState.caspar2Welcomed = true;
+                let numChatCount = 0;
+                if (gameState.EthanEdithSeparated) {
+                    numChatCount++;
+                }
+                if (gameState.chatted2Edith) {
+                    numChatCount++;
+                }
+                if (gameState.juan2Chatted) {
+                    numChatCount++;
+                }
+                if (gameState.brunaChatted2) {
+                    numChatCount++;
+                }
+                if (numChatCount >= 2) {
+                    dialogManager.showDialogNode('CasparAct2WelcomeRadio');
+                } else {
+                    dialogManager.showDialogNode('CasparAct2Welcome');
+                }
+            }
+        }
+    } else if (gameState.currentScene == 3) {
+        let knowsFinalDest = gameState.radio2Done || gameState.radio3Done || gameState.askedCasparRadio;
+        if (gameState.casparFinale) {
+            if (gameState.MaggieSaved) {
+
+            } else if (gameState.casparFinaleChatted) {
+                if (gameState.maggieReadyFinale) {
+                    dialogManager.showDialogNode('Caspar3FinaleEnd2');
+                } else {
+                    dialogManager.showDialogNode('Caspar3FinaleEnd');
+                }
+            } else {
+                gameState.casparFinaleChatted = true;
+                dialogManager.showDialogNode('Caspar3Finale');
+            }
+        } else if (gameState.windowFixed) {
+            if (gameState.maggieSandwichEnd) {
+                if (gameState.casparChattedSandwich) {
+                    dialogManager.showDialogNode('Caspar3Sandwich2');
+                } else {
+                    dialogManager.showDialogNode('Caspar3Sandwich');
+                    gameState.casparChattedSandwich = true;
+                }
+            } else if (gameState.BrunaSaved && gameState.EdithSaved && gameState.EthanSaved && gameState.juanLeaveStatus == "accept") {
+                dialogManager.showDialogNode('Caspar3Final');
+            } else if (gameState.caspar3ChatDone) {
+                dialogManager.showDialogNode('Caspar3Waiting');
+            } else if (knowsFinalDest) {
+                dialogManager.showDialogNode('CasparAct3Final');
+            } else {
+                dialogManager.showDialogNode('CasparAct3FinalNoDest');
+            }
+        } else if (gameState.windowBroken) {
+            dialogManager.showDialogNode('CasparWindowBroken');
+        }
+    }
+}
+
+function clickDog() {
+    if (!gameState.dogTrust) {
+        dialogManager.showDialogNode('DogNotTrust');
+        PhaserScene.tweens.add({
+            targets: [gameCharacters.dog],
+            x: "-=30",
+            ease: 'Quad.easeOut',
+            duration: 400,
+            onComplete: () => {
+                PhaserScene.tweens.add({
+                    delay: 300,
+                    targets: [gameCharacters.dog],
+                    x: "+=30",
+                    ease: 'Quad.easeInOut',
+                    duration: 750,
+                });
+            }
+        });
+    } else if (gameState.dogTrust == 2) {
+        if (gameState.DogSaved) {
+            dialogManager.showDialogNode('DogFullTrustSaved');
+        } else {
+            dialogManager.showDialogNode('DogFullTrust');
+        }
+        PhaserScene.tweens.add({
+            targets: [gameCharacters.dog],
+            y: "-=50",
+            ease: 'Cubic.easeOut',
+            duration: 220,
+            yoyo: true
+        });
+    } else {
+        dialogManager.showDialogNode('DogOkayTrust');
+    }
+}
+
+function clickExit() {
+    if (gameState.currentScene == 1) {
+        //gameState.MaggieSaved = true;
+        //messageBus.publish('forceGoodEnd');
+        dialogManager.showDialogNode('ExitNoReason');
+    } else if (gameState.currentScene == 2) {
+        dialogManager.showDialogNode('ExitSceneTwo');
+    } else if (gameState.currentScene == 3) {
+        if (gameState.isExiting) {
+            // Not sure why this got stuck
+            messageBus.publish('exitFinaleForce');
+        } else if (gameState.goodEndLocked) {
+            dialogManager.showDialogNode('ExitSceneThreeNoStay');
+        } else {
+            if (!gameState.BrunaSaved && !gameState.EthanSaved && !gameState.EdithSaved && !gameState.JuanSaved && !gameState.DogSaved) {
+                dialogManager.showDialogNode('ExitSceneThreeAlone');
+            } else {
+                dialogManager.showDialogNode('ExitSceneThree');
+            }
+        }
+    }
+}
+
+function clickDiner() {
+
+    if (gameState.currentScene == 1) {
+        dialogManager.showDialogNode('waysideDiner');
+    } else if (gameState.currentScene == 2) {
+        if (gameCharacters.sign.rotation > 0.001) {
+            playSound('sizzle');
+            globalObjects.diner.DinerButton.setState(DISABLE);
+            PhaserScene.tweens.add({
+                targets: gameCharacters.sign,
+                rotation: 0,
+                ease: 'Quad.easeOut',
+                duration: 350,
+                onComplete: () => {
+                    globalObjects.diner.DinerButton.setState(NORMAL);
+                }
+            });
+        } else {
+            dialogManager.showDialogNode('waysideDiner');
+        }
+    } else if (gameState.currentScene === 3) {
+        if (gameCharacters.sign.rotation > 0.001) {
+            globalObjects.diner.DinerButton.setState(DISABLE);
+            if (gameState.signAdjusted) {
+                PhaserScene.tweens.add({
+                    targets: gameCharacters.sign,
+                    rotation: 0.1,
+                    ease: 'Cubic.easeOut',
+                    duration: 500,
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: gameCharacters.sign,
+                            rotation: 0.9,
+                            ease: 'Back.easeOut',
+                            duration: 800,
+                            completeDelay: 200,
+                            onComplete: () => {
+                                let table = PhaserScene.add.sprite(gameConsts.halfWidth + 4, gameConsts.height - 190, 'characters', 'table.png').setDepth(1);
+                                PhaserScene.tweens.add({
+                                    targets: gameCharacters.sign,
+                                    y: "+=330",
+                                    rotation: 0.98,
+                                    ease: 'Quad.easeIn',
+                                    duration: 350,
+                                    onComplete: () => {
+                                        table.destroy();
+                                        gameCharacters.sign.destroy();
+                                        playSound('break')
+                                    }
+                                });
+                            }
+                        });
+                    }
+                });
+            } else {
+                PhaserScene.tweens.add({
+                    targets: gameCharacters.sign,
+                    rotation: 0,
+                    ease: 'Quad.easeOut',
+                    duration: 350,
+                    onComplete: () => {
+                        globalObjects.diner.DinerButton.setState(NORMAL);
+                        setTimeout(() => {
+                            globalObjects.diner.DinerButton.setState(DISABLE);
+                            playSound('stopscreech');
+                            gameState.signAdjusted = true;
+                            PhaserScene.tweens.add({
+                                targets: gameCharacters.sign,
+                                rotation: 0.5,
+                                ease: 'Back.easeOut',
+                                duration: 550,
+                                onComplete: () => {
+                                    globalObjects.diner.DinerButton.setPos(globalObjects.diner.DinerButton.getXPos(), globalObjects.diner.DinerButton.getYPos() + 20)
+                                    globalObjects.diner.DinerButton.setScale(155, 80)
+                                    globalObjects.diner.DinerButton.setState(NORMAL);
+                                }
+                            });
+                        }, 2000);
+                    }
+                });
+            }
+        } else {
+            if (gameState.showedWaysideOff) {
+                dialogManager.showDialogNode('waysideDiner');
+            } else {
+                gameState.showedWaysideOff = true;
+                dialogManager.showDialogNode('waysideDinerOff');
+            }
+        }
+    }
+}
+
+function clickRadio() {
+    if (gameState.powerOff) {
+        dialogManager.showDialogNode('radioPowerless');
+        return;
+    } else if (gameState.MaggieSaved) {
+        dialogManager.showDialogNode('radioDone');
+        return;
+
+    }
+    if (!globalObjsTemp.radio) {
+        updateManager.addFunction(updateRadio);
+        globalObjsTemp.radio = {
+            radioClickBlocker: {},
+            radioDeviceButtonBlocker: {},
+            knobButton: {},
+            backing: PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'radio', 'backing.png'),
+            indicator: PhaserScene.add.sprite(gameConsts.halfWidth + 122.5, gameConsts.halfHeight + 70, 'misc', 'indicator.png'),
+            knob: PhaserScene.add.sprite(gameConsts.halfWidth + 122.5, gameConsts.halfHeight + 70, 'radio', 'knob.png'),
+            bar: PhaserScene.add.sprite(386, gameConsts.halfHeight - 148, 'radio', 'bar.png'),
+            cover: PhaserScene.add.sprite(gameConsts.halfWidth + 7, gameConsts.halfHeight - 150, 'radio', 'cover.png'),
+            arrow: PhaserScene.add.sprite(gameConsts.halfWidth + 7, gameConsts.halfHeight - 150, 'misc', 'guide_arrow.png'),
+        };
+        if (globalObjsTemp.radioStartX) {
+            globalObjsTemp.radio.bar.x = globalObjsTemp.radioStartX;
+        }
+        // 206 leftmost = 88,
+        // 235.75 = 90 slowwalk, 266.5,
+        // 294.25 = 94 off_to_osaka,
+        // 326 = 96 matts_blues,
+        // 356 = 98 secret
+        // 386.25 = 100,
+        // 446.75 = 104, 506 = 108
+        if (!globalObjsTemp.radioStatic1) {
+            globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0, true);
+            globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0, true);
+        }
+        globalObjsTemp.radio.radioClickBlocker = new Button({
+            normal: {
+                ref: "blackPixel",
+                x: gameConsts.halfWidth,
+                y: gameConsts.halfHeight,
+                alpha: 0.01,
+                scaleX: 5000,
+                scaleY: 1000
+            },
+            hover: {
+                alpha: 0.15
+            },
+            press: {
+                alpha: 0
+            },
+            disable: {
+                alpha: 0
+            },
+            onMouseUp: () => {
+                leaveRadio();
+            }
+        });
+        globalObjsTemp.radio.radioDeviceButtonBlocker = new Button({
+            normal: {
+                ref: "whitePixel",
+                x: gameConsts.halfWidth,
+                y: gameConsts.halfHeight + 4,
+                alpha: 0.001,
+                scaleX: 307,
+                scaleY: 253
+            },
+            disable: {
+                alpha: 0
+            },
+            onMouseUp: () => {
+                if (globalObjsTemp.radio.indicator.alpha == 1) {
+                    globalObjsTemp.radio.indicator.setScale(1.4);
+                    globalObjsTemp.radio.indicator.alpha = 0.5;
+                    PhaserScene.tweens.add({
+                        targets: globalObjsTemp.radio.indicator,
+                        alpha: 0,
+                        ease: 'Cubic.easeOut',
+                        scaleX: 2.4,
+                        scaleY: 2.4,
+                        duration: 900,
+                        onComplete: () => {
+                            globalObjsTemp.radio.indicator.setScale(1);
+                            globalObjsTemp.radio.indicator.alpha = 1;
+                        }
+                    });
+                }
+            }
+        });
+        globalObjsTemp.radio.radioDeviceButtonBlocker.setDepth(100);
+        globalObjsTemp.radio.radioDeviceButtonBlocker.setScrollFactor(0, 0);
+
+        globalObjsTemp.radio.knobButton = new Button({
+            normal: {
+                ref: "whitePixel",
+                x: globalObjsTemp.radio.knob.x,
+                y: globalObjsTemp.radio.knob.y,
+                alpha: 0.001,
+                scaleX: 140,
+                scaleY: 140
+            },
+            disable: {
+                alpha: 0
+            },
+            isDraggable: true,
+            onHover: () => {
+                let distFromKnobX = globalObjsTemp.radio.knob.x - gameVars.mouseposx;
+                let distFromKnobY = globalObjsTemp.radio.knob.y - gameVars.mouseposy;
+                let distFromKnob = Math.sqrt(distFromKnobX * distFromKnobX + distFromKnobY * distFromKnobY);
+                if (distFromKnob <= 140) {
+                    globalObjsTemp.radio.knob.setScale(1.012);
+                    canvas.style.cursor = 'grab';
+                } else {
+                    canvas.style.cursor = 'default';
+                }
+            },
+            onHoverOut: () => {
+                globalObjsTemp.radio.knob.setScale(1);
+                canvas.style.cursor = 'default';
+            },
+            onMouseDown: () => {
+                let distFromKnobX = globalObjsTemp.radio.knob.x - gameVars.mouseposx;
+                let distFromKnobY = globalObjsTemp.radio.knob.y - gameVars.mouseposy;
+                let distFromKnob = Math.sqrt(distFromKnobX * distFromKnobX + distFromKnobY * distFromKnobY);
+                if (distFromKnob > 140) {
+                    globalObjsTemp.radio.knobButton.onDrop();
+                } else {
+                    gameVars.radioDragged = true;
+                    let dragStartPosX = distFromKnobX;
+                    let dragStartPosY = distFromKnobY;
+                    if (distFromKnob < 60) {
+                        let multAmt = 60 / (distFromKnob + 0.01);
+                        dragStartPosX *= multAmt;
+                        dragStartPosY *= multAmt;
+                    }
+                    globalObjsTemp.radio.arrow.setPosition(globalObjsTemp.radio.knob.x - dragStartPosX, globalObjsTemp.radio.knob.y - dragStartPosY);
+                    globalObjsTemp.radio.arrow.alpha = 1;
+                    globalObjsTemp.radio.arrow.setScale(0.05, 1);
+                }
+            },
+            onDrop: () => {
+                gameVars.radioDragged = false;
+                globalObjsTemp.radio.arrow.alpha = 0;
+                globalObjsTemp.radio.knob.setScale(1);
+                globalObjsTemp.radio.knobButton.setPos(globalObjsTemp.radio.knob.x, globalObjsTemp.radio.knob.y);
+                // actually do nothing
+            }
+        });
+        globalObjsTemp.radio.knobButton.setScrollFactor(0, 0);
+        for (let i in globalObjsTemp.radio) {
+            globalObjsTemp.radio[i].scrollFactorX = 0;
+            globalObjsTemp.radio[i].setDepth(100);
+        }
+        globalObjsTemp.radio.radioClickBlocker.setDepth(99);
+        globalObjsTemp.radio.arrow.setOrigin(-0.05, 0.5);
+        globalObjsTemp.radio.arrow.alpha = 0;
+
+    }
+    openRadio();
+}
+
+function updateRadio(deltaTime) {
+    if (gameVars.radioDragged) {
+        let goalX = gameVars.mouseposx;
+        let goalY = gameVars.mouseposy;
+
+        let diffX = goalX - globalObjsTemp.radio.arrow.x;
+        let diffY = goalY - globalObjsTemp.radio.arrow.y;
+        let arrowToKnobX = globalObjsTemp.radio.arrow.x - globalObjsTemp.radio.knob.x;
+        let arrowToKnobY = globalObjsTemp.radio.arrow.y - globalObjsTemp.radio.knob.y;
+        let distArrowToKnob = Math.sqrt(arrowToKnobX * arrowToKnobX + arrowToKnobY * arrowToKnobY);
+        let dist = Math.sqrt(diffX * diffX + diffY * diffY);
+        globalObjsTemp.radio.arrow.setRotation(Math.atan2(diffY, diffX));
+        globalObjsTemp.radio.arrow.setScale(Math.max(0.1, Math.min(1, dist * 0.01)), 1)
+        let dotProd = arrowToKnobY * -diffX + arrowToKnobX * diffY;
+        let rotAmt = 0;
+        let arrowPositionAngle = Math.atan2(arrowToKnobY, arrowToKnobX);
+
+        let dragMult = Math.max(1, dist / 80);
+        if (dotProd > 400 * dragMult) {
+            rotAmt = (deltaTime * 0.75 + 0.25) * 0.033;
+            if (globalObjsTemp.radio.bar.x >= 506) {
+                globalObjsTemp.radio.bar.x = 506;
+                rotAmt = 0;
+            }
+        } else if (dotProd < -400 * dragMult) {
+            rotAmt = (deltaTime * 0.75 + 0.25) * -0.033;
+            if (globalObjsTemp.radio.bar.x <= 206) {
+                globalObjsTemp.radio.bar.x = 206
+                rotAmt = 0;
+            }
+        }
+
+        globalObjsTemp.radio.knob.rotation += rotAmt;
+        globalObjsTemp.radio.bar.x += rotAmt * 18;
+        adjustRadioUpdate(globalObjsTemp.radio.bar.x);
+
+        globalObjsTemp.radio.arrow.setPosition(Math.cos(arrowPositionAngle + rotAmt) * distArrowToKnob + globalObjsTemp.radio.knob.x, globalObjsTemp.radio.knob.y + Math.sin(arrowPositionAngle + rotAmt) * distArrowToKnob)
+    }
+}
+
+function resetRadioPosition(position = 418) {
+    if (globalObjsTemp.radio) {
+        globalObjsTemp.radio.bar.x = 418;
+        adjustRadioUpdate(globalObjsTemp.radio.bar.x);
+    } else {
+        globalObjsTemp.radioStartX = 418;
+    }
+}
+
+function leaveRadio() {
+    globalObjects.moveRightBtn.setState(NORMAL);
+    globalObjects.moveLeftBtn.setState(NORMAL);
+    for (let i in globalObjsTemp.radio) {
+        globalObjsTemp.radio[i].visible = false;
+    }
+    globalObjsTemp.radio.radioClickBlocker.setState(DISABLE);
+    globalObjsTemp.radio.radioDeviceButtonBlocker.setState(DISABLE);
+    globalObjsTemp.radio.knobButton.setState(DISABLE);
+    if (!globalObjsTemp.noPower) {
+        setRadioVolume(0.75);
+    }
+}
+
+function openRadio() {
+    globalObjects.moveRightBtn.setState(DISABLE);
+    globalObjects.moveLeftBtn.setState(DISABLE);
+    for (let i in globalObjsTemp.radio) {
+        globalObjsTemp.radio[i].visible = true;
+    }
+    globalObjsTemp.radio.radioClickBlocker.setState(NORMAL);
+    globalObjsTemp.radio.radioDeviceButtonBlocker.setState(NORMAL);
+    globalObjsTemp.radio.knobButton.setState(NORMAL);
+
+    if (!globalObjsTemp.noPower) {
+        setRadioVolume(1);
+    }
+}
+
+function adjustRadioUpdate(barPos) {
+    let distToObj = 99;
+    let distToClosestObj = 99;
+    let closestObj = null;
+    for (let i in globalObjsTemp.songs) {
+        distToObj = Math.abs(i - barPos);
+        if (distToObj < distToClosestObj) {
+            distToClosestObj = distToObj;
+            closestObj = globalObjsTemp.songs[i];
+        }
+    }
+    // 206 leftmost = 88 slowwalk,
+    // 235.75 = 90, 266.5. 294.25, 326, 356 = 98 386.25 = 100, 446.75 = 104, 506 = 108
+    if (distToClosestObj > 6) {
+        if (gameState.goodEndLocked) {
+            gameState.maggieReadyFinale = false;
+        }
+        // globalObjsTemp.radioStatic1
+        let staticSoundMult = 1 - Math.min(0.99, (10 - distToClosestObj) / 5.5);
+        let panMult = (barPos - 206) / 300
+        if (gameState.currentScene == 3) {
+            panMult = 0.5;
+        }
+        globalObjsTemp.radioMusic.volume = 1 - staticSoundMult;
+        let sqrtSoundMult = Math.sqrt(staticSoundMult);
+        globalObjsTemp.radioStatic1.volume = sqrtSoundMult * (1 - panMult) * 0.5;
+        globalObjsTemp.radioStatic1.trueVolume = globalObjsTemp.radioStatic1.volume;
+        if (globalObjsTemp.radioStatic2) {
+            globalObjsTemp.radioStatic2.volume = sqrtSoundMult * panMult * 0.5;
+            globalObjsTemp.radioStatic2.trueVolume = globalObjsTemp.radioStatic2.volume;
+        }
+        if (distToClosestObj > 10) {
+            if (globalObjsTemp.radioMusic.isPlaying) {
+                globalObjsTemp.radioMusic.stop();
+            }
+        } else {
+            if (globalObjsTemp.radioMusic.key != closestObj) {
+                globalObjsTemp.radioMusic.stop();
+                globalObjsTemp.radioMusic = playSound(closestObj, 1, true);
+                if (!gameState.movedDialogClickBlockerTop) {
+                    gameState.movedDialogClickBlockerTop = true;
+                    messageBus.publish('setDialogBtnToTop');
+                }
+                if (closestObj == 'news1') {
+                    if (gameState.radio1Done) {
+                        dialogManager.showDialogNode('radio1Done');
+                    } else {
+                        dialogManager.showDialogNode('radio1');
+                    }
+                } else if (closestObj == 'news2') {
+                    if (gameState.radio2Done) {
+                        dialogManager.showDialogNode('radio2Done');
+                    } else {
+                        if (gameState.brunaIntroduced || gameState.brunaChatted2) {
+                            dialogManager.showDialogNode('radioActTwo2');
+                        } else {
+                            dialogManager.showDialogNode('radioActTwo1');
+                        }
+                    }
+                } else if (closestObj == 'news3') {
+                    if (gameState.radio3Done) {
+                        dialogManager.showDialogNode('radioActThreeDone');
+                    } else {
+                        dialogManager.showDialogNode('radioActThree1');
+                    }
+                }
+            }
+            if (!globalObjsTemp.radioMusic.isPlaying) {
+                globalObjsTemp.radioMusic.play();
+            }
+        }
+    } else {
+        globalObjsTemp.radioMusic.volume = 1;
+        globalObjsTemp.radioStatic1.volume = 0;
+        if (globalObjsTemp.radioStatic2) {
+            globalObjsTemp.radioStatic2.volume = 0;
+        }
+        globalObjsTemp.radioStatic1.trueVolume = 0;
+        if (globalObjsTemp.radioStatic2) {
+            globalObjsTemp.radioStatic2.trueVolume = 0;
+        }
+        if (gameState.goodEndLocked && closestObj === 'main_ok') {
+            gameState.maggieReadyFinale = true;
+        }
+        // closestObj
+        // globalObjsTemp.radioMusic
+    }
+}
+
+function clickTV() {
+    if (gameState.currentScene == 1) {
+        if (gameState.tvended) {
+            dialogManager.showDialogNode('tv4');
+        } else {
+            let tvNum = gameState.tvNum || 1;
+            dialogManager.showDialogNode('tv' + tvNum);
+            gameState.tvNum = tvNum + 1;
+        }
+    } else if (gameState.currentScene == 2) {
+        if (gameState.powerOff) {
+            if (gameState.askedEthanEdithTV) {
+                dialogManager.showDialogNode('tvPowerlessEthanEdith');
+            } else {
+                dialogManager.showDialogNode('tvPowerless');
+            }
+        } else {
+            if (gameState.seenEldritchEthan) {
+                dialogManager.showDialogNode('tvOff2');
+            } else {
+                dialogManager.showDialogNode('tvOff');
+            }
+        }
+    } else if (gameState.currentScene == 3) {
+        if (gameState.goodEndLocked) {
+            dialogManager.showDialogNode('radioDone');
+        } else if (gameState.tvSmashed) {
+            dialogManager.showDialogNode('tvCrackEnd');
+        } else if (gameState.tvSceneThreeEnded) {
+            // do nothing
+        } else {
+            let tvThreeNum = gameState.tvThreeNum || 1;
+            dialogManager.showDialogNode('tvCrack' + tvThreeNum);
+            gameState.tvThreeNum = tvThreeNum + 1;
+        }
+
+    }
+}
+
+function clickIndoor() {
+    if (gameState.shownFlashEldritch && !gameState.shownIndoorEldritch) {
+        gameState.shownIndoorEldritch = true;
+        let eyeflash2 = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'lowq', 'spook1.jpg').setScale(1.7, 1.7).setAlpha(0.15).setDepth(1000).setBlendMode(Phaser.BlendModes.DARKEN);
+        eyeflash2.scrollFactorX = 0;
+        setTimeout(() => {
+            eyeflash2.setAlpha(0.05);
+            setTimeout(() => {
+                let blackFlash = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setScale(5000, 999);
+                eyeflash2.destroy();
+                setTimeout(() => {
+                    blackFlash.destroy();
+                }, 1)
+            }, 80);
+        }, 15);
+    }
+    globalObjects.diner.IndoorButton.setState(DISABLE);
+    globalObjsTemp.rainBackground.setDepth(-1);
+    globalObjsTemp.rainForeground.setDepth(-1);
+    globalObjects.outdoorRain.stop();
+    if (gameState.powerOff) {
+        globalObjects.indoorRain.setVolume(1);
+        // setRadioVolume(0.75);
+    } else if (!gameState.resetRadioPowerOn) {
+        gameState.resetRadioPowerOn = true;
+        globalObjects.indoorRain.setVolume(0.22);
+        setRadioMusic('radiostatic2', 0.4);
+    } else {
+        globalObjects.indoorRain.setVolume(0.25);
+        setRadioVolume(gameState.oldRadioVolume);
+    }
+    playSound('dooropen', 0.8);
+
+    gameVars.cameraMoveAcc = 0;
+    gameVars.cameraMoveVel = 0.01;
+    gameState.isOutdoors = false;
+    // gameState.isInShed = false;
+    gameVars.cameraPosY = 0;
+    PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
+    gameVars.cameraPosX = -510;
+    PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+
+    // gameVars.cameraPosMaxX = gameVars.cameraPosMaxXOutside;
+    // gameVars.cameraPosMinX = gameVars.cameraPosMinXOutside;
+    gameVars.cameraPosMaxX = gameVars.cameraPosMaxXInside;
+    gameVars.cameraPosMinX = gameVars.cameraPosMinXInside;
+
+    if (globalObjsTemp.generatorSound) {
+        globalObjsTemp.generatorSound.stop();
+    }
+    if (gameState.powerOff === false && !gameState.powerOnWelcomed) {
+        gameState.powerOnWelcomed = true;
+        dialogManager.showDialogNode('DinerCheer');
+    }
+
+}
+
+function clickBackdoor() {
+    if (gameState.currentScene == 1) {
+        // exitBackdoor();
+        dialogManager.showDialogNode('BackdoorActOne');
+    } else if (gameState.currentScene == 2) {
+        if (gameState.scratchingDoor) {
+            if (gameState.startedBackdoorDebate) {
+                if (gameState.ethan2Chatted) {
+                    dialogManager.showDialogNode('ScratchDoorReturn');
+                } else {
+                    dialogManager.showDialogNode('ScratchDoorReturnEthanTired');
+                }
+            } else {
+                gameState.startedBackdoorDebate = true;
+                dialogManager.showDialogNode('BackdoorScratcing1');
+            }
+        } else if (gameState.hasBackdoorKey) {
+            //globalObjects.indoorRain.setVolume(0.4);
+            exitBackdoor();
+        } else {
+            dialogManager.showDialogNode('BackdoorLocked');
+        }
+        // dialogManager.showDialogNode('Backdoor2NoReasonToGo');
+    } else if (gameState.currentScene == 3) {
+        exitBackdoor();
+    }
+}
+
+
+function shiftOver(x, strong) {
+    let distDiff = x - (gameVars.cameraPosX + gameConsts.halfWidth);
+    let shiftThreshold = strong ? 40 : 175;
+    let shiftBaseline = strong ? 0.35 : 0.27;
+    let shiftRatio = strong ? 220 : 325;
+    if (distDiff < -shiftThreshold) {
+        gameVars.cameraMoveAcc = (distDiff / shiftRatio) - shiftBaseline;
+    } else if (distDiff > shiftThreshold) {
+        gameVars.cameraMoveAcc = (distDiff / shiftRatio) + shiftBaseline;
+    }
+    messageBus.publish("delayUpdateClickLocation");
+
+}
+
+function shiftOverTween(x) {
+    PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+    PhaserScene.tweens.add({
+        targets: [PhaserScene.cameras.main, gameVars],
+        scrollX: x,
+        cameraPosX: x,
+        ease: 'Cubic.easeInOut',
+        duration: 3000,
+    });
+
+    messageBus.publish("delayUpdateClickLocation");
+}
+
+function exitBackdoor() {
+    playSound('dooropen', 0.4);
+    globalObjects.diner.IndoorButton.setState(NORMAL);
+    // globalObjects.indoorRain.setVolume(0.01);
+    globalObjsTemp.rainBackground.setDepth(1);
+    globalObjsTemp.rainForeground.setDepth(1);
+
+    if (!globalObjects.outdoorRain) {
+        globalObjects.outdoorRain = playSound('stormfull', .88, true);
+    } else {
+        globalObjects.outdoorRain.play();
+    }
+
+    if (!gameState.casparGone) {
+        gameState.oldRadioVolume = gameVars.radioVolume;
+        setRadioVolume(0.001);
+        globalObjects.outdoorRain.volume = 0.88;
+    } else if (!gameState.lookForCaspar) {
+        globalObjects.outdoorRain.volume = 0.75;
+        gameState.lookForCaspar = true;
+        dialogManager.showDialogNode('LookForCaspar');
+    }
+    gameVars.cameraMoveAcc = 0;
+    gameVars.cameraMoveVel = 0.01;
+    gameState.isOutdoors = true;
+    // gameState.isInShed = false;
+    gameVars.cameraPosY = gameConsts.outdoorStartY;
+    PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
+    gameVars.cameraPosX = -480;
+    PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+
+    gameVars.cameraPosMaxX = gameVars.cameraPosMaxXOutside;
+    gameVars.cameraPosMinX = gameVars.cameraPosMinXOutside;
+    // gameVars.cameraPosMaxX = gameVars.cameraPosMaxXInside;
+    // gameVars.cameraPosMinX = gameVars.cameraPosMinXInside;
+
+    if (!globalObjsTemp.outdoorBackgrounds) {
+        globalObjsTemp.outdoorBackgrounds = {
+            bg0: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'rain.png').setScale(10, 6),
+            bg1: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout1.png'),
+            bg2: PhaserScene.add.image(999.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout2.png'),
+            bg4: PhaserScene.add.image(1999, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout3.png'),
+            bg5: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
+            bg6: PhaserScene.add.image(796, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
+            bg7: PhaserScene.add.image(1592, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
+        }
+        globalObjsTemp.outdoorBackgrounds.bg5.scrollFactorX = 0.3;
+        globalObjsTemp.outdoorBackgrounds.bg6.scrollFactorX = 0.3;
+        globalObjsTemp.outdoorBackgrounds.bg7.scrollFactorX = 0.3;
+        PhaserScene.tweens.add({
+            alpha: 1,
+            targets: [globalObjsTemp.outdoorBackgrounds.bg5, globalObjsTemp.outdoorBackgrounds.bg6, globalObjsTemp.outdoorBackgrounds.bg7],
+            duration: 3000,
+            ease: 'Quad.easeOut',
+        });
+    }
+}
+
+function enterShed() {
+    gameState.isInShed = true;
+    globalObjects.outdoorRain.setVolume(0.25);
+    gameVars.cameraMoveAcc = 0;
+    gameVars.cameraMoveVel = 0;
+    if (globalObjsTemp.generatorSound) {
+        globalObjsTemp.generatorSound.setVolume(0.25);
+    }
+    globalObjsTemp.rainBackground.setDepth(-1);
+    globalObjsTemp.rainForeground.setDepth(-1);
+    gameVars.cameraPosY = gameConsts.shedStartY;
+    PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
+    gameVars.cameraPosX = 0;
+    PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+
+    if (!globalObjsTemp.shedBackgrounds) {
+        globalObjsTemp.shedBackgroundColor = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + gameConsts.shedStartY, 'pixels', 'grey_pixel.png').setScale(1000, 400).setDepth(-2);
+        globalObjsTemp.shedBackgrounds = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight + gameConsts.shedStartY, 'backgrounds', 'bgshed.png');
+    }
+}
+
+function clickGravestone() {
+    gameState.gravestoneClicked = true;
+    if (gameState.casparGone) {
+        if (gameState.MaggieSaved) {
+            dialogManager.showDialogNode('GravestoneClickedGood');
+        } else {
+            dialogManager.showDialogNode('GravestoneClickedBad');
+        }
+    } else {
+        dialogManager.showDialogNode('GravestoneClicked');
+    }
+}
+
+function exitShed() {
+    gameState.isInShed = false;
+    globalObjects.outdoorRain.setVolume(1);
+    gameVars.cameraMoveAcc = 0;
+    gameVars.cameraMoveVel = -0.01;
+    if (globalObjsTemp.generatorSound) {
+        globalObjsTemp.generatorSound.setVolume(0);
+    }
+    globalObjsTemp.rainBackground.setDepth(1);
+    globalObjsTemp.rainForeground.setDepth(1);
+
+    gameVars.cameraPosY = gameConsts.outdoorStartY; PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
+    gameVars.cameraPosX = 1440; PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+
+    if (!gameState.shownFlashEldritch && gameState.turnedOnPowerSlow) {
+        gameState.shownFlashEldritch = true;
+        setTimeout(() => {
+            let eyeflash = PhaserScene.add.sprite(340, 200, 'lowq', 'spook4.png').setScale(0.8, 0.6).setAlpha(0.005).setDepth(1);
+            let blackPixelTemp = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setAlpha(0.07).setDepth(9999).setScale(10000,500);
+            eyeflash.scrollFactorX = 0.225;
+            eyeflash.scrollFactorY = 0;
+            PhaserScene.tweens.add({
+                delay: 300,
+                alpha: 0.04,
+                targets: eyeflash,
+                duration: 5000,
+                ease: 'Cubic.easeIn',
+                onComplete: () => {
+                    playSound('click');
+                    eyeflash.x += 100;
+                    eyeflash.y += 25;
+                    eyeflash.setScale(1);
+                    eyeflash.setAlpha(0.1);
+                    setTimeout(() => {
+                        eyeflash.x -= 50;
+                        eyeflash.setScale(1.25);
+                        eyeflash.setAlpha(0.05);
+                        blackPixelTemp.setAlpha(0.09)
+                        setTimeout(() => {
+                            eyeflash.destroy();
+                            blackPixelTemp.destroy();
+                        }, 20);
+                    }, 40);
+                }
+            });
+        }, 0);
+    }
+
+    if (gameState.dogLooking) {
+        gameState.dogLooking = false;
+        globalObjsTemp.dogEyeAnim.stop();
+        globalObjsTemp.dogEyes.x = 1200;
+        globalObjsTemp.dogEyes.y += 40;
+        globalObjsTemp.dogEyes.scrollFactorX = 0.8;
+        globalObjsTemp.dogEyes.setScale(0.6);
+        globalObjsTemp.dogEyes.setDepth(1);
+        globalObjsTemp.dogEyes.alpha = 0.8;
+        PhaserScene.tweens.add({
+            delay: 600,
+            x: "+=15",
+            targets: globalObjsTemp.dogEyes,
+            duration: 50,
+            onComplete: () => {
+                PhaserScene.tweens.add({
+                    delay: 300,
+                    alpha: 0,
+                    scaleX: 0.4,
+                    scaleY: 0.48,
+                    targets: globalObjsTemp.dogEyes,
+                    x: "-=150",
+                    duration: 500,
+                    ease: 'Quad.easeIn',
+                    onComplete: () => {
+                        globalObjsTemp.dogEyes.destroy();
+                    }
+                });
+            }
+        });
+    }
+}
+
+function clickGenerator() {
+    if (!globalObjsTemp.generator) {
+        setTimeout(() => {
+            // if not fixed after 50 seconds, show extra spook.
+            if (gameState.powerOff === true) {
+                console.log("Spook on");
+                gameState.turnedOnPowerSlow = true;
+            }
+        }, 50000);
+        gameState.viewedGenerator = true;
+        let startYPos = gameConsts.halfHeight + gameConsts.shedStartY;
+        updateManager.addFunction(updateGenerator);
+        globalObjsTemp.generator = {
+            generatorClickBlocker: {},
+            backing: PhaserScene.add.sprite(gameConsts.halfWidth, startYPos, 'radio', 'generator.png'),
+            exit: {},
+            power: {},
+            red: {},
+            blue: {},
+            green: {},
+            yellow: {},
+            purple: {},
+            indicator: PhaserScene.add.sprite(gameConsts.halfWidth - 64, startYPos + 209, 'radio', 'status_light_off.png').setAlpha(0.9),
+            invalid: PhaserScene.add.sprite(-999, -999, 'misc', 'invalid.png').setAlpha(0),
+        };
+        globalObjsTemp.generatorWires = {
+            red: PhaserScene.add.sprite(gameConsts.halfWidth - 221, startYPos - 208, 'radio', 'red_wire.png').setOrigin(0, 0.5).setScale(0.01, 1),
+            blue: PhaserScene.add.sprite(gameConsts.halfWidth - 221, startYPos - 128, 'radio', 'blue_wire.png').setOrigin(0, 0.5).setScale(0.01, 1),
+            green: PhaserScene.add.sprite(gameConsts.halfWidth - 221, startYPos - 48, 'radio', 'green_wire.png').setOrigin(0, 0.5).setScale(0.01, 1),
+            yellow: PhaserScene.add.sprite(gameConsts.halfWidth - 221, startYPos + 32, 'radio', 'yellow_wire.png').setOrigin(0, 0.5).setScale(0.01, 1),
+            purple: PhaserScene.add.sprite(gameConsts.halfWidth - 221, startYPos + 112, 'radio', 'purple_wire.png').setOrigin(0, 0.5).setScale(0.01, 1),
+        };
+        globalObjsTemp.generator.generatorClickBlocker = new Button({
+            normal: {
+                ref: "blackPixel",
+                x: gameConsts.halfWidth,
+                y: startYPos,
+                alpha: 0.01,
+                scaleX: 5000,
+                scaleY: 1000
+            }
+        });
+        globalObjsTemp.generator.exit = new Button({
+            normal: {
+                "atlas": "radio",
+                "ref": "back.png",
+                "x": gameConsts.halfWidth - 310,
+                "y": startYPos + 280,
+                alpha: 0.75,
+            },
+            hover: {
+                alpha: 1
+            },
+            press: {
+                alpha: 0.65
+            },
+            disable: {
+                alpha: 0.001
+            },
+            onMouseUp() {
+                closeGenerator();
+            }
+        });
+        globalObjsTemp.generator.power = new Button({
+            normal: {
+                "atlas": "radio",
+                "ref": "power_btn.png",
+                "x": gameConsts.halfWidth - 15,
+                "y": startYPos + 240,
+                alpha: 1
+            },
+            hover: {
+                "atlas": "radio",
+                "ref": "power_btn_hover.png",
+                alpha: 1
+            },
+            press: {
+                "atlas": "radio",
+                "ref": "power_btn_press.png",
+                alpha: 1
+            },
+            disable: {
+                alpha: 0.001
+            },
+            onHover: () => {
+                canvas.style.cursor = 'pointer';
+            },
+            onHoverOut: () => {
+                canvas.style.cursor = 'default';
+            },
+            onMouseUp() {
+                startGenerator();
+            }
+        });
+
+        globalObjsTemp.generator.red = new Button({
+            normal: {
+                atlas: "radio",
+                ref: "red_plug.png",
+                x: 300,
+                y: 4126,
+                alpha: 1,
+                scaleX: 1,
+                scaleY: 1,
+            },
+            hover: {
+                atlas: "radio",
+                ref: "red_plug.png",
+                scaleX: 1,
+                scaleY: 1.03,
+                alpha: 1
+            },
+            press: {
+                atlas: "radio",
+                ref: "red_plug.png",
+                scaleX: 1.08,
+                scaleY: 1.08,
+                alpha: 0.8
+            },
+            disable: {
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 1,
+            },
+            isDraggable: true,
+            onMouseDown: () => {
+                playSound('crackle1');
+            },
+            onDrag: () => {
+                canvas.style.cursor = 'grab';
+                let wireXPos = globalObjsTemp.generator.red.getXPos();
+                let wireYPos = globalObjsTemp.generator.red.getYPos();
+                attachWire(wireXPos, wireYPos, globalObjsTemp.generator.red);
+                updateWireVisual(globalObjsTemp.generator.red, globalObjsTemp.generatorWires.red);
+            },
+            onDrop: () => {
+                canvas.style.cursor = 'default';
+                let wireXPos = globalObjsTemp.generator.red.getXPos();
+                let wireYPos = globalObjsTemp.generator.red.getYPos();
+                let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.red);
+                if (attachedSpot) {
+                    setWireAttach(globalObjsTemp.generator.red, attachedSpot)
+                    updateWireVisual(globalObjsTemp.generator.red, globalObjsTemp.generatorWires.red);
+                    playSound('crackle1');
+                } else {
+                    detatchWire(globalObjsTemp.generator.red);
+                    globalObjsTemp.generator.red.tweenToPos(gameConsts.halfWidth - 211, startYPos - 208, 200, 'Quad.easeIn');
+                    retractWireVisual(globalObjsTemp.generator.red, globalObjsTemp.generatorWires.red)
+                }
+            }
+        });
+        globalObjsTemp.generator.red = globalObjsTemp.generator.red;
+        globalObjsTemp.generator.red.setOrigin(0.8, 0.5);
+
+        // blue button
+        globalObjsTemp.generator.blue = new Button({
+            normal: {
+                atlas: "radio",
+                ref: "blue_plug.png",
+                x: 300,
+                y: 4205,
+                alpha: 1,
+                scaleX: 1,
+                scaleY: 1,
+            },
+            hover: {
+                atlas: "radio",
+                ref: "blue_plug.png",
+                scaleX: 1,
+                scaleY: 1.03,
+                alpha: 1
+            },
+            press: {
+                atlas: "radio",
+                ref: "blue_plug.png",
+                scaleX: 1.08,
+                scaleY: 1.08,
+                alpha: 0.8
+            },
+            disable: {
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 1,
+            },
+            isDraggable: true,
+            onMouseDown: () => {
+                playSound('crackle1');
+            },
+            onDrag: () => {
+                canvas.style.cursor = 'grab';
+                let wireXPos = globalObjsTemp.generator.blue.getXPos();
+                let wireYPos = globalObjsTemp.generator.blue.getYPos();
+                attachWire(wireXPos, wireYPos, globalObjsTemp.generator.blue);
+                updateWireVisual(globalObjsTemp.generator.blue, globalObjsTemp.generatorWires.blue);
+            },
+            onDrop: () => {
+                canvas.style.cursor = 'default';
+                let wireXPos = globalObjsTemp.generator.blue.getXPos();
+                let wireYPos = globalObjsTemp.generator.blue.getYPos();
+                let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.blue);
+                if (attachedSpot) {
+                    setWireAttach(globalObjsTemp.generator.blue, attachedSpot)
+                    updateWireVisual(globalObjsTemp.generator.blue, globalObjsTemp.generatorWires.blue);
+                    playSound('crackle1');
+                } else {
+                    detatchWire(globalObjsTemp.generator.blue);
+                    globalObjsTemp.generator.blue.tweenToPos(gameConsts.halfWidth - 211, startYPos - 128.5, 200, 'Quad.easeIn');
+                    retractWireVisual(globalObjsTemp.generator.blue, globalObjsTemp.generatorWires.blue)
+                }
+            }
+        });
+        globalObjsTemp.generator.blue.setOrigin(0.8, 0.5);
+
+        // green button
+        globalObjsTemp.generator.green = new Button({
+            normal: {
+                atlas: "radio",
+                ref: "green_plug.png",
+                x: gameConsts.halfWidth - 211,
+                y: startYPos - 49,
+                alpha: 1,
+                scaleX: 1,
+                scaleY: 1,
+            },
+            hover: {
+                atlas: "radio",
+                ref: "green_plug.png",
+                scaleX: 1,
+                scaleY: 1.03,
+                alpha: 1
+            },
+            press: {
+                atlas: "radio",
+                ref: "green_plug.png",
+                scaleX: 1.08,
+                scaleY: 1.08,
+                alpha: 0.8
+            },
+            disable: {
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 1,
+            },
+            isDraggable: true,
+            onMouseDown: () => {
+                playSound('crackle1');
+            },
+            onDrag: () => {
+                canvas.style.cursor = 'grab';
+                let wireXPos = globalObjsTemp.generator.green.getXPos();
+                let wireYPos = globalObjsTemp.generator.green.getYPos();
+                attachWire(wireXPos, wireYPos, globalObjsTemp.generator.green);
+                updateWireVisual(globalObjsTemp.generator.green, globalObjsTemp.generatorWires.green);
+            },
+            onDrop: () => {
+                canvas.style.cursor = 'default';
+                let wireXPos = globalObjsTemp.generator.green.getXPos();
+                let wireYPos = globalObjsTemp.generator.green.getYPos();
+                let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.green);
+                if (attachedSpot) {
+                    setWireAttach(globalObjsTemp.generator.green, attachedSpot)
+                    updateWireVisual(globalObjsTemp.generator.green, globalObjsTemp.generatorWires.green);
+                    playSound('crackle1');
+                } else {
+                    detatchWire(globalObjsTemp.generator.green);
+                    globalObjsTemp.generator.green.tweenToPos(gameConsts.halfWidth - 211, startYPos - 49, 200, 'Quad.easeIn');
+                    retractWireVisual(globalObjsTemp.generator.green, globalObjsTemp.generatorWires.green)
+                }
+            }
+        });
+        globalObjsTemp.generator.green.setOrigin(0.8, 0.5);
+
+        // yellow button
+        globalObjsTemp.generator.yellow = new Button({
+            normal: {
+                atlas: "radio",
+                ref: "yellow_plug.png",
+                x: 300,
+                y: 4284,
+                alpha: 1,
+                scaleX: 1,
+                scaleY: 1,
+            },
+            hover: {
+                atlas: "radio",
+                ref: "yellow_plug.png",
+                scaleX: 1,
+                scaleY: 1.03,
+                alpha: 1
+            },
+            press: {
+                atlas: "radio",
+                ref: "yellow_plug.png",
+                scaleX: 1.08,
+                scaleY: 1.08,
+                alpha: 0.8
+            },
+            disable: {
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 1,
+            },
+            isDraggable: true,
+            onMouseDown: () => {
+                playSound('crackle1');
+            },
+            onDrag: () => {
+                canvas.style.cursor = 'grab';
+                let wireXPos = globalObjsTemp.generator.yellow.getXPos();
+                let wireYPos = globalObjsTemp.generator.yellow.getYPos();
+                attachWire(wireXPos, wireYPos, globalObjsTemp.generator.yellow);
+                updateWireVisual(globalObjsTemp.generator.yellow, globalObjsTemp.generatorWires.yellow);
+            },
+            onDrop: () => {
+                canvas.style.cursor = 'default';
+                let wireXPos = globalObjsTemp.generator.yellow.getXPos();
+                let wireYPos = globalObjsTemp.generator.yellow.getYPos();
+                let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.yellow);
+                if (attachedSpot) {
+                    setWireAttach(globalObjsTemp.generator.yellow, attachedSpot)
+                    updateWireVisual(globalObjsTemp.generator.yellow, globalObjsTemp.generatorWires.yellow);
+                    playSound('crackle1');
+                } else {
+                    detatchWire(globalObjsTemp.generator.yellow);
+                    globalObjsTemp.generator.yellow.tweenToPos(gameConsts.halfWidth - 211, startYPos + 30.5, 200, 'Quad.easeIn');
+                    retractWireVisual(globalObjsTemp.generator.yellow, globalObjsTemp.generatorWires.yellow)
+                }
+            }
+        });
+        globalObjsTemp.generator.yellow.setOrigin(0.8, 0.5);
+
+        // green button
+        globalObjsTemp.generator.purple = new Button({
+            normal: {
+                atlas: "radio",
+                ref: "purple_plug.png",
+                x: gameConsts.halfWidth - 211,
+                y: startYPos + 110,
+                alpha: 1,
+                scaleX: 1,
+                scaleY: 1,
+            },
+            hover: {
+                atlas: "radio",
+                ref: "purple_plug.png",
+                scaleX: 1,
+                scaleY: 1.03,
+                alpha: 1
+            },
+            press: {
+                atlas: "radio",
+                ref: "purple_plug.png",
+                scaleX: 1.08,
+                scaleY: 1.08,
+                alpha: 0.8
+            },
+            disable: {
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 1,
+            },
+            isDraggable: true,
+            onMouseDown: () => {
+                playSound('crackle1');
+            },
+            onDrag: () => {
+                canvas.style.cursor = 'grab';
+                let wireXPos = globalObjsTemp.generator.purple.getXPos();
+                let wireYPos = globalObjsTemp.generator.purple.getYPos();
+                attachWire(wireXPos, wireYPos, globalObjsTemp.generator.purple);
+                updateWireVisual(globalObjsTemp.generator.purple, globalObjsTemp.generatorWires.purple);
+            },
+            onDrop: () => {
+                canvas.style.cursor = 'default';
+                let wireXPos = globalObjsTemp.generator.purple.getXPos();
+                let wireYPos = globalObjsTemp.generator.purple.getYPos();
+                let attachedSpot = attachWire(wireXPos, wireYPos, globalObjsTemp.generator.purple);
+                if (attachedSpot) {
+                    setWireAttach(globalObjsTemp.generator.purple, attachedSpot)
+                    updateWireVisual(globalObjsTemp.generator.purple, globalObjsTemp.generatorWires.purple);
+                    playSound('crackle1');
+                } else {
+                    detatchWire(globalObjsTemp.generator.purple);
+                    globalObjsTemp.generator.purple.tweenToPos(gameConsts.halfWidth - 211, startYPos + 110, 200, 'Quad.easeIn');
+                    retractWireVisual(globalObjsTemp.generator.purple, globalObjsTemp.generatorWires.purple)
+                }
+            }
+        });
+        globalObjsTemp.generator.purple.setOrigin(0.8, 0.5);
+
+        globalObjsTemp.generatorConnections = {
+            1: false,
+            2: false,
+            3: globalObjsTemp.generator.yellow,
+            4: globalObjsTemp.generator.blue,
+            5: globalObjsTemp.generator.red,
+        };
+
+        globalObjsTemp.generator.yellow.socket = 3;
+        globalObjsTemp.generator.blue.socket = 4;
+        globalObjsTemp.generator.red.socket = 5;
+
+        updateWireVisual(globalObjsTemp.generator.red, globalObjsTemp.generatorWires.red);
+        updateWireVisual(globalObjsTemp.generator.blue, globalObjsTemp.generatorWires.blue);
+        updateWireVisual(globalObjsTemp.generator.yellow, globalObjsTemp.generatorWires.yellow);
+
+
+        for (let i in globalObjsTemp.generator) {
+            globalObjsTemp.generator[i].scrollFactorX = 0;
+            if (globalObjsTemp.generator[i].setDepth) {
+                globalObjsTemp.generator[i].setScrollFactor(0, 1);
+                globalObjsTemp.generator[i].setDepth(100);
+            }
+        }
+        for (let i in globalObjsTemp.generatorWires) {
+            globalObjsTemp.generatorWires[i].scrollFactorX = 0;
+            globalObjsTemp.generatorWires[i].depth = 100;
+        }
+
+        setTimeout(() => {
+            messageBus.publish('setDialogBtnToTop');
+            dialogManager.showDialogNode('GeneratorWiredWrong');
+        }, 250);
+    }
+    openGenerator();
+}
+
+function updateWireVisual(wire,visual) {
+    let wireXPos = wire.getXPos() - 7;
+    let wireYPos = wire.getYPos();
+    let wireLengthX = wireXPos - visual.x;
+    let wireLengthY = wireYPos - visual.y;
+    let wireLength = Math.sqrt(wireLengthX*wireLengthX + wireLengthY*wireLengthY);
+    visual.rotation = Math.atan2(wireLengthY, wireLengthX);
+    visual.setScale(0.01 * wireLength, 1);
+}
+
+function retractWireVisual(wire, visual) {
+    updateWireVisual(wire,visual);
+    PhaserScene.tweens.add({
+        targets: visual,
+        ease: 'Quad.easeIn',
+        scaleX: 0.01,
+        duration: 200,
+    });
+}
+
+function attachWire(wireXPos, wireYPos, wire) {
+    if (wireXPos > 286 && wireXPos < 345) {
+        let spacingY = 10;
+        if (wireYPos > (4090 + spacingY) && wireYPos < (4165 - spacingY) && wireCanAttach(wire, 5)) {
+            setWireAttach(wire, 5);
+            return 5;
+        } else if (wireYPos > (4165 + spacingY) && wireYPos < (4245 - spacingY) && wireCanAttach(wire, 4)) {
+            setWireAttach(wire, 4);
+            return 4;
+        } else if (wireYPos > (4245 + spacingY) && wireYPos < (4325 - spacingY) && wireCanAttach(wire, 3)) {
+            setWireAttach(wire, 3);
+            return 3;
+        } else if (wireYPos > (4325 + spacingY) && wireYPos < (4405 - spacingY) && wireCanAttach(wire, 2)) {
+            setWireAttach(wire, 2);
+            return 2;
+        } else if (wireYPos > (4405 + spacingY) && wireYPos < (4480 - spacingY) && wireCanAttach(wire, 1)) {
+            setWireAttach(wire, 1);
+            return 1;
+        }
+    }
+    return false;
+}
+function setWireAttach(wire, number) {
+    if (wireCanAttach(wire, number)) {
+        detatchWire(wire);
+        globalObjsTemp.generatorConnections[number] = wire;
+        switch(number) {
+            case 5:
+                wire.socket = 5;
+                wire.setPos(300, 4090 + 36);
+                break;
+            case 4:
+                wire.socket = 4;
+                wire.setPos(300, 4169 + 36);
+                break;
+            case 3:
+                wire.socket = 3;
+                wire.setPos(300, 4248 + 36);
+                break;
+            case 2:
+                wire.socket = 2;
+                wire.setPos(300, 4327 + 36);
+                break;
+            case 1:
+                wire.socket = 1;
+                wire.setPos(300, 4405 + 36);
+                break;
+        }
+        return true;
+    }
+    return false;
+}
+
+// function detatchSocket(number) {
+//     if (globalObjsTemp.generatorConnections[number]) {
+//         globalObjsTemp.generatorConnections[number].setPos(269, 4441)
+//         globalObjsTemp.generatorConnections[number].onDrop();
+//         globalObjsTemp.generatorConnections[number] = false;
+//     }
+// }
+
+function detatchWire(wire) {
+    for (let idx in globalObjsTemp.generatorConnections) {
+        if (globalObjsTemp.generatorConnections[idx] == wire) {
+            globalObjsTemp.generatorConnections[idx] = false;
+        }
+    }
+    wire.socket = undefined;
+}
+
+function wireCanAttach(wire, number) {
+    let retVal = !globalObjsTemp.generatorConnections[number] || globalObjsTemp.generatorConnections[number] === wire;
+    return retVal;
+}
+
+function startGenerator() {
+    if (gameState.powerOff === false) {
+        dialogManager.showDialogNode('GeneratorAlreadyFixed');
+        return;
+    }
+    if (!globalObjsTemp.generatorConnections[1]
+        || !globalObjsTemp.generatorConnections[2]
+        || !globalObjsTemp.generatorConnections[3]
+        || !globalObjsTemp.generatorConnections[4]
+        || !globalObjsTemp.generatorConnections[5]) {
+        showGeneratorInvalid(4117);
+        playSound('stopscreech', 1);
+        return false;
+    }
+    if (globalObjsTemp.generator.red.socket % 2 == 0) {
+        // must be odd, is invalid
+        showGeneratorInvalid(4195);
+        playSound('generatorFail', 1);
+        return false;
+    }
+    if (globalObjsTemp.generator.blue.socket <= globalObjsTemp.generator.red.socket) {
+        showGeneratorInvalid(4247);
+        playSound('generatorFail', 1);
+        return false;
+    }
+
+    let greenSocket = globalObjsTemp.generator.green.socket;
+    let greenCrosses = 0;
+    if (globalObjsTemp.generator.red.socket < greenSocket) {
+        greenCrosses++
+    }
+    if (globalObjsTemp.generator.blue.socket < greenSocket) {
+        greenCrosses++
+    }
+    if (globalObjsTemp.generator.yellow.socket > greenSocket) {
+        greenCrosses++
+    }
+    if (globalObjsTemp.generator.purple.socket > greenSocket) {
+        greenCrosses++
+    }
+    if (greenCrosses != 1) {
+        showGeneratorInvalid(4286);
+        playSound('generatorFail', 1);
+        return false;
+    }
+
+    if (globalObjsTemp.generator.yellow.socket >= globalObjsTemp.generator.green.socket) {
+        showGeneratorInvalid(4342);
+        playSound('generatorFail', 1);
+        return false;
+    }
+    if (globalObjsTemp.generator.purple.socket == 1 || globalObjsTemp.generator.purple.socket == 2) {
+        showGeneratorInvalid(4386);
+        playSound('generatorFail', 1);
+        return false;
+    }
+    let numWiresUpward = 0;
+    if (globalObjsTemp.generator.blue.socket == 5) {
+        numWiresUpward++;
+    }
+    if (globalObjsTemp.generator.green.socket >= 4) {
+        numWiresUpward++;
+    }
+    if (globalObjsTemp.generator.yellow.socket >= 3) {
+        numWiresUpward++;
+    }
+    if (globalObjsTemp.generator.purple.socket >= 2) {
+        numWiresUpward++;
+    }
+    if (numWiresUpward < 3) {
+        showGeneratorInvalid(4438);
+        playSound('generatorFail', 1);
+        return;
+    }
+    turnOnPower();
+    return true;
+}
+
+function turnOnPower() {
+    globalObjsTemp.generator.indicator.setFrame('status_light_on.png');
+    setTimeout(() => {
+        globalObjsTemp.generator.indicator.setFrame('status_light_off.png');
+        setTimeout(() => {
+            globalObjsTemp.generator.indicator.setFrame('status_light_on.png');
+        }, 750);
+    }, 75);
+    playSound('crackle1', 2);
+    globalObjsTemp.generatorSound = playSound('generator', 0.1, true);
+    PhaserScene.tweens.add({
+        targets: globalObjsTemp.generatorSound,
+        volume: 1,
+        ease: 'Quad.easeOut',
+        duration: 600
+    });
+    gameState.powerOff = false;
+    globalObjsTemp.shedBackgrounds.setFrame('bgshed2.png');
+    globalObjsTemp.outdoorBackgrounds.bg1.setFrame('bgout1Light.png');
+    dialogManager.showDialogNode('GeneratorTurnedOn');
+    setCharactersNormal();
+    gameCharacters.ethan.setFrame('ethan_tired.png');
+
+    globalObjsTemp.gloom.setAlpha(0);
+
+    globalObjsTemp.generator.red.setState(DISABLE);
+    globalObjsTemp.generator.blue.setState(DISABLE);
+    globalObjsTemp.generator.green.setState(DISABLE);
+    globalObjsTemp.generator.yellow.setState(DISABLE);
+    globalObjsTemp.generator.purple.setState(DISABLE);
+}
+
+function showGeneratorInvalid(yPos) {
+    globalObjsTemp.generator.indicator.setFrame('status_light_on.png');
+    setTimeout(() => {
+        globalObjsTemp.generator.indicator.setFrame('status_light_off.png');
+        setTimeout(() => {
+            globalObjsTemp.generator.indicator.setFrame('status_light_on.png');
+            setTimeout(() => {
+                globalObjsTemp.generator.indicator.setFrame('status_light_off.png');
+            }, 30);
+        }, Math.floor(350 + Math.random * 200));
+    }, 50);
+    globalObjsTemp.generator.invalid.x = 429;
+    globalObjsTemp.generator.invalid.y = yPos;
+    globalObjsTemp.generator.invalid.setAlpha(0.75);
+    globalObjsTemp.generator.invalid.visible = true;
+    PhaserScene.tweens.add({
+        targets: globalObjsTemp.generator.invalid,
+        scaleX: 1.65,
+        scaleY: 1.65,
+        alpha: 1,
+        ease: 'Bounce.easeOut',
+        duration: 250,
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                delay: 300,
+                targets: globalObjsTemp.generator.invalid,
+                scaleX: 1,
+                scaleY: 1,
+                alpha: 0,
+                ease: 'Cubic.easeIn',
+                duration: 600,
+                onComplete: () => {
+                    globalObjsTemp.generator.invalid.y = 9999;
+                }
+            });
+        }
+    });
+}
+
+function openGenerator() {
+    if (globalObjsTemp.generatorSound) {
+        globalObjsTemp.generatorSound.setVolume(1);
+    }
+    for (let i in globalObjsTemp.generator) {
+        globalObjsTemp.generator[i].visible = true;
+        if (globalObjsTemp.generator[i].setState) {
+            globalObjsTemp.generator[i].setState(NORMAL);
+            globalObjsTemp.generator[i].setAlpha(1);
+        }
+    }
+    for (let j in globalObjsTemp.generatorWires) {
+        globalObjsTemp.generatorWires[j].visible = true;
+    }
+}
+
+function closeGenerator() {
+    if (globalObjsTemp.generatorSound) {
+        globalObjsTemp.generatorSound.setVolume(0.25);
+    }
+    for (let i in globalObjsTemp.generator) {
+        globalObjsTemp.generator[i].visible = false;
+        if (globalObjsTemp.generator[i].setState) {
+            globalObjsTemp.generator[i].setState(DISABLE);
+            globalObjsTemp.generator[i].setAlpha(0.001);
+        }
+    }
+    for (let j in globalObjsTemp.generatorWires) {
+        globalObjsTemp.generatorWires[j].visible = false;
+    }
+    if (!gameState.powerOff && !gameState.showedEyes) {
+        gameState.showedEyes = true;
+        globalObjsTemp.dogEyes = PhaserScene.add.sprite(gameConsts.halfWidth - 80, gameConsts.halfHeight + 200, 'lowq', 'eyes.png').setOrigin(0.5, 0.5).setDepth(-1).setScale(0.95, 0.8);
+        globalObjsTemp.dogEyes.scrollFactorX = 0;
+        globalObjsTemp.dogEyes.scrollFactorY = 0;
+        gameState.dogLooking = true
+        globalObjsTemp.dogEyeAnim = PhaserScene.tweens.add({
+            targets: globalObjsTemp.dogEyes,
+            x: "-=12",
+            scaleX: 1,
+            scaleY: 1,
+            ease: 'Quad.easeOut',
+            duration: 100,
+            onComplete: () => {
+                PhaserScene.tweens.add({
+                    delay: 200,
+                    targets: globalObjsTemp.dogEyes,
+                    x: "+=80",
+                    ease: 'Quart.easeIn',
+                    duration: 500,
+                    onComplete: () => {
+                        globalObjsTemp.dogEyes.x = 999;
+                    }
+                });
+            }
+        });
+
+    }
+}
+
+function updateGenerator() {
+
+}
