@@ -2500,20 +2500,7 @@ function startGenerator() {
     }
 
     let greenSocket = globalObjsTemp.generator.green.socket;
-    let greenCrosses = 0;
-    if (globalObjsTemp.generator.red.socket < greenSocket) {
-        greenCrosses++
-    }
-    if (globalObjsTemp.generator.blue.socket < greenSocket) {
-        greenCrosses++
-    }
-    if (globalObjsTemp.generator.yellow.socket > greenSocket) {
-        greenCrosses++
-    }
-    if (globalObjsTemp.generator.purple.socket > greenSocket) {
-        greenCrosses++
-    }
-    if (greenCrosses != 1) {
+    if (greenSocket !== 4) {
         showGeneratorInvalid(4286);
         playSound('generatorFail', 1);
         return false;
