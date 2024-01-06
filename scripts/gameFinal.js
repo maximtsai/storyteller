@@ -754,6 +754,7 @@ class GameFinal {
 
                 window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
                 fullRestart();
+                resetBanner();
             }
         });
         this.restartButton.setScrollFactor(0, 0);
