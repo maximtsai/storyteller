@@ -742,6 +742,7 @@ class GameFinal {
             },
             onMouseUp() {
                 fullRestart();
+                resetBanner();
             }
         });
         this.restartButton.setScrollFactor(0, 0);
