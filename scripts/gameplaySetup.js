@@ -133,6 +133,16 @@ function clearBannerAndHideDiv() {
     elem.style.top = "-1000px";
 }
 
+function resetBanner() {
+    const elem = document.getElementById("banner-container");
+    elem.style.top = "0px";
+    window.CrazyGames.SDK.banner.requestBanner({
+        id: "banner-container",
+        width: 468,
+        height: 60,
+    });
+}
+
 function setupKeyPresses(scene) {
     keyPresses.keyA = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
     keyPresses.keyD = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.D);
