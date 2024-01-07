@@ -1197,7 +1197,7 @@ function clickExit() {
         } else if (gameState.goodEndLocked) {
             dialogManager.showDialogNode('ExitSceneThreeNoStay');
         } else {
-            if (!gameState.BrunaSaved && !gameState.EthanSaved && !gameState.EdithSaved && !gameState.JuanSaved && !gameState.DogSaved) {
+            if (!gameState.BrunaSaved && !gameState.EthanSaved && !gameState.EdithSaved && !gameState.JuanSaved && gameState.juanLeaveStatus !== 'accept' && gameState.juanLeaveStatus !== 'onlyUseful' && !gameState.DogSaved) {
                 dialogManager.showDialogNode('ExitSceneThreeAlone');
             } else {
                 dialogManager.showDialogNode('ExitSceneThree');

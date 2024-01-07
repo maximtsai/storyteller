@@ -6,7 +6,6 @@ let config = {
         height: 640,
         autoRound: true,
         mode: Phaser.Scale.FIT,
-        autoCenter: Phaser.Scale.CENTER_BOTH,
     },
     render: {
         // Leave on to prevent pixelated graphics
@@ -52,6 +51,7 @@ let gameConsts = {
     shedStartY: 4000
 };
 let gameVars = {
+    gameScale: 1,
     typeWriterOverflow: 0,
     averageDeltaScale: 1,
     gameConstructed: false,
@@ -107,7 +107,9 @@ function fullRestart() {
         gameFinal.reset();
         game.destroy();
     }
+    let oldGameScale = gameVars.gameScale;
     gameVars = {
+        gameScale: oldGameScale,
         typeWriterOverflow: 0,
         averageDeltaScale: 1,
         gameConstructed: false,
@@ -166,10 +168,34 @@ setTimeout(() => {
 
 function preload ()
 {
+    resizeGame();
     let gameDiv = document.getElementById('preload-notice');
     gameDiv.innerHTML = "";
     loadFileList(this, imageFilesPreload, 'image');
 }
+
+function resizeGame() {
+    return;
+    var canvas = game.canvas; //document.querySelector("canvas");
+    var windowWidth = window.innerWidth;
+    var windowHeight = window.innerHeight;
+    var windowRatio = windowWidth / windowHeight;
+    var gameRatio = game.config.width / game.config.height;
+    var gameScale = 1;
+    if (windowRatio < gameRatio) {
+        canvas.style.width = windowWidth + "px";
+        canvas.style.height = windowWidth / gameRatio + "px";
+        gameScale = windowWidth / game.config.width;
+        gameVars.canvasXOffset = 0;
+    } else {
+        canvas.style.width = windowHeight * gameRatio + "px";
+        canvas.style.height = windowHeight + "px";
+        gameScale = windowHeight / game.config.height;
+        gameVars.canvasXOffset = (windowWidth - game.config.width * gameScale) * 0.5;
+    }
+    gameVars.gameScale = gameScale;
+}
+
 
 function create ()
 {
