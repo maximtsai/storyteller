@@ -889,6 +889,7 @@ let dialogList1 = {
         ],
         branches: [
             {text: "Shoot... hoops?", targetNode: "EthanEdithLaugh"},
+            {text: "Shoot... drugs?", targetNode: "EthanEdithWhatElse"},
             {text: "Yes, though you two don\'t look\nlike marksmen yourselves.", targetNode: "EthanCop"},
         ]
     },
@@ -896,6 +897,14 @@ let dialogList1 = {
         speech: [
             {speaker: "Ethan and Edith", face: "ethan_and_edith.png", text: "Haha!", data: {property: "hoops", value: true}},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Nah man, drugs!"},
+            {speaker: "You", text: "How many drugs are you on?"},
+            {speaker: "Edith", face: "edith_normal.png", text: "Ethan here gets whatever's on sale\nthat week."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "If you're not joining in, you might\nwant to step back man."}
+        ]
+    },
+    EthanEdithWhatElse: {
+        speech: [
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Of course man, what else?"},
             {speaker: "You", text: "How many drugs are you on?"},
             {speaker: "Edith", face: "edith_normal.png", text: "Ethan here gets whatever's on sale\nthat week."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "If you're not joining in, you might\nwant to step back man."}
