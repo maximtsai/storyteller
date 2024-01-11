@@ -96,6 +96,8 @@ let oldTime = 0;
 let deltaScale = 1;
 let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 5;
+let url1 = '';
+let url2 = '';
 
 function fullRestart() {
     if (game) {
@@ -108,6 +110,9 @@ function fullRestart() {
         game.destroy();
     }
     let oldGameScale = gameVars.gameScale;
+    if (!document.location.href.includes(url1) && !document.location.href.includes(url2)) {
+        return;
+    }
     gameVars = {
         gameScale: oldGameScale,
         typeWriterOverflow: 0,
