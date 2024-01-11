@@ -582,7 +582,7 @@ class GameFinal {
         } else {
             this.displayedLines.push("\n\nYou finally arrive at what should be the nearest city.");
             this.displayedLines.push(" But instead of\nbuildings you see nothing but destruction and massive holes in the\nground.");
-            this.displayedLines.push(" Your group presses on to the next city, but you find\nempty towns and destroyed settlements everywhere you travel.");
+            this.displayedLines.push(" Your group presses on to the next city, but you find\nonly empty towns and destroyed settlements everywhere you go.");
             if (gameState.EthanSaved) {
                 this.displayedLines.push("\n\nExhausted, you settle down in a makeshift shelter, but soon the\nground start rumbling. Ethan looks at you with tired eyes and\nhalf-heartedly points up at a wall of teeth blotting out the sky.");
             } else {

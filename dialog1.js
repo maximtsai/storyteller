@@ -769,13 +769,13 @@ let dialogList1 = {
     },
     Edith3EthanSitDown: {
         speech: [
-            {speaker: " ", text: "   (Edith looks over at Ethan who's lounging around)"},
-            {speaker: "Edith", face: "edith_normal.png", publish: "showInfluenceSmall", text: "*Sigh* sorry but I just... I just can't.\nYou can go with Ethan, but I'm staying here.\n(Not enough trust)"},
+            {speaker: " ", text: "   (Edith looks over at Ethan who's lounging\naround)"},
+            {speaker: "Edith", face: "edith_normal.png", publish: "showInfluenceSmall", text: "*Sigh* sorry but I just... I just can't.\nYou can go with Ethan, but I'm\nstaying here.\n(Not enough trust)", data: {property: "EdithRefuse", value: true}},
         ]
     },
     Edith3LeaveFineFail: {
         speech: [
-            {speaker: "Edith", face: "edith_sad.png", publish: "showInfluenceSmall", text: "Then I'm staying here.\n(Not enough trust)"},
+            {speaker: "Edith", face: "edith_sad.png", publish: "showInfluenceSmall", text: "Then I'm staying here.\n(Not enough trust)", data: {property: "EdithRefuse", value: true}},
         ]
     },
     Edith3LeaveNormal: {
