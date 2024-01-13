@@ -18,6 +18,8 @@ function setupLoadingBar(scene) {
     // Basic loading bar visual
     let extraLoadingBarLength = isMobile ? 100 : 0;
     let extraLoadingBarWidthMult = isMobile ? 2 : 1;
+    window.CrazyGames.SDK.game.sdkGameLoadingStart();
+    displayBanner()
     mainBackground = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'loading1');
     loadingBarBack = scene.add.image(gameConsts.halfWidth, gameConsts.height - 164, 'blackPixel');
     loadingBarBack.scaleX = 101 + extraLoadingBarLength;
@@ -40,6 +42,7 @@ function setupLoadingBar(scene) {
     });
 
     scene.load.on('complete', () => {
+        window.CrazyGames.SDK.game.sdkGameLoadingStop();
         setTimeout(() => {
             loadingBar.scaleX = 100 + extraLoadingBarLength;
             scene.tweens.add({
@@ -142,14 +145,22 @@ function clearBannerAndHideDiv() {
     elem.style.top = "-1000px";
 }
 
-function resetBanner() {
-    const elem = document.getElementById("banner-container");
-    elem.style.top = "0px";
-    window.CrazyGames.SDK.banner.requestBanner({
-        id: "banner-container",
-        width: 468,
-        height: 60,
-    });
+let canCallBanner = true;
+function displayBanner() {
+    if (canCallBanner) {
+        // Prevent banner from being called multiple times in high frequency
+        canCallBanner = false;
+        setTimeout(() => {
+            canCallBanner = true;
+        }, 65000);
+        const elem = document.getElementById("banner-container");
+        elem.style.top = "0px";
+        window.CrazyGames.SDK.banner.requestBanner({
+            id: "banner-container",
+            width: 468,
+            height: 60,
+        });
+    }
 }
 
 function setupKeyPresses(scene) {
