@@ -564,7 +564,7 @@ class GameFinal {
 
             if (gameState.MaggieSaved) {
                 this.displayedLines.push("\n\nThe stronghold's rations are stale and cold, but Maggie's extra\nsupplies and cooking brings warmth and smiles.");
-                this.theEndTitle.setText('Ending #Good: Technically this should not trigger.\nMsg me a bug report.';
+                this.theEndTitle.setText('Ending #Good: Technically this should not trigger.\nMsg me a bug report.');
                 this.endImage.setFrame('campfire.png');
                 this.endImage.y = gameConsts.height - 5;
             } else if (gameState.maggieSandwichEnd) {
