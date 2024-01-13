@@ -5,7 +5,7 @@ let isMobile = false;
 
 function testMobile() {
   const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-  return true;//regex.test(navigator.userAgent);
+  return regex.test(navigator.userAgent);
 }
 
 function setBackground(atlas, ref) {
