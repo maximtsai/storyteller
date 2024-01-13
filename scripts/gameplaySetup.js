@@ -13,13 +13,18 @@ function setBackground(atlas, ref) {
     mainBackground = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, atlas, ref);
 }
 
+let isFirstPlay = true;
+
 function setupLoadingBar(scene) {
     isMobile = testMobile();
     // Basic loading bar visual
     let extraLoadingBarLength = isMobile ? 100 : 0;
     let extraLoadingBarWidthMult = isMobile ? 2 : 1;
     window.CrazyGames.SDK.game.sdkGameLoadingStart();
-    displayBanner()
+    if (isFirstPlay) {
+        displayBanner();
+        isFirstPlay = false;    
+    }
     mainBackground = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'loading1');
     loadingBarBack = scene.add.image(gameConsts.halfWidth, gameConsts.height - 164, 'blackPixel');
     loadingBarBack.scaleX = 101 + extraLoadingBarLength;

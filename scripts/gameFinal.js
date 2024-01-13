@@ -771,9 +771,7 @@ class GameFinal {
             },
             onMouseUp() {
                 const callbacks = {
-                    adFinished: () => {
-                        setTimeout(() => {displayBanner()}, 2000);
-                    },
+                    adFinished: () => {displayBanner()},
                     adStarted: () => console.log("Start midgame ad (callback)"),
                 };
 
