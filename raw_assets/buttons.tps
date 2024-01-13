@@ -219,7 +219,36 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">buttons/move_btn_glow.png</key>
+            <key type="filename">buttons/move_btn_normal.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>28,120,55,240</rect>
+                <key>scale9Paddings</key>
+                <rect>28,120,55,240</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">buttons/move_btn_normal_wide.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>63,120,125,240</rect>
+                <key>scale9Paddings</key>
+                <rect>63,120,125,240</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">buttons/move_btn_over.png</key>
             <key type="filename">buttons/move_btn_press.png</key>
             <struct type="IndividualSpriteSettings">
@@ -236,7 +265,8 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">buttons/move_btn_normal.png</key>
+            <key type="filename">buttons/move_btn_over_wide.png</key>
+            <key type="filename">buttons/move_btn_press_wide.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -245,9 +275,9 @@
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
-                <rect>28,120,55,240</rect>
+                <rect>63,125,125,250</rect>
                 <key>scale9Paddings</key>
-                <rect>28,120,55,240</rect>
+                <rect>63,125,125,250</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

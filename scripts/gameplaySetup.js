@@ -1,6 +1,12 @@
 let mainBackground;
 let loadingBar;
 let loadingText;
+let isMobile = false;
+
+function testMobile() {
+  const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+  return regex.test(navigator.userAgent);
+}
 
 function setBackground(atlas, ref) {
     mainBackground.destroy();
@@ -8,14 +14,17 @@ function setBackground(atlas, ref) {
 }
 
 function setupLoadingBar(scene) {
+    isMobile = testMobile();
     // Basic loading bar visual
+    let extraLoadingBarLength = isMobile ? 100 : 0;
+    let extraLoadingBarWidthMult = isMobile ? 2 : 1;
     mainBackground = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'loading1');
     loadingBarBack = scene.add.image(gameConsts.halfWidth, gameConsts.height - 164, 'blackPixel');
-    loadingBarBack.scaleX = 101;
-    loadingBarBack.scaleY = 4
+    loadingBarBack.scaleX = 101 + extraLoadingBarLength;
+    loadingBarBack.scaleY = 4 * extraLoadingBarWidthMult;
     loadingBar = scene.add.image(gameConsts.halfWidth, gameConsts.height - 164, 'whitePixel');
     loadingBar.setAlpha(0.85);
-    loadingBarBack.scaleY = 3;
+    loadingBar.scaleY = 3 * extraLoadingBarWidthMult;
 
     loadingText = scene.add.text(gameConsts.halfWidth, gameConsts.height - 200, '  DRIVING...');
     loadingText.setTint(0x000000);
@@ -27,12 +36,12 @@ function setupLoadingBar(scene) {
     // Setup loading bar logic
 
     scene.load.on('progress', function (value) {
-        loadingBar.scaleX = 100 * value;
+        loadingBar.scaleX = (100 + extraLoadingBarLength) * value;
     });
 
     scene.load.on('complete', () => {
         setTimeout(() => {
-            loadingBar.scaleX = 100;
+            loadingBar.scaleX = 100 + extraLoadingBarLength;
             scene.tweens.add({
                 targets: [loadingText, loadingBar, loadingBarBack],
                 alpha: 0,
@@ -102,7 +111,7 @@ function setupGame() {
         });
     }, 0);
 
-
+    setupWideMoveButtons();
     createWorldButtons();
     setupMoveButtons();
     setupDialogManager();
@@ -213,6 +222,99 @@ function closeCredits() {
         globalObjects.creditsText2.destroy();
         globalObjects.creditsCloseIcon.destroy();
     }
+}
+
+function setupWideMoveButtons() {
+    if (!isMobile) {
+        return;
+    }
+    globalObjects.moveLeftBtnWide = new Button({
+        normal: {
+            "atlas": "buttons",
+            "ref": "move_btn_normal_wide.png",
+            "x": 173,
+            "y": gameConsts.halfHeight,
+            "scaleX": -1.33,
+            "scaleY": 1.33,
+            "alpha": 0.001
+        },
+        hover: {
+            "atlas": "buttons",
+            "ref": "move_btn_over_wide.png",
+            "alpha": 0.001
+        },
+        press: {
+            "atlas": "buttons",
+            "ref": "move_btn_press_wide.png",
+            "alpha": 1
+        },
+        disable: {
+            "atlas": "buttons",
+            "ref": "move_btn_disable.png"
+        },
+        onHover: () => {
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            canvas.style.cursor = 'default';
+        },
+    });
+    globalObjects.moveLeftBtnWide.setOrigin(0.5, 0.533);
+    globalObjects.moveLeftBtnWide.setDepth(20);
+    globalObjects.moveLeftBtnWide.setState(DISABLE);
+    globalObjects.moveLeftBtnWide.setOnMouseUpFunc(() => {
+        if (!gameState.isOutdoors && gameState.currentScene == 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
+            gameState.scratchingDoor = true;
+            gameCharacters.backdoor.play('backdoor_shake');
+
+            dialogManager.showDialogNode('DoorScratchStart');
+            girlsMoveAwayFromDoor();
+        }
+    })
+
+    globalObjects.moveRightBtnWide = new Button({
+        normal: {
+            "atlas": "buttons",
+            "ref": "move_btn_normal_wide.png",
+            "x": gameConsts.width - 95,
+            "y": gameConsts.halfHeight,
+            "scaleX": 1.33,
+            "scaleY": 1.33,
+            "alpha": 0.001
+        },
+        hover: {
+            "atlas": "buttons",
+            "ref": "move_btn_over_wide.png",
+            "alpha": 0.001
+        },
+        press: {
+            "atlas": "buttons",
+            "ref": "move_btn_press_wide.png",
+            "alpha": 1
+        },
+        disable: {
+            "atlas": "buttons",
+            "ref": "move_btn_disable.png"
+        },
+        onHover: () => {
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            canvas.style.cursor = 'default';
+        },
+    });
+    globalObjects.moveRightBtnWide.setOrigin(0.73, 0.533);
+    globalObjects.moveRightBtnWide.setDepth(20);
+    globalObjects.moveRightBtnWide.setState(DISABLE);
+    globalObjects.moveRightBtnWide.setOnMouseUpFunc(() => {
+        if (!gameState.isOutdoors && gameState.currentScene == 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {
+            gameState.scratchingDoor = true;
+            gameCharacters.backdoor.play('backdoor_shake');
+
+            dialogManager.showDialogNode('DoorScratchStart');
+            girlsMoveAwayFromDoor();
+        }
+    })
 }
 
 function setupMoveButtons() {
@@ -332,7 +434,10 @@ function tickKeyPresses(deltaScale) {
         }
     }
 
-    if (globalObjects.moveLeftBtn.getState() == PRESS || tryingToMoveLeft) {
+    let mobileMoveLeft = globalObjects.moveLeftBtnWide && globalObjects.moveLeftBtnWide.getState() == PRESS;
+    let mobileMoveRight = globalObjects.moveRightBtnWide && globalObjects.moveRightBtnWide.getState() == PRESS;
+
+    if (globalObjects.moveLeftBtn.getState() == PRESS || tryingToMoveLeft || mobileMoveLeft) {
         if (gameVars.cameraPosX > gameVars.cameraPosMinX) {
             if (tryingToMoveLeft) {
                 wasMovingLeftKeyboard = true;
@@ -344,7 +449,7 @@ function tickKeyPresses(deltaScale) {
             gameVars.stickyAcc = 25;
         }
     }
-    if (globalObjects.moveRightBtn.getState() == PRESS || tryingToMoveRight) {
+    if (globalObjects.moveRightBtn.getState() == PRESS || tryingToMoveRight || mobileMoveRight) {
         if (gameVars.cameraPosX < gameVars.cameraPosMaxX) {
             if (gameVars.cameraMoveAcc < 0.1) {
                 gameVars.cameraMoveVel += 1;
@@ -413,6 +518,11 @@ function tickKeyPresses(deltaScale) {
 
         globalObjects.moveLeftBtn.setPos(15 + gameVars.cameraPosX, gameConsts.halfHeight + gameVars.cameraPosY);
         globalObjects.moveRightBtn.setPos(gameConsts.width - 15 + gameVars.cameraPosX, gameConsts.halfHeight + gameVars.cameraPosY);
+
+        if (globalObjects.moveRightBtnWide) {
+            globalObjects.moveRightBtnWide.setPos(gameConsts.width - 95 + gameVars.cameraPosX, gameConsts.halfHeight + gameVars.cameraPosY);
+            globalObjects.moveLeftBtnWide.setPos(173 + gameVars.cameraPosX, gameConsts.halfHeight + gameVars.cameraPosY);
+        }
 
         let radioCenter = 450;
         let distToRadio = radioCenter - gameVars.cameraPosX;
