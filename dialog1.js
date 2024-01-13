@@ -769,13 +769,13 @@ let dialogList1 = {
     },
     Edith3EthanSitDown: {
         speech: [
-            {speaker: " ", text: "   (Edith looks over at Ethan who's lounging around)"},
-            {speaker: "Edith", face: "edith_normal.png", publish: "showInfluenceSmall", text: "*Sigh* sorry but I just... I just can't.\nYou can go with Ethan, but I'm staying here.\n(Not enough trust)"},
+            {speaker: " ", text: "   (Edith looks over at Ethan who's lounging\naround)"},
+            {speaker: "Edith", face: "edith_normal.png", publish: "showInfluenceSmall", text: "*Sigh* sorry but I just... I just can't.\nYou can go with Ethan, but I'm\nstaying here.\n(Not enough trust)", data: {property: "EdithRefuse", value: true}},
         ]
     },
     Edith3LeaveFineFail: {
         speech: [
-            {speaker: "Edith", face: "edith_sad.png", publish: "showInfluenceSmall", text: "Then I'm staying here.\n(Not enough trust)"},
+            {speaker: "Edith", face: "edith_sad.png", publish: "showInfluenceSmall", text: "Then I'm staying here.\n(Not enough trust)", data: {property: "EdithRefuse", value: true}},
         ]
     },
     Edith3LeaveNormal: {
@@ -2766,6 +2766,28 @@ let dialogList1 = {
 
     JuanAct3Stay: {
         speech: [
+            {speaker: "Juan", face: "juan_normal.png", text: "Really? Even though this place is falling\napart?"},
+        ],
+        branches: [
+            {text: "On second thought I shouldn't\nstay here long either.", targetNode: "JuanAct3Leave2Alt"},
+            {text: "Yep.", targetNode: "JuanAct3StayReally"},
+        ]
+    },
+
+    JuanAct3Leave2Alt: {
+        speech: [
+            {speaker: "Juan", face: "juan_happy.png", text: "If you need a guide, I'm pretty handy\nwith a compass and map."},
+            {speaker: "Juan", face: "juan_normal.png", text: "Wait, how many people are you planning\non taking?"},
+        ],
+        branches: [
+            {text: "Only whoever's useful", targetNode: "JuanAct3Leave3Useful"},
+            {text: "As many as I can", targetNode: "JuanAct3Leave3All"},
+            {text: "What makes you think\nyou're coming along?", targetNode: "JuanAct3NoCome"},
+        ]
+    },
+
+    JuanAct3StayReally: {
+        speech: [
             {speaker: "Juan", face: "juan_normal.png", text: "Huh, wasn't expecting that."},
             {speaker: "Juan", face: "juan_normal.png", text: "..."},
             {speaker: "Juan", face: "juan_normal.png", text: "I'm gonna push on out of here.\nHeard of a possible refuge spot from\nthe radio."},
@@ -2884,7 +2906,7 @@ let dialogList1 = {
     JuanQuestionBrunaEdithFail: {
         speech: [
             {speaker: "Juan", face: "juan_sad.png", text: "No. I don't like the look of this."},
-            {speaker: "Juan", face: "juan_sad.png", text: "Whatever you're thinking of doing\nwith those two women, I want no\npart of.\""},
+            {speaker: "Juan", face: "juan_sad.png", text: "Whatever you're thinking of doing\nwith those two women, I want no\npart of."},
             {speaker: "", text: "  (Juan is no longer coming with you)", onFinish: () => {
                     gameState.JuanSaved = false;
                     messageBus.publish('juanContinue');

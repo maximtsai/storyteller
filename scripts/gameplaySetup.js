@@ -309,8 +309,8 @@ function tickKeyPresses(deltaScale) {
         messageBus.publish('clickNextDialog');
     }
 
-    let tryingToMoveLeft = (keyPresses.keyA.isDown || keyPresses.keyLeft.isDown) && globalObjects.moveLeftBtn.getState() === NORMAL;
-    let tryingToMoveRight = (keyPresses.keyD.isDown || keyPresses.keyRight.isDown) && globalObjects.moveLeftBtn.getState() === NORMAL && !tryingToMoveLeft;
+    let tryingToMoveLeft = (keyPresses.keyA.isDown || keyPresses.keyLeft.isDown) && (globalObjects.moveLeftBtn.getState() === NORMAL || globalObjects.moveLeftBtn.getState() === HOVER);
+    let tryingToMoveRight = (keyPresses.keyD.isDown || keyPresses.keyRight.isDown) && (globalObjects.moveRightBtn.getState() === NORMAL || globalObjects.moveRightBtn.getState() === HOVER) && !tryingToMoveLeft;
 
     if (wasMovingLeftKeyboard && !tryingToMoveLeft) {
         if (!gameState.isOutdoors && gameState.currentScene === 2 && !gameState.scratchingDoor && gameState.EthanEdithSeparated && gameState.chatted2Edith && gameState.juan2Chatted && gameState.brunaChatted2) {

@@ -1899,14 +1899,14 @@ function exitShed() {
                 ease: 'Cubic.easeIn',
                 onComplete: () => {
                     playSound('click');
-                    eyeflash.x += 100;
+                    eyeflash.x -= 20;
                     eyeflash.y += 25;
-                    eyeflash.setScale(1);
-                    eyeflash.setAlpha(0.1);
+                    eyeflash.setScale(0.85);
+                    eyeflash.setAlpha(0.13);
                     setTimeout(() => {
                         eyeflash.x -= 50;
-                        eyeflash.setScale(1.25);
-                        eyeflash.setAlpha(0.05);
+                        eyeflash.setScale(1);
+                        eyeflash.setAlpha(0.2);
                         blackPixelTemp.setAlpha(0.09)
                         setTimeout(() => {
                             eyeflash.destroy();
@@ -1954,12 +1954,12 @@ function exitShed() {
 function clickGenerator() {
     if (!globalObjsTemp.generator) {
         setTimeout(() => {
-            // if not fixed after 50 seconds, show extra spook.
+            // if not fixed after 20 seconds, show extra spook.
             if (gameState.powerOff === true) {
                 console.log("Spook on");
                 gameState.turnedOnPowerSlow = true;
             }
-        }, 50000);
+        }, 20000);
         gameState.viewedGenerator = true;
         let startYPos = gameConsts.halfHeight + gameConsts.shedStartY;
         updateManager.addFunction(updateGenerator);

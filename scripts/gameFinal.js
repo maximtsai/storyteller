@@ -497,7 +497,8 @@ class GameFinal {
             }
             this.displayedLines.push(pushText)
         }
-        if (gameState.radio2Done || gameState.radio3Done) {
+        let knowsFinalDestination = gameState.radio2Done || gameState.radio3Done;
+        if (knowsFinalDestination) {
             if (gameState.BrunaSaved) {
                 if (gameState.JuanSaved) {
                     this.displayedLines.push("\n\nBruna and Juan chart a route with you to Hope Springs.")
@@ -541,39 +542,57 @@ class GameFinal {
             this.displayedLines.push("\n\nWhile driving, you notice something impossibly large quickly\napproaching your truck.");
             this.displayedLines.push("\n\nYou floor the vehicle, but it is too late and you feel something\ncrash into the truck toppling it over.");
             if (numTotalSaved >= 1) {
-                this.theEndTitle.setText("Ending #3: Devoured");
+                this.theEndTitle.setText("Ending #3: Crashed");
                 this.endImage.setFrame('maw.png')
             }
             this.addEndingFailedLine();
             return;
         }
 
-        this.displayedLines.push("\n\nYou finally arrive at the Hope Springs stronghold where a number\nof other survivors are gathered.");
+        if (knowsFinalDestination) {
+            this.displayedLines.push("\n\nYou finally arrive at the Hope Springs stronghold where a number\nof other survivors are gathered.");
 
-        if (gameState.JuanSaved) {
-            this.displayedLines.push(" The stronghold is more like\na makeshift camp, but Juan\"s carpentry expertise provides\neveryone with sturdier shelter.");
-        } else {
-            this.displayedLines.push(" The stronghold is more like\na makeshift camp in the chilly wind.");
-        }
+            if (gameState.JuanSaved) {
+                this.displayedLines.push(" The stronghold is more like\na makeshift camp, but Juan\'s carpentry expertise provides\neveryone with sturdier shelter.");
+            } else {
+                this.displayedLines.push(" The stronghold is more like\na makeshift camp in the chilly wind.");
+            }
 
-        if (gameState.MaggieSaved) {
-            this.displayedLines.push("\n\nThe stronghold's rations are stale and cold, but Maggie's extra\nsupplies and cooking brings warmth and smiles.");
-            this.theEndTitle.setText('Ending #6: Future Hope');
-            this.endImage.setFrame('campfire.png');
-        } else if (gameState.maggieSandwichEnd) {
-            this.displayedLines.push("\n\nThe stronghold's rations are stale and cold, so you bring out\nMaggie's sandwiches and dig in.");
-            this.displayedLines.push("\n\nMaggie's sandwiches are delicious.");
-            this.displayedLines.push("\n...");
-            this.displayedLines.push("\nMaggie's sandwiches are gone.••••••••••••••••");
-            this.theEndTitle.setText('Ending #5: The Last Tasty Supper');
-            this.endImage.setFrame('grave.png');
-            this.endImage.setScale(this.endImage.scaleX * 0.85);
-            this.endImage.y = gameConsts.height;
+            if (gameState.MaggieSaved) {
+                this.displayedLines.push("\n\nThe stronghold's rations are stale and cold, but Maggie's extra\nsupplies and cooking brings warmth and smiles.");
+                this.theEndTitle.setText('Ending #6: Future Hope');
+                this.endImage.setFrame('campfire.png');
+                this.endImage.y = gameConsts.height - 5;
+            } else if (gameState.maggieSandwichEnd) {
+                this.displayedLines.push("\n\nThe stronghold's rations are stale and cold, so you bring out\nMaggie's sandwiches and dig in.");
+                this.displayedLines.push("\n\nMaggie's sandwiches are delicious.");
+                this.displayedLines.push("\n...");
+                this.displayedLines.push("\nMaggie's sandwiches are gone.••••••••••••••••");
+                this.theEndTitle.setText('Ending #5: The Last Tasty Supper');
+                this.endImage.setFrame('grave.png');
+                this.endImage.setScale(this.endImage.scaleX * 0.85);
+                this.endImage.y = gameConsts.height;
+            } else {
+                this.displayedLines.push("\n\nThe stronghold's rations are stale and cold.");
+                this.displayedLines.push("\n\nThey are enough to survive on, but only barely.");
+                this.theEndTitle.setText('Ending #4: Bare Minimum');
+                this.endImage.setFrame('campfire.png');
+                this.endImage.y = gameConsts.height - 5;
+            }
         } else {
-            this.displayedLines.push("\n\nThe stronghold's rations are stale and cold.");
-            this.displayedLines.push("\n\nThey are enough to survive on, but only barely.");
-            this.theEndTitle.setText('Ending #4: Bare Minimum');
-            this.endImage.setFrame('campfire.png');
+            this.displayedLines.push("\n\nYou finally arrive at what should be the nearest city.");
+            this.displayedLines.push(" But instead of\nbuildings you see nothing but destruction and massive holes in the\nground.");
+            this.displayedLines.push(" Your group presses on to the next city, but you find\nonly empty towns and destroyed settlements everywhere you go.");
+            if (gameState.EthanSaved) {
+                this.displayedLines.push("\n\nExhausted, you settle down in a makeshift shelter, but soon the\nground start rumbling. Ethan looks at you with tired eyes and\nhalf-heartedly points up at a wall of teeth blotting out the sky.");
+            } else {
+                this.displayedLines.push("\n\nExhausted, you settle down in a makeshift shelter, but soon the\nground start rumbling. You look up and all you see is a wall of teeth\nblotting out the sky.");
+            }
+            this.theEndTitle.setText('Ending #7: Hopeless');
+            this.endImage.setFrame('maw.png');
+            this.endImage.setBlendMode(Phaser.BlendModes.LIGHTEN);
+            this.endImage.setScale(this.endImage.scaleX * 0.65, this.endImage.scaleX * 0.62);
+            this.endImage.y = gameConsts.height - 2;
         }
 
     }
@@ -748,13 +767,14 @@ class GameFinal {
             },
             onMouseUp() {
                 const callbacks = {
-                    adFinished: () => console.log("End midgame ad (callback)"),
+                    adFinished: () => {
+                        setTimeout(() => {displayBanner()}, 2000);
+                    },
                     adStarted: () => console.log("Start midgame ad (callback)"),
                 };
 
                 window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
                 fullRestart();
-                resetBanner();
             }
         });
         this.restartButton.setScrollFactor(0, 0);
