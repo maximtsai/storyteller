@@ -45,6 +45,10 @@ class GameFinal {
         globalObjects.diner.CasparButton.destroy();
         globalObjects.moveLeftBtn.destroy();
         globalObjects.moveRightBtn.destroy();
+        if (globalObjects.moveRightBtnWide) {
+            globalObjects.moveRightBtnWide.destroy();
+            globalObjects.moveLeftBtnWide.destroy();
+        }
     }
 
     stayFinale() {
