@@ -564,7 +564,7 @@ class GameFinal {
 
             if (gameState.MaggieSaved) {
                 this.displayedLines.push("\n\nThe stronghold's rations are stale and cold, but Maggie's extra\nsupplies and cooking brings warmth and smiles.");
-                this.theEndTitle.setText('Ending #6: Future Hope');
+                this.theEndTitle.setText('Ending #Good: Technically this should not trigger.\nMsg me a bug report.';
                 this.endImage.setFrame('campfire.png');
                 this.endImage.y = gameConsts.height - 5;
             } else if (gameState.maggieSandwichEnd) {
@@ -592,7 +592,7 @@ class GameFinal {
             } else {
                 this.displayedLines.push("\n\nExhausted, you settle down in a makeshift shelter, but soon the\nground start rumbling. You look up and all you see is a wall of teeth\nblotting out the sky.");
             }
-            this.theEndTitle.setText('Ending #7: Hopeless');
+            this.theEndTitle.setText('Ending #6: Hopeless');
             this.endImage.setFrame('maw.png');
             this.endImage.setBlendMode(Phaser.BlendModes.LIGHTEN);
             this.endImage.setScale(this.endImage.scaleX * 0.65, this.endImage.scaleX * 0.62);
