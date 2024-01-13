@@ -239,6 +239,10 @@ class DialogDisplay {
     hideAll() {
         globalObjects.moveRightBtn.setState(NORMAL);
         globalObjects.moveLeftBtn.setState(NORMAL);
+        if (globalObjects.moveRightBtnWide) {
+            globalObjects.moveRightBtnWide.setState(NORMAL);
+            globalObjects.moveLeftBtnWide.setState(NORMAL);
+        }
         this.dialogClickBlocker.setState(DISABLE);
 
         this.dialogSpeaker.visible = false;
@@ -303,6 +307,10 @@ class DialogDisplay {
         this.dialogClickBlocker.setState(NORMAL);
         globalObjects.moveRightBtn.setState(DISABLE);
         globalObjects.moveLeftBtn.setState(DISABLE);
+        if (globalObjects.moveRightBtnWide) {
+            globalObjects.moveRightBtnWide.setState(DISABLE);
+            globalObjects.moveLeftBtnWide.setState(DISABLE);
+        }
         this.dialogPrompt.visible = false;
         this.currentlyTypedText = '';
 

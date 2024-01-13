@@ -246,15 +246,9 @@ function createWorldButtons() {
             atlas: "pixels",
             ref: "blue_pixel.png",
             x: -190,
-            y: 315,
+            y: 335,
             scaleX: 115,
-            scaleY: 260,
-            alpha: 0.001
-        },
-        hover: {
-            alpha: 0.001
-        },
-        press: {
+            scaleY: 220,
             alpha: 0.001
         },
         disable: {
@@ -1511,6 +1505,10 @@ function resetRadioPosition(position = 418) {
 function leaveRadio() {
     globalObjects.moveRightBtn.setState(NORMAL);
     globalObjects.moveLeftBtn.setState(NORMAL);
+    if (globalObjects.moveLeftBtnWide) {
+        globalObjects.moveRightBtnWide.setState(NORMAL);
+        globalObjects.moveLeftBtnWide.setState(NORMAL);
+    }
     for (let i in globalObjsTemp.radio) {
         globalObjsTemp.radio[i].visible = false;
     }
@@ -1525,6 +1523,10 @@ function leaveRadio() {
 function openRadio() {
     globalObjects.moveRightBtn.setState(DISABLE);
     globalObjects.moveLeftBtn.setState(DISABLE);
+    if (globalObjects.moveLeftBtnWide) {
+        globalObjects.moveRightBtnWide.setState(DISABLE);
+        globalObjects.moveLeftBtnWide.setState(DISABLE);
+    }
     for (let i in globalObjsTemp.radio) {
         globalObjsTemp.radio[i].visible = true;
     }
