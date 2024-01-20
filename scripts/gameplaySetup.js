@@ -423,18 +423,18 @@ function tickKeyPresses(deltaScale) {
                 wasMovingLeftKeyboard = true;
             }
             if (gameVars.cameraMoveAcc > -0.1) {
-                gameVars.cameraMoveVel -= 1;
+                gameVars.cameraMoveVel -= 1.1;
             }
-            gameVars.cameraMoveAcc = -0.6;
+            gameVars.cameraMoveAcc = -0.77;
             gameVars.stickyAcc = 25;
         }
     }
     if (globalObjects.moveRightBtn.getState() == PRESS || tryingToMoveRight || mobileMoveRight) {
         if (gameVars.cameraPosX < gameVars.cameraPosMaxX) {
             if (gameVars.cameraMoveAcc < 0.1) {
-                gameVars.cameraMoveVel += 1;
+                gameVars.cameraMoveVel += 1.1;
             }
-            gameVars.cameraMoveAcc = 0.6;
+            gameVars.cameraMoveAcc = 0.77;
             gameVars.stickyAcc = 25;
         }
     }
