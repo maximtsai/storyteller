@@ -152,6 +152,7 @@ function clearBannerAndHideDiv() {
 
 let canCallBanner = true;
 function displayBanner() {
+    return;
     if (canCallBanner) {
         // Prevent banner from being called multiple times in high frequency
         canCallBanner = false;
