@@ -144,6 +144,7 @@ function initializeMisc() {
 }
 
 function clearBannerAndHideDiv() {
+    return;
     window.CrazyGames.SDK.banner.clearAllBanners();
     
     const elem = document.getElementById("banner-container");
