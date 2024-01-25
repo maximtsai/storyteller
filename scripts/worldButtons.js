@@ -868,7 +868,11 @@ function clickEthan() {
                         dialogManager.showDialogNode('Ethan3FailedBest');
                         break;
                     case 'ethanNotTalk':
-                        dialogManager.showDialogNode('Ethan3NotTalk');
+                        if (gameState.tvSmashed) {
+                            dialogManager.showDialogNode('Ethan3NotTalkBroken');
+                        } else {
+                            dialogManager.showDialogNode('Ethan3NotTalk');
+                        }
                         break;
                     case 'ethanStayingHere':
                         dialogManager.showDialogNode('Ethan3LeavingChangeMind');
