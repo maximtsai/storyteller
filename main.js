@@ -15,7 +15,7 @@ let config = {
     transparent: true,
     parent: 'phaser-app',
     expandParent: true,
-    clearBeforeRender: false,
+    clearBeforeRender: true,
     scene: {
         preload: preload,
         create: create,
@@ -108,6 +108,7 @@ function fullRestart() {
         miscSubscribe.reset();
         gameFinal.reset();
         game.destroy();
+        console.log("Full Reset");
     }
     let oldGameScale = gameVars.gameScale;
     if (!document.location.href.includes(url1) && !document.location.href.includes(url2)) {
