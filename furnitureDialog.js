@@ -445,7 +445,7 @@ let furnitureDialog = {
     },
     ExitSceneTwo: {
         speech: [
-            {speaker: '', text: "Do I really want to exit now?"},
+            {speaker: '', text: "Do I really want to leave the diner now?"},
         ],
         branches: [
             {text: "Yes", targetNode: "ExitEarly"},

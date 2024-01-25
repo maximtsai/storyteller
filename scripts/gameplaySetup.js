@@ -64,7 +64,7 @@ function setupLoadingBar(scene) {
                             }, 30)
                         }, 30)
                     }, 100)
-                }, 1800)
+                }, 1500)
             }
             scene.tweens.add({
                 targets: [loadingText, loadingBar, loadingBarBack],

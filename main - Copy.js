@@ -12,10 +12,10 @@ let config = {
         antialias: true,
         roundPixels: true,
     },
-    transparent: true,
+    transparent: false,
     parent: 'phaser-app',
     expandParent: true,
-    clearBeforeRender: false,
+    clearBeforeRender: true,
     scene: {
         preload: preload,
         create: create,
