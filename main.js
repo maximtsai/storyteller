@@ -211,7 +211,6 @@ function create ()
 
 function onPreloadComplete (scene)
 {
-    setTimeout(() => {fullRestart()}, 8000);
     setupMouseInteraction(scene);
     setupLoadingBar(scene);
 
