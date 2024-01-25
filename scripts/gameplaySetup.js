@@ -50,6 +50,22 @@ function setupLoadingBar(scene) {
         window.CrazyGames.SDK.game.sdkGameLoadingStop();
         setTimeout(() => {
             loadingBar.scaleX = 100 + extraLoadingBarLength;
+
+            if (!gameVars.showedCreditsSpook) {
+                let eye = PhaserScene.add.image(635, gameConsts.halfHeight - 275, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.03).setScale(1.97);
+                setTimeout(() => {
+                    eye.setScale(2, 1.9).setAlpha(0.15);
+                    setTimeout(() => {
+                        eye.setScale(1.9, 0.5).setAlpha(0.1);
+                        setTimeout(() => {
+                            eye.setScale(4, 0.1).setAlpha(0.2);
+                            setTimeout(() => {
+                                eye.destroy();
+                            }, 30)
+                        }, 30)
+                    }, 100)
+                }, 1800)
+            }
             scene.tweens.add({
                 targets: [loadingText, loadingBar, loadingBarBack],
                 alpha: 0,
@@ -750,6 +766,19 @@ function runIntroSequence() {
     gameVars.canSkipIntro = true;
     setBackground('intro', 'start.png');
     let thunderSfx = playSound('thunder', 0.8);
+
+    if (!gameVars.showedCreditsSpook) {
+        let eye = PhaserScene.add.image(gameConsts.halfWidth + 260, gameConsts.halfHeight - 255, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.1).setScale(3);
+        setTimeout(() => {
+            eye.setScale(3.1).setAlpha(0.15);
+            setTimeout(() => {
+                eye.destroy();
+            }, 20)
+        }, 10)
+        gameVars.showedCreditsSpook = true;
+    }
+
+
     let greyCover = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'greycover.png').setScale(100, 4).setOrigin(0.5, 0.5).setDepth(-1);
     let dinerSign = PhaserScene.add.image(gameConsts.width, 430, 'intro', 'dinersign.png').setScale(0.7).setAlpha(0).setOrigin(0.5, 0.95);
 
