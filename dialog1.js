@@ -2760,7 +2760,7 @@ let dialogList1 = {
     },
     JuanAct3NoComeFin: {
         speech: [
-            {speaker: " ", text: "  (Butch glares at you. Best leave him be)"},
+            {speaker: " ", text: "  (Juan glares at you. Best leave him be)"},
         ]
     },
 
