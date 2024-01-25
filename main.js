@@ -15,7 +15,7 @@ let config = {
     transparent: true,
     parent: 'phaser-app',
     expandParent: true,
-    clearBeforeRender: true,
+    clearBeforeRender: false,
     scene: {
         preload: preload,
         create: create,
@@ -107,8 +107,7 @@ function fullRestart() {
         dialogDisplay.reset();
         miscSubscribe.reset();
         gameFinal.reset();
-        game.destroy();
-        console.log("Full Reset");
+        game.destroy(true);
     }
     let oldGameScale = gameVars.gameScale;
     if (!document.location.href.includes(url1) && !document.location.href.includes(url2)) {
@@ -212,6 +211,7 @@ function create ()
 
 function onPreloadComplete (scene)
 {
+    setTimeout(() => {fullRestart()}, 8000);
     setupMouseInteraction(scene);
     setupLoadingBar(scene);
 
