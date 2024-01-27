@@ -1105,6 +1105,7 @@ class MiscSubscribe {
     }
 
     startDark() {
+        clearGoalText();
         globalObjsTemp.black.setAlpha(0).setDepth(8);
         setTimeout(() => {
             globalObjsTemp.black.setAlpha(0.12);
@@ -1490,8 +1491,9 @@ class MiscSubscribe {
     startAction() {
         globalObjects.moveLeftBtn.setScale(-0.5, 0.9);
         globalObjects.moveRightBtn.setScale(0.5, 0.9);
-        globalObjects.moveLeftBtn.tweenToScale(-1, 1, 750, 'Back.easeOut')
-        globalObjects.moveRightBtn.tweenToScale(1, 1, 750, 'Back.easeOut')
+        globalObjects.moveLeftBtn.tweenToScale(-1, 1, 750, 'Back.easeOut');
+        globalObjects.moveRightBtn.tweenToScale(1, 1, 750, 'Back.easeOut');
+        setNewGoalText('Goal: Find a seat')
     }
 
     reset() {
