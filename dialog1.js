@@ -1134,7 +1134,7 @@ let dialogList1 = {
             {speaker: "Ethan", face: "ethan_normal.png", text: "Yeah, I'll let her cool off, it'll be fine."},
             {speaker: "You", text: "You're going to be waiting for a long time."},
             {speaker: "You", text: "In my experience, women can hold a grudge\npast the grave."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "I can wait. With my self-medication I\ncan wait forever." , data: {property: "ethanState", value: "ethanWaitForever"}},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "I can wait. She'll come around\neventually. She always does." , data: {property: "ethanState", value: "ethanWaitForever"}},
         ]
     },
     Ethan3MustApologize: {
