@@ -1173,7 +1173,7 @@ let dialogList1 = {
         speech: [
             {speaker: "Ethan", face: "ethan_normal.png", text: "What about it?"},
             {speaker: "You", text: "Can you hear if the thing outside is close or\nfar away?"},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "If I'm on the right stuff, sure.\nBut why?"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "If I'm paying close attention, sure.\nBut why?"},
         ],
         branches: [
             {text: "Tell him you're planning\nto leave", targetNode: "Ethan3DrugLeave"},
@@ -1185,7 +1185,7 @@ let dialogList1 = {
             {speaker: "You", text: "Actually, about that...\nYou have very good hearing right?"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "What about it?"},
             {speaker: "You", text: "Can you hear if the thing outside is close or\nfar away?"},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "If I'm on the right stuff, sure.\nBut why?"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "If I'm paying close attention, sure.\nBut why?"},
         ],
         branches: [
             {text: "Tell him you're planning\nto leave", targetNode: "Ethan3DrugLeave"},
