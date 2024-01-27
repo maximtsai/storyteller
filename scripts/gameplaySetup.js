@@ -411,7 +411,7 @@ function setupGoalText() {
             "y": 15,
             "scaleX": 150,
             "scaleY": 30,
-            alpha: 0.5
+            alpha: 0
         },
         onHover: () => {
             globalObjects.goalText.visible = true;
