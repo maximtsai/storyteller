@@ -433,12 +433,12 @@ function setupMoveButtons() {
 }
 
 function setupGoalText() {
-    globalObjects.goalText = PhaserScene.add.text(18, 22, ' ', { fontFamily: 'Times', fontSize: 24, color: '#000000' }).setDepth(999).setAlign('left').setOrigin(0, 0.5);
+    globalObjects.goalText = PhaserScene.add.text(18, 22, ' ', { fontFamily: 'Times', fontSize: 28, color: '#000000' }).setDepth(999).setAlign('left').setOrigin(0, 0.5);
     globalObjects.goalText.alpha = 0;
     globalObjects.goalText.scrollFactorX = 0;
     globalObjects.goalText.scrollFactorY = 0;
 
-    globalObjects.goalUnderline = PhaserScene.add.sprite(18, 36, 'blackPixel').setScale(0, 0.5).setOrigin(0, 0.5).setDepth(999);
+    globalObjects.goalUnderline = PhaserScene.add.sprite(18, 38, 'blackPixel').setScale(0, 0.5).setOrigin(0, 0.5).setDepth(999);
     globalObjects.goalUnderline.scrollFactorX = 0;
     globalObjects.goalUnderline.scrollFactorY = 0;
 
