@@ -138,6 +138,7 @@ function setupGame() {
     setupWideMoveButtons();
     createWorldButtons();
     setupMoveButtons();
+    setupGoalText();
     setupDialogManager();
     dialogDisplay = new DialogDisplay(PhaserScene);
     miscSubscribe = new MiscSubscribe(PhaserScene);
@@ -429,6 +430,85 @@ function setupMoveButtons() {
             girlsMoveAwayFromDoor();
         }
     })
+}
+
+function setupGoalText() {
+    globalObjects.goalText = PhaserScene.add.text(18, 22, ' ', { fontFamily: 'Times', fontSize: 24, color: '#000000' }).setDepth(999).setAlign('left').setOrigin(0, 0.5);
+    globalObjects.goalText.alpha = 0;
+    globalObjects.goalText.scrollFactorX = 0;
+    globalObjects.goalText.scrollFactorY = 0;
+
+    globalObjects.goalUnderline = PhaserScene.add.sprite(18, 36, 'blackPixel').setScale(0, 0.5).setOrigin(0, 0.5).setDepth(999);
+    globalObjects.goalUnderline.scrollFactorX = 0;
+    globalObjects.goalUnderline.scrollFactorY = 0;
+
+    globalObjects.goalBtn = new Button({
+        normal: {
+            "ref": "blackPixel",
+            "x": 75,
+            "y": 15,
+            "scaleX": 150,
+            "scaleY": 30,
+            alpha: 0.5
+        },
+        onHover: () => {
+            globalObjects.goalText.visible = true;
+            globalObjects.goalUnderline.visible = true;
+            if (globalObjects.goalTextAnim) {
+                globalObjects.goalTextAnim.stop();
+                globalObjects.goalText.alpha = 0.8;
+                globalObjects.goalUnderline.alpha = 0.5;
+            }
+        },
+        onHoverOut: () => {
+            if (globalObjects.goalUnderline.alpha > 0.01) {
+                globalObjects.goalTextAnim = PhaserScene.tweens.add({
+                    targets: [globalObjects.goalUnderline, globalObjects.goalText],
+                    delay: 200,
+                    alpha: 0,
+                    ease: 'Quad.easeIn',
+                    duration: 400
+                });
+            }
+        },
+    });
+    globalObjects.goalBtn.setScrollFactor(0, 0);
+    // globalObjects.goalText.setColor('#FFFFFF');
+}
+
+function setNewGoalText(text) {
+    globalObjects.goalText.setText(text);
+    if (globalObjects.goalTextAnim) {
+        globalObjects.goalTextAnim.stop();
+    }
+    PhaserScene.tweens.add({
+        targets: [globalObjects.goalUnderline, globalObjects.goalText],
+        alpha: 1,
+        ease: 'Quad.easeOut',
+        duration: 500
+    });
+    globalObjects.goalUnderline.visible = true;
+    globalObjects.goalText.visible = true;
+
+    PhaserScene.tweens.add({
+        targets: [globalObjects.goalUnderline],
+        scaleX: globalObjects.goalText.width * 0.5 + 0.5,
+        ease: 'Cubic.easeOut',
+        duration: 750
+    });
+
+    globalObjects.goalTextAnim = PhaserScene.tweens.add({
+        targets: [globalObjects.goalUnderline, globalObjects.goalText],
+        delay: 4500,
+        alpha: 0,
+        ease: 'Quad.easeOut',
+        duration: 1500
+    });
+}
+
+function clearGoalText() {
+    globalObjects.goalText.setText(' ');
+    globalObjects.goalUnderline.scaleX = 0;
 }
 
 let wasMovingLeftKeyboard = false;
@@ -985,6 +1065,7 @@ function setRadioPan(pan) {
 }
 
 function girlsMoveAwayFromDoor() {
+    clearGoalText();
     let charactersToShowExclaim = [
         gameCharacters.bruna,
         gameCharacters.maggie,

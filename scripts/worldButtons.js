@@ -1527,6 +1527,7 @@ function leaveRadio() {
 function openRadio() {
     globalObjects.moveRightBtn.setState(DISABLE);
     globalObjects.moveLeftBtn.setState(DISABLE);
+
     if (globalObjects.moveLeftBtnWide) {
         globalObjects.moveRightBtnWide.setState(DISABLE);
         globalObjects.moveLeftBtnWide.setState(DISABLE);
@@ -1707,6 +1708,9 @@ function clickIndoor() {
     gameVars.cameraMoveAcc = 0;
     gameVars.cameraMoveVel = 0.01;
     gameState.isOutdoors = false;
+    if (gameState.powerOff === false) {
+        globalObjects.goalText.setColor('#000000');
+    }
     // gameState.isInShed = false;
     gameVars.cameraPosY = 0;
     PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
@@ -1809,6 +1813,7 @@ function exitBackdoor() {
     gameVars.cameraMoveAcc = 0;
     gameVars.cameraMoveVel = 0.01;
     gameState.isOutdoors = true;
+    globalObjects.goalText.setColor('#FFFFFF');
     // gameState.isInShed = false;
     gameVars.cameraPosY = gameConsts.outdoorStartY;
     PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
@@ -2561,6 +2566,7 @@ function turnOnPower() {
         duration: 600
     });
     gameState.powerOff = false;
+    clearGoalText();
     globalObjsTemp.shedBackgrounds.setFrame('bgshed2.png');
     globalObjsTemp.outdoorBackgrounds.bg1.setFrame('bgout1Light.png');
     dialogManager.showDialogNode('GeneratorTurnedOn');
