@@ -76,6 +76,8 @@ class Button {
                 let oldImage = this.imageRefs[this.oldImageRef];
                 if (oldImage) {
                     newImage.setOrigin(oldImage.originX, oldImage.originY);
+                    newImage.scrollFactorX = oldImage.scrollFactorX;
+                    newImage.scrollFactorY = oldImage.scrollFactorY;
                 }
                 // if (this.cursorInteractive) {
                 //     newImage.setInteractive({ useHandCursor: 'pointer' });
@@ -134,9 +136,10 @@ class Button {
             return false;
         }
         let scrollFactorX = this.normal.scrollFactorX !== undefined ? this.normal.scrollFactorX : 1;
+        let scrollFactorY = this.normal.scrollFactorY !== undefined ? this.normal.scrollFactorY : 1;
         //let scrollFactorY = this.normal.scrollFactorY !== undefined ? this.normal.scrollFactorY : 1;
         let x = valX + PhaserScene.cameras.main.scrollX * scrollFactorX;
-        let y = valY + PhaserScene.cameras.main.scrollY * 1; //  + PhaserScene.cameras.main.scrollY
+        let y = valY + PhaserScene.cameras.main.scrollY * scrollFactorY; //  + PhaserScene.cameras.main.scrollY
         let currImage = this.imageRefs[this.currImageRef];
         let width = currImage.width * Math.abs(currImage.scaleX);
         let height = currImage.height * Math.abs(currImage.scaleY);

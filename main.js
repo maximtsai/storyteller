@@ -5,7 +5,7 @@ let config = {
         width: 720,
         height: 640,
         autoRound: true,
-        mode: Phaser.Scale.FIT,
+        mode: Phaser.Scale.FIT
     },
     render: {
         // Leave on to prevent pixelated graphics

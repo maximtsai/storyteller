@@ -4,8 +4,8 @@
 			"image": "sprites/buttons-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 841,
-				"h": 329
+				"w": 1022,
+				"h": 392
 			},
 			"scale": 1,
 			"frames": [
@@ -52,6 +52,27 @@
 					}
 				},
 				{
+					"filename": "undo_large.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 260,
+						"h": 260
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 3,
+						"w": 251,
+						"h": 254
+					},
+					"frame": {
+						"x": 687,
+						"y": 2,
+						"w": 251,
+						"h": 254
+					}
+				},
+				{
 					"filename": "restart.png",
 					"rotated": false,
 					"trimmed": true,
@@ -67,9 +88,51 @@
 					},
 					"frame": {
 						"x": 687,
-						"y": 2,
+						"y": 259,
 						"w": 152,
 						"h": 72
+					}
+				},
+				{
+					"filename": "undo - Copy.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 10,
+						"w": 59,
+						"h": 60
+					},
+					"frame": {
+						"x": 2,
+						"y": 330,
+						"w": 59,
+						"h": 60
+					}
+				},
+				{
+					"filename": "undo.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 11,
+						"y": 10,
+						"w": 59,
+						"h": 60
+					},
+					"frame": {
+						"x": 2,
+						"y": 330,
+						"w": 59,
+						"h": 60
 					}
 				},
 				{
@@ -87,8 +150,8 @@
 						"h": 107
 					},
 					"frame": {
-						"x": 687,
-						"y": 77,
+						"x": 941,
+						"y": 2,
 						"w": 57,
 						"h": 107
 					}
@@ -108,8 +171,8 @@
 						"h": 107
 					},
 					"frame": {
-						"x": 687,
-						"y": 77,
+						"x": 941,
+						"y": 2,
 						"w": 57,
 						"h": 107
 					}
@@ -129,8 +192,8 @@
 						"h": 107
 					},
 					"frame": {
-						"x": 687,
-						"y": 187,
+						"x": 941,
+						"y": 112,
 						"w": 56,
 						"h": 107
 					}
@@ -150,52 +213,10 @@
 						"h": 107
 					},
 					"frame": {
-						"x": 687,
-						"y": 187,
+						"x": 941,
+						"y": 112,
 						"w": 56,
 						"h": 107
-					}
-				},
-				{
-					"filename": "continue_prompt.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 44,
-						"h": 30
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 44,
-						"h": 30
-					},
-					"frame": {
-						"x": 687,
-						"y": 297,
-						"w": 44,
-						"h": 30
-					}
-				},
-				{
-					"filename": "move_btn_disable.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 2,
-						"h": 2
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 3,
-						"h": 3
-					},
-					"frame": {
-						"x": 734,
-						"y": 297,
-						"w": 3,
-						"h": 3
 					}
 				},
 				{
@@ -213,8 +234,8 @@
 						"h": 106
 					},
 					"frame": {
-						"x": 746,
-						"y": 187,
+						"x": 842,
+						"y": 259,
 						"w": 56,
 						"h": 106
 					}
@@ -234,10 +255,178 @@
 						"h": 106
 					},
 					"frame": {
-						"x": 747,
-						"y": 77,
+						"x": 901,
+						"y": 259,
 						"w": 55,
 						"h": 106
+					}
+				},
+				{
+					"filename": "undo_hover.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 9,
+						"w": 61,
+						"h": 62
+					},
+					"frame": {
+						"x": 959,
+						"y": 222,
+						"w": 61,
+						"h": 62
+					}
+				},
+				{
+					"filename": "undo_press.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 80,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 10,
+						"y": 9,
+						"w": 61,
+						"h": 62
+					},
+					"frame": {
+						"x": 959,
+						"y": 287,
+						"w": 61,
+						"h": 62
+					}
+				},
+				{
+					"filename": "audio_max.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 40
+					},
+					"frame": {
+						"x": 64,
+						"y": 330,
+						"w": 40,
+						"h": 40
+					}
+				},
+				{
+					"filename": "audio_min.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 40
+					},
+					"frame": {
+						"x": 107,
+						"y": 330,
+						"w": 40,
+						"h": 40
+					}
+				},
+				{
+					"filename": "audio_mute.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 40,
+						"h": 40
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 40,
+						"h": 40
+					},
+					"frame": {
+						"x": 150,
+						"y": 330,
+						"w": 40,
+						"h": 40
+					}
+				},
+				{
+					"filename": "continue_prompt.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 44,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 44,
+						"h": 30
+					},
+					"frame": {
+						"x": 193,
+						"y": 330,
+						"w": 44,
+						"h": 30
+					}
+				},
+				{
+					"filename": "move_btn_disable.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 2,
+						"h": 2
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 3,
+						"h": 3
+					},
+					"frame": {
+						"x": 1001,
+						"y": 2,
+						"w": 3,
+						"h": 3
+					}
+				},
+				{
+					"filename": "undo_disabled.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 2,
+						"h": 2
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 3,
+						"h": 3
+					},
+					"frame": {
+						"x": 1001,
+						"y": 2,
+						"w": 3,
+						"h": 3
 					}
 				}
 			]
@@ -246,6 +435,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:3646791e51d87dd3319ac0b067a6ca01:e745c9cc6403d6a4a6ed9b6704c75cf4:65710e74d82152c30eef887a1ead3394$"
+		"smartupdate": "$TexturePacker:SmartUpdate:82343662ee0e19c68c411103feef5587:c575e3f7f6609922d9dc2f1ca0a39453:65710e74d82152c30eef887a1ead3394$"
 	}
 }

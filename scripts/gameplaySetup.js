@@ -68,6 +68,11 @@ function setupLoadingBar(scene) {
                     loadingBar.destroy();
                     loadingBarBack.destroy();
                     onLoadComplete(scene);
+                    setTimeout(() => {
+                        if (globalObjects.muteButton) {
+                            globalObjects.muteButton.setState(NORMAL);
+                        }
+                    }, 1000);
                 }
             });
         }, 10);
@@ -78,6 +83,7 @@ function setupLoadingBar(scene) {
 let dialogDisplay ;
 let miscSubscribe;
 let gameFinal;
+let globalVolume = 1;
 
 function setupGame() {
     // PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'background');
@@ -129,6 +135,8 @@ function setupGame() {
     setupMoveButtons();
     setupGoalText();
     setupDialogManager();
+    setupUndoButton();
+    setupMuteButton();
     dialogDisplay = new DialogDisplay(PhaserScene);
     miscSubscribe = new MiscSubscribe(PhaserScene);
     gameFinal = new GameFinal(PhaserScene);
@@ -392,6 +400,74 @@ function setupMoveButtons() {
             girlsMoveAwayFromDoor();
         }
     })
+}
+
+function setupUndoButton() {
+
+}
+
+function setupMuteButton() {
+    let startFrame = 'audio_max.png';
+    if (globalVolume === 1) {
+        startFrame = 'audio_max.png';
+    } else if (globalVolume === 0) {
+        startFrame = 'audio_mute.png';
+    } else {
+        startFrame = 'audio_min.png';
+    }
+    globalObjects.muteButton = new Button({
+        normal: {
+            atlas: "buttons",
+            ref: startFrame,
+            x: 690,
+            y: 27,
+            alpha: 0.8
+        },
+        hover: {
+            atlas: "buttons",
+            alpha: 1
+        },
+        press: {
+            atlas: "buttons",
+            alpha: 0.85
+        },
+        disable: {
+            atlas: "buttons",
+            alpha: 0.2
+        },
+        onHover: () => {
+            // globalObjects.exclamation.setAlpha(0.75);
+            // globalObjects.exclamation.setFrame('hand_icon.png');
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            //globalObjects.exclamation.setAlpha(0);
+            canvas.style.cursor = 'default';
+        },
+        onMouseUp() {
+            toggleAudio();
+        }
+    });
+
+    globalObjects.muteButton.setScrollFactor(0, 0);
+    globalObjects.muteButton.setDepth(1);
+    globalObjects.muteButton.setState(DISABLE);
+}
+
+function toggleAudio() {
+    if (globalVolume === 1) {
+        updateGlobalVolume(0);
+        globalObjects.muteButton.setAllRef('audio_mute.png');
+        playSound('trustgainshort');
+    } else if (globalVolume === 0) {
+        updateGlobalVolume(0.25);
+        globalObjects.muteButton.setAllRef('audio_min.png');
+        playSound('trustgainshort');
+    } else {
+        updateGlobalVolume(1);
+        globalObjects.muteButton.setAllRef('audio_max.png');
+        playSound('trustgainshort');
+    }
 }
 
 function setupGoalText() {
@@ -675,7 +751,8 @@ function realGameStart() {
                 darkGloom.setAlpha(1);
                 PhaserScene.tweens.add({
                     targets: globalObjects.indoorRain,
-                    volume: 0.25,
+                    trueVolume: 0.25,
+                    volume: 0.25 * globalVolume,
                     duration: 1500
                 });
                 setTimeout(() => {
@@ -767,8 +844,6 @@ function showExclamation() {
                 }
             });
         }, randDelay);
-
-
     }
 
     if (gameState.currentScene == 1) {
@@ -803,6 +878,8 @@ function setCharactersNormal() {
 
 
 function runIntroSequence() {
+    document.body.style.backgroundImage = "url('sprites/preload/rain.webp')";
+
     globalObjects.optionsButton.destroy();
     globalObjects.creditsButton.destroy();
     gameVars.canSkipIntro = true;
@@ -1008,12 +1085,12 @@ function setRadioMusic(music, volume = 0.1) {
 
 function setRadioVolume(vol = 1) {
     gameVars.radioVolume = vol;
-    globalObjsTemp.radioMusic.volume = vol;
+    globalObjsTemp.radioMusic.volume = vol * globalVolume;
 
     if (globalObjsTemp.radioStatic1 && globalObjsTemp.radioStatic1.trueVolume !== undefined) {
-        globalObjsTemp.radioStatic1.volume = globalObjsTemp.radioStatic1.trueVolume * vol;
+        globalObjsTemp.radioStatic1.volume = globalObjsTemp.radioStatic1.trueVolume * vol * globalVolume;
         if (globalObjsTemp.radioStatic2) {
-            globalObjsTemp.radioStatic2.volume = globalObjsTemp.radioStatic2.trueVolume * vol;
+            globalObjsTemp.radioStatic2.volume = globalObjsTemp.radioStatic2.trueVolume * vol * globalVolume;
         }
     }
 }

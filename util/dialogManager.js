@@ -12,10 +12,15 @@ class DialogManager {
         this.dialogNodes[nodeName] = dialog;
     }
 
-    showDialogNode(nodeName) {
+    showDialogNode(nodeName, nodeNum) {
         this.hideDialogNode();
-        this.dialogNodes[nodeName].show();
-        this.currNode = nodeName;
+        if (nodeNum) {
+            this.dialogNodes[nodeName].showIdx(nodeNum);
+            this.currNode = nodeName;
+        } else {
+            this.dialogNodes[nodeName].show();
+            this.currNode = nodeName;
+        }
     }
 
     hideDialogNode() {
@@ -69,6 +74,38 @@ class DialogNode {
         if (this.speech.length > 0) {
             messageBus.publish("showNextButton", this.showNext.bind(this));
         }
+        if (this.hasBranches() && this.speech.length == 1) {
+            this.setupBranches();
+        }
+    }
+
+    showIdx(idx = 0) {
+        let resetCurrentTextIdx = false;
+        this.currTextIdx++
+        messageBus.publish("showTalkText", this.speech[this.currTextIdx].text, this.speech[this.currTextIdx].instant);
+        messageBus.publish("showTalkSpeaker", this.speech[this.currTextIdx].speaker);
+        if (this.speech[this.currTextIdx].size) {
+            messageBus.publish("updateTextSize", this.speech[this.currTextIdx].size);
+        }
+        if (this.speech[this.currTextIdx].forceProgress) {
+            messageBus.publish("forceTextProgress");
+        }
+        if (this.speech[this.currTextIdx].unclickable) {
+            messageBus.publish("unclickable");
+        }
+        if (this.speech[this.currTextIdx].data) {
+            gameState[this.speech[this.currTextIdx].data.property] = this.speech[this.currTextIdx].data.value;
+        }
+        if (this.speech[this.currTextIdx].face) {
+            messageBus.publish("showTalkFace", this.speech[this.currTextIdx].face);
+        }
+        if (this.speech[this.currTextIdx].publish) {
+            messageBus.publish(this.speech[this.currTextIdx].publish, this.speech[this.currTextIdx].param);
+        }
+        // TODO Not sure if needed
+        // if (this.speech.length > this.currTextIdx) {
+        //     messageBus.publish("showNextButton", this.showNext.bind(this));
+        // }
         if (this.hasBranches() && this.speech.length == 1) {
             this.setupBranches();
         }
