@@ -11,7 +11,7 @@ let dialogList1 = {
         speech: [
             {speaker: "Maggie", face: "maggie_normal.png", text: "Honey, just grab a seat.\nI\'ll be right with you.", data: {property: "askedSeat", value: true}},
             {speaker: "You", text: "Where\'s the rest of your staff?"},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "My line cook had to call out and my...\nwell it\'s just me tonight."},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "My line cook had to call out and my...\nwell it\'s just me tonight.", publish: "SavePoint", param: {node: 'findSeat', num: 2}},
         ],
         branches: [
             {text: "Want some help?", targetNode: "MaggieAct1Happy"},
@@ -2023,11 +2023,28 @@ let dialogList1 = {
         ],
     },
 
+    CasparFarIntro: {
+        speech: [
+            {speaker: "You", text: ".••.••.•••••Oh!••••••••••• Hello, mind if I sit with you?"},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Not at all friend. Name's Caspar."},
+            {speaker: "You", text: "Caspar, like the ghost?"},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Haha! No, no like the wise man. Though\nI can't claim to be very wise myself.\nWhat's your name son?"},
+            {speaker: "You", text: "I'm Noah."},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Noah, huh. Nice to meet you.", onFinish: () => {
+                    if (gameState.brunaIntroduced && gameState.juanIntroduced && gameState.EthanIntroduced && gameState.EdithIntroduced) {
+                        dialogManager.showDialogNode("CasparTalkOthersDone");
+                    } else {
+                        dialogManager.showDialogNode("CasparTalkOthers");
+                    }
+                }},
+        ]
+    },
+
     CasparIntro: {
         speech: [
             {speaker: "You", text: "Hello, mind if I sit with you?"},
             {speaker: "Caspar", face: "caspar_normal.png", text: "Not at all friend. Name's Caspar."},
-            {speaker: "You", text: "Like the ghost?"},
+            {speaker: "You", text: "Caspar, like the ghost?"},
             {speaker: "Caspar", face: "caspar_normal.png", text: "Haha! No, no like the wise man. Though\nI can't claim to be very wise myself.\nWhat's your name son?"},
             {speaker: "You", text: "I'm Noah."},
             {speaker: "Caspar", face: "caspar_normal.png", text: "Noah, huh. Nice to meet you.", onFinish: () => {
