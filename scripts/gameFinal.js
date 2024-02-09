@@ -18,10 +18,13 @@ class GameFinal {
         for (let i in this.subscriptions) {
             this.subscriptions[i].unsubscribe();
         }
-        this.displayedLines = [];
         if (this.endImage) {
             this.endImage.destroy();
         }
+        for (let i in this.displayedLines) {
+            this.displayedLines[i].destroy()
+        }
+        this.displayedLines = [];
         if (globalObjsTemp.epilogueBG) {
             globalObjsTemp.epilogueBG.destroy();
         }
@@ -45,6 +48,7 @@ class GameFinal {
         globalObjects.diner.CasparButton.destroy();
         globalObjects.moveLeftBtn.destroy();
         globalObjects.moveRightBtn.destroy();
+        globalObjects.goalBtn.destroy();
         if (globalObjects.moveRightBtnWide) {
             globalObjects.moveRightBtnWide.destroy();
             globalObjects.moveLeftBtnWide.destroy();
@@ -628,7 +632,7 @@ class GameFinal {
         if (numTotalSaved === 0) {
             this.displayedLines.push("\n\nYou head out alone into the dark and are never heard from again.")
             if (gameState.powerOff && gameState.hasBackdoorKey) {
-                this.displayedLines.push("\n\n(You also took Maggie's backdoor keys while leaving everyone\nin the dark. Shame on you.")
+                this.displayedLines.push("\n\n(You also took Maggie's backdoor keys while leaving everyone\nin the dark. Shame on you.)")
             }
         } else {
             this.displayedLines.push("\n\nYou and your group are never heard from again.")

@@ -2520,7 +2520,10 @@ let dialogList1 = {
             {speaker: "Caspar", face: "caspar_dark_scared.png", text: "I'll get to the point. This place isn't safe.\n" +
                     "It's no ordinary storm out there."},
             {speaker: "Caspar", face: "caspar_dark_scared.png", text: "And these thin walls won't protect from\nanything more than rain and wind."},
-            {speaker: "Caspar", face: "caspar_dark_scared.png", text: "You might try to find somewhere safer.\nAll the better if you bring some of the\nothers along with you."},
+            {speaker: "Caspar", face: "caspar_dark_scared.png", text: "You might try to find somewhere safer.\nAll the better if you bring some of the\nothers along with you.", onFinish: () => {
+                    globalObjects.goalText.setColor('#FFFFFF');
+                    setNewGoalText('Goal: Fix the power');
+                }},
         ]
     },
     InterruptChoiceTwo: {
@@ -2530,7 +2533,10 @@ let dialogList1 = {
             {speaker: "Caspar", face: "caspar_dark_scared.png", text: "I'll get to the point. This place isn't safe.\n" +
                     "It ain't no ordinary storm out there."},
             {speaker: "Caspar", face: "caspar_dark_scared.png", text: "And these thin walls won't protect from\nanything more than rain and wind."},
-            {speaker: "Caspar", face: "caspar_dark_scared.png", text: "You might try to find somewhere safer.\nAll the better if you bring some of the\nothers along with you."},
+            {speaker: "Caspar", face: "caspar_dark_scared.png", text: "You might try to find somewhere safer.\nAll the better if you bring some of the\nothers along with you.", onFinish: () => {
+                    globalObjects.goalText.setColor('#FFFFFF');
+                    setNewGoalText('Goal: Fix the power');
+                }},
         ]
     },
     WindowBroken: {

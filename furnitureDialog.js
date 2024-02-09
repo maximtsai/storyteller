@@ -433,7 +433,9 @@ let furnitureDialog = {
             {speaker: "",  text: "  (You feel the room has relaxed now that\n    the power is back on)"},
             {speaker: "Maggie", face: "maggie_happy.png", text: "Thank you honey. I'll go turn off some of\nthe kitchen equipment to save power.", publish: 'MaggieInfluence'},
             {speaker: "You", text: "Could we keep the radio on? It might have\nuseful information."},
-            {speaker: "Maggie", face: "maggie_normal.png", text: "Of course. You do what you need to do\nand I'll have a meal prepared for you\nshortly."},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "Of course. You do what you need to do\nand I'll have a meal prepared for you\nshortly.", onFinish: () => {
+                    setNewGoalText('Check up on everyone')
+                }},
         ]
     },
 
@@ -445,7 +447,7 @@ let furnitureDialog = {
     },
     ExitSceneTwo: {
         speech: [
-            {speaker: '', text: "Do I really want to exit now?"},
+            {speaker: '', text: "Do I really want to leave the diner now?"},
         ],
         branches: [
             {text: "Yes", targetNode: "ExitEarly"},
