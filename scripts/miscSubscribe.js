@@ -69,9 +69,23 @@ class MiscSubscribe {
             messageBus.subscribe("EdithInfluence", (amt) => this.updateInfluence("EdithInfluence", amt)),
             messageBus.subscribe("EthanInfluence", (amt) => this.updateInfluence("EthanInfluence", amt)),
 
-            messageBus.subscribe("SavePoint", (amt) => this.savePoint("EthanInfluence", amt))
+            messageBus.subscribe("savePoint", (data) => this.savePoint(data)),
+            messageBus.subscribe("loadSavePoint", this.loadSavePoint.bind(this)),
+            messageBus.subscribe("showUndoPoint", this.showUndoPoint.bind(this)),
+            messageBus.subscribe("hideUndoPoint", this.hideUndoPoint.bind(this)),
 
         ];
+    }
+
+    showUndoPoint() {
+        if (globalObjsTemp.saveGameVars) {
+            showUndoButton();
+            buttonManager.bringToTop(globalObjects.undoButton);
+        }
+    }
+
+    hideUndoPoint() {
+        hideUndoButton();
     }
 
     savePoint(data) {

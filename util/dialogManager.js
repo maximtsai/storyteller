@@ -80,8 +80,7 @@ class DialogNode {
     }
 
     showIdx(idx = 0) {
-        let resetCurrentTextIdx = false;
-        this.currTextIdx++
+        this.currTextIdx = idx;
         messageBus.publish("showTalkText", this.speech[this.currTextIdx].text, this.speech[this.currTextIdx].instant);
         messageBus.publish("showTalkSpeaker", this.speech[this.currTextIdx].speaker);
         if (this.speech[this.currTextIdx].size) {
@@ -99,15 +98,17 @@ class DialogNode {
         if (this.speech[this.currTextIdx].face) {
             messageBus.publish("showTalkFace", this.speech[this.currTextIdx].face);
         }
-        if (this.speech[this.currTextIdx].publish) {
+        if (this.speech[this.currTextIdx].publish && this.speech[this.currTextIdx].publish !== "savePoint") {
             messageBus.publish(this.speech[this.currTextIdx].publish, this.speech[this.currTextIdx].param);
         }
         // TODO Not sure if needed
         // if (this.speech.length > this.currTextIdx) {
         //     messageBus.publish("showNextButton", this.showNext.bind(this));
         // }
-        if (this.hasBranches() && this.speech.length == 1) {
-            this.setupBranches();
+        if (!this.speech[this.currTextIdx + 1]) {
+            if (this.hasBranches()) {
+                this.setupBranches();
+            }
         }
     }
 

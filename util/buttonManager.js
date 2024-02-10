@@ -113,6 +113,11 @@ class InternalButtonManager {
         }
     }
 
+    bringToTop(button) {
+        this.removeButton(button);
+        this.addToButtonList(button);
+    }
+
     getDraggedObj() {
         return this.draggedObj;
     }

@@ -11,7 +11,7 @@ let dialogList1 = {
         speech: [
             {speaker: "Maggie", face: "maggie_normal.png", text: "Honey, just grab a seat.\nI\'ll be right with you.", data: {property: "askedSeat", value: true}},
             {speaker: "You", text: "Where\'s the rest of your staff?"},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "My line cook had to call out and my...\nwell it\'s just me tonight.", publish: "SavePoint", param: {node: 'findSeat', num: 2}},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "My line cook had to call out and my...\nwell it\'s just me tonight.", publish: "savePoint", param: {node: 'findSeat', num: 2}},
         ],
         branches: [
             {text: "Want some help?", targetNode: "MaggieAct1Happy"},
@@ -28,8 +28,10 @@ let dialogList1 = {
     },
     MaggieAct1Okay: {
         speech: [
-            {speaker: "Maggie", face: "maggie_normal.png", text: "Yes, better to stay off the\nroads in weather like this."},
-            {speaker: "Maggie", face: "maggie_normal.png", text: "It\'s got to be the worst storm\nI\'ve seen in years!"},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "Yes, better to stay off the\nroads in weather like this.", publish: "showUndoPoint"},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "It\'s got to be the worst storm\nI\'ve seen in years!", onFinish: () => {
+                messageBus.publish('hideUndoPoint');
+                }},
         ]
     },
 
