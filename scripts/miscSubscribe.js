@@ -67,8 +67,46 @@ class MiscSubscribe {
             messageBus.subscribe("BrunaInfluence", (amt) => this.updateInfluence("BrunaInfluence", amt)),
             messageBus.subscribe("JuanInfluence", (amt) => this.updateInfluence("JuanInfluence", amt)),
             messageBus.subscribe("EdithInfluence", (amt) => this.updateInfluence("EdithInfluence", amt)),
-            messageBus.subscribe("EthanInfluence", (amt) => this.updateInfluence("EthanInfluence", amt))
+            messageBus.subscribe("EthanInfluence", (amt) => this.updateInfluence("EthanInfluence", amt)),
+
+            messageBus.subscribe("savePoint", (data) => this.savePoint(data)),
+            messageBus.subscribe("loadSavePoint", this.loadSavePoint.bind(this)),
+            messageBus.subscribe("showUndoPoint", this.showUndoPoint.bind(this)),
+            messageBus.subscribe("hideUndoPoint", this.hideUndoPoint.bind(this)),
+
         ];
+    }
+
+    showUndoPoint() {
+        if (globalObjsTemp.saveGameVars) {
+            showUndoButton();
+            buttonManager.bringToTop(globalObjects.undoButton);
+        }
+    }
+
+    hideUndoPoint() {
+        hideUndoButton();
+    }
+
+    savePoint(data) {
+        globalObjsTemp.saveGameVars = gameVars;
+        globalObjsTemp.saveGameState = gameState;
+        globalObjsTemp.saveGameData = data;
+    }
+
+    loadSavePoint() {
+        if (globalObjsTemp.saveGameVars) {
+            gameVars = globalObjsTemp.saveGameVars;
+            gameState = globalObjsTemp.saveGameState;
+            dialogManager.showDialogNode(globalObjsTemp.saveGameData.node, globalObjsTemp.saveGameData.num);
+
+            globalObjsTemp.saveGameState = null;
+            globalObjsTemp.saveGameVars = null;
+            globalObjsTemp.saveGameData = null;
+
+        } else {
+
+        }
     }
 
     updateInfluence(character = "MaggieInfluence", amt = 1) {
@@ -354,7 +392,8 @@ class MiscSubscribe {
         setTimeout(() => {
             PhaserScene.tweens.add({
                 targets: globalObjects.indoorRain,
-                volume: 0.8,
+                trueVolume: 0.8,
+                volume: 0.8 * globalVolume,
                 duration: 1000
             });
             showExclamation();
@@ -505,7 +544,8 @@ class MiscSubscribe {
             onComplete: () => {
                 PhaserScene.tweens.add({
                     targets: globalObjects.indoorRain,
-                    volume: 0.38,
+                    trueVolume: 0.38,
+                    volume: 0.38 * globalVolume,
                     duration: 1000
                 });
                 playSound('hammermany');
@@ -964,7 +1004,8 @@ class MiscSubscribe {
                                     globalObjsTemp.eldritchBlack.destroy();
                                     updateManager.removeFunction(funcToAdd);
                                     spikesEldritch.destroy();
-                                    globalObjects.indoorRain.setVolume(0.8);
+                                    globalObjects.indoorRain.trueVolume = 0.8;
+                                    globalObjects.indoorRain.setVolume(0.8 * globalVolume);
                                     setTimeout(() => {
                                         globalObjsTemp.gloom.setAlpha(0.8);
                                         setTimeout(() => {
@@ -1052,7 +1093,8 @@ class MiscSubscribe {
         this.scene.tweens.add({
             targets: globalObjects.indoorRain,
             duration: 400,
-            volume: 0.32,
+            trueVolume: 0.32,
+            volume: 0.32 * globalVolume,
         });
         setRadioVolume(0.7);
         globalObjsTemp.gloom.setAlpha(0);
@@ -1345,7 +1387,8 @@ class MiscSubscribe {
                 this.scene.tweens.add({
                     targets: globalObjects.indoorRain,
                     duration: 3000,
-                    volume: 1,
+                    trueVolume: 1,
+                    volume: 1 * globalVolume,
                 });
                 setRadioVolume(0);
                 globalObjsTemp.radioMusic.stop();
@@ -1493,7 +1536,7 @@ class MiscSubscribe {
         globalObjects.moveRightBtn.setScale(0.5, 0.9);
         globalObjects.moveLeftBtn.tweenToScale(-1, 1, 750, 'Back.easeOut');
         globalObjects.moveRightBtn.tweenToScale(1, 1, 750, 'Back.easeOut');
-        setNewGoalText('Goal: Find a seat')
+        setNewGoalText('Goal: Find an empty seat')
     }
 
     reset() {

@@ -326,7 +326,9 @@ let furnitureDialog = {
             {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: " "},
             {speaker: "", text: "   *SHATTER*", publish: "windowBreak"},
             {speaker: "Juan", face: "juan_sad.png", text: "SONOFA-"},
-            {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan)."},
+            {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan).", onFinish: () => {
+                    setNewGoalText('Check out the window');
+                }},
         ],
     },
     LockScratchDoor: {
@@ -342,7 +344,9 @@ let furnitureDialog = {
             {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: " "},
             {speaker: "", text: "   *SHATTER*", publish: "windowBreak"},
             {speaker: "Juan", face: "juan_sad.png", text: "SONOFA-"},
-            {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan)."},
+            {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan).", onFinish: () => {
+                    setNewGoalText('Check out the window');
+                }},
         ]
     },
     OpenScratchDoorFinishEthanTired: {
@@ -357,7 +361,9 @@ let furnitureDialog = {
             {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: "•"},
             {speaker: "", text: "   *SHATTER*", publish: "windowBreak"},
             {speaker: "Juan", face: "juan_sad.png", text: "SONOFA-"},
-            {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan)."},
+            {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan).", onFinish: () => {
+                    setNewGoalText('Check out the window');
+                }},
         ],
     },
     LockScratchDoorEthanTired: {
@@ -372,7 +378,9 @@ let furnitureDialog = {
             {speaker: " ", face: "ethan_dark_eye_6.png", forceProgress: true, text: "•"},
             {speaker: "", text: "   *SHATTER*", publish: "windowBreak"},
             {speaker: "Juan", face: "juan_sad.png", text: "SONOFA-"},
-            {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan)."},
+            {speaker: "", text: "   (Rain starts pouring in from the window\n    near Ethan and Juan).", onFinish: () => {
+                    setNewGoalText('Check out the window');
+                }},
         ]
     },
 

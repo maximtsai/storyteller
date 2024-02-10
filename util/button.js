@@ -76,6 +76,8 @@ class Button {
                 let oldImage = this.imageRefs[this.oldImageRef];
                 if (oldImage) {
                     newImage.setOrigin(oldImage.originX, oldImage.originY);
+                    newImage.scrollFactorX = oldImage.scrollFactorX;
+                    newImage.scrollFactorY = oldImage.scrollFactorY;
                 }
                 // if (this.cursorInteractive) {
                 //     newImage.setInteractive({ useHandCursor: 'pointer' });
@@ -134,9 +136,10 @@ class Button {
             return false;
         }
         let scrollFactorX = this.normal.scrollFactorX !== undefined ? this.normal.scrollFactorX : 1;
+        let scrollFactorY = this.normal.scrollFactorY !== undefined ? this.normal.scrollFactorY : 1;
         //let scrollFactorY = this.normal.scrollFactorY !== undefined ? this.normal.scrollFactorY : 1;
         let x = valX + PhaserScene.cameras.main.scrollX * scrollFactorX;
-        let y = valY + PhaserScene.cameras.main.scrollY * 1; //  + PhaserScene.cameras.main.scrollY
+        let y = valY + PhaserScene.cameras.main.scrollY * scrollFactorY; //  + PhaserScene.cameras.main.scrollY
         let currImage = this.imageRefs[this.currImageRef];
         let width = currImage.width * Math.abs(currImage.scaleX);
         let height = currImage.height * Math.abs(currImage.scaleY);
@@ -391,9 +394,9 @@ class Button {
     }
 
     bringToTop() {
-        for (let i in this.imageRefs) {
-            this.container.bringToTop(this.imageRefs[i]);
-        }
+        // for (let i in this.imageRefs) {
+        //     this.container.bringToTop(this.imageRefs[i]);
+        // }
     }
 
     setOrigin(origX, origY) {
@@ -421,7 +424,7 @@ class Button {
         this.scene.tweens.add(tweenObj);
     }
 
-    tweenToScale(x, y, duration, ease, onUpdate) {
+    tweenToScale(x, y, duration, ease, onUpdate, onComplete) {
         let tweenObj = {
             targets: this.imageRefs[this.currImageRef],
             ease: ease,
@@ -429,6 +432,9 @@ class Button {
             onUpdate: onUpdate,
             onComplete: () => {
                 this.setScale(x, y);
+                if (onComplete) {
+                    onComplete();
+                }
             }
         }
         if (x !== undefined) {
@@ -436,6 +442,22 @@ class Button {
         }
         if (y !== undefined) {
             tweenObj.scaleY = y;
+        }
+        this.scene.tweens.add(tweenObj);
+    }
+
+    tweenToAlpha(alpha, duration, ease, onComplete) {
+        let tweenObj = {
+            targets: this.imageRefs[this.currImageRef],
+            ease: ease,
+            duration: duration,
+            alpha: alpha,
+            onComplete: () => {
+                this.setAlpha(alpha);
+                if (onComplete) {
+                    onComplete();
+                }
+            }
         }
         this.scene.tweens.add(tweenObj);
     }

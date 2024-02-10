@@ -48,6 +48,10 @@ class GameFinal {
         globalObjects.diner.CasparButton.destroy();
         globalObjects.moveLeftBtn.destroy();
         globalObjects.moveRightBtn.destroy();
+        globalObjects.undoTab.destroy();
+        globalObjects.undoButton.destroy();
+        globalObjects.muteButton.destroy();
+
         globalObjects.goalBtn.destroy();
         if (globalObjects.moveRightBtnWide) {
             globalObjects.moveRightBtnWide.destroy();
@@ -69,6 +73,7 @@ class GameFinal {
         this.scene.tweens.add({
             targets: [gameVars, globalObjsTemp.radioMusic, globalObjsTemp.radioStatic1, globalObjsTemp.radioStatic2],
             radioVolume: 0,
+            trueVolume: 0,
             volume: 0,
             duration: 3000,
             onComplete: () => {
@@ -164,7 +169,8 @@ class GameFinal {
                             }, 30);
                             this.scene.tweens.add({
                                 targets: [alarmSound],
-                                volume: 0.5,
+                                trueVolume: 0.5,
+                                volume: 0.5 * globalVolume,
                                 duration: 4000
                             });
                             helperFunction.scrollTo(1353)

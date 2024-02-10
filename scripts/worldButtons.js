@@ -171,7 +171,7 @@ function createWorldButtons() {
     globalObjects.diner.BrunaButton.setDepth(1);
     globalObjects.diner.BrunaButton.setState(DISABLE);
 
-    // Bruna
+    // Caspar
     globalObjects.diner.CasparButton = new Button({
         normal: {
             atlas: "pixels",
@@ -205,6 +205,40 @@ function createWorldButtons() {
     });
     globalObjects.diner.CasparButton.setDepth(1);
     globalObjects.diner.CasparButton.setState(DISABLE);
+
+    globalObjects.diner.CasparNearButton = new Button({
+        normal: {
+            atlas: "pixels",
+            ref: "blue_pixel.png",
+            x: -890,
+            y: 420,
+            scaleX: 125,
+            scaleY: 170,
+            alpha: 0.001
+        },
+        hover: {
+            alpha: 0.001
+        },
+        press: {
+            alpha: 0.001
+        },
+        disable: {
+            alpha: 0.001
+        },
+        onHover: () => {
+            globalObjects.exclamation.setAlpha(0.75);
+            globalObjects.exclamation.setFrame('hand_icon.png');
+        },
+        onHoverOut: () => {
+            globalObjects.exclamation.setAlpha(0);
+        },
+        onMouseUp() {
+            shiftOver(globalObjects.diner.CasparButton.getXPos() - 50);
+            clickCasparNearSeat();
+        }
+    });
+    globalObjects.diner.CasparNearButton.setDepth(1);
+    globalObjects.diner.CasparNearButton.setState(DISABLE);
 
     // Exit
     globalObjects.diner.ExitButton = new Button({
@@ -675,6 +709,7 @@ function clickMaggie() {
         } else if (gameState.windowBroken) {
             let goalPos = globalObjects.diner.maggieButton.getXPos() * 0.08 + globalObjects.diner.JuanButton.getXPos() * 0.92;
             shiftOver(goalPos);
+            clearGoalText();
             if (gameState.ethanSleeping) {
                 dialogManager.showDialogNode('WindowBrokenDiscussEthanSleeping');
             } else {
@@ -951,6 +986,7 @@ function clickJuan() {
             }
 
         } else if (gameState.windowBroken) {
+            clearGoalText();
             if (gameState.ethanSleeping) {
                 dialogManager.showDialogNode('WindowBrokenDiscussEthanSleeping');
             } else {
@@ -1003,7 +1039,9 @@ function clickBruna() {
             let numSaved = gameState.EthanSaved + gameState.EdithSaved + (gameState.juanLeaveStatus === "accept");
             if ((!gameState.brunaPleaded || numSaved >= 1) && !gameState.hopeSpringsLocationMissing) {
                 gameState.brunaPleaded = true;
-                if (gameState.brunaHardReject) {
+                if (gameState.BrunaSaved) {
+                    dialogManager.showDialogNode('Bruna3Success');
+                } else if (gameState.brunaHardReject) {
                     dialogManager.showDialogNode('Bruna3HardReject');
                 } else if (numSaved === 0) {
                     dialogManager.showDialogNode('Bruna3PleadSolo');
@@ -1043,6 +1081,12 @@ function clickBruna() {
     }
 }
 
+function clickCasparNearSeat() {
+    gameState.casparIntroduced = true;
+    dialogManager.showDialogNode('CasparFarIntro');
+    globalObjects.diner.CasparNearButton.destroy();
+}
+
 function clickCaspar() {
     if (gameState.currentScene == 1) {
         if (gameState.CasparActOneFin) {
@@ -1050,6 +1094,7 @@ function clickCaspar() {
         } else if (!gameState.casparIntroduced) {
             gameState.casparIntroduced = true;
             dialogManager.showDialogNode('CasparIntro');
+            globalObjects.diner.CasparNearButton.destroy();
         } else {
             let c1 = gameState.brunaIntroduced && 2;
             let c2 = gameState.EthanIntroduced && 1;
@@ -1567,13 +1612,15 @@ function adjustRadioUpdate(barPos) {
         if (gameState.currentScene == 3) {
             panMult = 0.5;
         }
-        globalObjsTemp.radioMusic.volume = 1 - staticSoundMult;
+        globalObjsTemp.radioMusic.volume = (1 - staticSoundMult) * globalVolume;
         let sqrtSoundMult = Math.sqrt(staticSoundMult);
         globalObjsTemp.radioStatic1.volume = sqrtSoundMult * (1 - panMult) * 0.5;
         globalObjsTemp.radioStatic1.trueVolume = globalObjsTemp.radioStatic1.volume;
+        globalObjsTemp.radioStatic1.volume = sqrtSoundMult * (1 - panMult) * 0.5 * globalVolume;
         if (globalObjsTemp.radioStatic2) {
             globalObjsTemp.radioStatic2.volume = sqrtSoundMult * panMult * 0.5;
             globalObjsTemp.radioStatic2.trueVolume = globalObjsTemp.radioStatic2.volume;
+            globalObjsTemp.radioStatic2.volume = sqrtSoundMult * panMult * 0.5 * globalVolume;
         }
         if (distToClosestObj > 10) {
             if (globalObjsTemp.radioMusic.isPlaying) {
@@ -1616,7 +1663,7 @@ function adjustRadioUpdate(barPos) {
             }
         }
     } else {
-        globalObjsTemp.radioMusic.volume = 1;
+        globalObjsTemp.radioMusic.volume = 1 * globalVolume;
         globalObjsTemp.radioStatic1.volume = 0;
         if (globalObjsTemp.radioStatic2) {
             globalObjsTemp.radioStatic2.volume = 0;
@@ -1693,14 +1740,17 @@ function clickIndoor() {
     globalObjsTemp.rainForeground.setDepth(-1);
     globalObjects.outdoorRain.stop();
     if (gameState.powerOff) {
-        globalObjects.indoorRain.setVolume(1);
+        globalObjects.indoorRain.setVolume(1 * globalVolume);
+        globalObjects.indoorRain.trueVolume = 1;
         // setRadioVolume(0.75);
     } else if (!gameState.resetRadioPowerOn) {
         gameState.resetRadioPowerOn = true;
-        globalObjects.indoorRain.setVolume(0.22);
+        globalObjects.indoorRain.setVolume(0.22 * globalVolume);
+        globalObjects.indoorRain.trueVolume = 0.22;
         setRadioMusic('radiostatic2', 0.4);
     } else {
-        globalObjects.indoorRain.setVolume(0.25);
+        globalObjects.indoorRain.setVolume(0.25 * globalVolume);
+        globalObjects.indoorRain.trueVolume = 0.25;
         setRadioVolume(gameState.oldRadioVolume);
     }
     playSound('dooropen', 0.8);
@@ -1804,9 +1854,9 @@ function exitBackdoor() {
     if (!gameState.casparGone) {
         gameState.oldRadioVolume = gameVars.radioVolume;
         setRadioVolume(0.001);
-        globalObjects.outdoorRain.volume = 0.88;
+        globalObjects.outdoorRain.volume = 0.88 * globalVolume;
     } else if (!gameState.lookForCaspar) {
-        globalObjects.outdoorRain.volume = 0.75;
+        globalObjects.outdoorRain.volume = 0.75 * globalVolume;
         gameState.lookForCaspar = true;
         dialogManager.showDialogNode('LookForCaspar');
     }
@@ -1849,11 +1899,14 @@ function exitBackdoor() {
 
 function enterShed() {
     gameState.isInShed = true;
-    globalObjects.outdoorRain.setVolume(0.25);
+    globalObjects.outdoorRain.setVolume(0.25 * globalVolume);
+    globalObjects.outdoorRain.trueVolume = 0.25;
+
     gameVars.cameraMoveAcc = 0;
     gameVars.cameraMoveVel = 0;
     if (globalObjsTemp.generatorSound) {
-        globalObjsTemp.generatorSound.setVolume(0.25);
+        globalObjsTemp.generatorSound.setVolume(0.25 * globalVolume);
+        globalObjsTemp.generatorSound.trueVolume = 0.25;
     }
     globalObjsTemp.rainBackground.setDepth(-1);
     globalObjsTemp.rainForeground.setDepth(-1);
@@ -1883,11 +1936,14 @@ function clickGravestone() {
 
 function exitShed() {
     gameState.isInShed = false;
-    globalObjects.outdoorRain.setVolume(1);
+    globalObjects.outdoorRain.setVolume(1 * globalVolume);
+    globalObjects.outdoorRain.trueVolume = 1;
+
     gameVars.cameraMoveAcc = 0;
     gameVars.cameraMoveVel = -0.01;
     if (globalObjsTemp.generatorSound) {
         globalObjsTemp.generatorSound.setVolume(0);
+
     }
     globalObjsTemp.rainBackground.setDepth(1);
     globalObjsTemp.rainForeground.setDepth(1);
@@ -2561,7 +2617,8 @@ function turnOnPower() {
     globalObjsTemp.generatorSound = playSound('generator', 0.1, true);
     PhaserScene.tweens.add({
         targets: globalObjsTemp.generatorSound,
-        volume: 1,
+        trueVolume: 1,
+        volume: 1 * globalVolume,
         ease: 'Quad.easeOut',
         duration: 600
     });
@@ -2623,7 +2680,8 @@ function showGeneratorInvalid(yPos) {
 
 function openGenerator() {
     if (globalObjsTemp.generatorSound) {
-        globalObjsTemp.generatorSound.setVolume(1);
+        globalObjsTemp.generatorSound.setVolume(1 * globalVolume);
+        globalObjsTemp.generatorSound.trueVolume = 1;
     }
     for (let i in globalObjsTemp.generator) {
         globalObjsTemp.generator[i].visible = true;
@@ -2639,7 +2697,8 @@ function openGenerator() {
 
 function closeGenerator() {
     if (globalObjsTemp.generatorSound) {
-        globalObjsTemp.generatorSound.setVolume(0.25);
+        globalObjsTemp.generatorSound.setVolume(0.25 * globalVolume);
+        globalObjsTemp.generatorSound.trueVolume = 0.25;
     }
     for (let i in globalObjsTemp.generator) {
         globalObjsTemp.generator[i].visible = false;

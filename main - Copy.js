@@ -5,17 +5,17 @@ let config = {
         width: 720,
         height: 640,
         autoRound: true,
-        mode: Phaser.Scale.FIT,
+        mode: Phaser.Scale.FIT
     },
     render: {
         // Leave on to prevent pixelated graphics
         antialias: true,
         roundPixels: true,
     },
-    transparent: false,
+    transparent: true,
     parent: 'phaser-app',
     expandParent: true,
-    clearBeforeRender: true,
+    clearBeforeRender: false,
     scene: {
         preload: preload,
         create: create,
@@ -107,7 +107,7 @@ function fullRestart() {
         dialogDisplay.reset();
         miscSubscribe.reset();
         gameFinal.reset();
-        game.destroy();
+        game.destroy(true);
     }
     let oldGameScale = gameVars.gameScale;
     if (!document.location.href.includes(url1) && !document.location.href.includes(url2)) {

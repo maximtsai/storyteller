@@ -76,6 +76,11 @@ function setupLoadingBar(scene) {
                     loadingBar.destroy();
                     loadingBarBack.destroy();
                     onLoadComplete(scene);
+                    setTimeout(() => {
+                        if (globalObjects.muteButton) {
+                            globalObjects.muteButton.setState(NORMAL);
+                        }
+                    }, 1000);
                 }
             });
         }, 10);
@@ -86,6 +91,7 @@ function setupLoadingBar(scene) {
 let dialogDisplay ;
 let miscSubscribe;
 let gameFinal;
+let globalVolume = 1;
 
 function setupGame() {
     // PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'background');
@@ -140,6 +146,8 @@ function setupGame() {
     setupMoveButtons();
     setupGoalText();
     setupDialogManager();
+    setupUndoButton();
+    setupMuteButton();
     dialogDisplay = new DialogDisplay(PhaserScene);
     miscSubscribe = new MiscSubscribe(PhaserScene);
     gameFinal = new GameFinal(PhaserScene);
@@ -432,6 +440,302 @@ function setupMoveButtons() {
     })
 }
 
+function setupUndoButton() {
+    globalObjects.undoTab = PhaserScene.add.sprite(0, 420, 'buttons', 'undo_tab.png').setOrigin(1, 0.5).setDepth(99);
+    globalObjects.undoTab.scrollFactorX = 0;
+    globalObjects.undoTab.scrollFactorY = 0;
+
+    globalObjects.undoButton = new Button({
+        normal: {
+            atlas: "buttons",
+            ref: 'undo.png',
+            x: 35,
+            y: 420,
+            alpha: 1,
+        },
+        hover: {
+            atlas: "buttons",
+            ref: 'undo_hover.png',
+            alpha: 1,
+        },
+        press: {
+            atlas: "buttons",
+            ref: 'undo_press.png',
+            alpha: 1,
+        },
+        disable: {
+            alpha: 0.001,
+            scaleX: 0,
+            scaleY: 0
+        },
+        onHover: () => {
+            // globalObjects.exclamation.setAlpha(0.75);
+            // globalObjects.exclamation.setFrame('hand_icon.png');
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            //globalObjects.exclamation.setAlpha(0);
+            canvas.style.cursor = 'default';
+        },
+        onMouseUp() {
+            attemptReset();
+        }
+    });
+
+    globalObjects.undoButton.setScrollFactor(0, 0);
+    globalObjects.undoButton.setDepth(99);
+    globalObjects.undoButton.setState(DISABLE);
+
+    // setTimeout(() => {
+    //     showUndoButton();
+    //     setTimeout(() => {
+    //         hideUndoButton();
+    //     }, 2000)
+    // }, 4000)
+}
+
+function attemptReset() {
+    globalObjects.resetClickBlocker  = new Button({
+        normal: {
+            ref: 'blackPixel',
+            x: 0,
+            y: 0,
+            scaleX: 10000,
+            scaleY: 4000,
+            alpha: 0.65,
+        }
+    });
+    globalObjects.resetClickBlocker.setDepth(99999);
+    globalObjects.resetClickBlocker.setScrollFactor(0, 0);
+
+    globalObjects.adPopup = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'buttons', 'popup.png').setDepth(99999);
+    globalObjects.adPopup.scrollFactorX = 0;
+    globalObjects.adPopup.scrollFactorY = 0;
+
+    globalObjects.playAdButton  = new Button({
+        normal: {
+            atlas: 'buttons',
+            ref: 'play_btn.png',
+            x: gameConsts.halfWidth,
+            y: gameConsts.halfHeight + 45,
+            alpha: 1,
+        },
+        hover: {
+            atlas: "buttons",
+            ref: 'play_btn_hover.png',
+            alpha: 1,
+        },
+        press: {
+            atlas: "buttons",
+            ref: 'play_btn_hover.png',
+            alpha: 0.9,
+        },
+        onHover: () => {
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            canvas.style.cursor = 'default';
+        },
+        onMouseUp() {
+            console.log("Play ad");
+            playRewindingAnim();
+        }
+    });
+    globalObjects.playAdButton.setDepth(99999);
+    globalObjects.playAdButton.setScrollFactor(0, 0);
+
+    globalObjects.cancelAdButton  = new Button({
+        normal: {
+            atlas: 'buttons',
+            ref: 'no_thanks.png',
+            x: gameConsts.halfWidth,
+            y: gameConsts.halfHeight + 122,
+            alpha: 1,
+        },
+        onHover: () => {
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            canvas.style.cursor = 'default';
+        },
+        onMouseUp() {
+            closeAdPrompt();
+        }
+    });
+    globalObjects.cancelAdButton.setDepth(99999);
+    globalObjects.cancelAdButton.setScrollFactor(0, 0);
+}
+
+function closeAdPrompt() {
+    globalObjects.adPopup.destroy();
+    globalObjects.playAdButton.destroy();
+    globalObjects.cancelAdButton.destroy();
+    globalObjects.resetClickBlocker.destroy();
+}
+
+function playRewindingAnim() {
+    globalObjects.resetClickBlocker2  = new Button({
+        normal: {
+            ref: 'blackPixel',
+            x: 0,
+            y: 0,
+            scaleX: 10000,
+            scaleY: 4000,
+            alpha: 0.1,
+        }
+    });
+    globalObjects.resetClickBlocker2.setDepth(99999);
+    globalObjects.resetClickBlocker2.setScrollFactor(0, 0);
+    globalObjects.resetClickBlocker2.tweenToAlpha(1, 250, 'Quad.easeOut')
+
+    globalObjects.rewindLarge = PhaserScene.add.sprite(gameConsts.halfWidth + 63, gameConsts.halfHeight + 43, 'buttons', 'undo_large.png').setOrigin(0.5, 0.5).setDepth(99999);
+    globalObjects.rewindLarge.scrollFactorX = 0;
+    globalObjects.rewindLarge.scrollFactorY = 0;
+    globalObjects.rewindLarge.setScale(0.223);
+
+    PhaserScene.tweens.add({
+        targets: [globalObjects.rewindLarge],
+        x: gameConsts.halfWidth,
+        y: gameConsts.halfHeight,
+        scaleX: 1,
+        scaleY: 1,
+        ease: 'Cubic.easeInOut',
+        duration: 300
+    });
+
+    globalObjects.rewindLargeTween = PhaserScene.tweens.add({
+        targets: [globalObjects.rewindLarge],
+        rotation: "-=6.283",
+        duration: 1350,
+        ease: 'Quad.easeInOut',
+        repeat: 1,
+        onComplete: () => {
+            // TODO: Remove placeholder
+            closeRewindAnim();
+            console.log("load save point");
+            messageBus.publish('loadSavePoint');
+        }
+    });
+}
+
+function closeRewindAnim() {
+    closeAdPrompt();
+    hideUndoButton();
+    globalObjects.rewindLargeTween.stop();
+    PhaserScene.tweens.add({
+        targets: [globalObjects.rewindLarge],
+        scaleX: 0,
+        scaleY: 0,
+        ease: 'Quad.easeIn',
+        duration: 300,
+        onComplete: () => {
+            globalObjects.rewindLarge.destroy();
+        }
+    });
+    globalObjects.resetClickBlocker2.tweenToAlpha(0, 200, 'Quad.easeOut', () => {
+        globalObjects.resetClickBlocker2.destroy();
+    })
+
+}
+
+function showUndoButton() {
+    if (globalObjects.undoTween) {
+        globalObjects.undoTween.stop();
+    }
+
+    globalObjects.undoTween = PhaserScene.tweens.add({
+        targets: [globalObjects.undoTab],
+        x: 67,
+        ease: 'Back.easeOut',
+        duration: 350,
+        onComplete: () => {
+            globalObjects.undoButton.setState(NORMAL);
+            globalObjects.undoButton.tweenToScale(0.75, 0.75, 150, 'Back.easeOut')
+        }
+    });
+}
+
+function hideUndoButton() {
+    if (globalObjects.undoButton.getState() !== DISABLE) {
+        if (globalObjects.undoTween) {
+            globalObjects.undoTween.stop();
+        }
+        globalObjects.undoButton.setScale(0, 0);
+        globalObjects.undoButton.setState(DISABLE);
+
+        globalObjects.undoTween = PhaserScene.tweens.add({
+            targets: [globalObjects.undoTab],
+            x: 0,
+            ease: 'Quad.easeOut',
+            duration: 230
+        });
+    }
+}
+
+function setupMuteButton() {
+    let startFrame = 'audio_max.png';
+    if (globalVolume === 1) {
+        startFrame = 'audio_max.png';
+    } else if (globalVolume === 0) {
+        startFrame = 'audio_mute.png';
+    } else {
+        startFrame = 'audio_min.png';
+    }
+    globalObjects.muteButton = new Button({
+        normal: {
+            atlas: "buttons",
+            ref: startFrame,
+            x: 690,
+            y: 27,
+            alpha: 0.8
+        },
+        hover: {
+            atlas: "buttons",
+            alpha: 1
+        },
+        press: {
+            atlas: "buttons",
+            alpha: 0.85
+        },
+        disable: {
+            atlas: "buttons",
+            alpha: 0.2
+        },
+        onHover: () => {
+            // globalObjects.exclamation.setAlpha(0.75);
+            // globalObjects.exclamation.setFrame('hand_icon.png');
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            //globalObjects.exclamation.setAlpha(0);
+            canvas.style.cursor = 'default';
+        },
+        onMouseUp() {
+            toggleAudio();
+        }
+    });
+
+    globalObjects.muteButton.setScrollFactor(0, 0);
+    globalObjects.muteButton.setDepth(1);
+    globalObjects.muteButton.setState(DISABLE);
+}
+
+function toggleAudio() {
+    if (globalVolume === 1) {
+        updateGlobalVolume(0);
+        globalObjects.muteButton.setAllRef('audio_mute.png');
+        playSound('trustgainshort');
+    } else if (globalVolume === 0) {
+        updateGlobalVolume(0.25);
+        globalObjects.muteButton.setAllRef('audio_min.png');
+        playSound('trustgainshort');
+    } else {
+        updateGlobalVolume(1);
+        globalObjects.muteButton.setAllRef('audio_max.png');
+        playSound('trustgainshort');
+    }
+}
+
 function setupGoalText() {
     globalObjects.goalText = PhaserScene.add.text(18, 22, ' ', { fontFamily: 'Times', fontSize: 28, color: '#000000' }).setDepth(999).setAlign('left').setOrigin(0, 0.5);
     globalObjects.goalText.alpha = 0;
@@ -713,7 +1017,8 @@ function realGameStart() {
                 darkGloom.setAlpha(1);
                 PhaserScene.tweens.add({
                     targets: globalObjects.indoorRain,
-                    volume: 0.25,
+                    trueVolume: 0.25,
+                    volume: 0.25 * globalVolume,
                     duration: 1500
                 });
                 setTimeout(() => {
@@ -805,8 +1110,6 @@ function showExclamation() {
                 }
             });
         }, randDelay);
-
-
     }
 
     if (gameState.currentScene == 1) {
@@ -841,6 +1144,8 @@ function setCharactersNormal() {
 
 
 function runIntroSequence() {
+    document.body.style.backgroundImage = "url('sprites/preload/rain.webp')";
+
     globalObjects.optionsButton.destroy();
     globalObjects.creditsButton.destroy();
     gameVars.canSkipIntro = true;
@@ -1046,12 +1351,12 @@ function setRadioMusic(music, volume = 0.1) {
 
 function setRadioVolume(vol = 1) {
     gameVars.radioVolume = vol;
-    globalObjsTemp.radioMusic.volume = vol;
+    globalObjsTemp.radioMusic.volume = vol * globalVolume;
 
     if (globalObjsTemp.radioStatic1 && globalObjsTemp.radioStatic1.trueVolume !== undefined) {
-        globalObjsTemp.radioStatic1.volume = globalObjsTemp.radioStatic1.trueVolume * vol;
+        globalObjsTemp.radioStatic1.volume = globalObjsTemp.radioStatic1.trueVolume * vol * globalVolume;
         if (globalObjsTemp.radioStatic2) {
-            globalObjsTemp.radioStatic2.volume = globalObjsTemp.radioStatic2.trueVolume * vol;
+            globalObjsTemp.radioStatic2.volume = globalObjsTemp.radioStatic2.trueVolume * vol * globalVolume;
         }
     }
 }

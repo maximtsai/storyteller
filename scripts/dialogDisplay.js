@@ -521,8 +521,8 @@ class DialogDisplay {
     }
 
     setDialogBtnToTop() {
-        buttonManager.removeButton(this.dialogButton);
-        buttonManager.addToButtonList(this.dialogButton);
+        buttonManager.bringToTop(this.dialogButton);
+        buttonManager.bringToTop(globalObjects.muteButton);
     }
 
     getNumStars() {
