@@ -23,7 +23,7 @@ function setupLoadingBar(scene) {
     window.CrazyGames.SDK.game.sdkGameLoadingStart();
     if (isFirstPlay) {
         displayBanner();
-        isFirstPlay = false;    
+        isFirstPlay = false;
     }
     mainBackground = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'loading1');
     loadingBarBack = scene.add.image(gameConsts.halfWidth, gameConsts.height - 164, 'blackPixel');
@@ -50,7 +50,6 @@ function setupLoadingBar(scene) {
         window.CrazyGames.SDK.game.sdkGameLoadingStop();
         setTimeout(() => {
             loadingBar.scaleX = 100 + extraLoadingBarLength;
-
             if (!gameVars.showedCreditsSpook) {
                 let eye = PhaserScene.add.image(635, gameConsts.halfHeight - 275, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.03).setScale(1.97);
                 setTimeout(() => {
@@ -171,7 +170,7 @@ function initializeMisc() {
 function clearBannerAndHideDiv() {
     return;
     window.CrazyGames.SDK.banner.clearAllBanners();
-    
+
     const elem = document.getElementById("banner-container");
     elem.style.top = "-1000px";
 }
@@ -508,9 +507,17 @@ function attemptReset() {
     globalObjects.resetClickBlocker.setDepth(99999);
     globalObjects.resetClickBlocker.setScrollFactor(0, 0);
 
-    globalObjects.adPopup = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'buttons', 'popup.png').setDepth(99999);
+    globalObjects.adPopup = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'buttons', 'popup.png').setDepth(99999).setScale(0.85).setAlpha(0.25);
     globalObjects.adPopup.scrollFactorX = 0;
     globalObjects.adPopup.scrollFactorY = 0;
+    PhaserScene.tweens.add({
+        targets: [globalObjects.adPopup],
+        scaleX: 1,
+        scaleY: 1,
+        alpha: 1,
+        ease: 'Back.easeOut',
+        duration: 220
+    });
 
     globalObjects.playAdButton  = new Button({
         normal: {
@@ -541,29 +548,33 @@ function attemptReset() {
             playRewindingAnim();
         }
     });
+    globalObjects.playAdButton.setScale(0.8);
     globalObjects.playAdButton.setDepth(99999);
     globalObjects.playAdButton.setScrollFactor(0, 0);
+    globalObjects.playAdButton.tweenToScale(1, 1, 200, 'Cubic.easeOut');
 
-    globalObjects.cancelAdButton  = new Button({
-        normal: {
-            atlas: 'buttons',
-            ref: 'no_thanks.png',
-            x: gameConsts.halfWidth,
-            y: gameConsts.halfHeight + 122,
-            alpha: 1,
-        },
-        onHover: () => {
-            canvas.style.cursor = 'pointer';
-        },
-        onHoverOut: () => {
-            canvas.style.cursor = 'default';
-        },
-        onMouseUp() {
-            closeAdPrompt();
-        }
-    });
-    globalObjects.cancelAdButton.setDepth(99999);
-    globalObjects.cancelAdButton.setScrollFactor(0, 0);
+    setTimeout(() => {
+        globalObjects.cancelAdButton  = new Button({
+            normal: {
+                atlas: 'buttons',
+                ref: 'no_thanks.png',
+                x: gameConsts.halfWidth,
+                y: gameConsts.halfHeight + 122,
+                alpha: 1,
+            },
+            onHover: () => {
+                canvas.style.cursor = 'pointer';
+            },
+            onHoverOut: () => {
+                canvas.style.cursor = 'default';
+            },
+            onMouseUp() {
+                closeAdPrompt();
+            }
+        });
+        globalObjects.cancelAdButton.setDepth(99999);
+        globalObjects.cancelAdButton.setScrollFactor(0, 0);
+    }, 300);
 }
 
 function closeAdPrompt() {
