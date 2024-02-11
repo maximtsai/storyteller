@@ -484,13 +484,6 @@ function setupUndoButton() {
     globalObjects.undoButton.setScrollFactor(0, 0);
     globalObjects.undoButton.setDepth(99);
     globalObjects.undoButton.setState(DISABLE);
-
-    // setTimeout(() => {
-    //     showUndoButton();
-    //     setTimeout(() => {
-    //         hideUndoButton();
-    //     }, 2000)
-    // }, 4000)
 }
 
 function attemptReset() {
@@ -545,13 +538,14 @@ function attemptReset() {
         },
         onMouseUp() {
             console.log("Play ad");
+            hideUndoButton();
             playRewindingAnim();
         }
     });
-    globalObjects.playAdButton.setScale(0.8);
+    globalObjects.playAdButton.setScale(0.9);
     globalObjects.playAdButton.setDepth(99999);
     globalObjects.playAdButton.setScrollFactor(0, 0);
-    globalObjects.playAdButton.tweenToScale(1, 1, 200, 'Cubic.easeOut');
+    globalObjects.playAdButton.tweenToScale(1, 1, 180, 'Cubic.easeOut');
 
     setTimeout(() => {
         globalObjects.cancelAdButton  = new Button({
@@ -574,7 +568,7 @@ function attemptReset() {
         });
         globalObjects.cancelAdButton.setDepth(99999);
         globalObjects.cancelAdButton.setScrollFactor(0, 0);
-    }, 300);
+    }, 450);
 }
 
 function closeAdPrompt() {
@@ -592,11 +586,11 @@ function playRewindingAnim() {
             y: 0,
             scaleX: 10000,
             scaleY: 4000,
-            alpha: 0.1,
         }
     });
     globalObjects.resetClickBlocker2.setDepth(99999);
     globalObjects.resetClickBlocker2.setScrollFactor(0, 0);
+    globalObjects.resetClickBlocker2.setAlpha(0.1);
     globalObjects.resetClickBlocker2.tweenToAlpha(1, 250, 'Quad.easeOut')
 
     globalObjects.rewindLarge = PhaserScene.add.sprite(gameConsts.halfWidth + 63, gameConsts.halfHeight + 43, 'buttons', 'undo_large.png').setOrigin(0.5, 0.5).setDepth(99999);
@@ -631,7 +625,6 @@ function playRewindingAnim() {
 
 function closeRewindAnim() {
     closeAdPrompt();
-    hideUndoButton();
     globalObjects.rewindLargeTween.stop();
     PhaserScene.tweens.add({
         targets: [globalObjects.rewindLarge],
@@ -655,12 +648,14 @@ function showUndoButton() {
     }
 
     globalObjects.undoTween = PhaserScene.tweens.add({
+        delay: 50,
         targets: [globalObjects.undoTab],
         x: 67,
         ease: 'Back.easeOut',
-        duration: 350,
+        duration: 380,
         onComplete: () => {
             globalObjects.undoButton.setState(NORMAL);
+            globalObjects.undoButton.setScale(0.6, 0.6);
             globalObjects.undoButton.tweenToScale(0.75, 0.75, 150, 'Back.easeOut')
         }
     });
