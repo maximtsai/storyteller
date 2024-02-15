@@ -2722,14 +2722,14 @@ function closeGenerator() {
             scaleX: 1,
             scaleY: 1,
             ease: 'Quad.easeOut',
-            duration: 100,
+            duration: 50,
             onComplete: () => {
                 PhaserScene.tweens.add({
-                    delay: 200,
+                    delay: 100,
                     targets: globalObjsTemp.dogEyes,
                     x: "+=80",
                     ease: 'Quart.easeIn',
-                    duration: 500,
+                    duration: 300,
                     onComplete: () => {
                         globalObjsTemp.dogEyes.x = 999;
                     }

@@ -14,6 +14,9 @@ function setBackground(atlas, ref) {
 }
 
 let isFirstPlay = true;
+let hasAdBlock = false;
+let achievements = null;
+const achievementsText = "DinerInStormAchievements";
 
 function setupLoadingBar(scene) {
     isMobile = testMobile();
@@ -48,7 +51,25 @@ function setupLoadingBar(scene) {
 
     scene.load.on('complete', () => {
         window.CrazyGames.SDK.game.sdkGameLoadingStop();
+
+        const callback = (error, result) => {
+            if (error) {
+                console.log("Adblock usage error (callback)", error);
+                hasAdBlock = true;
+            } else {
+                console.log("Adblock usage fetched (callback)", result);
+            }
+        };
+        window.CrazyGames.SDK.ad.hasAdblock(callback);
         setTimeout(() => {
+            // Achievements
+            if (!achievements) {
+                achievements = localStorage.getItem(achievementsText);
+                if (!achievements) {
+                    achievements = {};
+                }
+            }
+            handleAchievements(achievements);
             loadingBar.scaleX = 100 + extraLoadingBarLength;
             if (!gameVars.showedCreditsSpook) {
                 let eye = PhaserScene.add.image(635, gameConsts.halfHeight - 275, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.03).setScale(1.97);
@@ -111,6 +132,12 @@ function setupGame() {
         press: {
             "ref": "buttonStart3"
         },
+        onHover: () => {
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            canvas.style.cursor = 'default';
+        },
         onMouseUp: () => {
             clearBannerAndHideDiv();
             runIntroSequence();
@@ -132,6 +159,12 @@ function setupGame() {
             },
             press: {
                 "alpha": 0.8
+            },
+            onHover: () => {
+                canvas.style.cursor = 'pointer';
+            },
+            onHoverOut: () => {
+                canvas.style.cursor = 'default';
             },
             onMouseUp: () => {
                 clearBannerAndHideDiv();
@@ -223,7 +256,7 @@ function clickCredits() {
     globalObjects.creditsText.setFontSize(28);
     globalObjects.creditsText.setScale(0.82);
 
-    globalObjects.creditsText2 = PhaserScene.add.text(40, 150, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org,\nsonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
+    globalObjects.creditsText2 = PhaserScene.add.text(50, 160, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org,\nsonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
     globalObjects.creditsText2.setFontSize(24);
     globalObjects.creditsText2.setScale(0.82);
 
@@ -440,7 +473,7 @@ function setupMoveButtons() {
 }
 
 function setupUndoButton() {
-    globalObjects.undoTab = PhaserScene.add.sprite(0, 420, 'buttons', 'undo_tab.png').setOrigin(1, 0.5).setDepth(99);
+    globalObjects.undoTab = PhaserScene.add.sprite(gameConsts.width - 10, 420, 'buttons', 'undo_tab.png').setOrigin(0, 0.5).setDepth(99).setAlpha(0);
     globalObjects.undoTab.scrollFactorX = 0;
     globalObjects.undoTab.scrollFactorY = 0;
 
@@ -448,7 +481,7 @@ function setupUndoButton() {
         normal: {
             atlas: "buttons",
             ref: 'undo.png',
-            x: 35,
+            x: gameConsts.width - 35,
             y: 420,
             alpha: 1,
         },
@@ -537,7 +570,28 @@ function attemptReset() {
             canvas.style.cursor = 'default';
         },
         onMouseUp() {
-            console.log("Play ad");
+            const callbacks = {
+                adFinished: () => {
+                    isAdPlaying = false;
+                    console.log("End rewarded ad (callback)")
+                    adUnmute();
+                    closeRewindAnim();
+                    messageBus.publish('loadSavePoint');
+                },
+                adError: (error, errorData) => {
+                    isAdPlaying = false;
+                    console.log("Error rewarded ad (callback)", error, errorData)
+                    adUnmute();
+                    closeRewindAnim();
+                    messageBus.publish('loadSavePoint');
+                },
+                adStarted: () => {
+                    isAdPlaying = true;
+                    console.log("Start rewarded ad (callback)")
+                },
+            };
+            adMute();
+            window.CrazyGames.SDK.ad.requestAd("rewarded", callbacks);
             hideUndoButton();
             playRewindingAnim();
         }
@@ -578,6 +632,8 @@ function closeAdPrompt() {
     globalObjects.resetClickBlocker.destroy();
 }
 
+let isAdPlaying = false;
+
 function playRewindingAnim() {
     globalObjects.resetClickBlocker2  = new Button({
         normal: {
@@ -613,14 +669,16 @@ function playRewindingAnim() {
         rotation: "-=6.283",
         duration: 1350,
         ease: 'Quad.easeInOut',
-        repeat: 1,
-        onComplete: () => {
-            // TODO: Remove placeholder
+        repeat: -1
+    });
+
+    setTimeout(() => {
+        if (!isAdPlaying) {
+            adUnmute();
             closeRewindAnim();
-            console.log("load save point");
             messageBus.publish('loadSavePoint');
         }
-    });
+    }, 6000);
 }
 
 function closeRewindAnim() {
@@ -630,13 +688,13 @@ function closeRewindAnim() {
         targets: [globalObjects.rewindLarge],
         scaleX: 0,
         scaleY: 0,
-        ease: 'Quad.easeIn',
-        duration: 300,
+        ease: 'Quad.easeOut',
+        duration: 230,
         onComplete: () => {
             globalObjects.rewindLarge.destroy();
         }
     });
-    globalObjects.resetClickBlocker2.tweenToAlpha(0, 200, 'Quad.easeOut', () => {
+    globalObjects.resetClickBlocker2.tweenToAlpha(0, 240, undefined, () => {
         globalObjects.resetClickBlocker2.destroy();
     })
 
@@ -648,14 +706,18 @@ function showUndoButton() {
     }
 
     globalObjects.undoTween = PhaserScene.tweens.add({
-        delay: 50,
         targets: [globalObjects.undoTab],
-        x: 67,
+        x: gameConsts.width - 67,
+        alpha: 0.7,
         ease: 'Back.easeOut',
-        duration: 380,
+        duration: 400,
         onComplete: () => {
-            globalObjects.undoButton.setState(NORMAL);
-            globalObjects.undoButton.setScale(0.6, 0.6);
+            if (globalObjects.undoButton.getState() !== NORMAL) {
+                globalObjects.undoButton.setState(NORMAL);
+                globalObjects.undoButton.setScale(0.6, 0.6);
+            } else {
+                globalObjects.undoButton.setState(NORMAL);
+            }
             globalObjects.undoButton.tweenToScale(0.75, 0.75, 150, 'Back.easeOut')
         }
     });
@@ -671,9 +733,10 @@ function hideUndoButton() {
 
         globalObjects.undoTween = PhaserScene.tweens.add({
             targets: [globalObjects.undoTab],
-            x: 0,
+            x: gameConsts.width - 10,
             ease: 'Quad.easeOut',
-            duration: 230
+            duration: 200,
+            alpha: 0,
         });
     }
 }
@@ -724,6 +787,18 @@ function setupMuteButton() {
     globalObjects.muteButton.setScrollFactor(0, 0);
     globalObjects.muteButton.setDepth(1);
     globalObjects.muteButton.setState(DISABLE);
+}
+
+let oldGlobalVolume = null;
+function adMute() {
+    oldGlobalVolume = globalVolume;
+    updateGlobalVolume(0);
+}
+
+function adUnmute() {
+    if (oldGlobalVolume !== null) {
+        updateGlobalVolume(oldGlobalVolume);
+    }
 }
 
 function toggleAudio() {
@@ -782,6 +857,7 @@ function setupGoalText() {
             }
         },
     });
+    globalObjects.goalBtn.setState(DISABLE);
     globalObjects.goalBtn.setScrollFactor(0, 0);
     // globalObjects.goalText.setColor('#FFFFFF');
 }
@@ -1151,7 +1227,15 @@ function setCharactersNormal() {
 
 function runIntroSequence() {
     document.body.style.backgroundImage = "url('sprites/preload/rain.webp')";
+    globalObjects.goalBtn.setState(NORMAL);
 
+    if (globalObjects.achievements) {
+        for (let i in globalObjects.achievements) {
+            if (globalObjects.achievements[i].destroy) {
+                globalObjects.achievements[i].destroy();
+            }
+        }
+    }
     globalObjects.optionsButton.destroy();
     globalObjects.creditsButton.destroy();
     gameVars.canSkipIntro = true;
@@ -1430,5 +1514,76 @@ function girlsMoveAwayFromDoor() {
             }
         });
     }
+}
 
+function handleAchievements(achievements) {
+    if (Object.keys(achievements).length === 0 && achievements.constructor === Object) {
+        // return;
+    }
+    globalObjects.achievements = {};
+    globalObjects.achievements = {
+        achievementsBacking: PhaserScene.add.image(0, 0, 'blackPixel').setDepth(0).setAlpha(0).setOrigin(0, 0).setScale(300, 50),
+        achievementsButton: new Button({
+            normal: {
+                "ref": "achievements.png",
+                "atlas": "buttons",
+                "x": 0,
+                "alpha": 0.88
+            },
+            hover: {
+                "ref": "achievements.png",
+                "atlas": "buttons",
+                "alpha": 1,
+            },
+            press: {
+                "ref": "achievements.png",
+                "atlas": "buttons",
+                "alpha": 0.9
+            },
+            onHover: () => {
+                canvas.style.cursor = 'pointer';
+            },
+            onHoverOut: () => {
+                canvas.style.cursor = 'default';
+            },
+            onMouseUp: () => {
+                globalObjects.achievementsShown = !globalObjects.achievementsShown;
+                if (globalObjects.achievementsShown) {
+                    globalObjects.achievements.achievementsBacking.setScale(300, 55);
+                    globalObjects.achievements.achievementsBacking.setAlpha(0.2);
+                    globalObjects.achievementTween = PhaserScene.tweens.add({
+                        targets: [globalObjects.achievements.achievementsBacking],
+                        alpha: 0.5,
+                        duration: 200,
+                        scaleY: 60,
+                        ease: 'Cubic.easeOut',
+                    });
+                } else {
+                    if (globalObjects.achievementTween) {
+                        globalObjects.achievementTween.stop();
+                    }
+                    globalObjects.achievements.achievementsBacking.setAlpha(0);
+                }
+            }
+        }),
+        star: PhaserScene.add.image(162, 14, 'misc', 'star.png').setScale(0).setDepth(1).setOrigin(0.5, 0.55),
+
+    };
+    globalObjects.achievementsShown = false;
+
+    globalObjects.achievements.achievementsButton.setPos(0, -32);
+    globalObjects.achievements.achievementsButton.setDepth(1);
+    globalObjects.achievements.achievementsButton.setOrigin(0, 0)
+    globalObjects.achievements.achievementsButton.tweenToPos(0, -8, 400, 'Back.easeOut')
+    PhaserScene.tweens.add({
+        targets: [globalObjects.achievements.star],
+        delay: 300,
+        duration: 400,
+        scaleX: 0.46,
+        scaleY: 0.46,
+        ease: 'Bounce.easeOut',
+
+    });
+
+    globalObjects.achievements.achievementsButton.tweenToPos(0, -8, 400, 'Back.easeOut')
 }

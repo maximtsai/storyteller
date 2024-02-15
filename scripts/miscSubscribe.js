@@ -78,9 +78,11 @@ class MiscSubscribe {
     }
 
     showUndoPoint() {
+
         if (globalObjsTemp.saveGameVars) {
             showUndoButton();
             buttonManager.bringToTop(globalObjects.undoButton);
+        } else {
         }
     }
 
@@ -89,15 +91,15 @@ class MiscSubscribe {
     }
 
     savePoint(data) {
-        globalObjsTemp.saveGameVars = gameVars;
-        globalObjsTemp.saveGameState = gameState;
+        globalObjsTemp.saveGameVars = Object.assign({}, gameVars);
+        globalObjsTemp.saveGameState = Object.assign({}, gameState);
         globalObjsTemp.saveGameData = data;
     }
 
     loadSavePoint() {
         if (globalObjsTemp.saveGameVars) {
-            gameVars = globalObjsTemp.saveGameVars;
-            gameState = globalObjsTemp.saveGameState;
+            gameVars = Object.assign({}, globalObjsTemp.saveGameVars);
+            gameState = Object.assign({}, globalObjsTemp.saveGameState);
             dialogManager.showDialogNode(globalObjsTemp.saveGameData.node, globalObjsTemp.saveGameData.num);
 
             globalObjsTemp.saveGameState = null;

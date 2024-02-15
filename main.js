@@ -98,6 +98,8 @@ let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 5;
 let url1 = '';
 let url2 = '';
+// let url1 = 'crazygames';
+// let url2 = '1001juegos';
 
 function fullRestart() {
     if (game) {
