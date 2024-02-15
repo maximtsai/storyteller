@@ -4,8 +4,8 @@ let loadingText;
 let isMobile = false;
 
 function testMobile() {
-  const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-  return regex.test(navigator.userAgent);
+    const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    return regex.test(navigator.userAgent);
 }
 
 function setBackground(atlas, ref) {
@@ -51,7 +51,6 @@ function setupLoadingBar(scene) {
 
     scene.load.on('complete', () => {
         window.CrazyGames.SDK.game.sdkGameLoadingStop();
-
         const callback = (error, result) => {
             if (error) {
                 console.log("Adblock usage error (callback)", error);
@@ -178,7 +177,7 @@ function setupGame() {
     setupMoveButtons();
     setupGoalText();
     setupDialogManager();
-    setupUndoButton();
+    // setupUndoButton();
     setupMuteButton();
     dialogDisplay = new DialogDisplay(PhaserScene);
     miscSubscribe = new MiscSubscribe(PhaserScene);
@@ -724,6 +723,9 @@ function showUndoButton() {
 }
 
 function hideUndoButton() {
+    if (!globalObjects.undoButton) {
+        return;
+    }
     if (globalObjects.undoButton.getState() !== DISABLE) {
         if (globalObjects.undoTween) {
             globalObjects.undoTween.stop();

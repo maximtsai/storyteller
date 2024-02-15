@@ -83,11 +83,13 @@ class MiscSubscribe {
             showUndoButton();
             buttonManager.bringToTop(globalObjects.undoButton);
         } else {
+            // showUndoButton();
+            // buttonManager.bringToTop(globalObjects.undoButton);
         }
     }
 
     hideUndoPoint() {
-        hideUndoButton();
+        // hideUndoButton();
     }
 
     savePoint(data) {
