@@ -1878,8 +1878,8 @@ function exitBackdoor() {
             bg2: PhaserScene.add.image(999.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout2.png'),
             bg4: PhaserScene.add.image(1999, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout3.png'),
             bg5: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
-            bg6: PhaserScene.add.image(796, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
-            bg7: PhaserScene.add.image(1592, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
+            bg6: PhaserScene.add.image(794, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
+            bg7: PhaserScene.add.image(1588, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
         }
         globalObjsTemp.outdoorBackgrounds.bg5.scrollFactorX = 0.3;
         globalObjsTemp.outdoorBackgrounds.bg6.scrollFactorX = 0.3;

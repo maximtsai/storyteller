@@ -51,6 +51,7 @@ class DialogNode {
     }
 
     show() {
+        this.currTextIdx = 0;
         messageBus.publish("showTalkText", this.speech[0].text, this.speech[0].instant);
         messageBus.publish("showTalkSpeaker", this.speech[0].speaker);
         if (this.speech[0].size) {
@@ -70,6 +71,9 @@ class DialogNode {
         }
         if (this.speech[0].publish) {
             messageBus.publish(this.speech[0].publish, this.speech[0].param);
+        }
+        if (this.speech[0].onStart) {
+            this.speech[0].onStart();
         }
         if (this.speech.length > 0) {
             messageBus.publish("showNextButton", this.showNext.bind(this));
@@ -141,6 +145,9 @@ class DialogNode {
             if (nextDialogSpeech.publish) {
                 messageBus.publish(nextDialogSpeech.publish, nextDialogSpeech.param);
             }
+            if (nextDialogSpeech.onStart) {
+                nextDialogSpeech.onStart();
+            }
             if (nextDialogSpeech.data) {
                 if (nextDialogSpeech.data.value !== undefined) {
                     gameState[nextDialogSpeech.data.property] = nextDialogSpeech.data.value;
@@ -158,6 +165,7 @@ class DialogNode {
             }
         } else if (!this.hasBranches()) {
             messageBus.publish("hideAllDialog");
+            messageBus.publish('hideUndoPoint');
         } else {
             resetCurrentTextIdx = true;
         }
