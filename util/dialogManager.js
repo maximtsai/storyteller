@@ -69,11 +69,11 @@ class DialogNode {
         if (this.speech[0].face) {
             messageBus.publish("showTalkFace", this.speech[0].face);
         }
-        if (this.speech[0].publish) {
-            messageBus.publish(this.speech[0].publish, this.speech[0].param);
-        }
         if (this.speech[0].onStart) {
             this.speech[0].onStart();
+        }
+        if (this.speech[0].publish) {
+            messageBus.publish(this.speech[0].publish, this.speech[0].param);
         }
         if (this.speech.length > 0) {
             messageBus.publish("showNextButton", this.showNext.bind(this));
@@ -105,6 +105,9 @@ class DialogNode {
         if (this.speech[this.currTextIdx].publish && this.speech[this.currTextIdx].publish !== "savePoint") {
             messageBus.publish(this.speech[this.currTextIdx].publish, this.speech[this.currTextIdx].param);
         }
+        // if (this.speech[this.currTextIdx - 1] && this.speech[this.currTextIdx - 1].onFinish) {
+        //     this.speech[this.currTextIdx - 1].onFinish();
+        // }
         // TODO Not sure if needed
         // if (this.speech.length > this.currTextIdx) {
         //     messageBus.publish("showNextButton", this.showNext.bind(this));
@@ -142,11 +145,11 @@ class DialogNode {
             if (nextDialogSpeech.face) {
                 messageBus.publish("showTalkFace", nextDialogSpeech.face);
             }
-            if (nextDialogSpeech.publish) {
-                messageBus.publish(nextDialogSpeech.publish, nextDialogSpeech.param);
-            }
             if (nextDialogSpeech.onStart) {
                 nextDialogSpeech.onStart();
+            }
+            if (nextDialogSpeech.publish) {
+                messageBus.publish(nextDialogSpeech.publish, nextDialogSpeech.param);
             }
             if (nextDialogSpeech.data) {
                 if (nextDialogSpeech.data.value !== undefined) {
@@ -160,7 +163,7 @@ class DialogNode {
             if (!this.speech[this.currTextIdx + 1]) {
                 if (this.hasBranches()) {
                     resetCurrentTextIdx = true;
-                    this.setupBranches();
+                    this.setupBranches(this.speech[this.currTextIdx].onFinish);
                 }
             }
         } else if (!this.hasBranches()) {
@@ -190,8 +193,8 @@ class DialogNode {
         return this.branches && this.branches.length > 0;
     }
 
-    setupBranches() {
-        messageBus.publish("setBranches", this.branches);
+    setupBranches(onFinishFunc) {
+        messageBus.publish("setBranches", this.branches, onFinishFunc);
     }
 }
 /*

@@ -79,13 +79,13 @@ class MiscSubscribe {
 
     showUndoPoint() {
         if (globalObjsTemp.saveGameVars) {
-            showUndoButton();
-            buttonManager.bringToTop(globalObjects.undoButton);
+            // showUndoButton();
+            // buttonManager.bringToTop(globalObjects.undoButton);
         }
     }
 
     hideUndoPoint() {
-        hideUndoButton();
+        // hideUndoButton();
     }
 
     savePoint(data) {
