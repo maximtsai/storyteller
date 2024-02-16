@@ -2022,7 +2022,7 @@ function clickGenerator() {
                 console.log("Spook on");
                 gameState.turnedOnPowerSlow = true;
             }
-        }, 20000);
+        }, 15000);
         gameState.viewedGenerator = true;
         let startYPos = gameConsts.halfHeight + gameConsts.shedStartY;
         updateManager.addFunction(updateGenerator);

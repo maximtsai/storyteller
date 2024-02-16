@@ -48,6 +48,14 @@ class GameFinal {
         globalObjects.diner.CasparButton.destroy();
         globalObjects.moveLeftBtn.destroy();
         globalObjects.moveRightBtn.destroy();
+        if (globalObjects.undoTab) {
+            globalObjects.undoTab.destroy();
+        }
+        if (globalObjects.undoButton) {
+            globalObjects.undoButton.destroy();
+        }
+        globalObjects.muteButton.destroy();
+
         globalObjects.goalBtn.destroy();
         if (globalObjects.moveRightBtnWide) {
             globalObjects.moveRightBtnWide.destroy();
@@ -397,12 +405,65 @@ class GameFinal {
         this.fadeOut(this.showGoodEnd);
     }
 
+    showAchievementGot(endingNum = 0, frameUrl, dontplaytrustgain = false) {
+        let textString = 'end' + endingNum;
+        if (!achievements[textString]) {
+            newestAchievement = endingNum;
+            achievements[textString] = true;
+            localStorage.setItem(achievementsText + endingNum, "yes");
+            if (!dontplaytrustgain) {
+                playSound('trustgain');
+            }
+            this.achieveImage = PhaserScene.add.sprite(this.endImage.x, this.endImage.y, "epilogue", frameUrl).setDepth(10000).setOrigin(0, 1);
+            this.achieveImage.scrollFactorX = 0;
+            this.achieveImage.scrollFactorY = 0;
+            this.achieveImage.setScale(this.endImage.scaleX, this.endImage.scaleY);
+            this.scene.tweens.add({
+                delay: 1000,
+                targets: [this.achieveImage],
+                x: gameConsts.halfWidth - this.achieveImage.width * 0.5,
+                y: gameConsts.halfHeight + this.achieveImage.height * 0.5 + 40,
+                scaleX: this.endImage.scaleX * 1.3,
+                scaleY: this.endImage.scaleY * 1.3,
+                ease: 'Cubic.easeInOut',
+                duration: 1000,
+                onStart: () => {
+                    this.endImage.alpha = 0;
+                },
+                onComplete: () => {
+                    let achieveText = PhaserScene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight + 60, 'dialog', 'NEW ACHIEVEMENT', 32).setOrigin(0.5, 0.5).setDepth(10001);
+                    this.scene.tweens.add({
+                        delay: 1000,
+                        targets: [this.achieveImage, achieveText],
+                        x: gameConsts.width - 150 + this.achieveImage.width * 0.5,
+                        y: gameConsts.height - 100 + this.achieveImage.height * 0.5,
+                        scaleX: this.endImage.scaleX * 0.25,
+                        scaleY: this.endImage.scaleY * 0.25,
+                        alpha: 0,
+                        ease: 'Cubic.easeIn',
+                        duration: 750,
+                        onComplete: () => {
+                            this.achieveImage.destroy();
+                            achieveText.destroy();
+                            this.scene.tweens.add({
+                                targets: [this.endImage],
+                                alpha: 1,
+                                duration: 750
+                            });
+                        }
+                    });
+                }
+            });
+        }
+    }
+
     playStayEpilogue() {
         messageBus.publish("hideAllDialog");
         PhaserScene.cameras.main.setZoom(1);
 
         this.theEnd = this.scene.add.text(gameConsts.halfWidth, gameConsts.height - 90, 'THE END', {fontFamily: 'Times New Roman', fontSize: 36, color: '#ffffff', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.001).setDepth(10000);
         this.theEndTitle = this.scene.add.text(gameConsts.halfWidth, gameConsts.height - 44, 'Ending #-1: YOU STAYED', {fontFamily: 'Times New Roman', fontSize: 18, color: '#ffffff', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.001).setDepth(10000);
+        this.endingNum = 0;
         this.endImage = PhaserScene.add.sprite(40, gameConsts.height - 40, "epilogue", "eye.png").setAlpha(0).setDepth(10000).setOrigin(0, 1);
         this.theEnd.scrollFactorX = 0;
         this.theEnd.scrollFactorY = 0;
@@ -421,7 +482,10 @@ class GameFinal {
             delay: 3000,
             targets: [this.theEnd, this.theEndTitle, this.endImage],
             alpha: 1,
-            duration: 2500
+            duration: 2500,
+            onComplete: () => {
+                this.showAchievementGot(this.endingNum, 'eye.png');
+            }
         });
 
         setTimeout(() => {
@@ -454,6 +518,8 @@ class GameFinal {
             this.endGameForce();
         }
     }
+
+
 
     createDisplayedLines() {
         this.displayedLines[0] = "You exit the diner";
@@ -537,7 +603,8 @@ class GameFinal {
             this.displayedLines.push("\n\nIt is not long before you are hopelessly lost.")
             if (numTotalSaved >= 1) {
                 this.theEndTitle.setText('Ending #2: Lost Together');
-                this.endImage.setFrame('eyes_many.png')
+                this.endingNum = 2;
+                this.endImage.setFrame('eyes_many.png');
             }
             this.addEndingFailedLine();
             return;
@@ -553,7 +620,9 @@ class GameFinal {
             this.displayedLines.push("\n\nYou floor the vehicle, but it is too late and you feel something\ncrash into the truck toppling it over.");
             if (numTotalSaved >= 1) {
                 this.theEndTitle.setText("Ending #3: Crashed");
-                this.endImage.setFrame('maw.png')
+                this.endingNum = 3;
+                this.endImage.setFrame('crash.png');
+                this.endImage.y += 20;
             }
             this.addEndingFailedLine();
             return;
@@ -572,13 +641,14 @@ class GameFinal {
                 this.displayedLines.push("\n\nThe stronghold's rations are stale and cold, but Maggie's extra\nsupplies and cooking brings warmth and smiles.");
                 this.theEndTitle.setText('Ending #Good: Technically this should not trigger.\nMsg me a bug report.');
                 this.endImage.setFrame('campfire.png');
-                this.endImage.y = gameConsts.height - 5;
+                this.endImage.y = gameConsts.height;
             } else if (gameState.maggieSandwichEnd) {
                 this.displayedLines.push("\n\nThe stronghold's rations are stale and cold, so you bring out\nMaggie's sandwiches and dig in.");
                 this.displayedLines.push("\n\nMaggie's sandwiches are delicious.");
                 this.displayedLines.push("\n...");
                 this.displayedLines.push("\nMaggie's sandwiches are gone.••••••••••••••••");
                 this.theEndTitle.setText('Ending #5: The Last Tasty Supper');
+                this.endingNum = 5;
                 this.endImage.setFrame('grave.png');
                 this.endImage.setScale(this.endImage.scaleX * 0.85);
                 this.endImage.y = gameConsts.height;
@@ -586,6 +656,7 @@ class GameFinal {
                 this.displayedLines.push("\n\nThe stronghold's rations are stale and cold.");
                 this.displayedLines.push("\n\nThey are enough to survive on, but only barely.");
                 this.theEndTitle.setText('Ending #4: Bare Minimum');
+                this.endingNum = 4;
                 this.endImage.setFrame('campfire.png');
                 this.endImage.y = gameConsts.height - 5;
             }
@@ -599,6 +670,7 @@ class GameFinal {
                 this.displayedLines.push("\n\nExhausted, you settle down in a makeshift shelter, but soon the\nground start rumbling. You look up and all you see is a wall of teeth\nblotting out the sky.");
             }
             this.theEndTitle.setText('Ending #6: Hopeless');
+            this.endingNum = 6;
             this.endImage.setFrame('maw.png');
             this.endImage.setBlendMode(Phaser.BlendModes.LIGHTEN);
             this.endImage.setScale(this.endImage.scaleX * 0.65, this.endImage.scaleX * 0.62);
@@ -619,6 +691,8 @@ class GameFinal {
 
         this.createEpilogue();
         this.theEnd.setText('THE BEST END');
+        this.endingNum = 7;
+
         this.theEnd.x -= 10;
         this.theEndTitle.setText('Thank you for playing Diner in the Storm');
         this.theEndTitle.x -= 10;
@@ -657,7 +731,14 @@ class GameFinal {
                 this.scene.tweens.add({
                     targets: [this.theEnd, this.theEndTitle, this.endImage],
                     alpha: 1,
-                    duration: 2500
+                    duration: 2500,
+                    onComplete: () => {
+                        let frameName = undefined;
+                        if (this.endImage && this.endImage.frame && this.endImage.frame.name) {
+                            frameName = this.endImage.frame.name;
+                        }
+                        this.showAchievementGot(this.endingNum, frameName);
+                    }
                 });
                 setTimeout(() => {
                     this.restartButton.setState(NORMAL);
@@ -738,6 +819,7 @@ class GameFinal {
         this.theEnd = this.scene.add.text(gameConsts.halfWidth, gameConsts.height - 90, 'THE END', {fontFamily: 'Times New Roman', fontSize: 36, color: '#ffffff', align: 'center'}).setOrigin(0.5, 0).setAlpha(0).setDepth(10000);
         this.theEndTitle = this.scene.add.text(gameConsts.halfWidth, gameConsts.height - 48, 'Ending #1: All Alone', {fontFamily: 'Times New Roman', fontSize: 18, color: '#ffffff', align: 'center'}).setOrigin(0.5, 0).setAlpha(0).setDepth(10000);
         this.endImage = PhaserScene.add.sprite(40, gameConsts.height - 40, "epilogue", "eyes.png").setAlpha(0).setDepth(10000).setOrigin(0, 1);
+        this.endingNum = 1;
 
         this.theEnd.scrollFactorX = 0;
         this.theEnd.scrollFactorY = 0;
@@ -771,7 +853,6 @@ class GameFinal {
             },
             onMouseUp() {
                 fullRestart();
-                resetBanner();
             }
         });
         this.restartButton.setScrollFactor(0, 0);

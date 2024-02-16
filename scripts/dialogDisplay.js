@@ -22,7 +22,12 @@ class DialogBranchButton {
                 alpha: 0.001
             },
             onMouseUp: () => {
+                if (this.prevFinishFunc) {
+                    this.prevFinishFunc();
+                    this.prevFinishFunc = null;
+                }
                 messageBus.publish("clearBranchOptions");
+                // TODO: Move publishMessage up
                 if (this.publishMessage) {
                     messageBus.publish(this.publishMessage, this.publishParam);
                 }
@@ -30,6 +35,7 @@ class DialogBranchButton {
                     messageBus.publish('gotoDialogNode', this.destNode);
                 } else {
                     messageBus.publish("hideAllDialog");
+                    messageBus.publish("hideUndoPoint");
                 }
             }
         });
@@ -42,6 +48,7 @@ class DialogBranchButton {
         this.text.visible = false;
         this.text.setDepth(1000);
         this.text.setOrigin(0.5, 0.48);
+        this.setPosition(0, -999)
     }
 
     setPosition(x, y) {
@@ -50,6 +57,8 @@ class DialogBranchButton {
     }
 
     setText(text) {
+        this.prevFinishFunc = null;
+
         this.text.setText(text);
         if (this.text.text.length > 40) {
             this.text.setFontSize(18);
@@ -75,10 +84,15 @@ class DialogBranchButton {
         this.publishParam = param;
     }
 
+    setPrevFinishFunc(func) {
+        this.prevFinishFunc = func;
+    }
+
     setInactive() {
         this.text.visible = false;
         this.dialogButton.setState(DISABLE);
         this.publishMessage = null;
+        this.prevFinishFunc = null;
     }
 }
 
@@ -157,7 +171,7 @@ class DialogDisplay {
                 scaleY: 10000
             },
             onMouseUp: () => {
-                // console.log('block')
+
             }
         });
         this.dialogClickBlocker.setDepth(9998);
@@ -447,13 +461,15 @@ class DialogDisplay {
         this.onButtonClick = onButtonClick;
     }
 
-    setBranchesDelayed(branches) {
+    setBranchesDelayed(branches, onFinishFunc) {
         this.branchesToSet = branches;
+        this.onFinishFunc = onFinishFunc;
     }
 
     showBranches() {
         this.dialogPrompt.visible = false;
         let branches = this.branchesToSet;
+        let onFinishFunc = this.onFinishFunc;
         let branchIndexOffset = 0;
         for (let i = 0; i < branches.length; i++) {
             let branchData = branches[i];
@@ -471,10 +487,14 @@ class DialogDisplay {
                 if (branchData.publish) {
                     currButton.setPublishData(branchData.publish, branchData.param);
                 }
+                if (onFinishFunc) {
+                    currButton.setPrevFinishFunc(onFinishFunc);
+                }
                 currButton.setActive();
             }
         }
         this.branchesToSet = null;
+        this.onFinishFunc = null;
         if (branches.length > 0) {
             this.disableClickNext();
         }
@@ -521,8 +541,8 @@ class DialogDisplay {
     }
 
     setDialogBtnToTop() {
-        buttonManager.removeButton(this.dialogButton);
-        buttonManager.addToButtonList(this.dialogButton);
+        buttonManager.bringToTop(this.dialogButton);
+        buttonManager.bringToTop(globalObjects.muteButton);
     }
 
     getNumStars() {

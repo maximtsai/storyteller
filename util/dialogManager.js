@@ -51,6 +51,7 @@ class DialogNode {
     }
 
     show() {
+        this.currTextIdx = 0;
         messageBus.publish("showTalkText", this.speech[0].text, this.speech[0].instant);
         messageBus.publish("showTalkSpeaker", this.speech[0].speaker);
         if (this.speech[0].size) {
@@ -68,6 +69,9 @@ class DialogNode {
         if (this.speech[0].face) {
             messageBus.publish("showTalkFace", this.speech[0].face);
         }
+        if (this.speech[0].onStart) {
+            this.speech[0].onStart();
+        }
         if (this.speech[0].publish) {
             messageBus.publish(this.speech[0].publish, this.speech[0].param);
         }
@@ -80,8 +84,7 @@ class DialogNode {
     }
 
     showIdx(idx = 0) {
-        let resetCurrentTextIdx = false;
-        this.currTextIdx++
+        this.currTextIdx = idx;
         messageBus.publish("showTalkText", this.speech[this.currTextIdx].text, this.speech[this.currTextIdx].instant);
         messageBus.publish("showTalkSpeaker", this.speech[this.currTextIdx].speaker);
         if (this.speech[this.currTextIdx].size) {
@@ -99,15 +102,20 @@ class DialogNode {
         if (this.speech[this.currTextIdx].face) {
             messageBus.publish("showTalkFace", this.speech[this.currTextIdx].face);
         }
-        if (this.speech[this.currTextIdx].publish) {
+        if (this.speech[this.currTextIdx].publish && this.speech[this.currTextIdx].publish !== "savePoint") {
             messageBus.publish(this.speech[this.currTextIdx].publish, this.speech[this.currTextIdx].param);
         }
+        // if (this.speech[this.currTextIdx - 1] && this.speech[this.currTextIdx - 1].onFinish) {
+        //     this.speech[this.currTextIdx - 1].onFinish();
+        // }
         // TODO Not sure if needed
         // if (this.speech.length > this.currTextIdx) {
         //     messageBus.publish("showNextButton", this.showNext.bind(this));
         // }
-        if (this.hasBranches() && this.speech.length == 1) {
-            this.setupBranches();
+        if (!this.speech[this.currTextIdx + 1]) {
+            if (this.hasBranches()) {
+                this.setupBranches();
+            }
         }
     }
 
@@ -137,6 +145,9 @@ class DialogNode {
             if (nextDialogSpeech.face) {
                 messageBus.publish("showTalkFace", nextDialogSpeech.face);
             }
+            if (nextDialogSpeech.onStart) {
+                nextDialogSpeech.onStart();
+            }
             if (nextDialogSpeech.publish) {
                 messageBus.publish(nextDialogSpeech.publish, nextDialogSpeech.param);
             }
@@ -152,11 +163,12 @@ class DialogNode {
             if (!this.speech[this.currTextIdx + 1]) {
                 if (this.hasBranches()) {
                     resetCurrentTextIdx = true;
-                    this.setupBranches();
+                    this.setupBranches(this.speech[this.currTextIdx].onFinish);
                 }
             }
         } else if (!this.hasBranches()) {
             messageBus.publish("hideAllDialog");
+            messageBus.publish('hideUndoPoint');
         } else {
             resetCurrentTextIdx = true;
         }
@@ -181,8 +193,8 @@ class DialogNode {
         return this.branches && this.branches.length > 0;
     }
 
-    setupBranches() {
-        messageBus.publish("setBranches", this.branches);
+    setupBranches(onFinishFunc) {
+        messageBus.publish("setBranches", this.branches, onFinishFunc);
     }
 }
 /*

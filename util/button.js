@@ -394,9 +394,9 @@ class Button {
     }
 
     bringToTop() {
-        for (let i in this.imageRefs) {
-            this.container.bringToTop(this.imageRefs[i]);
-        }
+        // for (let i in this.imageRefs) {
+        //     this.container.bringToTop(this.imageRefs[i]);
+        // }
     }
 
     setOrigin(origX, origY) {
@@ -424,7 +424,7 @@ class Button {
         this.scene.tweens.add(tweenObj);
     }
 
-    tweenToScale(x, y, duration, ease, onUpdate) {
+    tweenToScale(x, y, duration, ease, onUpdate, onComplete) {
         let tweenObj = {
             targets: this.imageRefs[this.currImageRef],
             ease: ease,
@@ -432,6 +432,9 @@ class Button {
             onUpdate: onUpdate,
             onComplete: () => {
                 this.setScale(x, y);
+                if (onComplete) {
+                    onComplete();
+                }
             }
         }
         if (x !== undefined) {
@@ -439,6 +442,22 @@ class Button {
         }
         if (y !== undefined) {
             tweenObj.scaleY = y;
+        }
+        this.scene.tweens.add(tweenObj);
+    }
+
+    tweenToAlpha(alpha, duration, ease, onComplete) {
+        let tweenObj = {
+            targets: this.imageRefs[this.currImageRef],
+            ease: ease,
+            duration: duration,
+            alpha: alpha,
+            onComplete: () => {
+                this.setAlpha(alpha);
+                if (onComplete) {
+                    onComplete();
+                }
+            }
         }
         this.scene.tweens.add(tweenObj);
     }

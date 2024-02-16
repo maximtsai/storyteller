@@ -173,6 +173,21 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">buttons/achievements.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,11,100,23</rect>
+                <key>scale9Paddings</key>
+                <rect>50,11,100,23</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">buttons/audio_max.png</key>
             <key type="filename">buttons/audio_min.png</key>
             <key type="filename">buttons/audio_mute.png</key>
@@ -299,6 +314,52 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
+            <key type="filename">buttons/no_thanks.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>32,9,63,19</rect>
+                <key>scale9Paddings</key>
+                <rect>32,9,63,19</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">buttons/play_btn.png</key>
+            <key type="filename">buttons/play_btn_hover.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>80,27,159,53</rect>
+                <key>scale9Paddings</key>
+                <rect>80,27,159,53</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">buttons/popup.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>97,74,194,147</rect>
+                <key>scale9Paddings</key>
+                <rect>97,74,194,147</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">buttons/restart.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
@@ -314,7 +375,6 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">buttons/undo - Copy.png</key>
             <key type="filename">buttons/undo.png</key>
             <key type="filename">buttons/undo_hover.png</key>
             <key type="filename">buttons/undo_press.png</key>
@@ -344,6 +404,21 @@
                 <rect>65,65,130,130</rect>
                 <key>scale9Paddings</key>
                 <rect>65,65,130,130</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">buttons/undo_tab.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>20,15,40,30</rect>
+                <key>scale9Paddings</key>
+                <rect>20,15,40,30</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

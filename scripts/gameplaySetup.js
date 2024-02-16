@@ -4,14 +4,18 @@ let loadingText;
 let isMobile = false;
 
 function testMobile() {
-  const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
-  return regex.test(navigator.userAgent);
+    const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
+    return regex.test(navigator.userAgent);
 }
 
 function setBackground(atlas, ref) {
     mainBackground.destroy();
     mainBackground = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, atlas, ref);
 }
+
+let achievements = null;
+let newestAchievement = null;
+const achievementsText = "DinerInStormAchievements";
 
 function setupLoadingBar(scene) {
     isMobile = testMobile();
@@ -41,8 +45,21 @@ function setupLoadingBar(scene) {
 
     scene.load.on('complete', () => {
         setTimeout(() => {
+            // Achievements
+            if (!achievements) {
+                achievements = {
+                    end0: localStorage.getItem(achievementsText + 0),
+                    end1: localStorage.getItem(achievementsText + 1),
+                    end2: localStorage.getItem(achievementsText + 2),
+                    end3: localStorage.getItem(achievementsText + 3),
+                    end4: localStorage.getItem(achievementsText + 4),
+                    end5: localStorage.getItem(achievementsText + 5),
+                    end6: localStorage.getItem(achievementsText + 6),
+                    end7: localStorage.getItem(achievementsText + 7),
+                };
+            }
+            handleAchievements(achievements);
             loadingBar.scaleX = 100 + extraLoadingBarLength;
-
             if (!gameVars.showedCreditsSpook) {
                 let eye = PhaserScene.add.image(635, gameConsts.halfHeight - 275, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.03).setScale(1.97);
                 setTimeout(() => {
@@ -104,6 +121,16 @@ function setupGame() {
         press: {
             "ref": "buttonStart3"
         },
+        onHover: () => {
+            if (canvas) {
+                canvas.style.cursor = 'pointer';
+            }
+        },
+        onHoverOut: () => {
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
+        },
         onMouseUp: () => {
             runIntroSequence();
         }
@@ -124,6 +151,16 @@ function setupGame() {
             press: {
                 "alpha": 0.8
             },
+            onHover: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'pointer';
+                }
+            },
+            onHoverOut: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+            },
             onMouseUp: () => {
                 clickCredits();
             }
@@ -135,7 +172,7 @@ function setupGame() {
     setupMoveButtons();
     setupGoalText();
     setupDialogManager();
-    setupUndoButton();
+    // setupUndoButton();
     setupMuteButton();
     dialogDisplay = new DialogDisplay(PhaserScene);
     miscSubscribe = new MiscSubscribe(PhaserScene);
@@ -186,7 +223,7 @@ function clickCredits() {
     globalObjects.creditsText.setFontSize(28);
     globalObjects.creditsText.setScale(0.82);
 
-    globalObjects.creditsText2 = PhaserScene.add.text(40, 150, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org,\nsonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
+    globalObjects.creditsText2 = PhaserScene.add.text(50, 160, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org,\nsonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
     globalObjects.creditsText2.setFontSize(24);
     globalObjects.creditsText2.setScale(0.82);
 
@@ -403,7 +440,245 @@ function setupMoveButtons() {
 }
 
 function setupUndoButton() {
+    globalObjects.undoTab = PhaserScene.add.sprite(0, 420, 'buttons', 'undo_tab.png').setOrigin(1, 0.5).setDepth(99);
+    globalObjects.undoTab.scrollFactorX = 0;
+    globalObjects.undoTab.scrollFactorY = 0;
 
+    globalObjects.undoButton = new Button({
+        normal: {
+            atlas: "buttons",
+            ref: 'undo.png',
+            x: 35,
+            y: 420,
+            alpha: 1,
+        },
+        hover: {
+            atlas: "buttons",
+            ref: 'undo_hover.png',
+            alpha: 1,
+        },
+        press: {
+            atlas: "buttons",
+            ref: 'undo_press.png',
+            alpha: 1,
+        },
+        disable: {
+            alpha: 0.001,
+            scaleX: 0,
+            scaleY: 0
+        },
+        onHover: () => {
+            // globalObjects.exclamation.setAlpha(0.75);
+            // globalObjects.exclamation.setFrame('hand_icon.png');
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            //globalObjects.exclamation.setAlpha(0);
+            canvas.style.cursor = 'default';
+        },
+        onMouseUp() {
+            attemptReset();
+        }
+    });
+
+    globalObjects.undoButton.setScrollFactor(0, 0);
+    globalObjects.undoButton.setDepth(99);
+    globalObjects.undoButton.setState(DISABLE);
+}
+
+function attemptReset() {
+    globalObjects.resetClickBlocker  = new Button({
+        normal: {
+            ref: 'blackPixel',
+            x: 0,
+            y: 0,
+            scaleX: 10000,
+            scaleY: 4000,
+            alpha: 0.65,
+        }
+    });
+    globalObjects.resetClickBlocker.setDepth(99999);
+    globalObjects.resetClickBlocker.setScrollFactor(0, 0);
+
+    globalObjects.adPopup = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'buttons', 'popup.png').setDepth(99999).setScale(0.85).setAlpha(0.1);
+    globalObjects.adPopup.scrollFactorX = 0;
+    globalObjects.adPopup.scrollFactorY = 0;
+    PhaserScene.tweens.add({
+        targets: [globalObjects.adPopup],
+        scaleX: 1,
+        scaleY: 1,
+        alpha: 1,
+        ease: 'Back.easeOut',
+        duration: 280
+    });
+
+    globalObjects.playAdButton  = new Button({
+        normal: {
+            atlas: 'buttons',
+            ref: 'play_btn.png',
+            x: gameConsts.halfWidth,
+            y: gameConsts.halfHeight + 45,
+            alpha: 1,
+        },
+        hover: {
+            atlas: "buttons",
+            ref: 'play_btn_hover.png',
+            alpha: 1,
+        },
+        press: {
+            atlas: "buttons",
+            ref: 'play_btn_hover.png',
+            alpha: 0.9,
+        },
+        onHover: () => {
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            canvas.style.cursor = 'default';
+        },
+        onMouseUp() {
+            console.log("Play ad");
+            hideUndoButton();
+            playRewindingAnim();
+        }
+    });
+    globalObjects.playAdButton.setScale(0.9);
+    globalObjects.playAdButton.setDepth(99999);
+    globalObjects.playAdButton.setScrollFactor(0, 0);
+    globalObjects.playAdButton.tweenToScale(1, 1, 180, 'Cubic.easeOut');
+
+    setTimeout(() => {
+        globalObjects.cancelAdButton  = new Button({
+            normal: {
+                atlas: 'buttons',
+                ref: 'no_thanks.png',
+                x: gameConsts.halfWidth,
+                y: gameConsts.halfHeight + 122,
+                alpha: 1,
+            },
+            onHover: () => {
+                canvas.style.cursor = 'pointer';
+            },
+            onHoverOut: () => {
+                canvas.style.cursor = 'default';
+            },
+            onMouseUp() {
+                closeAdPrompt();
+            }
+        });
+        globalObjects.cancelAdButton.setDepth(99999);
+        globalObjects.cancelAdButton.setScrollFactor(0, 0);
+    }, 450);
+}
+
+function closeAdPrompt() {
+    globalObjects.adPopup.destroy();
+    globalObjects.playAdButton.destroy();
+    globalObjects.cancelAdButton.destroy();
+    globalObjects.resetClickBlocker.destroy();
+}
+
+function playRewindingAnim() {
+    globalObjects.resetClickBlocker2  = new Button({
+        normal: {
+            ref: 'blackPixel',
+            x: 0,
+            y: 0,
+            scaleX: 10000,
+            scaleY: 4000,
+        }
+    });
+    globalObjects.resetClickBlocker2.setDepth(99999);
+    globalObjects.resetClickBlocker2.setScrollFactor(0, 0);
+    globalObjects.resetClickBlocker2.setAlpha(0.1);
+    globalObjects.resetClickBlocker2.tweenToAlpha(1, 250, 'Quad.easeOut')
+
+    globalObjects.rewindLarge = PhaserScene.add.sprite(gameConsts.halfWidth + 63, gameConsts.halfHeight + 43, 'buttons', 'undo_large.png').setOrigin(0.5, 0.5).setDepth(99999);
+    globalObjects.rewindLarge.scrollFactorX = 0;
+    globalObjects.rewindLarge.scrollFactorY = 0;
+    globalObjects.rewindLarge.setScale(0.223);
+
+    PhaserScene.tweens.add({
+        targets: [globalObjects.rewindLarge],
+        x: gameConsts.halfWidth,
+        y: gameConsts.halfHeight,
+        scaleX: 1,
+        scaleY: 1,
+        ease: 'Cubic.easeInOut',
+        duration: 300
+    });
+
+    globalObjects.rewindLargeTween = PhaserScene.tweens.add({
+        targets: [globalObjects.rewindLarge],
+        rotation: "-=6.283",
+        duration: 1350,
+        ease: 'Quad.easeInOut',
+        repeat: 1,
+        onComplete: () => {
+            // TODO: Remove placeholder
+            closeRewindAnim();
+            console.log("load save point");
+            messageBus.publish('loadSavePoint');
+        }
+    });
+}
+
+function closeRewindAnim() {
+    closeAdPrompt();
+    globalObjects.rewindLargeTween.stop();
+    PhaserScene.tweens.add({
+        targets: [globalObjects.rewindLarge],
+        scaleX: 0,
+        scaleY: 0,
+        ease: 'Quad.easeIn',
+        duration: 300,
+        onComplete: () => {
+            globalObjects.rewindLarge.destroy();
+        }
+    });
+    globalObjects.resetClickBlocker2.tweenToAlpha(0, 200, 'Quad.easeOut', () => {
+        globalObjects.resetClickBlocker2.destroy();
+    })
+
+}
+
+function showUndoButton() {
+    if (globalObjects.undoTween) {
+        globalObjects.undoTween.stop();
+    }
+
+    globalObjects.undoTween = PhaserScene.tweens.add({
+        delay: 50,
+        targets: [globalObjects.undoTab],
+        x: 67,
+        ease: 'Back.easeOut',
+        duration: 380,
+        onComplete: () => {
+            globalObjects.undoButton.setState(NORMAL);
+            globalObjects.undoButton.setScale(0.6, 0.6);
+            globalObjects.undoButton.tweenToScale(0.75, 0.75, 150, 'Back.easeOut')
+        }
+    });
+}
+
+function hideUndoButton() {
+    if (!globalObjects.undoButton) {
+        return;
+    }
+    if (globalObjects.undoButton.getState() !== DISABLE) {
+        if (globalObjects.undoTween) {
+            globalObjects.undoTween.stop();
+        }
+        globalObjects.undoButton.setScale(0, 0);
+        globalObjects.undoButton.setState(DISABLE);
+
+        globalObjects.undoTween = PhaserScene.tweens.add({
+            targets: [globalObjects.undoTab],
+            x: 0,
+            ease: 'Quad.easeOut',
+            duration: 230
+        });
+    }
 }
 
 function setupMuteButton() {
@@ -438,11 +713,15 @@ function setupMuteButton() {
         onHover: () => {
             // globalObjects.exclamation.setAlpha(0.75);
             // globalObjects.exclamation.setFrame('hand_icon.png');
-            canvas.style.cursor = 'pointer';
+            if (canvas) {
+                canvas.style.cursor = 'pointer';
+            }
         },
         onHoverOut: () => {
             //globalObjects.exclamation.setAlpha(0);
-            canvas.style.cursor = 'default';
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
         },
         onMouseUp() {
             toggleAudio();
@@ -452,6 +731,18 @@ function setupMuteButton() {
     globalObjects.muteButton.setScrollFactor(0, 0);
     globalObjects.muteButton.setDepth(1);
     globalObjects.muteButton.setState(DISABLE);
+}
+
+let oldGlobalVolume = null;
+function adMute() {
+    oldGlobalVolume = globalVolume;
+    updateGlobalVolume(0);
+}
+
+function adUnmute() {
+    if (oldGlobalVolume !== null) {
+        updateGlobalVolume(oldGlobalVolume);
+    }
 }
 
 function toggleAudio() {
@@ -510,6 +801,7 @@ function setupGoalText() {
             }
         },
     });
+    globalObjects.goalBtn.setState(DISABLE);
     globalObjects.goalBtn.setScrollFactor(0, 0);
     // globalObjects.goalText.setColor('#FFFFFF');
 }
@@ -879,7 +1171,25 @@ function setCharactersNormal() {
 
 function runIntroSequence() {
     document.body.style.backgroundImage = "url('sprites/preload/rain.webp')";
+    globalObjects.goalBtn.setState(NORMAL);
 
+    for (let i in globalObjects.achievementImages) {
+        if (globalObjects.achievementImages[i].destroy) {
+            globalObjects.achievementImages[i].destroy();
+        }
+    }
+    for (let i in globalObjects.achievementHoverIcons) {
+        if (globalObjects.achievementHoverIcons[i].destroy) {
+            globalObjects.achievementHoverIcons[i].destroy();
+        }
+    }
+    globalObjects.achievementText.destroy();
+
+    for (let i in globalObjects.achievements) {
+        if (globalObjects.achievements[i].destroy) {
+            globalObjects.achievements[i].destroy();
+        }
+    }
     globalObjects.optionsButton.destroy();
     globalObjects.creditsButton.destroy();
     gameVars.canSkipIntro = true;
@@ -1158,5 +1468,248 @@ function girlsMoveAwayFromDoor() {
             }
         });
     }
+}
 
+function getAchImagFromIdx(i) {
+    switch(i) {
+        case 0:
+            return "eye.png";
+            break;
+        case 1:
+            return "eyes.png";
+            break;
+        case 2:
+            return "eyes_many.png";
+            break;
+        case 3:
+            return "crash.png";
+            break;
+        case 4:
+            return "campfire.png";
+            break;
+        case 5:
+            return "grave.png";
+            break;
+        case 6:
+            return "maw.png";
+            break;
+        case 7:
+            return "casparfull.png";
+            break;
+    }
+}
+
+function getAchDescFromIdx(i) {
+    switch(i) {
+        case 0:
+            return "Ending #-1: YOU STAYED\nWhy did you stay\nin the diner?";
+            break;
+        case 1:
+            return "ENDING #1: ALL ALONE\nLeave the diner all by\nyourself. Get lost.";
+            break;
+        case 2:
+            return "ENDING #2: LOST TOGETHER\nLeave the diner with a\nfew others. Get lost.";
+            break;
+        case 3:
+            return "ENDING #3: CRASHED\nSomething caught you off\nguard while driving away.";
+            break;
+        case 4:
+            return "ENDING #4: BARE MINIMUM\nYou've made it to Hope Springs!\nBut you left some others behind.";
+            break;
+        case 5:
+            return "ENDING #5: THE LAST TASTY SUPPER\nEveryone made it to Hope Springs!\nEveryone but Maggie.";
+            break;
+        case 6:
+            return "ENDING #6: HOPELESS\nNo matter where you search,\neverything is gone.";
+            break;
+        case 7:
+            return "ENDING #7: THE BEST END\nCaspar can finally rest\nin peace.";
+            break;
+    }
+}
+
+function handleAchievements(achievements) {
+    globalObjects.achievementText = PhaserScene.add.bitmapText(-999, -999, 'dialog', ' ', 20).setOrigin(0.5, 0).setDepth(100);
+    globalObjects.achievementImages = [];
+    globalObjects.achievementHoverIcons = [];
+
+    let hasAchievements = false;
+
+    for (let i = 0; i < 8; i++) {
+        let textString = 'end' + i;
+        let imageString = getAchImagFromIdx(i);
+        if (achievements[textString]) {
+            hasAchievements = true;
+        } else {
+            imageString = "ach_" + imageString;
+        }
+        globalObjects.achievementImages[i] = PhaserScene.add.image( 55 + i * 84, 100, 'epilogue', imageString).setDepth(1).setAlpha(0.8).setOrigin(0.5, 0.85).setVisible(false)
+        if (achievements[textString]) {
+            globalObjects.achievementImages[i].setAlpha(1);
+            globalObjects.achievementHoverIcons[i] = new Button({
+                normal: {
+                    "ref": "blackPixel",
+                    "x": globalObjects.achievementImages[i].x,
+                    "y": 74,
+                    "alpha": 0.001,
+                    "scaleX": 32,
+                    "scaleY": 41
+                },
+                hover: {
+                    "ref": "blackPixel",
+                    "alpha": 0.01
+                },
+                disable: {
+                    "ref": "blackPixel",
+                    "alpha": 0.001
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                    if (i === 0) {
+                        showHoverText(135, 130, getAchDescFromIdx(i));
+                    } else if (i === 7) {
+                        showHoverText(globalObjects.achievementImages[i].x - 60, 130, getAchDescFromIdx(i));
+                    } else {
+                        showHoverText(globalObjects.achievementImages[i].x + 2, 130, getAchDescFromIdx(i));
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                    hideHoverText();
+                },
+            });
+            globalObjects.achievementHoverIcons[i].setState(DISABLE);
+        }
+        if (i == 7) {
+            globalObjects.achievementImages[i].x -= 8;
+        }
+        let achWidth = globalObjects.achievementImages[i].width;
+        if (achWidth > 83) {
+            let newRatio = 83 / achWidth;
+            globalObjects.achievementImages[i].setScale(newRatio);
+        }
+        let achHeight = globalObjects.achievementImages[i].height;
+        if (achHeight > 92) {
+            let newRatio = 92 / achHeight;
+
+            if (newRatio < globalObjects.achievementImages[i].scaleX) {
+                if (i === 7) {
+                    newRatio += 0.03;
+                }
+                globalObjects.achievementImages[i].setScale(newRatio);
+            }
+        }
+        if (achHeight < 70) {
+            globalObjects.achievementImages[i].y -= (70 - achHeight) * 0.5
+        }
+    }
+    globalObjects.achievements = {
+        achievementsBacking: PhaserScene.add.image(0, 0, 'blackPixel').setDepth(0).setAlpha(0).setOrigin(0, 0).setScale(400, 50),
+        achievementsButton: new Button({
+            normal: {
+                "ref": "achievements.png",
+                "atlas": "buttons",
+                "x": 0,
+                "alpha": hasAchievements ? 0.88 : 0.5
+            },
+            hover: {
+                "ref": "achievements.png",
+                "atlas": "buttons",
+                "alpha": hasAchievements ? 1 : 0.9,
+            },
+            press: {
+                "ref": "achievements.png",
+                "atlas": "buttons",
+                "alpha": hasAchievements ? 0.9 : 0.7,
+            },
+            onHover: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'pointer';
+                }
+            },
+            onHoverOut: () => {
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
+            },
+            onMouseUp: () => {
+                globalObjects.achievementsShown = !globalObjects.achievementsShown;
+                if (globalObjects.achievementsShown) {
+                    if (newestAchievement) {
+                        let showcaseImage = globalObjects.achievementImages[newestAchievement]
+                        PhaserScene.tweens.add({
+                            targets: showcaseImage,
+                            scaleX: showcaseImage.scaleX * 1.2,
+                            scaleY: showcaseImage.scaleY * 1.2,
+                            duration: 1000,
+                            ease: 'Cubic.easeOut',
+                            yoyo: true
+                        });
+                        playSound('trustgain');
+
+                        newestAchievement = null;
+                    }
+                    for (let i in globalObjects.achievementImages) {
+                        globalObjects.achievementImages[i].visible = true;
+                    }
+                    for (let i in globalObjects.achievementHoverIcons) {
+                        globalObjects.achievementHoverIcons[i].setState(NORMAL);
+                    }
+                    globalObjects.achievements.achievementsBacking.setScale(400, 60);
+                    globalObjects.achievements.achievementsBacking.setAlpha(0.2);
+                    globalObjects.achievementTween = PhaserScene.tweens.add({
+                        targets: [globalObjects.achievements.achievementsBacking],
+                        alpha: 0.5,
+                        duration: 200,
+                        ease: 'Cubic.easeOut',
+                    });
+                } else {
+                    for (let i in globalObjects.achievementImages) {
+                        globalObjects.achievementImages[i].visible = false;
+                    }
+                    for (let i in globalObjects.achievementHoverIcons) {
+                        globalObjects.achievementHoverIcons[i].setState(DISABLE);
+                    }
+                    globalObjects.achievementText.setVisible(false);
+                    if (globalObjects.achievementTween) {
+                        globalObjects.achievementTween.stop();
+                    }
+                    globalObjects.achievements.achievementsBacking.setAlpha(0);
+                }
+            }
+        }),
+        star: PhaserScene.add.image(162, 14, 'misc', 'star.png').setScale(0).setDepth(1).setOrigin(0.5, 0.55),
+    };
+    if (!hasAchievements) {
+        globalObjects.achievements.star.setAlpha(0);
+        globalObjects.achievements.achievementsButton.setAlpha(0.5);
+    }
+    globalObjects.achievementsShown = false;
+
+    globalObjects.achievements.achievementsButton.setPos(0, -32);
+    globalObjects.achievements.achievementsButton.setDepth(1);
+    globalObjects.achievements.achievementsButton.setOrigin(0, 0)
+    globalObjects.achievements.achievementsButton.tweenToPos(0, -8, 400, 'Back.easeOut')
+    PhaserScene.tweens.add({
+        targets: [globalObjects.achievements.star],
+        delay: 300,
+        duration: 400,
+        scaleX: 0.46,
+        scaleY: 0.46,
+        ease: 'Bounce.easeOut',
+
+    });
+}
+
+function showHoverText(x, y, text) {
+    globalObjects.achievementText.visible = true;
+    globalObjects.achievementText.setPosition(x, y).setText(text);
+}
+
+function hideHoverText() {
+    globalObjects.achievementText.visible = false;
 }
