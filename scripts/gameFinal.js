@@ -436,7 +436,9 @@ class GameFinal {
                     this.endImage.alpha = 0;
                 },
                 onComplete: () => {
-                    let achieveText = PhaserScene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight + 60, 'dialog', 'NEW ACHIEVEMENT', 32).setOrigin(0.5, 0.5).setDepth(10001);
+                    let achieveText = PhaserScene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight + 60, 'dialog', 'NEW ENDING', 32).setOrigin(0.5, 0.5).setDepth(10001);
+                    achieveText.scrollFactorX = 0;
+                    achieveText.scrollFactorY = 0;
                     this.scene.tweens.add({
                         delay: 1000,
                         targets: [this.achieveImage, achieveText],
@@ -500,6 +502,12 @@ class GameFinal {
     }
 
     checkJuanThenContinue() {
+        if (!url1 || !url2) {
+            return;
+        }
+        if (!document.location.href.includes(url1) && !document.location.href.includes(url2)) {
+            return;
+        }
         if (gameState.juanLeaveStatus !== "accept" && gameState.juanLeaveStatus !== "onlyUseful") {
             // Juan already not coming
             this.endGameForce();
