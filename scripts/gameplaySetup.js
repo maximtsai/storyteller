@@ -1291,6 +1291,7 @@ function runIntroSequence() {
 
             playSound('truckdoor', 0.8);
 
+            let achievementMult = hasAchievements ? 0.85 : 1;
             setTimeout(() => {
                 if (!gameVars.canSkipIntro) return;
                 setBackground('intro', 'offtruck2.png');
@@ -1303,10 +1304,10 @@ function runIntroSequence() {
                         cleanupIntro();
                         setTimeout(() => {
                             enterShop();
-                        }, 2000);
-                    }, 2000);
-                }, 1500);
-            }, 1700);
+                        }, 2000 * achievementMult);
+                    }, 2000 * achievementMult);
+                }, 1500 * achievementMult);
+            }, 1700 * achievementMult);
         }
     });
 }
@@ -1347,6 +1348,7 @@ function enterShop() {
     playSound('entershop');
     setBackground('intro', 'diner2.png');
     let dinerLighting = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'dinerlighting.png').setAlpha(0);
+    let achievementMult = hasAchievements ? 0.9 : 1;
     setTimeout(() => {
         dinerLighting.alpha = 1;
         setTimeout(() => {
@@ -1363,15 +1365,15 @@ function enterShop() {
                         delay: 550,
                         alpha: 1,
                         ease: 'Cubic.easeIn',
-                        duration: 750,
-                        completeDelay: 250,
+                        duration: Math.floor(750 * achievementMult),
+                        completeDelay: Math.floor(250 * achievementMult),
                         onComplete: () => {
                             darkScreen.destroy();
                             realGameStart();
                         }
                     });
                 }, 120);
-            }, 350);
+            }, Math.floor(350 * achievementMult));
         }, 100);
     }, 50);
 }
@@ -1528,12 +1530,12 @@ function getAchDescFromIdx(i) {
     }
 }
 
+let hasAchievements = false;
 function handleAchievements(achievements) {
     globalObjects.achievementText = PhaserScene.add.bitmapText(-999, -999, 'dialog', ' ', 20).setOrigin(0.5, 0).setDepth(100);
     globalObjects.achievementImages = [];
     globalObjects.achievementHoverIcons = [];
 
-    let hasAchievements = false;
 
     for (let i = 0; i < 8; i++) {
         let textString = 'end' + i;

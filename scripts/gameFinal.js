@@ -43,6 +43,11 @@ class GameFinal {
         globalObjects.diner.maggieButton.destroy();
         globalObjects.diner.BrunaButton.destroy();
         globalObjects.diner.RadioButton.destroy();
+        globalObjects.diner.DinerButton.destroy();
+        globalObjects.diner.IndoorButton.destroy();
+        globalObjects.diner.ShedButton.destroy();
+        globalObjects.diner.graveButton.destroy();
+
         globalObjects.diner.TVButton.destroy();
         globalObjects.diner.BackdoorButton.destroy();
         globalObjects.diner.CasparButton.destroy();
