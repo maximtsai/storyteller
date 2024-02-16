@@ -173,6 +173,8 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">epilogue/ach_campfire.png</key>
+            <key type="filename">epilogue/ach_grave.png</key>
             <key type="filename">epilogue/campfire.png</key>
             <key type="filename">epilogue/grave.png</key>
             <struct type="IndividualSpriteSettings">
@@ -186,6 +188,99 @@
                 <rect>38,38,75,75</rect>
                 <key>scale9Paddings</key>
                 <rect>38,38,75,75</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/ach_casparfull.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>40,77,81,153</rect>
+                <key>scale9Paddings</key>
+                <rect>40,77,81,153</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/ach_crash.png</key>
+            <key type="filename">epilogue/crash.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>52,34,103,69</rect>
+                <key>scale9Paddings</key>
+                <rect>52,34,103,69</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/ach_eye.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>52,52,103,103</rect>
+                <key>scale9Paddings</key>
+                <rect>52,52,103,103</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/ach_eyes.png</key>
+            <key type="filename">epilogue/eyes.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>16,8,32,15</rect>
+                <key>scale9Paddings</key>
+                <rect>16,8,32,15</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/ach_eyes_many.png</key>
+            <key type="filename">epilogue/eyes_many.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>38,13,75,26</rect>
+                <key>scale9Paddings</key>
+                <rect>38,13,75,26</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/ach_maw.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>48,55,95,110</rect>
+                <key>scale9Paddings</key>
+                <rect>48,55,95,110</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -248,51 +343,6 @@
                 <rect>50,50,100,100</rect>
                 <key>scale9Paddings</key>
                 <rect>50,50,100,100</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">epilogue/eyes.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>16,8,32,15</rect>
-                <key>scale9Paddings</key>
-                <rect>16,8,32,15</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">epilogue/eyes_many.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>38,13,75,26</rect>
-                <key>scale9Paddings</key>
-                <rect>38,13,75,26</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">epilogue/monster - Copy.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>122,139,243,278</rect>
-                <key>scale9Paddings</key>
-                <rect>122,139,243,278</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

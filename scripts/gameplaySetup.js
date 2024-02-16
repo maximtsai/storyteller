@@ -16,6 +16,7 @@ function setBackground(atlas, ref) {
 let isFirstPlay = true;
 let hasAdBlock = false;
 let achievements = null;
+let newestAchievement = null;
 const achievementsText = "DinerInStormAchievements";
 
 function setupLoadingBar(scene) {
@@ -63,10 +64,16 @@ function setupLoadingBar(scene) {
         setTimeout(() => {
             // Achievements
             if (!achievements) {
-                achievements = localStorage.getItem(achievementsText);
-                if (!achievements) {
-                    achievements = {};
-                }
+                achievements = {
+                    end0: localStorage.getItem(achievementsText + 0),
+                    end1: localStorage.getItem(achievementsText + 1),
+                    end2: localStorage.getItem(achievementsText + 2),
+                    end3: localStorage.getItem(achievementsText + 3),
+                    end4: localStorage.getItem(achievementsText + 4),
+                    end5: localStorage.getItem(achievementsText + 5),
+                    end6: localStorage.getItem(achievementsText + 6),
+                    end7: localStorage.getItem(achievementsText + 7),
+                };
             }
             handleAchievements(achievements);
             loadingBar.scaleX = 100 + extraLoadingBarLength;
@@ -132,10 +139,14 @@ function setupGame() {
             "ref": "buttonStart3"
         },
         onHover: () => {
-            canvas.style.cursor = 'pointer';
+            if (canvas) {
+                canvas.style.cursor = 'pointer';
+            }
         },
         onHoverOut: () => {
-            canvas.style.cursor = 'default';
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
         },
         onMouseUp: () => {
             clearBannerAndHideDiv();
@@ -160,10 +171,14 @@ function setupGame() {
                 "alpha": 0.8
             },
             onHover: () => {
-                canvas.style.cursor = 'pointer';
+                if (canvas) {
+                    canvas.style.cursor = 'pointer';
+                }
             },
             onHoverOut: () => {
-                canvas.style.cursor = 'default';
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
             },
             onMouseUp: () => {
                 clearBannerAndHideDiv();
@@ -775,11 +790,15 @@ function setupMuteButton() {
         onHover: () => {
             // globalObjects.exclamation.setAlpha(0.75);
             // globalObjects.exclamation.setFrame('hand_icon.png');
-            canvas.style.cursor = 'pointer';
+            if (canvas) {
+                canvas.style.cursor = 'pointer';
+            }
         },
         onHoverOut: () => {
             //globalObjects.exclamation.setAlpha(0);
-            canvas.style.cursor = 'default';
+            if (canvas) {
+                canvas.style.cursor = 'default';
+            }
         },
         onMouseUp() {
             toggleAudio();
@@ -1231,11 +1250,21 @@ function runIntroSequence() {
     document.body.style.backgroundImage = "url('sprites/preload/rain.webp')";
     globalObjects.goalBtn.setState(NORMAL);
 
-    if (globalObjects.achievements) {
-        for (let i in globalObjects.achievements) {
-            if (globalObjects.achievements[i].destroy) {
-                globalObjects.achievements[i].destroy();
-            }
+    for (let i in globalObjects.achievementImages) {
+        if (globalObjects.achievementImages[i].destroy) {
+            globalObjects.achievementImages[i].destroy();
+        }
+    }
+    for (let i in globalObjects.achievementHoverIcons) {
+        if (globalObjects.achievementHoverIcons[i].destroy) {
+            globalObjects.achievementHoverIcons[i].destroy();
+        }
+    }
+    globalObjects.achievementText.destroy();
+
+    for (let i in globalObjects.achievements) {
+        if (globalObjects.achievements[i].destroy) {
+            globalObjects.achievements[i].destroy();
         }
     }
     globalObjects.optionsButton.destroy();
@@ -1518,49 +1547,211 @@ function girlsMoveAwayFromDoor() {
     }
 }
 
-function handleAchievements(achievements) {
-    if (Object.keys(achievements).length === 0 && achievements.constructor === Object) {
-        // return;
+function getAchImagFromIdx(i) {
+    switch(i) {
+        case 0:
+            return "eye.png";
+            break;
+        case 1:
+            return "eyes.png";
+            break;
+        case 2:
+            return "eyes_many.png";
+            break;
+        case 3:
+            return "crash.png";
+            break;
+        case 4:
+            return "campfire.png";
+            break;
+        case 5:
+            return "grave.png";
+            break;
+        case 6:
+            return "maw.png";
+            break;
+        case 7:
+            return "casparfull.png";
+            break;
     }
-    globalObjects.achievements = {};
+}
+
+function getAchDescFromIdx(i) {
+    switch(i) {
+        case 0:
+            return "Ending #-1: YOU STAYED\nWhy did you stay\nin the diner?";
+            break;
+        case 1:
+            return "ENDING #1: ALL ALONE\nLeave the diner all by\nyourself. Get lost.";
+            break;
+        case 2:
+            return "ENDING #2: LOST TOGETHER\nLeave the diner with a\nfew others. Get lost.";
+            break;
+        case 3:
+            return "ENDING #3: CRASHED\nSomething caught you off\nguard while driving away.";
+            break;
+        case 4:
+            return "ENDING #4: BARE MINIMUM\nYou've made it to Hope Springs!\nBut you left some others behind.";
+            break;
+        case 5:
+            return "ENDING #5: THE LAST TASTY SUPPER\nEveryone made it to Hope Springs!\nEveryone but Maggie.";
+            break;
+        case 6:
+            return "ENDING #6: HOPELESS\nNo matter where you search,\neverything is gone.";
+            break;
+        case 7:
+            return "ENDING #7: THE BEST END\nCaspar can finally rest\nin peace.";
+            break;
+    }
+}
+
+function handleAchievements(achievements) {
+    globalObjects.achievementText = PhaserScene.add.bitmapText(-999, -999, 'dialog', ' ', 20).setOrigin(0.5, 0).setDepth(100);
+    globalObjects.achievementImages = [];
+    globalObjects.achievementHoverIcons = [];
+
+    let hasAchievements = false;
+
+    for (let i = 0; i < 8; i++) {
+        let textString = 'end' + i;
+        let imageString = getAchImagFromIdx(i);
+        if (achievements[textString]) {
+            hasAchievements = true;
+        } else {
+            imageString = "ach_" + imageString;
+        }
+        globalObjects.achievementImages[i] = PhaserScene.add.image( 55 + i * 84, 100, 'epilogue', imageString).setDepth(1).setAlpha(0.8).setOrigin(0.5, 0.85).setVisible(false)
+        if (achievements[textString]) {
+            globalObjects.achievementImages[i].setAlpha(1);
+            globalObjects.achievementHoverIcons[i] = new Button({
+                normal: {
+                    "ref": "blackPixel",
+                    "x": globalObjects.achievementImages[i].x,
+                    "y": 74,
+                    "alpha": 0.001,
+                    "scaleX": 32,
+                    "scaleY": 41
+                },
+                hover: {
+                    "ref": "blackPixel",
+                    "alpha": 0.01
+                },
+                disable: {
+                    "ref": "blackPixel",
+                    "alpha": 0.001
+                },
+                onHover: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'pointer';
+                    }
+                    if (i === 0) {
+                        showHoverText(135, 130, getAchDescFromIdx(i));
+                    } else if (i === 7) {
+                        showHoverText(globalObjects.achievementImages[i].x - 60, 130, getAchDescFromIdx(i));
+                    } else {
+                        showHoverText(globalObjects.achievementImages[i].x + 2, 130, getAchDescFromIdx(i));
+                    }
+                },
+                onHoverOut: () => {
+                    if (canvas) {
+                        canvas.style.cursor = 'default';
+                    }
+                    hideHoverText();
+                },
+            });
+            globalObjects.achievementHoverIcons[i].setState(DISABLE);
+        }
+        if (i == 7) {
+            globalObjects.achievementImages[i].x -= 8;
+        }
+        let achWidth = globalObjects.achievementImages[i].width;
+        if (achWidth > 83) {
+            let newRatio = 83 / achWidth;
+            globalObjects.achievementImages[i].setScale(newRatio);
+        }
+        let achHeight = globalObjects.achievementImages[i].height;
+        if (achHeight > 92) {
+            let newRatio = 92 / achHeight;
+
+            if (newRatio < globalObjects.achievementImages[i].scaleX) {
+                if (i === 7) {
+                    newRatio += 0.03;
+                }
+                globalObjects.achievementImages[i].setScale(newRatio);
+            }
+        }
+        if (achHeight < 70) {
+            globalObjects.achievementImages[i].y -= (70 - achHeight) * 0.5
+        }
+    }
     globalObjects.achievements = {
-        achievementsBacking: PhaserScene.add.image(0, 0, 'blackPixel').setDepth(0).setAlpha(0).setOrigin(0, 0).setScale(300, 50),
+        achievementsBacking: PhaserScene.add.image(0, 0, 'blackPixel').setDepth(0).setAlpha(0).setOrigin(0, 0).setScale(400, 50),
         achievementsButton: new Button({
             normal: {
                 "ref": "achievements.png",
                 "atlas": "buttons",
                 "x": 0,
-                "alpha": 0.88
+                "alpha": hasAchievements ? 0.88 : 0.5
             },
             hover: {
                 "ref": "achievements.png",
                 "atlas": "buttons",
-                "alpha": 1,
+                "alpha": hasAchievements ? 1 : 0.9,
             },
             press: {
                 "ref": "achievements.png",
                 "atlas": "buttons",
-                "alpha": 0.9
+                "alpha": hasAchievements ? 0.9 : 0.7,
             },
             onHover: () => {
-                canvas.style.cursor = 'pointer';
+                if (canvas) {
+                    canvas.style.cursor = 'pointer';
+                }
             },
             onHoverOut: () => {
-                canvas.style.cursor = 'default';
+                if (canvas) {
+                    canvas.style.cursor = 'default';
+                }
             },
             onMouseUp: () => {
                 globalObjects.achievementsShown = !globalObjects.achievementsShown;
                 if (globalObjects.achievementsShown) {
-                    globalObjects.achievements.achievementsBacking.setScale(300, 55);
+                    if (newestAchievement) {
+                        let showcaseImage = globalObjects.achievementImages[newestAchievement]
+                        PhaserScene.tweens.add({
+                            targets: showcaseImage,
+                            scaleX: showcaseImage.scaleX * 1.2,
+                            scaleY: showcaseImage.scaleY * 1.2,
+                            duration: 1000,
+                            ease: 'Cubic.easeOut',
+                            yoyo: true
+                        });
+                        playSound('trustgain');
+
+                        newestAchievement = null;
+                    }
+                    for (let i in globalObjects.achievementImages) {
+                        globalObjects.achievementImages[i].visible = true;
+                    }
+                    for (let i in globalObjects.achievementHoverIcons) {
+                        globalObjects.achievementHoverIcons[i].setState(NORMAL);
+                    }
+                    globalObjects.achievements.achievementsBacking.setScale(400, 60);
                     globalObjects.achievements.achievementsBacking.setAlpha(0.2);
                     globalObjects.achievementTween = PhaserScene.tweens.add({
                         targets: [globalObjects.achievements.achievementsBacking],
                         alpha: 0.5,
                         duration: 200,
-                        scaleY: 60,
                         ease: 'Cubic.easeOut',
                     });
                 } else {
+                    for (let i in globalObjects.achievementImages) {
+                        globalObjects.achievementImages[i].visible = false;
+                    }
+                    for (let i in globalObjects.achievementHoverIcons) {
+                        globalObjects.achievementHoverIcons[i].setState(DISABLE);
+                    }
+                    globalObjects.achievementText.setVisible(false);
                     if (globalObjects.achievementTween) {
                         globalObjects.achievementTween.stop();
                     }
@@ -1569,8 +1760,11 @@ function handleAchievements(achievements) {
             }
         }),
         star: PhaserScene.add.image(162, 14, 'misc', 'star.png').setScale(0).setDepth(1).setOrigin(0.5, 0.55),
-
     };
+    if (!hasAchievements) {
+        globalObjects.achievements.star.setAlpha(0);
+        globalObjects.achievements.achievementsButton.setAlpha(0.5);
+    }
     globalObjects.achievementsShown = false;
 
     globalObjects.achievements.achievementsButton.setPos(0, -32);
@@ -1586,6 +1780,13 @@ function handleAchievements(achievements) {
         ease: 'Bounce.easeOut',
 
     });
+}
 
-    globalObjects.achievements.achievementsButton.tweenToPos(0, -8, 400, 'Back.easeOut')
+function showHoverText(x, y, text) {
+    globalObjects.achievementText.visible = true;
+    globalObjects.achievementText.setPosition(x, y).setText(text);
+}
+
+function hideHoverText() {
+    globalObjects.achievementText.visible = false;
 }

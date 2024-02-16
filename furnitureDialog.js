@@ -450,15 +450,29 @@ let furnitureDialog = {
 
     ExitNoReason: {
         speech: [
-            {speaker: '', text: "No reason to go back to my rig right now."},
+            {speaker: '', text: "No reason to go back to my rig right now.\nLeave anyways?"},
+        ],
+        branches: [
+            {text: "Yes", targetNode: "ExitNoReason2"},
+            {text: "Stay in the Diner"},
         ]
     },
+    ExitNoReason2: {
+        speech: [
+            {speaker: '', text: "Are you sure?"},
+        ],
+        branches: [
+            {text: "Yes", targetNode: "ExitEarly"},
+            {text: "Nevermind"},
+        ]
+    },
+
     ExitSceneTwo: {
         speech: [
             {speaker: '', text: "Do I really want to leave the diner now?"},
         ],
         branches: [
-            {text: "Yes", targetNode: "ExitEarly"},
+            {text: "Leave the diner now", targetNode: "ExitEarly"},
             {text: "Not yet"},
         ]
     },
