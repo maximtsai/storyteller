@@ -191,7 +191,7 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">epilogue/ach_casparfull.png</key>
+            <key type="filename">epilogue/ach_casparfullline.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
@@ -301,6 +301,7 @@
                 <false/>
             </struct>
             <key type="filename">epilogue/casparfull.png</key>
+            <key type="filename">epilogue/casparfullline.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
