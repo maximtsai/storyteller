@@ -1573,7 +1573,7 @@ function getAchImagFromIdx(i) {
             return "maw.png";
             break;
         case 7:
-            return "casparfull.png";
+            return "casparfullline.png";
             break;
     }
 }
