@@ -1664,8 +1664,7 @@ let dialogList1 = {
             {speaker: "Bruna", face: "bruna_happy.png", text: "Ja! Everyone's looking for weather events\n" +
                     "right now."},
             {speaker: "Bruna", face: "bruna_normal.png", text: "Turns out there's a lot of storms back\n" +
-                    "home too."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "Odd coincidence, don't you think?"},
+                    "home too.\nOdd coincidence, don't you think?"},
             {speaker: "You", text: "Where's home for you?"},
             {speaker: "Bruna", face: "bruna_normal.png", text: "Germany.", publish: "germanyCompare"},
             {speaker: "You", text: "That's a long ways away."},
