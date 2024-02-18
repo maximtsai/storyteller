@@ -75,6 +75,22 @@ function setupLoadingBar(scene) {
                     end7: localStorage.getItem(achievementsText + 7),
                 };
             }
+            let offImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'startOff.png').setDepth(0).setScale(4);
+            scene.tweens.add({
+                targets: [offImage],
+                alpha: 0,
+                duration: 1500,
+                ease: 'Quad.easeIn',
+                onComplete: () => {
+                    offImage.destroy();
+                }
+            });
+            scene.tweens.add({
+                targets: [offImage],
+                duration: 1500,
+                x: gameConsts.halfWidth - 20,
+                y: gameConsts.halfHeight + 8
+            });
             handleAchievements(achievements);
             loadingBar.scaleX = 100 + extraLoadingBarLength;
             if (!gameVars.showedCreditsSpook) {
@@ -1152,6 +1168,7 @@ function realGameStart() {
                                 globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0.01, true);
                                 enableDinerButtons();
                                 dialogManager.showDialogNode('intro');
+                                randGloomShow(0);
                             }, 40);
                         }, 15);
                     }, 190);
@@ -1780,7 +1797,6 @@ function handleAchievements(achievements) {
         scaleX: 0.46,
         scaleY: 0.46,
         ease: 'Bounce.easeOut',
-
     });
 }
 
@@ -1791,4 +1807,51 @@ function showHoverText(x, y, text) {
 
 function hideHoverText() {
     globalObjects.achievementText.visible = false;
+}
+
+function randGloomShow(repeat = 0, extraLarge = false) {
+    if (!globalObjects.gloomRand) {
+        globalObjects.gloomRand = PhaserScene.add.image(0, 0, 'characters', 'gloompix.png').setScale(0).setDepth(99).setAlpha(0);
+        globalObjects.gloomRand.scrollFactorX = 0;
+        globalObjects.gloomRand.scrollFactorY = 0;
+        globalObjects.gloomRand.setBlendMode(Phaser.BlendModes.ADD)
+    }
+    let randWidth = 0.25 + Math.random() * 0.3;
+    let randHeight = 1 + Math.random() * 9;
+    randHeight *= randHeight;
+    if (extraLarge) {
+        randWidth *= 1.5;
+        randHeight *= 2;
+        globalObjects.gloomRand.setBlendMode(Phaser.BlendModes.DARKEN)
+    } else {
+        globalObjects.gloomRand.setBlendMode(Phaser.BlendModes.ADD)
+    }
+    globalObjects.gloomRand.setScale(randWidth, randHeight);
+    globalObjects.gloomRand.setPosition(Math.random() * gameConsts.width, Math.random() * gameConsts.height);
+
+    let randAlpha = 0.05 + Math.random() * 0.11;
+    let randDur = 600 + Math.floor(Math.random() * 1000);
+    if (extraLarge) {
+        randAlpha += 0.12;
+        randDur += 750;
+    }
+    PhaserScene.tweens.add({
+        targets: [globalObjects.gloomRand],
+        duration: extraLarge ? 650 : 400,
+        alpha: randAlpha,
+        ease: 'Quad.easeOut',
+        onComplete: () => {
+            PhaserScene.tweens.add({
+                targets: [globalObjects.gloomRand],
+                duration: randDur,
+                alpha: 0,
+                ease: 'Quad.easeIn',
+            });
+        }
+    });
+    if (repeat > 0) {
+        setTimeout(() => {
+            randGloomShow(repeat - 1);
+        }, 2000 + Math.random() * 2000)
+    }
 }

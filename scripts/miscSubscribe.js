@@ -373,6 +373,7 @@ class MiscSubscribe {
     }
 
     windowBreak() {
+        randGloomShow(5);
         gameCharacters.tv.setFrame('tv_cracked.png');
         gameCharacters.sign.rotation = 0.135;
         gameState.currentScene = 3;
@@ -914,8 +915,8 @@ class MiscSubscribe {
                     globalObjsTemp.blackEye.scrollFactorX = 0;
                     this.scene.tweens.add({
                         targets: globalObjsTemp.blackEye,
-                        scaleX: 0.65,
-                        scaleY: 0.65,
+                        scaleX: 0.845,
+                        scaleY: 0.845,
                         ease: 'Quad.easeOut',
                         duration: 750,
                         onComplete: () => {
@@ -988,8 +989,8 @@ class MiscSubscribe {
                             });
                             this.scene.tweens.add({
                                 targets: [globalObjsTemp.blackEye],
-                                scaleX: 2.95,
-                                scaleY: 2.95,
+                                scaleX: 3.83,
+                                scaleY: 3.83,
                                 ease: 'Cubic.easeIn',
                                 duration: 6020,
                             });
@@ -1118,6 +1119,7 @@ class MiscSubscribe {
     }
 
     tvSmash() {
+        randGloomShow(0);
         gameCharacters.tv.setFrame('tv_broken.png');
         globalObjsTemp.tvScreamSound.stop();
         gameState.tvSmashed = true;
@@ -1129,6 +1131,7 @@ class MiscSubscribe {
         gameCharacters.tv.setFrame('tv_red.png');
         globalObjsTemp.tvScreamSound = playSound('emergency', 1, true);
         gameState.tvSceneThreeEnded = true;
+        randGloomShow(0);
 
         if (globalObjsTemp.black) {
             globalObjsTemp.black.setAlpha(0.4)
@@ -1151,6 +1154,7 @@ class MiscSubscribe {
     }
 
     startDark() {
+        randGloomShow();
         clearGoalText();
         globalObjsTemp.black.setAlpha(0).setDepth(8);
         setTimeout(() => {
@@ -1276,6 +1280,7 @@ class MiscSubscribe {
                                         onComplete: () => {
                                             dialogManager.hideDialogNode();
                                             dialogManager.showDialogNode('Interrupt');
+
                                             let eyelid1 = this.scene.add.image(-850, gameConsts.halfHeight - 260, 'characters', 'blackCircle.png').setDepth(-1).setScale(6).setOrigin(0.5, 0.99);
                                             let eyelid2 = this.scene.add.image(-850 + 173, gameConsts.halfHeight - 75 + 100, 'characters', 'blackCircle.png').setDepth(-1).setScale(6).setOrigin(0.5, 0.99).setRotation(2.09);
                                             let eyelid3 = this.scene.add.image(-850 - 173, gameConsts.halfHeight - 75 + 100, 'characters', 'blackCircle.png').setDepth(-1).setScale(6).setOrigin(0.5, 0.99).setRotation(4.19);
@@ -1295,6 +1300,9 @@ class MiscSubscribe {
                                                         scaleX: 0.95,
                                                         scaleY: 0.95,
                                                         ease: 'Cubic.easeIn',
+                                                        onComplete: () => {
+                                                            randGloomShow(0, true);
+                                                        }
                                                     });
                                                 }
                                             });
@@ -1441,6 +1449,7 @@ class MiscSubscribe {
     }
 
     showWindowShadow1() {
+        randGloomShow(0);
         // Now using scene two logic
         this.scene.tweens.add({
             targets: globalObjsTemp.gloom,
@@ -1474,6 +1483,7 @@ class MiscSubscribe {
     }
 
     edithStandCorner() {
+        randGloomShow(0);
         gameCharacters.edith.setFrame('edith2.png');
         gameCharacters.edith.scaleX = -1;
         const EdithFinalPos = 50;
