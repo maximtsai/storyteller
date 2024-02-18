@@ -1844,7 +1844,7 @@ function randGloomShow(repeat = 0, extraLarge = false) {
     let randAlpha = 0.05 + Math.random() * 0.11;
     let randDur = 600 + Math.floor(Math.random() * 1000);
     if (extraLarge) {
-        randAlpha += 0.08;
+        randAlpha += 0.03;
         randDur += 750;
     }
     PhaserScene.tweens.add({
