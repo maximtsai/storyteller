@@ -89,7 +89,7 @@ class MiscSubscribe {
     }
 
     hideUndoPoint() {
-        // hideUndoButton();
+        hideUndoButton();
     }
 
     savePoint(data) {

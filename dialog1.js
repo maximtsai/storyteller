@@ -1694,8 +1694,8 @@ let dialogList1 = {
 
     BrunaInterviewHappy: {
         speech: [
-            {speaker: "Bruna", face: "bruna_happy.png", text: "Great!", publish: "BrunaInfluence", data: {property: "brunaInterview", value: true}, onStart: () => {
-                messageBus.publish("showUndoPoint");
+            {speaker: "Bruna", face: "bruna_happy.png", text: "Great!", publish: "showUndoPoint", data: {property: "brunaInterview", value: true}, onStart: () => {
+                messageBus.publish("BrunaInfluence");
                 }},
         ]
     },

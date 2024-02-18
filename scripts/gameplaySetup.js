@@ -734,6 +734,7 @@ function showUndoButton() {
     if (globalObjects.undoTween) {
         globalObjects.undoTween.stop();
     }
+    globalObjects.showingUndoButton = true;
 
     globalObjects.undoTween = PhaserScene.tweens.add({
         targets: [globalObjects.undoTab],
@@ -742,13 +743,15 @@ function showUndoButton() {
         ease: 'Back.easeOut',
         duration: 400,
         onComplete: () => {
-            if (globalObjects.undoButton.getState() !== NORMAL) {
-                globalObjects.undoButton.setState(NORMAL);
-                globalObjects.undoButton.setScale(0.6, 0.6);
-            } else {
-                globalObjects.undoButton.setState(NORMAL);
+            if (globalObjects.showingUndoButton) {
+                if (globalObjects.undoButton.getState() !== NORMAL) {
+                    globalObjects.undoButton.setState(NORMAL);
+                    globalObjects.undoButton.setScale(0.6, 0.6);
+                } else {
+                    globalObjects.undoButton.setState(NORMAL);
+                }
+                globalObjects.undoButton.tweenToScale(0.75, 0.75, 150, 'Back.easeOut')
             }
-            globalObjects.undoButton.tweenToScale(0.75, 0.75, 150, 'Back.easeOut')
         }
     });
 }
@@ -757,7 +760,8 @@ function hideUndoButton() {
     if (!globalObjects.undoButton) {
         return;
     }
-    if (globalObjects.undoButton.getState() !== DISABLE) {
+    if (globalObjects.showingUndoButton || globalObjects.undoButton.getState() !== DISABLE) {
+        globalObjects.showingUndoButton = false;
         if (globalObjects.undoTween) {
             globalObjects.undoTween.stop();
         }
@@ -1722,6 +1726,11 @@ function handleAchievements(achievements) {
                 "atlas": "buttons",
                 "alpha": hasAchievements ? 0.9 : 0.7,
             },
+            disable: {
+                "ref": "achievements.png",
+                "atlas": "buttons",
+                "alpha": 0.5,
+            },
             onHover: () => {
                 if (canvas) {
                     canvas.style.cursor = 'pointer';
@@ -1785,7 +1794,7 @@ function handleAchievements(achievements) {
         globalObjects.achievements.achievementsButton.setAlpha(0.5);
     }
     globalObjects.achievementsShown = false;
-
+    globalObjects.achievements.achievementsButton.setState(DISABLE);
     globalObjects.achievements.achievementsButton.setPos(0, -32);
     globalObjects.achievements.achievementsButton.setDepth(1);
     globalObjects.achievements.achievementsButton.setOrigin(0, 0)
@@ -1797,6 +1806,9 @@ function handleAchievements(achievements) {
         scaleX: 0.46,
         scaleY: 0.46,
         ease: 'Bounce.easeOut',
+        onComplete: () => {
+            globalObjects.achievements.achievementsButton.setState(NORMAL);
+        }
     });
 }
 
