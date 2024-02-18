@@ -1415,6 +1415,7 @@ function setRadioMusic(music, volume = 0.1) {
 function setRadioVolume(vol = 1) {
     gameVars.radioVolume = vol;
     globalObjsTemp.radioMusic.volume = vol * globalVolume;
+    globalObjsTemp.radioMusic.trueVolume = vol;
 
     if (globalObjsTemp.radioStatic1 && globalObjsTemp.radioStatic1.trueVolume !== undefined) {
         globalObjsTemp.radioStatic1.volume = globalObjsTemp.radioStatic1.trueVolume * vol * globalVolume;
