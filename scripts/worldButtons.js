@@ -597,7 +597,8 @@ function runMusicNote() {
     let moveAmt = Math.max(-70, Math.min(70, -horizMove));
     let finalScale = 0.3;
     if (globalObjsTemp.radioMusic) {
-        finalScale += globalObjsTemp.radioMusic.volume * 0.5;
+        let louderVol = globalObjsTemp.radioMusic.trueVolume || globalObjsTemp.radioMusic.volume;
+        finalScale += louderVol * 0.5;
     }
     PhaserScene.tweens.add({
         targets: globalObjects.musicNote,
@@ -623,7 +624,7 @@ function runMusicNote() {
         duration: 1100,
         completeDelay: 400,
         onComplete: () => {
-            if (!gameState.powerOff && globalObjsTemp.radioMusic.volume > 0.2) {
+            if (!gameState.powerOff && (globalObjsTemp.radioMusic.volume > 0.2 || globalObjsTemp.radioMusic.volume > 0.2)) {
                 runMusicNote()
             } else {
                 delayMusicNote()
@@ -639,7 +640,7 @@ function delayMusicNote() {
         scaleY: 0,
         duration: 1000,
         onComplete: () => {
-            if (!gameState.powerOff && globalObjsTemp.radioMusic.volume > 0.2) {
+            if (!gameState.powerOff && (globalObjsTemp.radioMusic.volume > 0.2 || globalObjsTemp.radioMusic.trueVolume > 0.2)) {
                 runMusicNote()
             } else {
                 delayMusicNote()
@@ -1617,6 +1618,7 @@ function adjustRadioUpdate(barPos) {
             panMult = 0.5;
         }
         globalObjsTemp.radioMusic.volume = (1 - staticSoundMult) * globalVolume;
+        globalObjsTemp.radioMusic.trueVolume = (1 - staticSoundMult);
         let sqrtSoundMult = Math.sqrt(staticSoundMult);
         globalObjsTemp.radioStatic1.volume = sqrtSoundMult * (1 - panMult) * 0.5;
         globalObjsTemp.radioStatic1.trueVolume = globalObjsTemp.radioStatic1.volume;
@@ -1668,6 +1670,7 @@ function adjustRadioUpdate(barPos) {
         }
     } else {
         globalObjsTemp.radioMusic.volume = 1 * globalVolume;
+        globalObjsTemp.radioMusic.trueVolume = 1;
         globalObjsTemp.radioStatic1.volume = 0;
         if (globalObjsTemp.radioStatic2) {
             globalObjsTemp.radioStatic2.volume = 0;
