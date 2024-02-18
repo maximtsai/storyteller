@@ -597,7 +597,8 @@ function runMusicNote() {
     let moveAmt = Math.max(-70, Math.min(70, -horizMove));
     let finalScale = 0.3;
     if (globalObjsTemp.radioMusic) {
-        finalScale += globalObjsTemp.radioMusic.volume * 0.5;
+        let louderVol = globalObjsTemp.radioMusic.trueVolume || globalObjsTemp.radioMusic.volume;
+        finalScale += louderVol * 0.5;
     }
     PhaserScene.tweens.add({
         targets: globalObjects.musicNote,
@@ -623,7 +624,7 @@ function runMusicNote() {
         duration: 1100,
         completeDelay: 400,
         onComplete: () => {
-            if (!gameState.powerOff && globalObjsTemp.radioMusic.volume > 0.2) {
+            if (!gameState.powerOff && (globalObjsTemp.radioMusic.volume > 0.2 || globalObjsTemp.radioMusic.volume > 0.2)) {
                 runMusicNote()
             } else {
                 delayMusicNote()
@@ -639,7 +640,7 @@ function delayMusicNote() {
         scaleY: 0,
         duration: 1000,
         onComplete: () => {
-            if (!gameState.powerOff && globalObjsTemp.radioMusic.volume > 0.2) {
+            if (!gameState.powerOff && (globalObjsTemp.radioMusic.volume > 0.2 || globalObjsTemp.radioMusic.trueVolume > 0.2)) {
                 runMusicNote()
             } else {
                 delayMusicNote()
@@ -845,6 +846,9 @@ function clickEthan() {
             dialogManager.showDialogNode('EthanActOneInstruct');
         } else {
             dialogManager.showDialogNode('introEthan');
+            setTimeout(() => {
+                randGloomShow(0);
+            }, 8000);
         }
     } else if (gameState.currentScene == 2) {
         if (gameState.EthanEdithSeparated) {
@@ -1332,6 +1336,7 @@ function clickDiner() {
             } else {
                 gameState.showedWaysideOff = true;
                 dialogManager.showDialogNode('waysideDinerOff');
+                randGloomShow(0)
             }
         }
     }
@@ -1609,6 +1614,7 @@ function adjustRadioUpdate(barPos) {
             panMult = 0.5;
         }
         globalObjsTemp.radioMusic.volume = (1 - staticSoundMult) * globalVolume;
+        globalObjsTemp.radioMusic.trueVolume = (1 - staticSoundMult);
         let sqrtSoundMult = Math.sqrt(staticSoundMult);
         globalObjsTemp.radioStatic1.volume = sqrtSoundMult * (1 - panMult) * 0.5;
         globalObjsTemp.radioStatic1.trueVolume = globalObjsTemp.radioStatic1.volume;
@@ -1660,6 +1666,7 @@ function adjustRadioUpdate(barPos) {
         }
     } else {
         globalObjsTemp.radioMusic.volume = 1 * globalVolume;
+        globalObjsTemp.radioMusic.trueVolume = 1;
         globalObjsTemp.radioStatic1.volume = 0;
         if (globalObjsTemp.radioStatic2) {
             globalObjsTemp.radioStatic2.volume = 0;
@@ -1950,6 +1957,7 @@ function exitShed() {
     if (!gameState.shownFlashEldritch && gameState.turnedOnPowerSlow) {
         gameState.shownFlashEldritch = true;
         setTimeout(() => {
+            randGloomShow(0, true);
             let eyeflash = PhaserScene.add.sprite(340, 200, 'lowq', 'spook4.png').setScale(0.8, 0.6).setAlpha(0.005).setDepth(1);
             let blackPixelTemp = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setAlpha(0.07).setDepth(9999).setScale(10000,500);
             eyeflash.scrollFactorX = 0.225;

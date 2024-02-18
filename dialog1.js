@@ -941,7 +941,9 @@ let dialogList1 = {
             {speaker: "Ethan", face: "ethan_dark_scared.png", text: "No! Can't you hear the whispering?"},
             {speaker: "You", text: "It seems quieter in here to me now that the TV's\noff."},
             {speaker: "Ethan", face: "ethan_dark_scared.png", text: "The TV isn't off."},
-            {speaker: "Edith", face: "edith_dark_scared.png", text: "Yes it is!"},
+            {speaker: "Edith", face: "edith_dark_scared.png", text: "Yes it is!", onFinish: () => {
+                    randGloomShow(0, true);
+                }},
             {speaker: "Ethan", face: "ethan_dark_scared.png", text: "No, it's on! I'm tellin' ya!"},
             {speaker: "",  text: "(Ethan and Edith continue arguing. You should\ncome back when they've calmed down.)"},
         ]
@@ -1062,7 +1064,9 @@ let dialogList1 = {
             {speaker: "Ethan", face: "ethan_normal.png", text: "It's talking too.", publish: "ethanEldritch2"},
             {speaker: "You", text: "What's it telling us?"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "It's not."},
-            {speaker: "You", text: "It's not talking?"},
+            {speaker: "You", text: "It's not talking?", onFinish: () => {
+                    randGloomShow(0);
+                }},
             {speaker: "Ethan", face: "ethan_normal.png", text: "No. It's not talking to us.\nYou wouldn't talk to an ant after all.", data: {property: "canAskEthanEldritch", value: true}},
         ]
     },
@@ -1106,7 +1110,9 @@ let dialogList1 = {
 
     Ethan3Catatonic: {
         speech: [
-            {speaker: "You",  text: "Ethan. Ethan!"},
+            {speaker: "You",  text: "Ethan. Ethan!", onFinish: () => {
+                    randGloomShow(0);
+                }},
             {speaker: "",  text: "   (No response, his mind is far away from here.)"},
         ]
     },
@@ -1463,6 +1469,7 @@ let dialogList1 = {
         speech: [
             {speaker: "Juan", face: "juan_dark_scared.png", text: "Good to know someone else has got their\nsenses together.", publish: 'JuanInfluence', onFinish: () => {
                     setTimeout(() => {
+                        randGloomShow(0, true);
                         let tempSpook = PhaserScene.add.sprite(-100, 0, 'lowq', 'spook4.png').setDepth(-1).setScale(2.8, 2.8).setAlpha(1);
                         playSound('meatclick');
                         PhaserScene.tweens.add({
@@ -1484,6 +1491,7 @@ let dialogList1 = {
             {speaker: "", text: "   (Juan looks out the window)", data: {property: "juanPragmatic", value: false}},
             {speaker: "Juan", face: "juan_dark_scared.png", text: "And what, did it turn invisible?", data: {property: "invisibleGiant", value: true}, onFinish: () => {
                 setTimeout(() => {
+                    randGloomShow(0, true);
                     let tempSpook = PhaserScene.add.sprite(-100, 0, 'lowq', 'spook4.png').setDepth(-1).setScale(2.8, 2.8).setAlpha(1);
                     playSound('meatclick');
                     PhaserScene.tweens.add({
@@ -1576,8 +1584,7 @@ let dialogList1 = {
             {speaker: "Bruna", face: "bruna_happy.png", text: "Ja! Everyone's looking for weather events\n" +
                     "right now."},
             {speaker: "Bruna", face: "bruna_normal.png", text: "Turns out there's a lot of storms back\n" +
-                    "home too."},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "Odd coincidence, don't you think?"},
+                    "home too.\nOdd coincidence, don't you think?"},
             {speaker: "You", text: "Where's home for you?"},
             {speaker: "Bruna", face: "bruna_normal.png", text: "Germany.", publish: "germanyCompare"},
             {speaker: "You", text: "That's a long ways away."},
@@ -2130,7 +2137,9 @@ let dialogList1 = {
     },
     CasparActOneContinueSusp: {
         speech: [
-            {speaker: "Caspar", face: "caspar_doubt.png", text: "I'll take your word for it.", data: {property: "CasparActOneFin", value: true}, publish: "startDark"},
+            {speaker: "Caspar", face: "caspar_doubt.png", text: "I'll take your word for it.", data: {property: "CasparActOneFin", value: true}, publish: "startDark", onFinish: () => {
+                    randGloomShow();
+                }},
             {speaker: "You", text: "..."},
             {speaker: "Maggie", face: "maggie_normal.png", text: "Here Honey, one hot coffee.", publish: "MaggieCoffee"},
             {speaker: "Maggie", face: "maggie_normal.png", forceProgress: true, text: "Sorry about the wait. What can I get\nstarted for...••••••••••••••••••", publish: "ActOneEnd"},

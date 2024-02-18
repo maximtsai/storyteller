@@ -31,6 +31,7 @@ class GameFinal {
         helperFunction.destroyList([
             this.theEnd, this.theEndTitle,
             this.restartButton,
+            this.restartFlash,
             this.text1, this.text2
         ]);
     }
@@ -436,7 +437,9 @@ class GameFinal {
                     this.endImage.alpha = 0;
                 },
                 onComplete: () => {
-                    let achieveText = PhaserScene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight + 60, 'dialog', 'NEW ACHIEVEMENT', 32).setOrigin(0.5, 0.5).setDepth(10001);
+                    let achieveText = PhaserScene.add.bitmapText(gameConsts.halfWidth, gameConsts.halfHeight + 60, 'dialog', 'NEW ENDING', 32).setOrigin(0.5, 0.5).setDepth(10001);
+                    achieveText.scrollFactorX = 0;
+                    achieveText.scrollFactorY = 0;
                     this.scene.tweens.add({
                         delay: 1000,
                         targets: [this.achieveImage, achieveText],
@@ -496,6 +499,17 @@ class GameFinal {
         setTimeout(() => {
             this.createRestartButton();
             this.restartButton.setState(NORMAL);
+            this.restartFlash.alpha = 0.5;
+            this.scene.tweens.add({
+                targets: [this.restartFlash],
+                scaleX: "+=50",
+                scaleY: "+=50",
+                alpha: 0,
+                duration: 200,
+                ease: 'Cubic.easeOut',
+                onComplete: () => {
+                }
+            });
         }, 4000)
     }
 
@@ -753,6 +767,17 @@ class GameFinal {
                 });
                 setTimeout(() => {
                     this.restartButton.setState(NORMAL);
+                    this.restartFlash.alpha = 0.5;
+                    this.scene.tweens.add({
+                        targets: [this.restartFlash],
+                        scaleX: "+=50",
+                        scaleY: "+=50",
+                        alpha: 0,
+                        duration: 200,
+                        ease: 'Cubic.easeOut',
+                        onComplete: () => {
+                        }
+                    });
                     buttonManager.enableAllInput();
                 }, 1500);
             }, 900);
@@ -845,6 +870,9 @@ class GameFinal {
     }
 
     createRestartButton() {
+        this.restartFlash = PhaserScene.add.sprite(gameConsts.halfWidth + 250, gameConsts.height - 60, 'whitePixel').setDepth(10000).setScale(73, 34).setAlpha(0);
+        this.restartFlash.scrollFactorX = 0;
+        this.restartFlash.scrollFactorY = 0;
         this.restartButton = new Button({
             normal: {
                 "atlas": "buttons",

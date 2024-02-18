@@ -118,7 +118,9 @@ let furnitureDialog = {
     },
     tv3: {
         speech: [
-            {speaker: 'TV', size: 'small', forceProgress: true, text: "\"A•a•a•a•n•d•••• we're •back •to ••our ••favorite-•••••\"\n"},
+            {speaker: 'TV', size: 'small', forceProgress: true, text: "\"A•a•a•a•n•d•••• we're •back •to ••our ••favorite-•••••\"\n", onFinish: () => {
+                    randGloomShow(3);
+                }},
             {speaker: 'TV', size: 'large', instant: true, text: "        THIS IS AN EXTREME WEATHER\n                 EMERGENCY ALERT.", publish: "tvemergency"},
             {speaker: 'TV', size: 'large', instant: true, text: "        THIS IS AN EXTREME WEATHER\n                 EMERGENCY ALERT.\n                                ..."},
             {speaker: 'TV', text: "  ALL RESIDENTS ARE ADVISED TO SEEK\n  SHELTER IN PLACE."},
