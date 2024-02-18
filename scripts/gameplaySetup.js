@@ -208,7 +208,7 @@ function setupGame() {
     setupMoveButtons();
     setupGoalText();
     setupDialogManager();
-    // setupUndoButton();
+    setupUndoButton();
     setupMuteButton();
     dialogDisplay = new DialogDisplay(PhaserScene);
     miscSubscribe = new MiscSubscribe(PhaserScene);
