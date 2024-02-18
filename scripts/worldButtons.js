@@ -845,6 +845,9 @@ function clickEthan() {
             dialogManager.showDialogNode('EthanActOneInstruct');
         } else {
             dialogManager.showDialogNode('introEthan');
+            setTimeout(() => {
+                randGloomShow(0);
+            }, 8000);
         }
     } else if (gameState.currentScene == 2) {
         if (gameState.EthanEdithSeparated) {
@@ -1332,6 +1335,7 @@ function clickDiner() {
             } else {
                 gameState.showedWaysideOff = true;
                 dialogManager.showDialogNode('waysideDinerOff');
+                randGloomShow(0)
             }
         }
     }
@@ -1950,6 +1954,7 @@ function exitShed() {
     if (!gameState.shownFlashEldritch && gameState.turnedOnPowerSlow) {
         gameState.shownFlashEldritch = true;
         setTimeout(() => {
+            randGloomShow(0, true);
             let eyeflash = PhaserScene.add.sprite(340, 200, 'lowq', 'spook4.png').setScale(0.8, 0.6).setAlpha(0.005).setDepth(1);
             let blackPixelTemp = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setAlpha(0.07).setDepth(9999).setScale(10000,500);
             eyeflash.scrollFactorX = 0.225;

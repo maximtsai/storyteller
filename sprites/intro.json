@@ -334,6 +334,27 @@
 						"w": 10,
 						"h": 160
 					}
+				},
+				{
+					"filename": "startOff.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 17,
+						"w": 142,
+						"h": 143
+					},
+					"frame": {
+						"x": 552,
+						"y": 894,
+						"w": 142,
+						"h": 143
+					}
 				}
 			]
 		}
@@ -341,6 +362,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:f54fb19db817868de9262c0339dd2e84:0051b9e91ee8685ab8905b9d77133862:53747adcc0c5e04ed783201651b4c023$"
+		"smartupdate": "$TexturePacker:SmartUpdate:f90e277dc7af0ae0b64c2838fa374ddc:87d81fb04ac0cd9431e0978c391c5473:53747adcc0c5e04ed783201651b4c023$"
 	}
 }
