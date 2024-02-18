@@ -1678,7 +1678,7 @@ let dialogList1 = {
             {speaker: "You", text: "That's a long ways away."},
             {speaker: "Bruna", face: "bruna_grin.png", text: "I travel a lot for my work. Pictures in\nexotic locations and interviews with the\nfascinating locals."},
             {speaker: "Bruna", face: "bruna_happy.png", text: "Like you!"},
-            {speaker: "Bruna", face: "bruna_grin.png", text: "Perhaps once the storm passes we can\ndo that interview.", publish: "savePoint", param: {node: 'BrunaInterviewYes', num: 8}},
+            {speaker: "Bruna", face: "bruna_grin.png", text: "Perhaps once the storm passes we can\ndo that interview.", publish: "savePoint", param: {node: 'BrunaInterviewYes', num: 7}},
         ],
         branches: [
             {text: "Sure", targetNode: "BrunaInterviewHappy"},
@@ -1688,14 +1688,16 @@ let dialogList1 = {
 
     BrunaInterviewSad: {
         speech: [
-            {speaker: "Bruna", face: "bruna_sad.png", text: "...okay", publish: "showUndoPoint"},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "...okay", onStart: () => {
+                    messageBus.publish("showUndoPoint");
+                }},
         ]
     },
 
     BrunaInterviewHappy: {
         speech: [
-            {speaker: "Bruna", face: "bruna_happy.png", text: "Great!", publish: "showUndoPoint", data: {property: "brunaInterview", value: true}, onStart: () => {
-                messageBus.publish("BrunaInfluence");
+            {speaker: "Bruna", face: "bruna_happy.png", text: "Great!", publish: "BrunaInfluence", data: {property: "brunaInterview", value: true}, onStart: () => {
+                messageBus.publish("showUndoPoint");
                 }},
         ]
     },
@@ -1848,7 +1850,7 @@ let dialogList1 = {
     },
     Bruna3Decision: {
         speech: [
-            {text: "Bruna, I got to ask..."},
+            {text: "Bruna, I got to ask...", publish: 'savePoint', param: {node: 'Bruna3Decision', num: 0}},
         ],
         branches: [
             {text: "Come with me to Hope Springs", targetNode: "Bruna3GoOutThere"},

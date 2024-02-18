@@ -285,9 +285,10 @@ function clickCredits() {
     globalObjects.creditsText = PhaserScene.add.text(50, 50, 'Programming and stick figure art\nby Maxim Tsai (maximtsai.com)\n\nWriting and story by Rowa Skipson\n\nFinal scene art by Theresa Kao.')
     globalObjects.creditsText.setFontSize(28);
     globalObjects.creditsText.setScale(0.82);
+    globalObjects.creditsText.setDepth(9999);
 
     globalObjects.creditsText2 = PhaserScene.add.text(50, 160, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org,\nsonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
-    globalObjects.creditsText2.setFontSize(24);
+    globalObjects.creditsText2.setFontSize(24).setDepth(9999);
     globalObjects.creditsText2.setScale(0.82);
 
     globalObjects.creditsCloseIcon = new Button({

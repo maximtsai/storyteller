@@ -499,13 +499,13 @@ class GameFinal {
         setTimeout(() => {
             this.createRestartButton();
             this.restartButton.setState(NORMAL);
-            this.restartFlash.alpha = 0.5;
+            this.restartFlash.alpha = 0.65;
             this.scene.tweens.add({
                 targets: [this.restartFlash],
-                scaleX: "+=50",
-                scaleY: "+=50",
+                scaleX: "+=60",
+                scaleY: "+=60",
                 alpha: 0,
-                duration: 200,
+                duration: 450,
                 ease: 'Cubic.easeOut',
                 onComplete: () => {
                 }
@@ -770,13 +770,13 @@ class GameFinal {
                         window.CrazyGames.SDK.game.happytime();
                     }
                     this.restartButton.setState(NORMAL);
-                    this.restartFlash.alpha = 0.5;
+                    this.restartFlash.alpha = 0.65;
                     this.scene.tweens.add({
                         targets: [this.restartFlash],
-                        scaleX: "+=50",
-                        scaleY: "+=50",
+                        scaleX: "+=60",
+                        scaleY: "+=60",
                         alpha: 0,
-                        duration: 200,
+                        duration: 450,
                         ease: 'Cubic.easeOut',
                         onComplete: () => {
                         }
