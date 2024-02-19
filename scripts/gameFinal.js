@@ -470,7 +470,7 @@ class GameFinal {
         PhaserScene.cameras.main.setZoom(1);
 
         this.theEnd = this.scene.add.text(gameConsts.halfWidth, gameConsts.height - 90, 'THE END', {fontFamily: 'Times New Roman', fontSize: 36, color: '#ffffff', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.001).setDepth(10000);
-        this.theEndTitle = this.scene.add.text(gameConsts.halfWidth, gameConsts.height - 44, 'Ending #-1: YOU STAYED', {fontFamily: 'Times New Roman', fontSize: 18, color: '#ffffff', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.001).setDepth(10000);
+        this.theEndTitle = this.scene.add.text(gameConsts.halfWidth, gameConsts.height - 44, 'Ending #0: YOU STAYED', {fontFamily: 'Times New Roman', fontSize: 18, color: '#ffffff', align: 'center'}).setOrigin(0.5, 0).setAlpha(0.001).setDepth(10000);
         this.endingNum = 0;
         this.endImage = PhaserScene.add.sprite(40, gameConsts.height - 40, "epilogue", "eye.png").setAlpha(0).setDepth(10000).setOrigin(0, 1);
         this.theEnd.scrollFactorX = 0;
