@@ -1522,7 +1522,7 @@ function getAchImagFromIdx(i) {
 function getAchDescFromIdx(i) {
     switch(i) {
         case 0:
-            return "Ending #-1: YOU STAYED\nWhy did you stay\nin the diner?";
+            return "Ending #0: YOU STAYED\nWhy did you stay\nin the diner?";
             break;
         case 1:
             return "ENDING #1: ALL ALONE\nLeave the diner all by\nyourself. Get lost.";
