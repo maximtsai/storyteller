@@ -979,7 +979,7 @@ function setupMuteButton() {
         normal: {
             atlas: "buttons",
             ref: startFrame,
-            x: 690,
+            x: gameConsts.width - 30,
             y: 27,
             alpha: 0.8
         },
