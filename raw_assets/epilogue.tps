@@ -274,7 +274,7 @@
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
-                <double>1</double>
+                <double>0.95</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>
@@ -331,13 +331,119 @@
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
-            <key type="filename">epilogue/eye.png</key>
-            <key type="filename">epilogue/maw.png</key>
+            <key type="filename">epilogue/end1.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
                 <key>spriteScale</key>
                 <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>170,131,340,263</rect>
+                <key>scale9Paddings</key>
+                <rect>170,131,340,263</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/end2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>170,100,339,199</rect>
+                <key>scale9Paddings</key>
+                <rect>170,100,339,199</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/end3.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>175,113,350,225</rect>
+                <key>scale9Paddings</key>
+                <rect>175,113,350,225</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/end_icon_1.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>29,25,57,50</rect>
+                <key>scale9Paddings</key>
+                <rect>29,25,57,50</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/end_icon_2.png</key>
+            <key type="filename">epilogue/end_icon_3.png</key>
+            <key type="filename">epilogue/end_icon_none.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>23,20,46,40</rect>
+                <key>scale9Paddings</key>
+                <rect>23,20,46,40</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/endnone.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>155,120,310,240</rect>
+                <key>scale9Paddings</key>
+                <rect>155,120,310,240</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/eye.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>50,50,100,100</rect>
+                <key>scale9Paddings</key>
+                <rect>50,50,100,100</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">epilogue/maw.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.95</double>
                 <key>scale9Enabled</key>
                 <false/>
                 <key>scale9Borders</key>

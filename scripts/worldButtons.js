@@ -1043,7 +1043,7 @@ function clickBruna() {
                     dialogManager.showDialogNode('Bruna3Success');
                 } else if (gameState.brunaHardReject) {
                     dialogManager.showDialogNode('Bruna3HardReject');
-                } else if (numSaved === 0) {
+                } else if (numSaved === 0 && gameState.juanLeaveStatus !== "accept" && gameState.juanLeaveStatus !== "onlyUseful") {
                     dialogManager.showDialogNode('Bruna3PleadSolo');
                 } else {
                     dialogManager.showDialogNode('Bruna3Plead');
