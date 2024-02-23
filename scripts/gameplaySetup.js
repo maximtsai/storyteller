@@ -91,6 +91,7 @@ function setupLoadingBar(scene) {
                 x: gameConsts.halfWidth - 20,
                 y: gameConsts.halfHeight + 8
             });
+            numAchievements = 0;
             handleAchievements(achievements);
             loadingBar.scaleX = 100 + extraLoadingBarLength;
             if (!gameVars.showedCreditsSpook) {
@@ -170,13 +171,14 @@ function setupGame() {
             window.CrazyGames.SDK.game.gameplayStart();
         }
     });
+    createRewardButtons();
 
     // create credits button
     setTimeout(() => {
         globalObjects.creditsButton = new Button({
             normal: {
                 "ref": "credits",
-                "x": gameConsts.width - 75,
+                "x": gameConsts.width - 78,
                 "y": gameConsts.height - 30,
                 "alpha": 0.9
             },
@@ -282,14 +284,16 @@ function clickCredits() {
         }
     });
     globalObjects.closeCreditsButton.setScale(500, 500);
+    globalObjects.closeCreditsButton.setDepth(99);
     globalObjects.creditsText = PhaserScene.add.text(50, 50, 'Programming and stick figure art\nby Maxim Tsai (maximtsai.com)\n\nWriting and story by Rowa Skipson\n\nFinal scene art by Theresa Kao.')
     globalObjects.creditsText.setFontSize(28);
     globalObjects.creditsText.setScale(0.82);
-    globalObjects.creditsText.setDepth(9999);
+    globalObjects.creditsText.setDepth(99);
 
     globalObjects.creditsText2 = PhaserScene.add.text(50, 160, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org,\nsonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
     globalObjects.creditsText2.setFontSize(24).setDepth(9999);
     globalObjects.creditsText2.setScale(0.82);
+    globalObjects.creditsText2.setDepth(99);
 
     globalObjects.creditsCloseIcon = new Button({
         normal: {
@@ -309,6 +313,7 @@ function clickCredits() {
             closeCredits();
         }
     });
+    globalObjects.creditsCloseIcon.setDepth(99);
 
 }
 
@@ -328,6 +333,188 @@ function closeCredits() {
         globalObjects.creditsText2.destroy();
         globalObjects.creditsCloseIcon.destroy();
     }
+}
+
+function closeAward() {
+    if (globalObjects.closeAwardButton) {
+        globalObjects.closeAwardButton.destroy();
+        globalObjects.awardImage.destroy();
+        globalObjects.awardText.destroy();
+        globalObjects.awardCloseIcon.destroy();
+        globalObjects.closeAwardButton = null;
+        globalObjects.awardImage = null;
+        globalObjects.awardText = null;
+    }
+}
+
+function showAwardImage(imageRef, text = '') {
+    globalObjects.closeAwardButton = new Button({
+        normal: {
+            "ref": "blackPixel",
+            "x": gameConsts.halfWidth,
+            "y": gameConsts.halfHeight,
+            alpha: 0.75
+        },
+        onMouseUp: () => {
+            closeAward();
+        }
+    });
+    globalObjects.closeAwardButton.setScale(500, 500);
+    globalObjects.closeAwardButton.setDepth(98);
+    globalObjects.awardImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'epilogue', imageRef).setDepth(98).setAlpha(0.4);
+    globalObjects.awardText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 31, text, { fontFamily: 'Times', fontSize: 28, color: '#FFFFFF' }).setDepth(999).setAlign('center').setOrigin(0.5, 0.5);
+    PhaserScene.tweens.add({
+        targets: [globalObjects.awardImage, globalObjects.awardText],
+        alpha: 1,
+        ease: 'Cubic.easeOut',
+        duration: 300
+    });
+
+    globalObjects.awardCloseIcon = new Button({
+        normal: {
+            "ref": "closebtn",
+            "x": gameConsts.width - 30,
+            "y": 30,
+            alpha: 0.85,
+            scaleX: 0.8,
+            scaleY: 0.8,
+        },
+        hover: {
+            alpha: 1,
+            scaleX: 0.81,
+            scaleY: 0.81,
+        },
+        onMouseUp: () => {
+            closeAward();
+        }
+    });
+    globalObjects.awardCloseIcon.setDepth(98);
+}
+
+function createRewardBtn(x, y, btnRef, awardImageRef, text) {
+    return new Button({
+        normal: {
+            "atlas": "epilogue",
+            "ref": btnRef,
+            "x": x,
+            "y": y,
+            alpha: 0.85,
+            scaleX: 1,
+            scaleY: 1,
+        },
+        hover: {
+            alpha: 1,
+            scaleX: 1.02,
+            scaleY: 1.02,
+        },
+        press: {
+            alpha: 0.9,
+            scaleX: 1.02,
+            scaleY: 1.02,
+        },
+        onMouseUp: () => {
+            showAwardImage(awardImageRef, text);
+        }
+    });
+}
+
+function createRewardButtons() {
+    if (numAchievements == 0) {
+        return;
+    }
+    if (numAchievements >= 1) {
+        if (newestAchievement && numAchievements === 1) {
+            globalObjects.flashWhite = PhaserScene.add.image(gameConsts.width - 57, gameConsts.height - 98, 'whitePixel').setScale(46, 40).setAlpha(0).setDepth(1);
+            PhaserScene.tweens.add({
+                targets: globalObjects.flashWhite,
+                alpha: 0.8,
+                ease: 'Cubic.easeIn',
+                duration: 550,
+                onComplete: () => {
+                    PhaserScene.tweens.add({
+                        targets: globalObjects.flashWhite,
+                        alpha: 0,
+                        ease: 'Quart.easeOut',
+                        duration: 1100,
+                        onComplete: () => {
+                            globalObjects.flashWhite.destroy();
+                        }
+                    });
+                }
+            });
+        }
+        globalObjects.icon1 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 98, 'end_icon_1.png', 'end1.png', 'Noah Driving - By Theresa Kao')
+        if (numAchievements >= 4) {
+            if (newestAchievement && numAchievements === 4) {
+                globalObjects.flashWhite = PhaserScene.add.image(gameConsts.width - 57, gameConsts.height - 187, 'whitePixel').setScale(46, 40).setAlpha(0).setDepth(1);
+                PhaserScene.tweens.add({
+                    targets: globalObjects.flashWhite,
+                    alpha: 0.8,
+                    ease: 'Cubic.easeIn',
+                    duration: 550,
+                    onComplete: () => {
+                        PhaserScene.tweens.add({
+                            targets: globalObjects.flashWhite,
+                            alpha: 0,
+                            ease: 'Quart.easeOut',
+                            duration: 1100,
+                            onComplete: () => {
+                                globalObjects.flashWhite.destroy();
+                            }
+                        });
+                    }
+                });
+            }
+            globalObjects.icon2 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 187, 'end_icon_2.png', 'end2.png', 'Staying in the Diner - By Theresa Kao')
+            if (numAchievements >= 8) {
+                if (newestAchievement && numAchievements === 8) {
+                    globalObjects.flashWhite = PhaserScene.add.image(gameConsts.width - 57, gameConsts.height - 276, 'whitePixel').setScale(46, 40).setAlpha(0).setDepth(1);
+                    PhaserScene.tweens.add({
+                        targets: globalObjects.flashWhite,
+                        alpha: 0.8,
+                        ease: 'Cubic.easeIn',
+                        duration: 550,
+                        onComplete: () => {
+                            PhaserScene.tweens.add({
+                                targets: globalObjects.flashWhite,
+                                alpha: 0,
+                                ease: 'Quart.easeOut',
+                                duration: 1100,
+                                onComplete: () => {
+                                    globalObjects.flashWhite.destroy();
+                                }
+                            });
+                        }
+                    });
+                }
+                globalObjects.icon3 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 276, 'end_icon_3.png', 'end3.png', 'All Together - By Theresa Kao')
+            } else {
+                globalObjects.icon3 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 276, 'end_icon_none.png', 'endnone.png', 'Discover all endings to unlock')
+            }
+        } else {
+            globalObjects.icon2 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 187, 'end_icon_none.png', 'endnone.png', 'Discover 4 endings to unlock')
+        }
+    }
+
+
+    // globalObjects.icon1 = new Button({
+    //     normal: {
+    //         "ref": "closebtn",
+    //         "x": gameConsts.width - 50,
+    //         "y": 45,
+    //         alpha: 0.85,
+    //         scaleX: 0.98,
+    //         scaleY: 0.98,
+    //     },
+    //     hover: {
+    //         alpha: 1,
+    //         scaleX: 1,
+    //         scaleY: 1,
+    //     },
+    //     onMouseUp: () => {
+    //         closeCredits();
+    //     }
+    // });
 }
 
 function setupWideMoveButtons() {
@@ -1291,6 +1478,17 @@ function runIntroSequence() {
     }
     globalObjects.optionsButton.destroy();
     globalObjects.creditsButton.destroy();
+    if (globalObjects.flashWhite) {
+        globalObjects.flashWhite.destroy();
+    }
+    if (globalObjects.icon1) {
+        globalObjects.icon1.destroy();
+        globalObjects.icon2.destroy();
+        if (globalObjects.icon3) {
+            globalObjects.icon3.destroy();
+        }
+    }
+
     gameVars.canSkipIntro = true;
     setBackground('intro', 'start.png');
     let thunderSfx = playSound('thunder', 0.8);
@@ -1390,7 +1588,7 @@ function runIntroSequence() {
 
             playSound('truckdoor', 0.8);
 
-            let achievementMult = hasAchievements ? 0.85 : 1;
+            let achievementMult = numAchievements > 0 ? 0.85 : 1;
             setTimeout(() => {
                 if (!gameVars.canSkipIntro) return;
                 setBackground('intro', 'offtruck2.png');
@@ -1442,12 +1640,13 @@ function cleanupIntro() {
 }
 
 function enterShop() {
-    closeCredits()
+    closeCredits();
+    closeAward();
     globalObjsTemp.skipButton.destroy();
     playSound('entershop');
     setBackground('intro', 'diner2.png');
     let dinerLighting = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'dinerlighting.png').setAlpha(0);
-    let achievementMult = hasAchievements ? 0.9 : 1;
+    let achievementMult = numAchievements > 0 ? 0.9 : 1;
     setTimeout(() => {
         dinerLighting.alpha = 1;
         setTimeout(() => {
@@ -1630,7 +1829,7 @@ function getAchDescFromIdx(i) {
     }
 }
 
-let hasAchievements = false;
+let numAchievements = 0;
 function handleAchievements(achievements) {
     globalObjects.achievementText = PhaserScene.add.bitmapText(-999, -999, 'dialog', ' ', 20).setOrigin(0.5, 0).setDepth(100);
     globalObjects.achievementImages = [];
@@ -1641,7 +1840,7 @@ function handleAchievements(achievements) {
         let textString = 'end' + i;
         let imageString = getAchImagFromIdx(i);
         if (achievements[textString]) {
-            hasAchievements = true;
+            numAchievements++;
         } else {
             imageString = "ach_" + imageString;
         }
@@ -1716,17 +1915,17 @@ function handleAchievements(achievements) {
                 "ref": "achievements.png",
                 "atlas": "buttons",
                 "x": 0,
-                "alpha": hasAchievements ? 0.88 : 0.5
+                "alpha": numAchievements > 0 ? 0.88 : 0.5
             },
             hover: {
                 "ref": "achievements.png",
                 "atlas": "buttons",
-                "alpha": hasAchievements ? 1 : 0.9,
+                "alpha": numAchievements > 0 ? 1 : 0.9,
             },
             press: {
                 "ref": "achievements.png",
                 "atlas": "buttons",
-                "alpha": hasAchievements ? 0.9 : 0.7,
+                "alpha": numAchievements > 0 ? 0.9 : 0.7,
             },
             disable: {
                 "ref": "achievements.png",
@@ -1750,8 +1949,8 @@ function handleAchievements(achievements) {
                         let showcaseImage = globalObjects.achievementImages[newestAchievement]
                         PhaserScene.tweens.add({
                             targets: showcaseImage,
-                            scaleX: showcaseImage.scaleX * 1.2,
-                            scaleY: showcaseImage.scaleY * 1.2,
+                            scaleX: showcaseImage.scaleX * 1.35,
+                            scaleY: showcaseImage.scaleY * 1.35,
                             duration: 1000,
                             ease: 'Cubic.easeOut',
                             yoyo: true
@@ -1791,7 +1990,7 @@ function handleAchievements(achievements) {
         }),
         star: PhaserScene.add.image(162, 14, 'misc', 'star.png').setScale(0).setDepth(1).setOrigin(0.5, 0.55),
     };
-    if (!hasAchievements) {
+    if (numAchievements == 0) {
         globalObjects.achievements.star.setAlpha(0);
         globalObjects.achievements.achievementsButton.setAlpha(0.5);
     }
@@ -1804,12 +2003,21 @@ function handleAchievements(achievements) {
     PhaserScene.tweens.add({
         targets: [globalObjects.achievements.star],
         delay: 300,
-        duration: 400,
-        scaleX: 0.46,
-        scaleY: 0.46,
-        ease: 'Bounce.easeOut',
+        duration: 250,
+        scaleX: 0.7,
+        scaleY: 0.7,
+        ease: 'Cubic.easeOut',
         onComplete: () => {
-            globalObjects.achievements.achievementsButton.setState(NORMAL);
+            PhaserScene.tweens.add({
+                targets: [globalObjects.achievements.star],
+                duration: 300,
+                scaleX: 0.46,
+                scaleY: 0.46,
+                ease: 'Bounce.easeOut',
+                onComplete: () => {
+                    globalObjects.achievements.achievementsButton.setState(NORMAL);
+                }
+            });
         }
     });
 }
@@ -1843,10 +2051,10 @@ function randGloomShow(repeat = 0, extraLarge = false) {
     globalObjects.gloomRand.setScale(randWidth, randHeight);
     globalObjects.gloomRand.setPosition(Math.random() * gameConsts.width, Math.random() * gameConsts.height);
 
-    let randAlpha = 0.05 + Math.random() * 0.11;
+    let randAlpha = 0.06;
     let randDur = 600 + Math.floor(Math.random() * 1000);
     if (extraLarge) {
-        randAlpha += 0.03;
+        randAlpha += 0.02;
         randDur += 750;
     }
     PhaserScene.tweens.add({

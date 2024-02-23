@@ -503,8 +503,8 @@ function createWorldButtons() {
     globalObjects.diner.TVButton.setDepth(1);
     globalObjects.diner.TVButton.setState(DISABLE);
 
-    globalObjects.musicNote = PhaserScene.add.sprite(800, 340, 'misc', 'notegood.png').setDepth(1);
-    globalObjects.musicNote.startX = globalObjects.musicNote.x; globalObjects.musicNote.startY = globalObjects.musicNote.y;
+    globalObjects.musicNote = PhaserScene.add.sprite(9999, 340, 'misc', 'notegood.png').setDepth(1);
+    globalObjects.musicNote.startX = 800; globalObjects.musicNote.startY = globalObjects.musicNote.y;
 
     globalObjects.diner.RadioButton = new Button({
         normal: {
@@ -1047,7 +1047,7 @@ function clickBruna() {
                     dialogManager.showDialogNode('Bruna3Success');
                 } else if (gameState.brunaHardReject) {
                     dialogManager.showDialogNode('Bruna3HardReject');
-                } else if (numSaved === 0) {
+                } else if (numSaved === 0 && gameState.juanLeaveStatus !== "accept" && gameState.juanLeaveStatus !== "onlyUseful") {
                     dialogManager.showDialogNode('Bruna3PleadSolo');
                 } else {
                     dialogManager.showDialogNode('Bruna3Plead');

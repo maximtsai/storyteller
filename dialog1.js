@@ -1855,6 +1855,7 @@ let dialogList1 = {
         branches: [
             {text: "Come with me to Hope Springs", targetNode: "Bruna3GoOutThere"},
             {text: "Let's fortify this place", targetNode: "Bruna3Fortify"},
+            {text: "Nevermind"},
         ]
     },
     Bruna3DecisionWithRadio: {
@@ -1874,6 +1875,7 @@ let dialogList1 = {
         branches: [
             {text: "I think we need to get out\nof here", targetNode: "Bruna3NowhereLocation"},
             {text: "Let's fortify this place", targetNode: "Bruna3Fortify"},
+            {text: "Nevermind"},
         ]
     },
 
