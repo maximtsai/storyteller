@@ -1,35 +1,14 @@
 {
 	"textures": [
 		{
-			"image": "intro-0.webp",
+			"image": "sprites/intro-0.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 1800,
+				"w": 1444,
 				"h": 1926
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "start.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 800,
-						"h": 640
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 800,
-						"h": 640
-					},
-					"frame": {
-						"x": 1,
-						"y": 1,
-						"w": 800,
-						"h": 640
-					}
-				},
 				{
 					"filename": "diner1.png",
 					"rotated": false,
@@ -45,73 +24,10 @@
 						"h": 640
 					},
 					"frame": {
-						"x": 803,
+						"x": 1,
 						"y": 1,
 						"w": 720,
 						"h": 640
-					}
-				},
-				{
-					"filename": "rainlite1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 306,
-						"h": 272
-					},
-					"spriteSourceSize": {
-						"x": 15,
-						"y": 0,
-						"w": 274,
-						"h": 272
-					},
-					"frame": {
-						"x": 1525,
-						"y": 1,
-						"w": 274,
-						"h": 272
-					}
-				},
-				{
-					"filename": "rainlite2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 306,
-						"h": 272
-					},
-					"spriteSourceSize": {
-						"x": 16,
-						"y": 0,
-						"w": 273,
-						"h": 272
-					},
-					"frame": {
-						"x": 1525,
-						"y": 275,
-						"w": 273,
-						"h": 272
-					}
-				},
-				{
-					"filename": "rainlite3.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 306,
-						"h": 272
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 0,
-						"w": 273,
-						"h": 272
-					},
-					"frame": {
-						"x": 1525,
-						"y": 549,
-						"w": 273,
-						"h": 272
 					}
 				},
 				{
@@ -129,8 +45,8 @@
 						"h": 640
 					},
 					"frame": {
-						"x": 1,
-						"y": 643,
+						"x": 723,
+						"y": 1,
 						"w": 720,
 						"h": 640
 					}
@@ -150,73 +66,10 @@
 						"h": 640
 					},
 					"frame": {
-						"x": 723,
+						"x": 1,
 						"y": 643,
 						"w": 720,
 						"h": 640
-					}
-				},
-				{
-					"filename": "greycover.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 10,
-						"h": 160
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 10,
-						"h": 160
-					},
-					"frame": {
-						"x": 1445,
-						"y": 643,
-						"w": 10,
-						"h": 160
-					}
-				},
-				{
-					"filename": "rainheavy1.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 306,
-						"h": 272
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 300,
-						"h": 272
-					},
-					"frame": {
-						"x": 1445,
-						"y": 823,
-						"w": 300,
-						"h": 272
-					}
-				},
-				{
-					"filename": "rainheavy2.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 306,
-						"h": 272
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 300,
-						"h": 272
-					},
-					"frame": {
-						"x": 1445,
-						"y": 1097,
-						"w": 300,
-						"h": 272
 					}
 				},
 				{
@@ -256,87 +109,45 @@
 					},
 					"frame": {
 						"x": 723,
-						"y": 1285,
+						"y": 643,
 						"w": 720,
 						"h": 640
 					}
 				},
 				{
-					"filename": "rainheavy3.png",
+					"filename": "offtruck3.png",
 					"rotated": false,
-					"trimmed": true,
+					"trimmed": false,
 					"sourceSize": {
-						"w": 306,
-						"h": 272
-					},
-					"spriteSourceSize": {
-						"x": 1,
-						"y": 0,
-						"w": 299,
-						"h": 272
-					},
-					"frame": {
-						"x": 1445,
-						"y": 1371,
-						"w": 299,
-						"h": 272
-					}
-				},
-				{
-					"filename": "dinersign.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 181,
-						"h": 250
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 1,
-						"w": 166,
-						"h": 249
-					},
-					"frame": {
-						"x": 1445,
-						"y": 1645,
-						"w": 166,
-						"h": 249
-					}
-				},
-				{
-					"filename": "startOff.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 200,
-						"h": 160
+						"w": 720,
+						"h": 640
 					},
 					"spriteSourceSize": {
 						"x": 0,
-						"y": 17,
-						"w": 142,
-						"h": 143
+						"y": 0,
+						"w": 720,
+						"h": 640
 					},
 					"frame": {
-						"x": 1613,
-						"y": 1645,
-						"w": 142,
-						"h": 143
+						"x": 723,
+						"y": 1285,
+						"w": 720,
+						"h": 640
 					}
 				}
 			]
 		},
 		{
-			"image": "intro-1.webp",
+			"image": "sprites/intro-1.webp",
 			"format": "RGBA8888",
 			"size": {
-				"w": 722,
-				"h": 642
+				"w": 1024,
+				"h": 1096
 			},
 			"scale": 1,
 			"frames": [
 				{
-					"filename": "offtruck3.png",
+					"filename": "start.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
@@ -355,6 +166,195 @@
 						"w": 720,
 						"h": 640
 					}
+				},
+				{
+					"filename": "rainheavy1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 306,
+						"h": 272
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 300,
+						"h": 272
+					},
+					"frame": {
+						"x": 723,
+						"y": 1,
+						"w": 300,
+						"h": 272
+					}
+				},
+				{
+					"filename": "rainheavy2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 306,
+						"h": 272
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 300,
+						"h": 272
+					},
+					"frame": {
+						"x": 723,
+						"y": 275,
+						"w": 300,
+						"h": 272
+					}
+				},
+				{
+					"filename": "rainheavy3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 306,
+						"h": 272
+					},
+					"spriteSourceSize": {
+						"x": 1,
+						"y": 0,
+						"w": 299,
+						"h": 272
+					},
+					"frame": {
+						"x": 723,
+						"y": 549,
+						"w": 299,
+						"h": 272
+					}
+				},
+				{
+					"filename": "rainlite1.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 306,
+						"h": 272
+					},
+					"spriteSourceSize": {
+						"x": 15,
+						"y": 0,
+						"w": 274,
+						"h": 272
+					},
+					"frame": {
+						"x": 1,
+						"y": 643,
+						"w": 274,
+						"h": 272
+					}
+				},
+				{
+					"filename": "rainlite2.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 306,
+						"h": 272
+					},
+					"spriteSourceSize": {
+						"x": 16,
+						"y": 0,
+						"w": 273,
+						"h": 272
+					},
+					"frame": {
+						"x": 277,
+						"y": 643,
+						"w": 273,
+						"h": 272
+					}
+				},
+				{
+					"filename": "dinersign.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 181,
+						"h": 250
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 1,
+						"w": 166,
+						"h": 249
+					},
+					"frame": {
+						"x": 552,
+						"y": 643,
+						"w": 166,
+						"h": 249
+					}
+				},
+				{
+					"filename": "rainlite3.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 306,
+						"h": 272
+					},
+					"spriteSourceSize": {
+						"x": 7,
+						"y": 0,
+						"w": 273,
+						"h": 272
+					},
+					"frame": {
+						"x": 720,
+						"y": 823,
+						"w": 273,
+						"h": 272
+					}
+				},
+				{
+					"filename": "greycover.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 10,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 10,
+						"h": 160
+					},
+					"frame": {
+						"x": 995,
+						"y": 823,
+						"w": 10,
+						"h": 160
+					}
+				},
+				{
+					"filename": "startOff.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 180,
+						"h": 160
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 17,
+						"w": 142,
+						"h": 143
+					},
+					"frame": {
+						"x": 552,
+						"y": 894,
+						"w": 142,
+						"h": 143
+					}
 				}
 			]
 		}
@@ -362,6 +362,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:bf74dc118e6cf96518d02e64ca33b673:b81d100c842741a7ac62c0d76b2cd0ae:53747adcc0c5e04ed783201651b4c023$"
+		"smartupdate": "$TexturePacker:SmartUpdate:f90e277dc7af0ae0b64c2838fa374ddc:87d81fb04ac0cd9431e0978c391c5473:53747adcc0c5e04ed783201651b4c023$"
 	}
 }

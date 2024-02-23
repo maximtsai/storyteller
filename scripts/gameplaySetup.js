@@ -95,7 +95,7 @@ function setupLoadingBar(scene) {
             handleAchievements(achievements);
             loadingBar.scaleX = 100 + extraLoadingBarLength;
             if (!gameVars.showedCreditsSpook) {
-                let eye = PhaserScene.add.image(gameConsts.width - 130, gameConsts.halfHeight - 275, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.03).setScale(1.97);
+                let eye = PhaserScene.add.image(gameConsts.width - 82, gameConsts.halfHeight - 275, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.03).setScale(1.97);
                 setTimeout(() => {
                     eye.setScale(2, 1.9).setAlpha(0.15);
                     setTimeout(() => {
@@ -320,7 +320,7 @@ function clickCredits() {
 function closeCredits() {
     if (!gameVars.showedCreditsSpook) {
         if (Math.random() < 0.3) {
-            let eye = PhaserScene.add.image(gameConsts.width - 130, gameConsts.halfHeight - 255, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.15).setScale(3);
+            let eye = PhaserScene.add.image(gameConsts.width - 82, gameConsts.halfHeight - 256, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.15).setScale(3);
             setTimeout(() => {
                 eye.destroy();
             }, 20)
@@ -525,9 +525,9 @@ function setupWideMoveButtons() {
         normal: {
             "atlas": "buttons",
             "ref": "move_btn_normal_wide.png",
-            "x": 173,
+            "x": 173 + gameVars.cameraPosX,
             "y": gameConsts.halfHeight,
-            "scaleX": -1.33,
+            "scaleX": -1.4,
             "scaleY": 1.33,
             "alpha": 0.001
         },
@@ -569,9 +569,9 @@ function setupWideMoveButtons() {
         normal: {
             "atlas": "buttons",
             "ref": "move_btn_normal_wide.png",
-            "x": gameConsts.width - 95,
+            "x": gameConsts.width - 95 + gameVars.cameraPosX,
             "y": gameConsts.halfHeight,
-            "scaleX": 1.33,
+            "scaleX": 1.4,
             "scaleY": 1.33,
             "alpha": 0.001
         },
@@ -615,7 +615,7 @@ function setupMoveButtons() {
         normal: {
             "atlas": "buttons",
             "ref": "move_btn_normal.png",
-            "x": 15,
+            "x": 15 + gameVars.cameraPosX,
             "y": gameConsts.halfHeight,
             "scaleX": -1
         },
@@ -654,7 +654,7 @@ function setupMoveButtons() {
         normal: {
             "atlas": "buttons",
             "ref": "move_btn_normal.png",
-            "x": gameConsts.width - 15,
+            "x": gameConsts.width - 15 + gameVars.cameraPosX,
             "y": gameConsts.halfHeight,
             "scaleX": 1
         },
@@ -1349,6 +1349,8 @@ function realGameStart() {
                             globalObjsTemp.black.alpha = 1;
                             playSound('crackle1')
                             setTimeout(() => {
+                                PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
+                                PhaserScene.cameras.main.scrollY = gameVars.cameraPosY;
                                 globalObjsTemp.black.alpha = 0;
                                 darkGloom.destroy();
                                 fakeBaseOverlay.destroy();
@@ -1494,7 +1496,7 @@ function runIntroSequence() {
     let thunderSfx = playSound('thunder', 0.8);
 
     if (!gameVars.showedCreditsSpook) {
-        let eye = PhaserScene.add.image(gameConsts.width - 130, gameConsts.halfHeight - 255, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.1).setScale(3);
+        let eye = PhaserScene.add.image(gameConsts.width - 82, gameConsts.halfHeight - 256, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.1).setScale(3);
         setTimeout(() => {
             eye.setScale(3.1).setAlpha(0.15);
             setTimeout(() => {

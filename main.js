@@ -2,7 +2,7 @@ let config = {
     type: Phaser.CANVAS,
     scale: {
         parent: 'phaser-app',
-        width: 800,
+        width: 720,
         height: 640,
         autoRound: true,
         mode: Phaser.Scale.FIT
