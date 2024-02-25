@@ -76,7 +76,7 @@ function setupLoadingBar(scene) {
                     end7: localStorage.getItem(achievementsText + 7),
                 };
             }
-            let offImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'startOff.png').setDepth(0).setScale(4);
+            let offImage = PhaserScene.add.image(gameConsts.halfWidth - 40, gameConsts.halfHeight, 'intro', 'startOff.png').setDepth(0).setScale(4);
             scene.tweens.add({
                 targets: [offImage],
                 alpha: 0,
@@ -89,7 +89,7 @@ function setupLoadingBar(scene) {
             scene.tweens.add({
                 targets: [offImage],
                 duration: 1500,
-                x: gameConsts.halfWidth - 20,
+                x: "-=20",
                 y: gameConsts.halfHeight + 8
             });
             numAchievements = 0;
