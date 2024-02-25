@@ -9,9 +9,9 @@ function testMobile() {
     return regex.test(navigator.userAgent);
 }
 
-function setBackground(atlas, ref) {
+function setBackground(atlas, ref, xOffset = 0) {
     mainBackground.destroy();
-    mainBackground = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, atlas, ref);
+    mainBackground = PhaserScene.add.image(gameConsts.halfWidth + xOffset, gameConsts.halfHeight, atlas, ref);
 }
 
 let isFirstPlay = true;
@@ -76,7 +76,7 @@ function setupLoadingBar(scene) {
                     end7: localStorage.getItem(achievementsText + 7),
                 };
             }
-            let offImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'startOff.png').setDepth(0).setScale(4);
+            let offImage = PhaserScene.add.image(gameConsts.halfWidth - 5, gameConsts.halfHeight, 'intro', 'startOff.png').setDepth(0).setScale(4);
             scene.tweens.add({
                 targets: [offImage],
                 alpha: 0,
@@ -526,7 +526,7 @@ function setupWideMoveButtons() {
         normal: {
             "atlas": "buttons",
             "ref": "move_btn_normal_wide.png",
-            "x": 173,
+            "x": 173 + gameVars.cameraPosX,
             "y": gameConsts.halfHeight,
             "scaleX": -1.33,
             "scaleY": 1.33,
@@ -570,7 +570,7 @@ function setupWideMoveButtons() {
         normal: {
             "atlas": "buttons",
             "ref": "move_btn_normal_wide.png",
-            "x": gameConsts.width - 95,
+            "x": gameConsts.width - 95 + gameVars.cameraPosX,
             "y": gameConsts.halfHeight,
             "scaleX": 1.33,
             "scaleY": 1.33,
@@ -616,7 +616,7 @@ function setupMoveButtons() {
         normal: {
             "atlas": "buttons",
             "ref": "move_btn_normal.png",
-            "x": 15,
+            "x": 15 + gameVars.cameraPosX,
             "y": gameConsts.halfHeight,
             "scaleX": -1
         },
@@ -655,7 +655,7 @@ function setupMoveButtons() {
         normal: {
             "atlas": "buttons",
             "ref": "move_btn_normal.png",
-            "x": gameConsts.width - 15,
+            "x": gameConsts.width - 15 + gameVars.cameraPosX,
             "y": gameConsts.halfHeight,
             "scaleX": 1
         },
@@ -1360,6 +1360,7 @@ function realGameStart() {
                                 globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0.01, true);
                                 globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0.01, true);
                                 enableDinerButtons();
+                                PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
                                 dialogManager.showDialogNode('intro');
                                 randGloomShow(0);
                             }, 40);
@@ -1491,7 +1492,7 @@ function runIntroSequence() {
     }
 
     gameVars.canSkipIntro = true;
-    setBackground('intro', 'start.png');
+    setBackground('intro', 'start.png', -5);
     let thunderSfx = playSound('thunder', 0.8);
 
     if (!gameVars.showedCreditsSpook) {

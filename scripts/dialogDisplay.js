@@ -103,7 +103,7 @@ class DialogDisplay {
         let horizOffset = 20;
 
         this.dialogBox = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.height - 183, 'blackPixel');
-        this.dialogBox.setScale(gameConsts.width * 0.5 - 20 + horizOffset, 84);
+        this.dialogBox.setScale(gameConsts.width * 0.5 - 20 - horizOffset * 0.75, 84);
         this.dialogBox.visible = false;
         this.dialogBox.setDepth(999);
         this.dialogBox.setOrigin(0.5, 0);
@@ -111,7 +111,7 @@ class DialogDisplay {
         this.dialogBox.scrollFactorX = 0;
         this.dialogBox.scrollFactorY = 0;
 
-        this.dialogText = this.scene.add.bitmapText(50 + horizOffset, gameConsts.height - 138, 'dialog', '...', 26);
+        this.dialogText = this.scene.add.bitmapText(50 + horizOffset * 1.5, gameConsts.height - 138, 'dialog', '...', 26);
         this.dialogText.startX = this.dialogText.x;
         this.dialogText.visible = false;
         this.dialogText.setDepth(999);
@@ -119,21 +119,21 @@ class DialogDisplay {
         this.dialogText.scrollFactorX = 0;
         this.dialogText.scrollFactorY = 0;
 
-        this.dialogPrompt = this.scene.add.sprite(gameConsts.width - 30 + horizOffset, gameConsts.height - 25, 'buttons', 'continue_prompt.png');
+        this.dialogPrompt = this.scene.add.sprite(gameConsts.width - 30 - horizOffset, gameConsts.height - 25, 'buttons', 'continue_prompt.png');
         this.dialogPrompt.visible = false;
         this.dialogPrompt.setDepth(999);
         this.dialogPrompt.setOrigin(1, 1);
         this.dialogPrompt.scrollFactorX = 0;
         this.dialogPrompt.scrollFactorY = 0;
 
-        this.dialogSpeaker = this.scene.add.bitmapText(gameConsts.halfWidth + horizOffset, gameConsts.height - 174, 'dialog', 'INSERT NAME', 30);
+        this.dialogSpeaker = this.scene.add.bitmapText(gameConsts.halfWidth + horizOffset * 1.5, gameConsts.height - 174, 'dialog', 'INSERT NAME', 30);
         this.dialogSpeaker.visible = false;
         this.dialogSpeaker.setDepth(999);
         this.dialogSpeaker.setOrigin(0.5, 0);
         this.dialogSpeaker.scrollFactorX = 0;
         this.dialogSpeaker.scrollFactorY = 0;
 
-        this.dialogFace = this.scene.add.sprite(85 + horizOffset, gameConsts.height - 95, 'faces', 'ethan_normal.png');
+        this.dialogFace = this.scene.add.sprite(85 + horizOffset * 1.25, gameConsts.height - 95, 'faces', 'ethan_normal.png');
         this.dialogFace.startX = this.dialogFace.x;
         this.dialogFace.setDepth(999);
         this.dialogFace.visible = false;
@@ -143,7 +143,7 @@ class DialogDisplay {
 
         this.speakerStars = [];
         for (let i = 0; i < 7; i++) {
-            this.speakerStars[i] = this.scene.add.sprite(40 + i * 18.5 + horizOffset, gameConsts.height - 30, 'misc', 'star.png');
+            this.speakerStars[i] = this.scene.add.sprite(40 + i * 18.5 + horizOffset * 1.25, gameConsts.height - 30, 'misc', 'star.png');
             this.speakerStars[i].startY = this.speakerStars[i].y;
             this.speakerStars[i].setDepth(999);
             this.speakerStars[i].setScale(0.4);
