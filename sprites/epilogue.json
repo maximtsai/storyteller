@@ -4,32 +4,11 @@
 			"image": "sprites/epilogue-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 2006,
-				"h": 2036
+				"w": 1937,
+				"h": 1950
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "scene2a.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 730,
-						"h": 650
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 730,
-						"h": 650
-					},
-					"frame": {
-						"x": 2,
-						"y": 2,
-						"w": 730,
-						"h": 650
-					}
-				},
 				{
 					"filename": "scene3a.png",
 					"rotated": false,
@@ -46,9 +25,30 @@
 					},
 					"frame": {
 						"x": 2,
-						"y": 655,
+						"y": 2,
 						"w": 1200,
 						"h": 335
+					}
+				},
+				{
+					"filename": "scene2a.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 730,
+						"h": 650
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 730,
+						"h": 650
+					},
+					"frame": {
+						"x": 1205,
+						"y": 2,
+						"w": 730,
+						"h": 650
 					}
 				},
 				{
@@ -66,29 +66,8 @@
 						"h": 650
 					},
 					"frame": {
-						"x": 735,
-						"y": 2,
-						"w": 730,
-						"h": 650
-					}
-				},
-				{
-					"filename": "scene2c.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 730,
-						"h": 650
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 730,
-						"h": 650
-					},
-					"frame": {
-						"x": 1205,
-						"y": 655,
+						"x": 2,
+						"y": 340,
 						"w": 730,
 						"h": 650
 					}
@@ -108,157 +87,31 @@
 						"h": 549
 					},
 					"frame": {
-						"x": 1468,
-						"y": 2,
+						"x": 735,
+						"y": 340,
 						"w": 398,
 						"h": 549
 					}
 				},
 				{
-					"filename": "casparwave.png",
+					"filename": "casparfront.png",
 					"rotated": false,
-					"trimmed": false,
+					"trimmed": true,
 					"sourceSize": {
 						"w": 125,
 						"h": 299
 					},
 					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 125,
-						"h": 299
+						"x": 60,
+						"y": 109,
+						"w": 65,
+						"h": 70
 					},
 					"frame": {
-						"x": 1869,
-						"y": 2,
-						"w": 125,
-						"h": 299
-					}
-				},
-				{
-					"filename": "campfire.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 150,
-						"h": 150
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 9,
-						"w": 135,
-						"h": 135
-					},
-					"frame": {
-						"x": 1869,
-						"y": 304,
-						"w": 135,
-						"h": 135
-					}
-				},
-				{
-					"filename": "end_icon_1.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 92,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 92,
-						"h": 80
-					},
-					"frame": {
-						"x": 1869,
-						"y": 442,
-						"w": 92,
-						"h": 80
-					}
-				},
-				{
-					"filename": "end_icon_2.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 92,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 92,
-						"h": 80
-					},
-					"frame": {
-						"x": 1869,
-						"y": 525,
-						"w": 92,
-						"h": 80
-					}
-				},
-				{
-					"filename": "ach_eyes_many.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 150,
-						"h": 52
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 0,
-						"w": 141,
-						"h": 52
-					},
-					"frame": {
-						"x": 1468,
-						"y": 554,
-						"w": 141,
-						"h": 52
-					}
-				},
-				{
-					"filename": "eyes_many.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 150,
-						"h": 52
-					},
-					"spriteSourceSize": {
-						"x": 6,
-						"y": 2,
-						"w": 135,
-						"h": 49
-					},
-					"frame": {
-						"x": 1612,
-						"y": 554,
-						"w": 135,
-						"h": 49
-					}
-				},
-				{
-					"filename": "end_icon_3.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 92,
-						"h": 80
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 92,
-						"h": 80
-					},
-					"frame": {
-						"x": 1750,
-						"y": 554,
-						"w": 92,
-						"h": 80
+						"x": 1136,
+						"y": 340,
+						"w": 65,
+						"h": 70
 					}
 				},
 				{
@@ -276,8 +129,8 @@
 						"h": 26
 					},
 					"frame": {
-						"x": 1612,
-						"y": 606,
+						"x": 1136,
+						"y": 413,
 						"w": 63,
 						"h": 26
 					}
@@ -297,10 +150,31 @@
 						"h": 26
 					},
 					"frame": {
-						"x": 1678,
-						"y": 606,
+						"x": 1136,
+						"y": 442,
 						"w": 63,
 						"h": 26
+					}
+				},
+				{
+					"filename": "scene2c.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 730,
+						"h": 650
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 730,
+						"h": 650
+					},
+					"frame": {
+						"x": 1136,
+						"y": 655,
+						"w": 730,
+						"h": 650
 					}
 				},
 				{
@@ -319,7 +193,7 @@
 					},
 					"frame": {
 						"x": 2,
-						"y": 993,
+						"y": 1308,
 						"w": 730,
 						"h": 640
 					}
@@ -346,24 +220,171 @@
 					}
 				},
 				{
-					"filename": "end2.png",
+					"filename": "ach_casparfullline.png",
 					"rotated": false,
 					"trimmed": false,
 					"sourceSize": {
-						"w": 679,
-						"h": 398
+						"w": 161,
+						"h": 306
 					},
 					"spriteSourceSize": {
 						"x": 0,
 						"y": 0,
-						"w": 679,
-						"h": 398
+						"w": 161,
+						"h": 306
 					},
 					"frame": {
 						"x": 2,
-						"y": 1636,
-						"w": 679,
-						"h": 398
+						"y": 993,
+						"w": 161,
+						"h": 306
+					}
+				},
+				{
+					"filename": "casparwave.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 125,
+						"h": 299
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 125,
+						"h": 299
+					},
+					"frame": {
+						"x": 166,
+						"y": 993,
+						"w": 125,
+						"h": 299
+					}
+				},
+				{
+					"filename": "casparfullline.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 155,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 2,
+						"y": 0,
+						"w": 151,
+						"h": 298
+					},
+					"frame": {
+						"x": 294,
+						"y": 993,
+						"w": 151,
+						"h": 298
+					}
+				},
+				{
+					"filename": "casparfull.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 155,
+						"h": 300
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 2,
+						"w": 149,
+						"h": 295
+					},
+					"frame": {
+						"x": 448,
+						"y": 993,
+						"w": 149,
+						"h": 295
+					}
+				},
+				{
+					"filename": "ach_maw.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 181,
+						"h": 209
+					},
+					"spriteSourceSize": {
+						"x": 4,
+						"y": 0,
+						"w": 173,
+						"h": 209
+					},
+					"frame": {
+						"x": 600,
+						"y": 993,
+						"w": 173,
+						"h": 209
+					}
+				},
+				{
+					"filename": "end_icon_1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 92,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 92,
+						"h": 80
+					},
+					"frame": {
+						"x": 735,
+						"y": 892,
+						"w": 92,
+						"h": 80
+					}
+				},
+				{
+					"filename": "end_icon_2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 92,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 92,
+						"h": 80
+					},
+					"frame": {
+						"x": 600,
+						"y": 1205,
+						"w": 92,
+						"h": 80
+					}
+				},
+				{
+					"filename": "end_icon_3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 92,
+						"h": 80
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 92,
+						"h": 80
+					},
+					"frame": {
+						"x": 695,
+						"y": 1205,
+						"w": 92,
+						"h": 80
 					}
 				},
 				{
@@ -381,31 +402,10 @@
 						"h": 199
 					},
 					"frame": {
-						"x": 735,
-						"y": 993,
+						"x": 776,
+						"y": 975,
 						"w": 206,
 						"h": 199
-					}
-				},
-				{
-					"filename": "ach_casparfullline.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 161,
-						"h": 306
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 161,
-						"h": 306
-					},
-					"frame": {
-						"x": 944,
-						"y": 993,
-						"w": 161,
-						"h": 306
 					}
 				},
 				{
@@ -423,8 +423,8 @@
 						"h": 80
 					},
 					"frame": {
-						"x": 735,
-						"y": 1195,
+						"x": 830,
+						"y": 892,
 						"w": 92,
 						"h": 80
 					}
@@ -444,52 +444,94 @@
 						"h": 77
 					},
 					"frame": {
-						"x": 830,
-						"y": 1195,
+						"x": 925,
+						"y": 892,
 						"w": 89,
 						"h": 77
 					}
 				},
 				{
-					"filename": "casparfront.png",
+					"filename": "crash.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 125,
-						"h": 299
+						"w": 207,
+						"h": 137
 					},
 					"spriteSourceSize": {
-						"x": 60,
-						"y": 109,
-						"w": 65,
-						"h": 70
+						"x": 7,
+						"y": 6,
+						"w": 193,
+						"h": 124
 					},
 					"frame": {
-						"x": 1108,
-						"y": 993,
-						"w": 65,
-						"h": 70
+						"x": 790,
+						"y": 1177,
+						"w": 193,
+						"h": 124
 					}
 				},
 				{
-					"filename": "casparfullline.png",
+					"filename": "ach_campfire.png",
 					"rotated": false,
 					"trimmed": true,
 					"sourceSize": {
-						"w": 155,
-						"h": 300
+						"w": 150,
+						"h": 150
 					},
 					"spriteSourceSize": {
-						"x": 2,
-						"y": 0,
-						"w": 151,
-						"h": 298
+						"x": 3,
+						"y": 3,
+						"w": 144,
+						"h": 147
 					},
 					"frame": {
-						"x": 1468,
-						"y": 1308,
-						"w": 151,
-						"h": 298
+						"x": 986,
+						"y": 972,
+						"w": 144,
+						"h": 147
+					}
+				},
+				{
+					"filename": "ach_eyes_many.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 150,
+						"h": 52
+					},
+					"spriteSourceSize": {
+						"x": 3,
+						"y": 0,
+						"w": 141,
+						"h": 52
+					},
+					"frame": {
+						"x": 985,
+						"y": 1122,
+						"w": 141,
+						"h": 52
+					}
+				},
+				{
+					"filename": "eyes_many.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 150,
+						"h": 52
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 2,
+						"w": 135,
+						"h": 49
+					},
+					"frame": {
+						"x": 986,
+						"y": 1177,
+						"w": 135,
+						"h": 49
 					}
 				},
 				{
@@ -508,7 +550,7 @@
 					},
 					"frame": {
 						"x": 1468,
-						"y": 1609,
+						"y": 1308,
 						"w": 206,
 						"h": 136
 					}
@@ -528,94 +570,10 @@
 						"h": 189
 					},
 					"frame": {
-						"x": 1622,
+						"x": 1677,
 						"y": 1308,
 						"w": 198,
 						"h": 189
-					}
-				},
-				{
-					"filename": "casparfull.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 155,
-						"h": 300
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 2,
-						"w": 149,
-						"h": 295
-					},
-					"frame": {
-						"x": 1677,
-						"y": 1500,
-						"w": 149,
-						"h": 295
-					}
-				},
-				{
-					"filename": "ach_campfire.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 150,
-						"h": 150
-					},
-					"spriteSourceSize": {
-						"x": 3,
-						"y": 3,
-						"w": 144,
-						"h": 147
-					},
-					"frame": {
-						"x": 1823,
-						"y": 1308,
-						"w": 144,
-						"h": 147
-					}
-				},
-				{
-					"filename": "ach_maw.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 181,
-						"h": 209
-					},
-					"spriteSourceSize": {
-						"x": 4,
-						"y": 0,
-						"w": 173,
-						"h": 209
-					},
-					"frame": {
-						"x": 1468,
-						"y": 1748,
-						"w": 173,
-						"h": 209
-					}
-				},
-				{
-					"filename": "crash.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 207,
-						"h": 137
-					},
-					"spriteSourceSize": {
-						"x": 7,
-						"y": 6,
-						"w": 193,
-						"h": 124
-					},
-					"frame": {
-						"x": 1644,
-						"y": 1798,
-						"w": 193,
-						"h": 124
 					}
 				},
 				{
@@ -633,8 +591,8 @@
 						"h": 195
 					},
 					"frame": {
-						"x": 1829,
-						"y": 1458,
+						"x": 1468,
+						"y": 1447,
 						"w": 159,
 						"h": 195
 					}
@@ -654,8 +612,8 @@
 						"h": 134
 					},
 					"frame": {
-						"x": 1829,
-						"y": 1656,
+						"x": 1630,
+						"y": 1500,
 						"w": 150,
 						"h": 134
 					}
@@ -675,10 +633,31 @@
 						"h": 130
 					},
 					"frame": {
-						"x": 1840,
-						"y": 1793,
+						"x": 1783,
+						"y": 1500,
 						"w": 150,
 						"h": 130
+					}
+				},
+				{
+					"filename": "campfire.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 150,
+						"h": 150
+					},
+					"spriteSourceSize": {
+						"x": 6,
+						"y": 9,
+						"w": 135,
+						"h": 135
+					},
+					"frame": {
+						"x": 1783,
+						"y": 1633,
+						"w": 135,
+						"h": 135
 					}
 				}
 			]
@@ -935,6 +914,59 @@
 					}
 				},
 				{
+					"filename": "428252584_778229620836946_553791854023349863_n.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 716,
+						"h": 480
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 716,
+						"h": 480
+					},
+					"frame": {
+						"x": 725,
+						"y": 1288,
+						"w": 716,
+						"h": 480
+					}
+				},
+				{
+					"filename": "end2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 716,
+						"h": 480
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 716,
+						"h": 480
+					},
+					"frame": {
+						"x": 725,
+						"y": 1288,
+						"w": 716,
+						"h": 480
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/epilogue-3.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 704,
+				"h": 1465
+			},
+			"scale": 1,
+			"frames": [
+				{
 					"filename": "end3.png",
 					"rotated": false,
 					"trimmed": false,
@@ -949,23 +981,12 @@
 						"h": 450
 					},
 					"frame": {
-						"x": 725,
-						"y": 1288,
+						"x": 2,
+						"y": 2,
 						"w": 700,
 						"h": 450
 					}
-				}
-			]
-		},
-		{
-			"image": "sprites/epilogue-3.webp",
-			"format": "RGBA5555",
-			"size": {
-				"w": 684,
-				"h": 1012
-			},
-			"scale": 1,
-			"frames": [
+				},
 				{
 					"filename": "end1.png",
 					"rotated": false,
@@ -982,7 +1003,7 @@
 					},
 					"frame": {
 						"x": 2,
-						"y": 2,
+						"y": 455,
 						"w": 680,
 						"h": 525
 					}
@@ -1003,7 +1024,7 @@
 					},
 					"frame": {
 						"x": 2,
-						"y": 530,
+						"y": 983,
 						"w": 620,
 						"h": 480
 					}
@@ -1014,6 +1035,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:36ef16402622522f9f1fe8674b0242c7:ddd452db98d2e13920d14cd5c552db7f:8d0bba757ba6ad04e7265a9772d858c8$"
+		"smartupdate": "$TexturePacker:SmartUpdate:9555fb4a29752640a59a86f6932c8e62:0972906695a2c54fbbcf58c89efcfede:8d0bba757ba6ad04e7265a9772d858c8$"
 	}
 }
