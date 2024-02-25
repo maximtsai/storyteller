@@ -103,7 +103,7 @@ class DialogDisplay {
         let horizOffset = 20;
 
         this.dialogBox = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.height - 183, 'blackPixel');
-        this.dialogBox.setScale(gameConsts.width * 0.5 - 20 - horizOffset * 0.75, 84);
+        this.dialogBox.setScale(gameConsts.width * 0.5 - 20 - horizOffset * 0.5, 84);
         this.dialogBox.visible = false;
         this.dialogBox.setDepth(999);
         this.dialogBox.setOrigin(0.5, 0);

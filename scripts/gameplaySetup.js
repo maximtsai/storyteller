@@ -1846,7 +1846,7 @@ function handleAchievements(achievements) {
         } else {
             imageString = "ach_" + imageString;
         }
-        globalObjects.achievementImages[i] = PhaserScene.add.image( 55 + i * 84, 100, 'epilogue', imageString).setDepth(1).setAlpha(0.8).setOrigin(0.5, 0.85).setVisible(false)
+        globalObjects.achievementImages[i] = PhaserScene.add.image( 55 + i * 92, 100, 'epilogue', imageString).setDepth(1).setAlpha(0.8).setOrigin(0.5, 0.85).setVisible(false)
         if (achievements[textString]) {
             globalObjects.achievementImages[i].setAlpha(1);
             globalObjects.achievementHoverIcons[i] = new Button({

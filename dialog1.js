@@ -1247,7 +1247,7 @@ let dialogList1 = {
     Ethan3ScaredyCat: {
         speech: [
             {speaker: "Ethan", face: "ethan_sad.png", text: "Scaredy-cat? What are you, five?"},
-            {speaker: "You", text: "I'm not the one hiding from the world in\nhis own imagination.", data: {property: "ethanState", value: "ethanDrugHaze"}},
+            {speaker: "You", text: "I'm not the one hiding from the world in his\nown imagination.", data: {property: "ethanState", value: "ethanDrugHaze"}},
         ]
     },
 

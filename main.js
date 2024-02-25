@@ -96,8 +96,8 @@ let oldTime = 0;
 let deltaScale = 1;
 let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 5;
-let url1 = '';
-let url2 = '';
+let url1 = 'local';
+let url2 = 'local';
 // let url1 = 'crazygames';
 // let url2 = '1001juegos';
 

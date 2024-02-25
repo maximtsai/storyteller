@@ -2474,7 +2474,8 @@ function retractWireVisual(wire, visual) {
 }
 
 function attachWire(wireXPos, wireYPos, wire) {
-    if (wireXPos > 286 && wireXPos < 345) {
+    let xOffset = 30;
+    if (wireXPos > 286 + xOffset && wireXPos < 345 + xOffset) {
         let spacingY = 10;
         if (wireYPos > (4090 + spacingY) && wireYPos < (4165 - spacingY) && wireCanAttach(wire, 5)) {
             setWireAttach(wire, 5);
@@ -2497,28 +2498,29 @@ function attachWire(wireXPos, wireYPos, wire) {
 }
 function setWireAttach(wire, number) {
     if (wireCanAttach(wire, number)) {
+        let xOffset = 30;
         detatchWire(wire);
         globalObjsTemp.generatorConnections[number] = wire;
         switch(number) {
             case 5:
                 wire.socket = 5;
-                wire.setPos(300, 4090 + 36);
+                wire.setPos(300 + xOffset, 4090 + 36);
                 break;
             case 4:
                 wire.socket = 4;
-                wire.setPos(300, 4169 + 36);
+                wire.setPos(300 + xOffset, 4169 + 36);
                 break;
             case 3:
                 wire.socket = 3;
-                wire.setPos(300, 4248 + 36);
+                wire.setPos(300 + xOffset, 4248 + 36);
                 break;
             case 2:
                 wire.socket = 2;
-                wire.setPos(300, 4327 + 36);
+                wire.setPos(300 + xOffset, 4327 + 36);
                 break;
             case 1:
                 wire.socket = 1;
-                wire.setPos(300, 4405 + 36);
+                wire.setPos(300 + xOffset, 4405 + 36);
                 break;
         }
         return true;
