@@ -466,7 +466,7 @@ function createRewardButtons() {
                     }
                 });
             }
-            globalObjects.icon2 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 187, 'end_icon_2.png', 'end2.png', 'Staying in the Diner - By Theresa Kao')
+            globalObjects.icon2 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 187, 'end_icon_2.png', 'end2.png', 'Reminiscing - By HBY')
             if (numAchievements >= 7) {
                 if (newestAchievement && numAchievements === 7) {
                     globalObjects.flashWhite = PhaserScene.add.image(gameConsts.width - 57, gameConsts.height - 276, 'whitePixel').setScale(46, 40).setAlpha(0).setDepth(1);
