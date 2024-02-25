@@ -419,8 +419,8 @@ function createRewardButtons() {
                 });
             }
             globalObjects.icon2 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 187, 'end_icon_2.png', 'end2.png', 'Staying in the Diner - By Theresa Kao')
-            if (numAchievements >= 8) {
-                if (newestAchievement && numAchievements === 8) {
+            if (numAchievements >= 7) {
+                if (newestAchievement && numAchievements === 7) {
                     globalObjects.flashWhite = PhaserScene.add.image(gameConsts.width - 57, gameConsts.height - 276, 'whitePixel').setScale(46, 40).setAlpha(0).setDepth(1);
                     PhaserScene.tweens.add({
                         targets: globalObjects.flashWhite,
@@ -442,7 +442,7 @@ function createRewardButtons() {
                 }
                 globalObjects.icon3 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 276, 'end_icon_3.png', 'end3.png', 'All Together - By Theresa Kao')
             } else {
-                globalObjects.icon3 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 276, 'end_icon_none.png', 'endnone.png', 'Discover all endings to unlock')
+                globalObjects.icon3 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 276, 'end_icon_none.png', 'endnone.png', 'Discover 7 endings to unlock')
             }
         } else {
             globalObjects.icon2 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 187, 'end_icon_none.png', 'endnone.png', 'Discover 4 endings to unlock')
