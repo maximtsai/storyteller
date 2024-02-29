@@ -4,15 +4,18 @@ let loadingText;
 let isMobile = false;
 
 function testMobile() {
+    return true;
     const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
     return regex.test(navigator.userAgent);
 }
 
-function setBackground(atlas, ref) {
+function setBackground(atlas, ref, xOffset = 0) {
     mainBackground.destroy();
-    mainBackground = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, atlas, ref);
+    mainBackground = PhaserScene.add.image(gameConsts.halfWidth + xOffset, gameConsts.halfHeight, atlas, ref);
 }
 
+let isFirstPlay = true;
+let hasAdBlock = false;
 let achievements = null;
 let newestAchievement = null;
 const achievementsText = "DinerInStormAchievements";
@@ -22,6 +25,11 @@ function setupLoadingBar(scene) {
     // Basic loading bar visual
     let extraLoadingBarLength = isMobile ? 100 : 0;
     let extraLoadingBarWidthMult = isMobile ? 2 : 1;
+    window.CrazyGames.SDK.game.sdkGameLoadingStart();
+    if (isFirstPlay) {
+        displayBanner();
+        isFirstPlay = false;
+    }
     mainBackground = scene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'loading1');
     loadingBarBack = scene.add.image(gameConsts.halfWidth, gameConsts.height - 164, 'blackPixel');
     loadingBarBack.scaleX = 101 + extraLoadingBarLength;
@@ -44,6 +52,16 @@ function setupLoadingBar(scene) {
     });
 
     scene.load.on('complete', () => {
+        window.CrazyGames.SDK.game.sdkGameLoadingStop();
+        const callback = (error, result) => {
+            if (error) {
+                console.log("Adblock usage error (callback)", error);
+                hasAdBlock = true;
+            } else {
+                console.log("Adblock usage fetched (callback)", result);
+            }
+        };
+        window.CrazyGames.SDK.ad.hasAdblock(callback);
         setTimeout(() => {
             // Achievements
             if (!achievements) {
@@ -58,7 +76,7 @@ function setupLoadingBar(scene) {
                     end7: localStorage.getItem(achievementsText + 7),
                 };
             }
-            let offImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'startOff.png').setDepth(0).setScale(4);
+            let offImage = PhaserScene.add.image(gameConsts.halfWidth - 5, gameConsts.halfHeight, 'intro', 'startOff.png').setDepth(0).setScale(4);
             scene.tweens.add({
                 targets: [offImage],
                 alpha: 0,
@@ -71,14 +89,14 @@ function setupLoadingBar(scene) {
             scene.tweens.add({
                 targets: [offImage],
                 duration: 1500,
-                x: gameConsts.halfWidth - 20,
+                x: "-=20",
                 y: gameConsts.halfHeight + 8
             });
             numAchievements = 0;
             handleAchievements(achievements);
             loadingBar.scaleX = 100 + extraLoadingBarLength;
             if (!gameVars.showedCreditsSpook) {
-                let eye = PhaserScene.add.image(635, gameConsts.halfHeight - 275, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.03).setScale(1.97);
+                let eye = PhaserScene.add.image(gameConsts.width - 135, gameConsts.halfHeight - 275, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.03).setScale(1.97);
                 setTimeout(() => {
                     eye.setScale(2, 1.9).setAlpha(0.15);
                     setTimeout(() => {
@@ -149,7 +167,9 @@ function setupGame() {
             }
         },
         onMouseUp: () => {
+            clearBannerAndHideDiv();
             runIntroSequence();
+            window.CrazyGames.SDK.game.gameplayStart();
         }
     });
     createRewardButtons();
@@ -180,6 +200,7 @@ function setupGame() {
                 }
             },
             onMouseUp: () => {
+                clearBannerAndHideDiv();
                 clickCredits();
             }
         });
@@ -190,7 +211,7 @@ function setupGame() {
     setupMoveButtons();
     setupGoalText();
     setupDialogManager();
-    // setupUndoButton();
+    setupUndoButton();
     setupMuteButton();
     dialogDisplay = new DialogDisplay(PhaserScene);
     miscSubscribe = new MiscSubscribe(PhaserScene);
@@ -210,6 +231,33 @@ function initializeMisc() {
         446.75: 'weatherblur',
         506: 'news1'
     };
+}
+
+function clearBannerAndHideDiv() {
+    return;
+    window.CrazyGames.SDK.banner.clearAllBanners();
+
+    const elem = document.getElementById("banner-container");
+    elem.style.top = "-1000px";
+}
+
+let canCallBanner = true;
+function displayBanner() {
+    return;
+    if (canCallBanner) {
+        // Prevent banner from being called multiple times in high frequency
+        canCallBanner = false;
+        setTimeout(() => {
+            canCallBanner = true;
+        }, 65000);
+        const elem = document.getElementById("banner-container");
+        elem.style.top = "0px";
+        window.CrazyGames.SDK.banner.requestBanner({
+            id: "banner-container",
+            width: 468,
+            height: 60,
+        });
+    }
 }
 
 function setupKeyPresses(scene) {
@@ -244,7 +292,7 @@ function clickCredits() {
     globalObjects.creditsText.setDepth(99);
 
     globalObjects.creditsText2 = PhaserScene.add.text(50, 160, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org,\nsonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
-    globalObjects.creditsText2.setFontSize(24);
+    globalObjects.creditsText2.setFontSize(24).setDepth(9999);
     globalObjects.creditsText2.setScale(0.82);
     globalObjects.creditsText2.setDepth(99);
 
@@ -273,7 +321,7 @@ function clickCredits() {
 function closeCredits() {
     if (!gameVars.showedCreditsSpook) {
         if (Math.random() < 0.3) {
-            let eye = PhaserScene.add.image(gameConsts.halfWidth + 260, gameConsts.halfHeight - 255, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.15).setScale(3);
+            let eye = PhaserScene.add.image(gameConsts.width - 135, gameConsts.halfHeight - 255, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.15).setScale(3);
             setTimeout(() => {
                 eye.destroy();
             }, 20)
@@ -478,7 +526,7 @@ function setupWideMoveButtons() {
         normal: {
             "atlas": "buttons",
             "ref": "move_btn_normal_wide.png",
-            "x": 173,
+            "x": 173 + gameVars.cameraPosX,
             "y": gameConsts.halfHeight,
             "scaleX": -1.33,
             "scaleY": 1.33,
@@ -522,7 +570,7 @@ function setupWideMoveButtons() {
         normal: {
             "atlas": "buttons",
             "ref": "move_btn_normal_wide.png",
-            "x": gameConsts.width - 95,
+            "x": gameConsts.width - 95 + gameVars.cameraPosX,
             "y": gameConsts.halfHeight,
             "scaleX": 1.33,
             "scaleY": 1.33,
@@ -568,7 +616,7 @@ function setupMoveButtons() {
         normal: {
             "atlas": "buttons",
             "ref": "move_btn_normal.png",
-            "x": 15,
+            "x": 15 + gameVars.cameraPosX,
             "y": gameConsts.halfHeight,
             "scaleX": -1
         },
@@ -607,7 +655,7 @@ function setupMoveButtons() {
         normal: {
             "atlas": "buttons",
             "ref": "move_btn_normal.png",
-            "x": gameConsts.width - 15,
+            "x": gameConsts.width - 15 + gameVars.cameraPosX,
             "y": gameConsts.halfHeight,
             "scaleX": 1
         },
@@ -644,7 +692,7 @@ function setupMoveButtons() {
 }
 
 function setupUndoButton() {
-    globalObjects.undoTab = PhaserScene.add.sprite(0, 420, 'buttons', 'undo_tab.png').setOrigin(1, 0.5).setDepth(99);
+    globalObjects.undoTab = PhaserScene.add.sprite(gameConsts.width - 10, 420, 'buttons', 'undo_tab.png').setOrigin(0, 0.5).setDepth(99).setAlpha(0);
     globalObjects.undoTab.scrollFactorX = 0;
     globalObjects.undoTab.scrollFactorY = 0;
 
@@ -652,7 +700,7 @@ function setupUndoButton() {
         normal: {
             atlas: "buttons",
             ref: 'undo.png',
-            x: 35,
+            x: gameConsts.width - 35,
             y: 420,
             alpha: 1,
         },
@@ -704,7 +752,7 @@ function attemptReset() {
     globalObjects.resetClickBlocker.setDepth(99999);
     globalObjects.resetClickBlocker.setScrollFactor(0, 0);
 
-    globalObjects.adPopup = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'buttons', 'popup.png').setDepth(99999).setScale(0.85).setAlpha(0.1);
+    globalObjects.adPopup = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'buttons', 'popup.png').setDepth(99999).setScale(0.85).setAlpha(0.25);
     globalObjects.adPopup.scrollFactorX = 0;
     globalObjects.adPopup.scrollFactorY = 0;
     PhaserScene.tweens.add({
@@ -713,7 +761,7 @@ function attemptReset() {
         scaleY: 1,
         alpha: 1,
         ease: 'Back.easeOut',
-        duration: 280
+        duration: 220
     });
 
     globalObjects.playAdButton  = new Button({
@@ -741,7 +789,28 @@ function attemptReset() {
             canvas.style.cursor = 'default';
         },
         onMouseUp() {
-            console.log("Play ad");
+            const callbacks = {
+                adFinished: () => {
+                    isAdPlaying = false;
+                    console.log("End rewarded ad (callback)")
+                    adUnmute();
+                    closeRewindAnim();
+                    messageBus.publish('loadSavePoint');
+                },
+                adError: (error, errorData) => {
+                    isAdPlaying = false;
+                    console.log("Error rewarded ad (callback)", error, errorData)
+                    adUnmute();
+                    closeRewindAnim();
+                    messageBus.publish('loadSavePoint');
+                },
+                adStarted: () => {
+                    isAdPlaying = true;
+                    console.log("Start rewarded ad (callback)")
+                },
+            };
+            adMute();
+            window.CrazyGames.SDK.ad.requestAd("rewarded", callbacks);
             hideUndoButton();
             playRewindingAnim();
         }
@@ -782,6 +851,8 @@ function closeAdPrompt() {
     globalObjects.resetClickBlocker.destroy();
 }
 
+let isAdPlaying = false;
+
 function playRewindingAnim() {
     globalObjects.resetClickBlocker2  = new Button({
         normal: {
@@ -817,14 +888,16 @@ function playRewindingAnim() {
         rotation: "-=6.283",
         duration: 1350,
         ease: 'Quad.easeInOut',
-        repeat: 1,
-        onComplete: () => {
-            // TODO: Remove placeholder
+        repeat: -1
+    });
+
+    setTimeout(() => {
+        if (!isAdPlaying) {
+            adUnmute();
             closeRewindAnim();
-            console.log("load save point");
             messageBus.publish('loadSavePoint');
         }
-    });
+    }, 6000);
 }
 
 function closeRewindAnim() {
@@ -834,13 +907,13 @@ function closeRewindAnim() {
         targets: [globalObjects.rewindLarge],
         scaleX: 0,
         scaleY: 0,
-        ease: 'Quad.easeIn',
-        duration: 300,
+        ease: 'Quad.easeOut',
+        duration: 230,
         onComplete: () => {
             globalObjects.rewindLarge.destroy();
         }
     });
-    globalObjects.resetClickBlocker2.tweenToAlpha(0, 200, 'Quad.easeOut', () => {
+    globalObjects.resetClickBlocker2.tweenToAlpha(0, 240, undefined, () => {
         globalObjects.resetClickBlocker2.destroy();
     })
 
@@ -850,17 +923,24 @@ function showUndoButton() {
     if (globalObjects.undoTween) {
         globalObjects.undoTween.stop();
     }
+    globalObjects.showingUndoButton = true;
 
     globalObjects.undoTween = PhaserScene.tweens.add({
-        delay: 50,
         targets: [globalObjects.undoTab],
-        x: 67,
+        x: gameConsts.width - 67,
+        alpha: 0.7,
         ease: 'Back.easeOut',
-        duration: 380,
+        duration: 400,
         onComplete: () => {
-            globalObjects.undoButton.setState(NORMAL);
-            globalObjects.undoButton.setScale(0.6, 0.6);
-            globalObjects.undoButton.tweenToScale(0.75, 0.75, 150, 'Back.easeOut')
+            if (globalObjects.showingUndoButton) {
+                if (globalObjects.undoButton.getState() !== NORMAL) {
+                    globalObjects.undoButton.setState(NORMAL);
+                    globalObjects.undoButton.setScale(0.6, 0.6);
+                } else {
+                    globalObjects.undoButton.setState(NORMAL);
+                }
+                globalObjects.undoButton.tweenToScale(0.75, 0.75, 150, 'Back.easeOut')
+            }
         }
     });
 }
@@ -869,7 +949,8 @@ function hideUndoButton() {
     if (!globalObjects.undoButton) {
         return;
     }
-    if (globalObjects.undoButton.getState() !== DISABLE) {
+    if (globalObjects.showingUndoButton || globalObjects.undoButton.getState() !== DISABLE) {
+        globalObjects.showingUndoButton = false;
         if (globalObjects.undoTween) {
             globalObjects.undoTween.stop();
         }
@@ -878,9 +959,10 @@ function hideUndoButton() {
 
         globalObjects.undoTween = PhaserScene.tweens.add({
             targets: [globalObjects.undoTab],
-            x: 0,
+            x: gameConsts.width - 10,
             ease: 'Quad.easeOut',
-            duration: 230
+            duration: 200,
+            alpha: 0,
         });
     }
 }
@@ -1278,6 +1360,7 @@ function realGameStart() {
                                 globalObjsTemp.radioStatic1 = playSound('radiostatic1', 0.01, true);
                                 globalObjsTemp.radioStatic2 = playSound('radiostatic2', 0.01, true);
                                 enableDinerButtons();
+                                PhaserScene.cameras.main.scrollX = gameVars.cameraPosX;
                                 dialogManager.showDialogNode('intro');
                                 randGloomShow(0);
                             }, 40);
@@ -1409,11 +1492,11 @@ function runIntroSequence() {
     }
 
     gameVars.canSkipIntro = true;
-    setBackground('intro', 'start.png');
+    setBackground('intro', 'start.png', -5);
     let thunderSfx = playSound('thunder', 0.8);
 
     if (!gameVars.showedCreditsSpook) {
-        let eye = PhaserScene.add.image(gameConsts.halfWidth + 260, gameConsts.halfHeight - 255, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.1).setScale(3);
+        let eye = PhaserScene.add.image(gameConsts.width - 135, gameConsts.halfHeight - 255, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.1).setScale(3);
         setTimeout(() => {
             eye.setScale(3.1).setAlpha(0.15);
             setTimeout(() => {
@@ -1763,7 +1846,7 @@ function handleAchievements(achievements) {
         } else {
             imageString = "ach_" + imageString;
         }
-        globalObjects.achievementImages[i] = PhaserScene.add.image( 55 + i * 84, 100, 'epilogue', imageString).setDepth(1).setAlpha(0.8).setOrigin(0.5, 0.85).setVisible(false)
+        globalObjects.achievementImages[i] = PhaserScene.add.image( 55 + i * 92, 100, 'epilogue', imageString).setDepth(1).setAlpha(0.8).setOrigin(0.5, 0.85).setVisible(false)
         if (achievements[textString]) {
             globalObjects.achievementImages[i].setAlpha(1);
             globalObjects.achievementHoverIcons[i] = new Button({
@@ -1846,6 +1929,11 @@ function handleAchievements(achievements) {
                 "atlas": "buttons",
                 "alpha": numAchievements > 0 ? 0.9 : 0.7,
             },
+            disable: {
+                "ref": "achievements.png",
+                "atlas": "buttons",
+                "alpha": 0.5,
+            },
             onHover: () => {
                 if (canvas) {
                     canvas.style.cursor = 'pointer';
@@ -1909,7 +1997,7 @@ function handleAchievements(achievements) {
         globalObjects.achievements.achievementsButton.setAlpha(0.5);
     }
     globalObjects.achievementsShown = false;
-
+    globalObjects.achievements.achievementsButton.setState(DISABLE);
     globalObjects.achievements.achievementsButton.setPos(0, -32);
     globalObjects.achievements.achievementsButton.setDepth(1);
     globalObjects.achievements.achievementsButton.setOrigin(0, 0)
@@ -1918,8 +2006,8 @@ function handleAchievements(achievements) {
         targets: [globalObjects.achievements.star],
         delay: 300,
         duration: 250,
-        scaleX: 0.65,
-        scaleY: 0.65,
+        scaleX: 0.7,
+        scaleY: 0.7,
         ease: 'Cubic.easeOut',
         onComplete: () => {
             PhaserScene.tweens.add({
@@ -1928,6 +2016,9 @@ function handleAchievements(achievements) {
                 scaleX: 0.46,
                 scaleY: 0.46,
                 ease: 'Bounce.easeOut',
+                onComplete: () => {
+                    globalObjects.achievements.achievementsButton.setState(NORMAL);
+                }
             });
         }
     });

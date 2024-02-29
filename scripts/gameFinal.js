@@ -499,13 +499,13 @@ class GameFinal {
         setTimeout(() => {
             this.createRestartButton();
             this.restartButton.setState(NORMAL);
-            this.restartFlash.alpha = 0.5;
+            this.restartFlash.alpha = 0.65;
             this.scene.tweens.add({
                 targets: [this.restartFlash],
-                scaleX: "+=50",
-                scaleY: "+=50",
+                scaleX: "+=60",
+                scaleY: "+=60",
                 alpha: 0,
-                duration: 200,
+                duration: 450,
                 ease: 'Cubic.easeOut',
                 onComplete: () => {
                 }
@@ -635,7 +635,7 @@ class GameFinal {
             return;
         }
         if (gameState.EthanSaved) {
-            this.displayedLines.push("\n\nWhile driving, Ethan suddenly shouts with uncharacteristic energy\n\"Step on it man! It's coming!\"");
+            this.displayedLines.push("\n\nWhile driving, Ethan suddenly shouts \"Step on it man! It's coming!\"");
             this.displayedLines.push("\nYou don't question him and go as fast as you can without crashing.\nIn your back mirror, you see a vague glimpse of an impossibly large\nshadow in the distance. Ethan calms down soon after.");
         } else if (gameState.JuanSaved) {
             this.displayedLines.push("\n\nWhile driving, Juan points out something impossibly large quickly\napproaching your truck.");
@@ -766,14 +766,17 @@ class GameFinal {
                     }
                 });
                 setTimeout(() => {
+                    if (gameState.MaggieSaved) {
+                        window.CrazyGames.SDK.game.happytime();
+                    }
                     this.restartButton.setState(NORMAL);
-                    this.restartFlash.alpha = 0.5;
+                    this.restartFlash.alpha = 0.65;
                     this.scene.tweens.add({
                         targets: [this.restartFlash],
-                        scaleX: "+=50",
-                        scaleY: "+=50",
+                        scaleX: "+=60",
+                        scaleY: "+=60",
                         alpha: 0,
-                        duration: 200,
+                        duration: 450,
                         ease: 'Cubic.easeOut',
                         onComplete: () => {
                         }
@@ -839,7 +842,10 @@ class GameFinal {
         this.scene.tweens.add({
             targets: [this.blackScreen],
             alpha: 1,
-            duration: 2500
+            duration: 2500,
+            onComplete: () => {
+                window.CrazyGames.SDK.game.gameplayStop();
+            }
         });
     }
 
@@ -891,6 +897,12 @@ class GameFinal {
                 alpha: 0
             },
             onMouseUp() {
+                const callbacks = {
+                    adFinished: () => {displayBanner()},
+                    adStarted: () => console.log("Start midgame ad (callback)"),
+                };
+
+                window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
                 fullRestart();
             }
         });
