@@ -2125,7 +2125,7 @@ function clickGenerator() {
             normal: {
                 atlas: "radio",
                 ref: "red_plug.png",
-                x: 300,
+                x: 330,
                 y: 4126,
                 alpha: 1,
                 scaleX: 1,
@@ -2185,7 +2185,7 @@ function clickGenerator() {
             normal: {
                 atlas: "radio",
                 ref: "blue_plug.png",
-                x: 300,
+                x: 330,
                 y: 4205,
                 alpha: 1,
                 scaleX: 1,
@@ -2303,7 +2303,7 @@ function clickGenerator() {
             normal: {
                 atlas: "radio",
                 ref: "yellow_plug.png",
-                x: 300,
+                x: 330,
                 y: 4284,
                 alpha: 1,
                 scaleX: 1,
