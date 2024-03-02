@@ -503,8 +503,8 @@ function createWorldButtons() {
     globalObjects.diner.TVButton.setDepth(1);
     globalObjects.diner.TVButton.setState(DISABLE);
 
-    globalObjects.musicNote = PhaserScene.add.sprite(800, 340, 'misc', 'notegood.png').setDepth(1);
-    globalObjects.musicNote.startX = globalObjects.musicNote.x; globalObjects.musicNote.startY = globalObjects.musicNote.y;
+    globalObjects.musicNote = PhaserScene.add.sprite(9999, 340, 'misc', 'notegood.png').setDepth(1);
+    globalObjects.musicNote.startX = 800; globalObjects.musicNote.startY = globalObjects.musicNote.y;
 
     globalObjects.diner.RadioButton = new Button({
         normal: {
@@ -907,7 +907,11 @@ function clickEthan() {
                         dialogManager.showDialogNode('Ethan3FailedBest');
                         break;
                     case 'ethanNotTalk':
-                        dialogManager.showDialogNode('Ethan3NotTalk');
+                        if (gameState.tvSmashed) {
+                            dialogManager.showDialogNode('Ethan3NotTalkBroken');
+                        } else {
+                            dialogManager.showDialogNode('Ethan3NotTalk');
+                        }
                         break;
                     case 'ethanStayingHere':
                         dialogManager.showDialogNode('Ethan3LeavingChangeMind');
@@ -2121,7 +2125,7 @@ function clickGenerator() {
             normal: {
                 atlas: "radio",
                 ref: "red_plug.png",
-                x: 300,
+                x: 330,
                 y: 4126,
                 alpha: 1,
                 scaleX: 1,
@@ -2181,7 +2185,7 @@ function clickGenerator() {
             normal: {
                 atlas: "radio",
                 ref: "blue_plug.png",
-                x: 300,
+                x: 330,
                 y: 4205,
                 alpha: 1,
                 scaleX: 1,
@@ -2299,7 +2303,7 @@ function clickGenerator() {
             normal: {
                 atlas: "radio",
                 ref: "yellow_plug.png",
-                x: 300,
+                x: 330,
                 y: 4284,
                 alpha: 1,
                 scaleX: 1,
@@ -2470,7 +2474,8 @@ function retractWireVisual(wire, visual) {
 }
 
 function attachWire(wireXPos, wireYPos, wire) {
-    if (wireXPos > 286 && wireXPos < 345) {
+    let xOffset = 30;
+    if (wireXPos > 286 + xOffset && wireXPos < 345 + xOffset) {
         let spacingY = 10;
         if (wireYPos > (4090 + spacingY) && wireYPos < (4165 - spacingY) && wireCanAttach(wire, 5)) {
             setWireAttach(wire, 5);
@@ -2493,28 +2498,29 @@ function attachWire(wireXPos, wireYPos, wire) {
 }
 function setWireAttach(wire, number) {
     if (wireCanAttach(wire, number)) {
+        let xOffset = 30;
         detatchWire(wire);
         globalObjsTemp.generatorConnections[number] = wire;
         switch(number) {
             case 5:
                 wire.socket = 5;
-                wire.setPos(300, 4090 + 36);
+                wire.setPos(300 + xOffset, 4090 + 36);
                 break;
             case 4:
                 wire.socket = 4;
-                wire.setPos(300, 4169 + 36);
+                wire.setPos(300 + xOffset, 4169 + 36);
                 break;
             case 3:
                 wire.socket = 3;
-                wire.setPos(300, 4248 + 36);
+                wire.setPos(300 + xOffset, 4248 + 36);
                 break;
             case 2:
                 wire.socket = 2;
-                wire.setPos(300, 4327 + 36);
+                wire.setPos(300 + xOffset, 4327 + 36);
                 break;
             case 1:
                 wire.socket = 1;
-                wire.setPos(300, 4405 + 36);
+                wire.setPos(300 + xOffset, 4405 + 36);
                 break;
         }
         return true;
@@ -2726,14 +2732,14 @@ function closeGenerator() {
             scaleX: 1,
             scaleY: 1,
             ease: 'Quad.easeOut',
-            duration: 100,
+            duration: 50,
             onComplete: () => {
                 PhaserScene.tweens.add({
-                    delay: 200,
+                    delay: 100,
                     targets: globalObjsTemp.dogEyes,
                     x: "+=80",
                     ease: 'Quart.easeIn',
-                    duration: 500,
+                    duration: 300,
                     onComplete: () => {
                         globalObjsTemp.dogEyes.x = 999;
                     }

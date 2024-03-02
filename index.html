@@ -5,8 +5,24 @@
     <meta charset="UTF-8" />
     <title>Diner in the Storm</title>
     <link rel="icon" type="image/x-icon" href="/sprites/favicon.png">
-    <script src="phaser.min.js"></script>
+  <script src="https://cdn.y8.com/api/sdk.js" async></script>
+  <script>
+    var authCallback = function(response) {
+      if (response) {
+        console.log(response, response.authResponse.details);
+      }
+    }
 
+    window.idAsyncInit = function() { // SDK downloaded
+        ID.init({
+            appId : 'YOUR APP ID'
+        });
+        ID.Event.subscribe('id.init', function() {
+            ID.ads.init('12345');
+        });
+    };
+  </script>
+    <script src="phaser.min.js"></script>
     <script src="util/messageBus.js"></script>
     <script src="util/buttonManager.js"></script>
     <script src="util/updateManager.js"></script>

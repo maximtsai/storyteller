@@ -11,7 +11,10 @@ let dialogList1 = {
         speech: [
             {speaker: "Maggie", face: "maggie_normal.png", text: "Honey, just grab a seat.\nI\'ll be right with you.", data: {property: "askedSeat", value: true}},
             {speaker: "You", text: "Where\'s the rest of your staff?"},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "My line cook had to call out and my...\nwell it\'s just me tonight.", publish: "savePoint", param: {node: 'findSeat', num: 2}},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "My line cook had to call out and my...\nwell it\'s just me tonight.", onFinish: () => {
+                    // publish: "savePoint", param: {node: 'findSeat', num: 2},
+                messageBus.publish('savePoint', {node: 'findSeat', num: 2});
+            }},
         ],
         branches: [
             {text: "Want some help?", targetNode: "MaggieAct1Happy"},
@@ -54,7 +57,7 @@ let dialogList1 = {
     MaggieAct2ThankYou: {
         speech: [
             {speaker: "Maggie", face: "maggie_happy.png", text: "Honey, thank you for helping with the\ngenerator. Dinner's on the house.", data: {property: "alreadyThanked", value: true}},
-            {speaker: " ", text: "   (Maggie serves you a delicious meal of waffles,\n   meatloaf, hashbrowns and a large milkshake)"},
+            {speaker: " ", text: "   (Maggie serves you a delicious meal of waffles,\n   meatloaf, hashbrowns and a large milkshake)", publish: "savePoint", param: {node: 'MaggieAct2ThankYou', num: 1}},
         ],
         branches: [
             {text: "Does your staff normally help\nwith fixing things?", targetNode: "MaggieAct2Sad"},
@@ -63,13 +66,15 @@ let dialogList1 = {
     },
     MaggieAct2Sad: {
         speech: [
-            {speaker: "Maggie", face: "maggie_sad.png", text: "Not so much anymore.", data: {property: "MaggieAct2Chat", value: true}},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "Not so much anymore.", data: {property: "MaggieAct2Chat", value: true}, publish: "showUndoPoint", onFinish: () => {
+                    messageBus.publish('hideUndoPoint');
+                }},
         ]
     },
 
     MaggieAct2Happy: {
         speech: [
-            {speaker: "Maggie", face: "maggie_happy.png", text: "Ha-ha, darling, you're about thirty years\ntoo young for me."},
+            {speaker: "Maggie", face: "maggie_happy.png", text: "Ha-ha, darling, you're about thirty years\ntoo young for me.", publish: "showUndoPoint",},
             {speaker: "Maggie", face: "maggie_normal.png", text: "But I know men of all ages enjoy a good\nhearty meal!", publish: "MaggieInfluence", data: {property: "MaggieAct2Chat", value: true}},
         ]
     },
@@ -86,7 +91,7 @@ let dialogList1 = {
     },
     MaggieSenator: {
         speech: [
-            {speaker: "Maggie", face: "maggie_normal.png", text: "I used to have senator and congressmen\nasking' for me by name!"},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "I used to have senator and congressmen\nasking' for me by name!", publish: "savePoint", param: {node: 'MaggieSenator', num: 0}},
         ],
         branches: [
             {text: "Then what are you doing out here?", targetNode: "MaggieHusbandStart"},
@@ -96,7 +101,7 @@ let dialogList1 = {
     MaggieHusbandStart: {
         speech: [
             {speaker: "Maggie", face: "maggie_normal.png", text: "There was a handsome waiter that started\nworking at the same restaurant as me.\nHe tried everything' to get me to agree\nto a date."},
-            {speaker: "Maggie", face: "maggie_normal.png", text: "Until•••.•••.•••.••••••••••• Oh, I'm sorry.\n•••••••I start to ramble in my old age."},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "Until•••.•••.•••.••••••••••• Oh, I'm sorry.\n•••••••I start to ramble in my old age.", publish: "savePoint", param: {node: 'MaggieHusbandStart', num: 1}},
         ],
         branches: [
             {text: "No, I want to hear what happened.", targetNode: "MaggieHusbandContinue"},
@@ -105,12 +110,12 @@ let dialogList1 = {
     },
     MaggieDishes: {
         speech: [
-            {speaker: "Maggie", face: "maggie_normal.png", text: "You finish up and just leave the dishes,•••••••\nI'll take care of them.", data: {property: "MaggieAct2FinishedMeh", value: true}},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "You finish up and just leave the dishes,•••••••\nI'll take care of them.", data: {property: "MaggieAct2FinishedMeh", value: true}, publish: "showUndoPoint"},
         ],
     },
     MaggieDishesTwo: {
         speech: [
-            {speaker: "Maggie", face: "maggie_normal.png", text: "No, you just keep walking' bout keeping\nmy customers calm. I'll take care of them.", data: {property: "MaggieAct2FinishedMeh", value: true}},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "No, you just keep walking' bout keeping\nmy customers calm. I'll take care of them.", data: {property: "MaggieAct2FinishedMeh", value: true}, publish: "showUndoPoint"},
         ],
     },
     MaggieHusbandContinue: {
@@ -137,13 +142,17 @@ let dialogList1 = {
     MaggieLove: {
         speech: [
             {speaker: "Maggie", face: "maggie_reminisce.png", text: "Love. ••••••••••••••••••I love him. ••••••••••••••••••••••••Even now."},
-            {speaker: "Maggie", face: "maggie_normal.png", text: "But listen to me go on. I best go check on\nthe kitchen. You enjoy your dinner.", publish: "MaggieInfluence"},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "But listen to me go on. I best go check on\nthe kitchen. You enjoy your dinner.", publish: "MaggieInfluence", onFinish: () => {
+                    messageBus.publish('hideUndoPoint');
+                }},
         ],
     },
     MaggieRegret: {
         speech: [
             {speaker: "Maggie", face: "maggie_normal.png", text: "I guess it is. You never appreciate what's\nright in front of you."},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "Don't make my mistake of assuming you'll\nhave enough time with your loved ones.", publish: "MaggieInfluence"},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "Don't make my mistake of assuming\nyou'll have enough time with your\nloved ones.", publish: "MaggieInfluence", onFinish: () => {
+                    messageBus.publish('hideUndoPoint');
+                }},
         ],
     },
     MaggieAct2FinishedGood: {
@@ -218,7 +227,7 @@ let dialogList1 = {
 
     MaggieAct3LeaveAll: {
         speech: [
-            {speaker: "Maggie", face: "maggie_sad.png", text: "I'm sorry honey but I'm still not leavin'\nmy diner behind."},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "I'm sorry honey but I'm still not leavin'\nmy diner behind.", publish: "savePoint", param: {node: 'MaggieAct3LeaveAll', num: 0}},
         ],
         branches: [
             {text: "I won't force you to come.", targetNode: "MaggieAct3Sandwich"},
@@ -228,7 +237,9 @@ let dialogList1 = {
 
     MaggieAct3Sandwich: {
         speech: [
-            {speaker: "Maggie", face: "maggie_normal.png", text: "I'll make y'all some sandwiches for the\nroad. You don't need to worry about me\nstayin' here."},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "I'll make y'all some sandwiches for the\nroad. You don't need to worry about me\nstayin' here.", publish: 'showUndoPoint', onFinish: () => {
+                    messageBus.publish('savePoint', {node: 'MaggieAct3Sandwich', num: 0})
+                }},
         ],
         branches: [
             {text: "Accept the sandwiches", targetNode: "MaggieAct3SandwichEnd"},
@@ -238,7 +249,19 @@ let dialogList1 = {
 
     MaggieAct3SandwichEnd: {
         speech: [
-            {speaker: "Maggie", face: "maggie_normal.png", text: "Noah, you are a fine, capable man, no\ndoubt about it. Wherever you go I just\nknow the sunshine'll warm your path.", publish: 'casparToBackdoor', data: {property: "maggieSandwichEnd", value: true}},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "Noah, you are a fine, capable man, no\ndoubt about it.", publish: 'showUndoPoint'},
+            {speaker: "Maggie", face: "maggie_happy.png", text: "Wherever you go I just\nknow the sunshine'll warm your path.", publish: 'casparToBackdoor', data: {property: "maggieSandwichEnd", value: true}, onStart: () => {
+                messageBus.publish('hideUndoPoint')
+                }},
+        ]
+    },
+
+    MaggieAct3SandwichEndNoUndo: {
+        speech: [
+            {speaker: "Maggie", face: "maggie_normal.png", text: "Noah, you are a fine, capable man, no\ndoubt about it."},
+            {speaker: "Maggie", face: "maggie_happy.png", text: "Wherever you go I just\nknow the sunshine'll warm your path.", publish: 'casparToBackdoor', data: {property: "maggieSandwichEnd", value: true}, onStart: () => {
+                    messageBus.publish('hideUndoPoint')
+                }},
         ]
     },
 
@@ -251,7 +274,9 @@ let dialogList1 = {
 
     MaggieAct3Please: {
         speech: [
-            {speaker: "Maggie", face: "maggie_sad.png", text: "..."},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "...", publish: 'showUndoPoint', onFinish: () => {
+                    messageBus.publish('savePoint', {node: 'MaggieAct3Please', num: 0})
+                }},
         ],
         branches: [
             {text: "Something is happening out there,\nsomething more than a storm.", targetNode: "MaggieAct3StormNot"},
@@ -263,7 +288,9 @@ let dialogList1 = {
     MaggieAct3StormNot: {
         speech: [
             {speaker: "Maggie", face: "maggie_sad.png", text: "No, no. It's just a storm. It'll pass\nlike everything else. I'm staying."},
-            {speaker: "Maggie", face: "maggie_normal.png", text: "Here, let me make some sandwiches for\ny'all for the road."},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "Here, let me make some sandwiches for\ny'all for the road.", onFinish: () => {
+                    messageBus.publish('savePoint', {node: 'MaggieAct3StormNot', num: 1})
+                }},
         ],
         branches: [
             {text: "Accept the sandwiches", targetNode: "MaggieAct3SandwichEnd"},
@@ -277,7 +304,9 @@ let dialogList1 = {
             {speaker: "Maggie", face: "maggie_angry.png", text: "I've put my life and heart in this\nestablishment and I ain't turnin' tail\njust because of some rain!"},
             {speaker: "Maggie", face: "maggie_yell.png", text: "If I'm going to die then I'd rather die here\nthan abandon it for some dingy road trip!"},
             {speaker: "Maggie", face: "maggie_sad.png", text: "..."},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "My apologies, that was terrible rude of\nme. Please, let me pack these for\nsandwiches you all for the road."},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "My apologies, that was terrible rude of\nme. Please, let me pack these for\nsandwiches you all for the road.", onFinish: () => {
+                    messageBus.publish('savePoint', {node: 'MaggieAct3DieNot', num: 3})
+                }},
         ],
         branches: [
             {text: "Accept the sandwiches", targetNode: "MaggieAct3SandwichEnd"},
@@ -289,7 +318,9 @@ let dialogList1 = {
         speech: [
             {speaker: "Maggie", face: "maggie_sad.png", text: "But he's not here anymore."},
             {speaker: "Maggie", face: "maggie_normal.png", text: "This Roadhouse was my husband's\ndream. He loved it, and I still love him.", publish: 'casparToBackdoor'},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "I can't leave it behind."},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "I can't leave it behind.", onFinish: () => {
+                    messageBus.publish('savePoint', {node: 'MaggieAct3Husband', num: 2})
+                }},
         ],
         branches: [
             {text: "Your husband's gone,\nbut you're not.", targetNode: "MaggieAct3NotSafe"},
@@ -299,7 +330,7 @@ let dialogList1 = {
 
     MaggieAct3NotSafe: {
         speech: [
-            {speaker: "You", text: "This place is not safe, and that's not your fault.\nCome with me."},
+            {speaker: "You", text: "This place is not safe, and that's not your fault.\nCome with me.", publish: "showUndoPoint"},
             {speaker: "Maggie", face: "maggie_sad.png", text: "...\n\n\n[Impossible Difficulty]", publish: 'showInfluence', onFinish: () => {
                     if (gameState.MaggieInfluence >= 5) {
                         dialogManager.showDialogNode("MaggieAct3Almost");
@@ -312,7 +343,7 @@ let dialogList1 = {
 
     MaggieAct3NotSafeBoost: {
         speech: [
-            {speaker: "You", text: "He would have wanted to see you live life to\nits fullest, even if he's no longer around."},
+            {speaker: "You", text: "He would have wanted to see you live life to\nits fullest, even if he's no longer around.", publish: "showUndoPoint"},
             {speaker: "Maggie", face: "maggie_sad.png", text: "...\n\n\n[Impossible Difficulty]", publish: 'MaggieInfluence', onFinish: () => {
                     if (gameState.MaggieInfluence >= 5) {
                         dialogManager.showDialogNode("MaggieAct3Almost");
@@ -328,10 +359,12 @@ let dialogList1 = {
             {speaker: "Maggie", face: "maggie_sad.png", text: ".••••••••.•••••••••No."},
             {speaker: "You", text: "No?"},
             {speaker: "Maggie", face: "maggie_sad.png", publish: 'showInfluenceSmall', text: "Noah, I appreciate all you've done.\n•••••••I truly do. But• I've decided I would still\nrather stay here than leave.\n(Not enough•••••••.••••.••••.•••••••• trust?)"},
-            {speaker: "Maggie", face: "maggie_normal.png", text: "Please, let me pack you all some\nsandwiches."},
+            {speaker: "Maggie", face: "maggie_normal.png", text: "Please, let me pack you all some\nsandwiches.", onFinish: () => {
+                    messageBus.publish('savePoint', {node: 'MaggieAct3Almost', num: 2})
+                }},
         ],
         branches: [
-            {text: "Accept the sandwiches", targetNode: "MaggieAct3SandwichEnd"},
+            {text: "Accept the sandwiches\n(no takebacks)", targetNode: "MaggieAct3SandwichEndNoUndo"},
             {text: "Refuse the sandwiches", targetNode: "MaggieAct3SandwichRefuse"},
         ]
     },
@@ -344,7 +377,7 @@ let dialogList1 = {
             {speaker: "Maggie", face: "maggie_normal.png", text: "I've decided I would rather stay\nhere than leave. Please, let me pack\nyou all some sandwiches."},
         ],
         branches: [
-            {text: "Accept the sandwiches", targetNode: "MaggieAct3SandwichEnd"},
+            {text: "Accept the sandwiches", targetNode: "MaggieAct3SandwichEndNoUndo"},
         ]
     },
 
@@ -455,7 +488,8 @@ let dialogList1 = {
                 }},
             {speaker: "Edith", face: "edith_sad.png", text: "Did you remember to check the weather\nthis morning?"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "I... I dunno. Think I did.•••••••••••••••••••••\nMaybe."},
-            {speaker: "Ethan", face: "ethan_happy.png", text: "But c'mon it's not that bad.\nJust relax. If you're up for it, I can\nshare a joint."},
+            {speaker: "Ethan", face: "ethan_happy.png", text: "But c'mon it's not that bad.\nJust relax. We can stay here for as long\nas we want."},
+            {speaker: "Edith", face: "edith_sad.png", text: "..."},
         ]
     },
     introEdith2: {
@@ -476,7 +510,7 @@ let dialogList1 = {
     },
     Edith2Chat: {
         speech: [
-            {speaker: "Edith", face: "edith_normal.png", text: "What do you want?"},
+            {speaker: "Edith", face: "edith_normal.png", text: "What do you want?", publish: "savePoint", param: {node: 'Edith2Chat', num: 0}},
         ],
         branches: [
             {text: "Are you okay?", targetNode: "Edith2Okay"},
@@ -485,60 +519,59 @@ let dialogList1 = {
     },
     Edith2Okay: {
         speech: [
-            {speaker: "Edith", face: "edith_sad.png", text: "*sniff* Noooo. :(\nMy mom was right about hiiiimmm.", publish: 'EdithInfluence'},
+            {speaker: "Edith", face: "edith_sad.png", text: "*sniff* Noooo. :(\nMy mom was right about hiiiimmm.", publish: 'EdithInfluence', onStart: () => {
+                    messageBus.publish('showUndoPoint')
+                }},
             {speaker: "You", text: "What did she say about him?"},
-            {speaker: "Edith", face: "edith_sad.png", text: "That he was a loser."},
+            {speaker: "Edith", face: "edith_sad.png", text: "That he's immature. He's goofing off\neven when things are serious!", onFinish: () => {
+                    messageBus.publish('savePoint', {node: 'Edith2Okay', num: 2});
+                }},
         ],
         branches: [
             {text: "Yeah, he is.", targetNode: "Edith2Dump"},
-            {dependentState: "hoops", text: "...I guess it really isn't\nhoops he's shooting then?", targetNode: "Edith2Hoops"},
-            {text: "This is a kind of weird\nsituation to be fair.", targetNode: "Edith2Situation"},
+            {text: "Maybe he's right and there\nis something outside.", targetNode: "Edith2Situation"},
             {text: "What did you see in him\nin the first place?", targetNode: "Edith2SeeInHim"},
         ]
     },
     Edith2Line: {
         speech: [
-            {speaker: "Edith", face: "edith_normal.png", text: "I don't know what I was thinking dating\nhim. I should dump him. He's a loser!", publish: 'EdithInfluence'},
+            {speaker: "Edith", face: "edith_normal.png", text: "I don't know what I was thinking dating\nhim. I should dump him. He's a loser!", publish: 'EdithInfluence', onStart: () => {
+                    messageBus.publish('showUndoPoint');
+                }, onFinish: () => {
+                    messageBus.publish('savePoint', {node: 'Edith2Line', num: 0});
+                }},
         ],
         branches: [
             {text: "Yeah, you should.", targetNode: "Edith2Dump"},
-            {dependentState: "hoops", text: "...I guess it really isn't\nhoops he's shooting then?", targetNode: "Edith2Hoops"},
-            {text: "This is a kind of weird\nsituation to be fair.", targetNode: "Edith2Situation"},
+            {text: "Maybe he's right and there\nis something outside.", targetNode: "Edith2Situation"},
             {text: "What did you see in him\nin the first place?", targetNode: "Edith2SeeInHim"},
         ]
     },
     Edith2Dump: {
         speech: [
-            {speaker: "Edith", face: "edith_normal.png", text: "Once we leave this place, I'm going to\nbreak up with him.", publish: 'EdithInfluence'},
+            {speaker: "Edith", face: "edith_normal.png", text: "Once we leave this place, I'm going to\nbreak up with him.", publish: 'EdithInfluence', onStart: () => {
+                messageBus.publish("showUndoPoint");
+                }},
         ],
     },
-    Edith2Hoops: {
-        speech: [
-            {speaker: "Edith", face: "edith_sad.png", text: "No it's not basketball hoops it's-"},
-            {speaker: "Edith", face: "edith_normal.png", text: "..."},
-            {speaker: "Edith", face: "edith_normal.png", text: "Oh my god."},
-            {speaker: "Edith", face: "edith_normal.png", text: "I can't tell if you're serious or if you\njust have a really good poker face\nwhen you're joking..."},
-            {speaker: "Edith", face: "edith_happy.png", text: "...but it's nice to hear a guy talk about\nsomething other than getting high\nfor once.", publish: 'EdithInfluence'},
-        ],
-        branches: [
-            {text: "You should dump him.", targetNode: "Edith2Dump"},
-            {text: "What did you see in him\nin the first place?", targetNode: "Edith2SeeInHim"},
-        ]
-    },
+
     Edith2Situation: {
         speech: [
-            {speaker: "Edith", face: "edith_normal.png", text: "He can't handle normal situations either!"},
-            {speaker: "Edith", face: "edith_sad.png", text: "I'm scared and he's high.\nHe's just running away like always!"},
+            {speaker: "Edith", face: "edith_sad.png", text: "But so what if he's right?", onStart: () => {
+                    messageBus.publish("showUndoPoint");
+                }},
+            {speaker: "Edith", face: "edith_sad.png", text: "I'm scared and all he wants to talk\nabout is his crazy alien theory.\nI feel like I'm talking to a kid!"},
         ],
         branches: [
             {text: "You should dump him.", targetNode: "Edith2Dump"},
-            {dependentState: "hoops", text: "I guess it really isn't\nhoops he's shooting then.", targetNode: "Edith2Hoops"},
             {text: "What did you see in him\nin the first place?", targetNode: "Edith2SeeInHim"},
         ]
     },
     Edith2SeeInHim: {
         speech: [
-            {speaker: "Edith", face: "edith_normal.png", text: "What did I see in him.•••••••.••••••••.••••••••\nHmm...", data: {property: "edithThinking", value: true}},
+            {speaker: "Edith", face: "edith_normal.png", text: "What did I see in him.•••••••.••••••••.••••••••\nHmm...", data: {property: "edithThinking", value: true}, onStart: () => {
+                    messageBus.publish("showUndoPoint");
+                }},
         ],
     },
     Edith2ChatFinThought: {
@@ -627,12 +660,14 @@ let dialogList1 = {
     Edith3LeaveThinking: {
         speech: [
             {speaker: "You", text: "Did you figure out what you saw in Ethan\nin the first place?"},
-            {speaker: "Edith", face: "edith_normal.png", text: "Yeah. He's sweet and gentle when he's\nfully himself."},
+            {speaker: "Edith", face: "edith_normal.png", text: "Yeah. He's sweet and gentle when he's\nnot just goofing off."},
             {speaker: "Edith", face: "edith_happy.png", text: "He made me my favorite meal after he\nfound out I flunked a test."},
             {speaker: "Edith", face: "edith_happy.png", text: "And he's always volunteering down at\nthe animal shelter."},
-            {speaker: "You", text: "Sounds like he's got a little more going on\nthan just getting high."},
-            {speaker: "Edith", face: "edith_normal.png", text: "I guess. But I'm still mad at him."},
-            {speaker: "You", text: "Being mad doesn't just go away. Especially\nwhen it's justified. But..."},
+            {speaker: "You", text: "Sounds like he's got a little more going on\nthan just talking about aliens."},
+            {speaker: "Edith", face: "edith_normal.png", text: "Yeah. But I'm still mad at him."},
+            {speaker: "You", text: "Being mad doesn't just go away. Especially\nwhen it's justified. But...", onFinish: () => {
+                messageBus.publish("savePoint", {node: 'Edith3LeaveThinking', num: 6})}
+                },
         ],
         branches: [
             {text: "Invite both Ethan and Edith", targetNode: "Edith3LeaveThinkingEdithEthan"},
@@ -642,11 +677,11 @@ let dialogList1 = {
     Edith3LeaveThinkingNoEthan: {
         speech: [
             {speaker: "You", text: "Did you figure out what you saw in Ethan\nin the first place?"},
-            {speaker: "Edith", face: "edith_normal.png", text: "Yeah. He's sweet and gentle when he's\nfully himself."},
+            {speaker: "Edith", face: "edith_normal.png", text: "Yeah. He's sweet and gentle when he's\nnot just goofing off."},
             {speaker: "Edith", face: "edith_happy.png", text: "He made me my favorite meal after he\nfound out I flunked a test."},
             {speaker: "Edith", face: "edith_happy.png", text: "And he's always volunteering down at\nthe animal shelter."},
-            {speaker: "You", text: "Sounds like he's got a little more going on\nthan just getting high."},
-            {speaker: "Edith", face: "edith_sad.png", text: "I guess. But I'm still mad at him.\nAnd... ugh he's doing it again."},
+            {speaker: "You", text: "Sounds like he's got a little more going on\nthan just talking about aliens."},
+            {speaker: "Edith", face: "edith_sad.png", text: "Yeah. But I'm still mad at him.\nAnd... ugh he's still staring off into space."},
         ],
         branches: [
             {text: "Invite only Edith", targetNode: "Edith3LeaveThinkingEdithOnlyNoEthan"},
@@ -655,22 +690,22 @@ let dialogList1 = {
     Edith3LeaveThinkingPromiseEthan: {
         speech: [
             {speaker: "You", text: "Did you figure out what you saw in Ethan\nin the first place?"},
-            {speaker: "Edith", face: "edith_normal.png", text: "Yeah. He's sweet and gentle when he's\nfully himself."},
+            {speaker: "Edith", face: "edith_normal.png", text: "Yeah. He's sweet and gentle when he's\nnot just goofing off."},
             {speaker: "Edith", face: "edith_happy.png", text: "He made me my favorite meal after he\nfound out I flunked a test."},
             {speaker: "Edith", face: "edith_happy.png", text: "And he's always volunteering down at\nthe animal shelter."},
-            {speaker: "You", text: "Sounds like he's got a little more going on\nthan just getting high."},
+            {speaker: "You", text: "Sounds like he's got a little more going on\nthan just talking about aliens."},
             {speaker: "Edith", face: "edith_sad.png", text: "I guess. But I'm still mad at him."},
             {speaker: "You", text: "Being mad doesn't just go away. Especially\nwhen it's justified. But..."},
         ],
         branches: [
-            {text: "Invite Edith along with Ethan", targetNode: "Edith3LeaveThinkingEdithEthan"},
+            {text: "Invite Edith along with Ethan", targetNode: "Edith3LeaveThinkingEdithEthanNoUndo"},
         ]
     },
     Edith3LeaveThinkingEdithOnlyNoEthan: {
         speech: [
             {speaker: "You", text: "I'm leaving, and I'd like to invite you along."},
             {speaker: "You", text: "But this might be your last chance to talk\nwith Ethan."},
-            {speaker: "Edith", face: "edith_normal.png", text: "Ethan... no I'm going to leave him alone\nwith his drugs. Let's go.", onFinish: () => {
+            {speaker: "Edith", face: "edith_normal.png", text: "Ethan... no I'm going to leave him alone\nwith his... imagination. Let's go.", onFinish: () => {
                     dialogManager.showDialogNode("Edith3LeaveComeWithSuccessBlockEthan");
                 }
             },
@@ -678,7 +713,7 @@ let dialogList1 = {
     },
     Edith3LeaveThinkingEdithOnly: {
         speech: [
-            {speaker: "You", text: "I'm leaving, and I'd like to invite you along."},
+            {speaker: "You", text: "I'm leaving, and I'd like to invite you along.", publish: "showUndoPoint"},
             {speaker: "You", text: "But this might be your last chance to talk\nwith Ethan."},
             {speaker: "Edith", face: "edith_normal.png", text: "Oh. Oooh. I... okay, I'll be ready to go.", onFinish: () => {
                     dialogManager.showDialogNode("Edith3LeaveComeWithSuccessBlockEthan");
@@ -687,6 +722,16 @@ let dialogList1 = {
         ],
     },
     Edith3LeaveThinkingEdithEthan: {
+        speech: [
+            {speaker: "You", text: "I'm leaving, and I want to bring both you and\nEthan with me.", publish: "showUndoPoint"},
+            {speaker: "Edith", face: "edith_sad.png", text: "Why do you want him to come?!"},
+        ],
+        branches: [
+            {text: "I think we all need to\ngo as one", targetNode: "Edith3LeaveFine"},
+            {text: "You don't need to keep him\nas your boyfriend", targetNode: "Edith3LeaveFine"},
+        ]
+    },
+    Edith3LeaveThinkingEdithEthanNoUndo: {
         speech: [
             {speaker: "You", text: "I'm leaving, and I want to bring both you and\nEthan with me."},
             {speaker: "Edith", face: "edith_sad.png", text: "Why do you want him to come?!"},
@@ -744,7 +789,7 @@ let dialogList1 = {
     },
     Edith3EthanStandUp: {
         speech: [
-            {speaker: "You", text: "Look, I've talked with Ethan. He's definitely got\na lot of work to do, but I think he at least wants\nto make up."},
+            {speaker: "You", text: "Look, I've talked with Ethan. He's definitely got\na lot of growing up to do, but I think he at least\nwants to make up."},
             {speaker: "Ethan", face: "ethan_normal.png", publish: "ethanApproachEdith", text: "Hey Edith, how're you uh...\nhow're you hangin'?"},
             {speaker: "Edith", face: "edith_sad.png", text: "..."},
             {speaker: "Ethan", face: "ethan_sad.png", text: "Noah, c'mon help me man."},
@@ -756,7 +801,7 @@ let dialogList1 = {
             {speaker: "Ethan", face: "ethan_normal.png", text: "I dunno if I could make up for it again\nafter messing up so much but..."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "I'd like to try again.\nDo better, if you're okay with that."},
             {speaker: "You", text: "...•••••••••\nAnything else...?"},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Oh yeah I'll toss out my stash.\nNo more substances and stuff."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Oh yeah no more goofing around about\naliens when things are serious.\nI'll take better responsibility."},
             {speaker: "Edith", face: "edith_normal.png", text: "...••••••••••Okay.\n••••••••••••I'll give you another chance.", data: {property: "EthanEdithTogether", value: true}},
             {speaker: "Edith", face: "edith_sad.png", text: "But make it count!", publish: "edithScootTowardsEthan"},
             {speaker: "Edith", face: "edith_normal.png", text: "Noah, I'll come with you••••.•••••.•••••••. and Ethan,••••••••\nwhenever you're ready."},
@@ -809,14 +854,21 @@ let dialogList1 = {
     },
     Edith3LeaveNormalAskEthan: {
         speech: [
-            {speaker: "Edith", face: "edith_normal.png", text: "Is Ethan going with you?"},
+            {speaker: "Edith", face: "edith_normal.png", text: "Is Ethan going with you?", publish: "savePoint", param: {node: 'Edith3LeaveNormalAskEthan', num: 0}},
         ],
         branches: [
-            {text: "Yes", targetNode: "Edith3LeaveCantWithEthan"},
+            {text: "Yes", targetNode: "Edith3LeaveCantWithEthanUndoable"},
             {text: "No", targetNode: "Edith3LeaveRefuseEthan"},
         ]
     },
 
+    Edith3LeaveCantWithEthanUndoable: {
+        speech: [
+            {speaker: "Edith", face: "edith_sad.png", text: "What? Why? He's useless!", publish: "showUndoPoint"},
+            {speaker: "You",  text: "He's got a pretty good intuition for things and\nhe can help warn us if something's out there\nin the fog."},
+            {speaker: "Edith", face: "edith_sad.png", text: "Ugh, now you also believe there's\nsomething out there trying to eat us.\nGo, take him. I'm staying here.", data: {property: "EdithRefuse", value: true}},
+        ],
+    },
 
     Edith3LeaveCantWithEthan: {
         speech: [
@@ -834,7 +886,7 @@ let dialogList1 = {
 
     Edith3LeaveRefuseEthan: {
         speech: [
-            {speaker: "Edith", face: "edith_normal.png", text: "Can I come with you?"},
+            {speaker: "Edith", face: "edith_normal.png", text: "Can I come with you?", publish: "showUndoPoint"},
         ],
         branches: [
             {text: "Of course!", targetNode: "Edith3LeaveComeWithSuccessBlockEthan"},
@@ -884,47 +936,55 @@ let dialogList1 = {
 
     introEthan: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Hey man, you got a light?"},
-            {speaker: "You", text: "No, I don\'t smoke."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Do you shoot instead?",
-                data: {property: "EthanIntroduced", value: true}},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Hey man, did you see anything freaky\nin the skies on the way here?"},
+            {speaker: "Edith", face: "edith_sad.png", text: "Ugh, this again."},
+            {speaker: "Ethan", face: "ethan_happy.png", text: "No really, we saw something huge and\nlike, flickery right before the storm\nstarted. •Well,• I saw it anyways.",
+                data: {property: "EthanIntroduced", value: true}, publish: "savePoint", param: {node: 'introEthan', num: 2}},
         ],
         branches: [
-            {text: "Shoot... hoops?", targetNode: "EthanEdithLaugh"},
-            {text: "Shoot... drugs?", targetNode: "EthanEdithWhatElse"},
-            {text: "Yes, though you two don\'t look\nlike marksmen yourselves.", targetNode: "EthanCop"},
+            {text: "You saw something in the skies?", targetNode: "EthanEdithWhatElse"},
+            {text: "You got quite the imagination\n there son.", targetNode: "EthanEdithLaugh"},
+            {text: "Well if you ever need me to take\naim at it, just ask.", targetNode: "EthanCop"},
         ]
     },
     EthanEdithLaugh: {
         speech: [
-            {speaker: "Ethan and Edith", face: "ethan_and_edith.png", text: "Haha!", data: {property: "hoops", value: true}},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Nah man, drugs!"},
-            {speaker: "You", text: "How many drugs are you on?"},
-            {speaker: "Edith", face: "edith_normal.png", text: "Ethan here gets whatever's on sale\nthat week."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "If you're not joining in, you might\nwant to step back man."}
+            {speaker: "Ethan", face: "ethan_sad.png", text: "Hey I most definitely saw a giant\nfloating.... THING in the sky!", publish: "showUndoPoint"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Probably aliens! I think...", data: {property: "hoops", value: true}},
+            {speaker: "You", text: "It's nice that you're checking the skies, but in a\nstorm like this, you should be taking more care\nof your lady friend."},
+            {speaker: "Edith", face: "edith_normal.png", text: "At least someone here is a gentleman.", publish: "EdithInfluence", onFinish: () => {
+                    messageBus.publish('hideUndoPoint');
+                }},
         ]
     },
     EthanEdithWhatElse: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Of course man, what else?"},
-            {speaker: "You", text: "How many drugs are you on?"},
-            {speaker: "Edith", face: "edith_normal.png", text: "Ethan here gets whatever's on sale\nthat week."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "If you're not joining in, you might\nwant to step back man."}
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Looked kind of like an eye, or maybe a\nflying saucer!", publish: "showUndoPoint"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "One moment I saw it on the road and\nthe next it disappeared and then\nBOOM. •••••••••••It starts raining."},
+            {speaker: "You", text: "That's quite the story there."},
+            {speaker: "Edith", face: "edith_sad.png", text: "Ethan's been talking about it nonstop."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Must've been aliens I tell ya.", onFinish: () => {
+                    messageBus.publish('hideUndoPoint');
+                }}
         ]
     },
     EthanCop: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Whoa man, you a cop or something?"},
-            {speaker: "You", text: "I\'m on the road a lot, it pays to be prepared."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Whoa man, you a cop or something?", publish: "showUndoPoint"},
+            {speaker: "You", text: "I'm on the road a lot, it pays to be prepared."},
             {speaker: "Edith", face: "edith_normal.png", text: "Don't you believe in... like, peace?"},
             {speaker: "You", text: "Yes, but there's a lot of bad people out there\nwho don't."},
-            {speaker: "Ethan", face: "ethan_happy.png", text: "You're all right man.", publish: "EthanInfluence"}
+            {speaker: "Ethan", face: "ethan_normal.png", text: "But what if you meet like, outer\nspace aliens, but they're friendly?"},
+            {speaker: "You", text: "As long as they mean no harm, then aliens or\nnot, they're fine to me."},
+            {speaker: "Ethan", face: "ethan_happy.png", text: "You're all right man.", publish: "EthanInfluence", onFinish: () => {
+                    messageBus.publish('hideUndoPoint');
+                }}
         ]
     },
     EthanActOneInstruct: {
         speech: [
             {speaker: "Ethan", face: "ethan_normal.png",
-                text: "I think there was a free seat.•••••••••••.•••••••••••.•••••••••••\nsomewhere over there?\n(Ethan gestures everywhere lazily)",
+                text: "I think there was a free seat.•••••••••••.•••••••••••.•••••••••••\nsomewhere over there?\n(Ethan gestures everywhere haphazardly)",
                 data: {property: "EthanAct1Fin", value: true}},
         ]
     },
@@ -942,9 +1002,9 @@ let dialogList1 = {
             {speaker: "You", text: "It seems quieter in here to me now that the TV's\noff."},
             {speaker: "Ethan", face: "ethan_dark_scared.png", text: "The TV isn't off."},
             {speaker: "Edith", face: "edith_dark_scared.png", text: "Yes it is!", onFinish: () => {
-                    randGloomShow(0, true);
-                }},
-            {speaker: "Ethan", face: "ethan_dark_scared.png", text: "No, it's on! I'm tellin' ya!"},
+                randGloomShow(0, true);
+            }},
+            {speaker: "Ethan", face: "ethan_dark_scared.png", text: "No, it's on! I'm tellin' ya! I think it's\npicking up on the aliens."},
             {speaker: "",  text: "(Ethan and Edith continue arguing. You should\ncome back when they've calmed down.)"},
         ]
     },
@@ -963,49 +1023,47 @@ let dialogList1 = {
             {speaker: "Ethan", face: "ethan_normal.png", text: "The TV isn't off."},
             {speaker: "Edith", face: "edith_sad.png", text: "Yes it is! Noah right? Please, tell Ethan\nhe's just hearing things."},
             {speaker: "Ethan", face: "ethan_sad.png", text: "No, it's on! I'm tellin' ya!"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "I think it must be picking up on\nthe aliens.", publish: "savePoint", param: {node: 'EdithEthan2', num: 8}},
         ],
         branches: [
-            {text: "You're just on a bad trip.", targetNode: "EdithEthan2BadTrip"},
+            {text: "Calm down and drink\nsome water.", targetNode: "EdithEthan2BadTrip"},
             {text: "What's the TV showing?", targetNode: "EdithEthan2Showing"},
         ]
     },
     EdithEthan2PartSkip: {
         speech: [
             {speaker: "Edith", face: "edith_sad.png", text: "Noah right? Please, tell Ethan he's\njust hearing things."},
-            {speaker: "Ethan", face: "ethan_sad.png", text: "The TV is on! Why can't you hear it?"},
+            {speaker: "Ethan", face: "ethan_sad.png", text: "The TV is on! Why can't you hear it?", publish: "savePoint", param: {node: 'EdithEthan2PartSkip', num: 1}},
         ],
         branches: [
-            {text: "You're just on a bad trip.", targetNode: "EdithEthan2BadTrip"},
+            {text: "Calm down and drink\nsome water.", targetNode: "EdithEthan2BadTrip"},
             {text: "What's the TV showing?", targetNode: "EdithEthan2Showing"},
         ]
     },
 
     EdithEthan2Showing: {
         speech: [
-            {speaker: "Ethan", face: "ethan_happy.png", text: "Oh! The TV is-", publish: "EthanInfluence"},
-            {speaker: "Edith", face: "edith_sad.png", text: "NOTHING! He's just on a bad trip!\n" +
-                    "He just needs to calm down and ride\nit out."},
+            {speaker: "Ethan", face: "ethan_happy.png", text: "Oh! The TV is-", publish: "EthanInfluence", onFinish: () => {
+                    messageBus.publish('showUndoPoint');
+                }},
+            {speaker: "Edith", face: "edith_sad.png", text: "NOTHING!\nHe just thinks he can hear things!"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "It's big, and curious, and-"},
             {speaker: "Edith", face: "edith_sad.png", text: "NO! It's nothing!"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "I can hear something from your\nbelly too."},
-            {speaker: "Edith", face: "edith_sad.png", text: "Shut up!", onFinish: () => {
-                    dialogManager.showDialogNode("EdithEthan2Abortion");
+            {speaker: "Edith", face: "edith_sad.png", text: "Shut up!"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "I offered to pay for the procedure.\nWhat more do you want from me?"},
+            {speaker: "Edith", face: "edith_sad.png", text: "Ugh, it's not about the baby, it's•-••••••••\nNothing. •••••••••I don't want anything from\nyou any more.", onFinish: () => {
+                    messageBus.publish("edithStandCorner");
                 }},
         ],
     },
     EdithEthan2BadTrip: {
         speech: [
-            {speaker: "You", text: "You're just on a bad trip. Take some deep breaths\n" +
-                    "and drink some water."},
+            {speaker: "You", text: "You're just not thinking straight. Take some deep\n" +
+                    "breaths and drink some water.", publish: "showUndoPoint"},
             {speaker: "Edith", face: "edith_normal.png", text: "That's what I've been telling him!\nHe never listens!", publish: "EdithInfluence"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "I listen."},
-            {speaker: "Edith", face: "edith_sad.png", text: "You listen but you don't hear!\nJust like... *sob*", onFinish: () => {
-                dialogManager.showDialogNode("EdithEthan2Abortion");
-            }},
-        ],
-    },
-    EdithEthan2Abortion: {
-        speech: [
+            {speaker: "Edith", face: "edith_sad.png", text: "You listen but you don't hear!\nJust like... *sob*"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "I offered to pay for the procedure.\nWhat more do you want from me?"},
             {speaker: "Edith", face: "edith_sad.png", text: "Ugh, it's not about the baby, it's•-••••••••\nNothing. •••••••••I don't want anything from\nyou any more.", onFinish: () => {
                     messageBus.publish("edithStandCorner");
@@ -1022,21 +1080,21 @@ let dialogList1 = {
     Ethan2Chat: {
         speech: [
             {speaker: "You",  text: "Son..."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "The TV is still on."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "The TV is still on.", publish: "savePoint", param: {node: 'Ethan2Chat', num: 1}},
         ],
         branches: [
-            {text: "I think you should drink\nsome water, here.", targetNode: "Ethan2Water", publish: "EthanInfluence"},
-            {text: "What's it showing now?", targetNode: "Ethan2TVShowing", publish: "EthanInfluence"},
+            {text: "I think you should drink\nsome water, here.", targetNode: "Ethan2Water"},
+            {text: "What's it showing now?", targetNode: "Ethan2TVShowing"},
         ]
     },
     Ethan2ChatFin: {
         speech: [
-            {speaker: "",  text: "   (Ethan looks more alert than usual)"},
+            {speaker: "",  text: "   (Ethan looks more clear-headed than usual)"},
         ]
     },
     Ethan2Water: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", forceProgress: true, unclickable: true, text: "•.••••••.••••••.••••••••••"},
+            {speaker: "Ethan", face: "ethan_normal.png", forceProgress: true, unclickable: true, text: "•.••••••.••••••.••••••••••", publish: "showUndoPoint"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Thanks. Edith is really mad at me isn't\nshe?", publish: "EthanRefreshed"},
             {speaker: "You", text: "Yeah."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Girls get moody when pregnant right?"},
@@ -1059,7 +1117,9 @@ let dialogList1 = {
     },
     Ethan2TVShowing: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "An eye. Big, cold, and with too many\ncorners...", publish: "EthanRefreshed"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "An eye. Big, cold, and with too many\ncorners...", publish: "EthanRefreshed", onStart: () => {
+                messageBus.publish("showUndoPoint");
+                }},
             {speaker: "You", text: "An eye? That's weird."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "It's talking too.", publish: "ethanEldritch2"},
             {speaker: "You", text: "What's it telling us?"},
@@ -1111,15 +1171,15 @@ let dialogList1 = {
     Ethan3Catatonic: {
         speech: [
             {speaker: "You",  text: "Ethan. Ethan!", onFinish: () => {
-                    randGloomShow(0);
-                }},
-            {speaker: "",  text: "   (No response, his mind is far away from here.)"},
+                randGloomShow(0);
+            }},
+            {speaker: "",  text: "   (No response, he's somehow passed out.)"},
         ]
     },
 
     Ethan3Blocked: {
         speech: [
-            {speaker: "",  text: " (You already promised Edith that you wouldn't\n  bring Ethan with you. From Ethan's silent stare, you\n  suspect he must have overheard)"},
+            {speaker: "",  text: " (You already promised Edith that you wouldn't\n  bring Ethan with you. From Ethan's silent stare,\nyou suspect he must have overheard)"},
         ]
     },
 
@@ -1128,13 +1188,13 @@ let dialogList1 = {
             {speaker: "Ethan", face: "ethan_normal.png", text: "What's up?"},
         ],
         branches: [
-            {text: "How's your head?", targetNode: "Ethan3Head"},
+            {text: "How're you feeling?", targetNode: "Ethan3Head"},
             {text: "What happened between\nyou and Edith?", targetNode: "Ethan3Disagreement"},
         ]
     },
     Ethan3Head: {
         speech: [
-            {speaker: "Ethan", face: "ethan_happy.png", text: "Still pounding, but the whispers are\neasier to ignore."},
+            {speaker: "Ethan", face: "ethan_happy.png", text: "Head's kind of pounding, but the whispers\nare easier to ignore."},
         ],
         branches: [
             {text: "What happened between\nyou and Edith?", targetNode: "Ethan3Disagreement"},
@@ -1142,7 +1202,7 @@ let dialogList1 = {
     },
     Ethan3Disagreement: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "It's just a disagreement, she'll\ncome around."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "It's just a disagreement, she'll\ncome around.", publish: "savePoint", param: {node: 'Ethan3Disagreement', num: 0}},
         ],
         branches: [
             {text: "That's one approach,\nI guess.", targetNode: "Ethan3OneApproach"},
@@ -1151,15 +1211,15 @@ let dialogList1 = {
     },
     Ethan3OneApproach: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Yeah, I'll let her cool off, it'll be fine."},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Yeah, I'll let her cool off, it'll be fine.", publish: "showUndoPoint"},
             {speaker: "You", text: "You're going to be waiting for a long time."},
             {speaker: "You", text: "In my experience, women can hold a grudge\npast the grave."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "I can wait. With my self-medication I\ncan wait forever." , data: {property: "ethanState", value: "ethanWaitForever"}},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "I can wait. She'll come around\neventually. She always does.", data: {property: "ethanState", value: "ethanWaitForever"}},
         ]
     },
     Ethan3MustApologize: {
         speech: [
-            {speaker: "You", text: "Ethan.."},
+            {speaker: "You", text: "Ethan..", publish: "savePoint", param: {node: 'Ethan3MustApologize', num: 0}},
         ],
         branches: [
             {text: "I still think you should apologize.", targetNode: "Ethan3Dad"},
@@ -1169,13 +1229,15 @@ let dialogList1 = {
     },
     Ethan3Dad: {
         speech: [
-            {speaker: "Ethan", face: "ethan_sad.png", text: "What's with you man? You trying to be\nmy dad?"},
+            {speaker: "Ethan", face: "ethan_sad.png", text: "What's with you man? You trying to be\nmy dad?", publish: "showUndoPoint"},
             {speaker: "You", text: "Look, I get that you're scared.\nI'm trying to help you avoid a big mistake."},
             {speaker: "You", text: "I don't care if you stay in your kids life.\nI don't care if you break up with Edith."},
             {speaker: "You", text: "Just look her in the eye and tell her directly\nwhat you decided."},
             {speaker: "Ethan", face: "ethan_sad.png", text: "What? Scared? Who isn't scared\nright now?!"},
             {speaker: "Ethan", face: "ethan_sad.png", text: "Ugh, right, you're you.\nMr. Hero."},
-            {speaker: "Ethan", face: "ethan_sad.png", text: "You're not scared of anything!"},
+            {speaker: "Ethan", face: "ethan_sad.png", text: "You're not scared of anything!", onFinish: () => {
+                messageBus.publish("savePoint", {node: 'Ethan3Dad', num: 6});
+                }},
         ],
         branches: [
             {text: "If you don't want to be a\nscaredy-cat, take my advice", targetNode: "Ethan3ScaredyCat"},
@@ -1185,15 +1247,17 @@ let dialogList1 = {
     Ethan3ScaredyCat: {
         speech: [
             {speaker: "Ethan", face: "ethan_sad.png", text: "Scaredy-cat? What are you, five?"},
-            {speaker: "You", text: "I'm not the one hiding from the world in a\ndrug haze.", data: {property: "ethanState", value: "ethanDrugHaze"}},
+            {speaker: "You", text: "I'm not the one hiding from the world in his\nown imagination.", data: {property: "ethanState", value: "ethanDrugHaze"}},
         ]
     },
 
     Ethan3Hearing: {
         speech: [
-            {speaker: "Ethan", face: "ethan_normal.png", text: "What about it?"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "What about it?", publish: "showUndoPoint"},
             {speaker: "You", text: "Can you hear if the thing outside is close or\nfar away?"},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "If I'm on the right stuff, sure.\nBut why?"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "If I'm paying close attention, sure.\nBut why?", onFinish: () => {
+                    messageBus.publish("savePoint", {node: 'Ethan3Hearing', num: 2});
+                }},
         ],
         branches: [
             {text: "Tell him you're planning\nto leave", targetNode: "Ethan3DrugLeave"},
@@ -1205,7 +1269,10 @@ let dialogList1 = {
             {speaker: "You", text: "Actually, about that...\nYou have very good hearing right?"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "What about it?"},
             {speaker: "You", text: "Can you hear if the thing outside is close or\nfar away?"},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "If I'm on the right stuff, sure.\nBut why?"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "If I'm paying close attention, sure.\nBut why?", onFinish: () => {
+                messageBus.publish('savePoint', {node: 'Ethan3DrugHaze', num: 3})
+                }
+                },
         ],
         branches: [
             {text: "Tell him you're planning\nto leave", targetNode: "Ethan3DrugLeave"},
@@ -1215,8 +1282,8 @@ let dialogList1 = {
 
     Ethan3DrugLeave: {
         speech: [
-            {speaker: "You", text: "I think we should leave, and it would help if we\nhad some warning before running into anything\non the road."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "So wait, you'll drive us to who knows\nwhere and you want me to get high\nand act as a... a radar?\n[Medium Difficulty]", publish: "showInfluence", onFinish: () => {
+            {speaker: "You", text: "I think we should leave, and it would help if we\nhad some warning before running into anything\non the road.", publish: "showUndoPoint"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "So wait, you'll drive us to who knows\nwhere and you want me to act as\n... your warning system?\n[Medium Difficulty]", publish: "showInfluence", onFinish: () => {
                     if (gameState.EthanInfluence >= 2) {
                         if (!gameState.dogAlive && gameState.EthanInfluence <= 2) {
                             dialogManager.showDialogNode("Ethan3DogFail");
@@ -1231,8 +1298,8 @@ let dialogList1 = {
     },
     Ethan3DrugStay: {
         speech: [
-            {speaker: "You", text: "I think we should hole up here, and it would\nhelp if you can hear if anything's coming\mat us."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "So you want me to stay here, get high\nand act as a... a radar?\n\n[Easy Difficulty]", publish: "showInfluence", onFinish: () => {
+            {speaker: "You", text: "I think we should hole up here, and it would\nhelp if you can hear if anything's coming\mat us.", publish: "showUndoPoint"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "So you want me to stay here and\nact as a... a radar?\n\n[Easy Difficulty]", publish: "showInfluence", onFinish: () => {
                     if (gameState.EthanInfluence >= 1) {
                         dialogManager.showDialogNode("Ethan3DrugStaySuccess");
                     } else {
@@ -1257,8 +1324,8 @@ let dialogList1 = {
 
     Ethan3DrugFail: {
         speech: [
-            {speaker: "Ethan", face: "ethan_sad.png", text: "Well now you're just stealing the fun\nof getting high."},
-            {speaker: "Ethan", face: "ethan_normal.png", publish: "showInfluenceSmall", text: "And no, I'm not your damn radar system.\nLeave me alone.\n(Not enough trust)", data: {property: "ethanState", value: "ethanNotTalk"}},
+            {speaker: "Ethan", face: "ethan_sad.png", text: "Extra work is the last thing I want."},
+            {speaker: "Ethan", face: "ethan_normal.png", publish: "showInfluenceSmall", text: "And no, I'm not going to be your\nradar system. Leave me alone.\n(Not enough trust)", data: {property: "ethanState", value: "ethanNotTalk"}},
         ]
     },
 
@@ -1279,7 +1346,10 @@ let dialogList1 = {
             {speaker: "You", text: "I once got so scared I hit the road and never\nstopped running."},
             {speaker: "You", text: "But over these long years I've learned."},
             {speaker: "You", text: "Courage isn't the absense of fear, it's the\nability to act despite it."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: ".••••.••••.••••••What scared you so bad?"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: ".••••.••••.••••••What scared you so bad?", onFinish: () => {
+                    messageBus.publish("savePoint", {node: 'Ethan3IDoGetScared', num: 3})
+                }
+                },
         ],
         branches: [
             {text: "Share your past", targetNode: "Ethan3AngryFather"},
@@ -1289,9 +1359,12 @@ let dialogList1 = {
 
     Ethan3KeepSecrets: {
         speech: [
-            {speaker: "You", text: "...Something I still don't like to admit."},
+            {speaker: "You", text: "...Something I still don't like to admit.", publish: "showUndoPoint"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Fine.••••••\nKeep your secrets."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Why are you telling me this?"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Why are you telling me this?", onFinish: () => {
+                messageBus.publish("savePoint", {node: 'Ethan3KeepSecrets', num: 2})
+                }
+                },
         ],
         branches: [
             {text: "Tell him you're staying here", targetNode: "Ethan3Staying"},
@@ -1300,7 +1373,12 @@ let dialogList1 = {
     },
     Ethan3NotTalk: {
         speech: [
-            {speaker: "",  text: "(Ethan isn't interested in talking anymore. You\n spot him lazily trying to keep a joint hidden.)"},
+            {speaker: "",  text: "(Ethan isn't interested in talking anymore. He's\nstaring at the TV as if transfixed.)"},
+        ]
+    },
+    Ethan3NotTalkBroken: {
+        speech: [
+            {speaker: "",  text: "(Ethan isn't interested in talking anymore. He's\nstaring at the broken TV as if transfixed.)"},
         ]
     },
     Ethan3FailedBest: {
@@ -1332,10 +1410,12 @@ let dialogList1 = {
 
     Ethan3AngryFather: {
         speech: [
-            {speaker: "You", text: "The angry father of a girl I was fooling\naround with."},
+            {speaker: "You", text: "The angry father of a girl I was fooling\naround with.", publish: "showUndoPoint"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "You're just saying that."},
             {speaker: "You", text: "I'd give a lot to be lying."},
-            {speaker: "Ethan", face: "ethan_normal.png", text: "Huh.\nWhy are you telling me this?", publish: "EthanInfluence"},
+            {speaker: "Ethan", face: "ethan_normal.png", text: "Huh.\nWhy are you telling me this?", publish: "EthanInfluence", onFinish: () => {
+                messageBus.publish("savePoint", {node: 'Ethan3AngryFather', num: 3})
+                }},
         ],
         branches: [
             {text: "Tell him you're staying here", targetNode: "Ethan3Staying"},
@@ -1344,7 +1424,7 @@ let dialogList1 = {
     },
     Ethan3Staying: {
         speech: [
-            {speaker: "You", text: "I'm staying here, and you two need to make\npeace if you're both staying here too."},
+            {speaker: "You", text: "I'm staying here, and you two need to make\npeace if you're both staying here too.", publish: "showUndoPoint"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Oh, then no need to rush things right?"},
             {speaker: "You", text: "Ethan..."},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Relax, I'll talk to her when she's ready.", data: {property: "ethanState", value: "ethanStayingHere"}},
@@ -1352,7 +1432,7 @@ let dialogList1 = {
     },
     Ethan3Leaving: {
         speech: [
-            {speaker: "You", text: "I'm leaving, and I'd like both you and Edith to\ncome, but you need to make peace first."},
+            {speaker: "You", text: "I'm leaving, and I'd like both you and Edith to\ncome, but you need to make peace first.", publish: "showUndoPoint"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Aww...\n\n\n[Very Hard Difficulty]", publish: "showInfluence", onFinish: () => {
                     if (gameState.EthanInfluence >= 4) {
                         dialogManager.showDialogNode("Ethan3LeavingSuccessWithEdith");
@@ -1364,7 +1444,7 @@ let dialogList1 = {
     },
     Ethan3LeavingChangeMind: {
         speech: [
-            {speaker: "You", text: "Hey Ethan..."},
+            {speaker: "You", text: "Hey Ethan...", publish: "savePoint", param: {node: 'Ethan3LeavingChangeMind', num: 0}},
         ],
         branches: [
             {text: "Tell him you're leaving and are\ninviting him", targetNode: "Ethan3LeavingSolo"},
@@ -1374,7 +1454,7 @@ let dialogList1 = {
     },
     Ethan3LeavingWithEdith: {
         speech: [
-            {speaker: "You", text: "I've changed my mind. I'm leaving, and I'd like\nboth you and Edith to come, but you need to\nmake peace first."},
+            {speaker: "You", text: "I've changed my mind. I'm leaving, and I'd like\nboth you and Edith to come, but you need to\nmake peace first.", publish: "showUndoPoint"},
             {speaker: "Ethan", face: "ethan_sad.png", text: "Aww...\n\n\n[Very Hard Difficulty]", publish: "showInfluence", onFinish: () => {
                     if (gameState.EthanInfluence >= 4) {
                         dialogManager.showDialogNode("Ethan3LeavingSuccessWithEdith");
@@ -1386,7 +1466,7 @@ let dialogList1 = {
     },
     Ethan3LeavingSolo: {
         speech: [
-            {speaker: "You", text: "I've changed my mind. I'm leaving, and I'd like\nyou to come."},
+            {speaker: "You", text: "I've changed my mind. I'm leaving, and I'd like\nyou to come.", publish: "showUndoPoint"},
             {speaker: "Ethan", face: "ethan_normal.png", text: "Hmm...\n\n\n[Medium Difficulty]", publish: "showInfluence", onFinish: () => {
                     if (gameState.EthanInfluence >= 2) {
                         if (!gameState.dogAlive && gameState.EthanInfluence <= 2) {
@@ -1457,7 +1537,7 @@ let dialogList1 = {
 
     Juan2Dark: {
         speech: [
-            {speaker: "Juan", face: "juan_dark_scared.png", text: "You felt that shake too, didn't you?"},
+            {speaker: "Juan", face: "juan_dark_scared.png", text: "You felt that shake too, didn't you?", publish: "savePoint", param: {node: 'Juan2Dark', num: 0}},
         ],
         branches: [
             {text: "Yeah. Best get ready for\nanything.", targetNode: "Juan2FeltIt"},
@@ -1482,12 +1562,16 @@ let dialogList1 = {
                             }
                         });
                     }, 750);
-                }},
+                },
+                onStart: () => {
+                    messageBus.publish('showUndoPoint')
+                }
+            },
         ]
     },
     Juan2Eye: {
         speech: [
-            {speaker: "Juan", face: "juan_dark_scared.png", text: "\"Something gigantic\" huh?"},
+            {speaker: "Juan", face: "juan_dark_scared.png", text: "\"Something gigantic\" huh?", publish: "showUndoPoint"},
             {speaker: "", text: "   (Juan looks out the window)", data: {property: "juanPragmatic", value: false}},
             {speaker: "Juan", face: "juan_dark_scared.png", text: "And what, did it turn invisible?", data: {property: "invisibleGiant", value: true}, onFinish: () => {
                 setTimeout(() => {
@@ -1509,7 +1593,7 @@ let dialogList1 = {
     },
     Juan2Lightning: {
         speech: [
-            {speaker: "Juan", face: "juan_dark_scared.png", text: "\"Just lightning\" huh?\nYeah you can keep telling yourself that."},
+            {speaker: "Juan", face: "juan_dark_scared.png", text: "\"Just lightning\" huh?\nYeah you can keep telling yourself that.", publish: "showUndoPoint"},
         ]
     },
 
@@ -1523,7 +1607,7 @@ let dialogList1 = {
             {speaker: "Juan", face: "juan_normal.png", text: "Hey Trucker."},
             {speaker: "You", text: "Name's Noah."},
             {speaker: "Juan", face: "juan_normal.png", text: "Mine's Juan.\nWere you the one who got the generator\ngoing again?"},
-            {speaker: "You", text: "Yeah."},
+            {speaker: "You", text: "Yeah.", publish: "savePoint", param: {node: 'Juan2Chat', num: 4}},
             {speaker: "Juan", face: "juan_happy.png", text: "Pretty handy. What else can you work on?", publish: "JuanInfluence"},
         ],
         branches: [
@@ -1533,14 +1617,16 @@ let dialogList1 = {
     },
     Juan2Ask: {
         speech: [
-            {speaker: "Juan", face: "juan_normal.png", text: "Things are getting weird. It's good to\nknow what skills we all have."},
+            {speaker: "Juan", face: "juan_normal.png", text: "Things are getting weird. It's good to\nknow what skills we all have.", publish: "showUndoPoint"},
             {speaker: "You", text: "What do you bring to the table?"},
             {speaker: "Juan", face: "juan_happy.png", text: "Great aim and good humor!"},
         ]
     },
     Juan2Jack: {
         speech: [
-            {speaker: "Juan", face: "juan_happy.png", text: "That's good. I've got some mechanic and\ncarpentry skills myself."},
+            {speaker: "Juan", face: "juan_happy.png", text: "That's good. I've got some mechanic and\ncarpentry skills myself.", publish: "showUndoPoint", onFinish: () => {
+                messageBus.publish("savePoint", {node: 'Juan2Jack', num: 0})
+                }},
         ],
         branches: [
             {text: "That could be useful if\nanything else breaks."},
@@ -1549,7 +1635,9 @@ let dialogList1 = {
     },
     Juan2Generator: {
         speech: [
-            {speaker: "Juan", face: "juan_sad.png", text: "I was still assessing the situation.", publish: "JuanInfluence", param: -1},
+            {speaker: "Juan", face: "juan_sad.png", text: "I was still assessing the situation.", publish: "JuanInfluence", param: -1, onStart: () => {
+                messageBus.publish('showUndoPoint');
+                }},
             {speaker: "Juan", face: "juan_normal.png", text: "It's not smart to lay all your cards\non the table from the word go."},
         ]
     },
@@ -1590,7 +1678,7 @@ let dialogList1 = {
             {speaker: "You", text: "That's a long ways away."},
             {speaker: "Bruna", face: "bruna_grin.png", text: "I travel a lot for my work. Pictures in\nexotic locations and interviews with the\nfascinating locals."},
             {speaker: "Bruna", face: "bruna_happy.png", text: "Like you!"},
-            {speaker: "Bruna", face: "bruna_grin.png", text: "Perhaps once the storm passes we can\ndo that interview."},
+            {speaker: "Bruna", face: "bruna_grin.png", text: "Perhaps once the storm passes we can\ndo that interview.", publish: "savePoint", param: {node: 'BrunaInterviewYes', num: 7}},
         ],
         branches: [
             {text: "Sure", targetNode: "BrunaInterviewHappy"},
@@ -1600,13 +1688,17 @@ let dialogList1 = {
 
     BrunaInterviewSad: {
         speech: [
-            {speaker: "Bruna", face: "bruna_sad.png", text: "...okay"},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "...okay", onStart: () => {
+                    messageBus.publish("showUndoPoint");
+                }},
         ]
     },
 
     BrunaInterviewHappy: {
         speech: [
-            {speaker: "Bruna", face: "bruna_happy.png", text: "Great!", publish: "BrunaInfluence", data: {property: "brunaInterview", value: true}},
+            {speaker: "Bruna", face: "bruna_happy.png", text: "Great!", publish: "BrunaInfluence", data: {property: "brunaInterview", value: true}, onStart: () => {
+                messageBus.publish("showUndoPoint");
+                }},
         ]
     },
 
@@ -1621,7 +1713,7 @@ let dialogList1 = {
             {speaker: "You", text: "That's a long ways away."},
             {speaker: "Bruna", face: "bruna_grin.png", text: "I travel a lot for my work. Pictures in\nexotic locations and interviews with the\nfascinating locals."},
             {speaker: "Bruna", face: "bruna_happy.png", text: "Like you!"},
-            {speaker: "Bruna", face: "bruna_grin.png", text: "Perhaps once the storm passes we can\ndo that interview."},
+            {speaker: "Bruna", face: "bruna_grin.png", text: "Perhaps once the storm passes we can\ndo that interview.", publish: "savePoint", param: {node: 'BrunaInterviewNo', num: 7}},
         ],
         branches: [
             {text: "Sure", targetNode: "BrunaInterviewHappy"},
@@ -1651,7 +1743,7 @@ let dialogList1 = {
             {speaker: "Bruna", face: "bruna_happy.png", text: "Thank you for fixing the power!", publish: 'BrunaInfluence', data: {property: "brunaChatted2", value: true}},
             {speaker: "Bruna", face: "bruna_concern.png", text: "Do you think there will be enough power\nto charge my phone?"},
             {speaker: "You", text: "Hard to say, Bruna. What's so important\non your phone anyway?"},
-            {speaker: "Bruna", face: "bruna_normal.png", text: "My friends are posting updates."},
+            {speaker: "Bruna", face: "bruna_normal.png", text: "My friends are posting updates.", publish: "savePoint", param: {node: 'Bruna2Chat', num: 3}},
         ],
         branches: [
             {text: "Might be good to unplug for a bit!", targetNode: "Bruna2Unplug"},
@@ -1660,7 +1752,9 @@ let dialogList1 = {
     },
     Bruna2Unplug: {
         speech: [
-            {speaker: "Bruna", face: "bruna_sad.png", text: "You may like to live with stuffing in\nyour ears and blinders on your eyes\nyou Dosbaddel! I do not!", data: {property: "bruna2ChattedAngry", value: true}, publish: "BrunaInfluence", param: -1},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "You may like to live with stuffing in\nyour ears and blinders on your eyes\nyou Dosbaddel! I do not!", data: {property: "bruna2ChattedAngry", value: true}, publish: "BrunaInfluence", param: -1, onStart: () => {
+                messageBus.publish("showUndoPoint")
+                }},
         ],
     },
 
@@ -1687,7 +1781,7 @@ let dialogList1 = {
         speech: [
             {speaker: "You", text: "Hey Bruna, do you know of a place called\n\"Hope Springs\"?"},
             {speaker: "Bruna", face: "bruna_normal.png", text: "Let me check, H••-O••-P••-E•••• S••-P••-R••-I••-N••-G••-S•.•.•.••••••• \nIt is not too far from here, but it is\nnear the top of a mountain."},
-            {speaker: "Bruna", face: "bruna_concern.png", text: "The road is very tricky in that direction.\nWhat makes you want to head there?", data: {property: "hopeSpringsLocationMissing", value: false}},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "The road is very tricky in that direction.\nWhat makes you want to head there?", data: {property: "hopeSpringsLocationMissing", value: false}, publish: "savePoint", param: {node: 'Bruna2ChatHopeSprings', num: 2}},
         ],
         branches: [
             {text: "I think it would be safer there\nwith everything that's going on.", targetNode: "Bruna2Safer"},
@@ -1696,22 +1790,29 @@ let dialogList1 = {
     },
     Bruna2Safer: {
         speech: [
-            {speaker: "Bruna", face: "bruna_happy.png", text: "Now that you say it, some of my friends\nliving in high elevation areas seem to\nbe doing ok!", publish: "BrunaInfluence"},
+            {speaker: "Bruna", face: "bruna_happy.png", text: "Now that you say it, some of my friends\nliving in high elevation areas seem to\nbe doing ok!", publish: "BrunaInfluence", onStart: () => {
+                messageBus.publish("showUndoPoint");
+                }},
             {speaker: "Bruna", face: "bruna_sad.png", text: "But I don't know if it is a good idea\nto drive there in this heavy rain."},
         ]
     },
     Bruna2OldMan: {
         speech: [
-            {speaker: "Bruna", face: "bruna_concern.png", text: "Old man behind me..."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "Old man behind me...", onStart: () => {
+                    messageBus.publish("showUndoPoint");
+                }},
             {speaker: "Bruna", face: "bruna_behind.png", text: "._.", publish: "radioTempQuiet"},
             {speaker: "Bruna", face: "bruna_sad.png", text: "This is no time for joking.", publish: "radioTempQuietResume"},
         ]
     },
     Bruna2Updates: {
         speech: [
-            {speaker: "Bruna", face: "bruna_sad.png", text: "The power outage we just had...\nIt was world-wide."},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "The power outage we just had...\nIt was world-wide.", publish: "showUndoPoint"},
             {speaker: "You", text: "That's not possible."},
-            {speaker: "Bruna", face: "bruna_concern.png", text: "It is! Everyone's posting about it.\nI have friends on five continents\nand they all confirmed it!"},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "It is! Everyone's posting about it.\nI have friends on five continents\nand they all confirmed it!", onFinish: () => {
+                messageBus.publish("savePoint", {node: 'Bruna2Updates', num: 2})
+                }
+                },
         ],
         branches: [
             {text: "Maybe it was a solar flare?", targetNode: "Bruna2Solar"},
@@ -1720,7 +1821,7 @@ let dialogList1 = {
     },
     Bruna2Solar: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: "Maybe, but my satellite wifi still works.\n•••••Oh, my buddy in Buenos Aires says\nthere's lava erupting down town."},
+            {speaker: "Bruna", face: "bruna_normal.png", text: "Maybe, but my satellite wifi still works.\n•••••Oh, my buddy in Buenos Aires says\nthere's lava erupting down town.", publish: "showUndoPoint"},
             {speaker: "You", text: "Is that one of those island nations?"},
             {speaker: "Bruna", face: "bruna_concern.png", text: "No. There's no history of volcanos\nanywhere near there. And yet, he just\nsent a video of it."},
             {speaker: "You", text: "Video? How close was he?"},
@@ -1730,7 +1831,7 @@ let dialogList1 = {
     },
     Bruna2Prank: {
         speech: [
-            {speaker: "Bruna", face: "bruna_sad.png", text: "No. And that's not all. Tokyo went dark\nthirty minutes ago. My friend does\nVR work there."},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "No. And that's not all. Tokyo went dark\nthirty minutes ago. My friend does\nVR work there.", publish: "showUndoPoint"},
             {speaker: "Bruna", face: "bruna_concern.png", text: "She says there's something outside her\nwindow looking in."},
             {speaker: "You", text: "I'm sure it's just a critter. They still have owls\nin Japan, right?"},
             {speaker: "Bruna", face: "bruna_concern.png", text: "She's on the 48th floor."},
@@ -1749,7 +1850,7 @@ let dialogList1 = {
     },
     Bruna3Decision: {
         speech: [
-            {text: "Bruna, I got to ask..."},
+            {text: "Bruna, I got to ask...", publish: 'savePoint', param: {node: 'Bruna3Decision', num: 0}},
         ],
         branches: [
             {text: "Come with me to Hope Springs", targetNode: "Bruna3GoOutThere"},
@@ -1818,7 +1919,7 @@ let dialogList1 = {
     Bruna3ChatHopeSprings: {
         speech: [
             {speaker: "Bruna", face: "bruna_normal.png", text: "Let me check, H••-O••-P••-E•••• S••-P••-R••-I••-N••-G••-S•.•.•.••••••• \nIt is not too far from here, but it is\nnear the top of a mountain.", data: {property: "brunaHopeSpringsChatted", value: true}},
-            {speaker: "Bruna", face: "bruna_concern.png", text: "The road is very tricky in that direction.\nWhat makes you want to head there?", data: {property: "hopeSpringsLocationMissing", value: false}},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "The road is very tricky in that direction.\nWhat makes you want to head there?", data: {property: "hopeSpringsLocationMissing", value: false}, publish: "savePoint", param: {node: 'Bruna3ChatHopeSprings', num: 1}},
         ],
         branches: [
             {text: "This place is getting dangerous.\nHope Springs should be safer.", targetNode: "Bruna3GoOutThere"},
@@ -1828,7 +1929,7 @@ let dialogList1 = {
 
     Bruna3Fortify: {
         speech: [
-            {speaker: "You", text: "Let's fortify this place and hunker down until\nhelp comes."},
+            {speaker: "You", text: "Let's fortify this place and hunker down until\nhelp comes.", publish: "showUndoPoint"},
             {speaker: "Bruna", face: "bruna_concern.png", text: "Cell signal isn't very strong here."},
             {speaker: "You", text: "That's fine. There are plenty of supplies here.\nWe'll be okay.", data: {property: "BrunaFortify", value: true}},
         ],
@@ -1836,7 +1937,9 @@ let dialogList1 = {
 
     Bruna3GoOutThere: {
         speech: [
-            {speaker: "Bruna", face: "bruna_sad.png", text: "You want to go out there?!", data: {property: "BrunaFortify", value: false}},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "You want to go out there?!", publish: 'showUndoPoint', onFinish: () => {
+                messageBus.publish("savePoint", {node: 'Bruna3GoOutThere', num: 0});
+                }},
         ],
         branches: [
             {text: "My rig can get through this storm.\nAnd we can't stay here.", targetNode: "Bruna3Rig"},
@@ -1845,7 +1948,9 @@ let dialogList1 = {
     },
     Bruna3FindOut: {
         speech: [
-            {speaker: "Bruna", face: "bruna_sad.png", text: "There's no telling what's out there.\nNone of my friends are answering\nanymore!"},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "There's no telling what's out there.\nNone of my friends are answering\nanymore!", publish: "showUndoPoint", onFinish: () => {
+                    messageBus.publish("savePoint", {node: 'Bruna3FindOut', num: 0});
+                }},
         ],
         branches: [
             {text: "Don't your followers want to\nknow what's happening?", targetNode: "Bruna3Followers"},
@@ -1854,10 +1959,13 @@ let dialogList1 = {
     },
     Bruna3Rig: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: "We have food, water, and internet."},
+            {speaker: "Bruna", face: "bruna_normal.png", text: "We have food, water, and internet.", publish: "showUndoPoint"},
             {speaker: "You", text: "Not for long. We'll need to go out eventually."},
             {speaker: "Bruna", face: "bruna_concern.png", text: "In a week or so."},
-            {speaker: "Bruna", face: "bruna_concern.png", text: "By then someone will be able to\ntell us what's happening."},
+            {speaker: "Bruna", face: "bruna_concern.png", text: "By then someone will be able to\ntell us what's happening.", onFinish: () => {
+                    messageBus.publish("savePoint", {node: 'Bruna3Rig', num: 3});
+                }
+            }
         ],
         branches: [
             {text: "Who's left to tell us anything?", targetNode: "Bruna3WhosLeft"},
@@ -1867,7 +1975,7 @@ let dialogList1 = {
 
     Bruna3Followers: {
         speech: [
-            {speaker: "Bruna", face: "bruna_sad.png", text: "We all want to know what's\ngoing on!"},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "We all want to know what's\ngoing on!", publish: "showUndoPoint"},
             {speaker: "You", text: "Then let's go find out."},
             {speaker: "Bruna", face: "bruna_concern.png", text: "...\n\n\n[Hard Difficulty]", publish: 'BrunaInfluence', onFinish: () => {
                     messageBus.publish('showInfluence');
@@ -1882,7 +1990,7 @@ let dialogList1 = {
 
     Bruna3Silent: {
         speech: [
-            {speaker: "Bruna", face: "bruna_sad.png", text: "Of course not!\nBut if I go out there I will be!"},
+            {speaker: "Bruna", face: "bruna_sad.png", text: "Of course not!\nBut if I go out there I will be!", publish: "showUndoPoint"},
             {speaker: "Bruna", face: "bruna_concern.png", text: "There's a dead zone between us\nand anywhere."},
             {speaker: "You", text: "If you stay here you'll be dead!"},
             {speaker: "Bruna", face: "bruna_sad.png", text: "Noah, you're scaring me.\n\n\n[Hard Difficulty]", publish: 'showInfluence', onFinish: () => {
@@ -1897,7 +2005,7 @@ let dialogList1 = {
 
     Bruna3WhosLeft: {
         speech: [
-            {speaker: "Bruna", face: "bruna_normal.png", text: "My friends will of course!\nOnce they..."},
+            {speaker: "Bruna", face: "bruna_normal.png", text: "My friends will of course!\nOnce they...", publish: "showUndoPoint"},
             {speaker: "Bruna", face: "bruna_sad.png", text: "-if they get back online.\n\n\n[Hard Difficulty]", publish: "BrunaInfluence", onFinish: () => {
                 messageBus.publish('showInfluence');
                 if (gameState.BrunaInfluence >= 3) {
@@ -1917,7 +2025,11 @@ let dialogList1 = {
                 } else {
                     dialogManager.showDialogNode("Bruna3NotSaved2");
                 }
-            }},
+            },
+            onStart: () => {
+                messageBus.publish("showUndoPoint");
+            }
+            },
         ],
     },
 
@@ -2592,7 +2704,7 @@ let dialogList1 = {
             {speaker: "Edith", face: "edith_sad.png", text: "Ethan!"},
             {speaker: "Juan", face: "juan_normal.png", text: "I can fix this. Pass me that tablecloth\nand chair."},
             {speaker: "Maggie", face: "maggie_sad.png", text: "Here, should be some nails and a\nhammer in there."},
-            {speaker: "Juan", face: "juan_normal.png", text: "That'll work. Come on Noah."},
+            {speaker: "Juan", face: "juan_normal.png", text: "That'll work. Come on Noah.", publish: "savePoint", param: {node: 'WindowBrokenDiscuss', num: 9}},
         ],
         branches: [
             {text: "Help fix the window", targetNode: "YouFixWindow"},
@@ -2610,7 +2722,7 @@ let dialogList1 = {
             {speaker: "Juan", face: "juan_normal.png", text: "Not sure."},
             {speaker: "Juan", face: "juan_normal.png", text: "Hey pass me that tablecloth and chair.\nI can fix this."},
             {speaker: "Maggie", face: "maggie_sad.png", text: "Here, should be some nails and a\nhammer in there."},
-            {speaker: "Juan", face: "juan_normal.png", text: "That'll work. Come on Noah."},
+            {speaker: "Juan", face: "juan_normal.png", text: "That'll work. Come on Noah.", param: {node: 'WindowBrokenDiscussEthanSleeping', num: 9}},
         ],
         branches: [
             {text: "Help fix the window", targetNode: "YouFixWindow"},
@@ -2619,7 +2731,7 @@ let dialogList1 = {
     },
     LetJuanFixWindow: {
         speech: [
-            {speaker: "Juan", face: "juan_sad.png", text: "What? And you're just gonna leave\nthe place broken like this?"},
+            {speaker: "Juan", face: "juan_sad.png", text: "What? And you're just gonna leave\nthe place broken like this?", publish: "showUndoPoint"},
         ],
         branches: [
             {text: "Help fix the window", targetNode: "YouFixWindow"},
@@ -2665,7 +2777,7 @@ let dialogList1 = {
             {speaker: "Juan", face: "juan_normal.png", text: "Actually I'm not sure what even broke\nthis window in the first place.\nDon't see a branch or rock anywhere."},
             {dependentState: "invisibleGiant", speaker: "Juan", face: "juan_normal.png", text: "I still think it's ridiculous but...\nmaybe you were onto something about\nthat invisible giant.", publish: "JuanInfluence"},
             {dependentState: "juanPragmatic", speaker: "Juan", face: "juan_normal.png", text: "Makes me kinda nerv- ••••.•••••.•••••••uncertain.•••••••••\nAbout staying here and all."},
-            {speaker: "Juan", face: "juan_normal.png", text: "What plans you got trucker?"},
+            {speaker: "Juan", face: "juan_normal.png", text: "What plans you got trucker?", publish: "savePoint", param: {node: 'JuanAct3Leave', num: 5}},
         ],
         branches: [
             {text: "I'm going to stay here.", targetNode: "JuanAct3Stay"},
@@ -2674,8 +2786,10 @@ let dialogList1 = {
     },
     JuanAct3Leave2: {
         speech: [
-            {speaker: "Juan", face: "juan_happy.png", text: "Yeah? I'm pretty handy with a compass\nand map.", publish: "JuanInfluence"},
-            {speaker: "Juan", face: "juan_normal.png", text: "Wait, how many people are you planning\non taking?"},
+            {speaker: "Juan", face: "juan_happy.png", text: "Yeah? I'm pretty handy with a compass\nand map.", publish: "JuanInfluence", onStart: () => {
+                messageBus.publish('showUndoPoint');
+                }},
+            {speaker: "Juan", face: "juan_normal.png", text: "Wait, how many people are you planning\non taking?", publish: "savePoint", param: {node: 'JuanAct3Leave2', num: 1}},
         ],
         branches: [
             {text: "Only whoever's useful", targetNode: "JuanAct3Leave3Useful"},
@@ -2750,20 +2864,20 @@ let dialogList1 = {
 
     JuanAct3Refuse: {
         speech: [
-            {speaker: "Juan", face: "juan_sad.png", publish: "showInfluenceSmall", text: "A big part of survival is the company\nyou keep. And I intend to keep\nfar away from you.\n(Not enough trust)"},
+            {speaker: "Juan", face: "juan_sad.png", publish: "showInfluenceSmall", text: "A big part of survival is the company\nyou keep. And I intend to keep\nfar away from you.\n(Not enough trust)", publish: "showUndoPoint"},
         ],
     },
 
     JuanAct3SoftRefuse: {
         speech: [
-            {speaker: "Juan", face: "juan_normal.png", text: "You got skills I'll give you that. But you\nain't going to make it if you're dragged\ndown by every person who needs help."},
+            {speaker: "Juan", face: "juan_normal.png", text: "You got skills I'll give you that. But you\nain't going to make it if you're dragged\ndown by every person who needs help.", publish: "showUndoPoint"},
             {speaker: "Juan", face: "juan_normal.png", publish: "showInfluenceSmall", text: "Sorry but I won't be coming.\n(Not enough trust)"},
         ],
     },
 
     JuanAct3Join: {
         speech: [
-            {speaker: "Juan", face: "juan_happy.png", text: "Can't stay here. I'm coming with."},
+            {speaker: "Juan", face: "juan_happy.png", text: "Can't stay here. I'm coming with.", publish: "showUndoPoint"},
         ],
     },
 
@@ -2788,7 +2902,7 @@ let dialogList1 = {
 
     JuanAct3NoCome: {
         speech: [
-            {speaker: "Juan", face: "juan_normal.png", text: "What?"},
+            {speaker: "Juan", face: "juan_normal.png", text: "What?", publish: "showUndoPoint"},
             {speaker: "You", text: "You're not coming with me."},
             {speaker: "Juan", face: "juan_sad.png", text: "Why not? I'm useful! I have skills\nthese others don't!"},
             {speaker: "You", text: "And I have the rig.\nYou're not coming.", data: {property: "juanLeaveStatus", value: "blocked"}},
@@ -2802,7 +2916,7 @@ let dialogList1 = {
 
     JuanAct3Stay: {
         speech: [
-            {speaker: "Juan", face: "juan_normal.png", text: "Really? Even though this place is falling\napart?"},
+            {speaker: "Juan", face: "juan_normal.png", text: "Really? Even though this place is falling\napart?", publish: "showUndoPoint"},
         ],
         branches: [
             {text: "On second thought I shouldn't\nstay here long either.", targetNode: "JuanAct3Leave2Alt"},
@@ -2813,7 +2927,7 @@ let dialogList1 = {
     JuanAct3Leave2Alt: {
         speech: [
             {speaker: "Juan", face: "juan_happy.png", text: "If you need a guide, I'm pretty handy\nwith a compass and map."},
-            {speaker: "Juan", face: "juan_normal.png", text: "Wait, how many people are you planning\non taking?"},
+            {speaker: "Juan", face: "juan_normal.png", text: "Wait, how many people are you planning\non taking?", publish: "savePoint", param: {node: 'JuanAct3Leave2Alt', num: 1}},
         ],
         branches: [
             {text: "Only whoever's useful", targetNode: "JuanAct3Leave3Useful"},
@@ -2824,7 +2938,7 @@ let dialogList1 = {
 
     JuanAct3StayReally: {
         speech: [
-            {speaker: "Juan", face: "juan_normal.png", text: "Huh, wasn't expecting that."},
+            {speaker: "Juan", face: "juan_normal.png", text: "Huh, wasn't expecting that.", publish: "showUndoPoint"},
             {speaker: "Juan", face: "juan_normal.png", text: "..."},
             {speaker: "Juan", face: "juan_normal.png", text: "I'm gonna push on out of here.\nHeard of a possible refuge spot from\nthe radio."},
             {speaker: "You", text: "You sure? The weather is only getting worse."},
