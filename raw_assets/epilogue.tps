@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>101</uint>
+        <uint>92</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -173,6 +173,21 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">epilogue/428252584_778229620836946_553791854023349863_n.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>179,120,358,240</rect>
+                <key>scale9Paddings</key>
+                <rect>179,120,358,240</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">epilogue/ach_campfire.png</key>
             <key type="filename">epilogue/ach_grave.png</key>
             <key type="filename">epilogue/campfire.png</key>
@@ -332,6 +347,11 @@
                 <false/>
             </struct>
             <key type="filename">epilogue/end1.png</key>
+            <key type="filename">epilogue/end1alt1.png</key>
+            <key type="filename">epilogue/end1alt2.png</key>
+            <key type="filename">epilogue/end1alt3.png</key>
+            <key type="filename">epilogue/end1alt4.png</key>
+            <key type="filename">epilogue/end1black.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

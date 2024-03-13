@@ -300,7 +300,10 @@ function closeAward() {
     }
 }
 
-function showAwardImage(imageRef, text = '') {
+let tempHasSeenOnce = false;
+let tempHasSeenMany = false;
+
+function showAwardImage(imageRef, text = '', showSpook) {
     globalObjects.closeAwardButton = new Button({
         normal: {
             "ref": "blackPixel",
@@ -315,6 +318,63 @@ function showAwardImage(imageRef, text = '') {
     globalObjects.closeAwardButton.setScale(500, 500);
     globalObjects.closeAwardButton.setDepth(98);
     globalObjects.awardImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'epilogue', imageRef).setDepth(98).setAlpha(0.4);
+
+    if (showSpook) {
+        let hasSeenBefore = localStorage.getItem("seenDinerSpook");
+        if (hasSeenBefore != "yes") {
+            if (tempHasSeenOnce) {
+                if (!tempHasSeenMany && Math.random() < 0.35) {
+                    tempHasSeenMany = true;
+                    setTimeout(() => {
+                        globalObjects.awardImage.setFrame('end1black.png')
+                        setTimeout(() => {
+                            globalObjects.awardImage.setFrame('end1.png')
+                            setTimeout(() => {
+                                setTimeout(() => {
+                                    globalObjects.awardImage.setFrame('end1alt2.png')
+                                    setTimeout(() => {
+                                        globalObjects.awardImage.setFrame('end1alt3.png')
+                                        setTimeout(() => {
+                                            globalObjects.awardImage.setFrame('end1alt4.png')
+                                            setTimeout(() => {
+                                                globalObjects.awardImage.setFrame('end1alt3.png')
+                                                setTimeout(() => {
+                                                    globalObjects.awardImage.setFrame('end1alt4.png')
+                                                    setTimeout(() => {
+                                                        globalObjects.awardImage.setFrame('end1black.png')
+                                                        setTimeout(() => {
+                                                            globalObjects.awardImage.setFrame('end1.png')
+                                                        }, 50);
+                                                    }, 50);
+                                                }, 50);
+                                            }, 50);
+                                        }, 100);
+                                    }, 50);
+                                }, 150);
+                            }, 1200)
+                        }, 20);
+                    }, 800);
+                }
+            } else {
+                tempHasSeenOnce = true;
+                // localStorage.setItem("seenDinerSpook", "yes");
+                setTimeout(() => {
+                    globalObjects.awardImage.setFrame('end1alt1.png')
+                    setTimeout(() => {
+                        globalObjects.awardImage.setFrame('end1.png')
+                        setTimeout(() => {
+                            globalObjects.awardImage.setFrame('end1alt2.png')
+                            setTimeout(() => {
+                                globalObjects.awardImage.setFrame('end1.png')
+                            }, 50);
+                        }, 250);
+                    }, 100);
+                }, 100);
+            }
+        }
+    }
+
+
     globalObjects.awardText = PhaserScene.add.text(gameConsts.halfWidth, gameConsts.height - 31, text, { fontFamily: 'Times', fontSize: 28, color: '#FFFFFF' }).setDepth(999).setAlign('center').setOrigin(0.5, 0.5);
     PhaserScene.tweens.add({
         targets: [globalObjects.awardImage, globalObjects.awardText],
@@ -338,13 +398,13 @@ function showAwardImage(imageRef, text = '') {
             scaleY: 0.81,
         },
         onMouseUp: () => {
-            closeAward();
+            closeAward();                
         }
     });
     globalObjects.awardCloseIcon.setDepth(98);
 }
 
-function createRewardBtn(x, y, btnRef, awardImageRef, text) {
+function createRewardBtn(x, y, btnRef, awardImageRef, text, showSpook) {
     return new Button({
         normal: {
             "atlas": "epilogue",
@@ -366,7 +426,7 @@ function createRewardBtn(x, y, btnRef, awardImageRef, text) {
             scaleY: 1.02,
         },
         onMouseUp: () => {
-            showAwardImage(awardImageRef, text);
+            showAwardImage(awardImageRef, text, showSpook);
         }
     });
 }
@@ -396,7 +456,7 @@ function createRewardButtons() {
                 }
             });
         }
-        globalObjects.icon1 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 98, 'end_icon_1.png', 'end1.png', 'Noah Driving - By Theresa Kao')
+        globalObjects.icon1 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 98, 'end_icon_1.png', 'end1.png', 'Noah Driving - By Theresa Kao', true)
         if (numAchievements >= 4) {
             if (newestAchievement && numAchievements === 4) {
                 globalObjects.flashWhite = PhaserScene.add.image(gameConsts.width - 57, gameConsts.height - 187, 'whitePixel').setScale(46, 40).setAlpha(0).setDepth(1);
@@ -418,9 +478,9 @@ function createRewardButtons() {
                     }
                 });
             }
-            globalObjects.icon2 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 187, 'end_icon_2.png', 'end2.png', 'Staying in the Diner - By Theresa Kao')
-            if (numAchievements >= 8) {
-                if (newestAchievement && numAchievements === 8) {
+            globalObjects.icon2 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 187, 'end_icon_2.png', 'end2.png', 'Reminiscing - By HBY')
+            if (numAchievements >= 7) {
+                if (newestAchievement && numAchievements === 7) {
                     globalObjects.flashWhite = PhaserScene.add.image(gameConsts.width - 57, gameConsts.height - 276, 'whitePixel').setScale(46, 40).setAlpha(0).setDepth(1);
                     PhaserScene.tweens.add({
                         targets: globalObjects.flashWhite,
@@ -442,7 +502,7 @@ function createRewardButtons() {
                 }
                 globalObjects.icon3 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 276, 'end_icon_3.png', 'end3.png', 'All Together - By Theresa Kao')
             } else {
-                globalObjects.icon3 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 276, 'end_icon_none.png', 'endnone.png', 'Discover all endings to unlock')
+                globalObjects.icon3 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 276, 'end_icon_none.png', 'endnone.png', 'Discover 7 endings to unlock')
             }
         } else {
             globalObjects.icon2 = createRewardBtn(gameConsts.width - 57, gameConsts.height - 187, 'end_icon_none.png', 'endnone.png', 'Discover 4 endings to unlock')
@@ -898,7 +958,7 @@ function setupMuteButton() {
         normal: {
             atlas: "buttons",
             ref: startFrame,
-            x: 690,
+            x: gameConsts.width - 30,
             y: 27,
             alpha: 0.8
         },

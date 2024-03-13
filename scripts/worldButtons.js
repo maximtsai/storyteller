@@ -1353,6 +1353,7 @@ function clickRadio() {
     }
     if (!globalObjsTemp.radio) {
         updateManager.addFunction(updateRadio);
+        let xOffset = (gameConsts.width - 720) * 0.5;
         globalObjsTemp.radio = {
             radioClickBlocker: {},
             radioDeviceButtonBlocker: {},
@@ -1360,7 +1361,7 @@ function clickRadio() {
             backing: PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'radio', 'backing.png'),
             indicator: PhaserScene.add.sprite(gameConsts.halfWidth + 122.5, gameConsts.halfHeight + 70, 'misc', 'indicator.png'),
             knob: PhaserScene.add.sprite(gameConsts.halfWidth + 122.5, gameConsts.halfHeight + 70, 'radio', 'knob.png'),
-            bar: PhaserScene.add.sprite(386, gameConsts.halfHeight - 148, 'radio', 'bar.png'),
+            bar: PhaserScene.add.sprite(386 + xOffset, gameConsts.halfHeight - 148, 'radio', 'bar.png'),
             cover: PhaserScene.add.sprite(gameConsts.halfWidth + 7, gameConsts.halfHeight - 150, 'radio', 'cover.png'),
             arrow: PhaserScene.add.sprite(gameConsts.halfWidth + 7, gameConsts.halfHeight - 150, 'misc', 'guide_arrow.png'),
         };
@@ -1520,17 +1521,18 @@ function updateRadio(deltaTime) {
         let rotAmt = 0;
         let arrowPositionAngle = Math.atan2(arrowToKnobY, arrowToKnobX);
 
+        let xOffset = (gameConsts.width - 720) * 0.5;
         let dragMult = Math.max(1, dist / 80);
         if (dotProd > 400 * dragMult) {
             rotAmt = (deltaTime * 0.75 + 0.25) * 0.033;
-            if (globalObjsTemp.radio.bar.x >= 506) {
-                globalObjsTemp.radio.bar.x = 506;
+            if (globalObjsTemp.radio.bar.x >= 506 + xOffset) {
+                globalObjsTemp.radio.bar.x = 506 + xOffset;
                 rotAmt = 0;
             }
         } else if (dotProd < -400 * dragMult) {
             rotAmt = (deltaTime * 0.75 + 0.25) * -0.033;
-            if (globalObjsTemp.radio.bar.x <= 206) {
-                globalObjsTemp.radio.bar.x = 206
+            if (globalObjsTemp.radio.bar.x <= 206 + xOffset) {
+                globalObjsTemp.radio.bar.x = 206 + xOffset;
                 rotAmt = 0;
             }
         }
@@ -1543,12 +1545,14 @@ function updateRadio(deltaTime) {
     }
 }
 
-function resetRadioPosition(position = 418) {
+function resetRadioPosition() {
+    let xOffset = (gameConsts.width - 720) * 0.5;
+
     if (globalObjsTemp.radio) {
-        globalObjsTemp.radio.bar.x = 418;
+        globalObjsTemp.radio.bar.x = 418 + xOffset;
         adjustRadioUpdate(globalObjsTemp.radio.bar.x);
     } else {
-        globalObjsTemp.radioStartX = 418;
+        globalObjsTemp.radioStartX = 418 + xOffset;
     }
 }
 
@@ -1594,8 +1598,10 @@ function adjustRadioUpdate(barPos) {
     let distToObj = 99;
     let distToClosestObj = 99;
     let closestObj = null;
+    let xOffset = (gameConsts.width - 720) * 0.5;
+
     for (let i in globalObjsTemp.songs) {
-        distToObj = Math.abs(i - barPos);
+        distToObj = Math.abs((parseFloat(i) + xOffset) - barPos);
         if (distToObj < distToClosestObj) {
             distToClosestObj = distToObj;
             closestObj = globalObjsTemp.songs[i];
@@ -2654,7 +2660,7 @@ function showGeneratorInvalid(yPos) {
             }, 30);
         }, Math.floor(350 + Math.random * 200));
     }, 50);
-    globalObjsTemp.generator.invalid.x = 429;
+    globalObjsTemp.generator.invalid.x = 459;
     globalObjsTemp.generator.invalid.y = yPos;
     globalObjsTemp.generator.invalid.setAlpha(0.75);
     globalObjsTemp.generator.invalid.visible = true;
