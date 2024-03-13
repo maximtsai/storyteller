@@ -2660,7 +2660,7 @@ function showGeneratorInvalid(yPos) {
             }, 30);
         }, Math.floor(350 + Math.random * 200));
     }, 50);
-    globalObjsTemp.generator.invalid.x = 429;
+    globalObjsTemp.generator.invalid.x = 459;
     globalObjsTemp.generator.invalid.y = yPos;
     globalObjsTemp.generator.invalid.setAlpha(0.75);
     globalObjsTemp.generator.invalid.visible = true;
