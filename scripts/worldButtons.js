@@ -1600,7 +1600,7 @@ function adjustRadioUpdate(barPos) {
     let xOffset = (gameConsts.width - 720) * 0.5;
 
     for (let i in globalObjsTemp.songs) {
-        distToObj = Math.abs((i + xOffset) - barPos);
+        distToObj = Math.abs((parseFloat(i) + xOffset) - barPos);
         if (distToObj < distToClosestObj) {
             distToClosestObj = distToObj;
             closestObj = globalObjsTemp.songs[i];
