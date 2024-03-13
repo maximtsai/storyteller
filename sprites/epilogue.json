@@ -1,7 +1,7 @@
 {
 	"textures": [
 		{
-			"image": "epilogue-0.webp",
+			"image": "sprites/epilogue-0.webp",
 			"format": "RGBA5555",
 			"size": {
 				"w": 1988,
@@ -642,7 +642,7 @@
 			]
 		},
 		{
-			"image": "epilogue-1.webp",
+			"image": "sprites/epilogue-1.webp",
 			"format": "RGBA5555",
 			"size": {
 				"w": 1577,
@@ -779,7 +779,7 @@
 			]
 		},
 		{
-			"image": "epilogue-2.webp",
+			"image": "sprites/epilogue-2.webp",
 			"format": "RGBA5555",
 			"size": {
 				"w": 1567,
@@ -916,7 +916,7 @@
 			]
 		},
 		{
-			"image": "epilogue-3.webp",
+			"image": "sprites/epilogue-3.webp",
 			"format": "RGBA5555",
 			"size": {
 				"w": 1990,
@@ -1095,7 +1095,7 @@
 			]
 		},
 		{
-			"image": "epilogue-4.webp",
+			"image": "sprites/epilogue-4.webp",
 			"format": "RGBA5555",
 			"size": {
 				"w": 720,
