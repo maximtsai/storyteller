@@ -323,8 +323,8 @@ function showAwardImage(imageRef, text = '', showSpook) {
         let hasSeenBefore = localStorage.getItem("seenDinerSpook");
         if (hasSeenBefore != "yes") {
             if (tempHasSeenOnce) {
-                if (!tempHasSeenMany && Math.random() < 0.5) {
-                        tempHasSeenMany = true;
+                if (!tempHasSeenMany && Math.random() < 0.35) {
+                    tempHasSeenMany = true;
                     setTimeout(() => {
                         globalObjects.awardImage.setFrame('end1black.png')
                         setTimeout(() => {
