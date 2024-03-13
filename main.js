@@ -166,9 +166,15 @@ function fullRestart() {
     canvas = game.canvas;
 }
 
+function initGameBeginning() {
+    if (!game) {
+        fullRestart();
+    }
+}
+
 setTimeout(() => {
-    fullRestart();
-}, 10)
+    initGameBeginning();
+}, 5000)
 
 
 function preload ()

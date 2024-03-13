@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>101</uint>
+        <uint>88</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -347,6 +347,11 @@
                 <false/>
             </struct>
             <key type="filename">epilogue/end1.png</key>
+            <key type="filename">epilogue/end1alt1.png</key>
+            <key type="filename">epilogue/end1alt2.png</key>
+            <key type="filename">epilogue/end1alt3.png</key>
+            <key type="filename">epilogue/end1alt4.png</key>
+            <key type="filename">epilogue/end1black.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>

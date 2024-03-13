@@ -933,27 +933,6 @@
 						"w": 716,
 						"h": 480
 					}
-				},
-				{
-					"filename": "end2.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 716,
-						"h": 480
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 716,
-						"h": 480
-					},
-					"frame": {
-						"x": 725,
-						"y": 1288,
-						"w": 716,
-						"h": 480
-					}
 				}
 			]
 		},
@@ -961,32 +940,11 @@
 			"image": "sprites/epilogue-3.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 704,
-				"h": 1465
+				"w": 1403,
+				"h": 2038
 			},
 			"scale": 1,
 			"frames": [
-				{
-					"filename": "end3.png",
-					"rotated": false,
-					"trimmed": false,
-					"sourceSize": {
-						"w": 700,
-						"h": 450
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 0,
-						"w": 700,
-						"h": 450
-					},
-					"frame": {
-						"x": 2,
-						"y": 2,
-						"w": 700,
-						"h": 450
-					}
-				},
 				{
 					"filename": "end1.png",
 					"rotated": false,
@@ -1003,9 +961,135 @@
 					},
 					"frame": {
 						"x": 2,
-						"y": 455,
+						"y": 2,
 						"w": 680,
 						"h": 525
+					}
+				},
+				{
+					"filename": "end1alt1.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 680,
+						"h": 525
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 680,
+						"h": 525
+					},
+					"frame": {
+						"x": 685,
+						"y": 2,
+						"w": 680,
+						"h": 525
+					}
+				},
+				{
+					"filename": "end1alt2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 680,
+						"h": 525
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 680,
+						"h": 525
+					},
+					"frame": {
+						"x": 2,
+						"y": 530,
+						"w": 680,
+						"h": 525
+					}
+				},
+				{
+					"filename": "end1alt3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 680,
+						"h": 525
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 680,
+						"h": 525
+					},
+					"frame": {
+						"x": 685,
+						"y": 530,
+						"w": 680,
+						"h": 525
+					}
+				},
+				{
+					"filename": "end1alt4.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 680,
+						"h": 525
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 680,
+						"h": 525
+					},
+					"frame": {
+						"x": 2,
+						"y": 1058,
+						"w": 680,
+						"h": 525
+					}
+				},
+				{
+					"filename": "end3.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 700,
+						"h": 450
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 700,
+						"h": 450
+					},
+					"frame": {
+						"x": 2,
+						"y": 1586,
+						"w": 700,
+						"h": 450
+					}
+				},
+				{
+					"filename": "end2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 716,
+						"h": 480
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 716,
+						"h": 480
+					},
+					"frame": {
+						"x": 685,
+						"y": 1058,
+						"w": 716,
+						"h": 480
 					}
 				},
 				{
@@ -1023,10 +1107,42 @@
 						"h": 480
 					},
 					"frame": {
-						"x": 2,
-						"y": 983,
+						"x": 705,
+						"y": 1541,
 						"w": 620,
 						"h": 480
+					}
+				}
+			]
+		},
+		{
+			"image": "sprites/epilogue-4.webp",
+			"format": "RGBA5555",
+			"size": {
+				"w": 684,
+				"h": 529
+			},
+			"scale": 1,
+			"frames": [
+				{
+					"filename": "end1black.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 680,
+						"h": 525
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 680,
+						"h": 525
+					},
+					"frame": {
+						"x": 2,
+						"y": 2,
+						"w": 680,
+						"h": 525
 					}
 				}
 			]
@@ -1035,6 +1151,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:9555fb4a29752640a59a86f6932c8e62:0972906695a2c54fbbcf58c89efcfede:8d0bba757ba6ad04e7265a9772d858c8$"
+		"smartupdate": "$TexturePacker:SmartUpdate:a30a11a7508abd8f8cecf1a4ee86f435:cf97234e551c4ef937b8777084abef78:71fd9cedc63fe502a1c1b3017cc67a98$"
 	}
 }
