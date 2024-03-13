@@ -1353,6 +1353,7 @@ function clickRadio() {
     }
     if (!globalObjsTemp.radio) {
         updateManager.addFunction(updateRadio);
+        let xOffset = (gameConsts.width - 720) * 0.5;
         globalObjsTemp.radio = {
             radioClickBlocker: {},
             radioDeviceButtonBlocker: {},
@@ -1360,7 +1361,7 @@ function clickRadio() {
             backing: PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'radio', 'backing.png'),
             indicator: PhaserScene.add.sprite(gameConsts.halfWidth + 122.5, gameConsts.halfHeight + 70, 'misc', 'indicator.png'),
             knob: PhaserScene.add.sprite(gameConsts.halfWidth + 122.5, gameConsts.halfHeight + 70, 'radio', 'knob.png'),
-            bar: PhaserScene.add.sprite(386, gameConsts.halfHeight - 148, 'radio', 'bar.png'),
+            bar: PhaserScene.add.sprite(386 + xOffset, gameConsts.halfHeight - 148, 'radio', 'bar.png'),
             cover: PhaserScene.add.sprite(gameConsts.halfWidth + 7, gameConsts.halfHeight - 150, 'radio', 'cover.png'),
             arrow: PhaserScene.add.sprite(gameConsts.halfWidth + 7, gameConsts.halfHeight - 150, 'misc', 'guide_arrow.png'),
         };
