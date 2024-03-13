@@ -4,7 +4,6 @@ let loadingText;
 let isMobile = false;
 
 function testMobile() {
-    return true;
     const regex = /Mobi|Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i;
     return regex.test(navigator.userAgent);
 }
@@ -446,7 +445,7 @@ function showAwardImage(imageRef, text = '', showSpook) {
             scaleY: 0.81,
         },
         onMouseUp: () => {
-            closeAward();                
+            closeAward();
         }
     });
     globalObjects.awardCloseIcon.setDepth(98);
