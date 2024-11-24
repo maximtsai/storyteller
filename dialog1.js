@@ -2145,7 +2145,8 @@ let dialogList1 = {
             {speaker: "You", text: "..."},
             {speaker: "Maggie", face: "maggie_normal.png", text: "Here Honey, one hot coffee.", publish: "MaggieCoffee"},
             {speaker: "Maggie", face: "maggie_normal.png", forceProgress: true, text: "Sorry about the wait. What can I get\nstarted for...••••••••••••••••••", publish: "ActOneEnd"},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "...••••••••I swear I changed these lights not\ntwo weeks ago,• and now they actin'\nup again!"},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "..."},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "I swear I changed these lights not\ntwo weeks ago,• and now they actin'\nup again!"},
             {speaker: "Maggie", face: "maggie_sad.png", unclickable: true, text: "Once this storm blows over, I reckon\nI'll need to get some new light bulbs."},
         ]
     },
@@ -2155,7 +2156,8 @@ let dialogList1 = {
             {speaker: "Caspar", face: "caspar_normal.png", text: "No odder than you or me, friend."},
             {speaker: "Maggie", face: "maggie_normal.png", text: "Here Honey, one hot coffee.", publish: "MaggieCoffee"},
             {speaker: "Maggie", face: "maggie_normal.png", forceProgress: true, text: "Sorry about the wait. What can I get\nstarted for...••••••••••••••••••", publish: "ActOneEnd"},
-            {speaker: "Maggie", face: "maggie_sad.png", text: "...••••••••I swear I changed these lights not\ntwo weeks ago,•••• and now they actin'\nup again!"},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "..."},
+            {speaker: "Maggie", face: "maggie_sad.png", text: "I swear I changed these lights not\ntwo weeks ago,• and now they actin'\nup again!"},
             {speaker: "Maggie", face: "maggie_sad.png", unclickable: true, text: "Once this storm blows over, I reckon\nI'll need to get some new light bulbs."},
         ]
     },

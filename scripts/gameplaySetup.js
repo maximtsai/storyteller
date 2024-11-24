@@ -398,7 +398,7 @@ function showAwardImage(imageRef, text = '', showSpook) {
             scaleY: 0.81,
         },
         onMouseUp: () => {
-            closeAward();                
+            closeAward();
         }
     });
     globalObjects.awardCloseIcon.setDepth(98);
@@ -1437,7 +1437,6 @@ function setCharactersNormal() {
 function runIntroSequence() {
     document.body.style.backgroundImage = "url('sprites/preload/rain.webp')";
     globalObjects.goalBtn.setState(NORMAL);
-
     for (let i in globalObjects.achievementImages) {
         if (globalObjects.achievementImages[i].destroy) {
             globalObjects.achievementImages[i].destroy();
@@ -1455,6 +1454,7 @@ function runIntroSequence() {
             globalObjects.achievements[i].destroy();
         }
     }
+
     globalObjects.optionsButton.destroy();
     globalObjects.creditsButton.destroy();
     if (globalObjects.flashWhite) {
