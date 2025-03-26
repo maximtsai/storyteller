@@ -3032,7 +3032,7 @@ let dialogList1 = {
             {speaker: "", face: "ethan_dark_eye_6.png", forceProgress: true, unclickable: true, text: "."},
             {speaker: "", face: "ethan_dark_eye_4.png", forceProgress: true, unclickable: true, text: "."},
             {speaker: "", face: "ethan_dark_eye_6.png", forceProgress: true, unclickable: true, text: ".̶̨̣͚̻̻̗̦̮̃̐̅", onFinish: () => {
-                    gameVars.cameraPosX = 1500;
+                    gameVars.cameraPosX = 1400;
                     gameVars.cameraMoveVel = -0.7;
                     gameVars.cameraMoveAcc = 0;
                     gameVars.cameraPosMaxXOutside = 1680;

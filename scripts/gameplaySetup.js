@@ -1219,7 +1219,7 @@ function tickKeyPresses(deltaScale) {
         } else if (gameState.isOutdoors) {
             startY = gameConsts.outdoorStartY;
 
-            if(gameVars.cameraPosX > gameVars.cameraPosMaxXOutside && gameVars.cameraPosMaxXOutside < 2000 && !gameVars.noMoreTooFar) {
+            if(gameVars.cameraPosX > (gameVars.cameraPosMaxXOutside - 10) && gameVars.cameraPosMaxXOutside < 2000 && !gameVars.noMoreTooFar) {
                 gameVars.noMoreTooFar = true;
                 dialogManager.showDialogNode("TooFarWorryNope");
             }
@@ -1252,7 +1252,7 @@ function tickKeyPresses(deltaScale) {
                 gameVars.warningFour = true;
                 playSound('meatclick');
                 dialogManager.showDialogNode("TooFarWorry4");
-                gameCharacters.casparTemp = PhaserScene.add.image(1540, gameConsts.outdoorStartY + 400, 'characters', 'caspar2.png').setDepth(11);
+                gameCharacters.casparTemp = PhaserScene.add.image(1480, gameConsts.outdoorStartY + 440, 'characters', 'caspar2.png').setDepth(11);
 
             }
         }
