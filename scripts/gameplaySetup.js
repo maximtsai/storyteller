@@ -1190,6 +1190,7 @@ function tickKeyPresses(deltaScale) {
         }
         gameVars.moveSine += deltaScale * 0.165 * outdoorsMoveMult;
         gameVars.cameraPosX += gameVars.cameraMoveVel * sineMoveMult * deltaScale * deltaDecay * (outdoorsMoveMult * 0.8 + 0.2);
+
         if(gameVars.cameraPosX > gameVars.cameraPosMaxX) {
             gameVars.cameraPosX = gameVars.cameraPosMaxX;
             gameVars.cameraMoveVel = 0;
@@ -1217,6 +1218,43 @@ function tickKeyPresses(deltaScale) {
             startY = gameConsts.shedStartY;
         } else if (gameState.isOutdoors) {
             startY = gameConsts.outdoorStartY;
+
+            if(gameVars.cameraPosX > gameVars.cameraPosMaxXOutside && gameVars.cameraPosMaxXOutside < 2000 && !gameVars.noMoreTooFar) {
+                gameVars.noMoreTooFar = true;
+                dialogManager.showDialogNode("TooFarWorryNope");
+            }
+
+            if (gameVars.cameraPosX > 3050) {
+                gameVars.cameraMoveVel *= 0.75;
+            } else if (gameVars.cameraPosX > 2600) {
+                gameVars.cameraMoveVel *= 0.92;
+            }
+            // Going too far
+            if (gameVars.cameraPosX > 2400 && !gameVars.warningOne) {
+                gameVars.cameraMoveAcc = 0;
+                gameVars.cameraMoveVel = 0;
+                gameVars.warningOne = true;
+                dialogManager.showDialogNode("TooFarWorry1");
+            } else if (gameVars.cameraPosX > 3100 && !gameVars.warningTwo) {
+                gameVars.cameraMoveAcc = 0;
+                gameVars.cameraMoveVel = 0;
+                gameVars.warningTwo = true;
+                dialogManager.showDialogNode("TooFarWorry2");
+            } else if (gameVars.cameraPosX > 3800 && !gameVars.warningThree) {
+                gameVars.cameraMoveAcc = 0;
+                gameVars.cameraMoveVel = 0;
+                gameVars.warningThree = true;
+                dialogManager.showDialogNode("TooFarWorry3");
+
+            } else if (gameVars.cameraPosX > 4900 && !gameVars.warningFour) {
+                gameVars.cameraMoveAcc = 0;
+                gameVars.cameraMoveVel = 0;
+                gameVars.warningFour = true;
+                playSound('meatclick');
+                dialogManager.showDialogNode("TooFarWorry4");
+                gameCharacters.casparTemp = PhaserScene.add.image(1540, gameConsts.outdoorStartY + 400, 'characters', 'caspar2.png').setDepth(11);
+
+            }
         }
 
         let distToStartY = startY - gameVars.cameraPosY;
@@ -1282,7 +1320,7 @@ function realGameStart() {
     // 1000
     let bgRain = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'rain.png').setScale(4);
     bgRain.depth = -2;
-    bgRain.scrollFactorX = 0.5;
+    bgRain.scrollFactorX = 0.4;
     let bg1 = PhaserScene.add.image(-987.5, gameConsts.halfHeight, 'backgrounds', 'bg1.png');
     let window1 = PhaserScene.add.image(-765, gameConsts.halfHeight - 63, 'characters', 'window.png').setDepth(-1);
     let bg2 = PhaserScene.add.image(12, gameConsts.halfHeight, 'backgrounds', 'bg2.png');
@@ -1348,7 +1386,7 @@ function realGameStart() {
         }, 200);
     }, 1100);
 
-    globalObjsTemp.gloom = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(5000, 999).setDepth(8).setAlpha(0);
+    globalObjsTemp.gloom = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(9000, 999).setDepth(8).setAlpha(0);
     globalObjsTemp.gloom.setBlendMode(Phaser.BlendModes.DARKEN);
 }
 
@@ -1490,10 +1528,10 @@ function runIntroSequence() {
     // TODO replace
     globalObjsTemp.rainBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'rainheavy1.png').setDepth(1).setScale(3).setRotation(0.15);
     globalObjsTemp.rainBackground.play('rain_heavy')
-    globalObjsTemp.rainBackground.scrollFactorX = 0.2; globalObjsTemp.rainBackground.scrollFactorY = 0;
+    globalObjsTemp.rainBackground.scrollFactorX = 0.1; globalObjsTemp.rainBackground.scrollFactorY = 0;
     globalObjsTemp.rainForeground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'rainheavy1.png').setDepth(1).setScale(3).setRotation(0.15).play('rain_lite');
     globalObjsTemp.rainForeground.play('rain_lite')
-    globalObjsTemp.rainForeground.scrollFactorX = 0.2; globalObjsTemp.rainForeground.scrollFactorY = 0;
+    globalObjsTemp.rainForeground.scrollFactorX = 0.1; globalObjsTemp.rainForeground.scrollFactorY = 0;
     // globalObjsTemp.rainForeground;
     addToShakeObjects(globalObjsTemp.rainForeground);
 

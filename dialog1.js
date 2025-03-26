@@ -3003,5 +3003,65 @@ let dialogList1 = {
                     messageBus.publish('juanContinue');
                 }},
         ]
-    }
+    },
+
+    TooFarWorry1: {
+        speech: [
+            {speaker: "", text: "(Nothing but rain and mud out here)"},
+        ]
+    },
+
+    TooFarWorry2: {
+        speech: [
+            {speaker: "", face: "ethan_dark_eye_5.png", forceProgress: true, unclickable: true, text: ".", onFinish: () => {
+                playSound('crackle1');
+            }},
+        ]
+    },
+
+    TooFarWorry3: {
+        speech: [
+            {speaker: "", text: "(You should head back)"},
+        ]
+    },
+
+    TooFarWorry4: {
+        speech: [
+            {speaker: "", face: "ethan_dark_eye_4.png", forceProgress: true, unclickable: true, text: "."},
+            {speaker: "", face: "ethan_dark_eye_5.png", forceProgress: true, unclickable: true, text: "."},
+            {speaker: "", face: "ethan_dark_eye_6.png", forceProgress: true, unclickable: true, text: "."},
+            {speaker: "", face: "ethan_dark_eye_4.png", forceProgress: true, unclickable: true, text: "."},
+            {speaker: "", face: "ethan_dark_eye_6.png", forceProgress: true, unclickable: true, text: ".̶̨̣͚̻̻̗̦̮̃̐̅", onFinish: () => {
+                    gameVars.cameraPosX = 1500;
+                    gameVars.cameraMoveVel = -0.7;
+                    gameVars.cameraMoveAcc = 0;
+                    gameVars.cameraPosMaxXOutside = 1680;
+                    gameVars.cameraPosMaxX = gameVars.cameraPosMaxXOutside;
+                    setTimeout(() => {
+                        dialogManager.showDialogNode("TooFarCaspar");
+                    }, 0)
+
+
+                }},
+        ],
+    },
+
+    TooFarCaspar: {
+        speech: [
+            {speaker: "Caspar", face: "caspar_sad.png", text: "Son.•••••• Son!"},
+            {speaker: "You", text: "...•••Huh?••••••••• Caspar?"},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "•Ain't the time to be fallin' asleep\nnow is it?"},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "I know you're just helpin' out, but\nyou shouldn't stay in the rain too long."},
+            {speaker: "Caspar", face: "caspar_doubt.png", text: "You never know what could be out there.", onFinish: () => {
+                    messageBus.publish('casparReturn')
+                }},
+        ]
+    },
+
+    TooFarWorryNope: {
+        speech: [
+            {speaker: "", text: "(Best not to stray too far from the diner)"},
+        ],
+    },
+
 };

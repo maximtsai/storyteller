@@ -57,7 +57,9 @@ class MiscSubscribe {
             messageBus.subscribe("casparExit", this.casparExit.bind(this)),
             messageBus.subscribe("casparGoodExit", this.casparGoodExit.bind(this)),
             messageBus.subscribe("casparExitFast", this.casparExitFast.bind(this)),
+            messageBus.subscribe("casparCloseDoor", this.casparCloseDoor.bind(this)),
             messageBus.subscribe("casparFadeAway", this.casparFadeAway.bind(this)),
+            messageBus.subscribe("casparReturn", this.casparReturn.bind(this)),
 
             messageBus.subscribe("goodEndLocked", this.goodEndLocked.bind(this)),
             messageBus.subscribe("casparToBackdoor", this.casparToBackdoor.bind(this)),
@@ -185,7 +187,9 @@ class MiscSubscribe {
         });
     }
 
+    // Todo test this
     casparCloseDoor() {
+        console.log("caspar closed door");
         buttonManager.disableAllInput();
         this.scene.tweens.add({
             targets: [gameCharacters.backdoor],
@@ -194,6 +198,21 @@ class MiscSubscribe {
             duration: 1000,
             onComplete: () => {
                 buttonManager.enableAllInput();
+            }
+        });
+    }
+
+    casparReturn() {
+        gameCharacters.casparTemp.scaleX = -1;
+        this.scene.tweens.add({
+            delay: 200,
+            targets: [gameCharacters.casparTemp],
+            x: "-=400",
+            ease: 'Cubic.easeIn',
+            alpha: 0,
+            duration: 2000,
+            onComplete: () => {
+                gameCharacters.casparTemp.destroy();
             }
         });
     }

@@ -93,7 +93,7 @@ class GameFinal {
         });
         this.blackScreen = this.scene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setAlpha(0).setDepth(9999);
         this.blackScreen.setScale(5000, 1000);
-        globalObjsTemp.gloom = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(5000, 999).setDepth(8).setAlpha(0);
+        globalObjsTemp.gloom = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(9000, 999).setDepth(8).setAlpha(0);
         globalObjsTemp.gloom.scrollFactorX = 0;
         globalObjsTemp.gloom.scrollFactorY = 0;
         globalObjsTemp.gloom.setBlendMode(Phaser.BlendModes.DARKEN);
