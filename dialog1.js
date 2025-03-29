@@ -3013,7 +3013,7 @@ let dialogList1 = {
 
     TooFarWorry2: {
         speech: [
-            {speaker: "", face: "ethan_dark_eye_5.png", forceProgress: true, unclickable: true, text: ".", onFinish: () => {
+            {speaker: "", forceProgress: true, unclickable: true, text: ".", onFinish: () => {
                 playSound('crackle1');
             }},
         ]
@@ -3030,12 +3030,14 @@ let dialogList1 = {
             {speaker: "", face: "ethan_dark_eye_4.png", forceProgress: true, unclickable: true, text: "."},
             {speaker: "", face: "ethan_dark_eye_5.png", forceProgress: true, unclickable: true, text: "."},
             {speaker: "", face: "ethan_dark_eye_6.png", forceProgress: true, unclickable: true, text: "."},
+            {speaker: "", face: "ethan_dark_eye_5.png", forceProgress: true, unclickable: true, text: "."},
             {speaker: "", face: "ethan_dark_eye_4.png", forceProgress: true, unclickable: true, text: "."},
+            {speaker: "", face: "ethan_dark_eye_5.png", forceProgress: true, unclickable: true, text: "."},
             {speaker: "", face: "ethan_dark_eye_6.png", forceProgress: true, unclickable: true, text: ".̶̨̣͚̻̻̗̦̮̃̐̅", onFinish: () => {
                     gameVars.cameraPosX = 1400;
                     gameVars.cameraMoveVel = -0.7;
                     gameVars.cameraMoveAcc = 0;
-                    gameVars.cameraPosMaxXOutside = 1680;
+                    gameVars.cameraPosMaxXOutside = 1600;
                     gameVars.cameraPosMaxX = gameVars.cameraPosMaxXOutside;
                     setTimeout(() => {
                         dialogManager.showDialogNode("TooFarCaspar");
@@ -3048,11 +3050,11 @@ let dialogList1 = {
 
     TooFarCaspar: {
         speech: [
-            {speaker: "Caspar", face: "caspar_sad.png", text: "Son.•••••• Son!"},
-            {speaker: "You", text: "...•••Huh?••••••••• Caspar?"},
-            {speaker: "Caspar", face: "caspar_normal.png", text: "•Ain't the time to be fallin' asleep\nnow is it?"},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Hey there son!"},
+            {speaker: "You", text: "...•••Huh?••••••••••• Caspar?••"},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Not the best place to be fallin' asleep\nnow is it?"},
             {speaker: "Caspar", face: "caspar_normal.png", text: "I know you're just helpin' out, but\nyou shouldn't stay in the rain too long."},
-            {speaker: "Caspar", face: "caspar_doubt.png", text: "You never know what could be out there.", onFinish: () => {
+            {speaker: "Caspar", face: "caspar_doubt.png", text: "You never know what else you'll start\ndreamin' of.", onFinish: () => {
                     messageBus.publish('casparReturn')
                 }},
         ]

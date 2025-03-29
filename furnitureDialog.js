@@ -445,7 +445,7 @@ let furnitureDialog = {
             {speaker: "You", text: "Could we keep the radio on? It might have\nuseful information."},
             {speaker: "Maggie", face: "maggie_normal.png", text: "Of course. You do what you need to do\nand I'll have a meal prepared for you\nshortly.", onFinish: () => {
                     setNewGoalText('Check up on everyone')
-                    gameVars.cameraPosMaxXOutside = 1680;
+                    gameVars.cameraPosMaxXOutside = 1600;
 
                 }},
         ]

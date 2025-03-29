@@ -126,17 +126,21 @@ function setupGame() {
         globalObjects.exclamation = new ExclamationHover(PhaserScene);
     }
 
+
     globalObjects.optionsButton = new Button({
         normal: {
-            "ref": "buttonStart",
+            "atlas": "buttons",
+            "ref": "buttonStart.png",
             "x": gameConsts.halfWidth,
-            "y": gameConsts.height - 180
+            "y": gameConsts.height - 195
         },
         hover: {
-            "ref": "buttonStart2"
+            "atlas": "buttons",
+            "ref": "buttonStart2.png"
         },
         press: {
-            "ref": "buttonStart3"
+            "atlas": "buttons",
+            "ref": "buttonStart3.png"
         },
         onHover: () => {
             if (canvas) {
@@ -152,6 +156,53 @@ function setupGame() {
             runIntroSequence();
         }
     });
+    globalObjects.optionsButton.setDepth(1);
+
+    
+    setTimeout(() => {
+        if (!gameVars.introStarted) {
+            let buttonGlow = PhaserScene.add.image(globalObjects.optionsButton.getXPos(), globalObjects.optionsButton.getYPos(), 'buttons', 'buttonGlow.png').setDepth(0).setAlpha(0.9).setScale(1);
+            PhaserScene.tweens.add({
+                targets: buttonGlow,
+                alpha: 0,
+                ease: 'Quad.easeOut',
+                duration: 1200
+            });
+            PhaserScene.tweens.add({
+                targets: buttonGlow,
+                scaleX: 1.45,
+                scaleY: 1.8,
+                ease: 'Cubic.easeOut',
+                duration: 1200,
+                onComplete: () => {
+                    buttonGlow.destroy();
+                }
+            });
+            setTimeout(() => {
+                if (!gameVars.introStarted) {
+                    let buttonGlow2 = PhaserScene.add.image(globalObjects.optionsButton.getXPos(), globalObjects.optionsButton.getYPos(), 'buttons', 'buttonGlow.png').setDepth(0).setAlpha(0.9).setScale(1);
+                    PhaserScene.tweens.add({
+                        targets: buttonGlow2,
+                        alpha: 0,
+                        ease: 'Quad.easeOut',
+                        duration: 1200
+                    });
+                    PhaserScene.tweens.add({
+                        targets: buttonGlow2,
+                        scaleX: 1.45,
+                        scaleY: 1.8,
+                        ease: 'Cubic.easeOut',
+                        duration: 1200,
+                        onComplete: () => {
+                            buttonGlow2.destroy();
+                        }
+                    });
+                }
+            }, 3000)
+        }
+    }, 3000);
+
+
     createRewardButtons();
 
     // create credits button
@@ -230,7 +281,7 @@ function clickCredits() {
             "ref": "blackPixel",
             "x": gameConsts.halfWidth,
             "y": gameConsts.halfHeight,
-            alpha: 0.75
+            alpha: 0.8
         },
         onMouseUp: () => {
             closeCredits();
@@ -239,12 +290,12 @@ function clickCredits() {
     globalObjects.closeCreditsButton.setScale(500, 500);
     globalObjects.closeCreditsButton.setDepth(99);
     globalObjects.creditsText = PhaserScene.add.text(50, 50, 'Programming and stick figure art\nby Maxim Tsai (maximtsai.com)\n\nWriting and story by Rowa Skipson\n\nFinal scene art by Theresa Kao.')
-    globalObjects.creditsText.setFontSize(28);
+    globalObjects.creditsText.setFontSize(25);
     globalObjects.creditsText.setScale(0.82);
     globalObjects.creditsText.setDepth(99);
 
     globalObjects.creditsText2 = PhaserScene.add.text(50, 160, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org,\nsonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
-    globalObjects.creditsText2.setFontSize(24);
+    globalObjects.creditsText2.setFontSize(20);
     globalObjects.creditsText2.setScale(0.82);
     globalObjects.creditsText2.setDepth(99);
 
@@ -264,7 +315,14 @@ function clickCredits() {
         },
         onMouseUp: () => {
             closeCredits();
-        }
+            canvas.style.cursor = 'default';
+        },
+        onHover: () => {
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            canvas.style.cursor = 'default';
+        },
     });
     globalObjects.creditsCloseIcon.setDepth(99);
 
@@ -1235,24 +1293,45 @@ function tickKeyPresses(deltaScale) {
                 gameVars.cameraMoveVel = 0;
                 gameVars.warningOne = true;
                 dialogManager.showDialogNode("TooFarWorry1");
-            } else if (gameVars.cameraPosX > 3100 && !gameVars.warningTwo) {
-                gameVars.cameraMoveAcc = 0;
-                gameVars.cameraMoveVel = 0;
+            } else if (gameVars.cameraPosX > 2750 && !gameVars.warningTwo) {
+                let tentaTemp = PhaserScene.add.image(gameConsts.width + 800, gameConsts.height - 60, 'lowq', 'sprawl.png').setDepth(1).setScale(2).setOrigin(1, 1).setAlpha(0);
+                PhaserScene.tweens.add({
+                    targets: tentaTemp,
+                    alpha: 0.05,
+                    ease: 'Quad.easeIn',
+                    duration: 3700,
+                    onComplete: () => {
+                        gameVars.cameraMoveAcc = 0;
+                        gameVars.cameraMoveVel = 0;
+                        dialogManager.showDialogNode("TooFarWorry2");
+                        PhaserScene.tweens.add({
+                            targets: tentaTemp,
+                            alpha: 0.4,
+                            duration: 300,
+                            x: "+=1300",
+                            onComplete: () => {
+                                tentaTemp.destroy();
+                            }
+                        });
+
+                    }
+                });
+                tentaTemp.scrollFactorX = 0.1; tentaTemp.scrollFactorY = 0;
                 gameVars.warningTwo = true;
-                dialogManager.showDialogNode("TooFarWorry2");
             } else if (gameVars.cameraPosX > 3800 && !gameVars.warningThree) {
                 gameVars.cameraMoveAcc = 0;
                 gameVars.cameraMoveVel = 0;
                 gameVars.warningThree = true;
                 dialogManager.showDialogNode("TooFarWorry3");
-
-            } else if (gameVars.cameraPosX > 4900 && !gameVars.warningFour) {
-                gameVars.cameraMoveAcc = 0;
-                gameVars.cameraMoveVel = 0;
+            } else if (gameVars.cameraPosX > 4300 && !gameVars.warningFour) {
                 gameVars.warningFour = true;
-                playSound('meatclick');
-                dialogManager.showDialogNode("TooFarWorry4");
-                gameCharacters.casparTemp = PhaserScene.add.image(1480, gameConsts.outdoorStartY + 440, 'characters', 'caspar2.png').setDepth(11);
+                setTimeout(() => {
+                    gameVars.cameraMoveAcc = 0;
+                    gameVars.cameraMoveVel = 0;
+                    playSound('meatclick');
+                    dialogManager.showDialogNode("TooFarWorry4");
+                    gameCharacters.casparTemp = PhaserScene.add.image(1510, gameConsts.outdoorStartY + 446, 'characters', 'caspar2.png').setDepth(11).setAlpha(0.75).setScale(0.93);
+                }, 6000)
 
             }
         }
@@ -1473,6 +1552,7 @@ function setCharactersNormal() {
 
 
 function runIntroSequence() {
+    gameVars.introStarted = true;
     document.body.style.backgroundImage = "url('sprites/preload/rain.webp')";
     globalObjects.goalBtn.setState(NORMAL);
 

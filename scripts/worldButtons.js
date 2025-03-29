@@ -1901,8 +1901,8 @@ function exitBackdoor() {
             bg10: PhaserScene.add.image(4997.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgoutExtend.png'),
             bg11: PhaserScene.add.image(5997, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgoutExtend.png'),
             bg12: PhaserScene.add.image(6996.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgoutExtend.png'),
-
         }
+
         globalObjsTemp.outdoorBackgrounds.bg0.scrollFactorX = 0.9;
 
         globalObjsTemp.outdoorBackgrounds.bg5.scrollFactorX = 0.3;
