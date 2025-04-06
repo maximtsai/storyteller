@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>6</int>
         <key>texturePackerVersion</key>
-        <string>7.0.3</string>
+        <string>7.2.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser</string>
+        <string>phaser-maxim</string>
         <key>textureFileName</key>
         <filename>../sprites/lowq-{n}.webp</filename>
         <key>flipPVR</key>
@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>58</uint>
+        <uint>44</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
@@ -173,6 +173,21 @@
         </struct>
         <key>individualSpriteSettings</key>
         <map type="IndividualSpriteSettingsMap">
+            <key type="filename">lowq/caspar2.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>0.63</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>150,134,300,269</rect>
+                <key>scale9Paddings</key>
+                <rect>150,134,300,269</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
             <key type="filename">lowq/eyes.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>

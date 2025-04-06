@@ -4,8 +4,8 @@
 			"image": "sprites/lowq-0.webp",
 			"format": "RGBA5555",
 			"size": {
-				"w": 2021,
-				"h": 1940
+				"w": 1838,
+				"h": 2003
 			},
 			"scale": 1,
 			"frames": [
@@ -49,8 +49,8 @@
 						"h": 653
 					},
 					"frame": {
-						"x": 822,
-						"y": 1,
+						"x": 1,
+						"y": 835,
 						"w": 636,
 						"h": 653
 					},
@@ -74,8 +74,8 @@
 						"h": 620
 					},
 					"frame": {
-						"x": 822,
-						"y": 656,
+						"x": 639,
+						"y": 835,
 						"w": 620,
 						"h": 620
 					},
@@ -99,8 +99,8 @@
 						"h": 590
 					},
 					"frame": {
-						"x": 1,
-						"y": 835,
+						"x": 822,
+						"y": 1,
 						"w": 590,
 						"h": 590
 					},
@@ -124,8 +124,8 @@
 						"h": 512
 					},
 					"frame": {
-						"x": 593,
-						"y": 1278,
+						"x": 639,
+						"y": 1457,
 						"w": 576,
 						"h": 512
 					},
@@ -150,7 +150,7 @@
 					},
 					"frame": {
 						"x": 1,
-						"y": 1427,
+						"y": 1490,
 						"w": 576,
 						"h": 512
 					},
@@ -174,8 +174,8 @@
 						"h": 512
 					},
 					"frame": {
-						"x": 1171,
-						"y": 1278,
+						"x": 1217,
+						"y": 1457,
 						"w": 576,
 						"h": 512
 					},
@@ -199,8 +199,8 @@
 						"h": 512
 					},
 					"frame": {
-						"x": 1444,
-						"y": 656,
+						"x": 1261,
+						"y": 593,
 						"w": 576,
 						"h": 512
 					},
@@ -224,35 +224,10 @@
 						"h": 512
 					},
 					"frame": {
-						"x": 1460,
+						"x": 1414,
 						"y": 1,
 						"w": 398,
 						"h": 512
-					},
-					"anchor": {
-						"x": 0.5,
-						"y": 0.5
-					}
-				},
-				{
-					"filename": "eyes.png",
-					"rotated": false,
-					"trimmed": true,
-					"sourceSize": {
-						"w": 64,
-						"h": 30
-					},
-					"spriteSourceSize": {
-						"x": 0,
-						"y": 2,
-						"w": 63,
-						"h": 26
-					},
-					"frame": {
-						"x": 593,
-						"y": 835,
-						"w": 63,
-						"h": 26
 					},
 					"anchor": {
 						"x": 0.5,
@@ -274,10 +249,60 @@
 						"h": 240
 					},
 					"frame": {
-						"x": 1749,
-						"y": 1170,
+						"x": 822,
+						"y": 593,
 						"w": 260,
 						"h": 240
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "eyes.png",
+					"rotated": false,
+					"trimmed": true,
+					"sourceSize": {
+						"w": 64,
+						"h": 30
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 2,
+						"w": 63,
+						"h": 26
+					},
+					"frame": {
+						"x": 1084,
+						"y": 593,
+						"w": 63,
+						"h": 26
+					},
+					"anchor": {
+						"x": 0.5,
+						"y": 0.5
+					}
+				},
+				{
+					"filename": "caspar2.png",
+					"rotated": false,
+					"trimmed": false,
+					"sourceSize": {
+						"w": 378,
+						"h": 338
+					},
+					"spriteSourceSize": {
+						"x": 0,
+						"y": 0,
+						"w": 378,
+						"h": 338
+					},
+					"frame": {
+						"x": 1261,
+						"y": 1107,
+						"w": 378,
+						"h": 338
 					},
 					"anchor": {
 						"x": 0.5,
@@ -290,6 +315,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-		"smartupdate": "$TexturePacker:SmartUpdate:544c10adb4d57e66bb31100c40eb0f3c:dc94082feb9f038a21b084b1bd7a6ac7:0644d9afadc5ec39d626109554d3f3bc$"
+		"smartupdate": "$TexturePacker:SmartUpdate:84cf227e0326f467c72378ae1bfa8b98:359605ffeaa119424fff8777106c5c64:0644d9afadc5ec39d626109554d3f3bc$"
 	}
 }

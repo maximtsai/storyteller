@@ -41,7 +41,9 @@ let dialogList1 = {
             {speaker: "Maggie", face: "maggie_dark_scared.png", text: "Out back, but its wires are all\ntangled up."},
             {speaker: "Maggie", face: "maggie_dark_scared.png", text: "I've been meaning to fix it, but it was\nalways my late husband who was good\nat these things."},
             {speaker: "You", text: "I'm pretty handy with machines.\nLet me take a crack at it."},
-            {speaker: "Maggie", face: "maggie_dark_scared.png", text: "Thank you honey.\nYou'll need these keys to the shed."},
+            {speaker: "Maggie", face: "maggie_dark_scared.png", text: "Thank you honey.\nYou'll need these keys to the shed.", onFinish: () => {
+                    playSound('keysjingle');
+                }},
             {speaker: "", text: "  (You can now exit the backdoor)"},
         ]
     },
@@ -3014,7 +3016,7 @@ let dialogList1 = {
     TooFarWorry2: {
         speech: [
             {speaker: "", forceProgress: true, unclickable: true, text: ".", onFinish: () => {
-                playSound('crackle1');
+                playSound('sizzle');
             }},
         ]
     },
@@ -3027,12 +3029,6 @@ let dialogList1 = {
 
     TooFarWorry4: {
         speech: [
-            {speaker: "", face: "ethan_dark_eye_4.png", forceProgress: true, unclickable: true, text: "."},
-            {speaker: "", face: "ethan_dark_eye_5.png", forceProgress: true, unclickable: true, text: "."},
-            {speaker: "", face: "ethan_dark_eye_6.png", forceProgress: true, unclickable: true, text: "."},
-            {speaker: "", face: "ethan_dark_eye_5.png", forceProgress: true, unclickable: true, text: "."},
-            {speaker: "", face: "ethan_dark_eye_4.png", forceProgress: true, unclickable: true, text: "."},
-            {speaker: "", face: "ethan_dark_eye_5.png", forceProgress: true, unclickable: true, text: "."},
             {speaker: "", face: "ethan_dark_eye_6.png", forceProgress: true, unclickable: true, text: ".̶̨̣͚̻̻̗̦̮̃̐̅", onFinish: () => {
                     gameVars.cameraPosX = 1400;
                     gameVars.cameraMoveVel = -0.7;
@@ -3041,6 +3037,8 @@ let dialogList1 = {
                     gameVars.cameraPosMaxX = gameVars.cameraPosMaxXOutside;
                     setTimeout(() => {
                         dialogManager.showDialogNode("TooFarCaspar");
+
+                        globalObjects.outdoorRain.volume = 0.88 * globalVolume;
                     }, 0)
 
 

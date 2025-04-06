@@ -1295,9 +1295,10 @@ function tickKeyPresses(deltaScale) {
                 dialogManager.showDialogNode("TooFarWorry1");
             } else if (gameVars.cameraPosX > 2750 && !gameVars.warningTwo) {
                 let tentaTemp = PhaserScene.add.image(gameConsts.width + 800, gameConsts.height - 60, 'lowq', 'sprawl.png').setDepth(1).setScale(2).setOrigin(1, 1).setAlpha(0);
+                let eyeTemp = PhaserScene.add.image(gameConsts.width + 700, gameConsts.halfHeight - 100, 'lowq', 'spook4.png').setDepth(1).setScale(1).setAlpha(0);
                 PhaserScene.tweens.add({
-                    targets: tentaTemp,
-                    alpha: 0.05,
+                    targets: [tentaTemp, eyeTemp],
+                    alpha: 0.045,
                     ease: 'Quad.easeIn',
                     duration: 3700,
                     onComplete: () => {
@@ -1311,28 +1312,90 @@ function tickKeyPresses(deltaScale) {
                             x: "+=1300",
                             onComplete: () => {
                                 tentaTemp.destroy();
+                                eyeTemp.setAlpha(0.2);
+                                setTimeout(() => {
+                                    eyeTemp.scaleY = 0.5;
+                                    setTimeout(() => {
+                                        eyeTemp.destroy();
+                                    }, 120)
+                                }, 120)
                             }
                         });
 
                     }
                 });
                 tentaTemp.scrollFactorX = 0.1; tentaTemp.scrollFactorY = 0;
+                eyeTemp.scrollFactorX = 0.1; eyeTemp.scrollFactorY = 0;
                 gameVars.warningTwo = true;
             } else if (gameVars.cameraPosX > 3800 && !gameVars.warningThree) {
                 gameVars.cameraMoveAcc = 0;
                 gameVars.cameraMoveVel = 0;
                 gameVars.warningThree = true;
                 dialogManager.showDialogNode("TooFarWorry3");
+
+                PhaserScene.tweens.add({
+                    targets: globalObjects.outdoorRain,
+                    volume: 0.4 * globalVolume,
+                    duration: 6000,
+                });
             } else if (gameVars.cameraPosX > 4300 && !gameVars.warningFour) {
                 gameVars.warningFour = true;
                 setTimeout(() => {
-                    gameVars.cameraMoveAcc = 0;
-                    gameVars.cameraMoveVel = 0;
-                    playSound('meatclick');
-                    dialogManager.showDialogNode("TooFarWorry4");
-                    gameCharacters.casparTemp = PhaserScene.add.image(1510, gameConsts.outdoorStartY + 446, 'characters', 'caspar2.png').setDepth(11).setAlpha(0.75).setScale(0.93);
-                }, 6000)
+                    let eyeTemp2 = PhaserScene.add.image(gameConsts.halfWidth - 200, gameConsts.halfHeight, 'lowq', 'spook4.png').setDepth(1).setScale(2.7, 2).setRotation(0.1).setAlpha(0.16);
+                    eyeTemp2.scrollFactorX = 0; eyeTemp2.scrollFactorY = 0;
+                    setTimeout(() => {
+                        let blackPixelTemp = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setAlpha(0.2).setDepth(9999).setScale(1000,1000);
+                        blackPixelTemp.scrollFactorX = 0; blackPixelTemp.scrollFactorY = 0;
 
+                        eyeTemp2.x = gameConsts.halfWidth;
+                        eyeTemp2.setScale(3.2).setAlpha(0.35);
+                            playSound('click');
+                        setTimeout(() => {
+                            blackPixelTemp.alpha = 0;
+                            eyeTemp2.x = gameConsts.halfWidth + 200;
+                            eyeTemp2.setScale(2.7, 2).setAlpha(0.05).setRotation(-0.1);
+                            setTimeout(() => {
+                                eyeTemp2.alpha = 0;
+                                setTimeout(() => {
+                                    playSound('eyeclose');
+                                    eyeTemp2.x = gameConsts.halfWidth;
+                                    eyeTemp2.setScale(3).setAlpha(0.35);
+                                    setTimeout(() => {
+                                        eyeTemp2.destroy();
+                                        blackPixelTemp.alpha = 1;
+                                        let tempSound = playSound('staticloop');
+                                        let blackEyeTemp = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'lowq', 'shadowEye.png').setDepth(10000).setScale(1.1,1.1);
+                                        blackEyeTemp.scrollFactorX = 0; blackEyeTemp.scrollFactorY = 0;
+                                        setTimeout(() => {
+                                            blackEyeTemp.setScale(1.3);
+
+                                            blackEyeTemp.destroy();
+                                            blackPixelTemp.destroy();
+                                            let casparBlur = PhaserScene.add.sprite(gameConsts.halfWidth - 50, gameConsts.halfHeight - 30, 'lowq', 'caspar2.png').setDepth(10000).setScale(2,2);
+                                            casparBlur.scrollFactorX = 0; casparBlur.scrollFactorY = 0;
+                                            setTimeout(() => {
+                                                casparBlur.setScale(2.05, 2.05);
+                                                casparBlur.setPosition(gameConsts.halfWidth + 50, gameConsts.halfHeight + 30)
+                                                setTimeout(() => {
+                                                    casparBlur.setScale(1.8, 1.8);
+                                                    casparBlur.setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
+                                                    gameVars.cameraMoveAcc = 0;
+                                                    gameVars.cameraMoveVel = 0;
+                                                    dialogManager.showDialogNode("TooFarWorry4");
+                                                    setTimeout(() => {
+                                                        casparBlur.destroy()
+                                                        tempSound.stop();
+                                                    }, 30)
+                                                    gameCharacters.casparTemp = PhaserScene.add.image(1510, gameConsts.outdoorStartY + 446, 'characters', 'caspar2.png').setDepth(11).setAlpha(0.75).setScale(0.93);
+                                                }, 50)
+                                            }, 40)
+                                        }, 110)
+                                    }, 40)
+                                }, 1500)
+                            }, 50)
+                        }, 40)
+                    }, 90)
+                }, 4500)
             }
         }
 
