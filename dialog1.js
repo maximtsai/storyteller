@@ -3030,16 +3030,16 @@ let dialogList1 = {
     TooFarWorry4: {
         speech: [
             {speaker: "", face: "ethan_dark_eye_6.png", forceProgress: true, unclickable: true, text: ".̶̨̣͚̻̻̗̦̮̃̐̅", onFinish: () => {
-                    gameVars.cameraPosX = 1400;
-                    gameVars.cameraMoveVel = -0.7;
-                    gameVars.cameraMoveAcc = 0;
-                    gameVars.cameraPosMaxXOutside = 1600;
-                    gameVars.cameraPosMaxX = gameVars.cameraPosMaxXOutside;
-                    setTimeout(() => {
-                        dialogManager.showDialogNode("TooFarCaspar");
+                    // gameVars.cameraPosX = 1400;
+                    // gameVars.cameraMoveVel = -0.7;
+                    // gameVars.cameraMoveAcc = 0;
+                    // gameVars.cameraPosMaxXOutside = 1600;
+                    // gameVars.cameraPosMaxX = gameVars.cameraPosMaxXOutside;
+                    // setTimeout(() => {
+                    //     dialogManager.showDialogNode("TooFarCaspar");
 
-                        globalObjects.outdoorRain.volume = 0.88 * globalVolume;
-                    }, 0)
+                    //     globalObjects.outdoorRain.volume = 0.88 * globalVolume;
+                    // }, 0)
 
 
                 }},

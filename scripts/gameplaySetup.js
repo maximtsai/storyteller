@@ -1355,42 +1355,50 @@ function tickKeyPresses(deltaScale) {
                             eyeTemp2.x = gameConsts.halfWidth + 200;
                             eyeTemp2.setScale(2.7, 2).setAlpha(0.05).setRotation(-0.1);
                             setTimeout(() => {
-                                eyeTemp2.alpha = 0;
+                                playSound('eyeclose');
+                                eyeTemp2.x = gameConsts.halfWidth;
+                                eyeTemp2.setScale(3).setAlpha(0.35);
                                 setTimeout(() => {
-                                    playSound('eyeclose');
-                                    eyeTemp2.x = gameConsts.halfWidth;
-                                    eyeTemp2.setScale(3).setAlpha(0.35);
-                                    setTimeout(() => {
-                                        eyeTemp2.destroy();
-                                        blackPixelTemp.alpha = 1;
-                                        let tempSound = playSound('staticloop');
-                                        let blackEyeTemp = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'lowq', 'shadowEye.png').setDepth(10000).setScale(1.1,1.1);
-                                        blackEyeTemp.scrollFactorX = 0; blackEyeTemp.scrollFactorY = 0;
-                                        setTimeout(() => {
-                                            blackEyeTemp.setScale(1.3);
+                                    eyeTemp2.destroy();
+                                }, 40)
 
-                                            blackEyeTemp.destroy();
-                                            blackPixelTemp.destroy();
-                                            let casparBlur = PhaserScene.add.sprite(gameConsts.halfWidth - 50, gameConsts.halfHeight - 30, 'lowq', 'caspar2.png').setDepth(10000).setScale(2,2);
-                                            casparBlur.scrollFactorX = 0; casparBlur.scrollFactorY = 0;
+                                setTimeout(() => {
+                                    blackPixelTemp.alpha = 1;
+                                    let tempSound = playSound('staticloop');
+                                    let blackEyeTemp = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'lowq', 'shadowEye.png').setDepth(10000).setScale(1.1,1.1);
+                                    blackEyeTemp.scrollFactorX = 0; blackEyeTemp.scrollFactorY = 0;
+                                    setTimeout(() => {
+                                        blackEyeTemp.setScale(1.3);
+                                        blackEyeTemp.destroy();
+                                        blackPixelTemp.destroy();
+                                        let casparBlur = PhaserScene.add.sprite(gameConsts.halfWidth - 50, gameConsts.halfHeight - 30, 'lowq', 'caspar2.png').setDepth(10000).setScale(2.2,2.2);
+                                        casparBlur.scrollFactorX = 0; casparBlur.scrollFactorY = 0;
+                                        setTimeout(() => {
+                                            casparBlur.setScale(2.25, 2.25).setAlpha(0.75);
+                                            casparBlur.setPosition(gameConsts.halfWidth + 50, gameConsts.halfHeight + 30)
                                             setTimeout(() => {
-                                                casparBlur.setScale(2.05, 2.05);
-                                                casparBlur.setPosition(gameConsts.halfWidth + 50, gameConsts.halfHeight + 30)
+                                                casparBlur.setScale(1.95, 1.95).setAlpha(0.5);
+                                                casparBlur.setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
+                                                gameVars.cameraMoveAcc = 0;
+                                                gameVars.cameraMoveVel = 0;
+                                                // dialogManager.showDialogNode("TooFarWorry4");
                                                 setTimeout(() => {
-                                                    casparBlur.setScale(1.8, 1.8);
-                                                    casparBlur.setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
+                                                    gameVars.cameraPosX = 1400;
+                                                    gameVars.cameraMoveVel = -0.7;
                                                     gameVars.cameraMoveAcc = 0;
-                                                    gameVars.cameraMoveVel = 0;
-                                                    dialogManager.showDialogNode("TooFarWorry4");
-                                                    setTimeout(() => {
-                                                        casparBlur.destroy()
-                                                        tempSound.stop();
-                                                    }, 30)
+                                                    gameVars.cameraPosMaxXOutside = 1600;
+                                                    gameVars.cameraPosMaxX = gameVars.cameraPosMaxXOutside;
+                                                    dialogManager.showDialogNode("TooFarCaspar");
+
+                                                    globalObjects.outdoorRain.volume = 0.88 * globalVolume;
+
+                                                    casparBlur.destroy()
+                                                    tempSound.stop();
                                                     gameCharacters.casparTemp = PhaserScene.add.image(1510, gameConsts.outdoorStartY + 446, 'characters', 'caspar2.png').setDepth(11).setAlpha(0.75).setScale(0.93);
                                                 }, 50)
-                                            }, 40)
-                                        }, 110)
-                                    }, 40)
+                                            }, 60)
+                                        }, 50)
+                                    }, 110)
                                 }, 1500)
                             }, 50)
                         }, 40)
