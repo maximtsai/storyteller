@@ -1890,20 +1890,32 @@ function exitBackdoor() {
 
     if (!globalObjsTemp.outdoorBackgrounds) {
         globalObjsTemp.outdoorBackgrounds = {
-            bg0: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'rain.png').setScale(10, 6),
+            bg0: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'rain.png').setScale(11, 6),
             bg1: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout1.png'),
             bg2: PhaserScene.add.image(999.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout2.png'),
+            bg3: PhaserScene.add.image(2998.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgoutExtend.png'),
             bg4: PhaserScene.add.image(1999, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgout3.png'),
+
             bg5: PhaserScene.add.image(0, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
             bg6: PhaserScene.add.image(796, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
             bg7: PhaserScene.add.image(1592, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
+            bg8: PhaserScene.add.image(2388, gameConsts.halfHeight + gameConsts.outdoorStartY, 'lowq', 'static.png').setScale(2, 1.75).setDepth(1),
+
+            bg9: PhaserScene.add.image(3998, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgoutExtend.png'),
+            bg10: PhaserScene.add.image(4997.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgoutExtend.png'),
+            bg11: PhaserScene.add.image(5997, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgoutExtend.png'),
+            bg12: PhaserScene.add.image(6996.5, gameConsts.halfHeight + gameConsts.outdoorStartY, 'backgrounds', 'bgoutExtend.png'),
         }
+
+        globalObjsTemp.outdoorBackgrounds.bg0.scrollFactorX = 0.9;
+
         globalObjsTemp.outdoorBackgrounds.bg5.scrollFactorX = 0.3;
         globalObjsTemp.outdoorBackgrounds.bg6.scrollFactorX = 0.3;
         globalObjsTemp.outdoorBackgrounds.bg7.scrollFactorX = 0.3;
+        globalObjsTemp.outdoorBackgrounds.bg8.scrollFactorX = 0.3;
         PhaserScene.tweens.add({
             alpha: 1,
-            targets: [globalObjsTemp.outdoorBackgrounds.bg5, globalObjsTemp.outdoorBackgrounds.bg6, globalObjsTemp.outdoorBackgrounds.bg7],
+            targets: [globalObjsTemp.outdoorBackgrounds.bg5, globalObjsTemp.outdoorBackgrounds.bg6, globalObjsTemp.outdoorBackgrounds.bg7, globalObjsTemp.outdoorBackgrounds.bg8],
             duration: 3000,
             ease: 'Quad.easeOut',
         });

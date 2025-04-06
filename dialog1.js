@@ -44,7 +44,9 @@ let dialogList1 = {
             {speaker: "Maggie", face: "maggie_dark_scared.png", text: "Out back, but its wires are all\ntangled up."},
             {speaker: "Maggie", face: "maggie_dark_scared.png", text: "I've been meaning to fix it, but it was\nalways my late husband who was good\nat these things."},
             {speaker: "You", text: "I'm pretty handy with machines.\nLet me take a crack at it."},
-            {speaker: "Maggie", face: "maggie_dark_scared.png", text: "Thank you honey.\nYou'll need these keys to the shed."},
+            {speaker: "Maggie", face: "maggie_dark_scared.png", text: "Thank you honey.\nYou'll need these keys to the shed.", onFinish: () => {
+                    playSound('keysjingle');
+                }},
             {speaker: "", text: "  (You can now exit the backdoor)"},
         ]
     },
@@ -3117,5 +3119,63 @@ let dialogList1 = {
                     messageBus.publish('juanContinue');
                 }},
         ]
-    }
+    },
+
+    TooFarWorry1: {
+        speech: [
+            {speaker: "", text: "(Nothing but rain and mud out here)"},
+        ]
+    },
+
+    TooFarWorry2: {
+        speech: [
+            {speaker: "", forceProgress: true, unclickable: true, text: ".", onFinish: () => {
+                playSound('sizzle');
+            }},
+        ]
+    },
+
+    TooFarWorry3: {
+        speech: [
+            {speaker: "", text: "(You should head back)"},
+        ]
+    },
+
+    TooFarWorry4: {
+        speech: [
+            {speaker: "", face: "ethan_dark_eye_6.png", forceProgress: true, unclickable: true, text: ".̶̨̣͚̻̻̗̦̮̃̐̅", onFinish: () => {
+                    // gameVars.cameraPosX = 1400;
+                    // gameVars.cameraMoveVel = -0.7;
+                    // gameVars.cameraMoveAcc = 0;
+                    // gameVars.cameraPosMaxXOutside = 1600;
+                    // gameVars.cameraPosMaxX = gameVars.cameraPosMaxXOutside;
+                    // setTimeout(() => {
+                    //     dialogManager.showDialogNode("TooFarCaspar");
+
+                    //     globalObjects.outdoorRain.volume = 0.88 * globalVolume;
+                    // }, 0)
+
+
+                }},
+        ],
+    },
+
+    TooFarCaspar: {
+        speech: [
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Hey there son!"},
+            {speaker: "You", text: "...•••Huh?••••••••••• Caspar?••"},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "Not the best place to be fallin' asleep\nnow is it?"},
+            {speaker: "Caspar", face: "caspar_normal.png", text: "I know you're just helpin' out, but\nyou shouldn't stay in the rain too long."},
+            {speaker: "Caspar", face: "caspar_doubt.png", text: "You never know what else you'll start\ndreamin' of.", onFinish: () => {
+                    messageBus.publish('casparReturn')
+                }},
+        ]
+    },
+
+    TooFarWorryNope: {
+        speech: [
+            {speaker: "", text: "(Best not to stray too far from the diner)"},
+        ],
+    },
+
 };

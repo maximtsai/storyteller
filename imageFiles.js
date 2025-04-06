@@ -4,9 +4,6 @@ const imageFilesPreload = [
     {name: 'loading1', src: 'sprites/preload/loading1.png'},
     {name: 'closebtn', src: 'sprites/preload/closebtn.png'},
     {name: 'credits', src: 'sprites/preload/credits.png'},
-    {name: 'buttonStart', src: 'sprites/preload/buttonStart.png'},
-    {name: 'buttonStart2', src: 'sprites/preload/buttonStart2.png'},
-    {name: 'buttonStart3', src: 'sprites/preload/buttonStart3.png'},
 
 ];
 
