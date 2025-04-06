@@ -2,7 +2,7 @@ let config = {
     type: Phaser.CANVAS,
     scale: {
         parent: 'phaser-app',
-        width: 720,
+        width: 780,
         height: 640,
         autoRound: true,
         mode: Phaser.Scale.FIT
@@ -62,11 +62,11 @@ let gameVars = {
     lastmousedown: {x: 0, y: 0},
     timeSlowRatio: 1,
     playerSpeed: 1,
-    cameraPosX: 0,
+    cameraPosX: -30,
     cameraPosY: 0,
-    cameraPosMaxX: 1750,
+    cameraPosMaxX: 1690,
     cameraPosMinX: -1400,
-    cameraPosMaxXInside: 1750,
+    cameraPosMaxXInside: 1690,
     cameraPosMinXInside: -1400,
     cameraPosMaxXOutside: 9999,
     cameraPosMinXOutside: -500,
@@ -96,6 +96,7 @@ let oldTime = 0;
 let deltaScale = 1;
 let timeUpdateCounter = 0;
 let timeUpdateCounterMax = 5;
+let url0 = 'localhost:8124';
 let url1 = 'crazygames';
 let url2 = '1001juegos';
 
@@ -110,7 +111,14 @@ function fullRestart() {
         game.destroy(true);
     }
     let oldGameScale = gameVars.gameScale;
-    if (!document.location.href.includes(url1) && !document.location.href.includes(url2)) {
+    if (!document.location.href.includes(url0) && !document.location.href.includes(url1) && !document.location.href.includes(url2)) {
+        let gameDiv = document.getElementById('preload-notice');
+        let invalidSite = document.location.href.substring(0, 25);
+        gameDiv.innerHTML = invalidSite + "...\nis an invalid site.\n\n\n" + "Try the game on Crazygames.com!";
+        gameDiv.onclick = () => {
+        	window.location.href = 'https://www.crazygames.com/game/diner-in-the-storm';
+        }
+        gameDiv.style.cursor = 'pointer';
         return;
     }
     gameVars = {
@@ -125,11 +133,11 @@ function fullRestart() {
         lastmousedown: {x: 0, y: 0},
         timeSlowRatio: 1,
         playerSpeed: 1,
-        cameraPosX: 0,
+        cameraPosX: -30,
         cameraPosY: 0,
-        cameraPosMaxX: 1750,
+        cameraPosMaxX: 1690,
         cameraPosMinX: -1400,
-        cameraPosMaxXInside: 1750,
+        cameraPosMaxXInside: 1690,
         cameraPosMinXInside: -1400,
         cameraPosMaxXOutside: 9999,
         cameraPosMinXOutside: -500,

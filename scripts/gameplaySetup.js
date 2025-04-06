@@ -1452,13 +1452,13 @@ function tickKeyPresses(deltaScale) {
                                         blackEyeTemp.setScale(1.3);
                                         blackEyeTemp.destroy();
                                         blackPixelTemp.destroy();
-                                        let casparBlur = PhaserScene.add.sprite(gameConsts.halfWidth - 50, gameConsts.halfHeight - 30, 'lowq', 'caspar2.png').setDepth(10000).setScale(2.2,2.2);
+                                        let casparBlur = PhaserScene.add.sprite(gameConsts.halfWidth - 50, gameConsts.halfHeight - 30, 'lowq', 'caspar2.png').setDepth(10000).setScale(2.4,2.2);
                                         casparBlur.scrollFactorX = 0; casparBlur.scrollFactorY = 0;
                                         setTimeout(() => {
-                                            casparBlur.setScale(2.25, 2.25).setAlpha(0.75);
+                                            casparBlur.setScale(2.45, 2.25).setAlpha(0.75);
                                             casparBlur.setPosition(gameConsts.halfWidth + 50, gameConsts.halfHeight + 30)
                                             setTimeout(() => {
-                                                casparBlur.setScale(1.95, 1.95).setAlpha(0.5);
+                                                casparBlur.setScale(2.18, 1.95).setAlpha(0.5);
                                                 casparBlur.setPosition(gameConsts.halfWidth, gameConsts.halfHeight);
                                                 gameVars.cameraMoveAcc = 0;
                                                 gameVars.cameraMoveVel = 0;
