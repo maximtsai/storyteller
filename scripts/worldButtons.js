@@ -1732,7 +1732,7 @@ function clickTV() {
     }
 }
 
-function clickIndoor() {
+function clickIndoorTrue() {
     if (gameState.shownFlashEldritch && !gameState.shownIndoorEldritch) {
         gameState.shownIndoorEldritch = true;
         let eyeflash2 = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight - 40, 'lowq', 'spook1.jpg').setScale(1.7, 1.7).setAlpha(0.15).setDepth(1000).setBlendMode(Phaser.BlendModes.DARKEN);
@@ -1792,7 +1792,19 @@ function clickIndoor() {
         gameState.powerOnWelcomed = true;
         dialogManager.showDialogNode('DinerCheer');
     }
+}
 
+function clickIndoor() {
+
+    if (!gameState.powerOnWelcomed) {
+        adMute();
+        crazyGamesMidgameAd(() => {
+            adUnmute();
+            clickIndoorTrue()
+        })
+    } else {
+        clickIndoorTrue();
+    }
 }
 
 function clickBackdoor() {

@@ -24,7 +24,7 @@ function setupLoadingBar(scene) {
     // Basic loading bar visual
     let extraLoadingBarLength = isMobile ? 100 : 0;
     let extraLoadingBarWidthMult = isMobile ? 2 : 1;
-    window.CrazyGames.SDK.game.sdkGameLoadingStart();
+    sdkLoadingStart();
     if (isFirstPlay) {
         displayBanner();
         isFirstPlay = false;
@@ -51,16 +51,7 @@ function setupLoadingBar(scene) {
     });
 
     scene.load.on('complete', () => {
-        window.CrazyGames.SDK.game.sdkGameLoadingStop();
-        const callback = (error, result) => {
-            if (error) {
-                console.log("Adblock usage error (callback)", error);
-                hasAdBlock = true;
-            } else {
-                console.log("Adblock usage fetched (callback)", result);
-            }
-        };
-        window.CrazyGames.SDK.ad.hasAdblock(callback);
+        sdkLoadingStop();
         setTimeout(() => {
             // Achievements
             if (!achievements) {
@@ -172,7 +163,7 @@ function setupGame() {
         onMouseUp: () => {
             clearBannerAndHideDiv();
             runIntroSequence();
-            window.CrazyGames.SDK.game.gameplayStart();
+            sdkGameplayStart();
         }
     });
     globalObjects.optionsButton.setDepth(1);
@@ -285,30 +276,22 @@ function initializeMisc() {
 
 function clearBannerAndHideDiv() {
     return;
-    window.CrazyGames.SDK.banner.clearAllBanners();
-
-    const elem = document.getElementById("banner-container");
-    elem.style.top = "-1000px";
+    sdkClearBanner();
 }
 
-let canCallBanner = true;
-function displayBanner() {
-    return;
-    if (canCallBanner) {
-        // Prevent banner from being called multiple times in high frequency
-        canCallBanner = false;
-        setTimeout(() => {
-            canCallBanner = true;
-        }, 65000);
-        const elem = document.getElementById("banner-container");
-        elem.style.top = "0px";
-        window.CrazyGames.SDK.banner.requestBanner({
-            id: "banner-container",
-            width: 468,
-            height: 60,
-        });
-    }
-}
+// function displayBanner() {
+//     return;
+//     if (canCallBanner) {
+//         // Prevent banner from being called multiple times in high frequency
+//         canCallBanner = false;
+//         setTimeout(() => {
+//             canCallBanner = true;
+//         }, 65000);
+//         const elem = document.getElementById("banner-container");
+//         elem.style.top = "0px";
+//         sdkShowBannerAd();
+//     }
+// }
 
 function setupKeyPresses(scene) {
     keyPresses.keyA = scene.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.A);
@@ -927,7 +910,7 @@ function attemptReset() {
                 },
             };
             adMute();
-            window.CrazyGames.SDK.ad.requestAd("rewarded", callbacks);
+            sdkShowRewardAd(callbacks.adStarted, callbacks.adFinished, callbacks.adError)
             hideUndoButton();
             playRewindingAnim();
         }

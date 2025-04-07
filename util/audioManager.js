@@ -1,5 +1,14 @@
 let soundList = [];
 
+
+function muteAll() {
+
+}
+
+function unmuteAll() {
+
+}
+
 function initializeSounds(scene) {
     for (let i in audioFiles) {
         let audioData = audioFiles[i];

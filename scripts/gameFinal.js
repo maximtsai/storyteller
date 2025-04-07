@@ -767,7 +767,7 @@ class GameFinal {
                 });
                 setTimeout(() => {
                     if (gameState.MaggieSaved) {
-                        window.CrazyGames.SDK.game.happytime();
+                        sdkShowHappyTime();
                     }
                     this.restartButton.setState(NORMAL);
                     this.restartFlash.alpha = 0.65;
@@ -844,7 +844,7 @@ class GameFinal {
             alpha: 1,
             duration: 2500,
             onComplete: () => {
-                window.CrazyGames.SDK.game.gameplayStop();
+                sdkGameplayStop();
             }
         });
     }
@@ -897,12 +897,11 @@ class GameFinal {
                 alpha: 0
             },
             onMouseUp() {
-                const callbacks = {
-                    adFinished: () => {displayBanner()},
-                    adStarted: () => console.log("Start midgame ad (callback)"),
-                };
-
-                window.CrazyGames.SDK.ad.requestAd("midgame", callbacks);
+                // const callbacks = {
+                //     adFinished: () => {displayBanner()},
+                //     adStarted: () => console.log("Start midgame ad (callback)"),
+                // };
+                crazyGamesMidgameAd(() => {displayBanner()})
                 fullRestart();
             }
         });
