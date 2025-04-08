@@ -362,10 +362,6 @@
 	"meta": {
 		"app": "https://www.codeandweb.com/texturepacker",
 		"version": "3.0",
-<<<<<<< HEAD
-		"smartupdate": "$TexturePacker:SmartUpdate:c3639d87b8e9c03b9dcdadc6ed2bb204:069a37cfdafd35c05f544c49dfe54cec:53747adcc0c5e04ed783201651b4c023$"
-=======
-		"smartupdate": "$TexturePacker:SmartUpdate:95bae938c034682091d296edb45dad4d:069a37cfdafd35c05f544c49dfe54cec:53747adcc0c5e04ed783201651b4c023$"
->>>>>>> main
+		"smartupdate": "$TexturePacker:SmartUpdate:239aef0e1fcdcfb847ee58e646073c46:5b1f748a275939ff87166d36991a4e4e:53747adcc0c5e04ed783201651b4c023$"
 	}
 }
