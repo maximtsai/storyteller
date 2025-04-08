@@ -2061,7 +2061,6 @@ function clickGenerator() {
         setTimeout(() => {
             // if not fixed after 20 seconds, show extra spook.
             if (gameState.powerOff === true) {
-                console.log("Spook on");
                 gameState.turnedOnPowerSlow = true;
             }
         }, 15000);

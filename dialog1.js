@@ -3123,7 +3123,7 @@ let dialogList1 = {
 
     TooFarWorry1: {
         speech: [
-            {speaker: "", text: "(Nothing but rain and mud out here)"},
+            {speaker: "", text: "(You see only rain and mud out here)"},
         ]
     },
 
@@ -3137,7 +3137,7 @@ let dialogList1 = {
 
     TooFarWorry3: {
         speech: [
-            {speaker: "", text: "(You should head back)"},
+            {speaker: "", text: "(Are you sure you want to keep going?)"},
         ]
     },
 
