@@ -56,14 +56,14 @@ function setupLoadingBar(scene) {
             // Achievements
             if (!achievements) {
                 achievements = {
-                    end0: localStorage.getItem(achievementsText + 0),
-                    end1: localStorage.getItem(achievementsText + 1),
-                    end2: localStorage.getItem(achievementsText + 2),
-                    end3: localStorage.getItem(achievementsText + 3),
-                    end4: localStorage.getItem(achievementsText + 4),
-                    end5: localStorage.getItem(achievementsText + 5),
-                    end6: localStorage.getItem(achievementsText + 6),
-                    end7: localStorage.getItem(achievementsText + 7),
+                    end0: sdkGetItem(achievementsText + 0),
+                    end1: sdkGetItem(achievementsText + 1),
+                    end2: sdkGetItem(achievementsText + 2),
+                    end3: sdkGetItem(achievementsText + 3),
+                    end4: sdkGetItem(achievementsText + 4),
+                    end5: sdkGetItem(achievementsText + 5),
+                    end6: sdkGetItem(achievementsText + 6),
+                    end7: sdkGetItem(achievementsText + 7),
                 };
             }
             let offImage = PhaserScene.add.image(gameConsts.halfWidth - 5, gameConsts.halfHeight, 'intro', 'startOff.png').setDepth(0).setScale(4);
@@ -408,7 +408,7 @@ function showAwardImage(imageRef, text = '', showSpook) {
     globalObjects.awardImage = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'epilogue', imageRef).setDepth(98).setAlpha(0.4);
 
     if (showSpook) {
-        let hasSeenBefore = localStorage.getItem("seenDinerSpook");
+        let hasSeenBefore = sdkGetItem("seenDinerSpook");
         if (hasSeenBefore != "yes") {
             if (tempHasSeenOnce) {
                 if (!tempHasSeenMany && Math.random() < 0.35) {

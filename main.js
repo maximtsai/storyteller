@@ -385,7 +385,9 @@ function zoomTemp(zoomAmt) {
 }
 
 function hideGlobalClickBlocker() {
-    globalObjects.clickBlocker.setState(DISABLE);
+    if (globalObjects.clickBlocker) {
+        globalObjects.clickBlocker.setState(DISABLE);
+    }
     if (canvas) {
         canvas.style.cursor = 'default';
     }

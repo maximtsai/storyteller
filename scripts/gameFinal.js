@@ -416,7 +416,7 @@ class GameFinal {
         if (!achievements[textString]) {
             newestAchievement = endingNum;
             achievements[textString] = true;
-            localStorage.setItem(achievementsText + endingNum, "yes");
+            sdkSetItem(achievementsText + endingNum, "yes");
             if (!dontplaytrustgain) {
                 playSound('trustgain');
             }
@@ -517,7 +517,7 @@ class GameFinal {
         if (!url1 || !url2) {
             return;
         }
-        if (!document.location.href.includes(url1) && !document.location.href.includes(url2)) {
+        if (!document.location.href.includes(url1) && !document.location.href.includes(url2) && !document.location.href.includes(url0)) {
             return;
         }
         if (gameState.juanLeaveStatus !== "accept" && gameState.juanLeaveStatus !== "onlyUseful") {
