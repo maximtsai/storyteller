@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>6</int>
         <key>texturePackerVersion</key>
-        <string>7.0.3</string>
+        <string>7.2.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser</string>
+        <string>phaser-maxim</string>
         <key>textureFileName</key>
         <filename></filename>
         <key>flipPVR</key>
@@ -70,7 +70,7 @@
         <key>pngOptimizationLevel</key>
         <uint>1</uint>
         <key>webpQualityLevel</key>
-        <uint>91</uint>
+        <uint>85</uint>
         <key>textureSubPath</key>
         <string></string>
         <key>textureFormat</key>
