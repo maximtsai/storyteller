@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>6</int>
         <key>texturePackerVersion</key>
-        <string>7.0.3</string>
+        <string>7.2.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser</string>
+        <string>phaser-maxim</string>
         <key>textureFileName</key>
         <filename>../sprites/buttons-{n}.webp</filename>
         <key>flipPVR</key>
@@ -64,7 +64,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>1</uint>
+        <uint>0</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -76,7 +76,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">webp</enum>
         <key>borderPadding</key>
-        <uint>1</uint>
+        <uint>0</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -202,6 +202,25 @@
                 <rect>10,10,20,20</rect>
                 <key>scale9Paddings</key>
                 <rect>10,10,20,20</rect>
+                <key>scale9FromFile</key>
+                <false/>
+            </struct>
+            <key type="filename">buttons/buttonGlow.png</key>
+            <key type="filename">buttons/buttonStart.png</key>
+            <key type="filename">buttons/buttonStart2.png</key>
+            <key type="filename">buttons/buttonStart3.png</key>
+            <key type="filename">buttons/restart.png</key>
+            <struct type="IndividualSpriteSettings">
+                <key>pivotPoint</key>
+                <point_f>0.5,0.5</point_f>
+                <key>spriteScale</key>
+                <double>1</double>
+                <key>scale9Enabled</key>
+                <false/>
+                <key>scale9Borders</key>
+                <rect>43,23,85,45</rect>
+                <key>scale9Paddings</key>
+                <rect>43,23,85,45</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>
@@ -357,21 +376,6 @@
                 <rect>97,74,194,147</rect>
                 <key>scale9Paddings</key>
                 <rect>97,74,194,147</rect>
-                <key>scale9FromFile</key>
-                <false/>
-            </struct>
-            <key type="filename">buttons/restart.png</key>
-            <struct type="IndividualSpriteSettings">
-                <key>pivotPoint</key>
-                <point_f>0.5,0.5</point_f>
-                <key>spriteScale</key>
-                <double>1</double>
-                <key>scale9Enabled</key>
-                <false/>
-                <key>scale9Borders</key>
-                <rect>43,23,85,45</rect>
-                <key>scale9Paddings</key>
-                <rect>43,23,85,45</rect>
                 <key>scale9FromFile</key>
                 <false/>
             </struct>

@@ -126,17 +126,21 @@ function setupGame() {
         globalObjects.exclamation = new ExclamationHover(PhaserScene);
     }
 
+
     globalObjects.optionsButton = new Button({
         normal: {
-            "ref": "buttonStart",
+            "atlas": "buttons",
+            "ref": "buttonStart.png",
             "x": gameConsts.halfWidth,
-            "y": gameConsts.height - 180
+            "y": gameConsts.height - 195
         },
         hover: {
-            "ref": "buttonStart2"
+            "atlas": "buttons",
+            "ref": "buttonStart2.png"
         },
         press: {
-            "ref": "buttonStart3"
+            "atlas": "buttons",
+            "ref": "buttonStart3.png"
         },
         onHover: () => {
             if (canvas) {
@@ -152,6 +156,53 @@ function setupGame() {
             runIntroSequence();
         }
     });
+    globalObjects.optionsButton.setDepth(1);
+
+    
+    setTimeout(() => {
+        if (!gameVars.introStarted) {
+            let buttonGlow = PhaserScene.add.image(globalObjects.optionsButton.getXPos(), globalObjects.optionsButton.getYPos(), 'buttons', 'buttonGlow.png').setDepth(0).setAlpha(0.9).setScale(1);
+            PhaserScene.tweens.add({
+                targets: buttonGlow,
+                alpha: 0,
+                ease: 'Quad.easeOut',
+                duration: 1200
+            });
+            PhaserScene.tweens.add({
+                targets: buttonGlow,
+                scaleX: 1.45,
+                scaleY: 1.8,
+                ease: 'Cubic.easeOut',
+                duration: 1200,
+                onComplete: () => {
+                    buttonGlow.destroy();
+                }
+            });
+            setTimeout(() => {
+                if (!gameVars.introStarted) {
+                    let buttonGlow2 = PhaserScene.add.image(globalObjects.optionsButton.getXPos(), globalObjects.optionsButton.getYPos(), 'buttons', 'buttonGlow.png').setDepth(0).setAlpha(0.9).setScale(1);
+                    PhaserScene.tweens.add({
+                        targets: buttonGlow2,
+                        alpha: 0,
+                        ease: 'Quad.easeOut',
+                        duration: 1200
+                    });
+                    PhaserScene.tweens.add({
+                        targets: buttonGlow2,
+                        scaleX: 1.45,
+                        scaleY: 1.8,
+                        ease: 'Cubic.easeOut',
+                        duration: 1200,
+                        onComplete: () => {
+                            buttonGlow2.destroy();
+                        }
+                    });
+                }
+            }, 3000)
+        }
+    }, 3000);
+
+
     createRewardButtons();
 
     // create credits button
@@ -230,7 +281,7 @@ function clickCredits() {
             "ref": "blackPixel",
             "x": gameConsts.halfWidth,
             "y": gameConsts.halfHeight,
-            alpha: 0.75
+            alpha: 0.8
         },
         onMouseUp: () => {
             closeCredits();
@@ -239,12 +290,12 @@ function clickCredits() {
     globalObjects.closeCreditsButton.setScale(500, 500);
     globalObjects.closeCreditsButton.setDepth(99);
     globalObjects.creditsText = PhaserScene.add.text(50, 50, 'Programming and stick figure art\nby Maxim Tsai (maximtsai.com)\n\nWriting and story by Rowa Skipson\n\nFinal scene art by Theresa Kao.')
-    globalObjects.creditsText.setFontSize(28);
+    globalObjects.creditsText.setFontSize(25);
     globalObjects.creditsText.setScale(0.82);
     globalObjects.creditsText.setDepth(99);
 
     globalObjects.creditsText2 = PhaserScene.add.text(50, 160, '\n\nRadio Music Sources:\n"Off To Osaka" Kevin MacLeod (incompetech.com)\n"Matt\'s Blues" Kevin MacLeod\n"Joey\'s Formal Waltz Unscented" Kevin MacLeod\n\nSFX Sources:\nPixabay, Eric Matyas - soundimage.org,\nsonniss.com/gameaudiogdc\nDiesel engine SFX by Orchie Chord\nGlass Breaking SFX by AV Productions');
-    globalObjects.creditsText2.setFontSize(24);
+    globalObjects.creditsText2.setFontSize(20);
     globalObjects.creditsText2.setScale(0.82);
     globalObjects.creditsText2.setDepth(99);
 
@@ -264,7 +315,14 @@ function clickCredits() {
         },
         onMouseUp: () => {
             closeCredits();
-        }
+            canvas.style.cursor = 'default';
+        },
+        onHover: () => {
+            canvas.style.cursor = 'pointer';
+        },
+        onHoverOut: () => {
+            canvas.style.cursor = 'default';
+        },
     });
     globalObjects.creditsCloseIcon.setDepth(99);
 
@@ -1190,6 +1248,7 @@ function tickKeyPresses(deltaScale) {
         }
         gameVars.moveSine += deltaScale * 0.165 * outdoorsMoveMult;
         gameVars.cameraPosX += gameVars.cameraMoveVel * sineMoveMult * deltaScale * deltaDecay * (outdoorsMoveMult * 0.8 + 0.2);
+
         if(gameVars.cameraPosX > gameVars.cameraPosMaxX) {
             gameVars.cameraPosX = gameVars.cameraPosMaxX;
             gameVars.cameraMoveVel = 0;
@@ -1217,6 +1276,256 @@ function tickKeyPresses(deltaScale) {
             startY = gameConsts.shedStartY;
         } else if (gameState.isOutdoors) {
             startY = gameConsts.outdoorStartY;
+
+            if(gameVars.cameraPosX > (gameVars.cameraPosMaxXOutside - 10) && gameVars.cameraPosMaxXOutside < 2000 && !gameVars.noMoreTooFar) {
+                gameVars.noMoreTooFar = true;
+                dialogManager.showDialogNode("TooFarWorryNope");
+            }
+
+            if (gameVars.cameraPosX > 3050) {
+                gameVars.cameraMoveVel *= 0.75;
+            } else if (gameVars.cameraPosX > 2600) {
+                gameVars.cameraMoveVel *= 0.92;
+            }
+            // Going too far
+            if (gameVars.cameraPosX > 2400 && !gameVars.warningOne) {
+                gameVars.cameraMoveAcc = 0;
+                gameVars.cameraMoveVel = 0;
+                gameVars.warningOne = true;
+                dialogManager.showDialogNode("TooFarWorry1");
+            } else if (gameVars.cameraPosX > 2750 && !gameVars.warningTwo) {
+                let tentaTemp = PhaserScene.add.image(gameConsts.width + 800, gameConsts.height - 60, 'lowq', 'sprawl.png').setDepth(1).setScale(2).setOrigin(1, 1).setAlpha(0);
+                let eyeTemp = PhaserScene.add.image(gameConsts.width + 700, gameConsts.halfHeight - 100, 'lowq', 'spook4.png').setDepth(1).setScale(1).setAlpha(0);
+                PhaserScene.tweens.add({
+                    targets: [tentaTemp, eyeTemp],
+                    alpha: 0.045,
+                    ease: 'Quad.easeIn',
+                    duration: 3700,
+                    onComplete: () => {
+                        gameVars.cameraMoveAcc = 0;
+                        gameVars.cameraMoveVel = 0;
+                        dialogManager.showDialogNode("TooFarWorry2");
+                        PhaserScene.tweens.add({
+                            targets: tentaTemp,
+                            alpha: 0.4,
+                            duration: 300,
+                            x: "+=1300",
+                            onComplete: () => {
+                                tentaTemp.destroy();
+                                eyeTemp.setAlpha(0.2);
+                                setTimeout(() => {
+                                    eyeTemp.scaleY = 0.5;
+                                    setTimeout(() => {
+                                        eyeTemp.destroy();
+                                    }, 120)
+                                }, 120)
+                            }
+                        });
+
+                    }
+                });
+                tentaTemp.scrollFactorX = 0.1; tentaTemp.scrollFactorY = 0;
+                eyeTemp.scrollFactorX = 0.1; eyeTemp.scrollFactorY = 0;
+                gameVars.warningTwo = true;
+            } else if (gameVars.cameraPosX > 3800 && !gameVars.warningThree) {
+                gameVars.cameraMoveAcc = 0;
+                gameVars.cameraMoveVel = 0;
+                gameVars.warningThree = true;
+                dialogManager.showDialogNode("TooFarWorry3");
+
+                PhaserScene.tweens.add({
+                    targets: globalObjects.outdoorRain,
+                    volume: 0.4 * globalVolume,
+                    duration: 6000,
+                });
+            } else if (gameVars.cameraPosX > 4300 && !gameVars.warningFour) {
+                gameVars.warningFour = true;
+                setTimeout(() => {
+                    let eyeTemp2 = PhaserScene.add.image(gameConsts.halfWidth - 200, gameConsts.halfHeight, 'lowq', 'spook4.png').setDepth(1).setScale(2.7, 2).setRotation(0.1).setAlpha(0.12);
+                    eyeTemp2.scrollFactorX = 0; eyeTemp2.scrollFactorY = 0;
+                    setTimeout(() => {
+                        let blackPixelTemp = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'blackPixel').setAlpha(0.4).setDepth(9999).setScale(1000,1000);
+                        blackPixelTemp.scrollFactorX = 0; blackPixelTemp.scrollFactorY = 0;
+
+                        eyeTemp2.x = gameConsts.halfWidth + 20;
+                        eyeTemp2.setScale(3.2).setAlpha(0.2).setRotation(0);
+                        playSound('click');
+                        setTimeout(() => {
+                            blackPixelTemp.alpha = 0;
+                            eyeTemp2.x = gameConsts.halfWidth;
+                            eyeTemp2.setScale(3.3, 3.3).setAlpha(0.3);
+                            setTimeout(() => {
+                                playSound('eyeclose');
+                                eyeTemp2.setScale(3.5, 0.15).setAlpha(0.25);
+                                setTimeout(() => {
+                                    eyeTemp2.alpha = 0;
+                                }, 40)
+
+                                setTimeout(() => {
+                                    blackPixelTemp.alpha = 0.5;
+                                    playSound('crumble');
+                                    let tempSound = playSound('staticloop');
+                                    setTimeout(() => {
+                                        blackPixelTemp.alpha = 0.7;
+                                        eyeTemp2.setScale(3.3, 3.3).setAlpha(0.3);
+                                        setTimeout(() => {
+                                            eyeTemp2.destroy();
+                                            blackPixelTemp.alpha = 0.9;
+                                            setTimeout(() => {
+                                                blackPixelTemp.alpha = 1;
+                                                tempSound.volume = 0.3 * globalVolume;
+                                                let realEye = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'lowq', 'shadowEye.png').setDepth(10000).setScale(0.8,0.1);
+                                                let staticBlur = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'lowq', 'static.png').setDepth(10003).setScale(4);
+
+                                                staticBlur.anim1 = PhaserScene.tweens.add({
+                                                    targets: staticBlur,
+                                                    scaleX: 3.9,
+                                                    scaleY: 4.1,
+                                                    ease: 'Back.easeOut',
+                                                    duration: 27,
+                                                    yoyo: true,
+                                                    repeat: 999,
+                                                })
+                                                staticBlur.anim2 = PhaserScene.tweens.add({
+                                                    targets: staticBlur,
+                                                    x: "+=15",
+                                                    duration: 16,
+                                                    yoyo: true,
+                                                    repeat: 999,
+                                                })
+                                                staticBlur.anim3 = PhaserScene.tweens.add({
+                                                    targets: staticBlur,
+                                                    y: "+=9",
+                                                    duration: 27,
+                                                    yoyo: true,
+                                                    repeat: 999,
+                                                })
+                                                staticBlur.anim4 = PhaserScene.tweens.add({
+                                                    targets: realEye,
+                                                    x: "+=2",
+                                                    duration: 20,
+                                                    yoyo: true,
+                                                    repeat: 999,
+                                                })
+
+
+
+                                                realEye.scrollFactorX = 0; realEye.scrollFactorY = 0;
+                                                staticBlur.scrollFactorX = 0; staticBlur.scrollFactorY = 0;
+                                                playSound('click');
+                                                PhaserScene.tweens.add({
+                                                    targets: realEye,
+                                                    scaleY: 0.3,
+                                                    scaleX: 0.9,
+                                                    ease: 'Back.easeOut',
+                                                    duration: 120,
+                                                    completeDelay: 70,
+                                                    onComplete: () => {
+                                                        playSound('meatclick');
+                                                        PhaserScene.tweens.add({
+                                                            targets: realEye,
+                                                            scaleY: 0.98,
+                                                            scaleX: 0.98,
+                                                            ease: 'Quart.easeInOut',
+                                                            duration: 220,
+                                                            onComplete: () => {
+                                                                blackPixelTemp.depth = 10001;
+                                                                setTimeout(() => {
+                                                                    blackPixelTemp.depth = 9999;
+                                                                }, 30)
+                                                                PhaserScene.tweens.add({
+                                                                    targets: realEye,
+                                                                    scaleX: 1.4,
+                                                                    scaleY: 1.4,
+                                                                    ease: 'Quart.easeOut',
+                                                                    duration: 100,
+                                                                    onComplete: () => {
+                                                                        PhaserScene.tweens.add({
+                                                                            targets: realEye,
+                                                                            scaleY: 1.28,
+                                                                            scaleX: 1.28,
+                                                                            ease: 'Back.easeOut',
+                                                                            duration: 300,
+                                                                            onComplete: () => {
+                                                                                realEye.destroy();
+                                                                                staticBlur.alpha = 0.6;
+                                                                                blackPixelTemp.depth = 10002;
+                                                                                setTimeout(() => {
+                                                                                    blackPixelTemp.depth = 9999;
+                                                                                }, 25)
+                                                                                let casparBlur = PhaserScene.add.sprite(gameConsts.halfWidth - 50, gameConsts.halfHeight - 30, 'lowq', 'caspar2.png').setDepth(10001).setScale(2.54,2.4);
+                                                                                casparBlur.scrollFactorX = 0; casparBlur.scrollFactorY = 0;
+                                                                                setTimeout(() => {
+                                                                                    casparBlur.setScale(2.54, 2.4).setAlpha(0.75);
+                                                                                    casparBlur.setPosition(gameConsts.halfWidth + 80, gameConsts.halfHeight - 40)
+                                                                                    setTimeout(() => {
+                                                                                staticBlur.anim1.stop();
+                                                                                staticBlur.anim2.stop();
+                                                                                staticBlur.anim3.stop();
+                                                                                staticBlur.anim4.stop();
+                                                                                        casparBlur.setScale(2.32, 2.1).setAlpha(1);
+                                                                                        casparBlur.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 400)
+                                                                                        setTimeout(() => {
+                                                                                            casparBlur.setPosition(gameConsts.halfWidth, gameConsts.halfHeight + 350)
+                                                                                            setTimeout(() => {
+                                                                                                staticBlur.alpha = 1;
+                                                                                                casparBlur.setScale(2.2, 2.05).setAlpha(0.5);
+                                                                                                casparBlur.setPosition(gameConsts.halfWidth, gameConsts.halfHeight - 6);
+
+                                                                                                PhaserScene.tweens.add({
+                                                                                                    targets: realEye,
+                                                                                                    scaleY: "-=0.11",
+                                                                                                    scaleX: "-=0.11",
+                                                                                                    y: "+=6",
+                                                                                                    ease: 'Quad.easeOut',
+                                                                                                    duration: 300,
+                                                                                                })
+                                                                                                setTimeout(() => {
+                                                                                                    staticBlur.destroy();
+                                                                                                    // dialogManager.showDialogNode("TooFarWorry4");
+                                                                                                    setTimeout(() => {
+                                                                                                        playSound('puddlestep');
+                                                                                                        gameVars.cameraMoveAcc = 0;
+                                                                                                        gameVars.cameraMoveVel = 0;
+                                                                                                        gameVars.cameraPosX = 1400;
+                                                                                                        gameVars.cameraMoveVel = -0.7;
+                                                                                                        gameVars.cameraMoveAcc = 0;
+                                                                                                        gameVars.cameraPosMaxXOutside = 1600;
+                                                                                                        gameVars.cameraPosMaxX = gameVars.cameraPosMaxXOutside;
+                                                                                                        dialogManager.showDialogNode("TooFarCaspar");
+
+                                                                                                        globalObjects.outdoorRain.volume = 0.88 * globalVolume;
+
+                                                                                                        casparBlur.destroy()
+                                                                                                        tempSound.stop();
+                                                                                                        setTimeout(() => {
+                                                                                                            blackPixelTemp.destroy();
+                                                                                                        }, 300)
+                                                                                                        gameCharacters.casparTemp = PhaserScene.add.image(1510, gameConsts.outdoorStartY + 446, 'characters', 'caspar2.png').setDepth(11).setAlpha(0.75).setScale(0.93);
+                                                                                                    }, 70)
+                                                                                                }, 400)
+                                                                                            }, 80)
+                                                                                        }, 190)
+                                                                                    }, 70)
+                                                                                }, 50)
+
+                                                                            }
+                                                                        });
+                                                                    }
+                                                                })
+                                                            }
+                                                        });
+                                                    }
+                                                })
+                                            }, 400)
+                                        }, 20)
+                                    }, 250)
+                                }, 1500)
+                            }, 20)
+                        }, 30)
+                    }, 40)
+                }, 4500)
+            }
         }
 
         let distToStartY = startY - gameVars.cameraPosY;
@@ -1282,7 +1591,7 @@ function realGameStart() {
     // 1000
     let bgRain = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'backgrounds', 'rain.png').setScale(4);
     bgRain.depth = -2;
-    bgRain.scrollFactorX = 0.5;
+    bgRain.scrollFactorX = 0.4;
     let bg1 = PhaserScene.add.image(-987.5, gameConsts.halfHeight, 'backgrounds', 'bg1.png');
     let window1 = PhaserScene.add.image(-765, gameConsts.halfHeight - 63, 'characters', 'window.png').setDepth(-1);
     let bg2 = PhaserScene.add.image(12, gameConsts.halfHeight, 'backgrounds', 'bg2.png');
@@ -1348,7 +1657,7 @@ function realGameStart() {
         }, 200);
     }, 1100);
 
-    globalObjsTemp.gloom = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(5000, 999).setDepth(8).setAlpha(0);
+    globalObjsTemp.gloom = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'pixels', 'gloom_pixel.png').setScale(9000, 999).setDepth(8).setAlpha(0);
     globalObjsTemp.gloom.setBlendMode(Phaser.BlendModes.DARKEN);
 }
 
@@ -1435,6 +1744,7 @@ function setCharactersNormal() {
 
 
 function runIntroSequence() {
+    gameVars.introStarted = true;
     document.body.style.backgroundImage = "url('sprites/preload/rain.webp')";
     globalObjects.goalBtn.setState(NORMAL);
     for (let i in globalObjects.achievementImages) {
@@ -1490,10 +1800,10 @@ function runIntroSequence() {
     // TODO replace
     globalObjsTemp.rainBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'rainheavy1.png').setDepth(1).setScale(3).setRotation(0.15);
     globalObjsTemp.rainBackground.play('rain_heavy')
-    globalObjsTemp.rainBackground.scrollFactorX = 0.2; globalObjsTemp.rainBackground.scrollFactorY = 0;
+    globalObjsTemp.rainBackground.scrollFactorX = 0.1; globalObjsTemp.rainBackground.scrollFactorY = 0;
     globalObjsTemp.rainForeground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'rainheavy1.png').setDepth(1).setScale(3).setRotation(0.15).play('rain_lite');
     globalObjsTemp.rainForeground.play('rain_lite')
-    globalObjsTemp.rainForeground.scrollFactorX = 0.2; globalObjsTemp.rainForeground.scrollFactorY = 0;
+    globalObjsTemp.rainForeground.scrollFactorX = 0.1; globalObjsTemp.rainForeground.scrollFactorY = 0;
     // globalObjsTemp.rainForeground;
     addToShakeObjects(globalObjsTemp.rainForeground);
 

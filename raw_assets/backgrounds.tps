@@ -4,7 +4,7 @@
         <key>fileFormatVersion</key>
         <int>6</int>
         <key>texturePackerVersion</key>
-        <string>7.0.3</string>
+        <string>7.2.0</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -32,7 +32,7 @@
         <key>dpi</key>
         <uint>72</uint>
         <key>dataFormat</key>
-        <string>phaser</string>
+        <string>phaser-maxim</string>
         <key>textureFileName</key>
         <filename>../sprites/backgrounds-{n}.webp</filename>
         <key>flipPVR</key>
@@ -64,7 +64,7 @@
             </struct>
         </struct>
         <key>shapePadding</key>
-        <uint>1</uint>
+        <uint>0</uint>
         <key>jpgQuality</key>
         <uint>80</uint>
         <key>pngOptimizationLevel</key>
@@ -76,7 +76,7 @@
         <key>textureFormat</key>
         <enum type="SettingsBase::TextureFormat">webp</enum>
         <key>borderPadding</key>
-        <uint>1</uint>
+        <uint>0</uint>
         <key>maxTextureSize</key>
         <QSize>
             <key>width</key>
@@ -212,6 +212,7 @@
                 <false/>
             </struct>
             <key type="filename">backgrounds/bgout1Light.png</key>
+            <key type="filename">backgrounds/bgoutExtend.png</key>
             <struct type="IndividualSpriteSettings">
                 <key>pivotPoint</key>
                 <point_f>0.5,0.5</point_f>
