@@ -1796,15 +1796,15 @@ function clickIndoorTrue() {
 
 function clickIndoor() {
 
-    if (!gameState.powerOnWelcomed) {
-        adMute();
-        crazyGamesMidgameAd(() => {
-            adUnmute();
-            clickIndoorTrue()
-        })
-    } else {
-        clickIndoorTrue();
-    }
+    // if (!gameState.powerOnWelcomed) {
+    //     adMute();
+    //     crazyGamesMidgameAd(() => {
+    //         adUnmute();
+    //         clickIndoorTrue()
+    //     })
+    // } else {
+    // }
+    clickIndoorTrue();
 }
 
 function clickBackdoor() {

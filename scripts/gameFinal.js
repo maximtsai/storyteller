@@ -901,7 +901,6 @@ class GameFinal {
                 //     adFinished: () => {displayBanner()},
                 //     adStarted: () => console.log("Start midgame ad (callback)"),
                 // };
-                crazyGamesMidgameAd(() => {displayBanner()})
                 fullRestart();
             }
         });

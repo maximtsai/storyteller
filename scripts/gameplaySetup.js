@@ -1810,157 +1810,160 @@ function setCharactersNormal() {
 
 function runIntroSequence() {
     gameVars.introStarted = true;
-    document.body.style.backgroundImage = "url('sprites/preload/rain.webp')";
-    globalObjects.goalBtn.setState(NORMAL);
 
-    for (let i in globalObjects.achievementImages) {
-        if (globalObjects.achievementImages[i].destroy) {
-            globalObjects.achievementImages[i].destroy();
-        }
-    }
-    for (let i in globalObjects.achievementHoverIcons) {
-        if (globalObjects.achievementHoverIcons[i].destroy) {
-            globalObjects.achievementHoverIcons[i].destroy();
-        }
-    }
-    globalObjects.achievementText.destroy();
+    crazyGamesMidgameAd(() => {
+        document.body.style.backgroundImage = "url('sprites/preload/rain.webp')";
+        globalObjects.goalBtn.setState(NORMAL);
 
-    for (let i in globalObjects.achievements) {
-        if (globalObjects.achievements[i].destroy) {
-            globalObjects.achievements[i].destroy();
+        for (let i in globalObjects.achievementImages) {
+            if (globalObjects.achievementImages[i].destroy) {
+                globalObjects.achievementImages[i].destroy();
+            }
         }
-    }
-    globalObjects.optionsButton.destroy();
-    globalObjects.creditsButton.destroy();
-    if (globalObjects.flashWhite) {
-        globalObjects.flashWhite.destroy();
-    }
-    if (globalObjects.icon1) {
-        globalObjects.icon1.destroy();
-        globalObjects.icon2.destroy();
-        if (globalObjects.icon3) {
-            globalObjects.icon3.destroy();
+        for (let i in globalObjects.achievementHoverIcons) {
+            if (globalObjects.achievementHoverIcons[i].destroy) {
+                globalObjects.achievementHoverIcons[i].destroy();
+            }
         }
-    }
+        globalObjects.achievementText.destroy();
 
-    gameVars.canSkipIntro = true;
-    setBackground('intro', 'start.png', -5);
-    let thunderSfx = playSound('thunder', 0.8);
+        for (let i in globalObjects.achievements) {
+            if (globalObjects.achievements[i].destroy) {
+                globalObjects.achievements[i].destroy();
+            }
+        }
+        globalObjects.optionsButton.destroy();
+        globalObjects.creditsButton.destroy();
+        if (globalObjects.flashWhite) {
+            globalObjects.flashWhite.destroy();
+        }
+        if (globalObjects.icon1) {
+            globalObjects.icon1.destroy();
+            globalObjects.icon2.destroy();
+            if (globalObjects.icon3) {
+                globalObjects.icon3.destroy();
+            }
+        }
 
-    if (!gameVars.showedCreditsSpook) {
-        let eye = PhaserScene.add.image(gameConsts.width - 135, gameConsts.halfHeight - 255, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.1).setScale(3);
-        setTimeout(() => {
-            eye.setScale(3.1).setAlpha(0.15);
+        gameVars.canSkipIntro = true;
+        setBackground('intro', 'start.png', -5);
+        let thunderSfx = playSound('thunder', 0.8);
+
+        if (!gameVars.showedCreditsSpook) {
+            let eye = PhaserScene.add.image(gameConsts.width - 135, gameConsts.halfHeight - 255, 'lowq', 'spook4.png').setDepth(0).setAlpha(0.1).setScale(3);
             setTimeout(() => {
-                eye.destroy();
-            }, 20)
-        }, 10)
-        gameVars.showedCreditsSpook = true;
-    }
-
-
-    let greyCover = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'greycover.png').setScale(100, 4).setOrigin(0.5, 0.5).setDepth(-1);
-    let dinerSign = PhaserScene.add.image(gameConsts.width, 430, 'intro', 'dinersign.png').setScale(0.7).setAlpha(0).setOrigin(0.5, 0.95);
-
-    // TODO replace
-    globalObjsTemp.rainBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'rainheavy1.png').setDepth(1).setScale(3).setRotation(0.15);
-    globalObjsTemp.rainBackground.play('rain_heavy')
-    globalObjsTemp.rainBackground.scrollFactorX = 0.1; globalObjsTemp.rainBackground.scrollFactorY = 0;
-    globalObjsTemp.rainForeground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'rainheavy1.png').setDepth(1).setScale(3).setRotation(0.15).play('rain_lite');
-    globalObjsTemp.rainForeground.play('rain_lite')
-    globalObjsTemp.rainForeground.scrollFactorX = 0.1; globalObjsTemp.rainForeground.scrollFactorY = 0;
-    // globalObjsTemp.rainForeground;
-    addToShakeObjects(globalObjsTemp.rainForeground);
-
-    globalObjsTemp.skipBox = PhaserScene.add.image(gameConsts.width, 210, 'blackPixel').setScale(146, 15).setOrigin(1, 1);
-    globalObjsTemp.skipBox.setPosition(gameConsts.width, gameConsts.height - 12);
-    globalObjsTemp.skipBox.alpha = 0;
-    globalObjsTemp.skipBox.setDepth(999);
-
-    globalObjsTemp.skipText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 36, 'CLICK TO SKIP INTRO');
-    globalObjsTemp.skipText.setFontSize(20);
-    globalObjsTemp.skipText.setAlign('right');
-    globalObjsTemp.skipText.setOrigin(1, 0);
-    globalObjsTemp.skipText.alpha = 0;
-    globalObjsTemp.skipText.setDepth(999);
-
-    globalObjsTemp.skipButton = new Button({
-        normal: {
-            atlas: "pixels",
-            ref: "gloom_pixel.png",
-            x: gameConsts.width - 100,
-            y: gameConsts.height - 25,
-            scaleX: 200,
-            scaleY: 25,
-            alpha: 0.001
-        },
-        hover: {
-            alpha: 0.1
-        },
-        press: {
-            alpha: 0.2
-        },
-        disable: {
-            alpha: 0.001
-        },
-        onMouseUp() {
-            manualSkipIntro();
+                eye.setScale(3.1).setAlpha(0.15);
+                setTimeout(() => {
+                    eye.destroy();
+                }, 20)
+            }, 10)
+            gameVars.showedCreditsSpook = true;
         }
-    });
 
-    PhaserScene.tweens.add({
-        delay: 500,
-        targets: [globalObjsTemp.skipText, globalObjsTemp.skipBox],
-        alpha: 0.65,
-        ease: 'Cubic.easeInOut',
-        duration: 1200
-    });
 
-    PhaserScene.tweens.add({
-        targets: [greyCover],
-        scaleY: 4.25,
-        duration: 3800,
-        ease: 'Cubic.easeIn',
-    })
+        let greyCover = PhaserScene.add.image(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'greycover.png').setScale(100, 4).setOrigin(0.5, 0.5).setDepth(-1);
+        let dinerSign = PhaserScene.add.image(gameConsts.width, 430, 'intro', 'dinersign.png').setScale(0.7).setAlpha(0).setOrigin(0.5, 0.95);
 
-    PhaserScene.tweens.add({
-        targets: [dinerSign],
-        alpha: 1,
-        x: gameConsts.width - 125,
-        scaleX: 1.4,
-        scaleY: 1.4,
-        duration: 3800,
-        ease: 'Cubic.easeIn',
-        onComplete: () => {
-            dinerSign.destroy();
-            greyCover.destroy();
-            thunderSfx.stop();
+        // TODO replace
+        globalObjsTemp.rainBackground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'rainheavy1.png').setDepth(1).setScale(3).setRotation(0.15);
+        globalObjsTemp.rainBackground.play('rain_heavy')
+        globalObjsTemp.rainBackground.scrollFactorX = 0.1; globalObjsTemp.rainBackground.scrollFactorY = 0;
+        globalObjsTemp.rainForeground = PhaserScene.add.sprite(gameConsts.halfWidth, gameConsts.halfHeight, 'intro', 'rainheavy1.png').setDepth(1).setScale(3).setRotation(0.15).play('rain_lite');
+        globalObjsTemp.rainForeground.play('rain_lite')
+        globalObjsTemp.rainForeground.scrollFactorX = 0.1; globalObjsTemp.rainForeground.scrollFactorY = 0;
+        // globalObjsTemp.rainForeground;
+        addToShakeObjects(globalObjsTemp.rainForeground);
 
-            if (!gameVars.canSkipIntro) return;
-            globalObjsTemp.outdoorsrain = playSound('staticloop', 0.8, true);
-            setBackground('intro', 'offtruck.png');
+        globalObjsTemp.skipBox = PhaserScene.add.image(gameConsts.width, 210, 'blackPixel').setScale(146, 15).setOrigin(1, 1);
+        globalObjsTemp.skipBox.setPosition(gameConsts.width, gameConsts.height - 12);
+        globalObjsTemp.skipBox.alpha = 0;
+        globalObjsTemp.skipBox.setDepth(999);
 
-            playSound('truckdoor', 0.8);
+        globalObjsTemp.skipText = PhaserScene.add.text(gameConsts.width - 20, gameConsts.height - 36, 'CLICK TO SKIP INTRO');
+        globalObjsTemp.skipText.setFontSize(20);
+        globalObjsTemp.skipText.setAlign('right');
+        globalObjsTemp.skipText.setOrigin(1, 0);
+        globalObjsTemp.skipText.alpha = 0;
+        globalObjsTemp.skipText.setDepth(999);
 
-            let achievementMult = numAchievements > 0 ? 0.85 : 1;
-            setTimeout(() => {
+        globalObjsTemp.skipButton = new Button({
+            normal: {
+                atlas: "pixels",
+                ref: "gloom_pixel.png",
+                x: gameConsts.width - 100,
+                y: gameConsts.height - 25,
+                scaleX: 200,
+                scaleY: 25,
+                alpha: 0.001
+            },
+            hover: {
+                alpha: 0.1
+            },
+            press: {
+                alpha: 0.2
+            },
+            disable: {
+                alpha: 0.001
+            },
+            onMouseUp() {
+                manualSkipIntro();
+            }
+        });
+
+        PhaserScene.tweens.add({
+            delay: 500,
+            targets: [globalObjsTemp.skipText, globalObjsTemp.skipBox],
+            alpha: 0.65,
+            ease: 'Cubic.easeInOut',
+            duration: 1200
+        });
+
+        PhaserScene.tweens.add({
+            targets: [greyCover],
+            scaleY: 4.25,
+            duration: 3800,
+            ease: 'Cubic.easeIn',
+        })
+
+        PhaserScene.tweens.add({
+            targets: [dinerSign],
+            alpha: 1,
+            x: gameConsts.width - 125,
+            scaleX: 1.4,
+            scaleY: 1.4,
+            duration: 3800,
+            ease: 'Cubic.easeIn',
+            onComplete: () => {
+                dinerSign.destroy();
+                greyCover.destroy();
+                thunderSfx.stop();
+
                 if (!gameVars.canSkipIntro) return;
-                setBackground('intro', 'offtruck2.png');
+                globalObjsTemp.outdoorsrain = playSound('staticloop', 0.8, true);
+                setBackground('intro', 'offtruck.png');
+
+                playSound('truckdoor', 0.8);
+
+                let achievementMult = numAchievements > 0 ? 0.85 : 1;
                 setTimeout(() => {
                     if (!gameVars.canSkipIntro) return;
-                    setBackground('intro', 'offtruck3.png');
-                    playSound('puddlestep', 0.8);
+                    setBackground('intro', 'offtruck2.png');
                     setTimeout(() => {
                         if (!gameVars.canSkipIntro) return;
-                        cleanupIntro();
+                        setBackground('intro', 'offtruck3.png');
+                        playSound('puddlestep', 0.8);
                         setTimeout(() => {
-                            enterShop();
+                            if (!gameVars.canSkipIntro) return;
+                            cleanupIntro();
+                            setTimeout(() => {
+                                enterShop();
+                            }, 2000 * achievementMult);
                         }, 2000 * achievementMult);
-                    }, 2000 * achievementMult);
-                }, 1500 * achievementMult);
-            }, 1700 * achievementMult);
-        }
-    });
+                    }, 1500 * achievementMult);
+                }, 1700 * achievementMult);
+            }
+        });
+    })
 }
 
 function realGameRain() {
