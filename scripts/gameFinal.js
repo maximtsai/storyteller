@@ -514,12 +514,6 @@ class GameFinal {
     }
 
     checkJuanThenContinue() {
-        if (!url1 || !url2) {
-            return;
-        }
-        if (!document.location.href.includes(url1) && !document.location.href.includes(url2)) {
-            return;
-        }
         if (gameState.juanLeaveStatus !== "accept" && gameState.juanLeaveStatus !== "onlyUseful") {
             // Juan already not coming
             this.endGameForce();
@@ -690,9 +684,9 @@ class GameFinal {
             this.displayedLines.push(" But instead of\nbuildings you see nothing but destruction and massive holes in the\nground.");
             this.displayedLines.push(" Your group presses on to the next city, but you find\nonly empty towns and destroyed settlements everywhere you go.");
             if (gameState.EthanSaved) {
-                this.displayedLines.push("\n\nExhausted, you settle down in a makeshift shelter, but soon the\nground start rumbling. Ethan looks at you with tired eyes and\nhalf-heartedly points up at a wall of teeth blotting out the sky.");
+                this.displayedLines.push("\n\nExhausted, you settle in a makeshift shelter, but the ground\nstart rumbling. Ethan looks at you with tired eyes and\nhalf-heartedly points up at giant teeth blotting out the sky.");
             } else {
-                this.displayedLines.push("\n\nExhausted, you settle down in a makeshift shelter, but soon the\nground start rumbling. You look up and all you see is a wall of teeth\nblotting out the sky.");
+                this.displayedLines.push("\n\nExhausted, you settle in a makeshift shelter, but the ground\nstart rumbling. You look up and see giant sharp teeth\nblotting out the sky.");
             }
             this.theEndTitle.setText('Ending #6: Hopeless');
             this.endingNum = 6;
