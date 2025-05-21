@@ -168,7 +168,7 @@ function setupGame() {
     });
     globalObjects.optionsButton.setDepth(1);
 
-    
+
     setTimeout(() => {
         if (!gameVars.introStarted) {
             let buttonGlow = PhaserScene.add.image(globalObjects.optionsButton.getXPos(), globalObjects.optionsButton.getYPos(), 'buttons', 'buttonGlow.png').setDepth(0).setAlpha(0.9).setScale(1);
@@ -1352,7 +1352,12 @@ function tickKeyPresses(deltaScale) {
                 gameVars.cameraMoveVel *= 0.92;
             }
             // Going too far
-            if (gameVars.cameraPosX > 2350 && !gameVars.warningOne) {
+            if (gameVars.cameraPosX > 1440 && !gameVars.warningZero) {
+                gameVars.cameraMoveAcc = 0;
+                gameVars.cameraMoveVel = 0;
+                gameVars.warningZero = true;
+                dialogManager.showDialogNode("TooFarWorry0");
+            } else if (gameVars.cameraPosX > 2350 && !gameVars.warningOne) {
                 gameVars.cameraMoveAcc = 0;
                 gameVars.cameraMoveVel = 0;
                 gameVars.warningOne = true;

@@ -514,12 +514,6 @@ class GameFinal {
     }
 
     checkJuanThenContinue() {
-        if (!url1 || !url2) {
-            return;
-        }
-        if (!document.location.href.includes(url1) && !document.location.href.includes(url2) && !document.location.href.includes(url0)) {
-            return;
-        }
         if (gameState.juanLeaveStatus !== "accept" && gameState.juanLeaveStatus !== "onlyUseful") {
             // Juan already not coming
             this.endGameForce();

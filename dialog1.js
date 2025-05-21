@@ -3121,6 +3121,12 @@ let dialogList1 = {
         ]
     },
 
+    TooFarWorry0: {
+        speech: [
+            {speaker: "You", text: "The power generator must be in this shed."},
+        ]
+    },
+
     TooFarWorry1: {
         speech: [
             {speaker: "", text: "(You see only rain and mud out here)"},
